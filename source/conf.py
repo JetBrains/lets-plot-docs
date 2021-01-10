@@ -45,7 +45,7 @@ napoleon_google_docstring = True
 napoleon_numpy_docstring = True
 napoleon_use_param = False
 
-examples_dirs = 'examples'
+examples_dirs = '../examples'
 
 sphinx_gallery_conf = {
     'examples_dirs': examples_dirs,
