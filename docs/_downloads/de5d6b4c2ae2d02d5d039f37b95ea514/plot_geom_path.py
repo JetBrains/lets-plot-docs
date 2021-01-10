@@ -6,7 +6,7 @@ An example with the geom_path() geometry.
 
 """
 
-# sphinx_gallery_thumbnail_path = "/Users/vdovidaytis/Projects/lets-plot-docs/source/examples/geom_path.png"
+# sphinx_gallery_thumbnail_path = "/Users/vdovidaytis/Projects/lets-plot-docs/source/../examples/geom_path.png"
 
 import numpy as np
 
