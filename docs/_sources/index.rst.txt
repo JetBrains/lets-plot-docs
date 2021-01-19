@@ -18,6 +18,7 @@ Example
 =======
 
 .. jupyter-execute::
+    :linenos:
 
     import pandas as pd
     from lets_plot import *
@@ -28,9 +29,11 @@ Example
     df = df.sort_values(by='Pclass')
 
     ggplot(df) + \
-        geom_histogram(aes(x='Age', group='Survived', fill='Survived')) + \
+        geom_histogram(aes(x='Age', group='Survived', fill='Survived'), \
+                       binwidth=5, center=0) + \
         facet_grid(x='Pclass', y='Sex') + \
-        scale_fill_discrete() + \
+        scale_x_continuous(name='age', breaks=list(range(0, 90, 10))) + \
+        scale_fill_discrete(name='survived') + \
         ggsize(700, 400) + \
         ggtitle('Survival Rate on the Titanic: '
                 'Distribution by Age, Gender and Class of Ticket')
@@ -44,12 +47,12 @@ Example
     ^^^^^^^^
 
     .. toctree::
-       :maxdepth: 1
+        :maxdepth: 1
 
-       _pages/installation
-       _pages/quickstart
-       api
-       gallery/index
+        _pages/installation
+        _pages/quickstart
+        api
+        gallery/index
 
     ---
 
