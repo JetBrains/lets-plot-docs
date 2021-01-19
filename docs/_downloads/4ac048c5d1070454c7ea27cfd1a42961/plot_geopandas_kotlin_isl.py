@@ -10,7 +10,7 @@ build an inset map of Kotlin island.
 
 """
 
-# sphinx_gallery_thumbnail_path = "E:\Projects\DataPad\Subprojects\LetsPlotDocs\MyFork\lets-plot-docs\source\../examples\geopandas_kotlin_isl.png"
+# sphinx_gallery_thumbnail_path = "E:\Projects\DataPad\Subprojects\LetsPlotDocs\MyFork\lets-plot-docs\source\gallery_py\geopandas_kotlin_isl.png"
 
 # %% [markdown]
 #

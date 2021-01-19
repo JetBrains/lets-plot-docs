@@ -70,5 +70,4 @@ Example
     Features
     ^^^^^^^^
 
-    * :ref:`Sampling <api_sampling>`
-    * :ref:`Geospatial <api_geospatial>`
+    * :ref:`GGBunch <features_ggbunch>`

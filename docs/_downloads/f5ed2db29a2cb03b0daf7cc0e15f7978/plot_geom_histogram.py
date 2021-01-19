@@ -6,7 +6,7 @@ An example with the geom_histogram() geometry.
 
 """
 
-# sphinx_gallery_thumbnail_path = "E:\Projects\DataPad\Subprojects\LetsPlotDocs\MyFork\lets-plot-docs\source\../examples\geom_histogram.png"
+# sphinx_gallery_thumbnail_path = "E:\Projects\DataPad\Subprojects\LetsPlotDocs\MyFork\lets-plot-docs\source\gallery_py\geom_histogram.png"
 
 import numpy as np
 

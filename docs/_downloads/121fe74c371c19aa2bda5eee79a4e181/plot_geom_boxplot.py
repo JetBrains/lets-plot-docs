@@ -11,7 +11,7 @@ LetsPlot.setup_html()
 
 #%%
 
-# sphinx_gallery_thumbnail_path = "E:\Projects\DataPad\Subprojects\LetsPlotDocs\MyFork\lets-plot-docs\source\../examples\geom_boxplot.png"
+# sphinx_gallery_thumbnail_path = "E:\Projects\DataPad\Subprojects\LetsPlotDocs\MyFork\lets-plot-docs\source\gallery_py\geom_boxplot.png"
 
 np.random.seed(42)
 n = 100
