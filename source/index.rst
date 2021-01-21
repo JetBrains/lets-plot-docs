@@ -15,7 +15,7 @@ It is implemented using the `Kotlin programming language <https://kotlinlang.org
 
 
 Example
-=======
+-------
 
 .. jupyter-execute::
     :linenos:
