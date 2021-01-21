@@ -51,7 +51,7 @@ Example
 
         _pages/installation
         _pages/quickstart
-        api
+        _pages/api
         _pages/features
         gallery/index
 
