@@ -77,7 +77,7 @@ Additional
     geom_livemap
 
 
-.. _api_fsp:
+.. _api_fs:
 
 Facets
 ======
@@ -216,6 +216,8 @@ Scale Guides
     guide_colorbar
 
 
+.. _api_pc:
+
 Positions
 =========
 
@@ -227,8 +229,6 @@ Positions
     position_nudge
     position_jitterdodge
 
-
-.. _api_coordinates:
 
 Coordinates
 ===========

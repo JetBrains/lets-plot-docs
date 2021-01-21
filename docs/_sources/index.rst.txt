@@ -62,8 +62,8 @@ Example
 
     * :ref:`Plotting <api_plotting>`
     * :ref:`Geometries <api_geometries>`
-    * :ref:`Facets and Scales <api_fsp>`
-    * :ref:`Coordinates <api_coordinates>`
+    * :ref:`Facets and Scales <api_fs>`
+    * :ref:`Positions and Coordinates <api_pc>`
     * :ref:`Theme <api_theme>`
 
     ---

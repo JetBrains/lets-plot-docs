@@ -120,4 +120,6 @@ html_sidebars = {
 
     # local table of contents for the API page
     'api': ['localtoc.html'],
+    # local table of contents for the Features page
+    '_pages/features': ['localtoc.html'],
 }
