@@ -52,6 +52,7 @@ Example
         _pages/installation
         _pages/quickstart
         api
+        _pages/features
         gallery/index
 
     ---
@@ -71,3 +72,9 @@ Example
     ^^^^^^^^
 
     * :ref:`GGBunch <features_ggbunch>`
+    * :ref:`Data Sampling <features_sampling>`
+    * :ref:`Export to File <features_export>`
+    * :ref:`The 'bistro' Package <features_bistro>`
+    * :ref:`Geospatial <features_geospatial>`
+    * :ref:`'No Javascript' Mode <features_no_js>`
+    * :ref:`Offline Mode <features_offline>`
