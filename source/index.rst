@@ -54,6 +54,7 @@ Example
         _pages/api
         _pages/features
         gallery/index
+        GitHub <https://github.com/JetBrains/lets-plot>
 
     ---
 
