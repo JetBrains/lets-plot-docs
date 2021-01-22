@@ -87,7 +87,7 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
     'navbar_title': 'Lets-Plot',
     'navbar_links': [
-      ('API', '_pages/api'),
+      ('API', 'pages/api'),
     ],
     'source_link_position': '',
     'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3
@@ -122,7 +122,7 @@ html_sidebars = {
     '**': [],
 
     # local table of contents for the API page
-    '_pages/api': ['localtoc.html'],
+    'pages/api': ['localtoc.html'],
     # local table of contents for the Features page
-    '_pages/features': ['localtoc.html'],
+    'pages/features': ['localtoc.html'],
 }

@@ -49,10 +49,10 @@ Example
     .. toctree::
         :maxdepth: 1
 
-        _pages/installation
-        _pages/quickstart
-        _pages/api
-        _pages/features
+        pages/installation
+        pages/quickstart
+        pages/api
+        pages/features
         gallery/index
         GitHub <https://github.com/JetBrains/lets-plot>
 
