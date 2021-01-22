@@ -1,4 +1,4 @@
-.. _interactive_maps:
+.. _features_interactive_maps:
 
 Interactive Maps
 ################

@@ -1,4 +1,4 @@
-.. _data_sampling:
+.. _features_sampling:
 
 Sampling in Lets-Plot
 #####################

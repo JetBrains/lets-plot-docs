@@ -88,6 +88,8 @@ html_theme_options = {
     'navbar_title': 'Lets-Plot',
     'navbar_links': [
       ('API', 'pages/api'),
+      ('Gallery', 'gallery/index'),
+      ('Overview', 'pages/overview'),
     ],
     'source_link_position': '',
     'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3

@@ -52,8 +52,9 @@ Example
         pages/installation
         pages/quickstart
         pages/api
-        pages/features
         gallery/index
+        pages/overview
+        pages/features
         GitHub <https://github.com/JetBrains/lets-plot>
 
     ---

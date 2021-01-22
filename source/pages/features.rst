@@ -23,7 +23,7 @@ Data Sampling
 
 Sampling is a special technique of data transformation, which helps dealing with large datasets and overplotting.
 
-Learn more: :ref:`Data Sampling <data_sampling>`.
+Learn more: :ref:`Data Sampling <features_sampling>`.
 
 
 .. _features_export:
@@ -79,7 +79,7 @@ GeoPandas Support
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: ``geom_polygon``, ``geom_map``, ``geom_point``, ``geom_text``, ``geom_rect``.
 
-Learn more: :ref:`GeoPandas Support <geopandas_support>`.
+Learn more: :ref:`GeoPandas Support <features_geopandas_support>`.
 
 .. image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/kotlin_island.png
     :width: 480px
@@ -90,14 +90,14 @@ Interactive Maps
 
 Interactive maps allow zooming and panning around geospatial data that can be added to the base-map layer using regular ggplot geoms.
 
-Learn more: :ref:`Interactive Maps <interactive_maps>`.
+Learn more: :ref:`Interactive Maps <features_interactive_maps>`.
 
 Geocoding API
 -------------
 
 Geocoding is the process of converting names of places into geographic coordinates.
 
-Learn more: :ref:`Geocoding API <geocoding_api>`.
+Learn more: :ref:`Geocoding API <features_geocoding_api>`.
 
 
 .. _features_no_js:
