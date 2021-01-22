@@ -15,9 +15,10 @@ It is implemented using the `Kotlin programming language <https://kotlinlang.org
 
 
 Example
-=======
+-------
 
 .. jupyter-execute::
+    :linenos:
 
     import pandas as pd
     from lets_plot import *
@@ -28,9 +29,11 @@ Example
     df = df.sort_values(by='Pclass')
 
     ggplot(df) + \
-        geom_histogram(aes(x='Age', group='Survived', fill='Survived')) + \
+        geom_histogram(aes(x='Age', group='Survived', fill='Survived'), \
+                       binwidth=5, center=0) + \
         facet_grid(x='Pclass', y='Sex') + \
-        scale_fill_discrete() + \
+        scale_x_continuous(name='age', breaks=list(range(0, 90, 10))) + \
+        scale_fill_discrete(name='survived') + \
         ggsize(700, 400) + \
         ggtitle('Survival Rate on the Titanic: '
                 'Distribution by Age, Gender and Class of Ticket')
@@ -44,12 +47,15 @@ Example
     ^^^^^^^^
 
     .. toctree::
-       :maxdepth: 1
+        :maxdepth: 1
 
-       _pages/installation
-       _pages/quickstart
-       api
-       gallery/index
+        pages/installation
+        pages/quickstart
+        pages/api
+        gallery/index
+        pages/overview
+        pages/features
+        GitHub <https://github.com/JetBrains/lets-plot>
 
     ---
 
@@ -58,8 +64,8 @@ Example
 
     * :ref:`Plotting <api_plotting>`
     * :ref:`Geometries <api_geometries>`
-    * :ref:`Facets and Scales <api_fsp>`
-    * :ref:`Coordinates <api_coordinates>`
+    * :ref:`Facets and Scales <api_fs>`
+    * :ref:`Positions and Coordinates <api_pc>`
     * :ref:`Theme <api_theme>`
 
     ---
@@ -67,5 +73,10 @@ Example
     Features
     ^^^^^^^^
 
-    * :ref:`Sampling <api_sampling>`
-    * :ref:`Geospatial <api_geospatial>`
+    * :ref:`GGBunch <features_ggbunch>`
+    * :ref:`Data Sampling <features_sampling>`
+    * :ref:`Export to File <features_export>`
+    * :ref:`The 'bistro' Package <features_bistro>`
+    * :ref:`Geospatial <features_geospatial>`
+    * :ref:`'No Javascript' Mode <features_no_js>`
+    * :ref:`Offline Mode <features_offline>`

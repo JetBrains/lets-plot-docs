@@ -45,7 +45,7 @@ napoleon_google_docstring = True
 napoleon_numpy_docstring = True
 napoleon_use_param = False
 
-examples_dirs = '../examples'
+examples_dirs = 'gallery_py'
 
 sphinx_gallery_conf = {
     'examples_dirs': examples_dirs,
@@ -54,7 +54,7 @@ sphinx_gallery_conf = {
 }
 
 sphinx_gallery_jupyter_conf = {
-    'notebooks_dirs': '../gallery',
+    'notebooks_dirs': '../notebooks/gallery',
     'examples_dirs': examples_dirs,
 }
 
@@ -87,7 +87,9 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
     'navbar_title': 'Lets-Plot',
     'navbar_links': [
-      ('API', 'api'),
+      ('API', 'pages/api'),
+      ('Gallery', 'gallery/index'),
+      ('Overview', 'pages/overview'),
     ],
     'source_link_position': '',
     'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3
@@ -103,7 +105,10 @@ html_static_path = ['_static']
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
 html_css_files = [
-    'css/style.css',
+    'css/custom.css',
+]
+html_js_files = [
+    'js/custom.js',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -119,5 +124,7 @@ html_sidebars = {
     '**': [],
 
     # local table of contents for the API page
-    'api': ['localtoc.html'],
+    'pages/api': ['localtoc.html'],
+    # local table of contents for the Features page
+    'pages/features': ['localtoc.html'],
 }

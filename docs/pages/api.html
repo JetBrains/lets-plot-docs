@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Reference &#8212; lets-plot 1.5.6 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lets_plot.ggplot" href="api/lets_plot.ggplot.html" />
+    <link rel="prev" title="Quickstart with Jupyter" href="quickstart.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Lets-Plot</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.5.6</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="#">API</a></li>
+                <li><a href="../gallery/index.html">Gallery</a></li>
+                <li><a href="overview.html">Overview</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart with Jupyter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/JetBrains/lets-plot">GitHub</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">API Reference</a><ul>
+<li><a class="reference internal" href="#plotting">Plotting</a></li>
+<li><a class="reference internal" href="#geometries">Geometries</a><ul>
+<li><a class="reference internal" href="#standard">Standard</a></li>
+<li><a class="reference internal" href="#additional">Additional</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#facets">Facets</a></li>
+<li><a class="reference internal" href="#scales">Scales</a><ul>
+<li><a class="reference internal" href="#position-scales">Position Scales</a></li>
+<li><a class="reference internal" href="#color-scales">Color Scales</a></li>
+<li><a class="reference internal" href="#fill-scales">Fill Scales</a></li>
+<li><a class="reference internal" href="#shape-scales">Shape Scales</a></li>
+<li><a class="reference internal" href="#size-scales">Size Scales</a></li>
+<li><a class="reference internal" href="#alpha-scales">Alpha Scales</a></li>
+<li><a class="reference internal" href="#linetype-scales">Linetype Scales</a></li>
+<li><a class="reference internal" href="#datetime-scales">Datetime Scales</a></li>
+<li><a class="reference internal" href="#identity-scales">Identity Scales</a></li>
+<li><a class="reference internal" href="#scale-limits">Scale Limits</a></li>
+<li><a class="reference internal" href="#scale-guides">Scale Guides</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#positions">Positions</a></li>
+<li><a class="reference internal" href="#coordinates">Coordinates</a></li>
+<li><a class="reference internal" href="#theme">Theme</a><ul>
+<li><a class="reference internal" href="#base">Base</a></li>
+<li><a class="reference internal" href="#labels">Labels</a></li>
+<li><a class="reference internal" href="#tooltips">Tooltips</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#helpers">Helpers</a></li>
+<li><a class="reference internal" href="#sampling">Sampling</a></li>
+<li><a class="reference internal" href="#geospatial">Geospatial</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">API Reference</a><ul>
+<li><a class="reference internal" href="#plotting">Plotting</a></li>
+<li><a class="reference internal" href="#geometries">Geometries</a><ul>
+<li><a class="reference internal" href="#standard">Standard</a></li>
+<li><a class="reference internal" href="#additional">Additional</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#facets">Facets</a></li>
+<li><a class="reference internal" href="#scales">Scales</a><ul>
+<li><a class="reference internal" href="#position-scales">Position Scales</a></li>
+<li><a class="reference internal" href="#color-scales">Color Scales</a></li>
+<li><a class="reference internal" href="#fill-scales">Fill Scales</a></li>
+<li><a class="reference internal" href="#shape-scales">Shape Scales</a></li>
+<li><a class="reference internal" href="#size-scales">Size Scales</a></li>
+<li><a class="reference internal" href="#alpha-scales">Alpha Scales</a></li>
+<li><a class="reference internal" href="#linetype-scales">Linetype Scales</a></li>
+<li><a class="reference internal" href="#datetime-scales">Datetime Scales</a></li>
+<li><a class="reference internal" href="#identity-scales">Identity Scales</a></li>
+<li><a class="reference internal" href="#scale-limits">Scale Limits</a></li>
+<li><a class="reference internal" href="#scale-guides">Scale Guides</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#positions">Positions</a></li>
+<li><a class="reference internal" href="#coordinates">Coordinates</a></li>
+<li><a class="reference internal" href="#theme">Theme</a><ul>
+<li><a class="reference internal" href="#base">Base</a></li>
+<li><a class="reference internal" href="#labels">Labels</a></li>
+<li><a class="reference internal" href="#tooltips">Tooltips</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#helpers">Helpers</a></li>
+<li><a class="reference internal" href="#sampling">Sampling</a></li>
+<li><a class="reference internal" href="#geospatial">Geospatial</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="api-reference">
+<span id="api"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="plotting">
+<span id="api-plotting"></span><h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.ggplot.html#lets_plot.ggplot" title="lets_plot.ggplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ggplot</span></code></a>([data, mapping])</p></td>
+<td><p>Create a new ggplot plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.GGBunch.html#lets_plot.GGBunch" title="lets_plot.GGBunch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GGBunch</span></code></a>()</p></td>
+<td><p>Collection of plots created by ggplot function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.aes.html#lets_plot.aes" title="lets_plot.aes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aes</span></code></a>([x, y])</p></td>
+<td><p>Define aesthetic mappings</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.layer.html#lets_plot.layer" title="lets_plot.layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer</span></code></a>([geom, stat, data, mapping, position])</p></td>
+<td><p>Create a new layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.ggsave.html#lets_plot.ggsave" title="lets_plot.ggsave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ggsave</span></code></a>(plot, filename, *[, path, iframe])</p></td>
+<td><p>Exports plot or “bunch” to a file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="geometries">
+<span id="api-geometries"></span><h2>Geometries<a class="headerlink" href="#geometries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="standard">
+<h3>Standard<a class="headerlink" href="#standard" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_point</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Draw points defined by an x and y coordinate, as for a scatter plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_path</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Connects observations in the order, how they appear in the data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_line.html#lets_plot.geom_line" title="lets_plot.geom_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_line</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Connect points in the order of the variable on the x axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_smooth.html#lets_plot.geom_smooth" title="lets_plot.geom_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_smooth</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Add a smoothed conditional mean.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_bar.html#lets_plot.geom_bar" title="lets_plot.geom_bar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_bar</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display a bar chart which makes the height of the bar proportional to the number of observed variable values, mapped to x axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_histogram.html#lets_plot.geom_histogram" title="lets_plot.geom_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_histogram</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Displays a 1d distribution by dividing variable mapped to x axis into bins and counting the number of observations in each bin.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_bin2d.html#lets_plot.geom_bin2d" title="lets_plot.geom_bin2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_bin2d</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Displays a 1d distribution by dividing variable mapped to x axis into bins and counting the number of observations in each bin.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_tile.html#lets_plot.geom_tile" title="lets_plot.geom_tile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_tile</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display rectangles with x, y values mapped to the center of the tile.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_raster.html#lets_plot.geom_raster" title="lets_plot.geom_raster"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_raster</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display rectangles with x, y values mapped to the center of the tile.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_errorbar.html#lets_plot.geom_errorbar" title="lets_plot.geom_errorbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_errorbar</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display error bars defined by the upper and lower values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_crossbar.html#lets_plot.geom_crossbar" title="lets_plot.geom_crossbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_crossbar</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display bars with horizontal median line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_linerange.html#lets_plot.geom_linerange" title="lets_plot.geom_linerange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_linerange</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display a line range defined by an upper and lower value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_pointrange.html#lets_plot.geom_pointrange" title="lets_plot.geom_pointrange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_pointrange</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Add a vertical line defined by upper and lower value with midpoint at y location.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_contour.html#lets_plot.geom_contour" title="lets_plot.geom_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_contour</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display contours of a 3d surface in 2d.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_contourf.html#lets_plot.geom_contourf" title="lets_plot.geom_contourf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_contourf</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Fill contours of a 3d surface in 2d.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_polygon.html#lets_plot.geom_polygon" title="lets_plot.geom_polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_polygon</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display a filled closed path defined by the vertex coordinates of individual polygons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_map.html#lets_plot.geom_map" title="lets_plot.geom_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_map</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display polygons from a reference map.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_abline.html#lets_plot.geom_abline" title="lets_plot.geom_abline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_abline</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Add a straight line with specified slope and intercept to the plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_hline.html#lets_plot.geom_hline" title="lets_plot.geom_hline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_hline</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Add a straight horizontal line to the plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_vline.html#lets_plot.geom_vline" title="lets_plot.geom_vline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_vline</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Add a straight vertical line to the plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_boxplot.html#lets_plot.geom_boxplot" title="lets_plot.geom_boxplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_boxplot</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display the distribution of data based on a five number summary (“minimum”, first quartile (Q1), median, third quartile (Q3), and “maximum”), and “outlying” points individually.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_ribbon.html#lets_plot.geom_ribbon" title="lets_plot.geom_ribbon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_ribbon</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display a y interval defined by ymin and ymax.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_area.html#lets_plot.geom_area" title="lets_plot.geom_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_area</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display the development of quantitative values over an interval.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_density.html#lets_plot.geom_density" title="lets_plot.geom_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_density</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display a density estimate, which is a smoothed version of the histogram.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_density2d.html#lets_plot.geom_density2d" title="lets_plot.geom_density2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_density2d</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display density function contour.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_density2df.html#lets_plot.geom_density2df" title="lets_plot.geom_density2df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_density2df</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Fill density function contour.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_jitter.html#lets_plot.geom_jitter" title="lets_plot.geom_jitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_jitter</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display jittered points, especially for discrete plots or dense plots.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_freqpoly.html#lets_plot.geom_freqpoly" title="lets_plot.geom_freqpoly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_freqpoly</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Display a line chart which makes the y value proportional to the number of observed variable values, mapped to x axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_step.html#lets_plot.geom_step" title="lets_plot.geom_step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_step</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Connect observations in the order in which they appear in the data by stairs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_rect.html#lets_plot.geom_rect" title="lets_plot.geom_rect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_rect</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Display an axis-aligned rectangle defined by two corners.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_segment.html#lets_plot.geom_segment" title="lets_plot.geom_segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_segment</span></code></a>([mapping, data, stat, …])</p></td>
+<td><p>Draw a straight line segment between two points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_text.html#lets_plot.geom_text" title="lets_plot.geom_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_text</span></code></a>([mapping, data, stat, position, …])</p></td>
+<td><p>Add a text directly to the plot.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="additional">
+<h3>Additional<a class="headerlink" href="#additional" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geom_image.html#lets_plot.geom_image" title="lets_plot.geom_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_image</span></code></a>(image_data[, norm, vmin, vmax])</p></td>
+<td><p>Displays image specified by ndarray with shape (n, m) or (n, m, 3) or (n, m, 4).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geom_livemap</span></code></a>([mapping, data, show_legend, …])</p></td>
+<td><p>Display an interactive map.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="facets">
+<span id="api-fs"></span><h2>Facets<a class="headerlink" href="#facets" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.facet_grid.html#lets_plot.facet_grid" title="lets_plot.facet_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">facet_grid</span></code></a>([x, y])</p></td>
+<td><p>Lay out panels in a grid.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scales">
+<h2>Scales<a class="headerlink" href="#scales" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="position-scales">
+<h3>Position Scales<a class="headerlink" href="#position-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_x_discrete.html#lets_plot.scale_x_discrete" title="lets_plot.scale_x_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_discrete</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Discrete position scales (x)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_y_discrete.html#lets_plot.scale_y_discrete" title="lets_plot.scale_y_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_discrete</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Discrete position scales (y)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_x_discrete_reversed.html#lets_plot.scale_x_discrete_reversed" title="lets_plot.scale_x_discrete_reversed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_discrete_reversed</span></code></a>([name, breaks, …])</p></td>
+<td><p>Reversed discrete position scales (x)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_y_discrete_reversed.html#lets_plot.scale_y_discrete_reversed" title="lets_plot.scale_y_discrete_reversed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_discrete_reversed</span></code></a>([name, breaks, …])</p></td>
+<td><p>Reversed discrete position scales (y)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_x_continuous.html#lets_plot.scale_x_continuous" title="lets_plot.scale_x_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_continuous</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scales (x)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_y_continuous.html#lets_plot.scale_y_continuous" title="lets_plot.scale_y_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_continuous</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scales (y)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_x_log10.html#lets_plot.scale_x_log10" title="lets_plot.scale_x_log10"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_log10</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scales (x) where trans=’log10’</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_y_log10.html#lets_plot.scale_y_log10" title="lets_plot.scale_y_log10"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_log10</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scales (y) where trans=’log10’</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_x_reverse.html#lets_plot.scale_x_reverse" title="lets_plot.scale_x_reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_reverse</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scales (x) where trans=’reverse’</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_y_reverse.html#lets_plot.scale_y_reverse" title="lets_plot.scale_y_reverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_reverse</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scales (y) where trans=’reverse’</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="color-scales">
+<h3>Color Scales<a class="headerlink" href="#color-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_color_manual.html#lets_plot.scale_color_manual" title="lets_plot.scale_color_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_manual</span></code></a>(values[, name, breaks, …])</p></td>
+<td><p>Create your own discrete scale for color aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_color_gradient.html#lets_plot.scale_color_gradient" title="lets_plot.scale_color_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_gradient</span></code></a>([low, high, name, …])</p></td>
+<td><p>Defines smooth color gradient between two colors for color aesthetic</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_color_continuous.html#lets_plot.scale_color_continuous" title="lets_plot.scale_color_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_continuous</span></code></a>([low, high, name, …])</p></td>
+<td><p>Defines smooth color gradient between two colors for color aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_color_gradient2.html#lets_plot.scale_color_gradient2" title="lets_plot.scale_color_gradient2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_gradient2</span></code></a>([low, mid, high, …])</p></td>
+<td><p>Defines diverging color gradient for color aesthetic</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_color_hue.html#lets_plot.scale_color_hue" title="lets_plot.scale_color_hue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_hue</span></code></a>([h, c, l, h_start, …])</p></td>
+<td><p>Qualitative color scale with evenly spaced hues for color aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_color_discrete.html#lets_plot.scale_color_discrete" title="lets_plot.scale_color_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_discrete</span></code></a>([direction, name, …])</p></td>
+<td><p>Qualitative colors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_color_grey.html#lets_plot.scale_color_grey" title="lets_plot.scale_color_grey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_grey</span></code></a>([start, end, direction, …])</p></td>
+<td><p>Sequential grey color scale for color aesthetic.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_color_brewer.html#lets_plot.scale_color_brewer" title="lets_plot.scale_color_brewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_brewer</span></code></a>([type, palette, …])</p></td>
+<td><p>Sequential, diverging and qualitative color scales from colorbrewer.org for color aesthetic.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fill-scales">
+<h3>Fill Scales<a class="headerlink" href="#fill-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_manual.html#lets_plot.scale_fill_manual" title="lets_plot.scale_fill_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_manual</span></code></a>(values[, name, breaks, …])</p></td>
+<td><p>Create your own discrete scale for fill aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_gradient.html#lets_plot.scale_fill_gradient" title="lets_plot.scale_fill_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_gradient</span></code></a>([low, high, name, …])</p></td>
+<td><p>Defines smooth color gradient between two colors for fill aesthetic</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_continuous.html#lets_plot.scale_fill_continuous" title="lets_plot.scale_fill_continuous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_continuous</span></code></a>([low, high, name, …])</p></td>
+<td><p>Defines smooth color gradient between two colors for fill aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_gradient2.html#lets_plot.scale_fill_gradient2" title="lets_plot.scale_fill_gradient2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_gradient2</span></code></a>([low, mid, high, …])</p></td>
+<td><p>Defines diverging color gradient for fill aesthetic</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_hue.html#lets_plot.scale_fill_hue" title="lets_plot.scale_fill_hue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_hue</span></code></a>([h, c, l, h_start, …])</p></td>
+<td><p>Qualitative color scale with evenly spaced hues for fill aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_discrete.html#lets_plot.scale_fill_discrete" title="lets_plot.scale_fill_discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_discrete</span></code></a>([direction, name, …])</p></td>
+<td><p>Qualitative colors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_grey.html#lets_plot.scale_fill_grey" title="lets_plot.scale_fill_grey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_grey</span></code></a>([start, end, direction, …])</p></td>
+<td><p>Sequential grey color scale for fill aesthetic.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_brewer.html#lets_plot.scale_fill_brewer" title="lets_plot.scale_fill_brewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_brewer</span></code></a>([type, palette, …])</p></td>
+<td><p>Sequential, diverging and qualitative color scales from colorbrewer.org for fill aesthetic.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="shape-scales">
+<h3>Shape Scales<a class="headerlink" href="#shape-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_shape.html#lets_plot.scale_shape" title="lets_plot.scale_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_shape</span></code></a>([solid, name, breaks, labels, …])</p></td>
+<td><p>Scale for shapes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_shape_manual.html#lets_plot.scale_shape_manual" title="lets_plot.scale_shape_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_shape_manual</span></code></a>(values[, name, breaks, …])</p></td>
+<td><p>Create your own discrete scale for shape aesthetic</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="size-scales">
+<h3>Size Scales<a class="headerlink" href="#size-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_size_manual.html#lets_plot.scale_size_manual" title="lets_plot.scale_size_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_manual</span></code></a>(values[, name, breaks, …])</p></td>
+<td><p>Create your own discrete scale for size aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_size.html#lets_plot.scale_size" title="lets_plot.scale_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size</span></code></a>([range, name, breaks, labels, …])</p></td>
+<td><p>Scales for size</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_size_area.html#lets_plot.scale_size_area" title="lets_plot.scale_size_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_area</span></code></a>([max_size, name, breaks, …])</p></td>
+<td><p>Continuous scales for size that maps 0 to 0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="alpha-scales">
+<h3>Alpha Scales<a class="headerlink" href="#alpha-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_alpha_manual.html#lets_plot.scale_alpha_manual" title="lets_plot.scale_alpha_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha_manual</span></code></a>(values[, name, breaks, …])</p></td>
+<td><p>Create your own discrete scale for alpha (transparency) aesthetic</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_alpha.html#lets_plot.scale_alpha" title="lets_plot.scale_alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha</span></code></a>([range, name, breaks, labels, …])</p></td>
+<td><p>Scales for alpha</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="linetype-scales">
+<h3>Linetype Scales<a class="headerlink" href="#linetype-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_linetype_manual.html#lets_plot.scale_linetype_manual" title="lets_plot.scale_linetype_manual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_linetype_manual</span></code></a>(values[, name, …])</p></td>
+<td><p>Create your own discrete scale for line type aesthetic</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="datetime-scales">
+<h3>Datetime Scales<a class="headerlink" href="#datetime-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_x_datetime.html#lets_plot.scale_x_datetime" title="lets_plot.scale_x_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_x_datetime</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scale (x)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_y_datetime.html#lets_plot.scale_y_datetime" title="lets_plot.scale_y_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_y_datetime</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Continuous position scale (y)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="identity-scales">
+<h3>Identity Scales<a class="headerlink" href="#identity-scales" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_color_identity.html#lets_plot.scale_color_identity" title="lets_plot.scale_color_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_color_identity</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Use this scale when your data has already been scaled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_fill_identity.html#lets_plot.scale_fill_identity" title="lets_plot.scale_fill_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_fill_identity</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Use this scale when your data has already been scaled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_shape_identity.html#lets_plot.scale_shape_identity" title="lets_plot.scale_shape_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_shape_identity</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Use this scale when your data has already been scaled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_linetype_identity.html#lets_plot.scale_linetype_identity" title="lets_plot.scale_linetype_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_linetype_identity</span></code></a>([name, breaks, …])</p></td>
+<td><p>Use this scale when your data has already been scaled.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.scale_alpha_identity.html#lets_plot.scale_alpha_identity" title="lets_plot.scale_alpha_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_alpha_identity</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Use this scale when your data has already been scaled.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.scale_size_identity.html#lets_plot.scale_size_identity" title="lets_plot.scale_size_identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_size_identity</span></code></a>([name, breaks, labels, …])</p></td>
+<td><p>Use this scale when your data has already been scaled.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scale-limits">
+<h3>Scale Limits<a class="headerlink" href="#scale-limits" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.lims.html#lets_plot.lims" title="lets_plot.lims"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lims</span></code></a>(x, y)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.xlim.html#lets_plot.xlim" title="lets_plot.xlim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xlim</span></code></a>(*args)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.ylim.html#lets_plot.ylim" title="lets_plot.ylim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ylim</span></code></a>(*args)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scale-guides">
+<h3>Scale Guides<a class="headerlink" href="#scale-guides" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.guide_legend.html#lets_plot.guide_legend" title="lets_plot.guide_legend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guide_legend</span></code></a>([nrow, ncol, byrow])</p></td>
+<td><p>Legend guide.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.guide_colorbar.html#lets_plot.guide_colorbar" title="lets_plot.guide_colorbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guide_colorbar</span></code></a>([barwidth, barheight, nbin])</p></td>
+<td><p>Continuous color bar guide.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="positions">
+<span id="api-pc"></span><h2>Positions<a class="headerlink" href="#positions" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.position_dodge.html#lets_plot.position_dodge" title="lets_plot.position_dodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_dodge</span></code></a>([width])</p></td>
+<td><p>Adjust position by dodging overlaps to the side</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.position_jitter.html#lets_plot.position_jitter" title="lets_plot.position_jitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_jitter</span></code></a>([width, height])</p></td>
+<td><p>Adjust position by assigning random noise to points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.position_nudge.html#lets_plot.position_nudge" title="lets_plot.position_nudge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_nudge</span></code></a>([x, y])</p></td>
+<td><p>Adjust position by nudging a given offset</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.position_jitterdodge.html#lets_plot.position_jitterdodge" title="lets_plot.position_jitterdodge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_jitterdodge</span></code></a>([dodge_width, …])</p></td>
+<td><p>This is primarily used for aligning points generated through geom_point() with dodged boxplots (e.g., a geom_boxplot() with a fill aesthetic supplied).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="coordinates">
+<h2>Coordinates<a class="headerlink" href="#coordinates" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.coord_cartesian.html#lets_plot.coord_cartesian" title="lets_plot.coord_cartesian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_cartesian</span></code></a>([xlim, ylim])</p></td>
+<td><p>The Cartesian coordinate system is the most familiar, and common, type of coordinate system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.coord_fixed.html#lets_plot.coord_fixed" title="lets_plot.coord_fixed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_fixed</span></code></a>([ratio, xlim, ylim])</p></td>
+<td><p>A fixed scale coordinate system forces a specified ratio between the physical representation of data units on the axes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.coord_map.html#lets_plot.coord_map" title="lets_plot.coord_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_map</span></code></a>([xlim, ylim])</p></td>
+<td><p>Projects a portion of the earth, which is approximately spherical, onto a flat 2D plane.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="theme">
+<span id="api-theme"></span><h2>Theme<a class="headerlink" href="#theme" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="base">
+<h3>Base<a class="headerlink" href="#base" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.theme.html#lets_plot.theme" title="lets_plot.theme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theme</span></code></a>(*[, axis_title, axis_title_x, …])</p></td>
+<td><p>Use theme() to modify individual components of a theme, allowing you to control the appearance of all non-data components of the plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.element_blank.html#lets_plot.element_blank" title="lets_plot.element_blank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_blank</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.ggsize.html#lets_plot.ggsize" title="lets_plot.ggsize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ggsize</span></code></a>(width, height)</p></td>
+<td><p>Specifies overall size of plot</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="labels">
+<h3>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.ggtitle.html#lets_plot.ggtitle" title="lets_plot.ggtitle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ggtitle</span></code></a>(label)</p></td>
+<td><p>Add title to the plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.labs.html#lets_plot.labs" title="lets_plot.labs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">labs</span></code></a>(**kwargs)</p></td>
+<td><p>Change plot title, axis labels and legend titles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.xlab.html#lets_plot.xlab" title="lets_plot.xlab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xlab</span></code></a>(label)</p></td>
+<td><p>Add label to the x axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.ylab.html#lets_plot.ylab" title="lets_plot.ylab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ylab</span></code></a>(label)</p></td>
+<td><p>Add label to the y axis</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tooltips">
+<h3>Tooltips<a class="headerlink" href="#tooltips" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips" title="lets_plot.layer_tooltips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer_tooltips</span></code></a>()</p></td>
+<td><p>Configure tooltips.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="helpers">
+<span id="api-helpers"></span><h2>Helpers<a class="headerlink" href="#helpers" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.arrow.html#lets_plot.arrow" title="lets_plot.arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arrow</span></code></a>([angle, length, ends, type])</p></td>
+<td><p>Describe arrows to add to a line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.lon_lat.html#lets_plot.lon_lat" title="lets_plot.lon_lat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lon_lat</span></code></a>(lon, lat)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sampling">
+<span id="api-sampling"></span><h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.sampling_random.html#lets_plot.sampling_random" title="lets_plot.sampling_random"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_random</span></code></a>(n[, seed])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.sampling_random_stratified.html#lets_plot.sampling_random_stratified" title="lets_plot.sampling_random_stratified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_random_stratified</span></code></a>(n[, seed, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.sampling_pick.html#lets_plot.sampling_pick" title="lets_plot.sampling_pick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_pick</span></code></a>(n)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.sampling_systematic.html#lets_plot.sampling_systematic" title="lets_plot.sampling_systematic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_systematic</span></code></a>(n)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.sampling_group_random.html#lets_plot.sampling_group_random" title="lets_plot.sampling_group_random"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_group_random</span></code></a>(n[, seed])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.sampling_group_systematic.html#lets_plot.sampling_group_systematic" title="lets_plot.sampling_group_systematic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_group_systematic</span></code></a>(n)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.sampling_vertex_vw.html#lets_plot.sampling_vertex_vw" title="lets_plot.sampling_vertex_vw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_vertex_vw</span></code></a>(n)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.sampling_vertex_dp.html#lets_plot.sampling_vertex_dp" title="lets_plot.sampling_vertex_dp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sampling_vertex_dp</span></code></a>(n)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="geospatial">
+<span id="api-geospatial"></span><h2>Geospatial<a class="headerlink" href="#geospatial" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geo_data.distance.html#lets_plot.geo_data.distance" title="lets_plot.geo_data.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(lon0, lat0, lon1, lat1[, units])</p></td>
+<td><p>Calculate the distance between two points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geo_data.regions_builder.html#lets_plot.geo_data.regions_builder" title="lets_plot.geo_data.regions_builder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regions_builder</span></code></a>([level, request, within, …])</p></td>
+<td><p>Create a RegionBuilder class by level and request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geo_data.regions.html#lets_plot.geo_data.regions" title="lets_plot.geo_data.regions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regions</span></code></a>([level, request, within])</p></td>
+<td><p>Create a Regions class by level and request.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geo_data.regions_country.html#lets_plot.geo_data.regions_country" title="lets_plot.geo_data.regions_country"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regions_country</span></code></a>([request])</p></td>
+<td><p>Create a Regions class for country level by request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geo_data.regions_state.html#lets_plot.geo_data.regions_state" title="lets_plot.geo_data.regions_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regions_state</span></code></a>([request, within])</p></td>
+<td><p>Create a Regions class for state level by request.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geo_data.regions_county.html#lets_plot.geo_data.regions_county" title="lets_plot.geo_data.regions_county"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regions_county</span></code></a>([request, within])</p></td>
+<td><p>Create a Regions class for county level by request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geo_data.regions_city.html#lets_plot.geo_data.regions_city" title="lets_plot.geo_data.regions_city"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regions_city</span></code></a>([request, within])</p></td>
+<td><p>Create a Regions class for city level by request.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/lets_plot.geo_data.regions_xy.html#lets_plot.geo_data.regions_xy" title="lets_plot.geo_data.regions_xy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regions_xy</span></code></a>(lon, lat, level[, within])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/lets_plot.geo_data.split_by_antimeridian.html#lets_plot.geo_data.split_by_antimeridian" title="lets_plot.geo_data.split_by_antimeridian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_by_antimeridian</span></code></a>(df)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, JetBrains.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
