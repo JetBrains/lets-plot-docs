@@ -53,7 +53,6 @@ Example
         pages/quickstart
         pages/api
         gallery/index
-        pages/overview
         pages/features
         GitHub <https://github.com/JetBrains/lets-plot>
 
