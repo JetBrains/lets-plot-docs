@@ -16,7 +16,7 @@ function addLinkToPyPI() {
 function addLinkToGitHub() {
   const imgElem = document.createElement("img");
   imgElem.alt = "GitHub Logomark";
-  imgElem.src = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
+  imgElem.src = "_static/images/GitHub-Mark-Light-120px-plus.png";
   const linkElem = document.createElement("a");
   linkElem.href = "https://github.com/JetBrains/lets-plot";
   linkElem.classList.add("navbar-brand");
