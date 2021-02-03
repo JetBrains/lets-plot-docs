@@ -54,7 +54,7 @@ sphinx_gallery_conf = {
 }
 
 sphinx_gallery_jupyter_conf = {
-    'notebooks_dirs': '../notebooks/gallery',
+    'notebooks_dirs': '../source_gallery',
     'examples_dirs': examples_dirs,
 }
 
