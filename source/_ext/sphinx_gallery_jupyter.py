@@ -80,10 +80,6 @@ def convert_ipynb_to_gallery(file_name):
     open('{0}/plot_{1}.py'.format(file_path.parent, file_path.stem), 'w').write(python_file)
     os.remove(file_name)
 
-def prepare_readme(examples_dir):
-    with open('{0}/README.rst'.format(examples_dir), 'a') as f:
-        f.write('Gallery\n#######')
-
 def prepare_sources(app, conf):
     '''
     Walk through notebooks_dirs and copy all files to examples_dirs as is except
@@ -93,8 +89,7 @@ def prepare_sources(app, conf):
     dst = os.path.join(app.confdir, conf['examples_dirs'])
     if os.path.isdir(dst):
         rmtree(dst)
-    copytree(src, dst, ignore=ignore_patterns('.*', 'README.md'))
-    prepare_readme(dst)
+    copytree(src, dst, ignore=ignore_patterns('.*'))
     for root, dirs, files in os.walk(dst):
         for filename in files:
             if filename.split('.')[-1] == 'ipynb':

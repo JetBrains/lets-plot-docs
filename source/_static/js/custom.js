@@ -14,13 +14,16 @@ function addLinkToPyPI() {
 }
 
 function addLinkToGitHub() {
-  const imgElem = document.createElement("img");
-  imgElem.alt = "GitHub Logomark";
-  imgElem.src = "_static/images/GitHub-Mark-Light-120px-plus.png";
+  const logoSize = document.getElementsByClassName('navbar-version')[0].clientHeight;
+  const logoElem = document.createElement("div");
+  logoElem.classList.add("github-logo");
+  logoElem.style.display = "block";
+  logoElem.style.width = logoSize + "px";
+  logoElem.style.height = logoSize + "px";
   const linkElem = document.createElement("a");
   linkElem.href = "https://github.com/JetBrains/lets-plot";
   linkElem.classList.add("navbar-brand");
   linkElem.target = "_blank";
-  linkElem.appendChild(imgElem);
+  linkElem.appendChild(logoElem);
   document.querySelector("#navbar .navbar-header").appendChild(linkElem);
 }
