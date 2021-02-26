@@ -19,6 +19,12 @@ All commands should be run from the repository root.
     conda env update --name lets-plot-docs -f environment.yml --prune
     ```
 
+   If file `environment.yml` has been changed, you need to update the environment. In that case, run:
+
+    ```bash
+    conda env update --name lets-plot-docs --file ./environment.yml --prune
+    ```
+
 2. Activate this environment:
 
     ```bash
