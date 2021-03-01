@@ -24,7 +24,7 @@ Examples
 
 .. code-block:: python
 
-    mpg_url = 'https://www.kaggle.com/uciml/autompg-dataset#auto-mpg.csv'
+    mpg_url = 'https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv'
     mpg = pd.read_csv (mpg_url)
     mpg.head()
 
