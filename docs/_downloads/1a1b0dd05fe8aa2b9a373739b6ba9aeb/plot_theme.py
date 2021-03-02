@@ -13,7 +13,7 @@ LetsPlot.setup_html()
 
 # %%
 
-df = pd.read_csv('https://raw.githubusercontent.com/HIL-HK/lets-plot-examples/master/data/mpg.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv')
 
 # %%
 

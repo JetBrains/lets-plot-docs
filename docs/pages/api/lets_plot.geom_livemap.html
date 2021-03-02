@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geom_livemap &#8212; lets-plot 1.5.6 documentation</title>
+    <title>lets_plot.geom_livemap &#8212; lets-plot 2.0.1.dev1 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>1.5.6</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1.dev1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -123,47 +123,89 @@
 <dt id="lets_plot.geom_livemap">
 <code class="sig-prename descclassname">lets_plot.</code><code class="sig-name descname">geom_livemap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show_legend</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampling</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">tooltips</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">map</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">map_join</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">location</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zoom</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">projection</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">geodesic</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">tiles</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">other_args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_livemap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display an interactive map.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mapping</strong> (<em>set of aesthetic mappings created by aes() function.</em>) – Aesthetic mappings describe the way that variables in the data are
-mapped to plot “aesthetics”.</p></li>
+<dd class="field-odd"><ul>
+<li><dl>
+<dt><strong>mapping</strong> (<em>set of aesthetic mappings created by aes() function.</em>) – Aesthetic mappings describe the way that variables in the data are</dt><dd><blockquote>
+<div><p>mapped to plot “aesthetics”.</p>
+</div></blockquote>
+<ul>
 <li><p><strong>data</strong> (<em>dictionary or pandas DataFrame, optional</em>) – The data to be displayed in this layer. If None, the default, the data
 is inherited from the plot data as specified in the call to ggplot.</p></li>
 <li><p><strong>show_legend</strong> (<em>bool</em>) – False - do not show legend for this layer.</p></li>
 <li><p><strong>sampling</strong> (<em>result of the call to the sampling_xxx() function.</em>) – Value ‘none’ will disable sampling for this layer.</p></li>
 <li><p><strong>tooltips</strong> (<em>result of the call to the layer_tooltips() function.</em>) – Specifies appearance, style and content.</p></li>
-<li><p><strong>map</strong> (<em>GeoDataFrame (supported shapes Point and MultiPoint) or Regions (implicitly invoke centroids())</em>) – Data containing coordinates of points.</p></li>
-<li><p><strong>map_join</strong> (<em>str, pair, optional</em>) – Pair of names used to join map coordinates with data.
-str is allowed only when used with Regions object - map key ‘request’ will be automatically added.
-first value in pair - column in data
-second value in pair - column in map</p></li>
-<li><p><strong>symbol</strong> (<em>string, optional</em>) – The marker used for displaying the data. There are:
-- ‘point’ for circles of different size and color.
-- ‘pie’ for pie charts.
-- ‘bar’ for bar charts.</p></li>
-<li><p><strong>location</strong> (<em>array, optional</em>) – Initial position of the map. If not set, displays the United States.
-There are [lon1, lat1, lon2, lat2,…, lonN, latN].
-- lon1, lon2,…, lonN are longitudes in degrees (positive in the Eastern hemisphere).
-- lat1, lat2,…, latN are latitudes in degrees (positive in the Northern hemisphere).</p></li>
-<li><p><strong>zoom</strong> (<em>integer, optional</em>) – Zoom of the map in the range 1 - 15.</p></li>
-<li><p><strong>projection</strong> (<em>string, optional</em>) – The map projection. There are:
-- ‘epsg3857’ for Mercator projection (default).
-- ‘epsg4326’ for Equirectangular projection.
-Note: ‘projection’ only works with vector map tiles (i.e. Lets-Plot map tiles)</p></li>
-<li><p><strong>geodesic</strong> (<em>True (default) or False, optional</em>) – Enables geodesic type of all paths and segments</p></li>
-<li><p><strong>tiles</strong> (<em>string, optional</em>) – Tiles provider, either as a string - URL for a standard raster ZXY tile provider with {z}, {x} and {y} wildcards
-(e.g. ‘<a class="reference external" href="http://my.tile.com">http://my.tile.com</a>/{z}/{x}/{y}.png’) or the result of a call to a maptiles_xxx functions</p></li>
-<li><p><strong>other_args</strong> – Other arguments passed on to layer. These are often aesthetics settings, used to set an aesthetic to a fixed
-value, like color = “red”, fill = “blue”, size = 3, stroke = 2 or shape = 21. They may also be parameters to
-the paired geom/stat.</p></li>
+<li><p><strong>map</strong> (<em>GeoDataFrame (supported shapes Point and MultiPoint) or Geocoder (implicitly invoke centroids())</em>) – Data containing coordinates of points.</p></li>
+<li><p><strong>map_join</strong> (<em>[str | pair]</em>) – Keys used to join map coordinates with data.
+first value in pair - column/columns in data
+second value in pair - column/columns in map</p>
+<dl class="simple">
+<dt>When map is a GeoDataFrame:</dt><dd><dl class="simple">
+<dt>map_join=’state’:</dt><dd><p>same as [[‘state’], [‘state’]]</p>
+</dd>
+<dt>map_join=[[‘city’, ‘state’]]:</dt><dd><p>same as [[‘city’, ‘state’], [‘city’, ‘state’]]</p>
+</dd>
+<dt>map_join=[[‘City_Name’, ‘State_Name’], [‘city’, ‘state’]]:</dt><dd><p>Explicitly set keys for both data and map.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+</dl>
+</li>
+</ul>
+<dl>
+<dt>If map is a Geocoder:</dt><dd><dl class="simple">
+<dt>map_join=’State_Name’:</dt><dd><p>same as [[‘State_Name’], [‘state’]]</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>geom object specification</p>
+<dt>map_join=[‘City_Name’, ‘State_Name’]:</dt><dd><p>same as [[‘City_Name’, ‘State_Name’], [‘city’, ‘state’]]</p>
+</dd>
+<dt>map_join=[[‘City_Name’, ‘State_Name’], [‘city’, ‘state’]]:</dt><dd><p>Explicitly set keys for both data and map.</p>
+</dd>
+</dl>
+<p>Generated keys follow this order - <cite>city</cite>, <cite>county</cite>, <cite>state</cite>, <cite>country</cite>. Parents that were not provided
+will be omitted. data columns should follow the same order or result of join operation will be incorrect.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="simple">
+<dt>symbol<span class="classifier">string, optional</span></dt><dd><p>The marker used for displaying the data. There are:
+- ‘point’ for circles of different size and color.
+- ‘pie’ for pie charts.
+- ‘bar’ for bar charts.</p>
+</dd>
+<dt>location<span class="classifier">array, optional</span></dt><dd><p>Initial position of the map. If not set, displays the United States.
+There are [lon1, lat1, lon2, lat2,…, lonN, latN].
+- lon1, lon2,…, lonN are longitudes in degrees (positive in the Eastern hemisphere).
+- lat1, lat2,…, latN are latitudes in degrees (positive in the Northern hemisphere).</p>
+</dd>
+<dt>zoom<span class="classifier">integer, optional</span></dt><dd><p>Zoom of the map in the range 1 - 15.</p>
+</dd>
+<dt>projection<span class="classifier">string, optional</span></dt><dd><p>The map projection. There are:
+- ‘epsg3857’ for Mercator projection (default).
+- ‘epsg4326’ for Equirectangular projection.
+Note: ‘projection’ only works with vector map tiles (i.e. Lets-Plot map tiles)</p>
+</dd>
+<dt>geodesic<span class="classifier">True (default) or False, optional</span></dt><dd><p>Enables geodesic type of all paths and segments</p>
+</dd>
+<dt>tiles: string, optional</dt><dd><p>Tiles provider, either as a string - URL for a standard raster ZXY tile provider with {z}, {x} and {y} wildcards
+(e.g. ‘<a class="reference external" href="http://my.tile.com">http://my.tile.com</a>/{z}/{x}/{y}.png’) or the result of a call to a maptiles_xxx functions</p>
+</dd>
+<dt>other_args :</dt><dd><p>Other arguments passed on to layer. These are often aesthetics settings, used to set an aesthetic to a fixed
+value, like color = “red”, fill = “blue”, size = 3, stroke = 2 or shape = 21. They may also be parameters to
+the paired geom/stat.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>geom object specification</p>
 </dd>
 </dl>
 <div class="admonition note">

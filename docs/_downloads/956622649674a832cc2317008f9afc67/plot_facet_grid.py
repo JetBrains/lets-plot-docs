@@ -2,7 +2,8 @@
 facet_grid()
 ============
 
-Build a plot with ``facet_grid()``.
+Build a plot with
+`facet_grid() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.facet_grid.html#lets_plot.facet_grid>`__.
 
 """
 
@@ -13,7 +14,7 @@ LetsPlot.setup_html()
 
 # %%
 
-df = pd.read_csv('https://raw.githubusercontent.com/HIL-HK/lets-plot-examples/master/data/mpg.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv')
 
 # %%
 
