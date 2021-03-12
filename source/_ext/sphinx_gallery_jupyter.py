@@ -39,7 +39,7 @@ from json import load as json_load
 
 from pypandoc import convert_text
 
-def convert_ipynb_to_gallery(file_name):
+def convert_ipynb_to_gallery(file_name, examples_dirs):
     '''
     Replace *.ipynb file by *.py that is compatible with sphinx_gallery extension.
 
@@ -62,7 +62,8 @@ def convert_ipynb_to_gallery(file_name):
                               '\n' * 2 + ''.join(cell['source']) + '\n\n#%%'
             preview_file = file_name.replace('.ipynb', '.png')
             if os.path.isfile(preview_file):
-                python_file += '\n\n# sphinx_gallery_thumbnail_path = "{0}"'.format(preview_file)
+                preview_filename = examples_dirs + preview_file.split(examples_dirs)[-1]
+                python_file += '\n\n# sphinx_gallery_thumbnail_path = "{0}"'.format(preview_filename)
         else:
             if cell['cell_type'] == 'markdown':
                 if 'This page is available as' in ''.join(cell['source']):
@@ -93,7 +94,7 @@ def prepare_sources(app, conf):
     for root, dirs, files in os.walk(dst):
         for filename in files:
             if filename.split('.')[-1] == 'ipynb':
-                convert_ipynb_to_gallery(os.path.join(root, filename))
+                convert_ipynb_to_gallery(os.path.join(root, filename), conf['examples_dirs'])
 
 def config_inited_handler(app, config):
     '''
