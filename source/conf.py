@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, os.path.abspath('./_ext'))
 
 import sphinx_bootstrap_theme
-from sphinx_gallery.sorting import ExplicitOrder
+from sphinx_gallery.sorting import ExplicitOrder, FileNameSortKey
 
 
 # -- Project information -----------------------------------------------------
@@ -53,6 +53,7 @@ sphinx_gallery_conf = {
     'gallery_dirs': 'gallery',
     'remove_config_comments': True,
     'subsection_order': ExplicitOrder(['{0}/_basics'.format(examples_dirs),
+                                       '{0}/_features'.format(examples_dirs),
                                        '{0}/_geoms'.format(examples_dirs),
                                        '{0}/_stats'.format(examples_dirs),
                                        '{0}/_scales'.format(examples_dirs),
@@ -63,6 +64,7 @@ sphinx_gallery_conf = {
                                        '{0}/_legends'.format(examples_dirs),
                                        '{0}/_themes'.format(examples_dirs),
                                        '{0}/_zooming'.format(examples_dirs),]),
+    'within_subsection_order': FileNameSortKey,
 }
 
 sphinx_gallery_jupyter_conf = {
