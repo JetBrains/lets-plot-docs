@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geom_text &#8212; lets-plot 1.5.6 documentation</title>
+    <title>lets_plot.geom_text &#8212; lets-plot 2.0.1rc1 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>1.5.6</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1rc1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -126,99 +126,116 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mapping</strong> (<em>set of aesthetic mappings created by aes() function.</em>) – Aesthetic mappings describe the way that variables in the data are
+<li><p><strong>mapping</strong> (<cite>FeatureSpec</cite>) – Set of aesthetic mappings created by <cite>aes()</cite> function.
+Aesthetic mappings describe the way that variables in the data are
 mapped to plot “aesthetics”.</p></li>
-<li><p><strong>data</strong> (<em>dictionary or pandas DataFrame, optional</em>) – The data to be displayed in this layer. If None, the default, the data
+<li><p><strong>data</strong> (dict or <cite>DataFrame</cite> or <cite>GeoDataFrame</cite>) – The data to be displayed in this layer. If None, the default, the data
 is inherited from the plot data as specified in the call to ggplot.</p></li>
-<li><p><strong>stat</strong> (<em>string, optional</em>) – The statistical transformation to use on the data for this layer, as a string. Supported transformations:
-“identity” (leaves the data unchanged), “count” (counts number of points with same x-axis coordinate),
-“bin” (counts number of points with x-axis coordinate in the same bin), “smooth” (performs smoothing -
-linear default)</p></li>
-<li><p><strong>position</strong> (<em>string, optional</em>) – Position adjustment, either as a string (“identity”, “stack”, “dodge”,…), or the result of a call to a
-position adjustment function.</p></li>
-<li><p><strong>show_legend</strong> (<em>bool</em>) – False - do not show legend for this layer.</p></li>
-<li><p><strong>sampling</strong> (<em>result of the call to the sampling_xxx() function.</em>) – Value ‘none’ will disable sampling for this layer.</p></li>
-<li><p><strong>tooltips</strong> (<em>result of the call to the layer_tooltips() function.</em>) – Specifies appearance, style and content.</p></li>
-<li><p><strong>map</strong> (<em>GeoDataFrame (supported shapes Point and MultiPoint) or Regions (implicitly invoke centroids())</em>) – Data containing coordinates of points.</p></li>
-<li><p><strong>map_join</strong> (<em>str, pair, optional</em>) – Pair of names used to join map coordinates with data.
-str is allowed only when used with Regions object - map key ‘request’ will be automatically added.
-first value in pair - column in data
-second value in pair - column in map</p></li>
-<li><p><strong>label_format</strong> (<em>str, optional</em>) – Format used to transform label mapping values to a string.
+<li><p><strong>stat</strong> (<em>str, default=’identity’</em>) – The statistical transformation to use on the data for this layer, as a string.
+Supported transformations: ‘identity’ (leaves the data unchanged),
+‘count’ (counts number of points with same x-axis coordinate),
+‘bin’ (counts number of points with x-axis coordinate in the same bin),
+‘smooth’ (performs smoothing - linear default),
+‘density’ (computes and draws kernel density estimate).</p></li>
+<li><p><strong>position</strong> (str or <cite>FeatureSpec</cite>) – Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
+or the result of a call to a position adjustment function.</p></li>
+<li><p><strong>show_legend</strong> (<em>bool, default=True</em>) – False - do not show legend for this layer.</p></li>
+<li><p><strong>sampling</strong> (<cite>FeatureSpec</cite>) – Result of the call to the <cite>sampling_xxx()</cite> function.
+Value None (or ‘none’) will disable sampling for this layer.</p></li>
+<li><p><strong>tooltips</strong> (<cite>layer_tooltips</cite>) – Result of the call to the <cite>layer_tooltips()</cite> function.
+Specifies appearance, style and content.</p></li>
+<li><p><strong>map</strong> (<cite>GeoDataFrame</cite> or <cite>Geocoder</cite>) – Data containing coordinates of points.</p></li>
+<li><p><strong>map_join</strong> (<em>str or list</em>) – Keys used to join map coordinates with data.
+First value in pair - column/columns in <cite>data</cite>.
+Second value in pair - column/columns in <cite>map</cite>.</p></li>
+<li><p><strong>label_format</strong> (<em>str</em>) – Format used to transform label mapping values to a string.
 Examples:
-‘.2f’ -&gt; ‘12.45’
-‘Num {}’ -&gt; ‘Num 12.456789’
-‘TTL: {.2f}$’ -&gt; ‘TTL: 12.45$’</p></li>
-<li><p><strong>na_text</strong> (<em>str</em>) – Text to show for missing values.
-Default: ‘n/a’</p></li>
-<li><p><strong>other_args</strong> – Other arguments passed on to layer. These are often aesthetics settings, used to set an aesthetic to a fixed
-value, like color = “red”, fill = “blue”, size = 3 or shape = 21. They may also be parameters to the
-paired geom/stat.</p></li>
+‘.2f’ -&gt; ‘12.45’,
+‘Num {}’ -&gt; ‘Num 12.456789’,
+‘TTL: {.2f}$’ -&gt; ‘TTL: 12.45$’.</p></li>
+<li><p><strong>na_text</strong> (<em>str, default=’n/a’</em>) – Text to show for missing values.</p></li>
+<li><p><strong>other_args</strong> – Other arguments passed on to the layer.
+These are often aesthetics settings used to set an aesthetic to a fixed value,
+like color=’red’, fill=’blue’, size=3 or shape=21.
+They may also be parameters to the paired geom/stat.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>Geom object specification.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>geom object specification</p>
+<dd class="field-odd"><p><cite>LayerSpec</cite></p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Adds text directly to the plot.
-geom_text understands the following aesthetics mappings:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>x : x-axis value</p></li>
-<li><p>y : y-axis value</p></li>
-<li><p>label : text to add to plot</p></li>
-<li><dl class="simple">
-<dt>alpha<span class="classifier">transparency level of a point</span></dt><dd><p>Understands numbers between 0 and 1.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>color (colour)<span class="classifier">color of a geometry</span></dt><dd><p>Can be continuous or discrete. For continuous value this will be a color gradient between two colors.</p>
-</dd>
-</dl>
-</li>
-<li><p>size : font size</p></li>
-<li><dl class="simple">
-<dt>family<span class="classifier">[‘sans’ | ‘serif’ | ‘mono’ | any other like: “Times New Roman”]</span></dt><dd><p>Font family. The default is ‘sans’</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>fontface<span class="classifier">[‘plain’ | ‘bold’ | ‘italic’ | ‘bold italic’]</span></dt><dd><p>Font style and weight . The default is ‘plain’</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>hjust<span class="classifier">[‘left’, ‘middle’, ‘right’] or number between 0 (‘right’) and 1 (‘left’)</span></dt><dd><p>Horizontal text alignment</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>vjust<span class="classifier">[‘bottom’, ‘center’, ‘top’] or number between 0 (‘bottom’) and 1 (‘top’)</span></dt><dd><p>Vertical text alignment</p>
-</dd>
-</dl>
-</li>
-<li><p>angle : Text rotation angle in degrees</p></li>
+<p>Adds text directly to the plot.</p>
+<dl class="simple">
+<dt><cite>geom_text()</cite> understands the following aesthetics mappings:</dt><dd><ul class="simple">
+<li><p>x : x-axis value.</p></li>
+<li><p>y : y-axis value.</p></li>
+<li><p>alpha : transparency level of a layer. Understands numbers between 0 and 1.</p></li>
+<li><p>color (colour) : color of a geometry. Can be continuous or discrete. For continuous value this will be a color gradient between two colors.</p></li>
+<li><p>size : font size.</p></li>
+<li><p>label : text to add to plot.</p></li>
+<li><p>family : tont family. Possible values: ‘sans’, ‘serif’, ‘mono’, any other like: “Times New Roman”. The default is ‘sans’.</p></li>
+<li><p>fontface : font style and weight. Possible values: ‘plain’, ‘bold’, ‘italic’, ‘bold italic’. The default is ‘plain’.</p></li>
+<li><p>hjust : horizontal text alignment. Possible values: ‘left’, ‘middle’, ‘right’ or number between 0 (‘right’) and 1 (‘left’).</p></li>
+<li><p>vjust : vertical text alignment. Possible values: ‘bottom’, ‘center’, ‘top’ or number between 0 (‘bottom’) and 1 (‘top’).</p></li>
+<li><p>angle : text rotation angle in degrees.</p></li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>data</cite> and <cite>map</cite> parameters of <cite>GeoDataFrame</cite> type support shapes <cite>Point</cite> and <cite>MultiPoint</cite>.</p>
+<p>The <cite>map</cite> parameter of <cite>Geocoder</cite> type implicitly invoke <cite>centroids()</cite> function.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The conventions for the values of <cite>map_join</cite> parameter are as follows.</p>
+<ul>
+<li><p>Joining data and <cite>GeoDataFrame</cite> object</p>
+<dl class="simple">
+<dt>Data has a column named ‘State_name’ and <cite>GeoDataFrame</cite> has a matching column named ‘state’:</dt><dd><ul class="simple">
+<li><p>map_join=[‘State_Name’, ‘state’]</p></li>
+<li><p>map_join=[[‘State_Name’], [‘state’]]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Joining data and <cite>Geocoder</cite> object</p>
+<dl class="simple">
+<dt>Data has a column named ‘State_name’. The matching key in <cite>Geocoder</cite> is always ‘state’ (providing it is a state-level geocoder) and can be omitted:</dt><dd><ul class="simple">
+<li><p>map_join=’State_Name’</p></li>
+<li><p>map_join=[‘State_Name’]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Joining data by composite key</p>
+<dl class="simple">
+<dt>Joining by composite key works like in examples above, but instead of using a string for a simple key you need to use an array of strings for a composite key. The names in the composite key must be in the same order as in the US street addresses convention: ‘city’, ‘county’, ‘state’, ‘country’. For example, the data has columns ‘State_name’ and ‘County_name’. Joining with a 2-keys county level <cite>Geocoder</cite> object (the <cite>Geocoder</cite> keys ‘county’ and ‘state’ are omitted in this case):</dt><dd><ul class="simple">
+<li><p>map_join=[‘County_name’, ‘State_Name’]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Text&#39;</span><span class="p">],</span> <span class="n">angle</span><span class="o">=</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">family</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mono&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lorem ipsum&#39;</span><span class="p">)</span>
+</span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="cLoFmQ"></div>
+<div id="vKEeZG"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -229,7 +246,7 @@ geom_text understands the following aesthetics mappings:</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-1.5.6.min.js";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -242,13 +259,13 @@ geom_text understands the following aesthetics mappings:</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("cLoFmQ").appendChild(div);
+            document.getElementById("vKEeZG").appendChild(div);
         };
-        var e = document.getElementById("cLoFmQ");
+        var e = document.getElementById("vKEeZG");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="e07dtl"></div>
+</div><div class="output text_html">   <div id="wIui1s"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -261,25 +278,247 @@ geom_text understands the following aesthetics mappings:</p>
 'layers':[{
 'geom':"text",
 'mapping':{
-'x':"x",
-'y':"y",
-'label':"label",
-'angle':"angle",
-'family':"family"
 },
 'data_meta':{
 },
-'size':10,
+'x':0,
+'y':0,
+'label':"Lorem ipsum",
 'data':{
-'x':[1],
-'y':[1],
-'label':["Text"],
-'angle':[30],
-'family':["mono"]
 }
 }]
 };
-           var plotContainer = document.getElementById("e07dtl");
+           var plotContainer = document.getElementById("wIui1s");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#2b8cbe&#39;</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">position</span><span class="o">=</span><span class="n">position_nudge</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>              <span class="n">label_format</span><span class="o">=</span><span class="s1">&#39;.1f&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2b8cbe&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="hXD3WQ"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("hXD3WQ").appendChild(div);
+        };
+        var e = document.getElementById("hXD3WQ");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="JvRTmg"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+'x':[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0],
+'y':[10.993428306022466,9.723471397657631,11.295377076201385,13.046059712816051,9.531693250553328,9.531726086101639,13.158425631014783,11.534869458305817,9.061051228130095,11.08512008717193]
+},
+'mapping':{
+'x':"x",
+'y':"y"
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[],
+'layers':[{
+'geom':"bar",
+'stat':"identity",
+'mapping':{
+},
+'tooltips':"none",
+'data_meta':{
+},
+'fill':"#2b8cbe",
+'data':{
+}
+},{
+'geom':"text",
+'mapping':{
+'label':"y"
+},
+'position':{
+'name':"nudge",
+'y':1
+},
+'data_meta':{
+},
+'label_format':".1f",
+'angle':45,
+'color':"#2b8cbe",
+'data':{
+}
+}]
+};
+           var plotContainer = document.getElementById("JvRTmg");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot.geo_data</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Los Angeles&#39;</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;IL&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> \
+<span class="gp">&gt;&gt;&gt; </span>          <span class="k">for</span> <span class="n">city</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="n">states</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">cities</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">states</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">titles</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroids</span> <span class="o">=</span> <span class="n">geocode_cities</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_centroids</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> \
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_point</span><span class="p">(</span><span class="nb">map</span><span class="o">=</span><span class="n">centroids</span><span class="p">,</span> <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> \
+<span class="gp">&gt;&gt;&gt; </span>               <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#f03b20&#39;</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;title&#39;</span><span class="p">),</span> <span class="nb">map</span><span class="o">=</span><span class="n">centroids</span><span class="p">,</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>              <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>              <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Optima&#39;</span><span class="p">,</span> <span class="n">fontface</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
+</pre></div>
+</div>
+<div class="output text_html">
+<div id="3bc2jf"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("3bc2jf").appendChild(div);
+        };
+        var e = document.getElementById("3bc2jf");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="ASfqbC"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+'city':["New York","Los Angeles","Chicago"],
+'title':["New York (NY)","Los Angeles (CA)","Chicago (IL)"]
+},
+'mapping':{
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[],
+'layers':[{
+'geom':"point",
+'mapping':{
+},
+'data_meta':{
+},
+'map_data_meta':{
+'geodataframe':{
+'geometry':"geometry"
+}
+},
+'map':{
+'city':["New York","Los Angeles","Chicago"],
+'found name':["New York","Los Angeles","Chicago"],
+'geometry':["{\"type\": \"Point\", \"coordinates\": [-73.8673749469137, 40.6847005337477]}","{\"type\": \"Point\", \"coordinates\": [-118.286736944616, 34.0204504877329]}","{\"type\": \"Point\", \"coordinates\": [-87.6717840965281, 41.8337749689817]}"]
+},
+'map_join':[["city"],["city"]],
+'shape':21,
+'color':"black",
+'fill':"#f03b20",
+'data':{
+}
+},{
+'geom':"text",
+'mapping':{
+'label':"title"
+},
+'data_meta':{
+},
+'map_data_meta':{
+'geodataframe':{
+'geometry':"geometry"
+}
+},
+'map':{
+'city':["New York","Los Angeles","Chicago"],
+'found name':["New York","Los Angeles","Chicago"],
+'geometry':["{\"type\": \"Point\", \"coordinates\": [-73.8673749469137, 40.6847005337477]}","{\"type\": \"Point\", \"coordinates\": [-118.286736944616, 34.0204504877329]}","{\"type\": \"Point\", \"coordinates\": [-87.6717840965281, 41.8337749689817]}"]
+},
+'map_join':[["city"],["city"]],
+'size':8,
+'vjust':1,
+'family':"Optima",
+'fontface':"bold",
+'data':{
+}
+}]
+};
+           var plotContainer = document.getElementById("ASfqbC");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
