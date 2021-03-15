@@ -285,7 +285,6 @@ Helpers
     :toctree: api
 
     arrow
-    lon_lat
 
 
 .. _api_sampling:
