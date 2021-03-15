@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.facet_grid &#8212; lets-plot 1.5.6 documentation</title>
+    <title>lets_plot.facet_grid &#8212; lets-plot 2.0.1rc1 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>1.5.6</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1rc1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -121,13 +121,21 @@
 <h1>lets_plot.facet_grid<a class="headerlink" href="#lets-plot-facet-grid" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="lets_plot.facet_grid">
-<code class="sig-prename descclassname">lets_plot.</code><code class="sig-name descname">facet_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.facet_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Lay out panels in a grid.</p>
+<code class="sig-prename descclassname">lets_plot.</code><code class="sig-name descname">facet_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">x_order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">y_order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">x_format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y_format</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.facet_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits data by one or two faceting varibles.
+For each data subset creates a plot panel and lays out panels as grid.
+The grid columns are defined by X faceting variable and rows are defined by Y faceting variable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>string, optional</em>) – Feature, which defines columns of the facet grid to be displayed.</p></li>
-<li><p><strong>y</strong> (<em>string, optional</em>) – Feature, which defines rows of the facet grid to be displayed.</p></li>
+<li><p><strong>x</strong> (<em>string</em>) – Variable name which defines columns of the facet grid.</p></li>
+<li><p><strong>y</strong> (<em>string</em>) – Variable name which defines rows of the facet grid.</p></li>
+<li><p><strong>x_order</strong> (<em>int</em>) – Specifies ordering direction of colums.
+1 - ascending, -1 - descending</p></li>
+<li><p><strong>y_order</strong> (<em>int</em>) – Specifies ordering direction of rows.
+1 - ascending, -1 - descending</p></li>
+<li><p><strong>x_format</strong> (<em>string</em>) – Specifies the format pattern for displaying faceting values in columns.</p></li>
+<li><p><strong>y_format</strong> (<em>string</em>) – Specifies the format pattern for displaying faceting values in rows.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -139,7 +147,15 @@
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Lay out panels in a grid.</p>
+<p>Format pattern in the x_format/y_format parameters can be just a number format (like “d”) or
+a string template where number format is surrounded by curly braces: “{d} cylinders”.</p>
+<dl class="simple">
+<dt>Examples:</dt><dd><p>‘.2f’ -&gt; ‘12.45’
+‘Score: {.2f}’ -&gt; ‘Score: 12.45’
+‘Score: {}’ -&gt; ‘Score: 12.454789’</p>
+</dd>
+</dl>
+<p>For more info see the formatting reference: <a class="reference external" href="https://github.com/JetBrains/lets-plot/blob/master/docs/formats.md">https://github.com/JetBrains/lets-plot/blob/master/docs/formats.md</a></p>
 </div>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
@@ -159,7 +175,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="5XhRPs"></div>
+<div id="ZYWc29"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -170,7 +186,7 @@
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-1.5.6.min.js";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -183,13 +199,13 @@
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("5XhRPs").appendChild(div);
+            document.getElementById("ZYWc29").appendChild(div);
         };
-        var e = document.getElementById("5XhRPs");
+        var e = document.getElementById("ZYWc29");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="jbHOsP"></div>
+</div><div class="output text_html">   <div id="jsoD5j"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -201,7 +217,9 @@
 },
 'facet':{
 'name':"grid",
-'y':"variable"
+'y':"variable",
+'x_order':1,
+'y_order':1
 },
 'kind':"plot",
 'scales':[],
@@ -213,13 +231,13 @@
 'data_meta':{
 },
 'data':{
-'..count..':[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,40.0,413.0,487.0,59.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,24.0,337.0,551.0,87.0,1.0,8.0,272.0,581.0,132.0,7.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+'..count..':[10.0,266.0,622.0,102.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,203.0,662.0,130.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,69.0,585.0,336.0,9.0],
 'variable':[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0],
-'value':[-9.159461448803421,-8.630293660937205,-8.10112587307099,-7.5719580852047725,-7.0427902973385565,-6.513622509472341,-5.984454721606124,-5.455286933739908,-4.926119145873692,-4.396951358007476,-3.8677835701412597,-3.338615782275043,-2.809447994408827,-2.280280206542611,-1.751112418676394,-1.221944630810178,-0.692776842943962,-0.16360905507774604,0.36555873278846995,0.8947265206546859,1.423894308520902,1.9530620963871197,2.4822298842533357,3.0113976721195517,3.5405654599857677,4.069733247851984,4.5989010357182,5.128068823584416,5.657236611450633,6.186404399316849,-9.159461448803421,-8.630293660937205,-8.10112587307099,-7.5719580852047725,-7.0427902973385565,-6.513622509472341,-5.984454721606124,-5.455286933739908,-4.926119145873692,-4.396951358007476,-3.8677835701412597,-3.338615782275043,-2.809447994408827,-2.280280206542611,-1.751112418676394,-1.221944630810178,-0.692776842943962,-0.16360905507774604,0.36555873278846995,0.8947265206546859,1.423894308520902,1.9530620963871197,2.4822298842533357,3.0113976721195517,3.5405654599857677,4.069733247851984,4.5989010357182,5.128068823584416,5.657236611450633,6.186404399316849,-9.159461448803421,-8.630293660937205,-8.10112587307099,-7.5719580852047725,-7.0427902973385565,-6.513622509472341,-5.984454721606124,-5.455286933739908,-4.926119145873692,-4.396951358007476,-3.8677835701412597,-3.338615782275043,-2.809447994408827,-2.280280206542611,-1.751112418676394,-1.221944630810178,-0.692776842943962,-0.16360905507774604,0.36555873278846995,0.8947265206546859,1.423894308520902,1.9530620963871197,2.4822298842533357,3.0113976721195517,3.5405654599857677,4.069733247851984,4.5989010357182,5.128068823584416,5.657236611450633,6.186404399316849]
+'value':[-10.656927784259798,-10.0552613848455,-9.453594985431199,-8.8519285860169,-8.250262186602601,-7.648595787188301,-7.046929387774002,-6.445262988359702,-5.8435965889454025,-5.241930189531103,-4.640263790116803,-4.038597390702504,-3.4369309912882047,-2.835264591873905,-2.2335981924596062,-1.6319317930453057,-1.0302653936310069,-0.4285989942167081,0.17306740519759245,0.7747338046118912,1.3764002040261918,1.9780666034404906,2.5797330028547893,3.18139940226909,3.7830658016833887,4.3847322010976875,4.986398600511988,5.588064999926287,6.189731399340586,6.791397798754884,-10.656927784259798,-10.0552613848455,-9.453594985431199,-8.8519285860169,-8.250262186602601,-7.648595787188301,-7.046929387774002,-6.445262988359702,-5.8435965889454025,-5.241930189531103,-4.640263790116803,-4.038597390702504,-3.4369309912882047,-2.835264591873905,-2.2335981924596062,-1.6319317930453057,-1.0302653936310069,-0.4285989942167081,0.17306740519759245,0.7747338046118912,1.3764002040261918,1.9780666034404906,2.5797330028547893,3.18139940226909,3.7830658016833887,4.3847322010976875,4.986398600511988,5.588064999926287,6.189731399340586,6.791397798754884,-10.656927784259798,-10.0552613848455,-9.453594985431199,-8.8519285860169,-8.250262186602601,-7.648595787188301,-7.046929387774002,-6.445262988359702,-5.8435965889454025,-5.241930189531103,-4.640263790116803,-4.038597390702504,-3.4369309912882047,-2.835264591873905,-2.2335981924596062,-1.6319317930453057,-1.0302653936310069,-0.4285989942167081,0.17306740519759245,0.7747338046118912,1.3764002040261918,1.9780666034404906,2.5797330028547893,3.18139940226909,3.7830658016833887,4.3847322010976875,4.986398600511988,5.588064999926287,6.189731399340586,6.791397798754884]
 }
 }]
 };
-           var plotContainer = document.getElementById("jbHOsP");
+           var plotContainer = document.getElementById("jsoD5j");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});

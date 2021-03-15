@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geom_boxplot &#8212; lets-plot 1.5.6 documentation</title>
+    <title>lets_plot.geom_boxplot &#8212; lets-plot 2.0.1rc1 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>1.5.6</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1rc1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -122,66 +122,61 @@
 <dl class="py function">
 <dt id="lets_plot.geom_boxplot">
 <code class="sig-prename descclassname">lets_plot.</code><code class="sig-name descname">geom_boxplot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show_legend</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampling</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">tooltips</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fatten</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outlier_color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outlier_fill</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outlier_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">outlier_size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">varwidth</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">other_args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_boxplot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display the distribution of data based on a five number summary (“minimum”, first quartile (Q1), median,
-third quartile (Q3), and “maximum”), and “outlying” points individually.</p>
+<dd><p>Display the distribution of data based on a five number summary
+(“minimum”, first quartile (Q1), median, third quartile (Q3), and “maximum”),
+and “outlying” points individually.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mapping</strong> (<em>set of aesthetic mappings created by aes() function.</em>) – Aesthetic mappings describe the way that variables in the data are
+<li><p><strong>mapping</strong> (<cite>FeatureSpec</cite>) – Set of aesthetic mappings created by <cite>aes()</cite> function.
+Aesthetic mappings describe the way that variables in the data are
 mapped to plot “aesthetics”.</p></li>
-<li><p><strong>data</strong> (<em>dictionary or pandas DataFrame, optional</em>) – The data to be displayed in this layer. If None, the default, the data
+<li><p><strong>data</strong> (dict or <cite>DataFrame</cite>) – The data to be displayed in this layer. If None, the default, the data
 is inherited from the plot data as specified in the call to ggplot.</p></li>
-<li><p><strong>stat</strong> (<em>string, optional</em>) – The statistical transformation to use on the data for this layer, as a string. Supported transformations:
-“identity” (leaves the data unchanged) should be used to define boxplot from your own computations via lower,
-upper, ymin, ymax, middle aesthetics mappings (see below), “count” (counts number of points with same x-axis
-coordinate), “bin” (counts number of points with x-axis coordinate in the same bin), “smooth” (performs
-smoothing - linear default)</p></li>
-<li><p><strong>position</strong> (<em>string, optional</em>) – Position adjustment, either as a string (“identity”, “stack”, “dodge”,…), or the result of a call to a
-position adjustment function.</p></li>
-<li><p><strong>show_legend</strong> (<em>bool</em>) – False - do not show legend for this layer.</p></li>
-<li><p><strong>sampling</strong> (<em>result of the call to the sampling_xxx() function.</em>) – Value ‘none’ will disable sampling for this layer.</p></li>
-<li><p><strong>tooltips</strong> (<em>result of the call to the layer_tooltips() function.</em>) – Specifies appearance, style and content.</p></li>
-<li><p><strong>fatten</strong> (<em>number, default: 1.0</em>) – A multiplicative factor applied to size of the middle bar</p></li>
-<li><p><strong>outlier_color, outlier_fill, outlier_shape, outlier_size</strong> – Default aesthetics for outliers.</p></li>
-<li><p><strong>varwidth</strong> – if FALSE (default) make a standard box plot.
-If TRUE, boxes are drawn with widths proportional to the square-roots of the number of
-observations in the groups.</p></li>
-<li><p><strong>other_args</strong> – Other arguments passed on to layer. These are often aesthetics settings, used to set an aesthetic to a fixed
-value, like color = “red”, fill = “blue”, size = 3 or shape = 21. They may also be parameters to the
-paired geom/stat.</p></li>
+<li><p><strong>stat</strong> (<em>str, default=’boxplot’</em>) – The statistical transformation to use on the data for this layer, as a string.</p></li>
+<li><p><strong>position</strong> (str or <cite>FeatureSpec</cite>) – Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
+or the result of a call to a position adjustment function.</p></li>
+<li><p><strong>show_legend</strong> (<em>bool, default=True</em>) – False - do not show legend for this layer.</p></li>
+<li><p><strong>sampling</strong> (<cite>FeatureSpec</cite>) – Result of the call to the <cite>sampling_xxx()</cite> function.
+Value None (or ‘none’) will disable sampling for this layer.</p></li>
+<li><p><strong>tooltips</strong> (<cite>layer_tooltips</cite>) – Result of the call to the <cite>layer_tooltips()</cite> function.
+Specifies appearance, style and content.</p></li>
+<li><p><strong>fatten</strong> (<em>float, default=1.0</em>) – A multiplicative factor applied to size of the middle bar.</p></li>
+<li><p><strong>outlier_color</strong> (<em>str</em>) – Default color aesthetic for outliers.</p></li>
+<li><p><strong>outlier_fill</strong> (<em>str</em>) – Default fill aesthetic for outliers.</p></li>
+<li><p><strong>outlier_shape</strong> (<em>int</em>) – Default shape aesthetic for outliers.</p></li>
+<li><p><strong>outlier_size</strong> (<em>float</em>) – Default size aesthetic for outliers.</p></li>
+<li><p><strong>varwidth</strong> (<em>bool, default=False</em>) – If False make a standard box plot.
+If True, boxes are drawn with widths proportional to the square-roots
+of the number of observations in the groups.</p></li>
+<li><p><strong>other_args</strong> – Other arguments passed on to the layer.
+These are often aesthetics settings used to set an aesthetic to a fixed value,
+like color=’red’, fill=’blue’, size=3 or shape=21.
+They may also be parameters to the paired geom/stat.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>Geom object specification.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>geom object specification</p>
+<dd class="field-odd"><p><cite>LayerSpec</cite></p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl class="simple">
-<dt>geom_boxplot understands the following aesthetics mappings:</dt><dd><ul class="simple">
-<li><p>lower : lower hinge, 25% quantile</p></li>
-<li><p>middle : median, 50% quantile</p></li>
-<li><p>upper : upper hinge, 75% quantile</p></li>
-<li><p>ymin : lower whisker = smallest observation greater than or equal to lower hinge - 1.5 * IQR</p></li>
-<li><p>ymax : upper whisker = largest observation less than or equal to upper hinge + 1.5 * IQR</p></li>
-<li><p>width : width of boxplot [0..1]</p></li>
-<li><dl class="simple">
-<dt>alpha<span class="classifier">transparency level of a layer</span></dt><dd><p>Understands numbers between 0 and 1.</p>
-</dd>
-</dl>
-</li>
-<li><p>color (colour) : color of a geometry lines</p></li>
-<li><p>fill : color of geometry filling</p></li>
-<li><p>size : lines width</p></li>
-<li><dl class="simple">
-<dt>linetype<span class="classifier">type of the line of border</span></dt><dd><p>Codes and names: 0 = “blank”, 1 = “solid”, 2 = “dashed”, 3 = “dotted”, 4 = “dotdash”,
-5 = “longdash”, 6 = “twodash”</p>
-</dd>
-</dl>
-</li>
+<dt><cite>geom_boxplot()</cite> understands the following aesthetics mappings:</dt><dd><ul class="simple">
+<li><p>lower : lower hinge, 25% quantile.</p></li>
+<li><p>middle : median, 50% quantile.</p></li>
+<li><p>upper : upper hinge, 75% quantile.</p></li>
+<li><p>ymin : lower whisker = smallest observation greater than or equal to lower hinge - 1.5 * IQR.</p></li>
+<li><p>ymax : upper whisker = largest observation less than or equal to upper hinge + 1.5 * IQR.</p></li>
+<li><p>alpha : transparency level of a layer. Understands numbers between 0 and 1.</p></li>
+<li><p>color (colour) : color of a geometry lines. Can be continuous or discrete. For continuous value this will be a color gradient between two colors.</p></li>
+<li><p>fill : color of geometry filling.</p></li>
+<li><p>size : lines width.</p></li>
+<li><p>linetype : type of the line of border. Codes and names: 0 = ‘blank’, 1 = ‘solid’, 2 = ‘dashed’, 3 = ‘dotted’, 4 = ‘dotdash’, 5 = ‘longdash’, 6 = ‘twodash’.</p></li>
+<li><p>width : width of boxplot [0..1].</p></li>
 </ul>
 </dd>
 </dl>
@@ -189,24 +184,21 @@ paired geom/stat.</p></li>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cond</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span> <span class="mi">200</span><span class="p">),</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">rating</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;cond&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">+=</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">outlier_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">outlier_shape</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">outlier_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
-</pre></div>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_boxplot</span><span class="p">()</span>
+</span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="Ew5FMg"></div>
+<div id="4Wro3M"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -217,7 +209,7 @@ paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-1.5.6.min.js";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -230,27 +222,23 @@ paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("Ew5FMg").appendChild(div);
+            document.getElementById("4Wro3M").appendChild(div);
         };
-        var e = document.getElementById("Ew5FMg");
+        var e = document.getElementById("4Wro3M");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="iXj3km"></div>
+</div><div class="output text_html">   <div id="6LFw22"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
 'data':{
 },
 'mapping':{
-'x':"cond",
-'y':"rating"
+'x':"x",
+'y':"y"
 },
 'data_meta':{
-},
-'ggsize':{
-'width':300,
-'height':200
 },
 'kind':"plot",
 'scales':[],
@@ -260,22 +248,313 @@ paired geom/stat.</p></li>
 },
 'data_meta':{
 },
-'outlier_color':"red",
-'outlier_shape':8,
-'outlier_size':5,
 'data':{
-'..middle..':[NaN,0.011580957065717804,NaN,0.6553115546827485],
-'..lower..':[NaN,-0.7161696106591872,NaN,0.03306101143371809],
-'..upper..':[NaN,0.7248166056833802,NaN,1.3796156973587816],
-'..ymin..':[NaN,-2.7985891054607244,NaN,-1.45153498598787],
-'..ymax..':[NaN,2.5983039272693147,NaN,3.0007020992171283],
-'..group..':[0.0,0.0,0.0,0.0],
-'cond':["A","A","B","B"],
-'rating':[-3.2310550079193123,NaN,3.758625445893176,NaN]
+'..middle..':[0.17555329395483268,NaN,-0.0073801499445730065,NaN,-0.028463391521671683],
+'..lower..':[-0.513924467938416,NaN,-0.38826439897661413,NaN,-0.5007890008265612],
+'..upper..':[0.6611061177015407,NaN,0.9035324906258424,NaN,0.6547384441356571],
+'..ymin..':[-1.5081532895474827,NaN,-2.022314933195735,NaN,-1.1497925774943585],
+'..ymax..':[1.4039587386592935,NaN,2.5391627162693324,NaN,1.706604953678462],
+'..group..':[0.0,0.0,0.0,0.0,0.0],
+'x':["c","a","a","b","b"],
+'y':[NaN,3.372296253626673,NaN,-2.65517604756347,NaN]
 }
 }]
 };
-           var plotContainer = document.getElementById("iXj3km");
+           var plotContainer = document.getElementById("6LFw22");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">fatten</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">varwidth</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">outlier_shape</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">outlier_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="Fdui9V"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("Fdui9V").appendChild(div);
+        };
+        var e = document.getElementById("Fdui9V");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="qLmiQt"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+},
+'mapping':{
+'x':"x",
+'y':"y"
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[],
+'layers':[{
+'geom':"boxplot",
+'mapping':{
+},
+'data_meta':{
+},
+'fatten':5,
+'outlier_shape':8,
+'outlier_size':5,
+'varwidth':true,
+'data':{
+'..middle..':[NaN,-0.010700209403377995,NaN,-0.17251920748058305,-0.027709036223607045],
+'..lower..':[NaN,-0.6033411020364987,NaN,-0.7641689056439481,-0.3208609334963185],
+'..upper..':[NaN,0.6750714344181392,NaN,0.2768353338936702,0.5916490549418189],
+'..ymin..':[NaN,-1.9875689146008928,NaN,-1.5506634310661327,-1.2308643164339552],
+'..ymax..':[NaN,2.463242112485286,NaN,1.030999522495951,1.5380365664659692],
+'..group..':[0.0,0.0,0.0,0.0,0.0],
+'..width..':[1.0,1.0,0.7745966692414834,0.7745966692414834,0.6324555320336759],
+'x':["b","b","c","c","a"],
+'y':[-2.6197451040897444,NaN,1.8861859012105302,NaN,NaN]
+}
+}]
+};
+           var plotContainer = document.getElementById("qLmiQt");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">agg_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;max&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">]})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">agg_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y0&#39;</span><span class="p">,</span> <span class="s1">&#39;y33&#39;</span><span class="p">,</span> <span class="s1">&#39;y50&#39;</span><span class="p">,</span> <span class="s1">&#39;y66&#39;</span><span class="p">,</span> <span class="s1">&#39;y100&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">agg_df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s1">&#39;y0&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="s1">&#39;y33&#39;</span><span class="p">,</span> <span class="n">middle</span><span class="o">=</span><span class="s1">&#39;y50&#39;</span><span class="p">,</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                     <span class="n">upper</span><span class="o">=</span><span class="s1">&#39;y66&#39;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s1">&#39;y100&#39;</span><span class="p">),</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="DAC0vW"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("DAC0vW").appendChild(div);
+        };
+        var e = document.getElementById("DAC0vW");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="L0jHam"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+'x':["a","b","c"],
+'y0':[-2.022314933195735,-2.65517604756347,-1.5081532895474827],
+'y33':[-0.3251073728857832,-0.3965570977252626,-0.2919526708256201],
+'y50':[-0.0073801499445730065,-0.028463391521671683,0.17555329395483268],
+'y66':[0.8477267513654119,0.3775260849689322,0.5264481613346957],
+'y100':[3.372296253626673,1.706604953678462,1.4039587386592935]
+},
+'mapping':{
+'x':"x"
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[],
+'layers':[{
+'geom':"boxplot",
+'stat':"identity",
+'mapping':{
+'ymin':"y0",
+'lower':"y33",
+'middle':"y50",
+'upper':"y66",
+'ymax':"y100"
+},
+'data_meta':{
+},
+'data':{
+}
+}]
+};
+           var plotContainer = document.getElementById("L0jHam");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> \
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">())</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                     <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">outlier_color</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">),</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">outlier_shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">outlier_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="mqUObN"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("mqUObN").appendChild(div);
+        };
+        var e = document.getElementById("mqUObN");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="h8d5kf"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+},
+'mapping':{
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[],
+'layers':[{
+'geom':"boxplot",
+'mapping':{
+'x':"variable",
+'y':"value",
+'color':"variable",
+'fill':"variable",
+'outlier_color':"variable"
+},
+'show_legend':false,
+'data_meta':{
+},
+'outlier_shape':21,
+'outlier_size':4,
+'size':2,
+'alpha':0.5,
+'width':0.5,
+'data':{
+'..middle..':[NaN,-0.1269562917797126,NaN,0.08410716994683427,NaN,NaN,0.0976957423187853,0.05015736622633452,NaN,-0.07589956839298015],
+'..lower..':[NaN,-0.6011726510741009,NaN,-0.8090437770935286,NaN,NaN,-0.6575578486710499,-0.570314104233189,NaN,-0.9077490198560563],
+'..upper..':[NaN,0.4362060856784523,NaN,0.554399329708584,NaN,NaN,0.7226147054338905,0.6860484815030382,NaN,0.657524249207593],
+'..ymin..':[NaN,-1.9875689146008928,NaN,-1.9187712152990415,NaN,NaN,-2.025142586657607,-2.123895724309807,NaN,-2.301921164735585],
+'..ymax..':[NaN,1.8522781845089378,NaN,2.463242112485286,NaN,NaN,2.3146585666735087,2.1898029332176723,NaN,2.060747924881987],
+'..group..':[0.0,0.0,1.0,1.0,2.0,2.0,2.0,3.0,4.0,4.0],
+'variable':["x1","x1","x2","x2","x3","x3","x3","x4","x5","x5"],
+'value':[-2.6197451040897444,NaN,2.720169166589619,NaN,3.852731490654721,-3.2412673400690726,NaN,NaN,3.0788808084552377,NaN]
+}
+}]
+};
+           var plotContainer = document.getElementById("h8d5kf");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});

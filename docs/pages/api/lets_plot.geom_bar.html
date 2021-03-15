@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geom_bar &#8212; lets-plot 1.5.6 documentation</title>
+    <title>lets_plot.geom_bar &#8212; lets-plot 2.0.1rc1 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>1.5.6</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1rc1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -122,88 +122,75 @@
 <dl class="py function">
 <dt id="lets_plot.geom_bar">
 <code class="sig-prename descclassname">lets_plot.</code><code class="sig-name descname">geom_bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show_legend</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sampling</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">tooltips</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">other_args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_bar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display a bar chart which makes the height of the bar proportional to the number of observed variable values, mapped to x axis.</p>
+<dd><p>Display a bar chart which makes the height of the bar proportional to the
+number of observed variable values, mapped to x axis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mapping</strong> (<em>set of aesthetic mappings created by aes() function.</em>) – Aesthetic mappings describe the way that variables in the data are
+<li><p><strong>mapping</strong> (<cite>FeatureSpec</cite>) – Set of aesthetic mappings created by <cite>aes()</cite> function.
+Aesthetic mappings describe the way that variables in the data are
 mapped to plot “aesthetics”.</p></li>
-<li><p><strong>data</strong> (<em>dictionary or pandas DataFrame, optional</em>) – The data to be displayed in this layer. If None, the default, the data
+<li><p><strong>data</strong> (dict or <cite>DataFrame</cite>) – The data to be displayed in this layer. If None, the default, the data
 is inherited from the plot data as specified in the call to ggplot.</p></li>
-<li><p><strong>stat</strong> (<em>string, optional</em>) – The statistical transformation to use on the data for this layer, as a string. Supported transformations:
-“identity” (leaves the data unchanged), “count” (counts number of points with same x-axis coordinate),
-“bin” (counts number of points with x-axis coordinate in the same bin), “smooth” (performs smoothing -
-linear default)</p></li>
-<li><p><strong>position</strong> (<em>string, optional</em>) – Position adjustment, either as a string (“identity”, “stack”, “dodge”,…), or the result of a call to a
-position adjustment function.</p></li>
-<li><p><strong>show_legend</strong> (<em>bool</em>) – False - do not show legend for this layer.</p></li>
-<li><p><strong>sampling</strong> (<em>result of the call to the sampling_xxx() function.</em>) – Value ‘none’ will disable sampling for this layer.</p></li>
-<li><p><strong>tooltips</strong> (<em>result of the call to the layer_tooltips() function.</em>) – Specifies appearance, style and content.</p></li>
-<li><p><strong>other_args</strong> – Other arguments passed on to layer. These are often aesthetics settings, used to set an aesthetic to a fixed
-value, like color = “red”, fill = “blue”, size = 3 or shape = 21. They may also be parameters to the
-paired geom/stat.</p></li>
+<li><p><strong>stat</strong> (<em>str, default=’count’</em>) – The statistical transformation to use on the data for this layer, as a string.
+Supported transformations: ‘identity’ (leaves the data unchanged),
+‘count’ (counts number of points with same x-axis coordinate),
+‘bin’ (counts number of points with x-axis coordinate in the same bin),
+‘smooth’ (performs smoothing - linear default),
+‘density’ (computes and draws kernel density estimate).</p></li>
+<li><p><strong>position</strong> (str or <cite>FeatureSpec</cite>) – Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
+or the result of a call to a position adjustment function.</p></li>
+<li><p><strong>show_legend</strong> (<em>bool, default=True</em>) – False - do not show legend for this layer.</p></li>
+<li><p><strong>sampling</strong> (<cite>FeatureSpec</cite>) – Result of the call to the <cite>sampling_xxx()</cite> function.
+Value None (or ‘none’) will disable sampling for this layer.</p></li>
+<li><p><strong>tooltips</strong> (<cite>layer_tooltips</cite>) – Result of the call to the <cite>layer_tooltips()</cite> function.
+Specifies appearance, style and content.</p></li>
+<li><p><strong>other_args</strong> – Other arguments passed on to the layer.
+These are often aesthetics settings used to set an aesthetic to a fixed value,
+like color=’red’, fill=’blue’, size=3 or shape=21.
+They may also be parameters to the paired geom/stat.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>Geom object specification.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>geom object specification</p>
+<dd class="field-odd"><p><cite>LayerSpec</cite></p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>geom_bar makes the height of the bar proportional to the number of observed variable values, mapped to x axis.
-Is intended to use for discrete data. If used for continuous data with stat=’bin’ produces histogram for binned
-data. geom_bar handles no group aesthetics.
-geom_bar understands the following aesthetics mappings:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>x : x-axis value (this values will produce cases or bins for bars)</p></li>
-<li><p>y : y-axis value (this value will be used to multiply the case’s or bin’s counts)</p></li>
-<li><dl class="simple">
-<dt>alpha<span class="classifier">transparency level of a layer</span></dt><dd><p>Understands numbers between 0 and 1.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>color (colour)<span class="classifier">color of a geometry lines</span></dt><dd><p>Can be continuous or discrete. For continuous value this will be a color gradient between two colors.</p>
-</dd>
-</dl>
-</li>
-<li><p>fill : color of geometry filling</p></li>
-<li><dl class="simple">
-<dt>size<span class="classifier">lines width</span></dt><dd><p>Defines bar line width</p>
-</dd>
-</dl>
-</li>
+<p><cite>geom_bar()</cite> makes the height of the bar proportional to the number
+of observed variable values, mapped to x axis. Is intended to use for discrete data.
+If used for continuous data with stat=’bin’ produces histogram for binned data.
+<cite>geom_bar()</cite> handles no group aesthetics.</p>
+<dl class="simple">
+<dt><cite>geom_bar()</cite> understands the following aesthetics mappings:</dt><dd><ul class="simple">
+<li><p>x : x-axis value (this values will produce cases or bins for bars).</p></li>
+<li><p>y : y-axis value (this value will be used to multiply the case’s or bin’s counts).</p></li>
+<li><p>alpha : transparency level of a layer. Understands numbers between 0 and 1.</p></li>
+<li><p>color (colour) : color of a geometry lines. Can be continuous or discrete. For continuous value this will be a color gradient between two colors.</p></li>
+<li><p>fill : color of geometry filling.</p></li>
+<li><p>size : lines width. Defines bar line width.</p></li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 </div>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># comment this line to make variables continuous back</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;bin&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;dark_green&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)}</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">()</span>
+</span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="kWdc4H"></div>
+<div id="ypdTce"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -214,7 +201,7 @@ geom_bar understands the following aesthetics mappings:</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-1.5.6.min.js";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -227,20 +214,192 @@ geom_bar understands the following aesthetics mappings:</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("kWdc4H").appendChild(div);
+            document.getElementById("ypdTce").appendChild(div);
         };
-        var e = document.getElementById("kWdc4H");
+        var e = document.getElementById("ypdTce");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="vb4sAw"></div>
+</div><div class="output text_html">   <div id="eQ4Yen"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
 'data':{
 },
 'mapping':{
-'x':"value"
+'x':"x"
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[],
+'layers':[{
+'geom':"bar",
+'mapping':{
+},
+'data_meta':{
+},
+'data':{
+'..count..':[11.0,9.0,15.0,10.0,11.0,9.0,6.0,10.0,7.0,12.0],
+'x':[6.0,3.0,7.0,4.0,9.0,2.0,5.0,1.0,0.0,8.0]
+}
+}]
+};
+           var plotContainer = document.getElementById("eQ4Yen");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>             <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> \
+</span><span class="gp">&gt;&gt;&gt; </span>    <span class="n">scale_fill_discrete</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="wohu8a"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("wohu8a").appendChild(div);
+        };
+        var e = document.getElementById("wohu8a");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="zbPxX6"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'mapping':{
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[{
+'aesthetic':"fill",
+'discrete':true
+}],
+'layers':[{
+'geom':"bar",
+'stat':"identity",
+'data':{
+'x':[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0],
+'y':[4.0,5.0,3.0,5.0,5.0,2.0,3.0,3.0,3.0,5.0]
+},
+'mapping':{
+'x':"x",
+'y':"y",
+'fill':"x"
+},
+'show_legend':false,
+'data_meta':{
+}
+}]
+};
+           var plotContainer = document.getElementById("zbPxX6");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">),</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>             <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;bin&#39;</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="n">sampling_pick</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> \
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>             <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@|@class&#39;</span><span class="p">)</span>
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                      <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;count|@..count..&#39;</span><span class="p">))</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="QNPW55"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1rc1.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("QNPW55").appendChild(div);
+        };
+        var e = document.getElementById("QNPW55");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="XP9yib"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+},
+'mapping':{
+'x':"x"
 },
 'data_meta':{
 },
@@ -250,19 +409,29 @@ geom_bar understands the following aesthetics mappings:</p>
 'geom':"bar",
 'stat':"bin",
 'mapping':{
+'group':"class",
+'fill':"class",
+'color':"class"
+},
+'sampling':{
+'name':"pick",
+'n':500
+},
+'tooltips':{
+'tooltip_formats':[],
+'tooltip_lines':["@|@class","count|@..count.."]
 },
 'data_meta':{
 },
-'color':"gray",
-'fill':"dark_green",
-'size':2,
+'alpha':0.3,
 'data':{
-'..count..':[1.0,0.0,2.0,0.0,18.0,0.0,65.0,0.0,14.0,0.0,4.0,0.0,9.0,0.0,36.0,38.0,0.0,12.0,0.0,2.0,0.0,19.0,0.0,27.0,0.0,41.0,0.0,9.0,0.0,3.0],
-'value':[-3.0883333333333334,-2.565,-2.041666666666667,-1.5183333333333335,-0.9950000000000001,-0.4716666666666667,0.051666666666666305,0.5749999999999997,1.0983333333333332,1.6216666666666666,2.145,2.6683333333333334,3.191666666666666,3.7149999999999994,4.238333333333333,4.761666666666667,5.285,5.808333333333334,6.331666666666667,6.855,7.378333333333334,7.901666666666667,8.425,8.948333333333334,9.471666666666666,9.995,10.518333333333333,11.041666666666666,11.565,12.088333333333333]
+'..count..':[1.0,1.0,2.0,7.0,9.0,14.0,15.0,27.0,41.0,67.0,80.0,91.0,92.0,91.0,114.0,101.0,77.0,61.0,47.0,38.0,25.0,10.0,5.0,2.0,3.0,0.0,0.0,0.0,0.0,1.0,0.0,2.0,2.0,5.0,5.0,11.0,22.0,26.0,40.0,62.0,76.0,100.0,90.0,100.0,102.0,82.0,84.0,50.0,50.0,31.0,24.0,18.0,9.0,2.0,3.0,0.0,1.0,0.0,0.0,1.0,0.0,2.0,5.0,3.0,12.0,15.0,20.0,33.0,45.0,70.0,64.0,80.0,99.0,108.0,98.0,103.0,69.0,70.0,51.0,34.0,20.0,20.0,8.0,8.0,0.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,5.0,2.0,12.0,18.0,25.0,45.0,57.0,65.0,86.0,100.0,104.0,85.0,83.0,80.0,61.0,45.0,21.0,29.0,17.0,7.0,2.0,1.0,1.0,2.0,0.0,0.0,0.0,1.0,2.0,3.0,3.0,0.0,20.0,14.0,33.0,47.0,46.0,67.0,96.0,77.0,91.0,97.0,109.0,70.0,69.0,38.0,42.0,22.0,14.0,9.0,9.0,2.0,3.0,2.0,0.0,0.0,0.0],
+'x':[-3.2834759808984932,-3.033409693720416,-2.783343406542339,-2.5332771193642616,-2.2832108321861844,-2.033144545008107,-1.7830782578300295,-1.5330119706519523,-1.282945683473875,-1.0328793962957978,-0.7828131091177206,-0.5327468219396434,-0.28268053476156574,-0.03261424758348852,0.2174520395945887,0.4675183267726659,0.7175846139507431,0.9676509011288204,1.2177171883068976,1.4677834754849748,1.717849762663052,1.9679160498411292,2.2179823370192064,2.4680486241972837,2.7181149113753618,2.968181198553439,3.218247485731516,3.4683137729095934,3.7183800600876706,3.968446347265748,-3.2834759808984932,-3.033409693720416,-2.783343406542339,-2.5332771193642616,-2.2832108321861844,-2.033144545008107,-1.7830782578300295,-1.5330119706519523,-1.282945683473875,-1.0328793962957978,-0.7828131091177206,-0.5327468219396434,-0.28268053476156574,-0.03261424758348852,0.2174520395945887,0.4675183267726659,0.7175846139507431,0.9676509011288204,1.2177171883068976,1.4677834754849748,1.717849762663052,1.9679160498411292,2.2179823370192064,2.4680486241972837,2.7181149113753618,2.968181198553439,3.218247485731516,3.4683137729095934,3.7183800600876706,3.968446347265748,-3.2834759808984932,-3.033409693720416,-2.783343406542339,-2.5332771193642616,-2.2832108321861844,-2.033144545008107,-1.7830782578300295,-1.5330119706519523,-1.282945683473875,-1.0328793962957978,-0.7828131091177206,-0.5327468219396434,-0.28268053476156574,-0.03261424758348852,0.2174520395945887,0.4675183267726659,0.7175846139507431,0.9676509011288204,1.2177171883068976,1.4677834754849748,1.717849762663052,1.9679160498411292,2.2179823370192064,2.4680486241972837,2.7181149113753618,2.968181198553439,3.218247485731516,3.4683137729095934,3.7183800600876706,3.968446347265748,-3.2834759808984932,-3.033409693720416,-2.783343406542339,-2.5332771193642616,-2.2832108321861844,-2.033144545008107,-1.7830782578300295,-1.5330119706519523,-1.282945683473875,-1.0328793962957978,-0.7828131091177206,-0.5327468219396434,-0.28268053476156574,-0.03261424758348852,0.2174520395945887,0.4675183267726659,0.7175846139507431,0.9676509011288204,1.2177171883068976,1.4677834754849748,1.717849762663052,1.9679160498411292,2.2179823370192064,2.4680486241972837,2.7181149113753618,2.968181198553439,3.218247485731516,3.4683137729095934,3.7183800600876706,3.968446347265748,-3.2834759808984932,-3.033409693720416,-2.783343406542339,-2.5332771193642616,-2.2832108321861844,-2.033144545008107,-1.7830782578300295,-1.5330119706519523,-1.282945683473875,-1.0328793962957978,-0.7828131091177206,-0.5327468219396434,-0.28268053476156574,-0.03261424758348852,0.2174520395945887,0.4675183267726659,0.7175846139507431,0.9676509011288204,1.2177171883068976,1.4677834754849748,1.717849762663052,1.9679160498411292,2.2179823370192064,2.4680486241972837,2.7181149113753618,2.968181198553439,3.218247485731516,3.4683137729095934,3.7183800600876706,3.968446347265748],
+'class':["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","d","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","e","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b"]
 }
 }]
 };
-           var plotContainer = document.getElementById("vb4sAw");
+           var plotContainer = document.getElementById("XP9yib");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
