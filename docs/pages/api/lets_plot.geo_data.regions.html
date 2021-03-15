@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geo_data.regions &#8212; lets-plot 1.5.6 documentation</title>
+    <title>lets_plot.geo_data.regions &#8212; lets-plot 2.0.1rc1 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>1.5.6</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.1rc1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -121,8 +121,8 @@
 <h1>lets_plot.geo_data.regions<a class="headerlink" href="#lets-plot-geo-data-regions" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="lets_plot.geo_data.regions">
-<code class="sig-prename descclassname">lets_plot.geo_data.</code><code class="sig-name descname">regions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">request</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">within</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; lets_plot.geo_data.regions.Regions<a class="headerlink" href="#lets_plot.geo_data.regions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a Regions class by level and request.</p>
+<code class="sig-prename descclassname">lets_plot.geo_data.</code><code class="sig-name descname">regions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">request</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">within</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geo_data.regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Geocoder class by level and request.</p>
 <p>regions(level, request, within)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -132,9 +132,9 @@
 None with explicit level returns all corresponding regions, like all countries i.e. regions(level=’country’).
 For ‘state’ level:
 -‘US-48’ returns continental part of United States (48 states) in a compact form.</p></li>
-<li><p><strong>within</strong> (<em>[array | string | Regions| None]</em>) – Data can be filtered by within name.
+<li><p><strong>within</strong> (<em>[array | string | Geocoder| None]</em>) – Data can be filtered by within name.
 If within is array then request and within will be merged positionally (size should be equal).
-If within is Regions then request will be searched in any of these regions.
+If within is Geocoder then request will be searched in any of these regions.
 ‘US-48’ includes continental part of United States (48 states).</p></li>
 </ul>
 </dd>
@@ -142,7 +142,7 @@ If within is Regions then request will be searched in any of these regions.
 <dd class="field-even"><p></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Regions object</p>
+<dd class="field-odd"><p>Geocoder object</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -163,9 +163,22 @@ If the given names are not found exception will be thrown.</p>
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
 </pre></div>
 </div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>   request      id                found name
-0  Germany  102955               Deutschland
-1      USA  297677  United States of America
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">c72733da7ce7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">lets_plot.geo_data</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">r</span> <span class="o">=</span> <span class="n">regions</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Germany&#39;</span><span class="p">,</span> <span class="s1">&#39;USA&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">r</span>
+
+<span class="nn">D:\anaconda3\envs\lets-plot-docs\lib\site-packages\lets_plot\geo_data\core.py</span> in <span class="ni">regions</span><span class="nt">(level, request, within)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>         <span class="o">&gt;&gt;&gt;</span> <span class="n">r</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">123</span><span class="s2">     raise ValueError(&#39;Function `regions(...)` is deprecated. Use new function `geocode(...)`.</span><span class="se">\n</span><span class="s2"> See https://github.com/JetBrains/lets-plot/blob/master/docs/geocoding.md for details.&#39;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span><span class="s2">     #return Geocoder(level=level, request=request, scope=within).build()</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span><span class="s2"> </span>
+
+<span class="ne">ValueError</span>: Function `regions(...)` is deprecated. Use new function `geocode(...)`.
+<span class="s2"> See https://github.com/JetBrains/lets-plot/blob/master/docs/geocoding.md for details.</span>
 </pre></div>
 </div>
 </div>

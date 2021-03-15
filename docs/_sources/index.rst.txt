@@ -24,19 +24,14 @@ Example
     from lets_plot import *
     LetsPlot.setup_html()
 
-    df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot/'
-                     'master/docs/examples/data/titanic.csv')
-    df = df.sort_values(by='Pclass')
+    df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv')
 
-    ggplot(df) + \
-        geom_histogram(aes(x='Age', group='Survived', fill='Survived'), \
-                       binwidth=5, center=0) + \
-        facet_grid(x='Pclass', y='Sex') + \
-        scale_x_continuous(name='age', breaks=list(range(0, 90, 10))) + \
-        scale_fill_discrete(name='survived') + \
-        ggsize(700, 400) + \
-        ggtitle('Survival Rate on the Titanic: '
-                'Distribution by Age, Gender and Class of Ticket')
+    ggplot(df, aes(x='cty')) + \
+        geom_histogram(aes(fill='drv'), binwidth=1, center=df.cty.min()) + \
+        scale_x_continuous(breaks=list(range(df.cty.min(), df.cty.max(), 6))) + \
+        scale_fill_discrete() + \
+        facet_grid(x='cyl', y='year') + \
+        ggtitle('City Mileage by Drive Type, Number of Cylinders and Year of Manufacturing')
 
 |
 
