@@ -14,7 +14,6 @@ Plotting
 .. autosummary::
     :toctree: api
     :template: base.rst
-    :recursive:
 
     ggplot
     GGBunch
@@ -304,6 +303,20 @@ Sampling
     sampling_vertex_vw
     sampling_vertex_dp
 
+
+.. _api_bistro:
+
+Bistro Module
+=============
+
+.. currentmodule:: lets_plot.bistro
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    im.image_matrix
+    corr.corr_plot
 
 .. _api_geospatial:
 

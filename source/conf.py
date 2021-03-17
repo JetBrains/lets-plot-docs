@@ -40,6 +40,10 @@ extensions = [
     'sphinx_panels',
 ]
 
+autodoc_default_options = {
+    'member-order': 'bysource',
+}
+
 autosummary_generate = True
 
 napoleon_google_docstring = True
