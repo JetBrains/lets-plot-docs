@@ -327,14 +327,18 @@ Geospatial
 
 .. autosummary::
     :toctree: api
+    :template: base.rst
 
+    Geocoder
+    ReverseGeocoder
+    NamesGeocoder
+    
+    geocode
+    geocode_cities
+    geocode_counties
+    geocode_states
+    geocode_countries
+    reverse_geocode
     distance
-    regions_builder
-    regions
-    regions_country
-    regions_state
-    regions_county
-    regions_city
-    regions_xy
 
     split_by_antimeridian
