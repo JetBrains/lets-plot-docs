@@ -329,7 +329,6 @@ Geospatial
     :toctree: api
     :template: base.rst
 
-    Geocoder
     ReverseGeocoder
     NamesGeocoder
     
@@ -340,5 +339,3 @@ Geospatial
     geocode_countries
     reverse_geocode
     distance
-
-    split_by_antimeridian

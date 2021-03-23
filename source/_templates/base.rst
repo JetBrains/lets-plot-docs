@@ -6,6 +6,7 @@
 .. autoclass:: {{ objname }}
   :members:
   :special-members: __init__
+  :inherited-members:
 {% else %}
 .. auto{{ objtype }}:: {{ objname }}
 {% endif %}
