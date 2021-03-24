@@ -27,8 +27,8 @@ Plotting
 Geometries
 ==========
 
-Standard
---------
+Standard Geometries
+-------------------
 
 .. autosummary::
     :toctree: api
@@ -66,14 +66,23 @@ Standard
     geom_segment
     geom_text
 
-Additional
-----------
+Additional Geometries
+---------------------
 
 .. autosummary::
     :toctree: api
 
     geom_image
     geom_livemap
+
+
+Extras
+------
+
+.. autosummary::
+    :toctree: api
+
+    arrow
 
 
 .. _api_fs:
@@ -274,17 +283,6 @@ Tooltips
     :toctree: api
 
     layer_tooltips
-
-
-.. _api_helpers:
-
-Helpers
-=======
-
-.. autosummary::
-    :toctree: api
-
-    arrow
 
 
 .. _api_sampling:
