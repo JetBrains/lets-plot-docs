@@ -85,6 +85,7 @@ Facets
     :toctree: api
 
     facet_grid
+    facet_wrap
 
 
 Scales
