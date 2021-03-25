@@ -126,6 +126,7 @@ html_css_files = [
 ]
 html_js_files = [
     'js/custom.js',
+    'js/language_data.js',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
