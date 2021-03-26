@@ -17,10 +17,10 @@ All GeoPandas shapes are "undersood" by Lets-Plot and can be plotted using vario
 
 Use:
 
-* ``geom_point``, ``geom_text`` with Points / Multi-Points
-* ``geom_path`` with Lines / Multi-Lines
-* ``geom_polygon``, ``geom_map`` with Polygons / Multi-Polygons
-* ``geom_rect`` when used with Polygon shapes will display corresponding bounding boxes
+- ``geom_point``, ``geom_text`` with Points / Multi-Points
+- ``geom_path`` with Lines / Multi-Lines
+- ``geom_polygon``, ``geom_map`` with Polygons / Multi-Polygons
+- ``geom_rect`` when used with Polygon shapes will display corresponding bounding boxes
 
 
 Examples
