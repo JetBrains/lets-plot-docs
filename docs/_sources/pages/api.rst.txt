@@ -14,7 +14,6 @@ Plotting
 .. autosummary::
     :toctree: api
     :template: base.rst
-    :recursive:
 
     ggplot
     GGBunch
@@ -28,8 +27,8 @@ Plotting
 Geometries
 ==========
 
-Standard
---------
+Standard Geometries
+-------------------
 
 .. autosummary::
     :toctree: api
@@ -67,14 +66,23 @@ Standard
     geom_segment
     geom_text
 
-Additional
-----------
+Additional Geometries
+---------------------
 
 .. autosummary::
     :toctree: api
 
     geom_image
     geom_livemap
+
+
+Extras
+------
+
+.. autosummary::
+    :toctree: api
+
+    arrow
 
 
 .. _api_fs:
@@ -86,6 +94,7 @@ Facets
     :toctree: api
 
     facet_grid
+    facet_wrap
 
 
 Scales
@@ -276,17 +285,6 @@ Tooltips
     layer_tooltips
 
 
-.. _api_helpers:
-
-Helpers
-=======
-
-.. autosummary::
-    :toctree: api
-
-    arrow
-
-
 .. _api_sampling:
 
 Sampling
@@ -305,6 +303,20 @@ Sampling
     sampling_vertex_dp
 
 
+.. _api_bistro:
+
+Bistro Module
+=============
+
+.. currentmodule:: lets_plot.bistro
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    im.image_matrix
+    corr.corr_plot
+
 .. _api_geospatial:
 
 Geospatial
@@ -314,14 +326,15 @@ Geospatial
 
 .. autosummary::
     :toctree: api
+    :template: base.rst
 
+    ReverseGeocoder
+    NamesGeocoder
+    
+    geocode
+    geocode_cities
+    geocode_counties
+    geocode_states
+    geocode_countries
+    reverse_geocode
     distance
-    regions_builder
-    regions
-    regions_country
-    regions_state
-    regions_county
-    regions_city
-    regions_xy
-
-    split_by_antimeridian
