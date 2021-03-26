@@ -10,16 +10,10 @@ All commands should be run from the repository root.
 1. Create conda environment `lets-plot-docs` from file environment.yml:
 
     ```bash
-    conda env create -f ./environment.yml
+    conda env create --file ./environment.yml
     ```
 
-    If you have this environment already, update it:
-
-    ```bash
-    conda env update --name lets-plot-docs -f environment.yml --prune
-    ```
-
-   If file `environment.yml` has been changed, you need to update the environment. In that case, run:
+    If you already have this environment or environment.yml has been changed, you need to update the environment. In that case, run:
 
     ```bash
     conda env update --name lets-plot-docs --file ./environment.yml --prune
