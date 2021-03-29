@@ -26,7 +26,7 @@ Arguments
 show()
 ======
 
-Display plots within the ``bunch`` object in a grid.
+Display plots within the ``bunch`` object.
 
 ``bunch.show()``
 
