@@ -1,10 +1,24 @@
 .. _api:
 
-.. currentmodule:: lets_plot
-
 API Reference
 #############
 
+
+.. currentmodule:: lets_plot.plot.core
+
+Basic Classes
+=============
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    FeatureSpec
+    PlotSpec
+    LayerSpec
+
+
+.. currentmodule:: lets_plot
 
 .. _api_plotting:
 
