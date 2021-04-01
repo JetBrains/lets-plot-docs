@@ -295,6 +295,7 @@ Tooltips
 
 .. autosummary::
     :toctree: api
+    :template: base.rst
 
     layer_tooltips
 
