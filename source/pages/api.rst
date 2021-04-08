@@ -103,6 +103,8 @@ Extras
 .. autosummary::
     :toctree: api
 
+    maptiles_zxy
+    maptiles_lets_plot
     arrow
 
 
