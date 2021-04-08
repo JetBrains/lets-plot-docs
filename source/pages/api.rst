@@ -20,6 +20,13 @@ Basic Classes
 
 .. currentmodule:: lets_plot
 
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    LetsPlot
+
+
 .. _api_plotting:
 
 Plotting
