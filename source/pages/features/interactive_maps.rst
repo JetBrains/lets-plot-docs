@@ -1,5 +1,3 @@
-.. _interactive_maps:
-
 Interactive Maps
 ################
 

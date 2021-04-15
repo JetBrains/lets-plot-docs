@@ -1,5 +1,3 @@
-.. _sampling:
-
 Sampling in Lets-Plot
 #####################
 
