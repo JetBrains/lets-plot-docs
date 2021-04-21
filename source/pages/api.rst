@@ -246,6 +246,7 @@ Scale Guides
 
     guide_legend
     guide_colorbar
+    guides
 
 
 .. _api_pc:
