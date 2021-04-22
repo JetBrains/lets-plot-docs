@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geom_text &#8212; lets-plot 2.0.1 documentation</title>
+    <title>lets_plot.geom_text &#8212; lets-plot 2.0.2 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -13,8 +13,6 @@
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -27,8 +25,6 @@
     <script src="../../_static/js/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="lets_plot.geom_image" href="lets_plot.geom_image.html" />
-    <link rel="prev" title="lets_plot.geom_segment" href="lets_plot.geom_segment.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -51,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -69,14 +65,7 @@
      href="../../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart with Jupyter</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
-</ul>
-</ul>
+      aria-labelledby="dLabelGlobalToc"></ul>
 </li>
               
                 <li class="dropdown">
@@ -97,6 +86,8 @@
             
             
             
+            
+              <li class="hidden-sm"></li>
             
           </ul>
 
@@ -171,8 +162,8 @@ They may also be parameters to the paired geom/stat.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Adds text directly to the plot.</p>
-<dl class="simple">
-<dt><cite>geom_text()</cite> understands the following aesthetics mappings:</dt><dd><ul class="simple">
+<p><cite>geom_text()</cite> understands the following aesthetics mappings:</p>
+<ul class="simple">
 <li><p>x : x-axis value.</p></li>
 <li><p>y : y-axis value.</p></li>
 <li><p>alpha : transparency level of a layer. Understands numbers between 0 and 1.</p></li>
@@ -185,8 +176,6 @@ They may also be parameters to the paired geom/stat.</p></li>
 <li><p>vjust : vertical text alignment. Possible values: ‘bottom’, ‘center’, ‘top’ or number between 0 (‘bottom’) and 1 (‘top’).</p></li>
 <li><p>angle : text rotation angle in degrees.</p></li>
 </ul>
-</dd>
-</dl>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -198,45 +187,45 @@ They may also be parameters to the paired geom/stat.</p></li>
 <p>The conventions for the values of <cite>map_join</cite> parameter are as follows.</p>
 <ul>
 <li><p>Joining data and <cite>GeoDataFrame</cite> object</p>
-<dl class="simple">
-<dt>Data has a column named ‘State_name’ and <cite>GeoDataFrame</cite> has a matching column named ‘state’:</dt><dd><ul class="simple">
+<p>Data has a column named ‘State_name’ and <cite>GeoDataFrame</cite> has a matching column named ‘state’:</p>
+<ul class="simple">
 <li><p>map_join=[‘State_Name’, ‘state’]</p></li>
 <li><p>map_join=[[‘State_Name’], [‘state’]]</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 <li><p>Joining data and <cite>Geocoder</cite> object</p>
-<dl class="simple">
-<dt>Data has a column named ‘State_name’. The matching key in <cite>Geocoder</cite> is always ‘state’ (providing it is a state-level geocoder) and can be omitted:</dt><dd><ul class="simple">
+<p>Data has a column named ‘State_name’. The matching key in <cite>Geocoder</cite> is always ‘state’ (providing it is a state-level geocoder) and can be omitted:</p>
+<ul class="simple">
 <li><p>map_join=’State_Name’</p></li>
 <li><p>map_join=[‘State_Name’]</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 <li><p>Joining data by composite key</p>
-<dl class="simple">
-<dt>Joining by composite key works like in examples above, but instead of using a string for a simple key you need to use an array of strings for a composite key. The names in the composite key must be in the same order as in the US street addresses convention: ‘city’, ‘county’, ‘state’, ‘country’. For example, the data has columns ‘State_name’ and ‘County_name’. Joining with a 2-keys county level <cite>Geocoder</cite> object (the <cite>Geocoder</cite> keys ‘county’ and ‘state’ are omitted in this case):</dt><dd><ul class="simple">
+<p>Joining by composite key works like in examples above, but instead of using a string for a simple key you need to use an array of strings for a composite key. The names in the composite key must be in the same order as in the US street addresses convention: ‘city’, ‘county’, ‘state’, ‘country’. For example, the data has columns ‘State_name’ and ‘County_name’. Joining with a 2-keys county level <cite>Geocoder</cite> object (the <cite>Geocoder</cite> keys ‘county’ and ‘state’ are omitted in this case):</p>
+<ul class="simple">
 <li><p>map_join=[‘County_name’, ‘State_Name’]</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 </ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more info see the <a class="reference external" href="https://jetbrains.github.io/lets-plot-docs/pages/formats.html">formatting reference</a>.</p>
 </div>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lorem ipsum&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="hll"><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lorem ipsum&#39;</span><span class="p">)</span>
 </span></pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="oYZfG4"></div>
+<div id="sx8eiS"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -247,7 +236,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -260,13 +249,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("oYZfG4").appendChild(div);
+            document.getElementById("sx8eiS").appendChild(div);
         };
-        var e = document.getElementById("oYZfG4");
+        var e = document.getElementById("sx8eiS");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="tuR3in"></div>
+</div><div class="output text_html">   <div id="qx0w2s"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -289,7 +278,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("tuR3in");
+           var plotContainer = document.getElementById("qx0w2s");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -301,23 +290,33 @@ They may also be parameters to the paired geom/stat.</p></li>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#2b8cbe&#39;</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">position</span><span class="o">=</span><span class="n">position_nudge</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>              <span class="n">label_format</span><span class="o">=</span><span class="s1">&#39;.1f&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2b8cbe&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#2b8cbe&#39;</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">position</span><span class="o">=</span><span class="n">position_nudge</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> \
+</span><span class="hll">              <span class="n">label_format</span><span class="o">=</span><span class="s1">&#39;.1f&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2b8cbe&#39;</span><span class="p">)</span>
 </span></pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="AnkECJ"></div>
+<div id="arRksM"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -328,7 +327,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -341,13 +340,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("AnkECJ").appendChild(div);
+            document.getElementById("arRksM").appendChild(div);
         };
-        var e = document.getElementById("AnkECJ");
+        var e = document.getElementById("arRksM");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="oeC8UC"></div>
+</div><div class="output text_html">   <div id="JZiBzx"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -392,7 +391,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("oeC8UC");
+           var plotContainer = document.getElementById("JZiBzx");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -404,30 +403,44 @@ They may also be parameters to the paired geom/stat.</p></li>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot.geo_data</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Los Angeles&#39;</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;IL&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> \
-<span class="gp">&gt;&gt;&gt; </span>          <span class="k">for</span> <span class="n">city</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="n">states</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">cities</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">states</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">titles</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">centroids</span> <span class="o">=</span> <span class="n">geocode_cities</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_centroids</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> \
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_point</span><span class="p">(</span><span class="nb">map</span><span class="o">=</span><span class="n">centroids</span><span class="p">,</span> <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> \
-<span class="gp">&gt;&gt;&gt; </span>               <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#f03b20&#39;</span><span class="p">)</span> <span class="o">+</span> \
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;title&#39;</span><span class="p">),</span> <span class="nb">map</span><span class="o">=</span><span class="n">centroids</span><span class="p">,</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>              <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>              <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Optima&#39;</span><span class="p">,</span> <span class="n">fontface</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">lets_plot.geo_data</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Los Angeles&#39;</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">]</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;IL&#39;</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> \
+          <span class="k">for</span> <span class="n">city</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="n">states</span><span class="p">)]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">cities</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">states</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">titles</span><span class="p">}</span>
+<span class="n">centroids</span> <span class="o">=</span> <span class="n">geocode_cities</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_centroids</span><span class="p">()</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="nb">map</span><span class="o">=</span><span class="n">centroids</span><span class="p">,</span> <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> \
+               <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#f03b20&#39;</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;title&#39;</span><span class="p">),</span> <span class="nb">map</span><span class="o">=</span><span class="n">centroids</span><span class="p">,</span> \
+</span><span class="hll">              <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> \
+</span><span class="hll">              <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Optima&#39;</span><span class="p">,</span> <span class="n">fontface</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 </span></pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
 </pre></div>
 </div>
 <div class="output text_html">
-<div id="3As1EG"></div>
+<div id="7FOiGb"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -438,7 +451,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -451,13 +464,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("3As1EG").appendChild(div);
+            document.getElementById("7FOiGb").appendChild(div);
         };
-        var e = document.getElementById("3As1EG");
+        var e = document.getElementById("7FOiGb");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="sDK2Vd"></div>
+</div><div class="output text_html">   <div id="VbMw3W"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -519,7 +532,111 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("sDK2Vd");
+           var plotContainer = document.getElementById("VbMw3W");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">var</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="s1">&#39;abcd&#39;</span><span class="p">}</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;..corr..&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;..corr..&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;..corr_abs..&#39;</span><span class="p">),</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;corr&#39;</span><span class="p">)</span> <span class="o">+</span> \
+</span>    <span class="n">scale_size</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">guide</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_color_brewer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="5sC28O"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("5sC28O").appendChild(div);
+        };
+        var e = document.getElementById("5sC28O");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="NBrjov"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+},
+'mapping':{
+},
+'data_meta':{
+},
+'kind':"plot",
+'scales':[{
+'aesthetic':"size",
+'guide':"none",
+'range':[0.4,1]
+},{
+'aesthetic':"color",
+'breaks':[-1,-0.5,0,0.5,1],
+'type':"div",
+'palette':"RdYlGn",
+'scale_mapper_kind':"color_brewer"
+}],
+'layers':[{
+'geom':"text",
+'stat':"corr",
+'mapping':{
+'label':"..corr..",
+'color':"..corr..",
+'size':"..corr_abs.."
+},
+'data_meta':{
+},
+'data':{
+'..x..':["a","a","a","a","b","b","b","b","c","c","c","c","d","d","d","d"],
+'..y..':["a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"],
+'..corr..':[1.0,0.7042846127289286,-0.37296387511013973,-0.5552271200672346,0.7042846127289286,1.0,-0.4506198472650808,-0.7368078975300131,-0.37296387511013973,-0.4506198472650808,1.0,0.4640122258775927,-0.5552271200672346,-0.7368078975300131,0.4640122258775927,1.0],
+'..corr_abs..':[1.0,0.7042846127289286,0.37296387511013973,0.5552271200672346,0.7042846127289286,1.0,0.4506198472650808,0.7368078975300131,0.37296387511013973,0.4506198472650808,1.0,0.4640122258775927,0.5552271200672346,0.7368078975300131,0.4640122258775927,1.0]
+}
+}]
+};
+           var plotContainer = document.getElementById("NBrjov");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -543,7 +660,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     </p>
     <p>
         &copy; Copyright 2020, JetBrains.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

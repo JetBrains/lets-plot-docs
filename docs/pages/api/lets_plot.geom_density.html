@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geom_density &#8212; lets-plot 2.0.1 documentation</title>
+    <title>lets_plot.geom_density &#8212; lets-plot 2.0.2 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -13,8 +13,6 @@
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -27,8 +25,6 @@
     <script src="../../_static/js/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="lets_plot.geom_density2d" href="lets_plot.geom_density2d.html" />
-    <link rel="prev" title="lets_plot.geom_area" href="lets_plot.geom_area.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -51,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -69,14 +65,7 @@
      href="../../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart with Jupyter</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
-</ul>
-</ul>
+      aria-labelledby="dLabelGlobalToc"></ul>
 </li>
               
                 <li class="dropdown">
@@ -97,6 +86,8 @@
             
             
             
+            
+              <li class="hidden-sm"></li>
             
           </ul>
 
@@ -169,14 +160,14 @@ They may also be parameters to the paired geom/stat.</p></li>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<dl class="simple">
-<dt>Density stat computes variables:</dt><dd><ul class="simple">
+<p>Computed variables:</p>
+<ul class="simple">
 <li><p>..density.. : density estimate (mapped by default).</p></li>
 <li><p>..count.. : density * number of points.</p></li>
 <li><p>..scaled.. : density estimate, scaled to maximum of 1.</p></li>
 </ul>
-</dd>
-<dt><cite>geom_density()</cite> understands the following aesthetics mappings:</dt><dd><ul class="simple">
+<p><cite>geom_density()</cite> understands the following aesthetics mappings:</p>
+<ul class="simple">
 <li><p>x : x-axis coordinates.</p></li>
 <li><p>alpha : transparency level of a layer. Understands numbers between 0 and 1.</p></li>
 <li><p>color (colour) : color of a geometry lines. Can be continuous or discrete. For continuous value this will be a color gradient between two colors.</p></li>
@@ -185,24 +176,27 @@ They may also be parameters to the paired geom/stat.</p></li>
 <li><p>linetype : type of the line. Codes and names: 0 = ‘blank’, 1 = ‘solid’, 2 = ‘dashed’, 3 = ‘dotted’, 4 = ‘dotdash’, 5 = ‘longdash’, 6 = ‘twodash’.</p></li>
 <li><p>weight : used by ‘density’ stat to compute weighted density.</p></li>
 </ul>
-</dd>
-</dl>
 </div>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="hll"><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_density</span><span class="p">()</span>
 </span></pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="A4c8CQ"></div>
+<div id="aDnJCG"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -213,7 +207,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -226,13 +220,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("A4c8CQ").appendChild(div);
+            document.getElementById("aDnJCG").appendChild(div);
         };
-        var e = document.getElementById("A4c8CQ");
+        var e = document.getElementById("aDnJCG");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="ktW6CN"></div>
+</div><div class="output text_html">   <div id="mDznia"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -257,7 +251,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("ktW6CN");
+           var plotContainer = document.getElementById("mDznia");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -269,27 +263,41 @@ They may also be parameters to the paired geom/stat.</p></li>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">300</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;..density..&#39;</span><span class="p">,</span> <span class="s1">&#39;.3f&#39;</span><span class="p">)</span>\
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;density|@..density..&#39;</span><span class="p">)</span>\
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;..count..&#39;</span><span class="p">,</span> <span class="s1">&#39;.1f&#39;</span><span class="p">)</span>\
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;count|@..count..&#39;</span><span class="p">)</span>\
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;..scaled..&#39;</span><span class="p">,</span> <span class="s1">&#39;.2f&#39;</span><span class="p">)</span>\
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;scaled|@..scaled..&#39;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> \
+</span><span class="hll">                 <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;..density..&#39;</span><span class="p">,</span> <span class="s1">&#39;.3f&#39;</span><span class="p">)</span>\
+</span><span class="hll">                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;density|@..density..&#39;</span><span class="p">)</span>\
+</span><span class="hll">                                          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;..count..&#39;</span><span class="p">,</span> <span class="s1">&#39;.1f&#39;</span><span class="p">)</span>\
+</span><span class="hll">                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;count|@..count..&#39;</span><span class="p">)</span>\
+</span><span class="hll">                                          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;..scaled..&#39;</span><span class="p">,</span> <span class="s1">&#39;.2f&#39;</span><span class="p">)</span>\
+</span><span class="hll">                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;scaled|@..scaled..&#39;</span><span class="p">))</span>
 </span></pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="geTXxZ"></div>
+<div id="fdUojd"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -300,7 +308,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -313,13 +321,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("geTXxZ").appendChild(div);
+            document.getElementById("fdUojd").appendChild(div);
         };
-        var e = document.getElementById("geTXxZ");
+        var e = document.getElementById("fdUojd");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="mjp5pp"></div>
+</div><div class="output text_html">   <div id="5mnaL0"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -364,7 +372,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("mjp5pp");
+           var plotContainer = document.getElementById("5mnaL0");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -376,25 +384,37 @@ They may also be parameters to the paired geom/stat.</p></li>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bunch</span> <span class="o">=</span> <span class="n">GGBunch</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">4</span><span class="p">]):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">16</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">256</span><span class="p">]):</span>
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>        <span class="n">bunch</span><span class="o">.</span><span class="n">add_plot</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;epanechikov&#39;</span><span class="p">,</span> <span class="n">bw</span><span class="o">=</span><span class="n">bw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> \
-</span><span class="gp">&gt;&gt;&gt; </span>                           <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;bw=</span><span class="si">{0}</span><span class="s1">, n=</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bw</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span>
-<span class="gp">&gt;&gt;&gt; </span>                       <span class="n">j</span> <span class="o">*</span> <span class="mi">300</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bunch</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+<span class="n">bunch</span> <span class="o">=</span> <span class="n">GGBunch</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">4</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">16</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">256</span><span class="p">]):</span>
+<span class="hll">        <span class="n">bunch</span><span class="o">.</span><span class="n">add_plot</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;epanechikov&#39;</span><span class="p">,</span> <span class="n">bw</span><span class="o">=</span><span class="n">bw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> \
+</span>                           <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;bw=</span><span class="si">{0}</span><span class="s1">, n=</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bw</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span>
+                       <span class="n">j</span> <span class="o">*</span> <span class="mi">300</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">bunch</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="ZeSrnF"></div>
+<div id="6Fb5CY"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -405,7 +425,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -418,13 +438,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("ZeSrnF").appendChild(div);
+            document.getElementById("6Fb5CY").appendChild(div);
         };
-        var e = document.getElementById("ZeSrnF");
+        var e = document.getElementById("6Fb5CY");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="3b04YA"></div>
+</div><div class="output text_html">   <div id="fmjspJ"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -728,7 +748,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("3b04YA");
+           var plotContainer = document.getElementById("fmjspJ");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -740,26 +760,39 @@ They may also be parameters to the paired geom/stat.</p></li>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bunch</span> <span class="o">=</span> <span class="n">GGBunch</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">adjust</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]:</span>
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">bunch</span><span class="o">.</span><span class="n">add_plot</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                    <span class="n">adjust</span><span class="o">=</span><span class="n">adjust</span><span class="p">)</span> <span class="o">+</span> \
-</span><span class="gp">&gt;&gt;&gt; </span>                       <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;adjust=</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adjust</span><span class="p">)),</span>
-<span class="gp">&gt;&gt;&gt; </span>                   <span class="n">i</span> <span class="o">*</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bunch</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+<span class="n">bunch</span> <span class="o">=</span> <span class="n">GGBunch</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">adjust</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]:</span>
+<span class="hll">    <span class="n">bunch</span><span class="o">.</span><span class="n">add_plot</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> \
+</span><span class="hll">                                    <span class="n">adjust</span><span class="o">=</span><span class="n">adjust</span><span class="p">)</span> <span class="o">+</span> \
+</span>                       <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;adjust=</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adjust</span><span class="p">)),</span>
+                   <span class="n">i</span> <span class="o">*</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">bunch</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="8GCDrH"></div>
+<div id="ZeYZLJ"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -770,7 +803,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -783,13 +816,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("8GCDrH").appendChild(div);
+            document.getElementById("ZeYZLJ").appendChild(div);
         };
-        var e = document.getElementById("8GCDrH");
+        var e = document.getElementById("ZeYZLJ");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="gqvrz1"></div>
+</div><div class="output text_html">   <div id="pmqW3F"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -895,7 +928,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("gqvrz1");
+           var plotContainer = document.getElementById("pmqW3F");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -919,7 +952,7 @@ They may also be parameters to the paired geom/stat.</p></li>
     </p>
     <p>
         &copy; Copyright 2020, JetBrains.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

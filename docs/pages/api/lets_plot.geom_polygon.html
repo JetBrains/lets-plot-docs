@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.geom_polygon &#8212; lets-plot 2.0.1 documentation</title>
+    <title>lets_plot.geom_polygon &#8212; lets-plot 2.0.2 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -13,8 +13,6 @@
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -27,8 +25,6 @@
     <script src="../../_static/js/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="lets_plot.geom_map" href="lets_plot.geom_map.html" />
-    <link rel="prev" title="lets_plot.geom_contourf" href="lets_plot.geom_contourf.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -51,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -69,14 +65,7 @@
      href="../../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart with Jupyter</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
-</ul>
-</ul>
+      aria-labelledby="dLabelGlobalToc"></ul>
 </li>
               
                 <li class="dropdown">
@@ -97,6 +86,8 @@
             
             
             
+            
+              <li class="hidden-sm"></li>
             
           </ul>
 
@@ -161,8 +152,8 @@ They may also be parameters to the paired geom/stat.</p></li>
 <p class="admonition-title">Note</p>
 <p><cite>geom_polygon()</cite> draws polygons, which are filled paths.
 Each vertex of the polygon requires a separate row in the data.</p>
-<dl class="simple">
-<dt><cite>geom_polygon()</cite> understands the following aesthetics mappings:</dt><dd><ul class="simple">
+<p><cite>geom_polygon()</cite> understands the following aesthetics mappings:</p>
+<ul class="simple">
 <li><p>x : x-axis coordinates of the vertices of the polygon.</p></li>
 <li><p>y : y-axis coordinates of the vertices of the polygon.</p></li>
 <li><p>alpha : transparency level of a layer. Understands numbers between 0 and 1.</p></li>
@@ -170,8 +161,6 @@ Each vertex of the polygon requires a separate row in the data.</p>
 <li><p>size : lines width. Defines line width.</p></li>
 <li><p>linetype : type of the line. Codes and names: 0 = ‘blank’, 1 = ‘solid’, 2 = ‘dashed’, 3 = ‘dotted’, 4 = ‘dotdash’, 5 = ‘longdash’, 6 = ‘twodash’.</p></li>
 </ul>
-</dd>
-</dl>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -183,52 +172,55 @@ Each vertex of the polygon requires a separate row in the data.</p>
 <p>The conventions for the values of <cite>map_join</cite> parameter are as follows.</p>
 <ul>
 <li><p>Joining data and <cite>GeoDataFrame</cite> object</p>
-<dl class="simple">
-<dt>Data has a column named ‘State_name’ and <cite>GeoDataFrame</cite> has a matching column named ‘state’:</dt><dd><ul class="simple">
+<p>Data has a column named ‘State_name’ and <cite>GeoDataFrame</cite> has a matching column named ‘state’:</p>
+<ul class="simple">
 <li><p>map_join=[‘State_Name’, ‘state’]</p></li>
 <li><p>map_join=[[‘State_Name’], [‘state’]]</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 <li><p>Joining data and <cite>Geocoder</cite> object</p>
-<dl class="simple">
-<dt>Data has a column named ‘State_name’. The matching key in <cite>Geocoder</cite> is always ‘state’ (providing it is a state-level geocoder) and can be omitted:</dt><dd><ul class="simple">
+<p>Data has a column named ‘State_name’. The matching key in <cite>Geocoder</cite> is always ‘state’ (providing it is a state-level geocoder) and can be omitted:</p>
+<ul class="simple">
 <li><p>map_join=’State_Name’</p></li>
 <li><p>map_join=[‘State_Name’]</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 <li><p>Joining data by composite key</p>
-<dl class="simple">
-<dt>Joining by composite key works like in examples above, but instead of using a string for a simple key you need to use an array of strings for a composite key. The names in the composite key must be in the same order as in the US street addresses convention: ‘city’, ‘county’, ‘state’, ‘country’. For example, the data has columns ‘State_name’ and ‘County_name’. Joining with a 2-keys county level <cite>Geocoder</cite> object (the <cite>Geocoder</cite> keys ‘county’ and ‘state’ are omitted in this case):</dt><dd><ul class="simple">
+<p>Joining by composite key works like in examples above, but instead of using a string for a simple key you need to use an array of strings for a composite key. The names in the composite key must be in the same order as in the US street addresses convention: ‘city’, ‘county’, ‘state’, ‘country’. For example, the data has columns ‘State_name’ and ‘County_name’. Joining with a 2-keys county level <cite>Geocoder</cite> object (the <cite>Geocoder</cite> keys ‘county’ and ‘state’ are omitted in this case):</p>
+<ul class="simple">
 <li><p>map_join=[‘County_name’, ‘State_Name’]</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 </ul>
 </div>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">],</span> <span class="n">n</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_polygon</span><span class="p">()</span> <span class="o">+</span> \
-</span><span class="gp">&gt;&gt;&gt; </span>    <span class="n">coord_fixed</span><span class="p">()</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">],</span> <span class="n">n</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)}</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">geom_polygon</span><span class="p">()</span> <span class="o">+</span> \
+</span>    <span class="n">coord_fixed</span><span class="p">()</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="L9fNDo"></div>
+<div id="emjiQE"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -239,7 +231,7 @@ Each vertex of the polygon requires a separate row in the data.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -252,13 +244,13 @@ Each vertex of the polygon requires a separate row in the data.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("L9fNDo").appendChild(div);
+            document.getElementById("emjiQE").appendChild(div);
         };
-        var e = document.getElementById("L9fNDo");
+        var e = document.getElementById("emjiQE");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="QyXdaJ"></div>
+</div><div class="output text_html">   <div id="fVUZud"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -288,7 +280,7 @@ Each vertex of the polygon requires a separate row in the data.</p>
 }
 }]
 };
-           var plotContainer = document.getElementById("QyXdaJ");
+           var plotContainer = document.getElementById("fVUZud");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -300,32 +292,51 @@ Each vertex of the polygon requires a separate row in the data.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">Voronoi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Voronoi</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="n">i</span><span class="p">,</span> <span class="o">*</span><span class="n">v</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">v_id</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">regions</span><span class="p">)</span> \
-<span class="gp">&gt;&gt;&gt; </span>                                            <span class="k">for</span> <span class="n">v_id</span> <span class="ow">in</span> <span class="n">r</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">in</span> <span class="n">r</span><span class="p">],</span>
-<span class="gp">&gt;&gt;&gt; </span>                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> \
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_polygon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">),</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">data</span><span class="o">=</span><span class="n">v_df</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="o">+</span> \
-</span><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="o">+</span> \
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">scale_fill_discrete</span><span class="p">()</span> <span class="o">+</span> \
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">coord_fixed</span><span class="p">()</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">Voronoi</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Voronoi</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+<span class="n">v_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="n">i</span><span class="p">,</span> <span class="o">*</span><span class="n">v</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="n">v_id</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">regions</span><span class="p">)</span> \
+                                            <span class="k">for</span> <span class="n">v_id</span> <span class="ow">in</span> <span class="n">r</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">in</span> <span class="n">r</span><span class="p">],</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">geom_polygon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">),</span> \
+</span><span class="hll">                 <span class="n">data</span><span class="o">=</span><span class="n">v_df</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="o">+</span> \
+</span>    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_fill_discrete</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">coord_fixed</span><span class="p">()</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="DGhv4d"></div>
+<div id="0CbHa3"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -336,7 +347,7 @@ Each vertex of the polygon requires a separate row in the data.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -349,13 +360,13 @@ Each vertex of the polygon requires a separate row in the data.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("DGhv4d").appendChild(div);
+            document.getElementById("0CbHa3").appendChild(div);
         };
-        var e = document.getElementById("DGhv4d");
+        var e = document.getElementById("0CbHa3");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="GegqAS"></div>
+</div><div class="output text_html">   <div id="a5s27M"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -406,7 +417,7 @@ Each vertex of the polygon requires a separate row in the data.</p>
 'fill':"white"
 }]
 };
-           var plotContainer = document.getElementById("GegqAS");
+           var plotContainer = document.getElementById("a5s27M");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -418,27 +429,38 @@ Each vertex of the polygon requires a separate row in the data.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot.geo_data</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Philadelphia&#39;</span><span class="p">],</span> \
-<span class="gp">&gt;&gt;&gt; </span>        <span class="s1">&#39;est_pop_2019&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8_336_817</span><span class="p">,</span> <span class="mi">1_584_064</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">boundaries</span> <span class="o">=</span> <span class="n">geocode_cities</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_boundaries</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> \
-<span class="gp">&gt;&gt;&gt; </span><span class="n">geom_livemap</span><span class="p">()</span> <span class="o">+</span> \
-<span class="hll"><span class="gp">&gt;&gt;&gt; </span>    <span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="nb">map</span><span class="o">=</span><span class="n">boundaries</span><span class="p">,</span> <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> \
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@city&#39;</span><span class="p">)</span>\
-</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span>                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;population|@est_pop_2019&#39;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">lets_plot.geo_data</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Philadelphia&#39;</span><span class="p">],</span> \
+        <span class="s1">&#39;est_pop_2019&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8_336_817</span><span class="p">,</span> <span class="mi">1_584_064</span><span class="p">]}</span>
+<span class="n">boundaries</span> <span class="o">=</span> <span class="n">geocode_cities</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_boundaries</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> \
+<span class="n">geom_livemap</span><span class="p">()</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="nb">map</span><span class="o">=</span><span class="n">boundaries</span><span class="p">,</span> <span class="n">map_join</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> \
+</span><span class="hll">                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> \
+</span><span class="hll">                 <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@city&#39;</span><span class="p">)</span>\
+</span><span class="hll">                                          <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;population|@est_pop_2019&#39;</span><span class="p">))</span>
 </span></pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
 </pre></div>
 </div>
 <div class="output text_html">
-<div id="WwQAYz"></div>
+<div id="E8O8f5"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -449,7 +471,7 @@ Each vertex of the polygon requires a separate row in the data.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://dl.bintray.com/jetbrains/lets-plot/lets-plot-2.0.1.min.js";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -462,13 +484,13 @@ Each vertex of the polygon requires a separate row in the data.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("WwQAYz").appendChild(div);
+            document.getElementById("E8O8f5").appendChild(div);
         };
-        var e = document.getElementById("WwQAYz");
+        var e = document.getElementById("E8O8f5");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="frp7PU"></div>
+</div><div class="output text_html">   <div id="vHGwCv"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -525,7 +547,7 @@ Each vertex of the polygon requires a separate row in the data.</p>
 'alpha':0.1
 }]
 };
-           var plotContainer = document.getElementById("frp7PU");
+           var plotContainer = document.getElementById("vHGwCv");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -549,7 +571,7 @@ Each vertex of the polygon requires a separate row in the data.</p>
     </p>
     <p>
         &copy; Copyright 2020, JetBrains.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

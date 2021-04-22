@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.element_blank &#8212; lets-plot 2.0.1 documentation</title>
+    <title>lets_plot.element_blank &#8212; lets-plot 2.0.2 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -13,8 +13,6 @@
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -27,8 +25,6 @@
     <script src="../../_static/js/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="lets_plot.ggsize" href="lets_plot.ggsize.html" />
-    <link rel="prev" title="lets_plot.theme" href="lets_plot.theme.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -51,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -69,14 +65,7 @@
      href="../../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart with Jupyter</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
-</ul>
-</ul>
+      aria-labelledby="dLabelGlobalToc"></ul>
 </li>
               
                 <li class="dropdown">
@@ -97,6 +86,8 @@
             
             
             
+            
+              <li class="hidden-sm"></li>
             
           </ul>
 
@@ -123,7 +114,108 @@
 <dl class="py function">
 <dt id="lets_plot.element_blank">
 <code class="sig-prename descclassname"><span class="pre">lets_plot.</span></code><code class="sig-name descname"><span class="pre">element_blank</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.element_blank" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Specifies how non-data components of the plot are drawn.
+This theme element draws nothing, and assigns no space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Theme element specification.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><cite>FeatureSpec</cite></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)}</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">()</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">theme</span><span class="p">(</span><span class="n">axis_title_x</span><span class="o">=</span><span class="n">element_blank</span><span class="p">(),</span> <span class="n">axis_ticks</span><span class="o">=</span><span class="n">element_blank</span><span class="p">())</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="cykRuQ"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lets-plot/2.0.2/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("cykRuQ").appendChild(div);
+        };
+        var e = document.getElementById("cykRuQ");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="7dHbxJ"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+'data':{
+},
+'mapping':{
+'x':"x"
+},
+'data_meta':{
+},
+'theme':{
+'axis_title_x':{
+'name':"blank"
+},
+'axis_ticks':{
+'name':"blank"
+}
+},
+'kind':"plot",
+'scales':[],
+'layers':[{
+'geom':"histogram",
+'mapping':{
+},
+'data_meta':{
+},
+'data':{
+'..count..':[1.0,0.0,1.0,4.0,3.0,11.0,16.0,30.0,47.0,50.0,74.0,104.0,80.0,93.0,108.0,89.0,86.0,57.0,45.0,34.0,24.0,20.0,11.0,6.0,4.0,0.0,1.0,0.0,0.0,1.0],
+'x':[-3.283043110961113,-3.0355413739780825,-2.7880396369950526,-2.5405379000120223,-2.2930361630289924,-2.045534426045962,-1.798032689062932,-1.5505309520799018,-1.3030292150968716,-1.0555274781138415,-0.8080257411308112,-0.5605240041477813,-0.3130222671647509,-0.06552053018172099,0.18198120680130936,0.42948294378433927,0.6769846807673696,0.9244864177504,1.1719881547334299,1.4194898917164598,1.6669916286994906,1.9144933656825205,2.1619951026655504,2.4094968396485803,2.656998576631611,2.904500313614641,3.152002050597671,3.3995037875807017,3.6470055245637316,3.8945072615467615]
+}
+}]
+};
+           var plotContainer = document.getElementById("7dHbxJ");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+</dd></dl>
 
 </div>
 
@@ -140,7 +232,7 @@
     </p>
     <p>
         &copy; Copyright 2020, JetBrains.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

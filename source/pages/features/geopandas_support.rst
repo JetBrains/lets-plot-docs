@@ -1,5 +1,3 @@
-.. _features_geopandas_support:
-
 GeoPandas Support (`GeoPandas <https://geopandas.org>`_ and `Shapely <https://pypi.org/project/Shapely>`_)
 ##########################################################################################################
 
