@@ -150,7 +150,7 @@ Example Notebooks
 ~~~~~~~~~~~~~~~~~
 
 See `Example
-Notebooks <https://github.com/JetBrains/lets-plot/blob/master/docs/examples.md>`__.
+Notebooks <https://jetbrains.github.io/lets-plot-docs/pages/features/examples.html>`__.
 
 GGBunch
 ~~~~~~~
@@ -198,9 +198,9 @@ For example:
 
    value: 67719.94988293362
    +
-   string template: "Mean income: ВЈ{.2s}"
+   string template: "Mean income: £{.2s}"
    =
-   the formatting result: "Mean income: ВЈ67k"
+   the formatting result: "Mean income: £67k"
 
 An empty placeholder {} is also allowed. In this case a default string
 representation will be shown. This is also applicable to categorical
