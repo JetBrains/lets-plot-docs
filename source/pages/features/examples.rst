@@ -244,8 +244,7 @@ Interactive Maps
 
 The interactive map allows zooming in and out and panning around geospatial data that can be added to the base-map layer using regular ggplot2 'geoms'.
 
-See examples in `Interactive
-Maps <https://github.com/JetBrains/lets-plot/blob/master/docs/interactive_maps.md>`__.
+See examples in :ref:`Interactive Maps <interactive_maps>`.
 
 
 .. _examples_geocoding:
