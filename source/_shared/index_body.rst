@@ -268,7 +268,7 @@ layers: ``geom_polygon``, ``geom_map``, ``geom_point``, ``geom_text``,
 ``geom_rect``.
 
 Learn more: `GeoPandas
-Support <https://jetbrains.github.io/lets-plot-docs/pages/features/geopandas_support.html>`__.
+Support <https://jetbrains.github.io/lets-plot-docs/pages/features/geopandas.html>`__.
 
 .. raw:: html
 

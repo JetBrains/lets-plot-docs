@@ -234,8 +234,7 @@ The 'bistro' Package
 GeoPandas Support
 ^^^^^^^^^^^^^^^^^
 
-See examples in `GeoPandas
-Support <https://github.com/JetBrains/lets-plot/blob/master/docs/geopandas.md>`__.
+See examples in :ref:`GeoPandas Support <geopandas>`.
 
 
 .. _examples_interactive_maps:
