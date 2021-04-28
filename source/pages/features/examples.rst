@@ -137,9 +137,9 @@ Facets
 GGBunch
 ^^^^^^^
 
-GGBunch allows to show a collection of plots on one figure. Each plot in
-the collection can have arbitrary location and size. There is no
-automatic layout inside the bunch.
+GGBunch allows to show a collection of plots on one figure.
+Each plot in the collection can have arbitrary location and size.
+There is no automatic layout inside the bunch.
 
 - `ggbunch.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/ggbunch.ipynb>`__
 - `geom_smooth.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
@@ -189,8 +189,7 @@ Legend layout and axis presentation options:
 Data Sampling
 ^^^^^^^^^^^^^
 
-Sampling is a special technique of data transformation, which helps to
-deal with large datasets and overplotting.
+Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting.
 
 See examples in `Sampling in Lets-Plot <https://github.com/JetBrains/lets-plot/blob/master/docs/sampling.md>`__.
 
@@ -244,9 +243,7 @@ Support <https://github.com/JetBrains/lets-plot/blob/master/docs/geopandas.md>`_
 Interactive Maps
 ^^^^^^^^^^^^^^^^
 
-The interactive map allows zooming in and out and panning around
-geospatial data that can be added to the base-map layer using regular
-ggplot2 'geoms'.
+The interactive map allows zooming in and out and panning around geospatial data that can be added to the base-map layer using regular ggplot2 'geoms'.
 
 See examples in `Interactive
 Maps <https://github.com/JetBrains/lets-plot/blob/master/docs/interactive_maps.md>`__.
@@ -257,8 +254,6 @@ Maps <https://github.com/JetBrains/lets-plot/blob/master/docs/interactive_maps.m
 Geocoding
 ^^^^^^^^^
 
-Geocoding is the process of converting names of places into geographic
-coordinates.
+Geocoding is the process of converting names of places into geographic coordinates.
 
-See the "Examples" section in
-`Geocoding <https://github.com/JetBrains/lets-plot/blob/master/docs/geocoding.md>`__.
+See the "Examples" section in :ref:`Geocoding <geocoding>`.

@@ -299,7 +299,7 @@ administrative levels:
 -  cities (and towns)
 
 Learn more:
-`Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding_api.html>`__.
+`Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
 
 'No Javascript' Mode
 ~~~~~~~~~~~~~~~~~~~~
@@ -440,7 +440,7 @@ What is new in 2.0.0
    release cycles to continue support of prior Lets-Plot versions.
 
    To learn more about new Geocoding API see:
-   `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding_api.html>`__.
+   `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
 
 See
 `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__
