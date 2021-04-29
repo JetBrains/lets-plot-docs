@@ -191,7 +191,7 @@ Data Sampling
 
 Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting.
 
-See examples in `Sampling in Lets-Plot <https://github.com/JetBrains/lets-plot/blob/master/docs/sampling.md>`__.
+See examples in :ref:`Sampling in Lets-Plot <sampling>`.
 
 
 .. _examples_tooltips:
