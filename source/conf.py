@@ -37,7 +37,6 @@ extensions = [
     'jupyter_sphinx',
     'sphinx_gallery.gen_gallery',
     'sphinx_gallery_jupyter',
-    'sphinx_panels',
 ]
 
 autodoc_default_options = {
@@ -76,8 +75,6 @@ sphinx_gallery_jupyter_conf = {
     'examples_dirs': examples_dirs,
 }
 
-panels_add_bootstrap_css = False
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -101,6 +98,7 @@ release = lets_plot.__version__
 #
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_show_sourcelink = False
 
 html_theme_options = {
     'navbar_title': 'Lets-Plot',
@@ -108,7 +106,6 @@ html_theme_options = {
       ('API', 'pages/api'),
       ('Gallery', 'gallery/index'),
     ],
-    'source_link_position': '',
     'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3
     'navbar_sidebarrel': False,
     'bootstrap_version': '3',
@@ -143,6 +140,4 @@ html_sidebars = {
 
     # local table of contents for the API page
     'pages/api': ['localtoc.html'],
-    # local table of contents for the Features page
-    'pages/features': ['localtoc.html'],
 }

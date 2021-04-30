@@ -72,32 +72,36 @@ ggplot() + \
 
 # %% [markdown]
 #
+# Custom Theme
+# ~~~~~~~~~~~~
+
+# %%
+
+tiles = maptiles_lets_plot(url='wss://tiles.datalore.jetbrains.com', theme='dark')
+ggplot() + \
+    geom_livemap(tiles=tiles) + \
+    geom_map(aes(color='population', fill='population'), \
+             data=pop_df, map=states, map_join='state', size=1, alpha=.3) + \
+    scale_color_gradient(low='#4575b4', high='#d73027') + \
+    scale_fill_gradient(low='#4575b4', high='#d73027')
+
+# %%
+
+# %% [markdown]
+#
 # Custom Tile Server
 # ~~~~~~~~~~~~~~~~~~
 
 # %%
 
-LetsPlot.set(maptiles_zxy(
+tiles = maptiles_zxy(
     url='http://a.tile.stamen.com/toner/{z}/{x}/{y}.png',
     attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
     max_zoom=10
-))
+)
 ggplot() + \
-    geom_livemap() + \
+    geom_livemap(tiles=tiles) + \
     geom_map(aes(fill='population'), \
              data=pop_df, map=states, map_join='state', \
              color='black', size=1, alpha=.7) + \
     scale_fill_gradient(low='#f7f7f7', high='#252525')
-
-# %%
-
-LetsPlot.set(maptiles_zxy(
-    url='https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_CityLights_2012/default//GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg',
-    attribution='<a href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs">© NASA Global Imagery Browse Services (GIBS)</a>',
-    max_zoom=8
-))
-ggplot() + \
-    geom_livemap() + \
-    geom_map(aes(fill='population'), \
-             data=pop_df, map=states, map_join='state', size=0, alpha=.3) + \
-    scale_fill_gradient(low='#4575b4', high='#d73027')

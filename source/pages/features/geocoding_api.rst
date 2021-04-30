@@ -1,5 +1,3 @@
-.. _features_geocoding_api:
-
 Geocoding API
 #############
 
