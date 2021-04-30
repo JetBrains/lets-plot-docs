@@ -1,4 +1,6 @@
-﻿Tooltip Customization
+﻿.. _tooltips:
+
+Tooltip Customization
 #####################
 
 - :ref:`Formatting tooltip fields <tooltips_formatting>`

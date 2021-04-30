@@ -115,7 +115,7 @@
     <div class="body col-md-12 content" role="main">
       
   <div class="section" id="sampling-in-lets-plot">
-<h1>Sampling in Lets-Plot<a class="headerlink" href="#sampling-in-lets-plot" title="Permalink to this headline">¶</a></h1>
+<span id="sampling"></span><h1>Sampling in Lets-Plot<a class="headerlink" href="#sampling-in-lets-plot" title="Permalink to this headline">¶</a></h1>
 <p>Sampling is a special technique of data transformation, which is built into Lets-Plot and is applied after <code class="docutils literal notranslate"><span class="pre">stat</span></code> transformation.</p>
 <p>Sampling helps dealing with large datasets when unintentional attempt to plot an excessively large number of geometries can lead to UI freezes and even to out-of-memory crashes.</p>
 <p>Sampling is also one of the ways of handling over-plotting.</p>
@@ -123,34 +123,32 @@
 <h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
 <p>By default, sampling kicks-in automatically when the data volume exceeds a certain threshold.
 Sampling type and parameters can also be configured manually per geometry layer using the <code class="docutils literal notranslate"><span class="pre">sampling</span></code> argument of <code class="docutils literal notranslate"><span class="pre">geom_xxx()</span></code> function.</p>
-<p>Value <code class="docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code> will disable any sampling for the given layer.</p>
-<p>There are several sampling methods implemented in Lets-Plot. The sampling methods can be chained together using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
+<p>Value <code class="docutils literal notranslate"><span class="pre">'none'</span></code> will disable any sampling for the given layer.</p>
+<p>There are several sampling methods implemented in Lets-Plot.
+The sampling methods can be chained together using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
 </div>
 <div class="section" id="sampling-methods">
 <h2>Sampling methods<a class="headerlink" href="#sampling-methods" title="Permalink to this headline">¶</a></h2>
 <p><strong>random</strong> - selects data points at randomly chosen indices without replacement.</p>
-<p><strong>systematic</strong> - selects data points at evenly distributed indices. Unlike canonical systematic sampling, it starts at index 0 and chooses the step so that the last selected index be as close as possible to the last index in the data.</p>
-<p><strong>pick</strong> - intended mostly for bar chart and, unlike the first two (above) it doesn’t pick indices. Instead, it analyses X-values and selects all points which X-value is in the set of first n X-values found in the population.</p>
+<p><strong>systematic</strong> - selects data points at evenly distributed indices.
+Unlike canonical systematic sampling, it starts at index 0 and chooses the step so that the last selected index be as close as possible to the last index in the data.</p>
+<p><strong>pick</strong> - intended mostly for bar chart and, unlike the first two (above) it doesn’t pick indices.
+Instead, it analyses X-values and selects all points which X-value is in the set of first n X-values found in the population.</p>
 <p><strong>group random, group systematic</strong> - similar to point-wise random/systematic sampling (above) but it selects the entire groups instead of individual data-points.</p>
 <p><strong>random stratified</strong> - randomly selects points from each group proportionally to the group size but also ensures that each group is represented by at least specified minimal number of points.</p>
-<p><strong>vertex</strong> - designed for polygon simplification. Vertex sampling knows how to handle rings. There is a choice of two implementation algorithms: <strong>Douglas-Peucker</strong> and <strong>Visvalingam-Whyatt</strong>.</p>
+<p><strong>vertex</strong> - designed for polygon simplification. Vertex sampling knows how to handle rings.
+There is a choice of two implementation algorithms: <strong>Douglas-Peucker</strong> and <strong>Visvalingam-Whyatt</strong>.</p>
 <p>When using group sampling, user specifies target number of groups in the sample which does not guarantee that the total number of points in the sample will be reasonably low.</p>
 <p>For this case there is always a ‘safety’ sampling (<strong>random</strong> N=200_000) ready to kick-in if data volume is still too high.</p>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>Random sampling on a scatter plot (might take some time to load):
-<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_random.ipynb">sampling_random.ipynb</a></p>
-<p>Pick sampling on Bar-chart:
-<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_pick.ipynb">sampling_pick.ipynb</a></p>
-<p>Systematic and random sampling on a line plot:
-<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_systematic.ipynb">sampling_systematic.ipynb</a></p>
-<p>Stratified sampling:
-<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_stratified.ipynb">sampling_stratified.ipynb</a></p>
-<p>Group sampling:
-<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_groups.ipynb">sampling_groups.ipynb</a></p>
-<p>Vertex sampling:
-<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_vertex.ipynb">sampling_vertex.ipynb</a></p>
+<p>Random sampling on a scatter plot (might take some time to load): <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_random.ipynb">sampling_random.ipynb</a></p>
+<p>Pick sampling on Bar-chart: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_pick.ipynb">sampling_pick.ipynb</a></p>
+<p>Systematic and random sampling on a line plot: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_systematic.ipynb">sampling_systematic.ipynb</a></p>
+<p>Stratified sampling: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_stratified.ipynb">sampling_stratified.ipynb</a></p>
+<p>Group sampling: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_groups.ipynb">sampling_groups.ipynb</a></p>
+<p>Vertex sampling: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_vertex.ipynb">sampling_vertex.ipynb</a></p>
 </div>
 </div>
 
@@ -163,13 +161,13 @@ Sampling type and parameters can also be configured manually per geometry layer 
   <div class="container">
     <p class="pull-right">
       <a href="#">Back to top</a>
-      
     </p>
     <p>
-        &copy; Copyright 2020, JetBrains.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+      Copyright © 2019-2021 JetBrains s.r.o.<br>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
     </p>
   </div>
 </footer>
+
   </body>
 </html>
