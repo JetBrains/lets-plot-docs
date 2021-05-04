@@ -149,8 +149,7 @@ code to a Jupyter notebook:
 Example Notebooks
 ~~~~~~~~~~~~~~~~~
 
-See `Example
-Notebooks <https://github.com/JetBrains/lets-plot/blob/master/docs/examples.md>`__.
+See `Example Notebooks <https://jetbrains.github.io/lets-plot-docs/pages/features/examples.html>`__.
 
 GGBunch
 ~~~~~~~
@@ -198,9 +197,9 @@ For example:
 
    value: 67719.94988293362
    +
-   string template: "Mean income: ВЈ{.2s}"
+   string template: "Mean income: £{.2s}"
    =
-   the formatting result: "Mean income: ВЈ67k"
+   the formatting result: "Mean income: £67k"
 
 An empty placeholder {} is also allowed. In this case a default string
 representation will be shown. This is also applicable to categorical
@@ -267,8 +266,7 @@ GeoPandas ``GeoDataFrame`` is supported by the following geometry
 layers: ``geom_polygon``, ``geom_map``, ``geom_point``, ``geom_text``,
 ``geom_rect``.
 
-Learn more: `GeoPandas
-Support <https://jetbrains.github.io/lets-plot-docs/pages/features/geopandas_support.html>`__.
+Learn more: `GeoPandas Support <https://jetbrains.github.io/lets-plot-docs/pages/features/geopandas.html>`__.
 
 .. raw:: html
 
@@ -298,8 +296,7 @@ administrative levels:
 -  counties (and equivalents)
 -  cities (and towns)
 
-Learn more:
-`Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding_api.html>`__.
+Learn more: `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
 
 'No Javascript' Mode
 ~~~~~~~~~~~~~~~~~~~~
@@ -440,7 +437,7 @@ What is new in 2.0.0
    release cycles to continue support of prior Lets-Plot versions.
 
    To learn more about new Geocoding API see:
-   `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding_api.html>`__.
+   `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
 
 See
 `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__

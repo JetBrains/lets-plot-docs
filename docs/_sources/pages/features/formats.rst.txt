@@ -1,4 +1,6 @@
-﻿Formatting
+﻿.. _formats:
+
+Formatting
 ##########
 
 Formatting provides the ability to do complex variable substitutions and value formatting.

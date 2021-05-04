@@ -10,6 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+from datetime import datetime
 import os
 import sys
 sys.path.insert(0, os.path.abspath('./_ext'))
@@ -109,6 +110,10 @@ html_theme_options = {
     'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3
     'navbar_sidebarrel': False,
     'bootstrap_version': '3',
+}
+
+html_context = {
+    'cur_year': datetime.now().year,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
