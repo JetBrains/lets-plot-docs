@@ -20,6 +20,7 @@ input_text = ''
 with open(args.input, encoding='utf8') as f:
     input_text = f.read()
     input_text = re.sub(r'\n<table>.+</table>\n', '', input_text, flags=re.DOTALL)
+    input_text = re.sub(r'\n-\s*\[License\]\(#license\)', '', input_text, flags=re.DOTALL)
     input_text = re.sub(r'\n<a id="license">.+', '', input_text, flags=re.DOTALL)
 
 assert pypandoc.convert_text(input_text, format='gfm', to='rst', outputfile=args.output) == ''
