@@ -27,7 +27,6 @@ Lets-Plot for Python |official JetBrains project|
    PyCharm <#scientific-mode-in-intellij-idea-pycharm>`__
 -  `What is new in 2.0.0 <#what-is-new-in-2-0-0>`__
 -  `Change Log <#change-log>`__
--  `License <#license>`__
 
 Overview
 ~~~~~~~~
@@ -149,7 +148,8 @@ code to a Jupyter notebook:
 Example Notebooks
 ~~~~~~~~~~~~~~~~~
 
-See `Example Notebooks <https://jetbrains.github.io/lets-plot-docs/pages/features/examples.html>`__.
+See `Example
+Notebooks <https://jetbrains.github.io/lets-plot-docs/pages/features/examples.html>`__.
 
 GGBunch
 ~~~~~~~
@@ -266,7 +266,8 @@ GeoPandas ``GeoDataFrame`` is supported by the following geometry
 layers: ``geom_polygon``, ``geom_map``, ``geom_point``, ``geom_text``,
 ``geom_rect``.
 
-Learn more: `GeoPandas Support <https://jetbrains.github.io/lets-plot-docs/pages/features/geopandas.html>`__.
+Learn more: `GeoPandas
+Support <https://jetbrains.github.io/lets-plot-docs/pages/features/geopandas.html>`__.
 
 .. raw:: html
 
@@ -296,7 +297,8 @@ administrative levels:
 -  counties (and equivalents)
 -  cities (and towns)
 
-Learn more: `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
+Learn more:
+`Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
 
 'No Javascript' Mode
 ~~~~~~~~~~~~~~~~~~~~
