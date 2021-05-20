@@ -5,7 +5,7 @@ Interactive Maps
 
 *Lets-Plot* supports interactive maps via the ``geom_livemap()`` geom layer which enables a researcher to visualize geospatial information on a zoomable and paneble map.
 
-.. image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/map_path.png
+.. image:: /_static/images/map_path.png
     :width: 480px
     :alt: Couldn't load map_path.png
 

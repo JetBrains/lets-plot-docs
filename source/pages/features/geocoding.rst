@@ -117,7 +117,7 @@ Examples
 
 -  Visualization of the Titanic's voyage: |titanic_voyage_datalore| |titanic_voyage_kaggle| |titanic_voyage_colab|
 
-.. image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/map_titanic.png
+.. image:: /_static/images/map_titanic.png
     :width: 547px
     :height: 197px
     :alt: Couldn't load map_titanic.png
@@ -140,7 +140,7 @@ Examples
 
 -  Visualization of Airport Data on Map: |airport_data_kaggle|
 
-.. image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/map_airports.png
+.. image:: /_static/images/map_airports.png
     :width: 547px
     :height: 311px
     :alt: Couldn't load map_airports.png
