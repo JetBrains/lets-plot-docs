@@ -27,11 +27,22 @@ The following functions set lines, define formatting of the tooltip, its locatio
 
 .. code-block:: python
 
-    tooltips=layer_tooltips()
+    tooltips=layer_tooltips(variables)
         .format(field, format)
         .line(template)
         .anchor(position)
         .min_width(value)
+
+
+.. _tooltips_variables:
+
+Tooltip variable list: ``layer_tooltips(variables=['var_name_1', ..., 'var_name_N'])``
+======================================================================================
+
+The ``variables`` parameter defines a list of variable names, which values will be placed line by line in the general tooltip.
+If formatting is specified for a variable from this list (with the ``format()`` function), it will be applied.
+Otherwise, the default formatting is used.
+Additional tooltip lines can be specified using the ``line()`` functions.
 
 
 .. _tooltips_formatting:
@@ -181,6 +192,37 @@ Change format for the default tooltip:
     ggplot(df) + geom_point(aes(x='displ', y='cty', fill='drv', size='hwy'), shape=21, color='black', \
                             tooltips=layer_tooltips().format('^fill', '{.2f} (mpg)'))
 
+Set list of variables to place them in a multiline tooltip with the default formatting:
+
+.. jupyter-execute::
+    :linenos:
+
+    import pandas as pd
+
+    from lets_plot import *
+    LetsPlot.setup_html()
+
+    df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv')
+
+    ggplot(df) + geom_point(aes(x='displ', y='cty', fill='drv', size='hwy'), shape=21, color='black',
+                            tooltips=layer_tooltips(['manufacturer', 'model', 'class', 'drv']))
+
+Define the format for the variable from the list and specify an additional line:
+
+.. jupyter-execute::
+    :linenos:
+
+    import pandas as pd
+
+    from lets_plot import *
+    LetsPlot.setup_html()
+
+    df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv')
+
+    ggplot(df) + geom_point(aes(x='displ', y='cty', fill='drv', size='hwy'), shape=21, color='black',
+                            tooltips=layer_tooltips(['manufacturer', 'model', 'class', 'drv'])
+                                          .format('drv', '{}wd')
+                                          .line('cty/hwy [mpg]|@cty/@hwy'))
 
 Place a general tooltip at the top center and define its minimum width:
 
