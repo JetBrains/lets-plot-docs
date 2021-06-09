@@ -1,6 +1,33 @@
 Lets-Plot for Python |official JetBrains project|
 =================================================
 
+.. raw:: html
+
+   <table class="table table-striped table-bordered">
+       <tr>
+           <td>Latest Release</td>
+           <td>
+               <a href="https://pypi.org/project/lets-plot/"/>
+               <img src="https://badge.fury.io/py/lets-plot.svg"/>
+           </td>
+       </tr>
+       <tr>
+           <td>License</td>
+           <td>
+               <a href="https://opensource.org/licenses/MIT"/>
+               <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
+           </td>
+       </tr>
+       <tr>
+           <td>OS</td>
+           <td>Linux, MacOS, Windows</td>
+       </tr>
+       <tr>
+           <td>Python versions</td>
+           <td>3.6, 3.7, 3.8, 3.9</td>
+       </tr>
+   </table>
+
 -  `Overview <#overview>`__
 -  `Installation <#installation>`__
 -  `Quick start with Jupyter <#quick-start-with-jupyter>`__
