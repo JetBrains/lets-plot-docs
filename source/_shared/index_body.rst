@@ -9,6 +9,7 @@ Lets-Plot for Python |official JetBrains project|
 -  `Data Sampling <#data-sampling>`__
 -  `Export to File <#export-to-file>`__
 -  `Formatting <#formatting>`__
+-  `Tooltip Customization <#tooltip-customization>`__
 -  `The 'bistro' Package <#the-bistro-package>`__
 
    -  `Correlation Plot <#correlation-plot>`__
@@ -219,6 +220,15 @@ In Lets-Plot you can use formatting for:
 -  facetting values in ``facet_grid()``, ``facet_wrap()`` functions.
    See: `Facets
    demo <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/facets.ipynb>`__.
+
+Tooltip Customization
+~~~~~~~~~~~~~~~~~~~~~
+
+You can customize the content of tooltips for the layer by using the
+parameter ``tooltips`` of ``geom`` functions.
+
+Learn more: `Tooltip
+Customization <https://jetbrains.github.io/lets-plot-docs/pages/features/tooltips.html>`__.
 
 The 'bistro' Package
 ~~~~~~~~~~~~~~~~~~~~
@@ -441,15 +451,12 @@ What is new in 2.0.0
    To learn more about new Geocoding API see:
    `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
 
-See
-`CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__
-for other changes and fixes.
-
 Change Log
 ~~~~~~~~~~
 
 See
 `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__
+for other changes and fixes.
 
 .. |official JetBrains project| image:: http://jb.gg/badges/official-flat-square.svg
    :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
