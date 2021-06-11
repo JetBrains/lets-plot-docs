@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geoms &#8212; lets-plot 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Lets-Plot</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../../gallery/index.html">Gallery</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Geoms</a><ul>
+<li><a class="reference internal" href="#geom-abline-geom-vline-geom-hline">geom_abline(), geom_vline(), geom_hline()</a><ul>
+<li><a class="reference internal" href="#arguments">Arguments</a></li>
+<li><a class="reference internal" href="#aesthetics">Aesthetics</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-area-geom-ribbon">geom_area(), geom_ribbon()</a><ul>
+<li><a class="reference internal" href="#id1">Arguments</a></li>
+<li><a class="reference internal" href="#id2">Aesthetics</a></li>
+<li><a class="reference internal" href="#id3">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-bar-bar-chart">geom_bar() | Bar chart</a><ul>
+<li><a class="reference internal" href="#id4">Arguments</a></li>
+<li><a class="reference internal" href="#id5">Aesthetics</a></li>
+<li><a class="reference internal" href="#id6">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-boxplot">geom_boxplot()</a><ul>
+<li><a class="reference internal" href="#id7">Arguments</a></li>
+<li><a class="reference internal" href="#id8">Aesthetics</a></li>
+<li><a class="reference internal" href="#id9">!Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-contour-geom-contourf">geom_contour(), geom_contourf()</a><ul>
+<li><a class="reference internal" href="#computed-variables">Computed variables</a></li>
+<li><a class="reference internal" href="#id10">Arguments</a></li>
+<li><a class="reference internal" href="#id11">Aesthetics</a></li>
+<li><a class="reference internal" href="#id12">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-density">geom_density()</a><ul>
+<li><a class="reference internal" href="#id13">Arguments</a></li>
+<li><a class="reference internal" href="#id14">Aesthetics</a></li>
+<li><a class="reference internal" href="#id15">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-density2d-geom-density2df">geom_density2d(), geom_density2df()</a><ul>
+<li><a class="reference internal" href="#id16">Arguments</a></li>
+<li><a class="reference internal" href="#id17">Aesthetics</a></li>
+<li><a class="reference internal" href="#id18">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-errorbar">geom_errorbar()</a><ul>
+<li><a class="reference internal" href="#id19">Arguments</a></li>
+<li><a class="reference internal" href="#id20">Aesthetics</a></li>
+<li><a class="reference internal" href="#id21">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-freqpoly-geom-histogram">geom_freqpoly(), geom_histogram()</a><ul>
+<li><a class="reference internal" href="#computed-variables-if-bin-stat">Computed variables (if ‘bin’ stat)</a></li>
+<li><a class="reference internal" href="#id22">Arguments</a></li>
+<li><a class="reference internal" href="#id23">Aesthetics</a></li>
+<li><a class="reference internal" href="#id24">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-image">geom_image()</a><ul>
+<li><a class="reference internal" href="#id25">Arguments</a></li>
+<li><a class="reference internal" href="#id26">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-jitter">geom_jitter()</a><ul>
+<li><a class="reference internal" href="#id27">Arguments</a></li>
+<li><a class="reference internal" href="#id28">Aesthetics</a></li>
+<li><a class="reference internal" href="#id29">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-livemap">!!! geom_livemap()</a><ul>
+<li><a class="reference internal" href="#id30">Arguments</a></li>
+<li><a class="reference internal" href="#id31">Aesthetics</a></li>
+<li><a class="reference internal" href="#id32">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-path-geom-line-geom-step">geom_path(), geom_line(), geom_step()</a><ul>
+<li><a class="reference internal" href="#id33">Arguments</a></li>
+<li><a class="reference internal" href="#id34">Aesthetics</a></li>
+<li><a class="reference internal" href="#id35">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-point">geom_point()</a><ul>
+<li><a class="reference internal" href="#id36">Arguments</a></li>
+<li><a class="reference internal" href="#id37">Aesthetics</a></li>
+<li><a class="reference internal" href="#id38">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-polygon">geom_polygon()</a><ul>
+<li><a class="reference internal" href="#id39">Arguments</a></li>
+<li><a class="reference internal" href="#id40">Aesthetics</a></li>
+<li><a class="reference internal" href="#id41">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-raster-geom-tile-geom-rect">geom_raster(), geom_tile(), geom_rect()</a><ul>
+<li><a class="reference internal" href="#id42">Arguments</a></li>
+<li><a class="reference internal" href="#id43">Aesthetics</a></li>
+<li><a class="reference internal" href="#id44">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-smooth">geom_smooth()</a><ul>
+<li><a class="reference internal" href="#id45">Computed variables</a></li>
+<li><a class="reference internal" href="#id46">Arguments</a></li>
+<li><a class="reference internal" href="#id47">Aesthetics</a></li>
+<li><a class="reference internal" href="#id48">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-segment">geom_segment()</a><ul>
+<li><a class="reference internal" href="#id49">Arguments</a></li>
+<li><a class="reference internal" href="#id50">Aesthetics</a></li>
+<li><a class="reference internal" href="#id51">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geom-text">geom_text()</a><ul>
+<li><a class="reference internal" href="#id52">Arguments</a></li>
+<li><a class="reference internal" href="#id53">Aesthetics</a></li>
+<li><a class="reference internal" href="#id54">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="geoms">
+<span id="overview-geoms"></span><h1>Geoms<a class="headerlink" href="#geoms" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_abline()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_hline()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_vline()</span></code> | Reference lines: diagonal, horizontal and vertical</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_area()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_ribbon()</span></code> | Area plots and ribbons</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_bar()</span></code> | Bar chart</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_boxplot()</span></code> | Tukey-styled box-and-whiskers plot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_contour()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_contourf()</span></code> | 2d contours of a 3d surface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_density()</span></code> | Smoothed density estimates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_density2d()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_density2df()</span></code> | Contours of a 2d density estimate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_errorbar()</span></code> | Error bars</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_freqpoly()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_histogram()</span></code> | Frequency polygons and histograms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_image()</span></code> | Insert image directly into the plot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_jitter()</span></code> | Jittered points</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!!geom_livemap</span></code> | <strong>TBC</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_path()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_line()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_step()</span></code> | Connect data points</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_point()</span></code> | Points</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_polygon()</span></code> | Polygons</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_raster()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_tile()</span></code>, <code class="docutils literal notranslate"><span class="pre">geom_rect()</span></code> | Rectangles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_smooth()</span></code> | Smoothed conditional poligons</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_segment()</span></code> |  Line segments</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_text()</span></code> | Add text</p></li>
+</ul>
+<div class="section" id="geom-abline-geom-vline-geom-hline">
+<h2>geom_abline(), geom_vline(), geom_hline()<a class="headerlink" href="#geom-abline-geom-vline-geom-hline" title="Permalink to this headline">¶</a></h2>
+<p>Straight lines to a plot specified by slope and intercept:</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_abline(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=None,</span> <span class="pre">position=None,</span> <span class="pre">show_legend=None,</span> <span class="pre">sampling=None,</span> <span class="pre">slope=None,</span> <span class="pre">intercept=None,</span> <span class="pre">**other_args)</span></code></p>
+<p>Straight horizontal line:</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_hline(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=None,</span> <span class="pre">position=None,</span> <span class="pre">show_legend=None,</span> <span class="pre">sampling=None,</span> <span class="pre">yintercept=None,</span> <span class="pre">**other_args)</span></code></p>
+<p>Straight vertical line:</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_vline(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=None,</span> <span class="pre">position=None,</span> <span class="pre">show_legend=None,</span> <span class="pre">sampling=None,</span> <span class="pre">xintercept=None,</span> <span class="pre">**other_args)</span></code></p>
+<div class="section" id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_legend</span></code> (bool, optional): Controls this layer inclusion in the legends. <code class="docutils literal notranslate"><span class="pre">None</span></code>, the default - include if any aesthetics are mapped. False - never include.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling</span></code> (optional): Sampling transformation - the result of call to a sampling function (<code class="docutils literal notranslate"><span class="pre">sampling_random()</span></code> etc.).</p></li>
+</ul>
+<p><cite>geom_abline</cite>:
+- <cite>slope</cite>: The line slope.
+- <cite>intercept</cite> The value of y at the point where the line crosses the y axis.</p>
+<p><cite>geom_hline</cite>:
+- <cite>yintercept</cite>: The value of y at the point where the line crosses the y axis.</p>
+<p><cite>geom_vline</cite>:
+- <cite>xintercept</cite>: The value of x at the point where the line crosses the x axis.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>other_args</cite> Other arguments passed on to the layer. Usually the aesthetics settings, like <cite>color=”red”</cite>, <cite>fill=”blue”</cite>, <cite>size=3</cite> or <cite>shape=21</cite>. Or the parameters to the</dt><dd><p>geom/stat pair.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="aesthetics">
+<h3>Aesthetics<a class="headerlink" href="#aesthetics" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">geom_abline()</span></code>: slope, intercept, alpha, colour, linetype, size
+<code class="docutils literal notranslate"><span class="pre">geom_hline()</span></code>: yintercept, alpha, colour, linetype, size
+<code class="docutils literal notranslate"><span class="pre">geom_vline()</span></code>: xintercept, alpha, colour, linetype, size</p>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_vline</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="geom-area-geom-ribbon">
+<h2>geom_area(), geom_ribbon()<a class="headerlink" href="#geom-area-geom-ribbon" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">geom_area(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=None,</span> <span class="pre">position=None,</span> <span class="pre">other_args)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_ribbon(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=None,</span> <span class="pre">position=None,</span> <span class="pre">other_args)</span></code></p>
+<div class="section" id="id1">
+<h3>Arguments<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Aesthetics<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><cite>geom_area()</cite>: x, y, alpha, colour, fill, linetype, size, group
+<cite>geom_ribbon()</cite>: x, ymin, ymax, alpha, colour, fill, linetype, size, group</p>
+</div>
+<div class="section" id="id3">
+<h3>Examples<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>  <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">level</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_ribbon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span> <span class="o">=</span> <span class="n">level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>  <span class="n">geom_line</span><span class="p">()</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_area</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">level</span><span class="p">))</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="geom-bar-bar-chart">
+<h2>geom_bar() | Bar chart<a class="headerlink" href="#geom-bar-bar-chart" title="Permalink to this headline">¶</a></h2>
+<p>Plain bar chart. Bar charts represent either counts of cases for each group (default option) or values of a column in the dataset (<code class="docutils literal notranslate"><span class="pre">stat='identity'</span></code>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_bar(mapping</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">data</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">stat</span> <span class="pre">=</span> <span class="pre">&quot;count&quot;,</span> <span class="pre">position</span> <span class="pre">=</span> <span class="pre">&quot;stack&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">count</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">stack</span></code>.</p>
+<div class="section" id="id4">
+<h3>Arguments<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Aesthetics<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>x, y, alpha, colour, fill, linetype, size</p>
+</div>
+<div class="section" id="id6">
+<h3>Examples<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_bar</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_bar_1.png"><img alt="../../_images/geom_bar_1.png" src="../../_images/geom_bar_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_bar_2.png"><img alt="../../_images/geom_bar_2.png" src="../../_images/geom_bar_2.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;subgroup&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">position_dodge</span><span class="p">())</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_bar_3.png"><img alt="../../_images/geom_bar_3.png" src="../../_images/geom_bar_3.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-boxplot">
+<h2>geom_boxplot()<a class="headerlink" href="#geom-boxplot" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">geom_boxplot(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;dodge&quot;,</span> <span class="pre">show_legend=None,</span> <span class="pre">outlier_color=None,</span> <span class="pre">outlier_fill=None,</span> <span class="pre">outlier_shape=None,</span> <span class="pre">outlier_size=None,</span> <span class="pre">varwidth=None,</span> <span class="pre">**other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">dodge</span></code>.</p>
+<div class="section" id="id7">
+<h3>Arguments<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outlier_color</span></code>, <code class="docutils literal notranslate"><span class="pre">outlier_fill</span></code>, <code class="docutils literal notranslate"><span class="pre">outlier_shape</span></code>, <code class="docutils literal notranslate"><span class="pre">outlier_size</span></code>: Default aesthetics for outliers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">varwidth</span></code>: if <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> (default) make a standard box plot. If <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, boxes are drawn with widths proportional to the square-roots of the number of observations in the groups.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Aesthetics<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>x, ymin, ymax, lower, middle, upper, alpha, colour, fill, size, weight, width</p>
+</div>
+<div class="section" id="id9">
+<h3>!Examples<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;hwy&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;cyl&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyl&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_boxplot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="geom-contour-geom-contourf">
+<h2>geom_contour(), geom_contourf()<a class="headerlink" href="#geom-contour-geom-contourf" title="Permalink to this headline">¶</a></h2>
+<p>2d contours of a 3d surface.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_contour(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;contour&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">show_legend=None,</span> <span class="pre">bins=None,</span> <span class="pre">binwidth=None,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">contour</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="computed-variables">
+<h3>Computed variables<a class="headerlink" href="#computed-variables" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">..level..</span></code> - height of contour</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">..nlevel..</span></code> - height of contour, scaled to maximum of 1</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>Arguments<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>Instead of lineedn…, use <code class="docutils literal notranslate"><span class="pre">bins</span></code> or <code class="docutils literal notranslate"><span class="pre">binwidth</span></code> to set</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code> (int, optional): Number of levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">binwidth</span></code> (double, optional): Distance between levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>Aesthetics<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>x, y, alpha, colour, linetype, size, group</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">geom_contourf()</span></code>: <code class="docutils literal notranslate"><span class="pre">fill</span></code> controls the color of a geometry areas. Can be continuous or discrete. For continuous value this will be a color gradient between two colors.</p>
+</div>
+<div class="section" id="id12">
+<h3>Examples<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">scale_fill_grey</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">scale_color_gradient</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_contour</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;..level..&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_contour_1.png"><img alt="../../_images/geom_contour_1.png" src="../../_images/geom_contour_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_contour</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;..level..&#39;</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_contour_2.png"><img alt="../../_images/geom_contour_2.png" src="../../_images/geom_contour_2.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_contourf</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;..level..&#39;</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_fill_gradient</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_contour_3.png"><img alt="../../_images/geom_contour_3.png" src="../../_images/geom_contour_3.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-density">
+<h2>geom_density()<a class="headerlink" href="#geom-density" title="Permalink to this headline">¶</a></h2>
+<p>Visualises the data distribution over a continuous interval. Density plot is a smoothed version of a histogram.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_density(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;density&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">show_legend=None,</span> <span class="pre">kernel=None,</span> <span class="pre">adjust=None,</span> <span class="pre">bw=None,</span> <span class="pre">n=None,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">density</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id13">
+<h3>Arguments<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kernel</span></code> (string, optional): The kernel we use to calculate the density function. Choose among “gaussian”, “cosine”, “optcosine”, “rectangular” (or “uniform”), “triangular”, “biweight” (or “quartic”), “epanechikov” (or “parabolic”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bw</span></code> (string or double, optional): The method (or exact value) of bandwidth. Either a string (choose among “nrd0” and “nrd”), or a double.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adjust</span></code> (double, optional): Adjust the value of bandwidth my multiplying it. Changes how smooth the frequency curve is.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> (int, optional): The number of sampled points for plotting the function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>Aesthetics<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>x, y, alpha, colour, fill, linetype, size, group</p>
+</div>
+<div class="section" id="id15">
+<h3>Examples<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_density</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_density_1.png"><img alt="../../_images/geom_density_1.png" src="../../_images/geom_density_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_density</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_density_2.png"><img alt="../../_images/geom_density_2.png" src="../../_images/geom_density_2.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+=</span> <span class="n">scale_alpha</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_density_3.png"><img alt="../../_images/geom_density_3.png" src="../../_images/geom_density_3.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-density2d-geom-density2df">
+<h2>geom_density2d(), geom_density2df()<a class="headerlink" href="#geom-density2d-geom-density2df" title="Permalink to this headline">¶</a></h2>
+<p>Display density function contour. <code class="docutils literal notranslate"><span class="pre">geom_density2df()</span></code> fills the density function contour.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_density2d(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">show_legend=None,</span> <span class="pre">kernel=None,</span> <span class="pre">adjust=None,</span> <span class="pre">bw=None,</span> <span class="pre">n=None,</span> <span class="pre">bins=None,</span> <span class="pre">binwidth=None,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id16">
+<h3>Arguments<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kernel</span></code> (string, optional): The kernel we use to calculate the density function. Choose among “gaussian”, “cosine”, “optcosine”, “rectangular” (or “uniform”), “triangular”, “biweight” (or “quartic”), “epanechikov” (or “parabolic”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bw</span></code> (string or double array, optional): The method (or exact value) of bandwidth. Either a string (choose among “nrd0” and “nrd”), or a double array of length 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adjust</span></code> (double, optional): Adjust the value of bandwidth my multiplying it. Changes how smooth the frequency curve is.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> (int array, optional): The number of sampled points for plotting the function (on x and y direction correspondingly).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code> (int, optional): Number of levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">binwidth</span></code> (double, optional): Distance between levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>Aesthetics<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>x, y, alpha, colour, linetype, size</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">geom_density2df()</span></code>: <code class="docutils literal notranslate"><span class="pre">fill</span></code> aesthetic parameter controls the color of geometry filling.</p>
+</div>
+<div class="section" id="id18">
+<h3>Examples<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_density2d</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;..level..&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">scale_color_hue</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_density2d_1.png"><img alt="../../_images/geom_density2d_1.png" src="../../_images/geom_density2d_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_density2df</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;..level..&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">scale_fill_hue</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_density2d_2.png"><img alt="../../_images/geom_density2d_2.png" src="../../_images/geom_density2d_2.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_density2df</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;..level..&#39;</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="n">sampling_group_random</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="n">sampling_random</span><span class="p">(</span><span class="mi">150000</span><span class="p">))</span> <span class="o">+</span> <span class="n">scale_fill_hue</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_density2d_3.png"><img alt="../../_images/geom_density2d_3.png" src="../../_images/geom_density2d_3.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-errorbar">
+<h2>geom_errorbar()<a class="headerlink" href="#geom-errorbar" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">geom_errorbar(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistic - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default position adjustment - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id19">
+<h3>Arguments<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>Aesthetics<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>x, ymin, ymax, alpha, colour, linetype, size, width, group</p>
+</div>
+<div class="section" id="id21">
+<h3>Examples<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;trt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;resp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;upper&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;lower&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;trt&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;resp&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_errorbar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span> <span class="o">=</span> <span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="s1">&#39;upper&#39;</span><span class="p">),</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_errorbars_1.png"><img alt="../../_images/geom_errorbars_1.png" src="../../_images/geom_errorbars_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;trt&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;resp&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;dodge&#39;</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_errorbar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;dodge&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_errorbars_2.png"><img alt="../../_images/geom_errorbars_2.png" src="../../_images/geom_errorbars_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-freqpoly-geom-histogram">
+<h2>geom_freqpoly(), geom_histogram()<a class="headerlink" href="#geom-freqpoly-geom-histogram" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Arguments - <code class="docutils literal notranslate"><span class="pre">binwidth</span></code>, <code class="docutils literal notranslate"><span class="pre">center</span></code>, <code class="docutils literal notranslate"><span class="pre">boundary</span></code>.</p></li>
+</ul>
+<p>Plot the distribution of a single continuous variable. Each bin on the X-axis is the count of the number of observations. Histograms (<code class="docutils literal notranslate"><span class="pre">geom_histogram()</span></code>) display the counts with bars; frequency polygons (<code class="docutils literal notranslate"><span class="pre">geom_freqpoly()</span></code>) display the counts with lines.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_histogram(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=None,</span> <span class="pre">position=None,</span> <span class="pre">bins=30,</span> <span class="pre">other_args)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_freqpoly(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=None,</span> <span class="pre">position=None,</span> <span class="pre">other_args)</span></code></p>
+<div class="section" id="computed-variables-if-bin-stat">
+<h3>Computed variables (if ‘bin’ stat)<a class="headerlink" href="#computed-variables-if-bin-stat" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">..count..</span></code> - number of points in bin</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">..density..</span></code> - density of points in bin, scaled to integrate to 1</p></li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>Arguments<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code>: The width of the bins. The default is to use bin widths that cover the range of the data. The bin width of a date variable is the number of days in each time; the bin width of a time variable is the number of seconds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>: Number of bins. Overridden by width. Defaults to 30.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id23">
+<h3>Aesthetics<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">geom_histogram()</span></code>: x, y, alpha, colour, fill, size, weight, group
+<code class="docutils literal notranslate"><span class="pre">geom_freqpoly()</span></code>:  x, y, alpha, colour, linetype, size, group</p>
+</div>
+<div class="section" id="id24">
+<h3>Examples<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_histogram</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_histogram_1.png"><img alt="../../_images/geom_histogram_1.png" src="../../_images/geom_histogram_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_histogram</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;..density..&#39;</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_histogram_2.png"><img alt="../../_images/geom_histogram_2.png" src="../../_images/geom_histogram_2.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">cat_a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
+
+<span class="n">x_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">cat_b</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
+
+<span class="n">dat</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x_a</span><span class="p">,</span> <span class="n">x_b</span><span class="p">))</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_a</span><span class="p">,</span> <span class="n">y_b</span><span class="p">))</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">cat_a</span><span class="p">,</span> <span class="n">cat_b</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;cat&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_histogram_3.png"><img alt="../../_images/geom_histogram_3.png" src="../../_images/geom_histogram_3.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-image">
+<h2>geom_image()<a class="headerlink" href="#geom-image" title="Permalink to this headline">¶</a></h2>
+<p>Displays image specified by ndarray with shape (n, m), (n, m, 3), or (n, m, 4).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dtype</span></code> can be <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">uint</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code> of any size. <code class="docutils literal notranslate"><span class="pre">int</span></code> values are considered pre-scaled and are expected to fit in [0-255] range. <code class="docutils literal notranslate"><span class="pre">float</span></code> values are expected to be in range [0-1].</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_image(image_data,</span> <span class="pre">norm=None,</span> <span class="pre">vmin=None,</span> <span class="pre">vmax=None)</span></code></p>
+<div class="section" id="id25">
+<h3>Arguments<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">image_data</span></code>: ndarray with shape (n, m) or (n, m, 3) or (n, m, 4). Specifies image type, size and pixel values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">norm</span></code> (bool): False - disables default scaling of a 2-D float (luminance) input to the (0, 1) range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmin</span></code>, <code class="docutils literal notranslate"><span class="pre">vmax</span></code> (scalar, optional): The default is None. Used normalize luminance data. Only applied to gray-scale images encoded as float array.</p></li>
+</ul>
+</div>
+<div class="section" id="id26">
+<h3>Examples<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_image</span><span class="p">(</span><span class="n">image_data</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="geom-jitter">
+<h2>geom_jitter()<a class="headerlink" href="#geom-jitter" title="Permalink to this headline">¶</a></h2>
+<p>Jitterplot is a convenient shortcut for geom_point(<cite>position=”jitter”</cite>). It helps to avoid having too many datapoints overshadowing each other (otherwise known as overplotting)</p>
+<p><cite>geom_jitter(mapping=None, data=None, stat=”identity”, position=”jitter”, width=None, height=None, other_args)</cite></p>
+<p>Default statistics - <cite>identity</cite>
+Default positioning - <cite>jitter</cite></p>
+<div class="section" id="id27">
+<h3>Arguments<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code> (double, optional): Width for jitter, default=0.4.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">height</span></code> (double, optional): Height for jitter, default=0.4.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id28">
+<h3>Aesthetics<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<p>x, y, alpha, colour, fill, na.rm, shape, size, group</p>
+</div>
+<div class="section" id="id29">
+<h3>Examples<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">iris_df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_jitterplot_1.png"><img alt="../../_images/geom_jitterplot_1.png" src="../../_images/geom_jitterplot_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">iris_df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_jitter</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_jitterplot_2.png"><img alt="../../_images/geom_jitterplot_2.png" src="../../_images/geom_jitterplot_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-livemap">
+<h2>!!! geom_livemap()<a class="headerlink" href="#geom-livemap" title="Permalink to this headline">¶</a></h2>
+<p>More about livemaps - here.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_livemap(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">geom=None,</span> <span class="pre">stat=None,</span> <span class="pre">level=None,</span> <span class="pre">interactive=None,</span> <span class="pre">location=None,</span> <span class="pre">zoom=None,</span> <span class="pre">within=None,</span> <span class="pre">magnifier=None,</span> <span class="pre">clustering=None,</span> <span class="pre">scaled=None,</span> <span class="pre">labels=None,</span> <span class="pre">theme=None,</span> <span class="pre">projection=None,</span> <span class="pre">geodesic=None,</span> <span class="pre">other_args)</span></code></p>
+<div class="section" id="id30">
+<h3>Arguments<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom</span></code> (string, optional): The mode of the displayed data. There are <code class="docutils literal notranslate"><span class="pre">polygon</span></code> for colored areas (default); <code class="docutils literal notranslate"><span class="pre">point</span></code> for circles of different size and color; <code class="docutils literal notranslate"><span class="pre">pie</span></code> for pie charts; <code class="docutils literal notranslate"><span class="pre">heatmap</span></code> for heatmap (color spots); <code class="docutils literal notranslate"><span class="pre">bar</span></code> for bar charts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code> (string, optional): The administrative level of the displayed data. There are <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">county</span></code>, <code class="docutils literal notranslate"><span class="pre">city</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code> (default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">within</span></code> (string, optional): Data can be filtered by within name, for example ‘USA’.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interactive</span></code> (True (default) or False, optional): Enables user interaction with the map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">magnifier</span></code> (True or False (default), optional): Enables a magnifier when you click on overlapping point. Applicable for ‘point’.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">location</span></code> (string or array, optional): Initial position of the map. If not set, displays the United States. There are id | [lon1, lat1, lon2, lat2,…, lonN, latN].
+- id (string, for example ‘Texas’).
+- lon1, lon2,…, lonN are longitudes in degrees (positive in the Eastern hemisphere).
+- lat1, lat2,…, latN are latitudes in degrees (positive in the Northern hemisphere).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zoom</span></code> (integer, optional): Zoom of the map in the range 1 - 15.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clustering</span></code> (True or False (default), optional): Enables a clustering for overlapping points. Applicable for ‘point’.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scaled</span></code> (True or False (default), optional): Enables a scaling for heatmap. If True, the specified size is equal to the size at zero zoom.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (True (default) or False, optional):  Enables a drawing labels on map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">theme</span></code> (string, optional): Theme for the map. <code class="docutils literal notranslate"><span class="pre">color</span></code> for default mode; <code class="docutils literal notranslate"><span class="pre">light</span></code> for less colored mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">projection</span></code> (string, optional): <code class="docutils literal notranslate"><span class="pre">epsg3857</span></code> for Mercator projection (default); <code class="docutils literal notranslate"><span class="pre">epsg4326</span></code> for Equirectangular projection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geodesic</span></code> (True (default) or False, optional): Enables geodesic type of all paths and segments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id31">
+<h3>Aesthetics<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<p>Specific for selected geoms. Specified inside <code class="docutils literal notranslate"><span class="pre">geom</span></code> argument or explicitly inside <code class="docutils literal notranslate"><span class="pre">geom_*</span></code> function.</p>
+</div>
+<div class="section" id="id32">
+<h3>Examples<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="geom-path-geom-line-geom-step">
+<h2>geom_path(), geom_line(), geom_step()<a class="headerlink" href="#geom-path-geom-line-geom-step" title="Permalink to this headline">¶</a></h2>
+<p>Connect points of individual data values with lines to create a simple line graph. <code class="docutils literal notranslate"><span class="pre">geom_line()</span></code> connects them in order of the variable on the x axis. <code class="docutils literal notranslate"><span class="pre">geom_path()</span></code> connects the data points in the order in which they appear in the data. <code class="docutils literal notranslate"><span class="pre">geom_step()</span></code> creates a stairstep plot, highlighting exactly when changes occur. The <code class="docutils literal notranslate"><span class="pre">group</span></code> aesthetic determines which cases are connected together.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_path(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">animation=None,</span> <span class="pre">other_args)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_line(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_step(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">direction=None,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id33">
+<h3>Arguments<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">geom_path()</span></code>:
+- <code class="docutils literal notranslate"><span class="pre">animation</span></code> (type of the animation, optional): Codes and names: 0 = “none” (default), 1 = “dash”, 2 = “plane”, 3 = “circle”.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">geom_step()</span></code>:
+- <code class="docutils literal notranslate"><span class="pre">direction</span></code> (string, optional): “hv” or “HV” stands for horizontal then vertical (default); “vh” or “VH” stands for vertical then horizontal.</p>
+</div>
+<div class="section" id="id34">
+<h3>Aesthetics<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<p>For <code class="docutils literal notranslate"><span class="pre">geom_line()</span></code>: x, y, alpha, arrow, colour, linetype, size, group
+For <code class="docutils literal notranslate"><span class="pre">geom_path()</span></code>: x, y, alpha, arrow, colour, linemitre, linejoin, lineend, linetype, na.rm, size, group
+For <code class="docutils literal notranslate"><span class="pre">geom_step()</span></code>: x, y, alpha, colour, direction, linetype, size, group</p>
+</div>
+<div class="section" id="id35">
+<h3>Examples<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_line</span><span class="p">()</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_line_1.png"><img alt="../../_images/geom_line_1.png" src="../../_images/geom_line_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_step</span><span class="p">()</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+<p>TBD</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_path</span><span class="p">()</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_line_2.png"><img alt="../../_images/geom_line_2.png" src="../../_images/geom_line_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-point">
+<h2>geom_point()<a class="headerlink" href="#geom-point" title="Permalink to this headline">¶</a></h2>
+<p>Scatterplots are most commonly used for displaying the relationship between two continuous variables.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_point(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">animation=None,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id36">
+<h3>Arguments<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">animation</span></code> (type of the animation, optional): Codes and names: 0 = “none” (default), 1 = “ripple”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code> (dictionary, pandas DataFrame or GeocodedRegion object).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id37">
+<h3>Aesthetics<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<p>x, y, alpha, colour, fill, na.rm, shape, size</p>
+</div>
+<div class="section" id="id38">
+<h3>Examples<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">iris_df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sepal length (cm)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sepal width (cm)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_point</span><span class="p">()</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_point_1.png"><img alt="../../_images/geom_point_1.png" src="../../_images/geom_point_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;cat&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s1">&#39;cat&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_point_2.png"><img alt="../../_images/geom_point_2.png" src="../../_images/geom_point_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-polygon">
+<h2>geom_polygon()<a class="headerlink" href="#geom-polygon" title="Permalink to this headline">¶</a></h2>
+<p>Polygons are 2D analogs of paths (by <code class="docutils literal notranslate"><span class="pre">geom_path()</span></code>) with the connection between the start and end points and filled inside areas. The <code class="docutils literal notranslate"><span class="pre">group</span></code> aesthetic sets which data points are included in a polygon.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_polygon(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id39">
+<h3>Arguments<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id40">
+<h3>Aesthetics<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<p>x, y, size, alpha, colour, fill, linetype, group</p>
+</div>
+<div class="section" id="id41">
+<h3>Examples<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="n">dat</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_polygon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;num&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>TBD</p>
+</div>
+</div>
+<div class="section" id="geom-raster-geom-tile-geom-rect">
+<h2>geom_raster(), geom_tile(), geom_rect()<a class="headerlink" href="#geom-raster-geom-tile-geom-rect" title="Permalink to this headline">¶</a></h2>
+<p>Draw rectangles. <code class="docutils literal notranslate"><span class="pre">geom_rect()</span></code> uses the locations of the four corners (xmin, xmax, ymin and ymax), <code class="docutils literal notranslate"><span class="pre">geom_tile()</span></code> uses the center of the tile and its size (x, y, width, height). <code class="docutils literal notranslate"><span class="pre">geom_raster()</span></code> is a high performance special function for same-sized tiles.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_rect(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_tile(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_raster(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id42">
+<h3>Arguments<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id43">
+<h3>Aesthetics<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<p>For <code class="docutils literal notranslate"><span class="pre">geom_rect()</span></code>: xmin, xmax, ymin, ymax, alpha, colour, fill, linetype, size
+For <code class="docutils literal notranslate"><span class="pre">geom_tile()</span></code>: x, y, alpha, colour, fill, linetype, size
+For <code class="docutils literal notranslate"><span class="pre">geom_raster()</span></code>: x, y, alpha, fill</p>
+</div>
+<div class="section" id="id44">
+<h3>Examples<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">scale_fill_hue</span><span class="p">()</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_tile</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;geom_tile&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_tile_1.png"><img alt="../../_images/geom_tile_1.png" src="../../_images/geom_tile_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">())),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_tile_2.png"><img alt="../../_images/geom_tile_2.png" src="../../_images/geom_tile_2.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_raster</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;geom_raster&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_tile_3.png"><img alt="../../_images/geom_tile_3.png" src="../../_images/geom_tile_3.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-smooth">
+<h2>geom_smooth()<a class="headerlink" href="#geom-smooth" title="Permalink to this headline">¶</a></h2>
+<p>Plots regression line with confidence interval for visual assistance in the case of overplotting.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_smooth(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;smooth,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">smooth</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id45">
+<h3>Computed variables<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> - predicted value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ymin</span></code> - lower pointwise confidence interval around the mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ymax</span></code> - upper pointwise confidence interval around the mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">se</span></code> - standard error</p></li>
+</ul>
+</div>
+<div class="section" id="id46">
+<h3>Arguments<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id47">
+<h3>Aesthetics<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<p>x, y, size, alpha, colour, fill, linetype, weight</p>
+</div>
+<div class="section" id="id48">
+<h3>Examples<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line_model</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">line_model</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_point</span><span class="p">()</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;lm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_smooth_1.png"><img alt="../../_images/geom_smooth_1.png" src="../../_images/geom_smooth_1.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_smooth</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/geom_smooth_2.png"><img alt="../../_images/geom_smooth_2.png" src="../../_images/geom_smooth_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="geom-segment">
+<h2>geom_segment()<a class="headerlink" href="#geom-segment" title="Permalink to this headline">¶</a></h2>
+<p>Draws a single conncting straight line between points (x, y) and (xend, yend).</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_segment(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">arrow=None,</span> <span class="pre">animation=None,</span> <span class="pre">other_args</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id49">
+<h3>Arguments<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arrow</span></code> (optional): Specification for arrow head, as created by <code class="docutils literal notranslate"><span class="pre">arrow()</span></code> function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">animation</span></code> (type of the animation, optional): Codes and names: 0 = “none” (default), 1 = “dash”, 2 = “plane”, 3 = “circle”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id50">
+<h3>Aesthetics<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<p>x, xend, y, yend, alpha, arrow, colour, fill, linetype</p>
+</div>
+<div class="section" id="id51">
+<h3>Examples<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_point</span><span class="p">()</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_segment</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="n">x2</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>TBD</p>
+</div>
+</div>
+<div class="section" id="geom-text">
+<h2>geom_text()<a class="headerlink" href="#geom-text" title="Permalink to this headline">¶</a></h2>
+<p>Adds text to the plot as a geom. Could be used for labelling the data points.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_text(mapping=None,</span> <span class="pre">data=None,</span> <span class="pre">stat=&quot;identity&quot;,</span> <span class="pre">position=&quot;identity&quot;,</span> <span class="pre">other_args)</span></code></p>
+<p>Default statistics - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.
+Default positioning - <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="section" id="id52">
+<h3>Arguments<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapping</span></code>: set of aesthetic mappings created by <code class="docutils literal notranslate"><span class="pre">aes()</span></code>. Aesthetic mappings describe the way that variables in the data are mapped to plot aesthetics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (dictionary or pandas DataFrame, optional): The data to be displayed in this layer. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), the data is inherited from the plot data as specified in the call to ggplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span></code> (string, optional): The statistical transformation to use on the data for this layer, as a string. Supported transformations: <code class="docutils literal notranslate"><span class="pre">identity</span></code> (leaves the data unchanged), <code class="docutils literal notranslate"><span class="pre">count</span></code> (counts number of points with same x-axis coordinate), <code class="docutils literal notranslate"><span class="pre">bin</span></code> (counts number of points with x-axis coordinate in the same bin), <code class="docutils literal notranslate"><span class="pre">smooth</span></code> (performs smoothing - linear default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code> (string, optional): Position adjustment, either as a string (<code class="docutils literal notranslate"><span class="pre">identity</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">dodge</span></code>, …), or the result of a call to a position adjustment function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other_args</span></code>: Other arguments passed on to the layer. Usually the aesthetics settings, like <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill=&quot;blue&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">size=3</span></code> or <code class="docutils literal notranslate"><span class="pre">shape=21</span></code>. Or the parameters to the geom/stat pair.</p></li>
+</ul>
+</div>
+<div class="section" id="id53">
+<h3>Aesthetics<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<p>x, y, label, hjust, vjust, alpha, colour, parse, size</p>
+</div>
+<div class="section" id="id54">
+<h3>Examples<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Text&#39;</span><span class="p">],</span> <span class="n">angle</span><span class="o">=</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">family</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mono&#39;</span><span class="p">]),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>TBD</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a class="reference internal" href="#">Back to top</a>
+    </p>
+    <p>
+      Copyright © 2019-2021 JetBrains s.r.o.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

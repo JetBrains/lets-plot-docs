@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sampling in Lets-Plot &#8212; lets-plot 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Lets-Plot</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../../gallery/index.html">Gallery</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Sampling in Lets-Plot</a><ul>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li><a class="reference internal" href="#sampling-methods">Sampling methods</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="sampling-in-lets-plot">
+<span id="sampling"></span><h1>Sampling in Lets-Plot<a class="headerlink" href="#sampling-in-lets-plot" title="Permalink to this headline">¶</a></h1>
+<p>Sampling is a special technique of data transformation, which is built into Lets-Plot and is applied after <code class="docutils literal notranslate"><span class="pre">stat</span></code> transformation.</p>
+<p>Sampling helps dealing with large datasets when unintentional attempt to plot an excessively large number of geometries can lead to UI freezes and even to out-of-memory crashes.</p>
+<p>Sampling is also one of the ways of handling over-plotting.</p>
+<div class="section" id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>By default, sampling kicks-in automatically when the data volume exceeds a certain threshold.
+Sampling type and parameters can also be configured manually per geometry layer using the <code class="docutils literal notranslate"><span class="pre">sampling</span></code> argument of <code class="docutils literal notranslate"><span class="pre">geom_xxx()</span></code> function.</p>
+<p>Value <code class="docutils literal notranslate"><span class="pre">'none'</span></code> will disable any sampling for the given layer.</p>
+<p>There are several sampling methods implemented in Lets-Plot.
+The sampling methods can be chained together using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
+</div>
+<div class="section" id="sampling-methods">
+<h2>Sampling methods<a class="headerlink" href="#sampling-methods" title="Permalink to this headline">¶</a></h2>
+<p><strong>random</strong> - selects data points at randomly chosen indices without replacement.</p>
+<p><strong>systematic</strong> - selects data points at evenly distributed indices.
+Unlike canonical systematic sampling, it starts at index 0 and chooses the step so that the last selected index be as close as possible to the last index in the data.</p>
+<p><strong>pick</strong> - intended mostly for bar chart and, unlike the first two (above) it doesn’t pick indices.
+Instead, it analyses X-values and selects all points which X-value is in the set of first n X-values found in the population.</p>
+<p><strong>group random, group systematic</strong> - similar to point-wise random/systematic sampling (above) but it selects the entire groups instead of individual data-points.</p>
+<p><strong>random stratified</strong> - randomly selects points from each group proportionally to the group size but also ensures that each group is represented by at least specified minimal number of points.</p>
+<p><strong>vertex</strong> - designed for polygon simplification. Vertex sampling knows how to handle rings.
+There is a choice of two implementation algorithms: <strong>Douglas-Peucker</strong> and <strong>Visvalingam-Whyatt</strong>.</p>
+<p>When using group sampling, user specifies target number of groups in the sample which does not guarantee that the total number of points in the sample will be reasonably low.</p>
+<p>For this case there is always a ‘safety’ sampling (<strong>random</strong> N=200_000) ready to kick-in if data volume is still too high.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Random sampling on a scatter plot (might take some time to load): <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_random.ipynb">sampling_random.ipynb</a></p>
+<p>Pick sampling on Bar-chart: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_pick.ipynb">sampling_pick.ipynb</a></p>
+<p>Systematic and random sampling on a line plot: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_systematic.ipynb">sampling_systematic.ipynb</a></p>
+<p>Stratified sampling: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_stratified.ipynb">sampling_stratified.ipynb</a></p>
+<p>Group sampling: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_groups.ipynb">sampling_groups.ipynb</a></p>
+<p>Vertex sampling: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_vertex.ipynb">sampling_vertex.ipynb</a></p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a class="reference internal" href="#">Back to top</a>
+    </p>
+    <p>
+      Copyright © 2019-2021 JetBrains s.r.o.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

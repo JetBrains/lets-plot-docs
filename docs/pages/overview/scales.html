@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scales &#8212; lets-plot 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Lets-Plot</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../../gallery/index.html">Gallery</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Scales</a></li>
+<li><a class="reference internal" href="#general-purpose-scales">General purpose scales</a><ul>
+<li><a class="reference internal" href="#scale-identity">scale_*_identity</a><ul>
+<li><a class="reference internal" href="#arguments">Arguments</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-manual">Scale_*_manual</a><ul>
+<li><a class="reference internal" href="#id1">Arguments</a></li>
+<li><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#colors">Colors</a><ul>
+<li><a class="reference internal" href="#scale-gradient-scale-gradient2"><code class="docutils literal notranslate"><span class="pre">scale_*_gradient()</span></code>,  <code class="docutils literal notranslate"><span class="pre">scale_*gradient2()</span></code></a><ul>
+<li><a class="reference internal" href="#id3">Arguments</a></li>
+<li><a class="reference internal" href="#id4">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-brewer">scale_*_brewer()</a><ul>
+<li><a class="reference internal" href="#palettes">Palettes</a></li>
+<li><a class="reference internal" href="#id5">Arguments</a></li>
+<li><a class="reference internal" href="#id6">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-hue">scale_*_hue</a><ul>
+<li><a class="reference internal" href="#id7">Arguments</a></li>
+<li><a class="reference internal" href="#id8">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-grey">scale_*_grey()</a><ul>
+<li><a class="reference internal" href="#id9">Arguments</a></li>
+<li><a class="reference internal" href="#id10">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#x-y-location-scales">X/Y location scales</a><ul>
+<li><a class="reference internal" href="#scale-x-continuous-scale-y-continuous-scale-x-log10-scale-y-log10"><code class="docutils literal notranslate"><span class="pre">scale_x_continuous()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_continuous()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_x_log10()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_log10()</span></code></a><ul>
+<li><a class="reference internal" href="#id11">Arguments</a></li>
+<li><a class="reference internal" href="#id12">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-x-datetime-scale-y-datetime"><code class="docutils literal notranslate"><span class="pre">scale_x_datetime()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_datetime</span></code></a><ul>
+<li><a class="reference internal" href="#id13">Arguments</a></li>
+<li><a class="reference internal" href="#id14">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-x-discrete-scale-y-discrete"><code class="docutils literal notranslate"><span class="pre">scale_x_discrete()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_discrete()</span></code></a><ul>
+<li><a class="reference internal" href="#id15">Arguments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-alpha">scale_alpha()</a><ul>
+<li><a class="reference internal" href="#id16">Arguments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-size">scale_size()</a><ul>
+<li><a class="reference internal" href="#id17">Arguments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scale-size-area">scale_size_area()</a><ul>
+<li><a class="reference internal" href="#id18">Arguments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shape">Shape</a><ul>
+<li><a class="reference internal" href="#scale-shape">scale_shape()</a><ul>
+<li><a class="reference internal" href="#id19">Arguments</a></li>
+<li><a class="reference internal" href="#id20">!Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#limits">Limits</a><ul>
+<li><a class="reference internal" href="#lims-xlim-ylim"><code class="docutils literal notranslate"><span class="pre">lims()</span></code>, <code class="docutils literal notranslate"><span class="pre">xlim()</span></code>, <code class="docutils literal notranslate"><span class="pre">ylim()</span></code></a><ul>
+<li><a class="reference internal" href="#id21">Arguments</a></li>
+<li><a class="reference internal" href="#id22">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="scales">
+<span id="overview-scales"></span><h1>Scales<a class="headerlink" href="#scales" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_alpha()</span></code> | Alpha transparency scale</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_color_brewer()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_brewer()</span></code> | Sequential, diverging and qualitative colour scales from colorbrewer.org</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_color_continuous()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_continuous()</span></code> | Continuous colour scales</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_color_discrete()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_discrete()</span></code> | Discrete colour scales</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_color_gradient()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_gradient()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_color_gradient2()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_gradient2()</span></code> | Gradient colour scales</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_color_identity()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_identity()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_alpha_identity()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_linetype_identity()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_shape_identity()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_size_identity()</span></code> | Use values without scaling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_color_manual()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_manual()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_alpha_manual()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_linetype_manual()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_shape_manual()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_size_manual()</span></code> | Create your own discrete scale</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_color_grey()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_fill_grey()</span></code> | Sequential grey colour scales</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_fill_hue()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_color_hue()</span></code> | Evenly spaced colours for discrete data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_shape()</span></code> | Scales for shapes, aka glyphs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_size()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_size_area()</span></code> | Scales for area</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_x_continuous()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_continuous()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_x_log10()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_log10()</span></code> | Position scales for continuous data (x &amp; y)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_x_datetime()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_datetime</span></code> | Position scales for date/time data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_x_discrete()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_discrete()</span></code> | Position scales for discrete data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ggtitle()</span></code>, <code class="docutils literal notranslate"><span class="pre">xlab()</span></code>, <code class="docutils literal notranslate"><span class="pre">ylab()</span></code>, <code class="docutils literal notranslate"><span class="pre">labs()</span></code> | Modify axis, legend, and plot labels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xlim()</span></code>, <code class="docutils literal notranslate"><span class="pre">ylim()</span></code>, <code class="docutils literal notranslate"><span class="pre">lims()</span></code> | Set scale limits</p></li>
+</ul>
+<p>Aesthetics affected:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> - x position (some geoms also have other aesthetics representing x positions, such as “xend” or “xmin”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> - y position (some geoms also have other aesthetics representing y positions, such as “yend” or “ymin”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - size of a geom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> - shape of a geom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linetype</span></code> - type of a geom’s outline (e.g., dashed, dotted)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">colour</span></code> - color of a geom’s outline</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fill</span></code> - color of a geom’s fill</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> - transparency of a geom (0=transparent … 1=opaque)</p></li>
+</ul>
+</div>
+<div class="section" id="general-purpose-scales">
+<h1>General purpose scales<a class="headerlink" href="#general-purpose-scales" title="Permalink to this headline">¶</a></h1>
+<p>Use them with any aesthetic: alpha, color, fill, linetype, etc.
+- <code class="docutils literal notranslate"><span class="pre">scale_*_identity()</span></code> - use data values as visual values (without transformation)
+- <code class="docutils literal notranslate"><span class="pre">scale_*_manual</span></code> - map discrete values to manually chosen visual values (specify which visual values to map with)</p>
+<div class="section" id="scale-identity">
+<h2>scale_*_identity<a class="headerlink" href="#scale-identity" title="Permalink to this headline">¶</a></h2>
+<p>Use these scales when your data has already been scaled -i.e. it already represents aesthetic values that ggplot2 can handle directly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_colour_identity(...,</span> <span class="pre">guide</span> <span class="pre">=</span> <span class="pre">&quot;none&quot;)</span></code></p>
+<p>Input data expected: list of strings containing
+- names of colors (i.e. ‘green’)
+- hex codes of colors (i.e ‘x00ff00’)
+- css colors (i.e ‘rgb(0,255,0)’)</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_fill_identity(...,</span> <span class="pre">guide</span> <span class="pre">=</span> <span class="pre">&quot;none&quot;)</span></code></p>
+<p>Input data expected: list of strings containing
+- names of colors (i.e. ‘green’)
+- hex codes of colors (i.e ‘x00ff00’)
+- css colors (i.e ‘rgb(0,255,0)’)</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_shape_identity(...,</span> <span class="pre">guide</span> <span class="pre">=</span> <span class="pre">&quot;none&quot;)</span></code></p>
+<p>Input data expected: numeric code of shape.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_linetype_identity(...,</span> <span class="pre">guide</span> <span class="pre">=</span> <span class="pre">&quot;none&quot;)</span></code></p>
+<p>Input data expected: numetic codes/names of line types (‘dotdash’) 0 = blank, 1 = solid, 2 = dashed, 3 = dotted, 4 = dotdash, 5 = longdash, 6 = twodash</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_alpha_identity(...,</span> <span class="pre">guide</span> <span class="pre">=</span> <span class="pre">&quot;none&quot;)</span></code></p>
+<p>Input data expected: numetic values in range [0..1]</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_size_identity(...,</span> <span class="pre">guide</span> <span class="pre">=</span> <span class="pre">&quot;none&quot;)</span></code></p>
+<p>Input data expected: positive numetic values to set size.</p>
+<div class="section" id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list): Continuous scale: a numeric vector of length two providing limits of the scale. Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">guide</span></code>: Guide to use for this scale. Defaults to “none”.</p></li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">]</span>  <span class="c1"># data to be presented &#39;as is&#39;.</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">c</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Disctere color scale (default)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_all_identity_1.png"><img alt="../../_images/scale_all_identity_1.png" src="../../_images/scale_all_identity_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_identity</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Identity color scale&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_all_identity_2.png"><img alt="../../_images/scale_all_identity_2.png" src="../../_images/scale_all_identity_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="scale-manual">
+<h2>Scale_*_manual<a class="headerlink" href="#scale-manual" title="Permalink to this headline">¶</a></h2>
+<p>Use these scales to manually set the mapping of data to aesthetic values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_color_manual(values,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_fill_manual(values,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_shape_manual(values,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None)</span></code></p>
+<div class="section" id="id1">
+<h3>Arguments<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list): Continuous scale: a numeric vector of length two providing limits of the scale. Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="colors">
+<h1>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scale-gradient-scale-gradient2">
+<h2><code class="docutils literal notranslate"><span class="pre">scale_*_gradient()</span></code>,  <code class="docutils literal notranslate"><span class="pre">scale_*gradient2()</span></code><a class="headerlink" href="#scale-gradient-scale-gradient2" title="Permalink to this headline">¶</a></h2>
+<p>Smooth gradient between two colors for fill/color aesthetic. Use <code class="docutils literal notranslate"><span class="pre">scale_*_gradient()</span></code> for a low-high two-color gradient and <code class="docutils literal notranslate"><span class="pre">scale_*_gradient2</span></code> for a low-mid-high color gradient.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_fill_gradient(low=None,</span> <span class="pre">high=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None,</span> <span class="pre">)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_color_gradient(low=None,</span> <span class="pre">high=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_fill_gradient2(low=None,</span> <span class="pre">mid=None,</span> <span class="pre">high=None,</span> <span class="pre">midpoint=0,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_color_gradient2(low=None,</span> <span class="pre">mid=None,</span> <span class="pre">high=None,</span> <span class="pre">midpoint=0,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<div class="section" id="id3">
+<h3>Arguments<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">low</span></code> (string): Color for low end of gradient.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mid</span></code> (string): <code class="docutils literal notranslate"><span class="pre">scale_*_gradient2</span></code> argument. Color for mid point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">high</span></code> (string): Color for high end of gradient.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">midpoint</span></code>: Middle point value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list): Continuous scale: a numeric vector of length two providing limits of the scale. Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Examples<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]}</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_gradient</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_gradient_1.png"><img alt="../../_images/scale_fill_gradient_1.png" src="../../_images/scale_fill_gradient_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_gradient2</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">midpoint</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_gradient_2.png"><img alt="../../_images/scale_fill_gradient_2.png" src="../../_images/scale_fill_gradient_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="scale-brewer">
+<h2>scale_*_brewer()<a class="headerlink" href="#scale-brewer" title="Permalink to this headline">¶</a></h2>
+<p>Sequential, diverging and qualitative color scales from colorbrewer.org for fill aesthetic. Color schemes provided are particularly suited to display discrete values (levels of factors) on a map.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_fill_brewer(type=None,</span> <span class="pre">palette=None,</span> <span class="pre">direction=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_color_brewer(type=None,</span> <span class="pre">palette=None,</span> <span class="pre">direction=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<div class="section" id="palettes">
+<h3>Palettes<a class="headerlink" href="#palettes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Diverging: BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral</p></li>
+<li><p>Qualitative: Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3</p></li>
+<li><p>Sequential: Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu, YlOrBr, YlOrRd</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Arguments<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> (string): One of seq (sequential), div (diverging) or qual (qualitative) types of scales.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palette</span></code> (string or number): If a string, will use that named palette. If a number, will index into the list of palettes of appropriate type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">direction</span></code> (numeric): Sets the order of colors in the scale. If 1, the default, colors are as output by brewer.pal. If -1, the order of colors is reversed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list): Continuous scale: a numeric vector of length two providing limits of the scale. Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>Examples<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]}</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_brewer</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_brewer_1.png"><img alt="../../_images/scale_fill_brewer_1.png" src="../../_images/scale_fill_brewer_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">direction</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_brewer_2.png"><img alt="../../_images/scale_fill_brewer_2.png" src="../../_images/scale_fill_brewer_2.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_brewer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_brewer_3.png"><img alt="../../_images/scale_fill_brewer_3.png" src="../../_images/scale_fill_brewer_3.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_brewer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;qual&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Paired&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_brewer_4.png"><img alt="../../_images/scale_fill_brewer_4.png" src="../../_images/scale_fill_brewer_4.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="scale-hue">
+<h2>scale_*_hue<a class="headerlink" href="#scale-hue" title="Permalink to this headline">¶</a></h2>
+<p>Qualitative color scale with evenly spaced hues for color/fill aesthetic.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_fill_hue(h=None,</span> <span class="pre">c=None,</span> <span class="pre">l=None,</span> <span class="pre">h_start=None,</span> <span class="pre">direction=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_color_hue(h=None,</span> <span class="pre">c=None,</span> <span class="pre">l=None,</span> <span class="pre">h_start=None,</span> <span class="pre">direction=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<div class="section" id="id7">
+<h3>Arguments<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">h</span></code> (list of two numerics): Range of hues, in [0, 360].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code> (numeric): Chroma (intensity of color), maximum value varies depending on.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> (numeric): Luminance (lightness), in [0, 100].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">direction</span></code> (numeric): Direction to travel around the color wheel, 1 = clockwise (default), -1=counter-clockwise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list): Continuous scale: a numeric vector of length two providing limits of the scale. Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Examples<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]}</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_hue</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_hue_1.png"><img alt="../../_images/scale_fill_hue_1.png" src="../../_images/scale_fill_hue_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_hue</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_hue_2.png"><img alt="../../_images/scale_fill_hue_2.png" src="../../_images/scale_fill_hue_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="scale-grey">
+<h2>scale_*_grey()<a class="headerlink" href="#scale-grey" title="Permalink to this headline">¶</a></h2>
+<p>Sequential grey color scale for color/fill aesthetic.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_fill_grey(start=None,</span> <span class="pre">end=None,</span> <span class="pre">direction=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_color_grey(start=None,</span> <span class="pre">end=None,</span> <span class="pre">direction=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<div class="section" id="id9">
+<h3>Arguments<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> (numeric): Gray value at low end of palette in range (0, 100).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code> (numeric): Gray value at high end of palette in range (0, 100).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list): Continuous scale: a numeric vector of length two providing limits of the scale. Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>Examples<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]}</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_grey</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_grey_1.png"><img alt="../../_images/scale_fill_grey_1.png" src="../../_images/scale_fill_grey_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_grey</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_fill_grey_2.png"><img alt="../../_images/scale_fill_grey_2.png" src="../../_images/scale_fill_grey_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="x-y-location-scales">
+<h1>X/Y location scales<a class="headerlink" href="#x-y-location-scales" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scale-x-continuous-scale-y-continuous-scale-x-log10-scale-y-log10">
+<h2><code class="docutils literal notranslate"><span class="pre">scale_x_continuous()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_continuous()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_x_log10()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_log10()</span></code><a class="headerlink" href="#scale-x-continuous-scale-y-continuous-scale-x-log10-scale-y-log10" title="Permalink to this headline">¶</a></h2>
+<p>Position scales for continuous data (x &amp; y). For logarithmical data, adjusts axes to represent logarithmical values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_x_continuous(name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">trans=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_y_continuous(name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">trans=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_x_log10(name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_y_log10(name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None)</span></code></p>
+<div class="section" id="id11">
+<h3>Arguments<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title. If None, the default, the name of the scale is taken from the first mapping used for that aesthetic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list of numerics): A numeric vector of length two providing limits of the scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code> (list of numerics): A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_value</span></code>: Missing values will be replaced with this value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trans</span></code> (string): Name of built-in transformation (‘identity’, ‘log10’).</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>Examples<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="nb">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">v</span> <span class="o">/</span> <span class="mf">10.</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="o">*</span> <span class="mi">5</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;10^(x/10)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;5*x&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y0</span> <span class="o">+</span> <span class="n">y1</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;formula&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;formula&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">scale_size_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">scale_y_log10</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_all_log10_1.png"><img alt="../../_images/scale_all_log10_1.png" src="../../_images/scale_all_log10_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_y_log10</span><span class="p">()</span> <span class="o">+</span> <span class="n">scale_x_log10</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_all_log10_2.png"><img alt="../../_images/scale_all_log10_2.png" src="../../_images/scale_all_log10_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="scale-x-datetime-scale-y-datetime">
+<h2><code class="docutils literal notranslate"><span class="pre">scale_x_datetime()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_datetime</span></code><a class="headerlink" href="#scale-x-datetime-scale-y-datetime" title="Permalink to this headline">¶</a></h2>
+<p>Position scales for date/time data. Automatically set when one of the variables uses dates or times data format.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_x_datetime(name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_y_datetime(name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None)</span></code></p>
+<div class="section" id="id13">
+<h3>Arguments<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title. If None, the default, the name of the scale is taken from the first mapping used for that aesthetic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list of numerics): A numeric vector of length two providing limits of the scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code> (list of numerics): A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_value</span></code>: Missing values will be replaced with this value.</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>Examples<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span><span class="o">*</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">data</span><span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">days</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)])</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">+</span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;days&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_x_datetime_1.png"><img alt="../../_images/scale_x_datetime_1.png" src="../../_images/scale_x_datetime_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">seconds</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span> <span class="o">/</span> <span class="mi">60</span><span class="p">),</span> <span class="n">s</span> <span class="o">%</span> <span class="mi">60</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span><span class="o">*</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">data</span><span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">seconds</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">)])</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">+</span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;seconds&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">scale_x_datetime</span><span class="p">(</span><span class="s1">&#39;Time (min)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_x_datetime_2.png"><img alt="../../_images/scale_x_datetime_2.png" src="../../_images/scale_x_datetime_2.png" style="width: 400px;" /></a>
+</div>
+</div>
+<div class="section" id="scale-x-discrete-scale-y-discrete">
+<h2><code class="docutils literal notranslate"><span class="pre">scale_x_discrete()</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_y_discrete()</span></code><a class="headerlink" href="#scale-x-discrete-scale-y-discrete" title="Permalink to this headline">¶</a></h2>
+<p>Position scales for discrete data (x &amp; y).</p>
+<div class="section" id="id15">
+<h3>Arguments<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title. If None, the default, the name of the scale is taken from the first mapping used for that aesthetic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list of numerics): A numeric vector of length two providing limits of the scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code> (list of numerics): A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_value</span></code>: Missing values will be replaced with this value.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scale-alpha">
+<h2>scale_alpha()<a class="headerlink" href="#scale-alpha" title="Permalink to this headline">¶</a></h2>
+<p>Adjust transparency levels.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_alpha(range=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<div class="section" id="id16">
+<h3>Arguments<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title. If None, the default, the name of the scale is taken from the first mapping used for that aesthetic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list of numerics): A numeric vector of length two providing limits of the scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code> (list of numerics): A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_value</span></code>: Missing values will be replaced with this value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range</span></code> (list of numerics of length 2): The range of the mapped aesthetics result.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scale-size">
+<h2>scale_size()<a class="headerlink" href="#scale-size" title="Permalink to this headline">¶</a></h2>
+<p>Adjust area size.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_size(range=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<div class="section" id="id17">
+<h3>Arguments<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title. If None, the default, the name of the scale is taken from the first mapping used for that aesthetic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list of numerics): A numeric vector of length two providing limits of the scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code> (list of numerics): A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_value</span></code>: Missing values will be replaced with this value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range</span></code> (list of numerics of length 2): The range of the mapped aesthetics result.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scale-size-area">
+<h2>scale_size_area()<a class="headerlink" href="#scale-size-area" title="Permalink to this headline">¶</a></h2>
+<p>Adjust area size. This geom precisely maps the value of 0 to the size of 0.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_size_area(max_size=None,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None,</span> <span class="pre">trans=None)</span></code></p>
+<div class="section" id="id18">
+<h3>Arguments<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title. If None, the default, the name of the scale is taken from the first mapping used for that aesthetic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list of numerics): A numeric vector of length two providing limits of the scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code> (list of numerics): A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_value</span></code>: Missing values will be replaced with this value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_size</span></code> (numeric): The max size that is mapped to.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="shape">
+<h1>Shape<a class="headerlink" href="#shape" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scale-shape">
+<h2>scale_shape()<a class="headerlink" href="#scale-shape" title="Permalink to this headline">¶</a></h2>
+<p>Plot data points as various shapes. Select shape code from the reference. Note that continuous data cannot be mapped to shape.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scale_shape(solid=True,</span> <span class="pre">name=None,</span> <span class="pre">breaks=None,</span> <span class="pre">labels=None,</span> <span class="pre">limits=None,</span> <span class="pre">expand=None,</span> <span class="pre">na_value=None,</span> <span class="pre">guide=None)</span></code></p>
+<div class="section" id="id19">
+<h3>Arguments<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">solid</span></code> (boolean): Are the shapes solid (True, default), or hollow (False)?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): The name of the scale - used as the axis label or the legend title.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breaks</span></code> (list of numerics): A numeric vector of positions (of ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> (list of strings): A vector of labels (on ticks).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code> (list): Continuous scale: a numeric vector of length two providing limits of the scale. Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: A numeric vector of length two giving multiplicative and additive expansion constants.</p></li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>!Examples<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;cat&#39;</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+=</span> <span class="n">scale_shape</span><span class="p">(</span><span class="n">solid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="limits">
+<h1>Limits<a class="headerlink" href="#limits" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lims-xlim-ylim">
+<h2><code class="docutils literal notranslate"><span class="pre">lims()</span></code>, <code class="docutils literal notranslate"><span class="pre">xlim()</span></code>, <code class="docutils literal notranslate"><span class="pre">ylim()</span></code><a class="headerlink" href="#lims-xlim-ylim" title="Permalink to this headline">¶</a></h2>
+<p>Set axes limits by changing scales’ <code class="docutils literal notranslate"><span class="pre">limits</span></code> argument or use shortcut functions <code class="docutils literal notranslate"><span class="pre">lims()</span></code> or <code class="docutils literal notranslate"><span class="pre">xlim()</span></code>, <code class="docutils literal notranslate"><span class="pre">ylim()</span></code>. By default, any values outside the limits will be replaced with NA.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lims(...)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">xlim(...)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">ylim(...)</span></code></p>
+<div class="section" id="id21">
+<h3>Arguments<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>for continuous data: range limits</p></li>
+<li><p>for discrete data: lists of strings, limit values to include/exclude</p></li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>Examples<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>Continuous data</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_blue&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_lims_1.png"><img alt="../../_images/scale_lims_1.png" src="../../_images/scale_lims_1.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">expand</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="o">+</span> <span class="n">geom_vline</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xintercept</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_lims_2.png"><img alt="../../_images/scale_lims_2.png" src="../../_images/scale_lims_2.png" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">lims</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/scale_lims_3.png"><img alt="../../_images/scale_lims_3.png" src="../../_images/scale_lims_3.png" style="width: 400px;" /></a>
+<p>Discrete data</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;hwy&#39;</span><span class="p">))</span>
+
+<span class="n">jp_brands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;honda&#39;</span><span class="p">,</span> <span class="s1">&#39;nissan&#39;</span><span class="p">,</span> <span class="s1">&#39;subaru&#39;</span><span class="p">,</span> <span class="s1">&#39;toyota&#39;</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">scale_x_discrete</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="n">jp_brands</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">xlim</span><span class="p">(</span><span class="o">*</span><span class="n">jp_brands</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a class="reference internal" href="#">Back to top</a>
+    </p>
+    <p>
+      Copyright © 2019-2021 JetBrains s.r.o.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
