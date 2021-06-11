@@ -1,6 +1,6 @@
 # Lets-Plot documentation site
 
-This repository contains sources for building and publishing the [Lets-Plot](https://github.com/JetBrains/lets-plot) project documentation site using [Sphinx](https://www.sphinx-doc.org) and [GitHub Pages](https://pages.github.com).
+This repository contains sources for building and publishing the [Lets-Plot](https://github.com/JetBrains/lets-plot) project [documentation site](https://jetbrains.github.io/lets-plot-docs) using [Sphinx](https://www.sphinx-doc.org) and [GitHub Pages](https://pages.github.com).
 
 <a id="build-and-publish-documentation-site"></a>
 ## Build and publish documentation site
@@ -36,16 +36,22 @@ All commands should be run from the repository root.
     ```bash
     pip install lets-plot
     ```
- 
-5. Build documentation (HTML):
+
+5. If the document source/\_shared/index\_body.rst needs to be updated, run:
+
+    ```bash
+    python utils/update_index.py -i %PATH-TO-README_PYTHON.md%
+    ```
+
+6. Build documentation (HTML):
 
     ```bash
     sphinx-build -b html ./source ./docs
     ```
 
-6. Check docs/index.html in your browser.
+7. Check docs/index.html in your browser.
 
-7. Commit and push new changes.
+8. Commit and push new changes.
 
 ## Directory structure
 
@@ -66,3 +72,8 @@ All commands should be run from the repository root.
 - source_gallery/ - bunch of the jupyter notebooks - source for the documentation gallery.
 - utils/update_index.py - util for preparation the index page of the documentation site; run `python utils/update_index.py -h` for details.
 - environment.yml - list of the python packages used by the documentation; see [Build and publish documentation site](#build-and-publish-documentation-site) section.
+
+## License
+
+Code and documentation released under the [MIT license](https://github.com/JetBrains/lets-plot-docs/blob/master/LICENSE).
+Copyright © 2019-2021, JetBrains s.r.o.
