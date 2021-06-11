@@ -22,6 +22,7 @@ features of the ``Lets-Plot`` library.
 - :ref:`GeoPandas Support <examples_geopandas>`
 - :ref:`Interactive Maps <examples_interactive_maps>`
 - :ref:`Geocoding <examples_geocoding>`
+- :ref:`Miscellaneous <examples_miscellaneous>`
 
 
 .. _examples_quickstart:
@@ -214,16 +215,16 @@ See also :ref:`Tooltip Customization <tooltips>`.
 .. _examples_bistro:
 
 The 'bistro' Package
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 ``from lets_plot.bistro.corr``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``corr_plot()``:
 `correlation_plot.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb>`__
 
 ``from lets_plot.bistro.im``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``image_matrix()``:
 `image_matrix.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_matrix.ipynb>`__
@@ -255,3 +256,17 @@ Geocoding
 Geocoding is the process of converting names of places into geographic coordinates.
 
 See the "Examples" section in :ref:`Geocoding <geocoding>`.
+
+
+.. _examples_miscellaneous:
+
+Miscellaneous
+^^^^^^^^^^^^^
+
+- Getting started with BigQuery GIS and Lets-Plot: |bigquery_gis_kaggle|
+
+.. |bigquery_gis_kaggle| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg
+    :width: 20px
+    :height: 20px
+    :alt: View at Kaggle
+    :target: https://www.kaggle.com/asmirnovhoris/bigquery-gis-and-lets-plot

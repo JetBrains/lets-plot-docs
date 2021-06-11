@@ -3,6 +3,7 @@
 Tooltip Customization
 #####################
 
+- :ref:`Tooltip variable list <tooltips_variables>`
 - :ref:`Formatting tooltip fields <tooltips_formatting>`
 - :ref:`Customizing tooltip lines <tooltips_lines>`
 
