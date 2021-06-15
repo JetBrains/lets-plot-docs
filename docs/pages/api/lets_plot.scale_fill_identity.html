@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.scale_fill_identity &#8212; lets-plot 2.0.2 documentation</title>
+    <title>lets_plot.scale_fill_identity &#8212; lets-plot 2.0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -47,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -113,48 +113,141 @@
 <h1>lets_plot.scale_fill_identity<a class="headerlink" href="#lets-plot-scale-fill-identity" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="lets_plot.scale_fill_identity">
-<code class="sig-prename descclassname"><span class="pre">lets_plot.</span></code><code class="sig-name descname"><span class="pre">scale_fill_identity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breaks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.scale_fill_identity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">lets_plot.</span></code><code class="sig-name descname"><span class="pre">scale_fill_identity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breaks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.scale_fill_identity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use this scale when your data has already been scaled.
 I.e. it already represents aesthetic values that ggplot2 can handle directly.
 This will not produce a legend unless you also supply the breaks and labels.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>string</em>) – The name of the scale - used as the axis label or the legend title</p></li>
-<li><p><strong>breaks</strong> (<em>list of numerics</em>) – A numeric vector of positions (of ticks)</p></li>
-<li><p><strong>labels</strong> (<em>list of strings</em>) – A vector of labels (on ticks)</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name of the scale - used as the axis label or the legend title.</p></li>
+<li><p><strong>breaks</strong> (<em>list of float</em>) – A numeric vector of positions (of ticks).</p></li>
+<li><p><strong>labels</strong> (<em>list of str</em>) – A vector of labels (on ticks).</p></li>
 <li><p><strong>limits</strong> (<em>list</em>) – Continuous scale: a numeric vector of length two providing limits of the scale.
-Discrete scale: a vector specifying the data range for the scale. and the default order of their display in guides.</p></li>
-<li><p><strong>guide</strong> – Guide to use for this scale. Defaults to “none”.</p></li>
+Discrete scale: a vector specifying the data range for the scale
+and the default order of their display in guides.</p></li>
+<li><p><strong>guide, default=’none’</strong> – Guide to use for this scale. Defaults to ‘none’.</p></li>
+<li><p><strong>format</strong> (<em>str</em>) – Defines the format for labels on the scale. The syntax resembles Python’s:
+‘.2f’ -&gt; ‘12.45’
+‘Num {}’ -&gt; ‘Num 12.456789’
+‘TTL: {.2f}$’ -&gt; ‘TTL: 12.45$’
+For more info see the <a class="reference external" href="https://jetbrains.github.io/lets-plot-docs/pages/features/formats.html">formatting reference</a>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>Scale specification.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>scale specification</p>
+<dd class="field-odd"><p><cite>FeatureSpec</cite></p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<dl class="simple">
-<dt>Input data expected: list of strings containing</dt><dd><ol class="loweralpha simple">
-<li><p>names of colors (i.e. ‘green’)</p></li>
-<li><p>hex codes of colors (i.e ‘x00ff00’)</p></li>
-<li><p>css colors (i.e ‘rgb(0,255,0)’)</p></li>
-</ol>
-</dd>
-</dl>
+<p>Input data expected: list of strings containing:</p>
+<ul class="simple">
+<li><p>names of colors (e.g. ‘green’),</p></li>
+<li><p>hex codes of colors (e.g. ‘x00ff00’),</p></li>
+<li><p>css colors (e.g. ‘rgb(0, 255, 0)’).</p></li>
+</ul>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_tile</span><span class="p">()</span> <span class="o">+</span> <span class="n">scale_fill_identity</span><span class="p">()</span>
-</pre></div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="s1">&#39;#e41a1c&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="s1">&#39;#4daf4a&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="s1">&#39;#377eb8&#39;</span><span class="p">}</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">colors</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">scale_fill_identity</span><span class="p">(</span><span class="n">guide</span><span class="o">=</span><span class="n">guide_legend</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> \
+</span><span class="hll">                        <span class="n">breaks</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">colors</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> \
+</span><span class="hll">                        <span class="n">labels</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">colors</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="h2t5zj"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v2.0.4/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("h2t5zj").appendChild(div);
+        };
+        var e = document.getElementById("h2t5zj");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="Oc3VQN"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+},
+"mapping":{
+"x":"c"
+},
+"data_meta":{
+},
+"kind":"plot",
+"scales":[{
+"name":"color",
+"aesthetic":"fill",
+"breaks":["#e41a1c","#4daf4a","#377eb8"],
+"labels":["red","green","blue"],
+"guide":{
+"name":"legend"
+},
+"scale_mapper_kind":"identity"
+}],
+"layers":[{
+"geom":"bar",
+"mapping":{
+"fill":"c"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[9.0,5.0,6.0],
+"c":["#377eb8","#e41a1c","#4daf4a"]
+}
+}]
+};
+           var plotContainer = document.getElementById("Oc3VQN");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
 </div>
 </dd></dl>
 
@@ -168,11 +261,11 @@ Discrete scale: a vector specifying the data range for the scale. and the defaul
 <footer class="footer">
   <div class="container">
     <p class="pull-right">
-      <a href="#">Back to top</a>
+      <a class="reference internal" href="#">Back to top</a>
     </p>
     <p>
       Copyright © 2019-2021 JetBrains s.r.o.<br>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
     </p>
   </div>
 </footer>

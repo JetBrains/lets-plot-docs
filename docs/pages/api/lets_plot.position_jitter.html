@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.position_jitter &#8212; lets-plot 2.0.2 documentation</title>
+    <title>lets_plot.position_jitter &#8212; lets-plot 2.0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -47,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -114,19 +114,19 @@
 <dl class="py function">
 <dt id="lets_plot.position_jitter">
 <code class="sig-prename descclassname"><span class="pre">lets_plot.</span></code><code class="sig-name descname"><span class="pre">position_jitter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.position_jitter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adjust position by assigning random noise to points. Better for discrete values</p>
+<dd><p>Adjust position by assigning random noise to points. Better for discrete values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>width</strong> – Jittering width</p></li>
-<li><p><strong>height</strong> – Jittering height</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – Jittering width.</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – Jittering height.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>Geom object position specification.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>geom object position specification</p>
+<dd class="field-odd"><p><cite>FeatureSpec</cite></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -134,13 +134,110 @@
 <p>Adjust position by dodging overlaps to the side.</p>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">N</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ggplot</span><span class="p">(</span><span class="n">mapping</span><span class="o">=</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">position_jitter</span><span class="p">(</span><span class="n">width</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="o">=.</span><span class="mi">2</span><span class="p">))</span>
-</pre></div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> \
+               <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> \
+<span class="hll">               <span class="n">position</span><span class="o">=</span><span class="n">position_jitter</span><span class="p">(</span><span class="n">width</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="o">=.</span><span class="mi">2</span><span class="p">))</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="ESwU56"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v2.0.4/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("ESwU56").appendChild(div);
+        };
+        var e = document.getElementById("ESwU56");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="Csgz07"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+"x":[2.0,3.0,0.0,2.0,2.0,3.0,0.0,0.0,2.0,1.0,2.0,2.0,2.0,2.0,3.0,0.0,3.0,3.0,3.0,2.0,1.0,0.0,1.0,3.0,3.0,1.0,1.0,1.0,3.0,3.0,0.0,0.0,3.0,1.0,1.0,0.0,3.0,0.0,0.0,2.0,2.0,2.0,1.0,3.0,3.0,3.0,3.0,2.0,1.0,1.0,2.0,1.0,2.0,3.0,2.0,3.0,3.0,0.0,2.0,0.0,2.0,2.0,0.0,0.0,2.0,1.0,3.0,0.0,3.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,3.0,3.0,2.0,3.0,2.0,3.0,0.0,3.0,2.0,2.0,1.0,0.0,3.0,1.0,3.0,3.0,1.0,1.0,1.0,1.0,1.0,3.0,1.0,0.0],
+"y":[2.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,2.0,1.0,2.0,0.0,1.0,0.0,0.0,1.0,2.0,0.0,1.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,2.0,0.0,0.0,2.0,2.0,2.0,0.0,2.0,2.0,0.0,2.0,0.0,1.0,2.0,1.0,0.0,2.0,0.0,1.0,0.0,2.0,2.0,1.0,0.0,2.0,1.0,2.0,2.0,0.0,2.0,0.0,2.0,1.0,2.0,0.0,0.0,1.0,2.0,2.0,1.0,2.0,2.0,0.0,2.0,2.0,1.0,1.0,0.0,2.0,2.0,2.0,0.0,0.0,1.0,0.0,2.0,2.0,0.0,2.0,2.0,0.0,0.0,2.0,2.0,2.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0],
+"c":["22","31","01","21","21","31","01","02","22","11","22","20","21","20","30","01","32","30","31","20","10","00","10","32","30","10","10","12","30","30","02","02","32","10","12","02","30","02","00","21","22","21","10","32","30","31","30","22","12","11","20","12","21","32","22","30","32","00","22","01","22","20","00","01","22","12","31","02","32","10","12","12","01","11","00","12","32","32","20","30","21","30","02","32","20","22","12","00","30","12","32","32","11","11","11","10","11","30","10","01"]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"fill":"c"
+},
+"position":{
+"name":"jitter",
+"width":0.2,
+"height":0.2
+},
+"show_legend":false,
+"data_meta":{
+},
+"size":8,
+"alpha":0.5,
+"shape":21,
+"color":"black",
+"data":{
+}
+}]
+};
+           var plotContainer = document.getElementById("Csgz07");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
 </div>
 </dd></dl>
 
@@ -154,11 +251,11 @@
 <footer class="footer">
   <div class="container">
     <p class="pull-right">
-      <a href="#">Back to top</a>
+      <a class="reference internal" href="#">Back to top</a>
     </p>
     <p>
       Copyright © 2019-2021 JetBrains s.r.o.<br>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
     </p>
   </div>
 </footer>

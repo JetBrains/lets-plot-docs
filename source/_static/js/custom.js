@@ -8,6 +8,7 @@ function addLinkToPyPI() {
   const versionParentElem = versionElem.parentElement;
   const linkElem = document.createElement("a");
   linkElem.href = "https://pypi.org/project/lets-plot";
+  linkElem.classList.add("reference", "external");
   linkElem.target = "_blank";
   linkElem.appendChild(versionElem);
   versionParentElem.appendChild(linkElem);
@@ -22,7 +23,7 @@ function addLinkToGitHub() {
   logoElem.style.height = logoSize + "px";
   const linkElem = document.createElement("a");
   linkElem.href = "https://github.com/JetBrains/lets-plot";
-  linkElem.classList.add("navbar-brand");
+  linkElem.classList.add("navbar-brand", "reference", "external");
   linkElem.target = "_blank";
   linkElem.appendChild(logoElem);
   document.querySelector("#navbar .navbar-header").appendChild(linkElem);

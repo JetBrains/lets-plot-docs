@@ -89,6 +89,19 @@ Examples:
     :alt: View at Kaggle
     :target: https://www.kaggle.com/alshan/mapping-us-household-income
 
+- Plotting Airbnb prices Boston: |plotting_airbnb_prices_boston_datalore| |plotting_airbnb_prices_boston_medium|
+
+.. |plotting_airbnb_prices_boston_datalore| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_datalore.svg
+    :width: 20px
+    :height: 20px
+    :alt: View in Datalore
+    :target: https://datalore.jetbrains.com/view/notebook/eifzdh96VYuNrcjuOpYPYr
+
+.. |plotting_airbnb_prices_boston_medium| image:: https://raw.githubusercontent.com/Medium/medium-logos/master/01_Logo/01_Black/SVG/Medium-Logo-Black-RGB.svg
+    :height: 25px
+    :alt: View in Medium
+    :target: https://csboutique.medium.com/lets-plot-948ee80cfa5c
+
 - Beijing housing prices on a map: |beijing_housing_prices_kaggle|
 
 .. |beijing_housing_prices_kaggle| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg

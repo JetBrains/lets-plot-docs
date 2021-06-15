@@ -15,6 +15,8 @@ Formatting provides the ability to do complex variable substitutions and value f
 
   - :ref:`Examples <formats_examples_datetime>`
 
+- :ref:`Tooltip Customization <formats_tooltips>`
+
 ----
 
 
@@ -212,3 +214,11 @@ Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35
     %b %e, %Y              -->  "Aug 6, 2019"
     %a, %e %b %Y %H:%M:%S  -->  "Tue, 6 Aug 2019 04:46:35"
     %B %e %Y %H:%M %p      -->  "August 6 2019 04:46 AM"
+
+
+.. _formats_tooltips:
+
+Tooltip Customization
+=====================
+
+In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customization <tooltips>`.

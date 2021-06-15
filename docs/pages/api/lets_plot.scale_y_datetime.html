@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lets_plot.scale_y_datetime &#8212; lets-plot 2.0.2 documentation</title>
+    <title>lets_plot.scale_y_datetime &#8212; lets-plot 2.0.4 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -47,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>2.0.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -114,36 +114,146 @@
 <dl class="py function">
 <dt id="lets_plot.scale_y_datetime">
 <code class="sig-prename descclassname"><span class="pre">lets_plot.</span></code><code class="sig-name descname"><span class="pre">scale_y_datetime</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breaks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.scale_y_datetime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Continuous position scale (y)</p>
+<dd><p>Position scale y for date/time data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>string</em>) – The name of the scale - used as the axis label or the legend title. If None, the default, the name of the scale
+<li><p><strong>name</strong> (<em>str</em>) – The name of the scale - used as the axis label or the legend title.
+If None, the default, the name of the scale
 is taken from the first mapping used for that aesthetic.</p></li>
-<li><p><strong>breaks</strong> (<em>list of numerics</em>) – A numeric vector of positions (of ticks)</p></li>
-<li><p><strong>labels</strong> (<em>list of strings</em>) – A vector of labels (on ticks)</p></li>
-<li><p><strong>limits</strong> (<em>list of numerics</em>) – A numeric vector of length two providing limits of the scale.</p></li>
+<li><p><strong>breaks</strong> (<em>list</em>) – A numeric vector of positions (of ticks).</p></li>
+<li><p><strong>labels</strong> (<em>list of str</em>) – A vector of labels (on ticks).</p></li>
+<li><p><strong>limits</strong> (<em>list</em>) – A numeric vector of length two providing limits of the scale.</p></li>
 <li><p><strong>expand</strong> (<em>list of two numbers</em>) – A numeric vector of length two giving multiplicative and additive expansion constants.
 The vector size == 1 =&gt; only multiplicative expand (and additive expand by default).
 Defaults: multiplicative = 0.05, additive = 0.</p></li>
 <li><p><strong>na_value</strong> – Missing values will be replaced with this value.</p></li>
-<li><p><strong>format</strong> (<em>date/time format string</em>) – Defines the format for labels on the scale. The syntax resembles Python’s:
+<li><p><strong>format</strong> (<em>str</em>) – Defines the format for labels on the scale. The syntax resembles Python’s:
 ‘%d.%m.%y’ -&gt; ‘06.08.19’
 ‘%B %Y’ -&gt; ‘August 2019’
 ‘%a, %e %b %Y %H:%M:%S’ -&gt; ‘Tue, 6 Aug 2019 04:46:35’
-For more info see: <a class="reference external" href="https://github.com/JetBrains/lets-plot/blob/master/docs/formats.md">https://github.com/JetBrains/lets-plot/blob/master/docs/formats.md</a></p></li>
+For more info see the <a class="reference external" href="https://jetbrains.github.io/lets-plot-docs/pages/features/formats.html">formatting reference</a>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>Scale specification.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>scale specification</p>
+<dd class="field-odd"><p><cite>FeatureSpec</cite></p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Continuous position scales.</p>
+<p class="rubric">Examples</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">rcount</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">rcount</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">rcount</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="s1">&#39;rabbits count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">rcount</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="p">}</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_segment</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s1">&#39;rabbits count&#39;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> \
+                 <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@|@{rabbits count}&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll">    <span class="n">scale_y_datetime</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%b&#39;</span><span class="p">)</span> <span class="o">+</span> \
+</span>    <span class="n">xlab</span><span class="p">(</span><span class="s1">&#39;rabbits count&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="52ajvR"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v2.0.4/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("52ajvR").appendChild(div);
+        };
+        var e = document.getElementById("52ajvR");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="4L6Srk"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+"date":[1.577826E12,1.5805044E12,1.58301E12,1.5856884E12,1.5882804E12,1.5909588E12,1.5935508E12,1.5962292E12,1.5989076E12,1.6014996E12,1.604178E12,1.60677E12],
+"rabbits count":[1.0,2.0,3.0,5.0,8.0,13.0,21.0,34.0,55.0,89.0,144.0,233.0]
+},
+"mapping":{
+},
+"data_meta":{
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"y",
+"format":"%b",
+"datetime":true
+},{
+"name":"rabbits count",
+"aesthetic":"x"
+}],
+"layers":[{
+"geom":"segment",
+"mapping":{
+"x":"x",
+"y":"date",
+"xend":"rabbits count",
+"yend":"date"
+},
+"tooltips":{
+"tooltip_formats":[],
+"tooltip_lines":["@|@{rabbits count}"]
+},
+"data_meta":{
+},
+"size":3,
+"data":{
+"x":[0,0,0,0,0,0,0,0,0,0,0,0]
+}
+}]
+};
+           var plotContainer = document.getElementById("4L6Srk");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
 </div>
 </dd></dl>
 
@@ -157,11 +267,11 @@ For more info see: <a class="reference external" href="https://github.com/JetBra
 <footer class="footer">
   <div class="container">
     <p class="pull-right">
-      <a href="#">Back to top</a>
+      <a class="reference internal" href="#">Back to top</a>
     </p>
     <p>
       Copyright © 2019-2021 JetBrains s.r.o.<br>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
     </p>
   </div>
 </footer>

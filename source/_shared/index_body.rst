@@ -1,6 +1,33 @@
 Lets-Plot for Python |official JetBrains project|
 =================================================
 
+.. raw:: html
+
+   <table class="table table-striped table-bordered">
+       <tr>
+           <td>Latest Release</td>
+           <td>
+               <a href="https://pypi.org/project/lets-plot/"/>
+               <img src="https://badge.fury.io/py/lets-plot.svg"/>
+           </td>
+       </tr>
+       <tr>
+           <td>License</td>
+           <td>
+               <a href="https://opensource.org/licenses/MIT"/>
+               <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
+           </td>
+       </tr>
+       <tr>
+           <td>OS</td>
+           <td>Linux, MacOS, Windows</td>
+       </tr>
+       <tr>
+           <td>Python versions</td>
+           <td>3.6, 3.7, 3.8, 3.9</td>
+       </tr>
+   </table>
+
 -  `Overview <#overview>`__
 -  `Installation <#installation>`__
 -  `Quick start with Jupyter <#quick-start-with-jupyter>`__
@@ -9,6 +36,7 @@ Lets-Plot for Python |official JetBrains project|
 -  `Data Sampling <#data-sampling>`__
 -  `Export to File <#export-to-file>`__
 -  `Formatting <#formatting>`__
+-  `Tooltip Customization <#tooltip-customization>`__
 -  `The 'bistro' Package <#the-bistro-package>`__
 
    -  `Correlation Plot <#correlation-plot>`__
@@ -25,7 +53,6 @@ Lets-Plot for Python |official JetBrains project|
 -  `Interesting Demos <#interesting-demos>`__
 -  `Scientific Mode in IntelliJ IDEA /
    PyCharm <#scientific-mode-in-intellij-idea-pycharm>`__
--  `What is new in 2.0.0 <#what-is-new-in-2-0-0>`__
 -  `Change Log <#change-log>`__
 
 Overview
@@ -220,6 +247,15 @@ In Lets-Plot you can use formatting for:
    See: `Facets
    demo <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/facets.ipynb>`__.
 
+Tooltip Customization
+~~~~~~~~~~~~~~~~~~~~~
+
+You can customize the content of tooltips for the layer by using the
+parameter ``tooltips`` of ``geom`` functions.
+
+Learn more: `Tooltip
+Customization <https://jetbrains.github.io/lets-plot-docs/pages/features/tooltips.html>`__.
+
 The 'bistro' Package
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -380,76 +416,16 @@ homepage <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__.
    <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/pycharm_quickstart.png" alt="Couldn't load pycharm_quickstart.png" width="537" height="188"/>
    <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/pycharm_logo.png" alt="Couldn't load pycharm_logo.png" width="50" height="50"/>
    </div>
-
-.. _what-is-new-in-200:
-
-What is new in 2.0.0
-~~~~~~~~~~~~~~~~~~~~
-
--  Python 3.9 support
-
--  Faceted plots:
-
-   -  new ``facet_wrap()`` function.
-   -  ordering of faceting values.
-   -  formatting of faceting values.
-
-   See: `Facets
-   demo <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/facets.ipynb>`__
-
--  new ``format`` parameter on scales: formatting tick labels on X/Y
-   axis.
-
-   Example:
-
-   .. code:: python
-
-      scale_x_datetime(format="%b %Y")
-      scale_x_continuous(format='is {.2f}')
-
-   Demo: `Formatting
-   demo <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb>`__
-
-   See also:
-   `Formatting <https://jetbrains.github.io/lets-plot-docs/pages/features/formats.html>`__
-
--  Tooltips:
-
-   -  new ``color`` option: overrides the default tooltip color:
-
-      .. code:: python
-
-         geom_xxx(tooltips=layer_tooltips().color('red'))
-
-      Learn more: `Tooltip
-      Customization <https://jetbrains.github.io/lets-plot-docs/pages/features/tooltips.html>`__.
-
-   -  *crosshair* cursor when tooltip is in a fixed position specified
-      by the ``anchor`` option.
-
--  Brand new Geocoding API.
-
-   Note: This is a **breaking change!** Hence we bumped the Lets-Plot
-   version to 2.0.0.
-
-   In the Lets-Plot v2.0.0 the peviouse Geocoding API is no longer
-   working.
-
-   The old version of geocoding backend remains on-line for a couple of
-   release cycles to continue support of prior Lets-Plot versions.
-
-   To learn more about new Geocoding API see:
-   `Geocoding <https://jetbrains.github.io/lets-plot-docs/pages/features/geocoding.html>`__.
-
-See
-`CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__
-for other changes and fixes.
+   <div>
+   <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/pycharm_map_fr_low_65.gif" alt="Couldn't load pycharm_map_fr_low_65.png" width="537" height="220"/>
+   </div>
 
 Change Log
 ~~~~~~~~~~
 
 See
 `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__
+for other changes and fixes.
 
 .. |official JetBrains project| image:: http://jb.gg/badges/official-flat-square.svg
    :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub

@@ -38,7 +38,10 @@ extensions = [
     'jupyter_sphinx',
     'sphinx_gallery.gen_gallery',
     'sphinx_gallery_jupyter',
+    'create_cname',
 ]
+
+cname_url = 'lets-plot.org'
 
 autodoc_default_options = {
     'member-order': 'bysource',
