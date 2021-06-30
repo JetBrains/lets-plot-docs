@@ -467,7 +467,7 @@ Just pass a ``Geocoder`` to the ``map`` parameter, and the layer will fetch geom
 ``map`` and ``map_join``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Parameter ``map_join`` is used to join map coordinates with data. Map join is expected to be a `str`, `list[str]` or `list[list[str]]`.
+Parameter ``map_join`` is used to join map coordinates with data. Map join is expected to be a ``str``, ``list[str]`` or ``list[list[str]]``.
 
 - first value in a pair is a data_key (column/columns in ``data``),
 - second value in a pair is a map_key (column/columns in ``map``).
@@ -475,7 +475,7 @@ Parameter ``map_join`` is used to join map coordinates with data. Map join is ex
 
 .. _geocoding_join_gdf:
 
-Join with user-generated ``GeoDataFrame``
+Join with ``GeoDataFrame``
 ''''''''''''''''''''''''''
   Explicitly set keys for both data and map.
 
@@ -490,10 +490,10 @@ Single string key is not allowed - Lets-Plot can't deduce a map key on a user ge
 
 .. _geocoding_join_geocoder:
 
-Join with ``Geocoder`` or ``GeoDataFrame``, returned by a ``Geocoder`` geometries fetching functions 
+Join with ``Geocoder``
 ''''''''''''''''''''''
 
-``Geocoder`` and ``GeoDataFrame`` contains metadata so in most cases only data keys have to be provided - Lets-Plot will generate map keys automatically with columns that were used for geocoding.
+``Geocoder`` and ``GeoDataFrame``, returned by a ``Geocoder`` geometries fetching functions, contains metadata so in most cases only data keys have to be provided - Lets-Plot will generate map keys automatically with columns that were used for geocoding.
 
 - ``map_join='State_Name'``:
   same as ``[['State_Name'], ['state']]``
