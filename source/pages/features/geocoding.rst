@@ -467,9 +467,9 @@ Just pass a ``Geocoder`` to the ``map`` parameter, and the layer will fetch geom
 ``map`` and ``map_join``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Parameter ``map_join`` is used to join map coordinates with data. Keys used to join:
+Parameter ``map_join`` is used to join map coordinates with data. Map join is expected to be a ``str``, ``list[str]`` or ``list[list[str]]``.
 
-- first value in a pair is data_key (column/columns in ``data``),
+- first value in a pair is a data_key (column/columns in ``data``),
 - second value in a pair is a map_key (column/columns in ``map``).
 
 
@@ -477,13 +477,15 @@ Parameter ``map_join`` is used to join map coordinates with data. Keys used to j
 
 Join with ``GeoDataFrame``
 ''''''''''''''''''''''''''
-
-- ``map_join='state'``:
-  same as ``[['state'], ['state']]``
-- ``map_join=[['city', 'state']]``:
-  same as ``[['city', 'state'], ['city', 'state']]``
-- ``map_join=[['City_Name', 'State_Name'], ['city', 'state']]``:
   Explicitly set keys for both data and map.
+
+- ``map_join=['data_column', 'map_column']``:
+  same as ``[['data_column'], ['map_column']]``
+- ``map_join=[['data_column_1', 'data_column_2'], ['map_column_1', 'map_column_2']]``:
+  same as ``[['data_column_1', 'data_column_2'], ['map_column_1', 'map_column_2']]``
+- ``map_join=[['City_Name', 'State_Name'], ['city', 'state']]``:
+
+Single string key is not allowed - Lets-Plot can't deduce a map key on a user generated GeoDataFrames.
 
 
 .. _geocoding_join_geocoder:
@@ -491,11 +493,11 @@ Join with ``GeoDataFrame``
 Join with ``Geocoder``
 ''''''''''''''''''''''
 
-``Geocoder`` contains metadata so in most cases only data have to be provided - Lets-Plot will generate map keys automatically with columns that were used for geocoding.
+``Geocoder`` and ``GeoDataFrame``, returned by a ``Geocoder`` geometries fetching functions, contains metadata so in most cases only data keys have to be provided - Lets-Plot will generate map keys automatically with columns that were used for geocoding.
 
 - ``map_join='State_Name'``:
   same as ``[['State_Name'], ['state']]``
-- ``map_join=['City_Name', 'State_Name']``:
+- ``map_join=[['City_Name', 'State_Name']]``:
   same as ``[['City_Name', 'State_Name'], ['city', 'state']]``
 - ``map_join=[['City_Name', 'State_Name'], ['city', 'state']]``:
   Explicitly set keys for both data and map.
