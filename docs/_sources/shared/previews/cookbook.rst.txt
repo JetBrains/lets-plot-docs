@@ -16,6 +16,8 @@
 
 .. |correlation_plot-nbviewer| image:: /examples/cookbook/previews/correlation_plot.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb
+.. |correlation_plot_4x3-nbviewer| image:: /examples/cookbook/previews/correlation_plot_4x3.png
+    :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb
 
 .. |density_2d-nbviewer| image:: /examples/cookbook/previews/density_2d.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb

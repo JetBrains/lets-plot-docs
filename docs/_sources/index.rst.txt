@@ -32,7 +32,7 @@ To learn more about the grammar of graphics, we recommend an excellent book call
 
     .. raw:: html
 
-        <a class="reference internal image-reference" href="pages/gog.html">
+        <a class="reference internal image-reference" href="pages/charts.html">
           <img src="_images/graph_building_4x3.png">
         </a>
 
@@ -42,7 +42,7 @@ To learn more about the grammar of graphics, we recommend an excellent book call
 
     .. raw:: html
 
-        <a class="reference internal image-reference" href="pages/interactive_maps.html">
+        <a class="reference internal image-reference" href="#">
           <img src="_images/museums_4x3.png">
         </a>
 
