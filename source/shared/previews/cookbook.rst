@@ -44,6 +44,8 @@
 
 .. |geocoding_reference-nbviewer| image:: /examples/cookbook/previews/geocoding_reference.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb
+.. |geocoding_reference_4x3-nbviewer| image:: /examples/cookbook/previews/geocoding_reference_4x3.png
+    :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb
 
 .. |geom_smooth_matrix-nbviewer| image:: /examples/cookbook/previews/geom_smooth_matrix.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb

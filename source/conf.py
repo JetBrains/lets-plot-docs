@@ -82,6 +82,7 @@ html_theme_options = {
     'navbar_links': [
       ('API', 'pages/api'),
       ('Gallery', 'pages/gallery'),
+      ('Installation Guide', 'pages/installation'),
     ],
     'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3
     'navbar_sidebarrel': False,
@@ -120,9 +121,5 @@ html_sidebars = {
     '**': [],
 
     # local table of contents
-    'index': ['localtoc.html'],
     'pages/api': ['localtoc.html'],
-    'pages/gog': ['localtoc.html'],
-    'pages/interactive_maps': ['localtoc.html'],
-    'pages/features': ['localtoc.html'],
 }

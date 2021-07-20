@@ -11,113 +11,50 @@
 Explore Your Data with Lets-Plot
 ================================
 
-.. panels::
-    :container: + previews-slider-window id-1
-    :column: col-lg-1 p-2
+|jb-official| |latest-release| |license|
 
-    .. image:: _static/images/slider_left.png
-        :target: #
+.. |jb-official| image:: http://jb.gg/badges/official-flat-square.svg
+    :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
+.. |latest-release| image:: https://badge.fury.io/py/lets-plot.svg
+    :target: https://pypi.org/project/lets-plot
+.. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
+    :target: https://opensource.org/licenses/MIT
 
-    ---
-    :column: col-lg-10 p-2
+The **Lets-Plot** for Python library includes a native backend and a :ref:`Python API <api>`, which was mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
 
-    |map_airports_4x3-kaggle|
-
-    ---
-    :column: col-lg-1 p-2
-
-    .. image:: _static/images/slider_right.png
-        :target: #
-
-.. panels::
-    :container: + previews-slider-content id-1 hidden
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
-
-    |map_airports-kaggle|
-
-    ---
-    |geom_smooth_matrix-nbviewer|
-
-    ---
-    |geopandas_kotlin_isl-nbviewer|
-
-    ---
-    |formatting_axes_etc-nbviewer|
+To learn more about the grammar of graphics, we recommend an excellent book called "`ggplot2: Elegant Graphics for Data Analysis <https://ggplot2-book.org/index.html>`__". It will be a good prerequisite for further exploration of the **Lets-Plot** library.
 
 .. panels::
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
 
-    Grammar of Graphics
-    ^^^^^^^^^^^^^^^^^^^
+    Charts
+    ^^^^^^
 
     .. raw:: html
 
         <a class="reference internal image-reference" href="pages/gog.html">
-          <img src="_images/graph_building.png">
+          <img src="_images/graph_building_4x3.png">
         </a>
-        <br/>
-        <br/>
-
-    The **Lets-Plot** for Python library includes a native backend and a :ref:`Python API <api>`, which was mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
 
     ---
-    Interactive Maps
-    ^^^^^^^^^^^^^^^^
+    Maps
+    ^^^^
 
     .. raw:: html
 
         <a class="reference internal image-reference" href="pages/interactive_maps.html">
-          <img src="_images/museums.png">
+          <img src="_images/museums_4x3.png">
         </a>
-        <br/>
-        <br/>
-
-    **Lets-Plot** supports interactive maps via the ``geom_livemap()`` geom layer which enables a researcher to visualize geospatial information on a zoomable and paneble map.
 
     ---
-    Hot Features
-    ^^^^^^^^^^^^
+    Geocoding
+    ^^^^^^^^^
 
     .. raw:: html
 
-        <a class="reference internal image-reference" href="pages/features.html">
-          <img src="_images/scatter_matrix.png">
+        <a class="reference internal image-reference" href="#">
+          <img src="_images/geocoding_reference_4x3.png">
         </a>
-        <br/>
-        <br/>
-
-    With **Lets-Plot** you got an access to the bunch of high-level features that help you to build beautiful plots with ggplot-like API.
-
-Installation Guide
-------------------
-
-.. panels::
-    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
-
-    For Linux and Mac users
-    ^^^^^^^^^^^^^^^^^^^^^^^
-
-    To install the **Lets-Plot** library, run the following command:
-
-    .. code:: shell
-
-        pip install lets-plot
-
-    ---
-    For Windows users
-    ^^^^^^^^^^^^^^^^^
-
-    Install Anaconda3 (or Miniconda3), then install MinGW toolchain to Conda:
-
-    .. code:: shell
-
-        conda install m2w64-toolchain
-
-    Install the **Lets-Plot** library:
-
-    .. code:: shell
-
-        pip install lets-plot
 
 Quickstart with Jupyter
 -----------------------
@@ -178,65 +115,4 @@ To evaluate the plotting capabilities of **Lets-Plot**, add the following code t
       </div>
     </div>
 
-Quickstart with Datalore
-------------------------
-
-You can try the **Lets-Plot** library in `Datalore <https://datalore.jetbrains.com>`__. **Lets-Plot** is available in Datalore out-of-the-box.
-
-The advantage of `Datalore <https://datalore.jetbrains.com>`__ as a learning tool in comparison to Jupyter is that it is equipped with a very friendly Python editor which comes with auto-completion, intentions and other useful coding assistance features.
-
-Begin with the `quickstart in Datalore <https://view.datalore.io/notebook/Zzg9EVS6i16ELQo3arzWsP>`__ notebook to learn more about Datalore notebooks.
-
-.. raw:: html
-
-    <div class="video-container">
-      <iframe width="640" height="360" src="https://www.youtube.com/embed/MjvFQxqNSe0"></iframe>
-    </div>
-
-More Examples
--------------
-
-.. panels::
-    :container: + preview-gallery
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
-
-    |beijing-kaggle|
-
-    ---
-    |correlation_plot-nbviewer|
-
-    ---
-    |geocoding_examples-nbviewer|
-
-    ---
-    |ggbunch-nbviewer|
-
-    ---
-    |geopandas_naturalearth-nbviewer|
-
-    ---
-    |image_matrix-nbviewer|
-
-    ---
-    |plotting_airbnb_prices_boston-datalore|
-
-    ---
-    |tooltip_config-nbviewer|
-
-    ---
-    |sampling_groups-nbviewer|
-
-    ---
-    |sampling_pick-nbviewer|
-
-    ---
-    |sampling_stratified-nbviewer|
-
-    ---
-    |sampling_vertex-nbviewer|
-
-.. raw:: html
-
-    <div id="preview-gallery-more">
-      <a href="pages/gallery.html" class="reference internal">Show More</a>
-    </div>
+.. include:: /shared/features.rst
