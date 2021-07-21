@@ -82,7 +82,8 @@ function handlePreviewsPicker(ppWindow, ppContent) {
   const previewsLinkElems = ppContent.getElementsByClassName('reference');
   const onClick = function (event) {
     event.preventDefault();
-    nbImgElem.setAttribute('src', event.target.getAttribute('src').replace('.png', '.png')); // TODO: '_4x3.png' instead of '.png'
+    // Place for changing image from preview to big size
+    nbImgElem.setAttribute('src', event.target.getAttribute('src').replace('_icon.png', '.png'));
     nbLinkElem.setAttribute('href', event.currentTarget.getAttribute('href'));
   }
   for (let i = 0; i < previewsLinkElems.length; i++)

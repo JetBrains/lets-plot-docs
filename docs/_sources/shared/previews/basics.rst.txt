@@ -57,8 +57,12 @@
 
 .. |geom_area_bin-nbviewer| image:: /examples/basics/previews/geom_area_bin.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_area_bin.ipynb
+.. |geom_area_bin_icon-nbviewer| image:: /examples/basics/previews/geom_area_bin_icon.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_area_bin.ipynb
 
 .. |geom_bar-nbviewer| image:: /examples/basics/previews/geom_bar.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_bar.ipynb
+.. |geom_bar_icon-nbviewer| image:: /examples/basics/previews/geom_bar_icon.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_bar.ipynb
 
 .. |geom_bar_identity-nbviewer| image:: /examples/basics/previews/geom_bar_identity.png
@@ -81,6 +85,8 @@
 
 .. |geom_density-nbviewer| image:: /examples/basics/previews/geom_density.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_density.ipynb
+.. |geom_density_icon-nbviewer| image:: /examples/basics/previews/geom_density_icon.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_density.ipynb
 
 .. |geom_density2d-nbviewer| image:: /examples/basics/previews/geom_density2d.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_density2d.ipynb
@@ -93,8 +99,12 @@
 
 .. |geom_freqpoly-nbviewer| image:: /examples/basics/previews/geom_freqpoly.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_freqpoly.ipynb
+.. |geom_freqpoly_icon-nbviewer| image:: /examples/basics/previews/geom_freqpoly_icon.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_freqpoly.ipynb
 
 .. |geom_histogram-nbviewer| image:: /examples/basics/previews/geom_histogram.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_histogram.ipynb
+.. |geom_histogram_icon-nbviewer| image:: /examples/basics/previews/geom_histogram_icon.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_histogram.ipynb
 
 .. |geom_jitter_cc-nbviewer| image:: /examples/basics/previews/geom_jitter_cc.png
