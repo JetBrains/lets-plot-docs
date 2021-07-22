@@ -22,8 +22,8 @@
 .. |correlation-nbviewer| image:: /examples/basics/previews/correlation.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/correlation.ipynb
 
-.. |correlation_plot-nbviewer| image:: /examples/basics/previews/correlation_plot.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/correlation_plot.ipynb
+.. |corr_plot-nbviewer| image:: /examples/basics/previews/corr_plot.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/corr_plot.ipynb
 
 .. |datetime_scale-nbviewer| image:: /examples/basics/previews/datetime_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/datetime_scale.ipynb
@@ -184,8 +184,8 @@
 .. |identity_scales-nbviewer| image:: /examples/basics/previews/identity_scales.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/identity_scales.ipynb
 
-.. |image_matrix-nbviewer| image:: /examples/basics/previews/image_matrix.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/image_matrix.ipynb
+.. |basic_image_matrix-nbviewer| image:: /examples/basics/previews/basic_image_matrix.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/basic_image_matrix.ipynb
 
 .. |jitter_position-nbviewer| image:: /examples/basics/previews/jitter_position.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/jitter_position.ipynb

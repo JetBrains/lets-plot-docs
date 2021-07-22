@@ -5,7 +5,7 @@ All Features You Are Interested In
     :container: + features-list
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/icons/ggplot2-like-api.png
+    .. image:: /_static/images/icons/features/ggplot2-like-api.png
 
     ggplot2-like API
 
@@ -13,14 +13,14 @@ All Features You Are Interested In
 
     ---
     ---
-    .. image:: /_static/images/icons/tooltips.png
+    .. image:: /_static/images/icons/features/tooltips.png
 
     Customizable Tooltips
 
     You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions
 
     ---
-    .. image:: /_static/images/icons/export.png
+    .. image:: /_static/images/icons/features/export.png
 
     Export to SVG and HTML
 
@@ -28,14 +28,14 @@ All Features You Are Interested In
 
     ---
     ---
-    .. image:: /_static/images/icons/formatting.png
+    .. image:: /_static/images/icons/features/formatting.png
 
     Formatting
 
     **Lets-Plot** supports formatting of values of numeric and date-time types; complementary to the value formatting, a string template is also supported
 
     ---
-    .. image:: /_static/images/icons/graphics-grid.png
+    .. image:: /_static/images/icons/features/graphics-grid.png
 
     Graphics Grid
 
@@ -43,14 +43,14 @@ All Features You Are Interested In
 
     ---
     ---
-    .. image:: /_static/images/icons/offline-mode.png
+    .. image:: /_static/images/icons/features/offline-mode.png
 
     'No Javascript' / Offline Mode
 
     In the 'no javascript' mode **Lets-Plot** generates plots as bare-bones SVG images; plots in the notebook with option ``offline=True`` will be working without an Internet connection
 
     ---
-    .. image:: /_static/images/icons/platforms.png
+    .. image:: /_static/images/icons/features/platforms.png
 
     Platforms
 
@@ -58,14 +58,14 @@ All Features You Are Interested In
 
     ---
     ---
-    .. image:: /_static/images/icons/kotlin-api.png
+    .. image:: /_static/images/icons/features/kotlin-api.png
 
     Kotlin API
 
     The Kotlin API also is available in Jupyter and Datalore; the library enables embedding plots into a JVM and a Kotlin/JS application
 
     ---
-    .. image:: /_static/images/icons/interactive-maps.png
+    .. image:: /_static/images/icons/features/interactive-maps.png
 
     Interactive Maps
 
@@ -73,14 +73,14 @@ All Features You Are Interested In
 
     ---
     ---
-    .. image:: /_static/images/icons/maps-with-geometries.png
+    .. image:: /_static/images/icons/features/maps-with-geometries.png
 
     Combining Maps with Geometries
 
     ``geom_livemap()`` has built-in markers used for displaying the data; besides you can append as many additional layers with various geometries as you need
 
     ---
-    .. image:: /_static/images/icons/tiles.png
+    .. image:: /_static/images/icons/features/tiles.png
 
     Built-In and 3d-Party Tiles
 
@@ -88,7 +88,7 @@ All Features You Are Interested In
 
     ---
     ---
-    .. image:: /_static/images/icons/geocoding.png
+    .. image:: /_static/images/icons/features/geocoding.png
 
     Built-In Geocoding
 

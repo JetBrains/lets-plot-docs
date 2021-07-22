@@ -23,7 +23,7 @@ Construct charts by adding layers with geometries, statistics, scales, etc.
 
     .. raw:: html
 
-        <a class="reference internal image-reference" href="#">
+        <a class="reference internal image-reference" href="bistro.html">
           <img src="../_images/correlation_plot_4x3.png">
         </a>
 
@@ -33,7 +33,7 @@ Construct charts by adding layers with geometries, statistics, scales, etc.
 
     .. raw:: html
 
-        <a class="reference internal image-reference" href="#">
+        <a class="reference internal image-reference" href="geospatial.html">
           <img src="../_images/plotting_airbnb_prices_boston_4x3.png">
         </a>
 
