@@ -13,29 +13,38 @@
 
 .. |contours-nbviewer| image:: /examples/cookbook/previews/contours.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb
+    :alt: Three variables
 
 .. |correlation_plot-nbviewer| image:: /examples/cookbook/previews/correlation_plot.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb
+    :alt: Correlation plot
 .. |correlation_plot_4x3-nbviewer| image:: /examples/cookbook/previews/correlation_plot_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb
 
 .. |density_2d-nbviewer| image:: /examples/cookbook/previews/density_2d.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb
+    :alt: Bivariate distribution
 
 .. |distributions-nbviewer| image:: /examples/cookbook/previews/distributions.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/distributions.ipynb
+    :alt: Distributions
 
 .. |error_bars-nbviewer| image:: /examples/cookbook/previews/error_bars.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/error_bars.ipynb
+    :alt: Error bars
 
 .. |export_svg_html-nbviewer| image:: /examples/cookbook/previews/export_svg_html.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/export_SVG_HTML.ipynb
 
 .. |facets-nbviewer| image:: /examples/cookbook/previews/facets.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/facets.ipynb
+    :alt: Facets
 
 .. |formatting_axes_etc-nbviewer| image:: /examples/cookbook/previews/formatting_axes_etc.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb
+.. |two_variables-nbviewer| image:: /examples/cookbook/previews/formatting_axes_etc.png
+    :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb
+    :alt: Two variables
 .. |formatting_axes_etc_4x3-nbviewer| image:: /examples/cookbook/previews/formatting_axes_etc_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb
 
@@ -51,6 +60,10 @@
 
 .. |geom_smooth_matrix-nbviewer| image:: /examples/cookbook/previews/geom_smooth_matrix.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb
+    :alt: Smoothing line
+.. |as_discrete_function-nbviewer| image:: /examples/cookbook/previews/geom_smooth_matrix.png
+    :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb
+    :alt: as_discrete() function
 .. |geom_smooth_matrix_4x3-nbviewer| image:: /examples/cookbook/previews/geom_smooth_matrix_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb
 
@@ -76,12 +89,15 @@
 
 .. |image_101-nbviewer| image:: /examples/cookbook/previews/image_101.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_101.ipynb
+    :alt: Image specified by a ndarray
 
 .. |image_fisher_boat-nbviewer| image:: /examples/cookbook/previews/image_fisher_boat.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_fisher_boat.ipynb
+    :alt: Draw a PNG image
 
 .. |image_matrix-nbviewer| image:: /examples/cookbook/previews/image_matrix.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_matrix.ipynb
+    :alt: Set of images in a grid
 
 .. |label_format-nbviewer| image:: /examples/cookbook/previews/label_format.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/label_format.ipynb
@@ -133,6 +149,9 @@
 
 .. |scatter_plot-nbviewer| image:: /examples/cookbook/previews/scatter_plot.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb
+.. |simple_geometries-nbviewer| image:: /examples/cookbook/previews/scatter_plot.png
+    :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb
+    :alt: Simple geometries
 
 .. |the_gallery_of_basemaps-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps

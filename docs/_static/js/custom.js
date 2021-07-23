@@ -77,41 +77,21 @@ function handlePreviewsPickers() {
 }
 
 function handlePreviewsPicker(ppWindow, ppContent) {
-  const replaces = {
-    "one_variable.png": "geom_bar.png",
-    "two_variables.png": "geom_jitter_cc.png",
-    "three_variables.png": "geom_contour.png",
-    "functions.png": "geom_area.png",
-    "error_bars.png": "geom_crossbar.png",
-    "graphical_primitives.png": "geom_segment.png",
-    "stats.png": "correlation.png",
-    "general_purpose_scales.png": "identity_scales.png",
-    "color_and_fill_scales.png": "grey_scale.png",
-    "x_and_y_location_scales.png": "reversed_scale.png",
-    "shape_scales.png": "shape_scale.png",
-    "size_scales.png": "size_scale.png",
-    "coordinate_systems.png": "map_coordinates.png",
-    "faceting.png": "facet_grid.png",
-    "position_adjustments.png": "dodge_position.png",
-    "labels.png": "xlab_ylab.png",
-    "legends.png": "scale_way.png",
-    "themes.png": "default_theme.png",
-    "zooming.png": "with_clipping.png",
-  };
-  const replacesNames = Object.keys(replaces);
   const nbLinkElem = ppWindow.getElementsByClassName('reference')[0];
   const nbImgElem = nbLinkElem.getElementsByTagName('img')[0];
+  const titleElem = ppWindow.getElementsByClassName('card-header')[0].getElementsByTagName('p')[0];
+  const previewsImgElems = ppContent.getElementsByTagName('img');
   const previewsLinkElems = ppContent.getElementsByClassName('reference');
   const onClick = function (event) {
     event.preventDefault();
     // Place for changing image from preview to big size
-    let src = event.target.getAttribute('src');
-    for (let i = 0; i < replacesNames.length; i++)
-      if (src.indexOf(replacesNames[i]) != -1)
-        src = src.replace(replacesNames[i], replaces[replacesNames[i]]);
-    nbImgElem.setAttribute('src', src);
+    nbImgElem.setAttribute('src', event.target.getAttribute('src'));
     nbLinkElem.setAttribute('href', event.currentTarget.getAttribute('href'));
+    titleElem.innerHTML = event.target.getAttribute('title');
   }
+  for (let i = 0; i < previewsImgElems.length; i++)
+    if (previewsImgElems[i].getAttribute('alt'))
+      previewsImgElems[i].setAttribute('title', previewsImgElems[i].getAttribute('alt'));
   for (let i = 0; i < previewsLinkElems.length; i++)
     previewsLinkElems[i].onclick = onClick;
 }

@@ -9,6 +9,7 @@
 
 .. |brewer_scale-nbviewer| image:: /examples/basics/previews/brewer_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/brewer_scale.ipynb
+    :alt: Brewer color scale
 
 .. |cartesian_coordinates-nbviewer| image:: /examples/basics/previews/cartesian_coordinates.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/cartesian_coordinates.ipynb
@@ -18,6 +19,7 @@
 
 .. |continuous_scales-nbviewer| image:: /examples/basics/previews/continuous_scales.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/continuous_scales.ipynb
+    :alt: Continuous scales
 
 .. |correlation-nbviewer| image:: /examples/basics/previews/correlation.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/correlation.ipynb
@@ -30,12 +32,15 @@
 
 .. |default_theme-nbviewer| image:: /examples/basics/previews/default_theme.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/default_theme.ipynb
+    :alt: Default theme
 
 .. |discrete_scales-nbviewer| image:: /examples/basics/previews/discrete_scales.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/discrete_scales.ipynb
+    :alt: Discrete scales
 
 .. |dodge_position-nbviewer| image:: /examples/basics/previews/dodge_position.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/dodge_position.ipynb
+    :alt: Adjust position by dodging overlaps to the side
 
 .. |facet_grid-nbviewer| image:: /examples/basics/previews/facet_grid.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/facet_grid.ipynb
@@ -121,9 +126,11 @@
 
 .. |geom_map-nbviewer| image:: /examples/basics/previews/geom_map.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_map.ipynb
+    :alt: Polygons from a reference map
 
 .. |geom_path-nbviewer| image:: /examples/basics/previews/geom_path.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_path.ipynb
+    :alt: Connect observations
 
 .. |geom_point-nbviewer| image:: /examples/basics/previews/geom_point.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_point.ipynb
@@ -133,6 +140,7 @@
 
 .. |geom_polygon-nbviewer| image:: /examples/basics/previews/geom_polygon.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_polygon.ipynb
+    :alt: Draw a polygon
 
 .. |geom_raster-nbviewer| image:: /examples/basics/previews/geom_raster.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_raster.ipynb
@@ -160,9 +168,11 @@
 
 .. |gradient_scale-nbviewer| image:: /examples/basics/previews/gradient_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/gradient_scale.ipynb
+    :alt: Smooth color scale
 
 .. |gradient2_scale-nbviewer| image:: /examples/basics/previews/gradient2_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/gradient2_scale.ipynb
+    :alt: Diverging color scale
 
 .. |graph_building-nbviewer| image:: /examples/basics/previews/graph_building.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/graph_building.ipynb
@@ -171,18 +181,23 @@
 
 .. |grey_scale-nbviewer| image:: /examples/basics/previews/grey_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/grey_scale.ipynb
+    :alt: Grey color scale
 
 .. |guide_colorbar-nbviewer| image:: /examples/basics/previews/guide_colorbar.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/guide_colorbar.ipynb
+    :alt: Continuous colour bar guide
 
 .. |guide_legend-nbviewer| image:: /examples/basics/previews/guide_legend.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/guide_legend.ipynb
+    :alt: Legend guide
 
 .. |hue_scale-nbviewer| image:: /examples/basics/previews/hue_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/hue_scale.ipynb
+    :alt: Qualitative color scale
 
 .. |identity_scales-nbviewer| image:: /examples/basics/previews/identity_scales.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/identity_scales.ipynb
+    :alt: Identity scales
 
 .. |basic_image_matrix-nbviewer| image:: /examples/basics/previews/basic_image_matrix.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/basic_image_matrix.ipynb
@@ -192,21 +207,26 @@
 
 .. |jitterdodge_position-nbviewer| image:: /examples/basics/previews/jitterdodge_position.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/jitterdodge_position.ipynb
+    :alt: Simultaneously dodge and jitter
 
 .. |labs-nbviewer| image:: /examples/basics/previews/labs.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/labs.ipynb
 
 .. |legend_place-nbviewer| image:: /examples/basics/previews/legend_place.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/legend_place.ipynb
+    :alt: Legend place
 
 .. |log10_scale-nbviewer| image:: /examples/basics/previews/log10_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/log10_scale.ipynb
+    :alt: Log10 scale
 
 .. |manual_scales-nbviewer| image:: /examples/basics/previews/manual_scales.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/manual_scales.ipynb
+    :alt: Manual scales
 
 .. |map_coordinates-nbviewer| image:: /examples/basics/previews/map_coordinates.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/map_coordinates.ipynb
+    :alt: Projects a portion of the earth onto a plane
 
 .. |maps_and_geocoding-nbviewer| image:: /examples/basics/previews/maps_and_geocoding.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/maps_and_geocoding.ipynb
@@ -227,6 +247,7 @@
 
 .. |shape_manual_scale-nbviewer| image:: /examples/basics/previews/shape_manual_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/shape_manual_scale.ipynb
+    :alt: Manual shape scale
 
 .. |shape_scale-nbviewer| image:: /examples/basics/previews/shape_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/shape_scale.ipynb

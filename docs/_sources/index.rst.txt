@@ -8,8 +8,8 @@
 .. include:: /shared/previews.rst
 
 
-Explore Your Data with Lets-Plot
-================================
+An Open-source Plotting Library for Statistical Data
+====================================================
 
 |jb-official| |latest-release| |license|
 
@@ -20,48 +20,47 @@ Explore Your Data with Lets-Plot
 .. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
 
-The **Lets-Plot** for Python library includes a native backend and a :ref:`Python API <api>`, which was mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
+**OS:** Linux, MacOS, Windows
 
-To learn more about the grammar of graphics, we recommend an excellent book called "`ggplot2: Elegant Graphics for Data Analysis <https://ggplot2-book.org/index.html>`__". It will be a good prerequisite for further exploration of the **Lets-Plot** library.
+**Python versions:** 3.6, 3.7, 3.8, 3.9
+
+The **Lets-Plot** for Python library provides an :ref:`API <api>` which is mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
+
+Installation Guide
+------------------
 
 .. panels::
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    Charts
-    ^^^^^^
+    For Linux and Mac users
+    ^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. raw:: html
+    To install the **Lets-Plot** library, run the following command:
 
-        <a class="reference internal image-reference" href="pages/charts.html">
-          <img src="_images/graph_building_4x3.png">
-        </a>
+    .. code:: shell
 
-    ---
-    Maps
-    ^^^^
-
-    .. raw:: html
-
-        <a class="reference internal image-reference" href="#">
-          <img src="_images/museums_4x3.png">
-        </a>
+        pip install lets-plot
 
     ---
-    Geocoding
-    ^^^^^^^^^
+    For Windows users
+    ^^^^^^^^^^^^^^^^^
 
-    .. raw:: html
+    Install Anaconda3 (or Miniconda3), then install MinGW toolchain to Conda:
 
-        <a class="reference internal image-reference" href="#">
-          <img src="_images/geocoding_reference_4x3.png">
-        </a>
+    .. code:: shell
 
-Quickstart with Jupyter
------------------------
+        conda install m2w64-toolchain
 
-You can use **Lets-Plot** in a Jupyter notebook or another notebook of your choice, like Datalore, Kaggle or Colab.
+    Install the **Lets-Plot** library:
 
-To evaluate the plotting capabilities of **Lets-Plot**, add the following code to a Jupyter notebook:
+    .. code:: shell
+
+        pip install lets-plot
+
+**NB:** You can try the **Lets-Plot** library in `Datalore <https://datalore.jetbrains.com>`__. **Lets-Plot** is available in Datalore out-of-the-box.
+
+Quickstart
+----------
 
 .. jupyter-execute::
     :linenos:
@@ -115,4 +114,52 @@ To evaluate the plotting capabilities of **Lets-Plot**, add the following code t
       </div>
     </div>
 
-.. include:: /shared/features.rst
+Meet the Grammar of Graphics
+----------------------------
+
+.. panels::
+    :container: + gog-book
+    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: _static/images/ggplot2-elegant-graphics-for-data-analysis.jpg
+        :target: https://ggplot2-book.org/index.html
+
+    ---
+    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+
+    To learn more about the grammar of graphics, we recommend an excellent book called "ggplot2: Elegant Graphics for Data Analysis". It will be a good prerequisite for further exploration of the **Lets-Plot** library.
+
+Explore Your Data with Lets-Plot
+--------------------------------
+
+.. panels::
+    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+
+    Charts
+    ^^^^^^
+
+    .. raw:: html
+
+        <a class="reference internal image-reference" href="pages/charts.html">
+          <img src="_images/graph_building_4x3.png">
+        </a>
+
+    ---
+    Maps
+    ^^^^
+
+    .. raw:: html
+
+        <a class="reference internal image-reference" href="#">
+          <img src="_images/museums_4x3.png">
+        </a>
+
+    ---
+    Geocoding
+    ^^^^^^^^^
+
+    .. raw:: html
+
+        <a class="reference internal image-reference" href="#">
+          <img src="_images/geocoding_reference_4x3.png">
+        </a>
