@@ -5,119 +5,64 @@
 Charts
 ======
 
-.. panels::
-    :container: + previews-picker-content id-1
-    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
+Basic Building Blocks
+---------------------
 
-    |simple_geometries-nbviewer|
-
-    ---
-    |two_variables-nbviewer|
-
-    ---
-    |geom_map-nbviewer|
-
-    ---
-    |geom_polygon-nbviewer|
-
-    ---
-    |geom_path-nbviewer|
-
-    ---
-    |distributions-nbviewer|
-
-    ---
-    |error_bars-nbviewer|
-
-    ---
-    |geom_smooth_matrix-nbviewer|
-
-    ---
-    |density_2d-nbviewer|
-
-    ---
-    |contours-nbviewer|
-
-    ---
-    |facets-nbviewer|
-
-    ---
-    |image_101-nbviewer|
-
-    ---
-    |image_fisher_boat-nbviewer|
-
-    ---
-    |correlation_plot-nbviewer|
-
-    ---
-    |image_matrix-nbviewer|
-
-    ---
-    |continuous_scales-nbviewer|
-
-    ---
-    |discrete_scales-nbviewer|
-
-    ---
-    |identity_scales-nbviewer|
-
-    ---
-    |manual_scales-nbviewer|
-
-    ---
-    |brewer_scale-nbviewer|
-
-    ---
-    |grey_scale-nbviewer|
-
-    ---
-    |gradient_scale-nbviewer|
-
-    ---
-    |gradient2_scale-nbviewer|
-
-    ---
-    |hue_scale-nbviewer|
-
-    ---
-    |log10_scale-nbviewer|
-
-    ---
-    |shape_manual_scale-nbviewer|
-
-    ---
-    |map_coordinates-nbviewer|
-
-    ---
-    |dodge_position-nbviewer|
-
-    ---
-    |jitterdodge_position-nbviewer|
-
-    ---
-    |guide_legend-nbviewer|
-
-    ---
-    |guide_colorbar-nbviewer|
-
-    ---
-    |legend_place-nbviewer|
-
-    ---
-    |default_theme-nbviewer|
+Points
+~~~~~~
 
 .. panels::
-    :container: + previews-picker-window id-1
-    :column: col-lg-12 p-2
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    Simple geometries
-    ^^^^^^^^^^^^^^^^^
+    |geom_point-nbviewer|
 
-    |simple_geometries-nbviewer|
+    :py:mod:`Points <lets_plot.geom_point>`
 
-.. raw:: html
+    ---
+    |geom_jitter_dd-nbviewer|
 
-    <br style="clear:both;" />
+    :py:mod:`Jittered points <lets_plot.geom_jitter>`
+
+Demo notebooks:
+
+- `Draw a scatter plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb>`__
+
+- `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
+
+Areas
+~~~~~
+
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+
+    |geom_area-nbviewer|
+
+    :py:mod:`Area <lets_plot.geom_area>`
+
+    ---
+    |geom_ribbon-nbviewer|
+
+    :py:mod:`Ribbon <lets_plot.geom_ribbon>`
+
+Contours
+--------
+
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+
+    |geom_contour-nbviewer|
+
+    :py:mod:`Contours <lets_plot.geom_contour>`
+
+    ---
+    |geom_contourf-nbviewer|
+
+    :py:mod:`Filled contours <lets_plot.geom_contourf>`
+
+Demo notebooks:
+
+- `Contours basics <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb>`__
+
+- `How to draw curve fast <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/contours.ipynb>`__
 
 .. include:: /shared/features.rst
