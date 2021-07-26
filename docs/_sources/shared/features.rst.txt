@@ -43,12 +43,20 @@ All Features You Are Interested In
 
     ---
     ---
+    .. image:: /_static/images/icons/features/sampling.png
+
+    Sampling
+
+    Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting
+
+    ---
     .. image:: /_static/images/icons/features/offline-mode.png
 
     'No Javascript' / Offline Mode
 
     In the 'no javascript' mode **Lets-Plot** generates plots as bare-bones SVG images; plots in the notebook with option ``offline=True`` will be working without an Internet connection
 
+    ---
     ---
     .. image:: /_static/images/icons/features/platforms.png
 
@@ -57,13 +65,13 @@ All Features You Are Interested In
     You can use **Lets-Plot** in Jupyter notebook or other notebook of your choice, like Datalore, Kaggle or Colab; moreover there is a plugin "Lets-Plot in SciView" for IntelliJ-based IDEs with the enabled scientific mode
 
     ---
-    ---
     .. image:: /_static/images/icons/features/kotlin-api.png
 
     Kotlin API
 
     The Kotlin API also is available in Jupyter and Datalore; the library enables embedding plots into a JVM and a Kotlin/JS application
 
+    ---
     ---
     .. image:: /_static/images/icons/features/interactive-maps.png
 
@@ -72,7 +80,6 @@ All Features You Are Interested In
     Interactive maps allow zooming and panning around geospatial data that can be added to the base-map layer using regular ggplot geoms
 
     ---
-    ---
     .. image:: /_static/images/icons/features/maps-with-geometries.png
 
     Combining Maps with Geometries
@@ -80,13 +87,13 @@ All Features You Are Interested In
     ``geom_livemap()`` has built-in markers used for displaying the data; besides you can append as many additional layers with various geometries as you need
 
     ---
+    ---
     .. image:: /_static/images/icons/features/tiles.png
 
     Built-In and 3d-Party Tiles
 
     Change themes and use external tile services to diversify your maps
 
-    ---
     ---
     .. image:: /_static/images/icons/features/geocoding.png
 
