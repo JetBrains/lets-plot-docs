@@ -11,17 +11,15 @@ Basic Building Blocks
 Points
 ~~~~~~
 
+Layers:
+
+- :py:mod:`Points <lets_plot.geom_point>`
+- :py:mod:`Jittered points <lets_plot.geom_jitter>`
+
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geom_point-nbviewer|
-
-    :py:mod:`Points <lets_plot.geom_point>`
-
-    ---
-    |geom_jitter_dd-nbviewer|
-
-    :py:mod:`Jittered points <lets_plot.geom_jitter>`
+    |point_geometries-nbviewer|
 
 Demo notebooks:
 
@@ -32,29 +30,74 @@ Demo notebooks:
 Lines
 ~~~~~
 
-.. TODO: Add geom_abline, geom_vline, geom_hline
+Layers:
+
+.. panels::
+    :container: + border-free
+    :column: col-lg-1 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: /_static/images/icons/charts/paths.png
+
+    ---
+    :column: col-lg-11 col-md-4 col-sm-6 col-xs-12 p-2
+
+    :py:mod:`line <lets_plot.geom_line>`,
+    :py:mod:`path <lets_plot.geom_path>`
+
+    ---
+    :column: col-lg-1 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: /_static/images/icons/charts/lines.png
+
+    ---
+    :column: col-lg-11 col-md-4 col-sm-6 col-xs-12 p-2
+
+    :py:mod:`diagonal line <lets_plot.geom_abline>`,
+    :py:mod:`horizontal line <lets_plot.geom_hline>`,
+    :py:mod:`vertical line <lets_plot.geom_vline>`
+
+    ---
+    :column: col-lg-1 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: /_static/images/icons/charts/segments.png
+
+    ---
+    :column: col-lg-11 col-md-4 col-sm-6 col-xs-12 p-2
+
+    :py:mod:`segment <lets_plot.geom_segment>`
+
+    ---
+    :column: col-lg-1 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: /_static/images/icons/charts/steps.png
+
+    ---
+    :column: col-lg-11 col-md-4 col-sm-6 col-xs-12 p-2
+
+    :py:mod:`step-function <lets_plot.geom_step>`
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
     |geom_line-nbviewer|
 
-    :py:mod:`Straight lines <lets_plot.geom_line>`
-
     ---
     |geom_path-nbviewer|
 
-    :py:mod:`Path <lets_plot.geom_path>`
+    ---
+    |geom_abline-nbviewer|
+
+    ---
+    |geom_hline-nbviewer|
+
+    ---
+    |geom_vline-nbviewer|
 
     ---
     |geom_segment-nbviewer|
 
-    :py:mod:`Segments <lets_plot.geom_segment>`
-
     ---
     |geom_step-nbviewer|
-
-    :py:mod:`Step-function <lets_plot.geom_step>`
 
 Demo notebooks:
 
@@ -345,7 +388,7 @@ Correlation Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |correlation-nbviewer|
+    |corr_plot-nbviewer|
 
     :py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
 

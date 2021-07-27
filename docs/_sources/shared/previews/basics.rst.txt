@@ -21,11 +21,11 @@
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/continuous_scales.ipynb
     :alt: Continuous scales
 
-.. |correlation-nbviewer| image:: /examples/basics/previews/correlation.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/correlation.ipynb
+.. |stat_corr-nbviewer| image:: /examples/basics/previews/stat_corr.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/stat_corr.ipynb
 
 .. |corr_plot-nbviewer| image:: /examples/basics/previews/corr_plot.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/corr_plot.ipynb
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/corr_plot.ipynb
 
 .. |datetime_scale-nbviewer| image:: /examples/basics/previews/datetime_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/datetime_scale.ipynb
@@ -60,6 +60,9 @@
 .. |geom_area-nbviewer| image:: /examples/basics/previews/geom_area.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_area.ipynb
 
+.. |geom_abline-nbviewer| image:: /examples/basics/previews/geom_abline.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geom_abline.ipynb
+
 .. |geom_area_bin-nbviewer| image:: /examples/basics/previews/geom_area_bin.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_area_bin.ipynb
 .. |geom_area_bin_icon-nbviewer| image:: /examples/basics/previews/geom_area_bin_icon.png
@@ -71,7 +74,7 @@
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_bar.ipynb
 
 .. |geom_bar_identity-nbviewer| image:: /examples/basics/previews/geom_bar_identity.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_bar_identity.ipynb
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geom_bar_identity.ipynb
 
 .. |geom_bin2d-nbviewer| image:: /examples/basics/previews/geom_bin2d.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_bin2d.ipynb
@@ -111,6 +114,9 @@
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_histogram.ipynb
 .. |geom_histogram_icon-nbviewer| image:: /examples/basics/previews/geom_histogram_icon.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_histogram.ipynb
+
+.. |geom_hline-nbviewer| image:: /examples/basics/previews/geom_hline.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geom_hline.ipynb
 
 .. |geom_jitter_cc-nbviewer| image:: /examples/basics/previews/geom_jitter_cc.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_jitter_cc.ipynb
@@ -165,6 +171,9 @@
 
 .. |geom_tile-nbviewer| image:: /examples/basics/previews/geom_tile.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/geom_tile.ipynb
+
+.. |geom_vline-nbviewer| image:: /examples/basics/previews/geom_vline.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geom_vline.ipynb
 
 .. |gradient_scale-nbviewer| image:: /examples/basics/previews/gradient_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/gradient_scale.ipynb
@@ -238,6 +247,9 @@
 
 .. |plot_title-nbviewer| image:: /examples/basics/previews/plot_title.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/plot_title.ipynb
+
+.. |point_geometries-nbviewer| image:: /examples/basics/previews/point_geometries.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/point_geometries.ipynb
 
 .. |reversed_scale-nbviewer| image:: /examples/basics/previews/reversed_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/reversed_scale.ipynb
