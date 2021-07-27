@@ -422,4 +422,57 @@ Demo notebooks:
 
 - `Tooltip customization <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/tooltip_config.ipynb>`__
 
+More Examples
+-------------
+
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+
+    |2020-nbviewer|
+
+    ---
+    |adversarial_attack-nbviewer|
+
+    ---
+    |bayesian_inference-nbviewer|
+
+    ---
+    |covid19_and_mobility-nbviewer|
+
+    ---
+    |delhi_climate-nbviewer|
+
+    ---
+    |google_play_store-nbviewer|
+
+    ---
+    |google_suggestions-nbviewer|
+
+    ---
+    |kernels_visualization-nbviewer|
+
+    ---
+    |klein_bottle-nbviewer|
+
+    ---
+    |malnutrition-nbviewer|
+
+    ---
+    |mandelbulbs-nbviewer|
+
+    ---
+    |mosaic_image-nbviewer|
+
+    ---
+    |nobel-nbviewer|
+
+    ---
+    |nyc_metro-nbviewer|
+
+    ---
+    |torus-nbviewer|
+
+    ---
+    |world_coloring-nbviewer|
+
 .. include:: /shared/features.rst

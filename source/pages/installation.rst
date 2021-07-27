@@ -6,7 +6,7 @@ Installation Guide
 For Linux and Mac users
 -----------------------
 
-To install the **Lets-Plot** library, run the following command:
+To install the Lets-Plot library, run the following command:
 
 .. code:: shell
 
@@ -21,7 +21,7 @@ Install Anaconda3 (or Miniconda3), then install MinGW toolchain to Conda:
 
     conda install m2w64-toolchain
 
-Install the **Lets-Plot** library:
+Install the Lets-Plot library:
 
 .. code:: shell
 
@@ -30,7 +30,7 @@ Install the **Lets-Plot** library:
 Quickstart with Datalore
 ------------------------
 
-You can try the **Lets-Plot** library in `Datalore <https://datalore.jetbrains.com>`__. **Lets-Plot** is available in Datalore out-of-the-box.
+You can try the Lets-Plot library in `Datalore <https://datalore.jetbrains.com>`__. Lets-Plot is available in Datalore out-of-the-box.
 
 The advantage of `Datalore <https://datalore.jetbrains.com>`__ as a learning tool in comparison to Jupyter is that it is equipped with a very friendly Python editor which comes with auto-completion, intentions and other useful coding assistance features.
 

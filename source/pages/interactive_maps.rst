@@ -27,9 +27,9 @@ Build an Interactive Maps with Lets-Plot
 Livemap Geometry
 ----------------
 
-**Lets-Plot** supports interactive maps via the ``geom_livemap()`` geom layer which enables a researcher to visualize geospatial information on a zoomable and paneble map.
+Lets-Plot supports interactive maps via the ``geom_livemap()`` geom layer which enables a researcher to visualize geospatial information on a zoomable and paneble map.
 
-When building interactive geospatial visualizations with **Lets-Plot** the visualisation workflow remains the same as when building a regular ggplot2 plot.
+When building interactive geospatial visualizations with Lets-Plot the visualisation workflow remains the same as when building a regular ggplot2 plot.
 
 .. panels::
     :container: + previews-picker-window id-1
@@ -58,7 +58,7 @@ Built-In Geocoding
 
 Geocoding is the process of converting names of places into geographic coordinates.
 
-The **Lets-Plot** has built-in geocoding capabilities covering the folloing administrative levels: *countries*, *states* (US and non-US equivalents), *counties* (and equivalents), *cities* (and towns).
+The Lets-Plot has built-in geocoding capabilities covering the folloing administrative levels: *countries*, *states* (US and non-US equivalents), *counties* (and equivalents), *cities* (and towns).
 
 Learn more: :ref:`Geocoding <geocoding>`.
 
@@ -162,7 +162,7 @@ Change themes and use external tile services to diversify your maps.
 GeoPandas Support
 -----------------
 
-All GeoPandas shapes are "undersood" by **Lets-Plot** and can be plotted using various geometry layers, depending on the type of the shape.
+All GeoPandas shapes are "undersood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape.
 
 .. panels::
     :container: + previews-picker-window id-6

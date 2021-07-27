@@ -20,44 +20,26 @@ An Open-source Plotting Library for Statistical Data
 .. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
 
-**OS:** Linux, MacOS, Windows
+**Python versions:** 3.6-3.9
 
-**Python versions:** 3.6, 3.7, 3.8, 3.9
+**OS:** Linux, macOS, Windows
 
-The **Lets-Plot** for Python library provides an :ref:`API <api>` which is mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
+Installation
+------------
 
-Installation Guide
-------------------
+You can try the Lets-Plot library in `Datalore <https://datalore.jetbrains.com>`__. Lets-Plot is available in Datalore out-of-the-box.
 
-.. panels::
-    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+To install the Lets-Plot library onto your computer, run the following command:
 
-    For Linux and Mac users
-    ^^^^^^^^^^^^^^^^^^^^^^^
+.. code:: shell
 
-    To install the **Lets-Plot** library, run the following command:
+    pip install lets-plot
 
-    .. code:: shell
+For Windows users Lets-Plot should be installed after the MinGW toolchain:
 
-        pip install lets-plot
+.. code:: shell
 
-    ---
-    For Windows users
-    ^^^^^^^^^^^^^^^^^
-
-    Install Anaconda3 (or Miniconda3), then install MinGW toolchain to Conda:
-
-    .. code:: shell
-
-        conda install m2w64-toolchain
-
-    Install the **Lets-Plot** library:
-
-    .. code:: shell
-
-        pip install lets-plot
-
-**NB:** You can try the **Lets-Plot** library in `Datalore <https://datalore.jetbrains.com>`__. **Lets-Plot** is available in Datalore out-of-the-box.
+    conda install m2w64-toolchain
 
 Quickstart
 ----------
@@ -127,7 +109,9 @@ Meet the Grammar of Graphics
     ---
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
 
-    To learn more about the grammar of graphics, we recommend an excellent book called "ggplot2: Elegant Graphics for Data Analysis". It will be a good prerequisite for further exploration of the **Lets-Plot** library.
+    The Lets-Plot for Python library provides an :ref:`API <api>` which is mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
+
+    To learn more about the grammar of graphics, we recommend an excellent book called "ggplot2: Elegant Graphics for Data Analysis". It will be a good prerequisite for further exploration of the Lets-Plot library.
 
 Explore Your Data with Lets-Plot
 --------------------------------

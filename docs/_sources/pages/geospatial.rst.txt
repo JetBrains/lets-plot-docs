@@ -22,7 +22,7 @@ GeoPandas Support
     ---
     |beijing-kaggle|
 
-All GeoPandas shapes are "undersood" by **Lets-Plot** and can be plotted using various geometry layers, depending on the type of the shape.
+All GeoPandas shapes are "undersood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape.
 
 Joining Map Coordinates with Data
 ---------------------------------

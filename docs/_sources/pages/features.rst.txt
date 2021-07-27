@@ -10,7 +10,7 @@ Hot Features
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
     :body: text-center
 
-    Try the demo notebook with key features of **Lets-Plot** right now:
+    Try the demo notebook with key features of Lets-Plot right now:
 
     .. image:: https://mybinder.org/badge_logo.svg
         :target: #
@@ -85,7 +85,7 @@ Formatting
     ---
     |map_airports-kaggle|
 
-**Lets-Plot** supports formatting of values of numeric and date-time types.
+Lets-Plot supports formatting of values of numeric and date-time types.
 
 Complementary to the value formatting, a *string template* is also supported.
 
@@ -131,7 +131,7 @@ Data Sampling
     ---
     |sampling_vertex-nbviewer|
 
-Sampling is a special technique of data transformation, which is built into **Lets-Plot** and is applied after ``stat`` transformation.
+Sampling is a special technique of data transformation, which is built into Lets-Plot and is applied after ``stat`` transformation.
 
 Sampling helps dealing with large datasets when unintentional attempt to plot an excessively large number of geometries can lead to UI freezes and even to out-of-memory crashes.
 
@@ -158,7 +158,7 @@ The ``ggsave()`` function is an easy way to export plot to a file in SVG or HTML
 'No Javascript' Mode
 --------------------
 
-In the 'no javascript' mode **Lets-Plot** genetares plots as bare-bones SVG images.
+In the 'no javascript' mode Lets-Plot genetares plots as bare-bones SVG images.
 
 This mode is helpful when there is a requirement to render notebooks in an 'ipnb' renderer which does not suppopt javascript (like GitHub's built-in renderer).
 
@@ -183,7 +183,7 @@ Alternativaly, you can set up the environment variable:
 Offline Mode
 ------------
 
-In classic Jupyter notebook the ``LetsPlot.setup_html()`` statement by default pre-loads **Lets-Plot** JS library from CDN. Alternatively, option ``offline=True`` will force **Lets-Plot** adding the full JS bundle to the notebook. In this case, plots in the notebook will be working without an Internet connection.
+In classic Jupyter notebook the ``LetsPlot.setup_html()`` statement by default pre-loads Lets-Plot JS library from CDN. Alternatively, option ``offline=True`` will force Lets-Plot adding the full JS bundle to the notebook. In this case, plots in the notebook will be working without an Internet connection.
 
 .. code:: python
 
