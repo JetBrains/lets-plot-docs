@@ -27,7 +27,7 @@ An Open-source Plotting Library for Statistical Data
 Installation
 ------------
 
-You can try the Lets-Plot library in `Datalore <https://datalore.jetbrains.com>`__. Lets-Plot is available in Datalore out-of-the-box.
+You can try the Lets-Plot library in `Datalore <https://datalore.jetbrains.com>`__ where it is available out-of-the-box.
 
 To install the Lets-Plot library onto your computer, run the following command:
 
@@ -107,7 +107,7 @@ Meet the Grammar of Graphics
         :target: https://ggplot2-book.org/index.html
 
     ---
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
     The Lets-Plot for Python library provides an :ref:`API <api>` which is mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
 
@@ -118,6 +118,7 @@ Explore Your Data with Lets-Plot
 
 .. panels::
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+    :header: text-center
 
     Charts
     ^^^^^^
