@@ -23,6 +23,11 @@ Demo Examples
     Population mobility and COVID-19 in the first half of 2020
 
     ---
+    |covid19_india-kaggle|
+
+    COVID-19 in India: EDA and spatial visualization
+
+    ---
     |delhi_climate-nbviewer|
 
     Time series visualizations
