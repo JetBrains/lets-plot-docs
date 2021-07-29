@@ -6,17 +6,17 @@ Charts
 ======
 
 
-Basic Building Blocks
----------------------
+|basic-building-blocks-icon| Basic Building Blocks
+--------------------------------------------------
+
+.. |basic-building-blocks-icon| image:: /_static/images/icons/charts/basic-building-blocks.png
 
 
 Points
 ~~~~~~
 
-Layers:
-
-- :py:mod:`Points <lets_plot.geom_point>`
-- :py:mod:`Jittered points <lets_plot.geom_jitter>`
+:py:mod:`Points <lets_plot.geom_point>`,
+:py:mod:`jittered points <lets_plot.geom_jitter>`
 
 Examples:
 
@@ -27,7 +27,7 @@ Examples:
 - `Nudge position <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/nudge_position.ipynb>`__
 - `Draw a scatter plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb>`__
 - `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
-- `2D distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/2d_distributions.ipynb>`__
+- `2d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/2d_distributions.ipynb>`__
 - `Correlation statistics <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/stat_corr.ipynb>`__
 - `Fixed coordinates <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/fixed_coordinates.ipynb>`__
 - `Guide colorbar <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/guide_colorbar.ipynb>`__
@@ -40,15 +40,13 @@ Examples:
 Lines
 ~~~~~
 
-Layers:
-
-- :py:mod:`line <lets_plot.geom_line>`
-- :py:mod:`path <lets_plot.geom_path>`
-- :py:mod:`diagonal line <lets_plot.geom_abline>`
-- :py:mod:`horizontal line <lets_plot.geom_hline>`
-- :py:mod:`vertical line <lets_plot.geom_vline>`
-- :py:mod:`segment <lets_plot.geom_segment>`
-- :py:mod:`step-function <lets_plot.geom_step>`
+:py:mod:`Line <lets_plot.geom_line>`,
+:py:mod:`path <lets_plot.geom_path>`,
+:py:mod:`diagonal line <lets_plot.geom_abline>`,
+:py:mod:`horizontal line <lets_plot.geom_hline>`,
+:py:mod:`vertical line <lets_plot.geom_vline>`,
+:py:mod:`segment <lets_plot.geom_segment>`,
+:py:mod:`step-function <lets_plot.geom_step>`
 
 Examples:
 
@@ -62,23 +60,19 @@ Examples:
 Areas
 ~~~~~
 
-Layers:
-
-- :py:mod:`Area <lets_plot.geom_area>`
-- :py:mod:`Ribbon <lets_plot.geom_ribbon>`
+:py:mod:`Area <lets_plot.geom_area>`,
+:py:mod:`ribbon <lets_plot.geom_ribbon>`
 
 
 Polygons
 ~~~~~~~~
 
-Layers:
-
-- :py:mod:`Polygon <lets_plot.geom_polygon>`
-- :py:mod:`Map <lets_plot.geom_map>`
+:py:mod:`Polygon <lets_plot.geom_polygon>`,
+:py:mod:`map <lets_plot.geom_map>`
 
 Examples:
 
-- `2D density <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb>`__
+- `2d density <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb>`__
 - `Contours <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb>`__
 - `Mapping US household income <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb>`__
 - `Map coordinates <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/map_coordinates.ipynb>`__
@@ -89,26 +83,22 @@ Examples:
 Tiles
 ~~~~~
 
-Layers:
-
-- :py:mod:`Tiles <lets_plot.geom_tile>`
-- :py:mod:`Rectangles <lets_plot.geom_rect>`
-- :py:mod:`Raster plot <lets_plot.geom_raster>`
+:py:mod:`Tiles <lets_plot.geom_tile>`,
+:py:mod:`rectangles <lets_plot.geom_rect>`,
+:py:mod:`raster plot <lets_plot.geom_raster>`
 
 Examples:
 
 - `Contours <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb>`__
 - `"Fisher boat" image <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_fisher_boat.ipynb>`__
 - `General purpose stats <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/general_purpose_stats.ipynb>`__
-- `3D distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/3_variables.ipynb>`__
+- `3d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/3_variables.ipynb>`__
 
 
 Text
 ~~~~
 
-Layers:
-
-- :py:mod:`Text <lets_plot.geom_text>`
+:py:mod:`Text <lets_plot.geom_text>`
 
 Examples:
 
@@ -117,16 +107,13 @@ Examples:
 - `Formatting labels on plots <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb>`__
 
 
-Discrete
---------
+|discrete-icon| Discrete
+------------------------
 
-.. image:: /_static/images/icons/charts/discrete.png
-    :height: 45
+.. |discrete-icon| image:: /_static/images/icons/charts/discrete.png
 
-Layers:
-
-- :py:mod:`Bar <lets_plot.geom_bar>`
-- :py:mod:`Boxplot <lets_plot.geom_boxplot>`
+:py:mod:`Bar <lets_plot.geom_bar>`,
+:py:mod:`boxplot <lets_plot.geom_boxplot>`
 
 Examples:
 
@@ -136,7 +123,7 @@ Examples:
 - `Bar on livemap <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/bar_on_livemap.ipynb>`__
 - `Error bars <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/error_bars.ipynb>`__
 - `General purpose stats <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/general_purpose_stats.ipynb>`__
-- `1D distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/1d_distributions.ipynb>`__
+- `1d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/1d_distributions.ipynb>`__
 - `Distributions <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/distributions.ipynb>`__
 - `Continuous scales <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/continuous_scales.ipynb>`__
 - `Discrete scales <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/discrete_scales.ipynb>`__
@@ -149,58 +136,49 @@ Examples:
 - `Title and legend <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/scale_way.ipynb>`__
 
 
-Contours
---------
+|contours-icon| Contours
+------------------------
 
-.. image:: /_static/images/icons/charts/contours.png
-    :height: 45
+.. |contours-icon| image:: /_static/images/icons/charts/contours.png
 
-Layers:
-
-- :py:mod:`Contours <lets_plot.geom_contour>`
-- :py:mod:`Filled contours <lets_plot.geom_contourf>`
+:py:mod:`Contours <lets_plot.geom_contour>`,
+:py:mod:`filled contours <lets_plot.geom_contourf>`
 
 Examples:
 
 - `Contours <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb>`__
 - `How to draw curve fast <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/contours.ipynb>`__
-- `3D distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/3_variables.ipynb>`__
+- `3d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/3_variables.ipynb>`__
 
 
-Visualization of Distribution
------------------------------
+|visualization-of-distribution-icon| Visualization of Distribution
+------------------------------------------------------------------
 
-.. image:: /_static/images/icons/charts/visualization-of-distribution.png
-    :height: 45
+.. |visualization-of-distribution-icon| image:: /_static/images/icons/charts/visualization-of-distribution.png
 
-Layers:
-
-- :py:mod:`Histogram <lets_plot.geom_histogram>`
-- :py:mod:`Density <lets_plot.geom_density>`
-- :py:mod:`Frequency polygon <lets_plot.geom_freqpoly>`
+:py:mod:`Histogram <lets_plot.geom_histogram>`,
+:py:mod:`density <lets_plot.geom_density>`,
+:py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
 Examples:
 
 - `Histogram <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/histogram.ipynb>`__
 - `Distributions <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/distributions.ipynb>`__
-- `1D Distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/1d_distributions.ipynb>`__
+- `1d Distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/1d_distributions.ipynb>`__
 - `Continuous color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gradient_scale.ipynb>`__
 - `Diverging color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gradient2_scale.ipynb>`__
 - `Qualitative color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/hue_scale.ipynb>`__
 
 
-Visualization of Errors
------------------------
+|visualization-of-errors-icon| Visualization of Errors
+------------------------------------------------------
 
-.. image:: /_static/images/icons/charts/visualization-of-errors.png
-    :height: 45
+.. |visualization-of-errors-icon| image:: /_static/images/icons/charts/visualization-of-errors.png
 
-Layers:
-
-- :py:mod:`Crossbar <lets_plot.geom_crossbar>`
-- :py:mod:`Errorbar <lets_plot.geom_errorbar>`
-- :py:mod:`Linerange <lets_plot.geom_linerange>`
-- :py:mod:`Pointrange <lets_plot.geom_pointrange>`
+:py:mod:`Crossbar <lets_plot.geom_crossbar>`,
+:py:mod:`errorbar <lets_plot.geom_errorbar>`,
+:py:mod:`linerange <lets_plot.geom_linerange>`,
+:py:mod:`pointrange <lets_plot.geom_pointrange>`
 
 Examples:
 
@@ -208,15 +186,12 @@ Examples:
 - `Comparisons <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/comparisons.ipynb>`__
 
 
-Smoothing
----------
+|smoothing-icon| Smoothing
+--------------------------
 
-.. image:: /_static/images/icons/charts/smoothing.png
-    :height: 45
+.. |smoothing-icon| image:: /_static/images/icons/charts/smoothing.png
 
-Layers:
-
-- :py:mod:`Smoothing line <lets_plot.geom_smooth>`
+:py:mod:`Smoothing line <lets_plot.geom_smooth>`
 
 Examples:
 
@@ -225,40 +200,39 @@ Examples:
 - `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
 
 
-``as_discrete()``
------------------
+|as_discrete-icon| ``as_discrete()``
+------------------------------------
+
+.. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.png
 
 Examples:
 
 - `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
 
 
-Bivariate Distribution
-----------------------
+|bivariate-distribution-icon| Bivariate Distribution
+----------------------------------------------------
 
-.. image:: /_static/images/icons/charts/bivariate-distribution.png
-    :height: 45
+.. |bivariate-distribution-icon| image:: /_static/images/icons/charts/bivariate-distribution.png
 
-Layers:
-
-- :py:mod:`Heatmap of 2d bin counts <lets_plot.geom_bin2d>`
-- :py:mod:`2D density <lets_plot.geom_density2d>`
-- :py:mod:`Filled 2D density <lets_plot.geom_density2df>`
+:py:mod:`Heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
+:py:mod:`2d density <lets_plot.geom_density2d>`,
+:py:mod:`filled 2d density <lets_plot.geom_density2df>`
 
 Examples:
 
-- `2D density <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb>`__
+- `2d density <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb>`__
 - `General purpose stats <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/general_purpose_stats.ipynb>`__
-- `2D distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/2d_distributions.ipynb>`__
+- `2d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/2d_distributions.ipynb>`__
 
 
-Images
-------
+|images-icon| Images
+--------------------
 
-Layers:
+.. |images-icon| image:: /_static/images/icons/charts/images.png
 
-- :py:mod:`Image <lets_plot.geom_image>`
-- :py:mod:`Matrix of images <lets_plot.bistro.im.image_matrix>`
+:py:mod:`Image <lets_plot.geom_image>`,
+:py:mod:`matrix of images <lets_plot.bistro.im.image_matrix>`
 
 Examples:
 
@@ -267,31 +241,25 @@ Examples:
 - `Image matrix <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_matrix.ipynb>`__
 
 
-Facets
-------
+|facets-icon| Facets
+--------------------
 
-.. image:: /_static/images/icons/charts/facets.png
-    :height: 45
+.. |facets-icon| image:: /_static/images/icons/charts/facets.png
 
-Layers:
-
-- :py:mod:`Lay out panels in a grid <lets_plot.facet_grid>`
-- :py:mod:`Wrap a 1d ribbon of panels into 2d <lets_plot.facet_wrap>`
+:py:mod:`Lay out panels in a grid <lets_plot.facet_grid>`,
+:py:mod:`wrap a 1d ribbon of panels into 2d <lets_plot.facet_wrap>`
 
 Examples:
 
 - `Facets <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/facets.ipynb>`__
 
 
-Correlation Plot
-----------------
+|correlation-plot-icon| Correlation Plot
+----------------------------------------
 
-.. image:: /_static/images/icons/charts/correlation-plot.png
-    :height: 45
+.. |correlation-plot-icon| image:: /_static/images/icons/charts/correlation-plot.png
 
-Layers:
-
-- :py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
+:py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
 
 Examples:
 
@@ -300,19 +268,21 @@ Examples:
 - `Correlation statistics <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/stat_corr.ipynb>`__
 
 
-Presentation Options
---------------------
+|presentation-options-icon| Presentation Options
+------------------------------------------------
+
+.. |presentation-options-icon| image:: /_static/images/icons/charts/presentation-options.png
 
 Options:
 
-- :py:mod:`Theme layer <lets_plot.theme>`
-- :py:mod:`Title layer <lets_plot.ggtitle>`
-- :py:mod:`Size layer <lets_plot.ggsize>`
-- :py:mod:`Label for X axis <lets_plot.xlab>`
-- :py:mod:`Label for Y axis <lets_plot.ylab>`
-- :py:mod:`Both labels <lets_plot.labs>`
-- :py:mod:`Legend guide <lets_plot.guide_legend>`
-- :py:mod:`Continuous colour bar guide <lets_plot.guide_colorbar>`
+:py:mod:`Theme layer <lets_plot.theme>`,
+:py:mod:`title layer <lets_plot.ggtitle>`,
+:py:mod:`size layer <lets_plot.ggsize>`,
+:py:mod:`label for X axis <lets_plot.xlab>`,
+:py:mod:`label for Y axis <lets_plot.ylab>`,
+:py:mod:`both labels <lets_plot.labs>`,
+:py:mod:`legend guide <lets_plot.guide_legend>`,
+:py:mod:`continuous colour bar guide <lets_plot.guide_colorbar>`
 
 Examples:
 
