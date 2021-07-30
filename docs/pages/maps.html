@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maps &#8212; lets-plot 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Lets-Plot</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="api.html">API</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Maps</a><ul>
+<li><a class="reference internal" href="#livemap">Livemap</a></li>
+<li><a class="reference internal" href="#choropleth-map">Choropleth Map</a></li>
+<li><a class="reference internal" href="#symbol-map">Symbol Map</a></li>
+<li><a class="reference internal" href="#integration-with-grammar-of-graphics">Integration with Grammar of Graphics</a></li>
+<li><a class="reference internal" href="#built-in-and-3d-party-tiles">Built-In and 3d-Party Tiles</a></li>
+<li><a class="reference internal" href="#pycharm">PyCharm</a></li>
+<li><a class="reference internal" href="#geospatial">Geospatial</a></li>
+<li><a class="reference internal" href="#demo-examples">Demo Examples</a></li>
+<li><a class="reference internal" href="#all-features-you-are-interested-in">All Features You Are Interested In</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <span class="target" id="maps"></span><div class="section" id="id1">
+<h1>Maps<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="livemap">
+<h2>Livemap<a class="headerlink" href="#livemap" title="Permalink to this headline">¶</a></h2>
+<p>Lets-Plot supports interactive maps via the <a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap()</span></code></a> geom layer which enables a researcher to visualize geospatial information on a zoomable and paneble map.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/maps_and_geocoding.ipynb"><img alt="maps_and_geocoding-nbviewer" src="../_images/maps_and_geocoding.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/bar_on_livemap.ipynb"><img alt="bar_on_livemap-nbviewer" src="../_images/bar_on_livemap.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map-california-housing/map_california_housing.ipynb"><img alt="map_california_housing-nbviewer" src="../_images/map_california_housing.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb"><img alt="map_US_household_income-nbviewer" src="../_images/map_US_household_income.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-kaggle" src="../_images/the_gallery_of_basemaps.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/asmirnovhoris/bigquery-gis-and-lets-plot"><img alt="bigquery_gis-kaggle" src="../_images/bigquery_gis.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="choropleth-map">
+<h2>Choropleth Map<a class="headerlink" href="#choropleth-map" title="Permalink to this headline">¶</a></h2>
+<p>Choropleth maps provide an easy way to visualize how a variable varies across a geographic area or show the level of variability within a region.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/maps_and_geocoding.ipynb"><img alt="maps_and_geocoding-nbviewer" src="../_images/maps_and_geocoding.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb"><img alt="map_US_household_income-nbviewer" src="../_images/map_US_household_income.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="symbol-map">
+<h2>Symbol Map<a class="headerlink" href="#symbol-map" title="Permalink to this headline">¶</a></h2>
+<p>Parameter <code class="docutils literal notranslate"><span class="pre">symbol</span></code> of the <code class="docutils literal notranslate"><span class="pre">geom_livemap()</span></code> is used to set a marker for displaying the data. There are three types of markers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;point&quot;</span></code> for circles of different size and color;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pie&quot;</span></code> for pie charts;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;bar&quot;</span></code> for bar charts.</p></li>
+</ul>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/bar_on_livemap.ipynb"><img alt="bar_on_livemap-nbviewer" src="../_images/bar_on_livemap.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="integration-with-grammar-of-graphics">
+<h2>Integration with Grammar of Graphics<a class="headerlink" href="#integration-with-grammar-of-graphics" title="Permalink to this headline">¶</a></h2>
+<p>When building interactive geospatial visualizations with Lets-Plot the visualisation workflow remains the same as when building a regular ggplot2 plot.</p>
+<p>However, <code class="docutils literal notranslate"><span class="pre">geom_livemap()</span></code> creates an interactive base-map super-layer and certain limitations do apply comparing to a regular ggplot2 geom-layer:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_livemap()</span></code> must be added as a 1-st layer in plot;</p></li>
+<li><p>Maximum one <code class="docutils literal notranslate"><span class="pre">geom_livemap()</span></code> layer is alloed per plot;</p></li>
+<li><p>Not any type of geometry can be combined with interactive map layer in one plot;</p></li>
+<li><p>Internet connection to map tiles provider is required.</p></li>
+</ul>
+<p>The following ggplot2 geometries can be used with interactive maps: <a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">point</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-mod docutils literal notranslate"><span class="pre">path</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_bin2d.html#lets_plot.geom_bin2d" title="lets_plot.geom_bin2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">heatmap</span> <span class="pre">of</span> <span class="pre">2d</span> <span class="pre">bin</span> <span class="pre">counts</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_tile.html#lets_plot.geom_tile" title="lets_plot.geom_tile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tiles</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_contour.html#lets_plot.geom_contour" title="lets_plot.geom_contour"><code class="xref py py-mod docutils literal notranslate"><span class="pre">contour</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_contourf.html#lets_plot.geom_contourf" title="lets_plot.geom_contourf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filled</span> <span class="pre">contour</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_polygon.html#lets_plot.geom_polygon" title="lets_plot.geom_polygon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polygon</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_map.html#lets_plot.geom_map" title="lets_plot.geom_map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">map</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_hline.html#lets_plot.geom_hline" title="lets_plot.geom_hline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">horizontal</span> <span class="pre">line</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_vline.html#lets_plot.geom_vline" title="lets_plot.geom_vline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vertical</span> <span class="pre">line</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_density2d.html#lets_plot.geom_density2d" title="lets_plot.geom_density2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">2d</span> <span class="pre">density</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_density2df.html#lets_plot.geom_density2df" title="lets_plot.geom_density2df"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filled</span> <span class="pre">2d</span> <span class="pre">density</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_rect.html#lets_plot.geom_rect" title="lets_plot.geom_rect"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rectangle</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_segment.html#lets_plot.geom_segment" title="lets_plot.geom_segment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">segment</span></code></a> and <a class="reference internal" href="api/lets_plot.geom_text.html#lets_plot.geom_text" title="lets_plot.geom_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">text</span></code></a>.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/dev/source/examples/basics/maps_and_geocoding.ipynb"><img alt="maps_and_geocoding-nbviewer" src="../_images/maps_and_geocoding.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map-california-housing/map_california_housing.ipynb"><img alt="map_california_housing-nbviewer" src="../_images/map_california_housing.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb"><img alt="map_US_household_income-nbviewer" src="../_images/map_US_household_income.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/asmirnovhoris/bigquery-gis-and-lets-plot"><img alt="bigquery_gis-kaggle" src="../_images/bigquery_gis.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="built-in-and-3d-party-tiles">
+<h2>Built-In and 3d-Party Tiles<a class="headerlink" href="#built-in-and-3d-party-tiles" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.maptiles_zxy.html#lets_plot.maptiles_zxy" title="lets_plot.maptiles_zxy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">maptiles_zxy()</span></code></a> and <a class="reference internal" href="api/lets_plot.maptiles_lets_plot.html#lets_plot.maptiles_lets_plot" title="lets_plot.maptiles_lets_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">maptiles_lets_plot()</span></code></a> functions are designed to help you to change themes and use external tile services to diversify your maps.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-lets_plot_default-kaggle" src="../_images/lets_plot_default.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-lets_plot_dark-kaggle" src="../_images/lets_plot_dark.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-lets_plot_light-kaggle" src="../_images/lets_plot_light.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-osm_standard-kaggle" src="../_images/osm_standard.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-open_topo_map-kaggle" src="../_images/open_topo_map.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-stamen_design_terrain-kaggle" src="../_images/stamen_design_terrain.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-stamen_design_toner-kaggle" src="../_images/stamen_design_toner.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-stamen_design_toner_hybrid-kaggle" src="../_images/stamen_design_toner_hybrid.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-stamen_design_toner_labels-kaggle" src="../_images/stamen_design_toner_labels.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-stamen_design_watercolor-kaggle" src="../_images/stamen_design_watercolor.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-carto_antique-kaggle" src="../_images/carto_antique.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-carto_dark_matter_no_labels-kaggle" src="../_images/carto_dark_matter_no_labels.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-carto_flat_blue-kaggle" src="../_images/carto_flat_blue.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-carto_midnight_commander-kaggle" src="../_images/carto_midnight_commander.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-carto_positron-kaggle" src="../_images/carto_positron.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-carto_positron_no_labels-kaggle" src="../_images/carto_positron_no_labels.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-carto_voyager-kaggle" src="../_images/carto_voyager.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-nasa_gibs_blue_marble-kaggle" src="../_images/nasa_gibs_blue_marble.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-nasa_gibs_color_shaded-kaggle" src="../_images/nasa_gibs_color_shaded.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/the-gallery-of-basemaps"><img alt="the_gallery_of_basemaps-nasa_gibs_greyscale-kaggle" src="../_images/nasa_gibs_greyscale.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pycharm">
+<h2>PyCharm<a class="headerlink" href="#pycharm" title="Permalink to this headline">¶</a></h2>
+<p>Plugin “Lets-Plot in SciView” is available at the JetBrains Plugin Repository.</p>
+<p>The plugin adds support for interactive plots in IntelliJ-based IDEs with the enabled <a class="reference external" href="https://www.jetbrains.com/help/pycharm/matplotlib-support.html">Scientific mode</a>.</p>
+<p>Through the plugin an interactive map is available in the “Plots” window:</p>
+<img alt="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/pycharm_map_fr_low_65.gif" src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/pycharm_map_fr_low_65.gif" />
+</div>
+<div class="section" id="geospatial">
+<h2>Geospatial<a class="headerlink" href="#geospatial" title="Permalink to this headline">¶</a></h2>
+<p>All GeoPandas shapes are “undersood” by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape:</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/asmirnovhoris/bigquery-gis-and-lets-plot"><img alt="bigquery_gis-kaggle" src="../_images/bigquery_gis.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>To join map coordinates with data use the <code class="docutils literal notranslate"><span class="pre">map_join</span></code> parameter:</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb"><img alt="map_US_household_income-nbviewer" src="../_images/map_US_household_income.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="demo-examples">
+<h2>Demo Examples<a class="headerlink" href="#demo-examples" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 preview-gallery docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/beijing-housing-prices-on-a-map-with-spatial-join"><img alt="beijing-kaggle" src="../_images/beijing.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/covid-19-in-india-eda-and-spatial-visualization"><img alt="covid19_india-kaggle" src="../_images/covid19_india.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/internet_use_and_activities.ipynb"><img alt="internet_use_and_activities-nbviewer" src="../_images/internet_use_and_activities.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/visualization-of-airport-data-on-map"><img alt="map_airports-kaggle" src="../_images/map_airports.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/mapping-us-household-income"><img alt="mapping_US_household_income-kaggle" src="../_images/mapping_US_household_income.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/minard.ipynb"><img alt="minard-nbviewer" src="../_images/minard.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/museums.ipynb"><img alt="museums-nbviewer" src="../_images/museums.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://datalore.jetbrains.com/view/notebook/eifzdh96VYuNrcjuOpYPYr"><img alt="plotting_airbnb_prices_boston-datalore" src="../_images/plotting_airbnb_prices_boston.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/spb_bakeries.ipynb"><img alt="spb_bakeries-nbviewer" src="../_images/spb_bakeries.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://www.kaggle.com/alshan/visualization-of-the-titanic-s-voyage"><img alt="titanic-kaggle" src="../_images/titanic.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><a class="reference external" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/remakes/pushkin.ipynb"><img alt="pushkin-nbviewer" src="../_images/pushkin.png" /></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="preview-gallery-more">
+  <a href="#">Show more</a>
+</div></div>
+<div class="section" id="all-features-you-are-interested-in">
+<h2>All Features You Are Interested In<a class="headerlink" href="#all-features-you-are-interested-in" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 features-list docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/ggplot2-like-api.png" src="../_images/ggplot2-like-api.png" />
+<p class="card-text">ggplot2-like API</p>
+<p class="card-text">The Python API being very similar yet is different in detail from R; although we have not implemented the entire ggplot2 API, we have added a few new features</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/tooltips.png" src="../_images/tooltips.png" />
+<p class="card-text">Customizable Tooltips</p>
+<p class="card-text">You can customize the content of tooltips for the layer by using the parameter <code class="docutils literal notranslate"><span class="pre">tooltips</span></code> of <code class="docutils literal notranslate"><span class="pre">geom</span></code> functions</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/export.png" src="../_images/export.png" />
+<p class="card-text">Export to SVG and HTML</p>
+<p class="card-text">The <code class="docutils literal notranslate"><span class="pre">ggsave()</span></code> function is an easy way to export plot to a file in SVG or HTML formats</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/formatting.png" src="../_images/formatting.png" />
+<p class="card-text">Formatting</p>
+<p class="card-text"><strong>Lets-Plot</strong> supports formatting of values of numeric and date-time types; complementary to the value formatting, a string template is also supported</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/graphics-grid.png" src="../_images/graphics-grid.png" />
+<p class="card-text">Graphics Grid</p>
+<p class="card-text"><code class="docutils literal notranslate"><span class="pre">GGBunch</span></code> allows to show a collection of plots on one figure; each plot in the collection can have arbitrary location and size</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/sampling.png" src="../_images/sampling.png" />
+<p class="card-text">Sampling</p>
+<p class="card-text">Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/offline-mode.png" src="../_images/offline-mode.png" />
+<p class="card-text">‘No Javascript’ / Offline Mode</p>
+<p class="card-text">In the ‘no javascript’ mode <strong>Lets-Plot</strong> generates plots as bare-bones SVG images; plots in the notebook with option <code class="docutils literal notranslate"><span class="pre">offline=True</span></code> will be working without an Internet connection</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/platforms.png" src="../_images/platforms.png" />
+<p class="card-text">Platforms</p>
+<p class="card-text">You can use <strong>Lets-Plot</strong> in Jupyter notebook or other notebook of your choice, like Datalore, Kaggle or Colab; moreover there is a plugin “Lets-Plot in SciView” for IntelliJ-based IDEs with the enabled scientific mode</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/kotlin-api.png" src="../_images/kotlin-api.png" />
+<p class="card-text">Kotlin API</p>
+<p class="card-text">The Kotlin API also is available in Jupyter and Datalore; the library enables embedding plots into a JVM and a Kotlin/JS application</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/interactive-maps.png" src="../_images/interactive-maps.png" />
+<p class="card-text">Interactive Maps</p>
+<p class="card-text">Interactive maps allow zooming and panning around geospatial data that can be added to the base-map layer using regular ggplot geoms</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/maps-with-geometries.png" src="../_images/maps-with-geometries.png" />
+<p class="card-text">Combining Maps with Geometries</p>
+<p class="card-text"><code class="docutils literal notranslate"><span class="pre">geom_livemap()</span></code> has built-in markers used for displaying the data; besides you can append as many additional layers with various geometries as you need</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/tiles.png" src="../_images/tiles.png" />
+<p class="card-text">Built-In and 3d-Party Tiles</p>
+<p class="card-text">Change themes and use external tile services to diversify your maps</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/geocoding.png" src="../_images/geocoding.png" />
+<p class="card-text">Built-In Geocoding</p>
+<p class="card-text">The <strong>Lets-Plot</strong> has built-in geocoding capabilities covering the folloing administrative levels: countries, states (US and non-US equivalents), counties (and equivalents), cities (and towns)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a class="reference internal" href="#">Back to top</a>
+    </p>
+    <p>
+      Copyright © 2019-2021 JetBrains s.r.o.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

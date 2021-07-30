@@ -135,7 +135,7 @@ Explore Your Data with Lets-Plot
 
     .. raw:: html
 
-        <a class="reference internal image-reference" href="#">
+        <a class="reference internal image-reference" href="pages/maps.html">
           <img src="_images/museums_4x3.png">
         </a>
 
