@@ -86,6 +86,11 @@ Geocoding
     Brief overview of the geocoding in Lets-Plot
 
     ---
+    |geocoding_levels-nbviewer|
+
+    Geocoding levels exploration
+
+    ---
     |geocoding_examples-nbviewer|
 
     Geocoding examples

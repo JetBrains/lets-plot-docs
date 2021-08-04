@@ -145,6 +145,6 @@ Explore Your Data with Lets-Plot
 
     .. raw:: html
 
-        <a class="reference internal image-reference" href="#">
+        <a class="reference internal image-reference" href="pages/geocoding.html">
           <img src="_images/geocoding_reference_4x3.png">
         </a>

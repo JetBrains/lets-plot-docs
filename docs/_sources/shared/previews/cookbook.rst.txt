@@ -53,6 +53,9 @@
 .. |geocoding_examples_4x3-nbviewer| image:: /examples/cookbook/previews/geocoding_examples_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_examples.ipynb
 
+.. |geocoding_levels-nbviewer| image:: /examples/cookbook/previews/geocoding_levels.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_levels.ipynb
+
 .. |geocoding_reference-nbviewer| image:: /examples/cookbook/previews/geocoding_reference.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb
 .. |geocoding_reference_4x3-nbviewer| image:: /examples/cookbook/previews/geocoding_reference_4x3.png
@@ -81,7 +84,7 @@
 .. |ggbunch-nbviewer| image:: /examples/cookbook/previews/ggbunch.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/ggbunch.ipynb
 
-.. |histogram_geometry-nbviewer| /examples/cookbook/previews/histogram_geometry.png
+.. |histogram_geometry-nbviewer| image:: /examples/cookbook/previews/histogram_geometry.png
     :target: https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/histogram.ipynb
 
 .. |how_to_draw_curve-nbviewer| image:: /examples/cookbook/previews/how_to_draw_curve.png
