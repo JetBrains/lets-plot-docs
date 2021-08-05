@@ -2,6 +2,7 @@
 
 .. include:: /shared/previews.rst
 
+
 Maps
 ====
 
@@ -187,8 +188,9 @@ To join map coordinates with data use the ``map_join`` parameter:
 
     |map_US_household_income-nbviewer|
 
-Demo Examples
--------------
+
+Examples
+--------
 
 .. panels::
     :container: + preview-gallery

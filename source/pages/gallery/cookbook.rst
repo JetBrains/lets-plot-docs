@@ -197,6 +197,11 @@ Geoms and Stats
     Smoothing line
 
     ---
+    |ordering_examples-nbviewer|
+
+    Ordering
+
+    ---
     |density_2d-nbviewer|
 
     2D density

@@ -124,6 +124,9 @@
 .. |map_US_household_income_4x3-nbviewer| image:: /examples/cookbook/previews/map_US_household_income_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb
 
+.. |ordering_examples-nbviewer| image:: /examples/cookbook/previews/ordering_examples.png
+    :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks-dev/ordering_examples.ipynb
+
 .. |quickstart-nbviewer| image:: /examples/cookbook/previews/quickstart.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/quickstart.ipynb
 

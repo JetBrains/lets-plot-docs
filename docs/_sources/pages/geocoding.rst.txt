@@ -214,16 +214,6 @@ Solutions
         geocode_cities('worcester').where('worcester', closest_to=boston).get_geocodes()
 
 
-GeoPandas Shapes
-----------------
-
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>`, :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_path() <lets_plot.geom_path>`, :py:mod:`geom_rect() <lets_plot.geom_rect>`.
-
-Learn more: :ref:`GeoPandas Support <geopandas>`.
-
-|geopandas_kotlin_isl_4x3-nbviewer|
-
-
 Demo Examples
 -------------
 
@@ -283,5 +273,6 @@ Demo Examples
     <div id="preview-gallery-more">
       <a href="#">Show more</a>
     </div>
+
 
 .. include:: /shared/features.rst

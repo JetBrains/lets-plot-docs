@@ -249,7 +249,22 @@ Scale Guides
     guides
 
 
+.. _api_mapping:
+
+.. currentmodule:: lets_plot.mapping
+
+Mapping
+=======
+
+.. autosummary::
+    :toctree: api
+
+    as_discrete
+
+
 .. _api_pc:
+
+.. currentmodule:: lets_plot
 
 Positions
 =========

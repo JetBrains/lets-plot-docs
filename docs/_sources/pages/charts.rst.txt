@@ -2,6 +2,7 @@
 
 .. include:: /shared/previews.rst
 
+
 Charts
 ======
 
@@ -107,6 +108,16 @@ Examples:
 - `Formatting labels on plots <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb>`__
 
 
+GeoPandas Shapes
+----------------
+
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>`, :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_path() <lets_plot.geom_path>`, :py:mod:`geom_rect() <lets_plot.geom_rect>`.
+
+Learn more: :ref:`GeoPandas Support <geopandas>`.
+
+|geopandas_kotlin_isl_4x3-nbviewer|
+
+
 |discrete-icon| Discrete
 ------------------------
 
@@ -134,6 +145,19 @@ Examples:
 - `Dodge position <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/dodge_position.ipynb>`__
 - `Guide legend <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/guide_legend.ipynb>`__
 - `Title and legend <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/scale_way.ipynb>`__
+
+
+|as_discrete-icon| ``as_discrete()``
+------------------------------------
+
+.. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.png
+
+:py:mod:`as_discrete() <lets_plot.mapping.as_discrete>`
+
+Examples:
+
+- `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
+- `Ordering <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks-dev/ordering_examples.ipynb>`__
 
 
 |contours-icon| Contours
@@ -197,16 +221,6 @@ Examples:
 
 - `Graph Building <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/graph_building.ipynb>`__
 - `Draw a scatter plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb>`__
-- `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
-
-
-|as_discrete-icon| ``as_discrete()``
-------------------------------------
-
-.. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.png
-
-Examples:
-
 - `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
 
 
@@ -295,8 +309,8 @@ Examples:
 - `Correlation statistics <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/stat_corr.ipynb>`__
 
 
-Demo Examples
--------------
+Examples
+--------
 
 .. panels::
     :container: + preview-gallery

@@ -24,6 +24,9 @@ An Open-source Plotting Library for Statistical Data
 
 **OS:** Linux, macOS, Windows
 
+**Requirements:** `Ipython <http://ipython.org>`__, `Requests <https://docs.python-requests.org>`__, `GeoPandas <https://geopandas.org>`__
+
+
 Installation
 ------------
 
@@ -40,6 +43,7 @@ For Windows users Lets-Plot should be installed after the MinGW toolchain:
 .. code:: shell
 
     conda install m2w64-toolchain
+
 
 Quickstart
 ----------
@@ -96,6 +100,7 @@ Quickstart
       </div>
     </div>
 
+
 Meet the Grammar of Graphics
 ----------------------------
 
@@ -112,6 +117,7 @@ Meet the Grammar of Graphics
     The Lets-Plot for Python library provides an :ref:`API <api>` which is mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
 
     To learn more about the grammar of graphics, we recommend an excellent book called "ggplot2: Elegant Graphics for Data Analysis". It will be a good prerequisite for further exploration of the Lets-Plot library.
+
 
 Explore Your Data with Lets-Plot
 --------------------------------

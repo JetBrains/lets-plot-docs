@@ -1,5 +1,6 @@
 .. _geopandas:
 
+
 GeoPandas Support (`GeoPandas <https://geopandas.org>`__ and `Shapely <https://pypi.org/project/Shapely/>`__)
 =============================================================================================================
 
@@ -22,8 +23,9 @@ Use:
 - :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>` with Polygons / Multi-Polygons
 - :py:mod:`geom_rect() <lets_plot.geom_rect>` when used with Polygon shapes will display corresponding bounding boxes
 
-Standard Imports
-----------------
+
+Hidden Preliminaries
+--------------------
 
 .. jupyter-execute::
 
@@ -33,36 +35,68 @@ Standard Imports
     from lets_plot import *
     LetsPlot.setup_html()
 
-Use cases
+    df = pd.DataFrame({
+        'state': ['IL', 'IN', 'MI', 'OH', 'WI'],
+        'pop_2021': [12_569_321, 6_805_663, 9_992_427, 11_714_618, 5_852_490],
+    })
+    gdf = geocode_states(names=df.state).scope('US').get_boundaries()[['state', 'geometry']]
+
+
+Use Cases
 ---------
+
+Depending on the situation, for data mapping we use parameters ``data``, ``map`` or both.
+
+
+No Difference
+~~~~~~~~~~~~~
 
 Suppose we have the following data:
 
 .. jupyter-execute::
 
-    df = pd.DataFrame({
-        'state': ['IL', 'IN', 'MI', 'OH', 'WI'],
-        'pop_2021': [12_569_321, 6_805_663, 9_992_427, 11_714_618, 5_852_490],
-    })
-    gdf = geocode_states(names=df.state).scope('US').get_boundaries()
+    gdf
 
-We can just draw the shapes from ``gdf``:
+If you want to draw only shapes, there is no difference which parameter is used:
+
+.. panels::
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. jupyter-execute::
+
+        ggplot() + geom_map(data=gdf)
+
+    ---
+    .. jupyter-execute::
+
+        ggplot() + geom_map(map=gdf)
+
+
+Only ``data``
+~~~~~~~~~~~~~
+
+If you want to use aesthetics, the ``data`` parameter is the only choice:
 
 .. jupyter-execute::
 
-    ggplot() + geom_map(map=gdf)
+    ggplot() + geom_map(aes(fill='state'), color='white', data=gdf)
 
-If we want to use aesthetics, we need to use the ``data`` parameter:
+
+``data`` & ``map``
+~~~~~~~~~~~~~~~~~~
+
+Suppose we also have a dataframe with population data:
 
 .. jupyter-execute::
 
-    ggplot() + geom_map(aes(fill='found name'), color='white', data=gdf)
+    df
 
-If we need both: dataframe with data and geodataframe with geometries, we use ``map_join`` parameter:
+To combine this with geospatial data, you can use the ``map_join`` parameter:
 
 .. jupyter-execute::
 
     ggplot() + geom_map(aes(fill='pop_2021'), color='white', data=df, map=gdf, map_join='state')
+
 
 Examples
 --------
