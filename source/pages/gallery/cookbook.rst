@@ -61,6 +61,11 @@ Interactive Maps
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
+    |map_quickstart-datalore|
+
+    Quickstart with maps in Datalore
+
+    ---
     |map_california_housing-nbviewer|
 
     Visulizing spatial information

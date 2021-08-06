@@ -6,28 +6,34 @@
 Maps
 ====
 
+Create beautiful maps just by adding an interactive basemap layer to your plot: :py:mod:`geom_livemap() <lets_plot.geom_livemap>`.
 
-Livemap
--------
 
-Lets-Plot supports interactive maps via the :py:mod:`geom_livemap() <lets_plot.geom_livemap>` geom layer which enables a researcher to visualize geospatial information on a zoomable and paneble map.
+Proportional Symbol Map
+-----------------------
+
+Use the following patterns:
+
+.. code-block:: python
+
+    ggplot(data) + geom_livemap(aes(..), symbol='point')
+
+.. code-block:: python
+
+    ggplot(data) + geom_livemap() + geom_point(aes(..))
+
+.. image:: /examples/cookbook/previews/map_california_housing_4x3.png
+    :width: 640
+
+Examples:
 
 .. panels::
-    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |maps_and_geocoding-nbviewer|
-
-    ---
-    |bar_on_livemap-nbviewer|
-
-    ---
     |map_california_housing-nbviewer|
 
     ---
-    |map_US_household_income-nbviewer|
-
-    ---
-    |the_gallery_of_basemaps-kaggle|
+    |bar_on_livemap-nbviewer|
 
     ---
     |bigquery_gis-kaggle|
@@ -36,49 +42,72 @@ Lets-Plot supports interactive maps via the :py:mod:`geom_livemap() <lets_plot.g
 Choropleth Map
 --------------
 
-Choropleth maps provide an easy way to visualize how a variable varies across a geographic area or show the level of variability within a region.
+Use the following pattern:
+
+.. code-block:: python
+
+    ggplot(data) + geom_livemap() + geom_polygon(aes(..))
+
+.. image:: /examples/cookbook/previews/map_US_household_income_4x3.png
+    :width: 640
+
+Examples:
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |maps_and_geocoding-nbviewer|
-
-    ---
     |map_US_household_income-nbviewer|
 
-
-Symbol Map
-----------
-
-Parameter ``symbol`` of the ``geom_livemap()`` is used to set a marker for displaying the data. There are three types of markers:
-
-- ``"point"`` for circles of different size and color;
-- ``"pie"`` for pie charts;
-- ``"bar"`` for bar charts.
-
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
-
-    |bar_on_livemap-nbviewer|
+    ---
+    |maps_and_geocoding-nbviewer|
 
 
-Integration with Grammar of Graphics
-------------------------------------
+Combine Layers on Map ``ggplot2`` Style
+---------------------------------------
 
 When building interactive geospatial visualizations with Lets-Plot the visualisation workflow remains the same as when building a regular ggplot2 plot.
 
-However, ``geom_livemap()`` creates an interactive base-map super-layer and certain limitations do apply comparing to a regular ggplot2 geom-layer:
+The following ggplot2 geometries can be used with interactive maps:
 
-- ``geom_livemap()`` must be added as a 1-st layer in plot;
-- Maximum one ``geom_livemap()`` layer is alloed per plot;
-- Not any type of geometry can be combined with interactive map layer in one plot;
-- Internet connection to map tiles provider is required.
+|layers_primitives-icon| Primitives
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following ggplot2 geometries can be used with interactive maps: :py:mod:`point <lets_plot.geom_point>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`heatmap of 2d bin counts <lets_plot.geom_bin2d>`, :py:mod:`tiles <lets_plot.geom_tile>`, :py:mod:`contour <lets_plot.geom_contour>`, :py:mod:`filled contour <lets_plot.geom_contourf>`, :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`horizontal line <lets_plot.geom_hline>`, :py:mod:`vertical line <lets_plot.geom_vline>`, :py:mod:`2d density <lets_plot.geom_density2d>`, :py:mod:`filled 2d density <lets_plot.geom_density2df>`, :py:mod:`rectangle <lets_plot.geom_rect>`, :py:mod:`segment <lets_plot.geom_segment>` and :py:mod:`text <lets_plot.geom_text>`.
+.. |layers_primitives-icon| image:: /_static/images/icons/maps/layers_primitives.png
+
+:py:mod:`point <lets_plot.geom_point>`,
+:py:mod:`path <lets_plot.geom_path>`,
+:py:mod:`tiles <lets_plot.geom_tile>`,
+:py:mod:`polygon <lets_plot.geom_polygon>`,
+:py:mod:`map <lets_plot.geom_map>`,
+:py:mod:`horizontal line <lets_plot.geom_hline>`,
+:py:mod:`vertical line <lets_plot.geom_vline>`,
+:py:mod:`rectangle <lets_plot.geom_rect>`,
+:py:mod:`segment <lets_plot.geom_segment>`,
+:py:mod:`text <lets_plot.geom_text>`.
+
+|layers_contours-icon| Contours
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. |layers_contours-icon| image:: /_static/images/icons/maps/layers_contours.png
+
+:py:mod:`contour <lets_plot.geom_contour>`,
+:py:mod:`filled contour <lets_plot.geom_contourf>`.
+
+|layers_bivariate-icon| Bivariate Distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. |layers_bivariate-icon| image:: /_static/images/icons/maps/layers_bivariate.png
+
+:py:mod:`heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
+:py:mod:`2d density <lets_plot.geom_density2d>`,
+:py:mod:`filled 2d density <lets_plot.geom_density2df>`.
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
+    |map_quickstart-datalore|
+
+    ---
     |maps_and_geocoding-nbviewer|
 
     ---
@@ -158,35 +187,20 @@ Built-In and 3d-Party Tiles
     ---
     |the_gallery_of_basemaps-nasa_gibs_greyscale-kaggle|
 
-
 PyCharm
 -------
 
-Plugin "Lets-Plot in SciView" is available at the JetBrains Plugin Repository.
-
-The plugin adds support for interactive plots in IntelliJ-based IDEs with the enabled `Scientific mode <https://www.jetbrains.com/help/pycharm/matplotlib-support.html>`__.
-
-Through the plugin an interactive map is available in the "Plots" window:
+Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__ plugin.
 
 .. image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/pycharm_map_fr_low_65.gif
 
 
-Geospatial
-----------
+GeoPandas Shapes
+----------------
 
-All GeoPandas shapes are "undersood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape:
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>`, :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_path() <lets_plot.geom_path>`, :py:mod:`geom_rect() <lets_plot.geom_rect>`.
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
-
-    |bigquery_gis-kaggle|
-
-To join map coordinates with data use the ``map_join`` parameter:
-
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
-
-    |map_US_household_income-nbviewer|
+Learn more: :ref:`GeoPandas Support <geopandas>`.
 
 
 Examples

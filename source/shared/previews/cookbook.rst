@@ -119,6 +119,9 @@
 .. |map_california_housing_4x3-nbviewer| image:: /examples/cookbook/previews/map_california_housing_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map-california-housing/map_california_housing.ipynb
 
+.. |map_quickstart-datalore| image:: /examples/cookbook/previews/map_quickstart.png
+    :target: https://datalore.jetbrains.com/view/notebook/cwDq8gX5UGidzo65RY85yP
+
 .. |map_US_household_income-nbviewer| image:: /examples/cookbook/previews/map_US_household_income.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb
 .. |map_US_household_income_4x3-nbviewer| image:: /examples/cookbook/previews/map_US_household_income_4x3.png
