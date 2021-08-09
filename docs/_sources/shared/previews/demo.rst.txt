@@ -17,6 +17,8 @@
 
 .. |covid19_india-kaggle| image:: /examples/demo/previews/covid19_india.png
     :target: https://www.kaggle.com/alshan/covid-19-in-india-eda-and-spatial-visualization
+.. |covid19_india_4x3-kaggle| image:: /examples/demo/previews/covid19_india_4x3.png
+    :target: https://www.kaggle.com/alshan/covid-19-in-india-eda-and-spatial-visualization
 
 .. |delhi_climate-nbviewer| image:: /examples/demo/previews/delhi_climate.png
     :target: https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/delhi_climate.ipynb

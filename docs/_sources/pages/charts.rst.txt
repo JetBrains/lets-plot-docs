@@ -113,7 +113,7 @@ Examples:
 
 .. |geopandas-icon| image:: /_static/images/icons/charts/geopandas.png
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>`, :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_path() <lets_plot.geom_path>`, :py:mod:`geom_rect() <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
 Learn more: :ref:`GeoPandas Support <geopandas>`.
 

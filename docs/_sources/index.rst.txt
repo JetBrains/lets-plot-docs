@@ -28,8 +28,6 @@ An Open-source Plotting Library for Statistical Data
 Installation
 ------------
 
-To install the Lets-Plot library onto your computer, run the following command:
-
 .. code:: shell
 
     pip install lets-plot
@@ -37,20 +35,14 @@ To install the Lets-Plot library onto your computer, run the following command:
 Prerequisites
 ~~~~~~~~~~~~~
 
-`Ipython <http://ipython.org>`__ has to be installed before the Lets-Plot.
-
-If you want to use :ref:`geocoding <geocoding>`, you also need to install the `Requests <https://docs.python-requests.org>`__ library.
-
-For Windows users Lets-Plot should be installed after the MinGW toolchain:
-
-.. code:: shell
-
-    conda install m2w64-toolchain
+- `Ipython <http://ipython.org>`__
+- `Requests <https://docs.python-requests.org>`__ (only required for :ref:`geocoding <geocoding>`)
+- Windows users only: `MinGW toolchain <https://anaconda.org/msys2/m2w64-toolchain>`__
 
 Datalore
 ~~~~~~~~
 
-You can try the Lets-Plot library in `Datalore <https://datalore.jetbrains.com>`__ where it is available out-of-the-box.
+You can try the Lets-Plot library in `Datalore <https://view.datalore.io/notebook/Zzg9EVS6i16ELQo3arzWsP>`__ where it is available out-of-the-box.
 
 
 Quickstart

@@ -6,8 +6,8 @@ Geocoding
 =========
 
 
-Standard Imports
-----------------
+Hidden Preliminaries
+--------------------
 
 .. jupyter-execute::
 
@@ -24,106 +24,146 @@ Administrative Levels
 Country
 ~~~~~~~
 
-.. jupyter-execute::
-    :linenos:
-    :emphasize-lines: 1
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    gdf = geocode_countries().get_boundaries(2)
+    |geocoding_level_country_world-nbviewer|
 
-    ggplot() + \
-        geom_map(data=gdf, color='white', fill='black', \
-                 tooltips=layer_tooltips().line('@{found name}')) + \
-        ggtitle('World')
+    World countries
+
+    ---
+    |geocoding_level_country_canada-nbviewer|
+
+    Canada
+
+    ---
+    |geocoding_level_country_india-nbviewer|
+
+    India
 
 State
 ~~~~~
 
-.. jupyter-execute::
-    :linenos:
-    :emphasize-lines: 1
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    gdf = geocode_states().countries('US-48').get_boundaries(4)
+    |geocoding_level_state_us-nbviewer|
 
-    ggplot() + \
-        geom_map(data=gdf, color='white', fill='black', \
-                 tooltips=layer_tooltips().line('@{found name}')) + \
-        ggtitle('US States')
+    US states
+
+    ---
+    |geocoding_level_state_china-nbviewer|
+
+    China states
+
+    ---
+    |geocoding_level_state_russia-nbviewer|
+
+    Russia states
 
 County
 ~~~~~~
 
-.. jupyter-execute::
-    :linenos:
-    :emphasize-lines: 1
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    gdf = geocode_counties().countries('US-48').get_boundaries(4)
+    |geocoding_level_county_us-nbviewer|
 
-    ggplot() + \
-        geom_map(data=gdf, color='white', fill='black', \
-                 tooltips=layer_tooltips().line('@{found name}')) + \
-        ggtitle('US Counties')
+    US counties
+
+    ---
+    |geocoding_level_county_italy-nbviewer|
+
+    Italy counties
+
+    ---
+    |geocoding_level_county_poland-nbviewer|
+
+    Poland counties
 
 City
 ~~~~
 
-.. jupyter-execute::
-    :linenos:
-    :emphasize-lines: 1
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    gdf = geocode_cities(names='New York').get_boundaries()
+    |geocoding_level_city_nyc-nbviewer|
 
-    ggplot() + \
-        geom_map(data=gdf, color='white', fill='black', \
-                 tooltips=layer_tooltips().line('@{found name}')) + \
-        ggtitle('New York City')
+    New York
+
+    ---
+    |geocoding_level_city_helsinki-nbviewer|
+
+    Helsinki
+
+    ---
+    |geocoding_level_city_london-nbviewer|
+
+    London
 
 
 Geometries
 ----------
 
-Map
-~~~
+Polygons
+~~~~~~~~
 
-.. jupyter-execute::
-    :linenos:
-    :emphasize-lines: 4-5
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    gdf = geocode(level='county').scope('US-ME').get_boundaries()
+    |geocoding_geometries_map_brasil-nbviewer|
 
-    ggplot() + \
-        geom_map(data=gdf, color='white', fill='black', \
-                 tooltips=layer_tooltips().line('@{found name}')) + \
-        ggtitle('Map Geometry')
+    Brasil
+
+    ---
+    |geocoding_geometries_map_nigeria-nbviewer|
+
+    Nigeria states
+
+    ---
+    |geocoding_geometries_map_greece-nbviewer|
+
+    Greece counties
 
 Points
 ~~~~~~
 
-.. jupyter-execute::
-    :linenos:
-    :emphasize-lines: 4-5
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    gdf = geocode(level='county').scope('US-ME').get_centroids()
+    |geocoding_geometries_point_kazakhstan-nbviewer|
 
-    ggplot() + \
-        geom_point(data=gdf, shape=1, color='black', \
-                   tooltips=layer_tooltips().line('@{found name}')) + \
-        coord_map() + \
-        ggtitle('Point Geometry')
+    Kazakhstan state centroids
+
+    ---
+    |geocoding_geometries_point_georgia-nbviewer|
+
+    Ceorgia county centroids
+
+    ---
+    |geocoding_geometries_point_greenland-nbviewer|
+
+    Greenland cities
 
 Rectangles
 ~~~~~~~~~~
 
-.. jupyter-execute::
-    :linenos:
-    :emphasize-lines: 4-5
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    gdf = geocode(level='county').scope('US-ME').get_boundaries()
+    |geocoding_geometries_rectangle_japan-nbviewer|
 
-    ggplot() + \
-        geom_rect(data=gdf, color='black', alpha=0, \
-                  tooltips=layer_tooltips().line('@{found name}').color('black')) + \
-        coord_map() + \
-        ggtitle('Rectangle Geometry')
+    Japan bounding box with states
+
+    ---
+    |geocoding_geometries_rectangle_ireland-nbviewer|
+
+    Ireland county bounding boxes
+
+    ---
+    |geocoding_geometries_rectangle_cuba-nbviewer|
+
+    Cuba bounding box with cities
 
 
 Ambiguity
@@ -214,8 +254,8 @@ Solutions
         geocode_cities('worcester').where('worcester', closest_to=boston).get_geocodes()
 
 
-Demo Examples
--------------
+Examples
+--------
 
 .. panels::
     :container: + preview-gallery

@@ -12,60 +12,39 @@ Create beautiful maps just by adding an interactive basemap layer to your plot: 
 Proportional Symbol Map
 -----------------------
 
-Use the following patterns:
-
-.. code-block:: python
-
-    ggplot(data) + geom_livemap(aes(..), symbol='point')
-
-.. code-block:: python
-
-    ggplot(data) + geom_livemap() + geom_point(aes(..))
-
-.. image:: /examples/cookbook/previews/map_california_housing_4x3.png
-    :width: 640
-
-Examples:
-
 .. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |map_california_housing-nbviewer|
-
-    ---
-    |bar_on_livemap-nbviewer|
+    |bigquery_gis_4x3-kaggle|
 
     ---
-    |bigquery_gis-kaggle|
+    .. code-block:: python
+
+        ggplot(data) + geom_livemap(aes(..), symbol='point')
+
+    .. code-block:: python
+
+        ggplot(data) + geom_livemap() + geom_point(aes(..))
 
 
 Choropleth Map
 --------------
 
-Use the following pattern:
-
-.. code-block:: python
-
-    ggplot(data) + geom_livemap() + geom_polygon(aes(..))
-
-.. image:: /examples/cookbook/previews/map_US_household_income_4x3.png
-    :width: 640
-
-Examples:
-
 .. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |map_US_household_income-nbviewer|
+    |covid19_india_4x3-kaggle|
 
     ---
-    |maps_and_geocoding-nbviewer|
+    .. code-block:: python
+
+        ggplot(data) + geom_livemap() + geom_polygon(aes(..))
 
 
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
-When building interactive geospatial visualizations with Lets-Plot the visualisation workflow remains the same as when building a regular ggplot2 plot.
+When building interactive geospatial visualizations with Lets-Plot the visualisation workflow remains the same as when building a regular ggplot2 plot: `quickstart with maps <https://datalore.jetbrains.com/view/notebook/cwDq8gX5UGidzo65RY85yP>`__.
 
 The following ggplot2 geometries can be used with interactive maps:
 
@@ -101,23 +80,6 @@ The following ggplot2 geometries can be used with interactive maps:
 :py:mod:`heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`.
-
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
-
-    |map_quickstart-datalore|
-
-    ---
-    |maps_and_geocoding-nbviewer|
-
-    ---
-    |map_california_housing-nbviewer|
-
-    ---
-    |map_US_household_income-nbviewer|
-
-    ---
-    |bigquery_gis-kaggle|
 
 
 Built-In and 3d-Party Tiles
@@ -198,7 +160,7 @@ Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.j
 GeoPandas Shapes
 ----------------
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>`, :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_path() <lets_plot.geom_path>`, :py:mod:`geom_rect() <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
 Learn more: :ref:`GeoPandas Support <geopandas>`.
 
@@ -210,10 +172,25 @@ Examples
     :container: + preview-gallery
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
+    |map_quickstart-datalore|
+
+    ---
+    |maps_and_geocoding-nbviewer|
+
+    ---
+    |map_california_housing-nbviewer|
+
+    ---
+    |map_US_household_income-kaggle|
+
+    ---
     |beijing-kaggle|
 
     ---
     |covid19_india-kaggle|
+
+    ---
+    |bar_on_livemap-nbviewer|
 
     ---
     |internet_use_and_activities-nbviewer|
