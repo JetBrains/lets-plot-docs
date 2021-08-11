@@ -147,17 +147,19 @@ Examples:
 - `Title and legend <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/scale_way.ipynb>`__
 
 
-|as_discrete-icon| ``as_discrete()``
-------------------------------------
+|as_discrete-icon| Ordering categories, ``as_discrete()``
+---------------------------------------------------------
 
 .. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.png
 
 :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>`
 
+Learn more: :ref:`Function as_discrete() <as_discrete>`.
+
 Examples:
 
+- `Guide to ordering <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks-dev/ordering_examples.ipynb>`__
 - `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
-- `Ordering <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks-dev/ordering_examples.ipynb>`__
 
 
 |contours-icon| Contours

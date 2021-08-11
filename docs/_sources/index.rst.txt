@@ -35,7 +35,7 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~
 
-- `Ipython <http://ipython.org>`__
+- `IPython <http://ipython.org>`__
 - `Requests <https://docs.python-requests.org>`__ (only required for :ref:`geocoding <geocoding>`)
 - Windows users only: `MinGW toolchain <https://anaconda.org/msys2/m2w64-toolchain>`__
 

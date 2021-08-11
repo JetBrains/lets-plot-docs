@@ -39,7 +39,7 @@ All Features You Are Interested In
 
     Graphics Grid
 
-    ``GGBunch`` allows to show a collection of plots on one figure; each plot in the collection can have arbitrary location and size
+    ``GGBunch`` shows a collection of plots on one figure; each plot in the collection can have an arbitrary location and size
 
     ---
     ---
@@ -99,4 +99,4 @@ All Features You Are Interested In
 
     Built-In Geocoding
 
-    The **Lets-Plot** has built-in geocoding capabilities covering the folloing administrative levels: countries, states (US and non-US equivalents), counties (and equivalents), cities (and towns)
+    The **Lets-Plot** has built-in geocoding capabilities covering the following administrative levels: countries, states (US and non-US equivalents), counties (and equivalents), cities (and towns)

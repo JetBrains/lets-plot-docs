@@ -6,23 +6,15 @@ Geocoding
 =========
 
 
-Hidden Preliminaries
---------------------
-
-.. jupyter-execute::
-
-    import shapely
-
-    from lets_plot.geo_data import *
-    from lets_plot import *
-    LetsPlot.setup_html()
-
-
 Administrative Levels
 ---------------------
 
+:py:mod:`geocode() <lets_plot.geo_data.geocode>`
+
 Country
 ~~~~~~~
+
+:py:mod:`geocode_countries() <lets_plot.geo_data.geocode_countries>`
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
@@ -44,6 +36,8 @@ Country
 State
 ~~~~~
 
+:py:mod:`geocode_states() <lets_plot.geo_data.geocode_states>`
+
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
@@ -64,6 +58,8 @@ State
 County
 ~~~~~~
 
+:py:mod:`geocode_counties() <lets_plot.geo_data.geocode_counties>`
+
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
@@ -83,6 +79,8 @@ County
 
 City
 ~~~~
+
+:py:mod:`geocode_cities() <lets_plot.geo_data.geocode_cities>`
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
@@ -108,12 +106,14 @@ Geometries
 Polygons
 ~~~~~~~~
 
+:py:mod:`geom_map() <lets_plot.geom_map>`
+
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_geometries_map_brasil-nbviewer|
+    |geocoding_geometries_map_brazil-nbviewer|
 
-    Brasil
+    Brazil
 
     ---
     |geocoding_geometries_map_nigeria-nbviewer|
@@ -127,6 +127,8 @@ Polygons
 
 Points
 ~~~~~~
+
+:py:mod:`geom_point() <lets_plot.geom_point>`
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
@@ -147,6 +149,8 @@ Points
 
 Rectangles
 ~~~~~~~~~~
+
+:py:mod:`geom_rect() <lets_plot.geom_rect>`
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
@@ -169,89 +173,17 @@ Rectangles
 Ambiguity
 ---------
 
-Problem
-~~~~~~~
+Often geocoding can find multiple objects for a name or do not find anything.
 
-Often geocoding can find multiple objects for a name or do not find anything. In this case error will be generated:
+Read :ref:`the doc about geocoding ambiguity <ambiguity>` to explore many ways to solve the problem.
 
-.. jupyter-execute::
-    :raises: ValueError
 
-    geocode_cities(['worcester']).get_geocodes()
+Reverse Geocoding
+-----------------
 
-Solutions
-~~~~~~~~~
+:py:mod:`reverse_geocode() <lets_plot.geo_data.reverse_geocode>`
 
-.. tabbed:: allow_ambiguous()
-
-    .. jupyter-execute::
-
-        geocode_cities(['worcester']).allow_ambiguous().get_geocodes()
-
-.. tabbed:: ignore_not_found()
-
-    .. jupyter-execute::
-
-        geocode_cities(['paris', 'foo']).ignore_not_found().get_geocodes()
-
-.. tabbed:: ignore_all_errors()
-
-    .. jupyter-execute::
-
-        geocode_cities(['paris', 'worcester', 'foo']).ignore_all_errors().get_geocodes()
-
-.. tabbed:: parents
-
-    .. jupyter-execute::
-
-        geocode_cities('worcester').states('massachusetts').get_geocodes()
-
-    .. raw:: html
-
-        <br/>
-
-    .. jupyter-execute::
-
-        states = geocode_states('US-MA')
-        geocode_cities('worcester').states(states).get_geocodes()
-
-.. tabbed:: scope
-
-    .. jupyter-execute::
-
-        geocode_cities(['worcester', 'warwick']).scope('UK').get_geocodes()
-
-.. tabbed:: where(..., scope=...)
-
-    .. jupyter-execute::
-
-        bbox = shapely.geometry.box(-71.00, 42.00, -72.00, 43.00)
-        geocode_cities('worcester').where('worcester', scope=bbox).get_geocodes()
-
-    .. raw:: html
-
-        <br/>
-
-    .. jupyter-execute::
-
-        massachusetts = geocode_states('massachusetts')
-        geocode_cities('worcester').where('worcester', scope=massachusetts).get_geocodes()
-
-.. tabbed:: where(..., closest_to=...)
-
-    .. jupyter-execute::
-
-        boston = geocode_cities('boston')
-        geocode_cities('worcester').where('worcester', closest_to=boston).get_geocodes()
-
-    .. raw:: html
-
-        <br/>
-
-    .. jupyter-execute::
-
-        boston = shapely.geometry.Point(-71.088, 42.311)
-        geocode_cities('worcester').where('worcester', closest_to=boston).get_geocodes()
+Reverse geocoding is the process of converting geographic coordinates into a :py:mod:`Geocoder <lets_plot.geo_data.ReverseGeocoder>` object.
 
 
 Examples

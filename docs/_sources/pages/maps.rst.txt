@@ -44,8 +44,6 @@ Choropleth Map
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
-When building interactive geospatial visualizations with Lets-Plot the visualisation workflow remains the same as when building a regular ggplot2 plot: `quickstart with maps <https://datalore.jetbrains.com/view/notebook/cwDq8gX5UGidzo65RY85yP>`__.
-
 The following ggplot2 geometries can be used with interactive maps:
 
 |layers_primitives-icon| Primitives
@@ -81,11 +79,18 @@ The following ggplot2 geometries can be used with interactive maps:
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`.
 
+Quickstart
+~~~~~~~~~~
+
+`Quickstart guide to maps <https://datalore.jetbrains.com/view/notebook/cwDq8gX5UGidzo65RY85yP>`__.
+
 
 Built-In and 3d-Party Tiles
 ---------------------------
 
 :py:mod:`maptiles_zxy() <lets_plot.maptiles_zxy>` and :py:mod:`maptiles_lets_plot() <lets_plot.maptiles_lets_plot>` functions are designed to help you to change themes and use external tile services to diversify your maps.
+
+Learn more: `Configuring Basemap Tiles for Interactive Maps <https://github.com/JetBrains/lets-plot/blob/e8384e2b96b637c4574d3e8d1a42992db582f130/docs/basemap_tiles.md>`__.
 
 .. panels::
     :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2

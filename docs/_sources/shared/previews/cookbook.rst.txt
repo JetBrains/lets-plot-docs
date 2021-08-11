@@ -53,8 +53,8 @@
 .. |geocoding_examples_4x3-nbviewer| image:: /examples/cookbook/previews/geocoding_examples_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_examples.ipynb
 
-.. |geocoding_geometries_map_brasil-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_map_brasil.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_map_brasil.ipynb
+.. |geocoding_geometries_map_brazil-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_map_brazil.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_map_brazil.ipynb
 
 .. |geocoding_geometries_map_greece-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_map_greece.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_map_greece.ipynb
@@ -117,7 +117,7 @@
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_city_london.ipynb
 
 .. |geocoding_levels-nbviewer| image:: /examples/cookbook/previews/geocoding_levels.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_levels.ipynb
+    :target: https://mybinder.org/v2/gh/ASmirnov-HORIS/lets-plot-docs/redesign?filepath=source%2Fexamples%2Fcookbook%2Fgeocoding_levels.ipynb
 
 .. |geocoding_reference-nbviewer| image:: /examples/cookbook/previews/geocoding_reference.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb
