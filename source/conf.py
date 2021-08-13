@@ -21,7 +21,7 @@ import sphinx_bootstrap_theme
 # -- Project information -----------------------------------------------------
 
 project = 'lets-plot'
-copyright = '2020, JetBrains'
+copyright = '2021, JetBrains'
 author = 'JetBrains'
 
 
@@ -101,6 +101,7 @@ html_static_path = ['_static']
 # or fully qualified paths (eg. https://...)
 html_css_files = [
     'css/custom.css',
+    'css/dataframe.css',
 ]
 html_js_files = [
     'js/custom.js',

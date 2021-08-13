@@ -9,8 +9,6 @@ Geocoding
 Administrative Levels
 ---------------------
 
-:py:mod:`geocode() <lets_plot.geo_data.geocode>`
-
 Country
 ~~~~~~~
 
@@ -170,20 +168,20 @@ Rectangles
     Cuba bounding box with cities
 
 
-Ambiguity
----------
-
-Often geocoding can find multiple objects for a name or do not find anything.
-
-Read :ref:`the doc about geocoding ambiguity <ambiguity>` to explore many ways to solve the problem.
-
-
 Reverse Geocoding
 -----------------
 
 :py:mod:`reverse_geocode() <lets_plot.geo_data.reverse_geocode>`
 
 Reverse geocoding is the process of converting geographic coordinates into a :py:mod:`Geocoder <lets_plot.geo_data.ReverseGeocoder>` object.
+
+
+Reference
+---------
+
+The `geocoding_reference.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb>`__ notebook contains a demonstration code covering use-cases presented here as log as many others.
+
+Learn more: :ref:`Advanced Geocoding <advanced_geocoding>`.
 
 
 Examples
@@ -193,13 +191,16 @@ Examples
     :container: + preview-gallery
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_reference-nbviewer|
+    |geocoding_examples-nbviewer|
 
     ---
     |geocoding_levels-nbviewer|
 
     ---
-    |geocoding_examples-nbviewer|
+    |map_US_household_income-nbviewer|
+
+    ---
+    |covid19_india-kaggle|
 
     ---
     |maps_and_geocoding-nbviewer|
@@ -218,12 +219,6 @@ Examples
 
     ---
     |without_clipping-nbviewer|
-
-    ---
-    |map_US_household_income-nbviewer|
-
-    ---
-    |covid19_india-kaggle|
 
     ---
     |internet_use_and_activities-nbviewer|

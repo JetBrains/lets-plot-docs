@@ -15,10 +15,13 @@ An Open-source Plotting Library for Statistical Data
 
 .. |jb-official| image:: http://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
+    :alt: JB Official
 .. |latest-release| image:: https://badge.fury.io/py/lets-plot.svg
     :target: https://pypi.org/project/lets-plot
+    :alt: Latest release
 .. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
+    :alt: MIT License
 
 **Python versions:** 3.6-3.9
 
