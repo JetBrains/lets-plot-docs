@@ -53,69 +53,6 @@
 .. |geocoding_examples_4x3-nbviewer| image:: /examples/cookbook/previews/geocoding_examples_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_examples.ipynb
 
-.. |geocoding_geometries_map_brazil-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_map_brazil.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_map_brazil.ipynb
-
-.. |geocoding_geometries_map_greece-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_map_greece.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_map_greece.ipynb
-
-.. |geocoding_geometries_map_nigeria-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_map_nigeria.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_map_nigeria.ipynb
-
-.. |geocoding_geometries_point_georgia-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_point_georgia.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_point_georgia.ipynb
-
-.. |geocoding_geometries_point_greenland-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_point_greenland.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_point_greenland.ipynb
-
-.. |geocoding_geometries_point_kazakhstan-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_point_kazakhstan.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_point_kazakhstan.ipynb
-
-.. |geocoding_geometries_rectangle_cuba-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_rectangle_cuba.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_rectangle_cuba.ipynb
-
-.. |geocoding_geometries_rectangle_ireland-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_rectangle_ireland.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_rectangle_ireland.ipynb
-
-.. |geocoding_geometries_rectangle_japan-nbviewer| image:: /examples/cookbook/previews/geocoding_geometries_rectangle_japan.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_geometries_rectangle_japan.ipynb
-
-.. |geocoding_level_country_world-nbviewer| image:: /examples/cookbook/previews/geocoding_level_country_world.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_country_world.ipynb
-
-.. |geocoding_level_country_canada-nbviewer| image:: /examples/cookbook/previews/geocoding_level_country_canada.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_country_canada.ipynb
-
-.. |geocoding_level_country_india-nbviewer| image:: /examples/cookbook/previews/geocoding_level_country_india.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_country_india.ipynb
-
-.. |geocoding_level_state_us-nbviewer| image:: /examples/cookbook/previews/geocoding_level_state_us.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_state_us.ipynb
-
-.. |geocoding_level_state_china-nbviewer| image:: /examples/cookbook/previews/geocoding_level_state_china.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_state_china.ipynb
-
-.. |geocoding_level_state_russia-nbviewer| image:: /examples/cookbook/previews/geocoding_level_state_russia.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_state_russia.ipynb
-
-.. |geocoding_level_county_us-nbviewer| image:: /examples/cookbook/previews/geocoding_level_county_us.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_county_us.ipynb
-
-.. |geocoding_level_county_italy-nbviewer| image:: /examples/cookbook/previews/geocoding_level_county_italy.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_county_italy.ipynb
-
-.. |geocoding_level_county_poland-nbviewer| image:: /examples/cookbook/previews/geocoding_level_county_poland.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_county_poland.ipynb
-
-.. |geocoding_level_city_nyc-nbviewer| image:: /examples/cookbook/previews/geocoding_level_city_nyc.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_city_nyc.ipynb
-
-.. |geocoding_level_city_helsinki-nbviewer| image:: /examples/cookbook/previews/geocoding_level_city_helsinki.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_city_helsinki.ipynb
-
-.. |geocoding_level_city_london-nbviewer| image:: /examples/cookbook/previews/geocoding_level_city_london.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/geocoding_level_city_london.ipynb
-
 .. |geocoding_levels-nbviewer| image:: /examples/cookbook/previews/geocoding_levels.png
     :target: https://mybinder.org/v2/gh/ASmirnov-HORIS/lets-plot-docs/redesign?filepath=source%2Fexamples%2Fcookbook%2Fgeocoding_levels.ipynb
 
@@ -179,8 +116,12 @@
 
 .. |map_california_housing-nbviewer| image:: /examples/cookbook/previews/map_california_housing.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map-california-housing/map_california_housing.ipynb
+.. |map_california_housing-datalore| image:: /examples/cookbook/previews/map_california_housing.png
+    :target: https://datalore.jetbrains.com/view/notebook/NCimfm45sYdFyh0JosywnO
 .. |map_california_housing_4x3-nbviewer| image:: /examples/cookbook/previews/map_california_housing_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map-california-housing/map_california_housing.ipynb
+.. |map_california_housing_4x3-datalore| image:: /examples/cookbook/previews/map_california_housing_4x3.png
+    :target: https://datalore.jetbrains.com/view/notebook/NCimfm45sYdFyh0JosywnO
 
 .. |map_quickstart-datalore| image:: /examples/cookbook/previews/map_quickstart.png
     :target: https://datalore.jetbrains.com/view/notebook/cwDq8gX5UGidzo65RY85yP
@@ -195,7 +136,7 @@
     :target: https://www.kaggle.com/alshan/mapping-us-household-income
 
 .. |ordering_examples-nbviewer| image:: /examples/cookbook/previews/ordering_examples.png
-    :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks-dev/ordering_examples.ipynb
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/ordering_examples.ipynb
 
 .. |quickstart-nbviewer| image:: /examples/cookbook/previews/quickstart.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/quickstart.ipynb

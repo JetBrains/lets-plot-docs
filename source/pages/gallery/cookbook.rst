@@ -66,7 +66,7 @@ Interactive Maps
     Quickstart with maps in Datalore
 
     ---
-    |map_california_housing-nbviewer|
+    |map_california_housing-datalore|
 
     Visulizing spatial information
 
@@ -101,7 +101,7 @@ Geocoding
     Geocoding examples
 
     ---
-    |map_US_household_income-nbviewer|
+    |map_US_household_income-kaggle|
 
     Geocoding the US counties
 

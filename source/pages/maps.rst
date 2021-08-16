@@ -15,7 +15,7 @@ Proportional Symbol Map
 .. panels::
     :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |bigquery_gis_4x3-kaggle|
+    |map_california_housing_4x3-datalore|
 
     ---
     .. code-block:: python
@@ -183,10 +183,13 @@ Examples
     |maps_and_geocoding-nbviewer|
 
     ---
-    |map_california_housing-nbviewer|
+    |bigquery_gis-kaggle|
 
     ---
     |map_US_household_income-kaggle|
+
+    ---
+    |map_california_housing-nbviewer|
 
     ---
     |beijing-kaggle|

@@ -22,12 +22,12 @@ Features
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |correlation_plot-nbviewer|
+    |corr_plot-nbviewer|
 
     Correlation plot
 
     ---
-    |image_matrix-nbviewer|
+    |basic_image_matrix-nbviewer|
 
     Set of images in a grid
 
