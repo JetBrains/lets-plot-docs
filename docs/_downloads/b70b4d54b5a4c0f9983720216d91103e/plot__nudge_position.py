@@ -1,19 +1,19 @@
 """
-Nudge Position
-==============
-
-Position adjustments determine how to arrange geoms that would otherwise
-occupy the same space.
-
-``position_nudge()`` is generally useful for adjusting the position of
-items on discrete scales by a small amount.
-
-See
-`position_nudge() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_nudge.html#lets_plot.position_nudge>`__.
+Nudge Position
+==============
+
+Position adjustments determine how to arrange geoms that would otherwise
+occupy the same space.
+
+``position_nudge()`` is generally useful for adjusting the position of
+items on discrete scales by a small amount.
+
+See
+`position_nudge() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_nudge.html#lets_plot.position_nudge>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_position_adjustments\_nudge_position.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_position_adjustments/_nudge_position.png"
 
 import pandas as pd
 

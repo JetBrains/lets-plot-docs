@@ -1,12 +1,12 @@
 """
-Image Matrix
-============
-
-The ``image_matrix()`` function arranges a set of images in a grid.
+Image Matrix
+============
+
+The ``image_matrix()`` function arranges a set of images in a grid.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_features\_image_matrix.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_features/_image_matrix.png"
 
 from PIL import Image
 import numpy as np
@@ -34,11 +34,10 @@ image_matrix(matrix, norm=False, scale=.5)
 
 # %% [markdown]
 #
-# ``geom_image()``
-# ~~~~~~~~~~~~~~~~
-# 
-# The ``image_matrix()`` function uses ``geom_image()`` under the hood, so
-# you might want to look at the following example.
+# ``geom_image()``
+# ~~~~~~~~~~~~~~~~
+# The ``image_matrix()`` function uses ``geom_image()`` under the hood, so
+# you might want to look at the following example.
 
 # %%
 

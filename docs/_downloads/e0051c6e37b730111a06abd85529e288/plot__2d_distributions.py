@@ -1,18 +1,18 @@
 """
-2D Distributions
-================
-
-Some plots visualize a transformation of the original data set. Use a
-stat parameter to choose a common transformation to visualize.
-
-Each stat creates additional variables to map aesthetics to. These
-variables use a common ..name.. syntax.
-
-Look at the examples of 2D distributions below.
+2D Distributions
+================
+
+Some plots visualize a transformation of the original data set. Use a
+stat parameter to choose a common transformation to visualize.
+
+Each stat creates additional variables to map aesthetics to. These
+variables use a common ..name.. syntax.
+
+Look at the examples of 2D distributions below.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_stats\_2d_distributions.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_stats/_2d_distributions.png"
 
 import pandas as pd
 

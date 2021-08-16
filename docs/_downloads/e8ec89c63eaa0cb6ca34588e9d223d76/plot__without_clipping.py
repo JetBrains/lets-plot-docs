@@ -1,15 +1,15 @@
 """
-Without Clipping
-================
-
-Preferred type of zooming.
-
-See
-`coord_cartesian() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_cartesian.html#lets_plot.coord_cartesian>`__.
+Without Clipping
+================
+
+Preferred type of zooming.
+
+See
+`coord_cartesian() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_cartesian.html#lets_plot.coord_cartesian>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_zooming\_without_clipping.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_zooming/_without_clipping.png"
 
 import pandas as pd
 

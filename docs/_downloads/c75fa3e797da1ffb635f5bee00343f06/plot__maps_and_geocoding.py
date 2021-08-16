@@ -1,12 +1,12 @@
 """
-Maps and Geocoding
-==================
-
-Visualize geospatial information on maps with Lets-Plot!
+Maps and Geocoding
+==================
+
+Visualize geospatial information on maps with Lets-Plot!
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_features\_maps_and_geocoding.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_features/_maps_and_geocoding.png"
 
 import pandas as pd
 
@@ -18,8 +18,8 @@ LetsPlot.setup_html()
 
 # %% [markdown]
 #
-# Data Preparation
-# ~~~~~~~~~~~~~~~~
+# Data Preparation
+# ~~~~~~~~~~~~~~~~
 
 # %%
 
@@ -39,8 +39,8 @@ states.head(2)
 
 # %% [markdown]
 #
-# Polygons and ``map_join``
-# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# Polygons and ``map_join``
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # %%
 
@@ -56,8 +56,8 @@ ggplot() + \
 
 # %% [markdown]
 #
-# Interactive Map
-# ~~~~~~~~~~~~~~~
+# Interactive Map
+# ~~~~~~~~~~~~~~~
 
 # %%
 
@@ -72,8 +72,8 @@ ggplot() + \
 
 # %% [markdown]
 #
-# Custom Theme
-# ~~~~~~~~~~~~
+# Custom Theme
+# ~~~~~~~~~~~~
 
 # %%
 
@@ -89,8 +89,8 @@ ggplot() + \
 
 # %% [markdown]
 #
-# Custom Tile Server
-# ~~~~~~~~~~~~~~~~~~
+# Custom Tile Server
+# ~~~~~~~~~~~~~~~~~~
 
 # %%
 

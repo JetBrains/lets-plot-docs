@@ -1,13 +1,13 @@
 """
-Correlation Plot
-================
-
-The ``corr_plot()`` function creates a fluent builder object offering a
-set of methods for configuring of beautiful correlation plots.
+Correlation Plot
+================
+
+The ``corr_plot()`` function creates a fluent builder object offering a
+set of methods for configuring of beautiful correlation plots.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_features\_correlation_plot.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_features/_correlation_plot.png"
 
 import pandas as pd
 

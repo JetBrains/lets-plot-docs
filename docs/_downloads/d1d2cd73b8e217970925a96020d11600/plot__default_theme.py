@@ -1,15 +1,15 @@
 """
-Default Theme
-=============
-
-White background with no gridlines.
-
-See
-`theme() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.theme.html#lets_plot.theme>`__.
+Default Theme
+=============
+
+White background with no gridlines.
+
+See
+`theme() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.theme.html#lets_plot.theme>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_themes\_default_theme.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_themes/_default_theme.png"
 
 import pandas as pd
 

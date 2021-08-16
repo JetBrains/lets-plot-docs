@@ -1,18 +1,18 @@
 """
-Dodge Position
-==============
-
-Position adjustments determine how to arrange geoms that would otherwise
-occupy the same space.
-
-Arrange elements side by side using position ``dodge``.
-
-See
-`position_dodge() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_dodge.html#lets_plot.position_dodge>`__.
+Dodge Position
+==============
+
+Position adjustments determine how to arrange geoms that would otherwise
+occupy the same space.
+
+Arrange elements side by side using position ``dodge``.
+
+See
+`position_dodge() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_dodge.html#lets_plot.position_dodge>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_position_adjustments\_dodge_position.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_position_adjustments/_dodge_position.png"
 
 import pandas as pd
 

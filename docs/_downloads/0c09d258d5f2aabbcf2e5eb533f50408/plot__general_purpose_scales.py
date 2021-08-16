@@ -1,12 +1,12 @@
 """
-General Purpose Scales
-======================
-
-Use with any aesthetic: alpha, color, fill, linetype, shape, size.
+General Purpose Scales
+======================
+
+Use with any aesthetic: alpha, color, fill, linetype, shape, size.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_scales\_general_purpose_scales.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_scales/_general_purpose_scales.png"
 
 import pandas as pd
 
@@ -21,10 +21,9 @@ df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/mas
 
 # %% [markdown]
 #
-# Continuous Scales
-# -----------------
-# 
-# Map continuous values to visual values.
+# Continuous Scales
+# -----------------
+# Map continuous values to visual values.
 
 # %%
 
@@ -42,10 +41,9 @@ bunch
 
 # %% [markdown]
 #
-# Discrete Scales
-# ---------------
-# 
-# Map discrete values to visual values.
+# Discrete Scales
+# ---------------
+# Map discrete values to visual values.
 
 # %%
 
@@ -63,10 +61,9 @@ bunch
 
 # %% [markdown]
 #
-# Identity Scales
-# ---------------
-# 
-# Use data values **as** visual values.
+# Identity Scales
+# ---------------
+# Use data values **as** visual values.
 
 # %%
 
@@ -85,10 +82,9 @@ bunch
 
 # %% [markdown]
 #
-# Manual Scales
-# -------------
-# 
-# Map discrete values to manually chosen visual values.
+# Manual Scales
+# -------------
+# Map discrete values to manually chosen visual values.
 
 # %%
 

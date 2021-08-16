@@ -1,16 +1,16 @@
 """
-Fixed Coordinates
-=================
-
-Cartesian coordinates with fixed aspect ratio between ``x`` and ``y``
-units.
-
-See
-`coord_fixed() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_fixed.html#lets_plot.coord_fixed>`__.
+Fixed Coordinates
+=================
+
+Cartesian coordinates with fixed aspect ratio between ``x`` and ``y``
+units.
+
+See
+`coord_fixed() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_fixed.html#lets_plot.coord_fixed>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_coordinate_systems\_fixed_coordinates.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_coordinate_systems/_fixed_coordinates.png"
 
 import pandas as pd
 

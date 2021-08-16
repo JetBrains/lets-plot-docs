@@ -1,13 +1,13 @@
 """
-Three Variables
-===============
-
-Use a geom to represent data points. Use the geom’s aesthetic
-properties to represent variables. Each function returns a layer.
+Three Variables
+===============
+
+Use a geom to represent data points. Use the geom’s aesthetic properties
+to represent variables. Each function returns a layer.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_geoms\_3_variables.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_geoms/_3_variables.png"
 
 import numpy as np
 from scipy.stats import multivariate_normal

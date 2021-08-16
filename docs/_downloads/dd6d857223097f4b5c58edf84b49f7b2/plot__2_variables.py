@@ -1,13 +1,13 @@
 """
-Two Variables
-=============
-
-Use a geom to represent data points. Use the geom’s aesthetic
-properties to represent variables. Each function returns a layer.
+Two Variables
+=============
+
+Use a geom to represent data points. Use the geom’s aesthetic properties
+to represent variables. Each function returns a layer.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_geoms\_2_variables.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_geoms/_2_variables.png"
 
 from datetime import datetime
 
@@ -31,8 +31,8 @@ ec_df = ec_df[ec_df.date > datetime(2000, 1, 1)]
 
 # %% [markdown]
 #
-# Continuous X, Continuous Y
-# --------------------------
+# Continuous X, Continuous Y
+# --------------------------
 
 # %%
 
@@ -58,8 +58,8 @@ p + geom_text(aes(label='fl'))
 
 # %% [markdown]
 #
-# Discrete X, Continuous Y
-# ------------------------
+# Discrete X, Continuous Y
+# ------------------------
 
 # %%
 
@@ -78,8 +78,8 @@ ggplot(mpg_df, aes('class', 'hwy')) + geom_boxplot()
 
 # %% [markdown]
 #
-# Discrete X, Discrete Y
-# ----------------------
+# Discrete X, Discrete Y
+# ----------------------
 
 # %%
 
@@ -89,8 +89,8 @@ ggplot(mpg_df, aes('fl', 'drv')) + geom_jitter(width=.3, height=.3)
 
 # %% [markdown]
 #
-# Continuous Bivariate Distribution
-# ---------------------------------
+# Continuous Bivariate Distribution
+# ---------------------------------
 
 # %%
 
@@ -112,8 +112,8 @@ p + geom_density2df(aes(fill='..group..'), color='white', size=.5)
 
 # %% [markdown]
 #
-# Continuous Function
-# -------------------
+# Continuous Function
+# -------------------
 
 # %%
 
@@ -135,8 +135,8 @@ p + geom_step()
 
 # %% [markdown]
 #
-# Visualizing Error
-# -----------------
+# Visualizing Error
+# -----------------
 
 # %%
 
@@ -167,8 +167,8 @@ p + geom_pointrange(aes(ymin='min', y='median', ymax='max'))
 
 # %% [markdown]
 #
-# Maps
-# ----
+# Maps
+# ----
 
 # %%
 

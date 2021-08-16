@@ -1,14 +1,14 @@
 """
-With Clipping
-=============
-
-Removes unseen data points.
-
-Look at the examples below.
+With Clipping
+=============
+
+Removes unseen data points.
+
+Look at the examples below.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_zooming\_with_clipping.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_zooming/_with_clipping.png"
 
 import pandas as pd
 

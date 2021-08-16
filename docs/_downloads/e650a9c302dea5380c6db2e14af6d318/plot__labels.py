@@ -1,12 +1,12 @@
 """
-Labels
-======
-
-Use ``xlab()``, ``ylab()`` and ``labs()`` functions to set plot labels.
+Labels
+======
+
+Use ``xlab()``, ``ylab()`` and ``labs()`` functions to set plot labels.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_labels\_labels.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_labels/_labels.png"
 
 import pandas as pd
 
@@ -21,8 +21,8 @@ df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/mas
 
 # %% [markdown]
 #
-# ``xlab()`` and ``ylab()``
-# ~~~~~~~~~~~~~~~~~~~~~~~~~
+# ``xlab()`` and ``ylab()``
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # %%
 
@@ -34,8 +34,8 @@ ggplot(df, aes('cty', 'hwy')) + \
 
 # %% [markdown]
 #
-# ``labs()``
-# ~~~~~~~~~~
+# ``labs()``
+# ~~~~~~~~~~
 
 # %%
 

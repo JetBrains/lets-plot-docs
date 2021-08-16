@@ -1,12 +1,12 @@
 """
-Scale Way
-=========
-
-Set legend title and labels with a scale function.
+Scale Way
+=========
+
+Set legend title and labels with a scale function.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_legends\_scale_way.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_legends/_scale_way.png"
 
 import pandas as pd
 

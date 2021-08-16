@@ -1,19 +1,19 @@
 """
-Jitterdodge Position
-====================
-
-Position adjustments determine how to arrange geoms that would otherwise
-occupy the same space.
-
-Simultaneously dodge and jitter in one function:
-``position_jitterdodge()``.
-
-See
-`position_jitterdodge() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_jitterdodge.html#lets_plot.position_jitterdodge>`__.
+Jitterdodge Position
+====================
+
+Position adjustments determine how to arrange geoms that would otherwise
+occupy the same space.
+
+Simultaneously dodge and jitter in one function:
+``position_jitterdodge()``.
+
+See
+`position_jitterdodge() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_jitterdodge.html#lets_plot.position_jitterdodge>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py\_position_adjustments\_jitterdodge_position.png"
+# sphinx_gallery_thumbnail_path = "gallery_py/_position_adjustments/_jitterdodge_position.png"
 
 import pandas as pd
 
