@@ -1,13 +1,13 @@
 """
-Guide
-=====
-
-Set legend type for each aesthetic: colorbar, legend, or none (no
-legend).
+Guide
+=====
+
+Set legend type for each aesthetic: colorbar, legend, or none (no
+legend).
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_legends/_guide.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_legends\_guide.png"
 
 import pandas as pd
 
@@ -22,8 +22,8 @@ df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/mas
 
 # %% [markdown]
 #
-# Legend Guide
-# ~~~~~~~~~~~~
+# Legend Guide
+# ~~~~~~~~~~~~
 
 # %%
 
@@ -39,8 +39,8 @@ ggplot(df, aes(x='fl')) + \
 
 # %% [markdown]
 #
-# Colorbar Guide
-# ~~~~~~~~~~~~~~
+# Colorbar Guide
+# ~~~~~~~~~~~~~~
 
 # %%
 

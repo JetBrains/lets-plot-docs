@@ -1,12 +1,12 @@
 """
-X and Y Location Scales
-=======================
-
-Use with x or y aesthetics (x shown here).
+X and Y Location Scales
+=======================
+
+Use with x or y aesthetics (x shown here).
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_scales/_x_and_y.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_scales\_x_and_y.png"
 
 from datetime import datetime
 
@@ -27,8 +27,8 @@ ec_df = ec_df[ec_df.date > datetime(2000, 1, 1)]
 
 # %% [markdown]
 #
-# Log10 Scale
-# ~~~~~~~~~~~
+# Log10 Scale
+# ~~~~~~~~~~~
 
 # %%
 
@@ -47,8 +47,8 @@ bunch
 
 # %% [markdown]
 #
-# Reversed Scale
-# ~~~~~~~~~~~~~~
+# Reversed Scale
+# ~~~~~~~~~~~~~~
 
 # %%
 
@@ -67,8 +67,8 @@ bunch
 
 # %% [markdown]
 #
-# Datetime Scale
-# ~~~~~~~~~~~~~~
+# Datetime Scale
+# ~~~~~~~~~~~~~~
 
 # %%
 

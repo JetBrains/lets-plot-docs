@@ -1,13 +1,13 @@
 """
-Shape Scales
-============
-
-Scales control how a plot maps data values to the visual values of an
-aesthetic.
+Shape Scales
+============
+
+Scales control how a plot maps data values to the visual values of an
+aesthetic.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_scales/_shape_scales.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_scales\_shape_scales.png"
 
 import pandas as pd
 

@@ -1,13 +1,13 @@
 """
-Color and Fill Scales
-=====================
-
-Scales control how a plot maps data values to the visual values of an
-aesthetic.
+Color and Fill Scales
+=====================
+
+Scales control how a plot maps data values to the visual values of an
+aesthetic.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_scales/_color_and_fill.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_scales\_color_and_fill.png"
 
 from datetime import datetime
 
@@ -28,8 +28,8 @@ ec_df = ec_df[ec_df.date > datetime(2000, 1, 1)]
 
 # %% [markdown]
 #
-# Discrete
-# ~~~~~~~~
+# Discrete
+# ~~~~~~~~
 
 # %%
 
@@ -50,8 +50,8 @@ p + scale_color_grey(start=0, end=.7) + \
 
 # %% [markdown]
 #
-# Continuous
-# ~~~~~~~~~~
+# Continuous
+# ~~~~~~~~~~
 
 # %%
 

@@ -1,15 +1,15 @@
 """
-Cartesian Coordinates
-=====================
-
-The default coordinate system.
-
-See
-`coord_cartesian() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_cartesian.html#lets_plot.coord_cartesian>`__.
+Cartesian Coordinates
+=====================
+
+The default coordinate system.
+
+See
+`coord_cartesian() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_cartesian.html#lets_plot.coord_cartesian>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_coordinate_systems/_cartesian_coordinates.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_coordinate_systems\_cartesian_coordinates.png"
 
 import pandas as pd
 

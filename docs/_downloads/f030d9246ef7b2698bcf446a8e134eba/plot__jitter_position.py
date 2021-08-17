@@ -1,19 +1,19 @@
 """
-Jitter Position
-===============
-
-Position adjustments determine how to arrange geoms that would otherwise
-occupy the same space.
-
-Add random noise to ``X`` and ``Y`` position of each element to avoid
-overplot using position jitter.
-
-See
-`position_jitter() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_jitter.html#lets_plot.position_jitter>`__.
+Jitter Position
+===============
+
+Position adjustments determine how to arrange geoms that would otherwise
+occupy the same space.
+
+Add random noise to ``X`` and ``Y`` position of each element to avoid
+overplot using position jitter.
+
+See
+`position_jitter() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.position_jitter.html#lets_plot.position_jitter>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_position_adjustments/_jitter_position.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_position_adjustments\_jitter_position.png"
 
 import pandas as pd
 

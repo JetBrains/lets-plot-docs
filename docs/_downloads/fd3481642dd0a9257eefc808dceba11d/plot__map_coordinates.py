@@ -1,16 +1,16 @@
 """
-Map Coordinates
-===============
-
-``coord_map()`` projects a portion of the earth, which is approximately
-spherical, onto a flat 2D plane.
-
-See
-`coord_map <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_map.html#lets_plot.coord_map>`__.
+Map Coordinates
+===============
+
+``coord_map()`` projects a portion of the earth, which is approximately
+spherical, onto a flat 2D plane.
+
+See
+`coord_map <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.coord_map.html#lets_plot.coord_map>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_coordinate_systems/_map_coordinates.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_coordinate_systems\_map_coordinates.png"
 
 from lets_plot import *
 from lets_plot.geo_data import *

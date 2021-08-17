@@ -1,13 +1,13 @@
 """
-Facet Wrapping
-==============
-
-Facets divide a plot into subplots based on the values of one or more
-discrete variable.
+Facet Wrapping
+==============
+
+Facets divide a plot into subplots based on the values of one or more
+discrete variable.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_faceting/_facet_wrapping.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_faceting\_facet_wrapping.png"
 
 import pandas as pd
 

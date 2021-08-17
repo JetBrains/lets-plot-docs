@@ -1,13 +1,13 @@
 """
-Graphical Primitives
-====================
-
-Use a geom to represent data points. Use the geom’s aesthetic properties
-to represent variables. Each function returns a layer.
+Graphical Primitives
+====================
+
+Use a geom to represent data points. Use the geom’s aesthetic
+properties to represent variables. Each function returns a layer.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_geoms/_graphical_primitives.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_geoms\_graphical_primitives.png"
 
 from datetime import datetime
 
@@ -29,8 +29,8 @@ ec_df = ec_df[ec_df.date > datetime(2000, 1, 1)]
 
 # %% [markdown]
 #
-# Polygon
-# ~~~~~~~
+# Polygon
+# ~~~~~~~
 
 # %%
 
@@ -47,8 +47,8 @@ ggplot() + \
 
 # %% [markdown]
 #
-# Path and Ribbon
-# ~~~~~~~~~~~~~~~
+# Path and Ribbon
+# ~~~~~~~~~~~~~~~
 
 # %%
 
@@ -66,8 +66,8 @@ p + geom_ribbon(aes(ymin=ec_df.unemploy - 900, ymax=ec_df.unemploy + 900))
 
 # %% [markdown]
 #
-# Segment and Rectangle
-# ~~~~~~~~~~~~~~~~~~~~~
+# Segment and Rectangle
+# ~~~~~~~~~~~~~~~~~~~~~
 
 # %%
 

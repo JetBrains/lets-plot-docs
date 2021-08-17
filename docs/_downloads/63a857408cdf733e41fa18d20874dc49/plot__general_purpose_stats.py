@@ -1,18 +1,18 @@
 """
-General Purpose Stats
-=====================
-
-Some plots visualize a transformation of the original data set. Use a
-stat parameter to choose a common transformation to visualize.
-
-Each stat creates additional variables to map aesthetics to. These
-variables use a common ..name.. syntax.
-
-Look at the examples of the most general stats below.
+General Purpose Stats
+=====================
+
+Some plots visualize a transformation of the original data set. Use a
+stat parameter to choose a common transformation to visualize.
+
+Each stat creates additional variables to map aesthetics to. These
+variables use a common ..name.. syntax.
+
+Look at the examples of the most general stats below.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_stats/_general_purpose_stats.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_stats\_general_purpose_stats.png"
 
 import pandas as pd
 
@@ -28,8 +28,8 @@ df.head()
 
 # %% [markdown]
 #
-# Identity Stat
-# ~~~~~~~~~~~~~
+# Identity Stat
+# ~~~~~~~~~~~~~
 
 # %%
 

@@ -1,15 +1,15 @@
 """
-Plot Title
-==========
-
-Add a main title above the plot.
-
-See
-`ggtitle() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.ggtitle.html#lets_plot.ggtitle>`__.
+Plot Title
+==========
+
+Add a main title above the plot.
+
+See
+`ggtitle() <https://jetbrains.github.io/lets-plot-docs/pages/api/lets_plot.ggtitle.html#lets_plot.ggtitle>`__.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_labels/_plot_title.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_labels\_plot_title.png"
 
 import pandas as pd
 

@@ -1,13 +1,13 @@
 """
-One Variable
-============
-
-Use a geom to represent data points. Use the geom’s aesthetic properties
-to represent variables. Each function returns a layer.
+One Variable
+============
+
+Use a geom to represent data points. Use the geom’s aesthetic
+properties to represent variables. Each function returns a layer.
 
 """
 
-# sphinx_gallery_thumbnail_path = "gallery_py/_geoms/_1_variable.png"
+# sphinx_gallery_thumbnail_path = "gallery_py\_geoms\_1_variable.png"
 
 import pandas as pd
 
@@ -22,8 +22,8 @@ df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/mas
 
 # %% [markdown]
 #
-# Continuous Variable
-# -------------------
+# Continuous Variable
+# -------------------
 
 # %%
 
@@ -49,8 +49,8 @@ p + geom_histogram()
 
 # %% [markdown]
 #
-# Discrete Variable
-# -----------------
+# Discrete Variable
+# -----------------
 
 # %%
 
