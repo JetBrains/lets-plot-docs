@@ -32,6 +32,8 @@ The following ``ggplot2`` geometry can be used with interactive maps:
 - ``geom_contour``, ``geom_contourf``,
 - ``geom_density2d``, ``geom_density2df``.
 
+Moreover, to know how to use the built-in tiles, see: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>`.
+
 Examples:
 
 - Interactive maps: quick start: |interactive_maps_quickstart_datalore|
