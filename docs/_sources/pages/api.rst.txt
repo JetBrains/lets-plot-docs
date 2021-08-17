@@ -105,8 +105,18 @@ Extras
 
     maptiles_zxy
     maptiles_lets_plot
+    maptiles_solid
     arrow
 
+.. currentmodule:: lets_plot.mapping
+
+.. autosummary::
+    :toctree: api
+
+    as_discrete
+
+
+.. currentmodule:: lets_plot
 
 .. _api_fs:
 
