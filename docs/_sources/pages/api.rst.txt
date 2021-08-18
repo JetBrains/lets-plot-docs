@@ -105,6 +105,7 @@ Extras
 
     maptiles_zxy
     maptiles_lets_plot
+    maptiles_solid
     arrow
 
 

@@ -90,7 +90,7 @@ Built-In and 3d-Party Tiles
 
 :py:mod:`maptiles_zxy() <lets_plot.maptiles_zxy>` and :py:mod:`maptiles_lets_plot() <lets_plot.maptiles_lets_plot>` functions are designed to help you to change themes and use external tile services to diversify your maps.
 
-Learn more: `Configuring Basemap Tiles for Interactive Maps <https://github.com/JetBrains/lets-plot/blob/e8384e2b96b637c4574d3e8d1a42992db582f130/docs/basemap_tiles.md>`__.
+Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>`.
 
 .. panels::
     :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2

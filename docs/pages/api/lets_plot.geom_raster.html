@@ -184,8 +184,8 @@ They may also be parameters to the paired geom/stat.</p></li>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-.</span><span class="mi">5</span><span class="p">],</span>
-       <span class="p">[</span><span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 <span class="n">rv</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)))</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">Z</span><span class="o">.</span><span class="n">flatten</span><span class="p">()}</span>
@@ -197,7 +197,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="kH9dRg"></div>
+<div id="7Yrqet"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -221,13 +221,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("kH9dRg").appendChild(div);
+            document.getElementById("7Yrqet").appendChild(div);
         };
-        var e = document.getElementById("kH9dRg");
+        var e = document.getElementById("7Yrqet");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="EdNrH1"></div>
+</div><div class="output text_html">   <div id="15MkXx"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -260,7 +260,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("EdNrH1");
+           var plotContainer = document.getElementById("15MkXx");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -288,13 +288,13 @@ They may also be parameters to the paired geom/stat.</p></li>
 <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> \
 <span class="hll">    <span class="n">geom_raster</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;..corr..&#39;</span><span class="p">),</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;corr&#39;</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
 </span>    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;..corr..&#39;</span><span class="p">),</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;corr&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="o">+</span> \
-    <span class="n">scale_fill_brewer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">scale_fill_brewer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </td></tr></table></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="llgu6G"></div>
+<div id="QwnCP3"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -318,13 +318,13 @@ They may also be parameters to the paired geom/stat.</p></li>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("llgu6G").appendChild(div);
+            document.getElementById("QwnCP3").appendChild(div);
         };
-        var e = document.getElementById("llgu6G");
+        var e = document.getElementById("QwnCP3");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="22FaQo"></div>
+</div><div class="output text_html">   <div id="ST8ENO"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -372,7 +372,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("22FaQo");
+           var plotContainer = document.getElementById("ST8ENO");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
