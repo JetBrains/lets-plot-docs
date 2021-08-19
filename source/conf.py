@@ -36,10 +36,18 @@ extensions = [
     'sphinx.ext.githubpages',
     'jupyter_sphinx',
     'sphinx_panels',
+    'sphinx_reredirects',
     'create_cname',
 ]
 
 cname_url = 'lets-plot.org'
+
+# TODO: Update all references and remove this as soon as possible
+redirects = {
+    "pages/features/formats": "https://{0}/pages/formats.html".format(cname_url),
+    "pages/features/sampling": "https://{0}/pages/sampling.html".format(cname_url),
+    "pages/features/tooltips": "https://{0}/pages/tooltips.html".format(cname_url),
+}
 
 autodoc_default_options = {
     'member-order': 'bysource',
@@ -81,7 +89,6 @@ html_theme_options = {
     'navbar_title': 'Lets-Plot',
     'navbar_links': [
       ('API', 'pages/api'),
-      ('Gallery', 'pages/gallery'),
     ],
     'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3
     'navbar_sidebarrel': False,

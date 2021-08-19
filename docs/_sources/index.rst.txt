@@ -125,34 +125,35 @@ Explore Your Data with Lets-Plot
 --------------------------------
 
 .. panels::
+    :container: + explore-your-data-container
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
     :header: text-center
 
-    Charts
-    ^^^^^^
+    :ref:`Charts <charts>`
+    ^^^^^^^^^^^^^^^^^^^^^^
 
     .. raw:: html
 
         <a class="reference internal image-reference" href="pages/charts.html">
-          <img src="_images/graph_building_4x3.png">
+          <img src="_static/images/previews/charts.png">
         </a>
 
     ---
-    Maps
-    ^^^^
+    :ref:`Maps <maps>`
+    ^^^^^^^^^^^^^^^^^^
 
     .. raw:: html
 
         <a class="reference internal image-reference" href="pages/maps.html">
-          <img src="_images/museums_4x3.png">
+          <img src="_static/images/previews/maps.png">
         </a>
 
     ---
-    Geocoding
-    ^^^^^^^^^
+    :ref:`Geocoding <geocoding>`
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. raw:: html
 
         <a class="reference internal image-reference" href="pages/geocoding.html">
-          <img src="_images/geocoding_reference_4x3.png">
+          <img src="_static/images/previews/geocoding.png">
         </a>
