@@ -1,5 +1,5 @@
-All Features You Are Interested In
-----------------------------------
+Key Features
+------------
 
 .. panels::
     :container: + features-list
@@ -9,7 +9,7 @@ All Features You Are Interested In
 
     ggplot2-like API
 
-    The Python API being very similar yet is different in detail from R; although we have not implemented the entire ggplot2 API, we have added a few new features
+    A bridge between R (ggplot2) and Python Data visualization
 
     ---
     ---
@@ -17,14 +17,14 @@ All Features You Are Interested In
 
     Customizable Tooltips
 
-    You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions
+    You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions; :ref:`learn more <tooltips>`
 
     ---
     .. image:: /_static/images/icons/features/export.png
 
     Export to SVG and HTML
 
-    The ``ggsave()`` function is an easy way to export plot to a file in SVG or HTML formats
+    The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in SVG or HTML formats
 
     ---
     ---
@@ -32,14 +32,14 @@ All Features You Are Interested In
 
     Formatting
 
-    **Lets-Plot** supports formatting of values of numeric and date-time types; complementary to the value formatting, a string template is also supported
+    Lets-Plot supports formatting of values of numeric and date-time types; complementary to the value formatting, a string template is also supported; :ref:`learn more <formats>`
 
     ---
     .. image:: /_static/images/icons/features/graphics-grid.png
 
-    Graphics Grid
+    Grouping Plots
 
-    ``GGBunch`` shows a collection of plots on one figure; each plot in the collection can have an arbitrary location and size
+    :py:mod:`GGBunch <lets_plot.GGBunch>` shows a collection of plots on one figure; each plot in the collection can have an arbitrary location and size
 
     ---
     ---
@@ -47,22 +47,22 @@ All Features You Are Interested In
 
     Sampling
 
-    Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting
+    Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting; :ref:`learn more <sampling>`
 
     ---
     .. image:: /_static/images/icons/features/offline-mode.png
 
-    'No Javascript' / Offline Mode
+    'No Javascript' and Offline Mode
 
-    In the 'no javascript' mode **Lets-Plot** generates plots as bare-bones SVG images; plots in the notebook with option ``offline=True`` will be working without an Internet connection
+    In the 'no javascript' mode Lets-Plot generates plots as bare-bones SVG images; plots in the notebook with option ``offline=True`` will be working without an Internet connection; :ref:`learn more <no_js_and_offline_mode>`
 
     ---
     ---
     .. image:: /_static/images/icons/features/platforms.png
 
-    Platforms
+    Suitable for Scientist and Developer
 
-    You can use **Lets-Plot** in Jupyter notebook or other notebook of your choice, like Datalore, Kaggle or Colab; moreover there is a plugin "Lets-Plot in SciView" for IntelliJ-based IDEs with the enabled scientific mode
+    We offer data visualization in `Jupyter <https://jupyter-notebook.readthedocs.io/en/stable>`__ notebooks as well as in other notebooks like `Datalore <https://view.datalore.io/notebook/Zzg9EVS6i16ELQo3arzWsP>`__, `Kaggle <https://www.kaggle.com/alshan/lets-plot-quickstart>`__ or `Colab <https://colab.research.google.com/drive/1o9rFQbkGqvvixYLTogrzIjFPp1ti2cH->`__; you can also create interactive plots in PyCharm with the help of our plugin
 
     ---
     .. image:: /_static/images/icons/features/kotlin-api.png
@@ -80,11 +80,11 @@ All Features You Are Interested In
     Interactive maps allow zooming and panning around geospatial data that can be added to the base-map layer using regular ggplot geoms
 
     ---
-    .. image:: /_static/images/icons/features/maps-with-geometries.png
+    .. image:: /_static/images/icons/features/geospatial-visualization.png
 
-    Combining Maps with Geometries
+    Geospatial visualization
 
-    ``geom_livemap()`` has built-in markers used for displaying the data; besides you can append as many additional layers with various geometries as you need
+    Find spatial objects with the help of our powerful and easy to use :ref:`Geocoding <geocoding>` module; in case you already have :ref:`GeoDataFrame <geopandas>` on hand - plot it straght away
 
     ---
     ---
@@ -92,11 +92,4 @@ All Features You Are Interested In
 
     Built-In and 3d-Party Tiles
 
-    Change themes and use external tile services to diversify your maps
-
-    ---
-    .. image:: /_static/images/icons/features/geocoding.png
-
-    Built-In Geocoding
-
-    The **Lets-Plot** has built-in geocoding capabilities covering the following administrative levels: countries, states (US and non-US equivalents), counties (and equivalents), cities (and towns)
+    Change themes and use external tile services to diversify your maps; :ref:`learn more <basemap_tiles>`

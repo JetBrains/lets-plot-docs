@@ -13,35 +13,13 @@ Charts
 .. |basic-building-blocks-icon| image:: /_static/images/icons/charts/basic-building-blocks.png
 
 
-Points
-~~~~~~
-
-:py:mod:`Points <lets_plot.geom_point>`,
+Points:
+:py:mod:`points <lets_plot.geom_point>`,
 :py:mod:`jittered points <lets_plot.geom_jitter>`
 
-Examples:
 
-- `Graph building <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/graph_building.ipynb>`__
-- `Point geometries <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/point_geometries.ipynb>`__
-- `Jitter position <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/jitter_position.ipynb>`__
-- `Jitterdodge position <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/jitterdodge_position.ipynb>`__
-- `Nudge position <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/nudge_position.ipynb>`__
-- `Draw a scatter plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb>`__
-- `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
-- `2d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/2d_distributions.ipynb>`__
-- `Correlation statistics <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/stat_corr.ipynb>`__
-- `Fixed coordinates <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/fixed_coordinates.ipynb>`__
-- `Guide colorbar <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/guide_colorbar.ipynb>`__
-- `Legend place <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/legend_place.ipynb>`__
-- `Log10 scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/log10_scale.ipynb>`__
-- `Manual shape scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/shape_manual_scale.ipynb>`__
-- `Size area scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/size_area_scale.ipynb>`__
-
-
-Lines
-~~~~~
-
-:py:mod:`Line <lets_plot.geom_line>`,
+Lines:
+:py:mod:`line <lets_plot.geom_line>`,
 :py:mod:`path <lets_plot.geom_path>`,
 :py:mod:`diagonal line <lets_plot.geom_abline>`,
 :py:mod:`horizontal line <lets_plot.geom_hline>`,
@@ -49,60 +27,34 @@ Lines
 :py:mod:`segment <lets_plot.geom_segment>`,
 :py:mod:`step-function <lets_plot.geom_step>`
 
-Examples:
 
-- `Error bars <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/error_bars.ipynb>`__
-- `Line vs. path <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/line_vs_path.ipynb>`__
-- `Distributions <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/distributions.ipynb>`__
-- `Reversed scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/reversed_scale.ipynb>`__
-- `Datetime scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/datetime_scale.ipynb>`__
-
-
-Areas
-~~~~~
-
-:py:mod:`Area <lets_plot.geom_area>`,
+Areas:
+:py:mod:`area <lets_plot.geom_area>`,
 :py:mod:`ribbon <lets_plot.geom_ribbon>`
 
 
-Polygons
-~~~~~~~~
-
-:py:mod:`Polygon <lets_plot.geom_polygon>`,
+Polygons:
+:py:mod:`polygon <lets_plot.geom_polygon>`,
 :py:mod:`map <lets_plot.geom_map>`
 
-Examples:
 
-- `2d density <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb>`__
-- `Contours <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb>`__
-- `Mapping US household income <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb>`__
-- `Map coordinates <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/map_coordinates.ipynb>`__
-- `Zoom with clipping <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/with_clipping.ipynb>`__
-- `Zoom without clipping <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/without_clipping.ipynb>`__
-
-
-Tiles
-~~~~~
-
-:py:mod:`Tiles <lets_plot.geom_tile>`,
+Tiles:
+:py:mod:`tiles <lets_plot.geom_tile>`,
 :py:mod:`rectangles <lets_plot.geom_rect>`,
 :py:mod:`raster plot <lets_plot.geom_raster>`
 
-Examples:
 
-- `Contours <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb>`__
-- `"Fisher boat" image <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_fisher_boat.ipynb>`__
-- `General purpose stats <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/general_purpose_stats.ipynb>`__
-- `3d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/3_variables.ipynb>`__
-
-
-Text
-~~~~
-
-:py:mod:`Text <lets_plot.geom_text>`
+Text:
+:py:mod:`text <lets_plot.geom_text>`
 
 Examples:
 
+- `Population mobility and COVID-19 <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/covid-19_and_mobility.ipynb>`__
+- `Time series visualizations <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/delhi_climate.ipynb>`__
+- `Nobel prize exploratory data analysis <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/nobel.ipynb>`__
+- `Bayesian inference <https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Bayesian%20inference.ipynb>`__
+- `Line vs. path <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/line_vs_path.ipynb>`__
+- `Mapping US household income <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb>`__
 - `The label_format parameter in geom_text() <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/label_format.ipynb>`__
 - `Inset Map of Kotlin Island <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_kotlin_isl.ipynb>`__
 - `Formatting labels on plots <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb>`__
@@ -318,15 +270,6 @@ Examples
     :container: + preview-gallery
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |2020-nbviewer|
-
-    ---
-    |adversarial_attack-nbviewer|
-
-    ---
-    |bayesian_inference-nbviewer|
-
-    ---
     |covid19_and_mobility-nbviewer|
 
     ---
@@ -336,34 +279,103 @@ Examples
     |google_play_store-nbviewer|
 
     ---
-    |google_suggestions-nbviewer|
-
-    ---
-    |kernels_visualization-nbviewer|
-
-    ---
-    |klein_bottle-nbviewer|
-
-    ---
-    |malnutrition-nbviewer|
-
-    ---
-    |mandelbulbs-nbviewer|
-
-    ---
-    |mosaic_image-nbviewer|
+    |bayesian_inference-nbviewer|
 
     ---
     |nobel-nbviewer|
 
     ---
+    |graph_building-nbviewer|
+
+    ---
+    |jitterdodge_position-nbviewer|
+
+    ---
+    |stat_corr-nbviewer|
+
+    ---
     |nyc_metro-nbviewer|
+
+    ---
+    |google_suggestions-nbviewer|
+
+    ---
+    |malnutrition-nbviewer|
+
+    ---
+    |world_coloring-nbviewer|
+
+    ---
+    |1d_distributions-nbviewer|
+
+    ---
+    |general_purpose_stats-nbviewer|
+
+    ---
+    |2d_distributions-nbviewer|
+
+    ---
+    |3_variables-nbviewer|
+
+    ---
+    |kernels_visualization-nbviewer|
 
     ---
     |torus-nbviewer|
 
     ---
-    |world_coloring-nbviewer|
+    |klein_bottle-nbviewer|
+
+    ---
+    |mandelbulbs-nbviewer|
+
+    ---
+    |2020-nbviewer|
+
+    ---
+    |adversarial_attack-nbviewer|
+
+    ---
+    |mosaic_image-nbviewer|
+
+    ---
+    |map_coordinates-nbviewer|
+
+    ---
+    |point_geometries-nbviewer|
+
+    ---
+    |jitter_position-nbviewer|
+
+    ---
+    |fixed_coordinates-nbviewer|
+
+    ---
+    |guide_colorbar-nbviewer|
+
+    ---
+    |legend_place-nbviewer|
+
+    ---
+    |log10_scale-nbviewer|
+
+    ---
+    |shape_manual_scale-nbviewer|
+
+    ---
+    |size_area_scale-nbviewer|
+
+    ---
+    |reversed_scale-nbviewer|
+
+    ---
+    |datetime_scale-nbviewer|
+
+    ---
+    |with_clipping-nbviewer|
+
+    ---
+    |without_clipping-nbviewer|
 
 .. raw:: html
 
