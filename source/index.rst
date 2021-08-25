@@ -16,10 +16,10 @@ An Open-source Plotting Library for Statistical Data
 .. |jb-official| image:: http://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
     :alt: JB Official
-.. |latest-release| image:: https://badge.fury.io/py/lets-plot.svg
+.. |latest-release| image:: https://img.shields.io/pypi/v/lets-plot?color=green&style=flat-square
     :target: https://pypi.org/project/lets-plot
     :alt: Latest release
-.. |license| image:: https://img.shields.io/badge/License-MIT-yellow.svg
+.. |license| image:: https://img.shields.io/pypi/l/lets-plot?color=yellow&style=flat-square
     :target: https://opensource.org/licenses/MIT
     :alt: MIT License
 
@@ -44,7 +44,7 @@ Prerequisites
 Datalore
 ~~~~~~~~
 
-You can try the Lets-Plot library in `Datalore <https://view.datalore.io/notebook/Zzg9EVS6i16ELQo3arzWsP>`__ where it is available out-of-the-box.
+You can try Lets-Plot in `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__ where it is available out-of-the-box.
 
 
 Quickstart
@@ -76,7 +76,7 @@ Quickstart
         </a>
       </div>
       <div>
-        <a class="reference external" href="https://view.datalore.io/notebook/Zzg9EVS6i16ELQo3arzWsP">
+        <a class="reference external" href="https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA">
           <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_datalore.svg" />
         </a>
       </div>
@@ -157,3 +157,6 @@ Explore Your Data with Lets-Plot
         <a class="reference internal image-reference" href="pages/geocoding.html">
           <img src="_static/images/previews/geocoding.png">
         </a>
+
+
+.. include:: /shared/features.rst

@@ -124,7 +124,7 @@
     :target: https://datalore.jetbrains.com/view/notebook/NCimfm45sYdFyh0JosywnO
 
 .. |map_quickstart-datalore| image:: /examples/cookbook/previews/map_quickstart.png
-    :target: https://datalore.jetbrains.com/view/notebook/cwDq8gX5UGidzo65RY85yP
+    :target: https://datalore.jetbrains.com/view/notebook/9dzGjTQay4ENqj7GTEIvBU
 
 .. |map_US_household_income-nbviewer| image:: /examples/cookbook/previews/map_US_household_income.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb

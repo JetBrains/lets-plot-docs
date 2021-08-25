@@ -22,6 +22,10 @@ Proportional Symbol Map
 
         ggplot(data) + geom_livemap(aes(..), symbol='point')
 
+    .. raw:: html
+
+        <div class="text-center">or</div>
+
     .. code-block:: python
 
         ggplot(data) + geom_livemap() + geom_point(aes(..))
@@ -79,16 +83,18 @@ The following ggplot2 geometries can be used with interactive maps:
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`.
 
-Quickstart
-~~~~~~~~~~
+|quickstart-icon| Quickstart
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Quickstart guide to maps <https://datalore.jetbrains.com/view/notebook/cwDq8gX5UGidzo65RY85yP>`__.
+.. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.png
+
+`Quickstart guide to maps <https://datalore.jetbrains.com/view/notebook/9dzGjTQay4ENqj7GTEIvBU>`__.
 
 
-Built-In and 3d-Party Tiles
----------------------------
+Use a Basemap That is Right for You
+-----------------------------------
 
-:py:mod:`maptiles_zxy() <lets_plot.maptiles_zxy>` and :py:mod:`maptiles_lets_plot() <lets_plot.maptiles_lets_plot>` functions are designed to help you to change themes and use external tile services to diversify your maps.
+Use quality Lets-Plot vector basemaps or choose among many raster map tiles available through 3rd party providers.
 
 Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>`.
 
@@ -201,6 +207,9 @@ Examples
     |bar_on_livemap-nbviewer|
 
     ---
+    |plotting_airbnb_prices_boston-medium|
+
+    ---
     |internet_use_and_activities-nbviewer|
 
     ---
@@ -214,9 +223,6 @@ Examples
 
     ---
     |museums-nbviewer|
-
-    ---
-    |plotting_airbnb_prices_boston-datalore|
 
     ---
     |spb_bakeries-nbviewer|

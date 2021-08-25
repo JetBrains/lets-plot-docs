@@ -126,7 +126,7 @@ Examples
     :width: 20px
     :height: 20px
     :alt: View in Datalore
-    :target: https://view.datalore.io/notebook/1h4h0HMctRKJLY64PBe63a
+    :target: https://datalore.jetbrains.com/view/notebook/c9z45DyqjHuYikaD2ikcVt
 .. |titanic_voyage_kaggle| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg
     :width: 20px
     :height: 20px
