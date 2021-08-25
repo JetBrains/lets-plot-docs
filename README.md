@@ -53,6 +53,23 @@ All commands should be run from the repository root.
 
 8. Commit and push new changes.
 
+<a id="testing"></a>
+## Testing
+
+To run tests, use the following command:
+
+```bash
+pytest test
+```
+
+You can hide warnings with `-W` flag:
+
+```bash
+pytest test -W ignore
+```
+
+For more details [read the docs](https://docs.pytest.org).
+
 ## Directory structure
 
 - data/ - constists of datasets for the demo notebooks.

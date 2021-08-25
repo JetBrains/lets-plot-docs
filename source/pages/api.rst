@@ -349,14 +349,22 @@ Sampling
 Bistro Module
 =============
 
-.. currentmodule:: lets_plot.bistro
+.. currentmodule:: lets_plot.bistro.im
 
 .. autosummary::
     :toctree: api
     :template: base.rst
 
-    im.image_matrix
-    corr.corr_plot
+    image_matrix
+
+.. currentmodule:: lets_plot.bistro.corr
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    corr_plot
+
 
 .. _api_geospatial:
 

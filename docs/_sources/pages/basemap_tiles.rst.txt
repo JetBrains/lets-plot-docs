@@ -148,11 +148,11 @@ Stamen Design
 
 *Toner and Terrain:*
 
-Map tiles by `Stamen Design <http://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `ODbL <http://www.openstreetmap.org/copyright>`__.
+Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `ODbL <http://www.openstreetmap.org/copyright>`__.
 
 *Watercolor:*
 
-Map tiles by `Stamen Design <http://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `CC BY SA <http://creativecommons.org/licenses/by-sa/3.0>`__.
+Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `CC BY SA <http://creativecommons.org/licenses/by-sa/3.0>`__.
 
 - ``STAMEN_DESIGN_TONER``, ``STAMEN_DESIGN_TONER_HIRES``: Toner
 - ``STAMEN_DESIGN_TONER_LIGHT``, ``STAMEN_DESIGN_TONER_LIGHT_HIRES``: Toner Light
@@ -226,7 +226,7 @@ The following code will configure 'Stamen Design - Toner Hybrid' tiles:
 
     settings = dict(
         url = "https://stamen-tiles.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}@2x.png",
-        attribution = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+        attribution = 'Map tiles by <a href="https://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
     )
 
     ggplot() + geom_livemap(tiles=maptiles_zxy(**settings))

@@ -113,6 +113,6 @@ Examples
 
 - An **inset map** of Kotlin island: `geopandas_kotlin_isl.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_kotlin_isl.ipynb>`__
 
-.. image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/kotlin_island.png
+.. image:: /_static/images/kotlin_island.png
     :width: 480px
     :alt: Couldn't load kotlin_island.png
