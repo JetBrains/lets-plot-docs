@@ -100,5 +100,8 @@
 .. |torus-nbviewer| image:: /examples/demo/previews/torus.png
     :target: https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Torus%20-%20pseudo%203D.ipynb
 
+.. |volcanoes_in_japan-kaggle| image:: /examples/demo/previews/volcanoes_in_japan.png
+    :target: https://www.kaggle.com/alshan/volcanoes-in-japan-on-map
+
 .. |world_coloring-nbviewer| image:: /examples/demo/previews/world_coloring.png
     :target: https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/world_coloring.ipynb

@@ -186,10 +186,22 @@ Examples
     |map_quickstart-datalore|
 
     ---
-    |maps_and_geocoding-nbviewer|
+    |volcanoes_in_japan-kaggle|
 
     ---
-    |bigquery_gis-kaggle|
+    |mapping_US_household_income-kaggle|
+
+    ---
+    |map_airports-kaggle|
+
+    ---
+    |beijing-kaggle|
+
+    ---
+    |plotting_airbnb_prices_boston-medium|
+
+    ---
+    |covid19_india-kaggle|
 
     ---
     |map_US_household_income-kaggle|
@@ -198,40 +210,31 @@ Examples
     |map_california_housing-nbviewer|
 
     ---
-    |beijing-kaggle|
-
-    ---
-    |covid19_india-kaggle|
-
-    ---
-    |bar_on_livemap-nbviewer|
-
-    ---
-    |plotting_airbnb_prices_boston-medium|
-
-    ---
-    |internet_use_and_activities-nbviewer|
-
-    ---
-    |map_airports-kaggle|
-
-    ---
-    |mapping_US_household_income-kaggle|
-
-    ---
-    |minard-nbviewer|
+    |bigquery_gis-kaggle|
 
     ---
     |museums-nbviewer|
 
     ---
-    |spb_bakeries-nbviewer|
+    |bar_on_livemap-nbviewer|
 
     ---
     |titanic-kaggle|
 
     ---
+    |minard-nbviewer|
+
+    ---
     |pushkin-nbviewer|
+
+    ---
+    |spb_bakeries-nbviewer|
+
+    ---
+    |maps_and_geocoding-nbviewer|
+
+    ---
+    |internet_use_and_activities-nbviewer|
 
 .. raw:: html
 
