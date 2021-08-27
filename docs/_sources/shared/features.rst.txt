@@ -17,7 +17,7 @@ Key Features
 
     Customizable Tooltips
 
-    You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions. :ref:`Learn more <tooltips>`.
+    You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :ref:`Learn more <tooltips>`.
 
     ---
     .. image:: /_static/images/icons/features/platforms.png
@@ -47,7 +47,7 @@ Key Features
 
     Formatting
 
-    Lets-Plot supports formatting of values of numeric and date-time types. Complementary to the value formatting, a string template is also supported. :ref:`Learn more <formats>`.
+    Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. :ref:`Learn more <formats>`.
 
     ---
     .. image:: /_static/images/icons/features/geospatial-visualization.png

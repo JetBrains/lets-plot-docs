@@ -172,52 +172,100 @@
 
 .. |the_gallery_of_basemaps-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps_4x3-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps_4x3.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps_4x3-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps_4x3.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-carto_antique-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_antique.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-carto_antique-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_antique.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-carto_dark_matter_no_labels-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_dark_matter_no_labels.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-carto_dark_matter_no_labels-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_dark_matter_no_labels.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-carto_flat_blue-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_flat_blue.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-carto_flat_blue-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_flat_blue.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-carto_midnight_commander-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_midnight_commander.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-carto_midnight_commander-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_midnight_commander.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-carto_positron-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_positron.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-carto_positron-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_positron.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-carto_positron_no_labels-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_positron_no_labels.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-carto_positron_no_labels-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_positron_no_labels.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-carto_voyager-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_voyager.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-carto_voyager-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/carto_voyager.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-lets_plot_dark-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/lets_plot_dark.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-lets_plot_dark-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/lets_plot_dark.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-lets_plot_default-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/lets_plot_default.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-lets_plot_default-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/lets_plot_default.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-lets_plot_light-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/lets_plot_light.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-lets_plot_light-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/lets_plot_light.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-nasa_gibs_blue_marble-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_blue_marble.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-nasa_gibs_blue_marble-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_blue_marble.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-nasa_gibs_color_shaded-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_color_shaded.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-nasa_gibs_color_shaded-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_color_shaded.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-nasa_gibs_greyscale-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_greyscale.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-nasa_gibs_greyscale-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_greyscale.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-nasa_gibs_sity_lights-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_sity_lights.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-nasa_gibs_sity_lights-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_sity_lights.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-nasa_gibs_terra_true_color-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_terra_true_color.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-nasa_gibs_terra_true_color-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/nasa_gibs_terra_true_color.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-open_topo_map-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/open_topo_map.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-open_topo_map-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/open_topo_map.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-osm_standard-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/osm_standard.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-osm_standard-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/osm_standard.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-stamen_design_terrain-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_terrain.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-stamen_design_terrain-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_terrain.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-stamen_design_toner-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_toner.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-stamen_design_toner-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_toner.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-stamen_design_toner_hybrid-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_toner_hybrid.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-stamen_design_toner_hybrid-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_toner_hybrid.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-stamen_design_toner_labels-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_toner_labels.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-stamen_design_toner_labels-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_toner_labels.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 .. |the_gallery_of_basemaps-stamen_design_watercolor-kaggle| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_watercolor.png
     :target: https://www.kaggle.com/alshan/the-gallery-of-basemaps
+.. |the_gallery_of_basemaps-stamen_design_watercolor-datalore| image:: /examples/cookbook/previews/the_gallery_of_basemaps/stamen_design_watercolor.png
+    :target: https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL
 
 .. |tooltip_config-nbviewer| image:: /examples/cookbook/previews/tooltip_config.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/tooltip_config.ipynb

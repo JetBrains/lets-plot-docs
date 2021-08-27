@@ -101,64 +101,64 @@ Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>
 .. panels::
     :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |the_gallery_of_basemaps-lets_plot_default-kaggle|
+    |the_gallery_of_basemaps-lets_plot_default-datalore|
 
     ---
-    |the_gallery_of_basemaps-lets_plot_dark-kaggle|
+    |the_gallery_of_basemaps-lets_plot_dark-datalore|
 
     ---
-    |the_gallery_of_basemaps-lets_plot_light-kaggle|
+    |the_gallery_of_basemaps-lets_plot_light-datalore|
 
     ---
-    |the_gallery_of_basemaps-osm_standard-kaggle|
+    |the_gallery_of_basemaps-osm_standard-datalore|
 
     ---
-    |the_gallery_of_basemaps-open_topo_map-kaggle|
+    |the_gallery_of_basemaps-open_topo_map-datalore|
 
     ---
-    |the_gallery_of_basemaps-stamen_design_terrain-kaggle|
+    |the_gallery_of_basemaps-stamen_design_terrain-datalore|
 
     ---
-    |the_gallery_of_basemaps-stamen_design_toner-kaggle|
+    |the_gallery_of_basemaps-stamen_design_toner-datalore|
 
     ---
-    |the_gallery_of_basemaps-stamen_design_toner_hybrid-kaggle|
+    |the_gallery_of_basemaps-stamen_design_toner_hybrid-datalore|
 
     ---
-    |the_gallery_of_basemaps-stamen_design_toner_labels-kaggle|
+    |the_gallery_of_basemaps-stamen_design_toner_labels-datalore|
 
     ---
-    |the_gallery_of_basemaps-stamen_design_watercolor-kaggle|
+    |the_gallery_of_basemaps-stamen_design_watercolor-datalore|
 
     ---
-    |the_gallery_of_basemaps-carto_antique-kaggle|
+    |the_gallery_of_basemaps-carto_antique-datalore|
 
     ---
-    |the_gallery_of_basemaps-carto_dark_matter_no_labels-kaggle|
+    |the_gallery_of_basemaps-carto_dark_matter_no_labels-datalore|
 
     ---
-    |the_gallery_of_basemaps-carto_flat_blue-kaggle|
+    |the_gallery_of_basemaps-carto_flat_blue-datalore|
 
     ---
-    |the_gallery_of_basemaps-carto_midnight_commander-kaggle|
+    |the_gallery_of_basemaps-carto_midnight_commander-datalore|
 
     ---
-    |the_gallery_of_basemaps-carto_positron-kaggle|
+    |the_gallery_of_basemaps-carto_positron-datalore|
 
     ---
-    |the_gallery_of_basemaps-carto_positron_no_labels-kaggle|
+    |the_gallery_of_basemaps-carto_positron_no_labels-datalore|
 
     ---
-    |the_gallery_of_basemaps-carto_voyager-kaggle|
+    |the_gallery_of_basemaps-carto_voyager-datalore|
 
     ---
-    |the_gallery_of_basemaps-nasa_gibs_blue_marble-kaggle|
+    |the_gallery_of_basemaps-nasa_gibs_blue_marble-datalore|
 
     ---
-    |the_gallery_of_basemaps-nasa_gibs_color_shaded-kaggle|
+    |the_gallery_of_basemaps-nasa_gibs_color_shaded-datalore|
 
     ---
-    |the_gallery_of_basemaps-nasa_gibs_greyscale-kaggle|
+    |the_gallery_of_basemaps-nasa_gibs_greyscale-datalore|
 
 PyCharm
 -------

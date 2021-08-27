@@ -7,6 +7,7 @@ import warnings
 from bs4 import BeautifulSoup
 
 import lets_plot as lp
+from lets_plot.bistro.im import *
 from lets_plot.bistro.corr import *
 from lets_plot.geo_data import *
 

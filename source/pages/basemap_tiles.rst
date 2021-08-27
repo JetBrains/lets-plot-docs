@@ -208,7 +208,7 @@ Examples
 
 .. image:: /_static/images/basemaps.jpg
 
-Check out `this notebook <https://www.kaggle.com/alshan/the-gallery-of-basemaps>`__ to see examples of various tilesets.
+Check out `this notebook <https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL>`__ to see examples of various tilesets.
 
 
 .. _basemap_tiles_raster_tiles_man:
