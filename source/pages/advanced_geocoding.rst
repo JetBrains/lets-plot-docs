@@ -113,7 +113,7 @@ Examples
     :alt: View at Kaggle
     :target: https://www.kaggle.com/alshan/mapping-us-household-income
 
--  Geocoding the US counties: `map_US_household_income.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb>`__
+-  Geocoding the US counties: `map_US_household_income.ipynb <https://datalore.jetbrains.com/view/notebook/18vW14MKvPqWBIedhsrrSQ>`__
 
 -  Visualization of the Titanic's voyage: |titanic_voyage_datalore| |titanic_voyage_kaggle| |titanic_voyage_colab|
 

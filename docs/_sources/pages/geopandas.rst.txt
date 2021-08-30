@@ -45,11 +45,11 @@ Hidden Preliminaries
 Use Cases
 ---------
 
-Depending on the situation, for data mapping we use parameters ``data``, ``map`` or both.
+Depending on the situation, for spatial data we use either parameter ``data`` or ``map`` or both.
 
 
-No Difference
-~~~~~~~~~~~~~
+Use either ``data`` or ``map`` Parameter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Suppose we have the following data:
 
@@ -57,7 +57,7 @@ Suppose we have the following data:
 
     gdf
 
-If you want to draw only shapes, there is no difference which parameter is used:
+If you want to draw only shapes, then it makes no difference which parameter is used:
 
 .. panels::
     :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
@@ -72,8 +72,8 @@ If you want to draw only shapes, there is no difference which parameter is used:
         ggplot() + geom_map(map=gdf)
 
 
-Only ``data``
-~~~~~~~~~~~~~
+Use ``data`` Parameter
+~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to use aesthetics, the ``data`` parameter is the only choice:
 
@@ -82,16 +82,21 @@ If you want to use aesthetics, the ``data`` parameter is the only choice:
     ggplot() + geom_map(aes(fill='state'), color='white', data=gdf)
 
 
-``data`` & ``map``
-~~~~~~~~~~~~~~~~~~
+Use Both: ``data`` and ``map`` Parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Suppose we also have a dataframe with population data:
+Suppose you also have a dataframe with population data:
 
 .. jupyter-execute::
 
     df
 
-To combine this with geospatial data, you can use the ``map_join`` parameter:
+In this situation, in order to link aesthetics to the population numbers you will use:
+
+- ``data`` parameter for the "population" dataframe,
+- ``map`` parameter for the state boundaries ``GeoDataframe``.
+
+The 3rd parameter, ``map_join``, will help to combime population values and state boundaries on the same chart:
 
 .. jupyter-execute::
 

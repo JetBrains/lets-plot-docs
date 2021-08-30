@@ -51,11 +51,8 @@ Examples:
 
 - `Population mobility and COVID-19 <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/covid-19_and_mobility.ipynb>`__
 - `Time series visualizations <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/delhi_climate.ipynb>`__
-- `Nobel prize exploratory data analysis <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/nobel.ipynb>`__
 - `Bayesian inference <https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Bayesian%20inference.ipynb>`__
 - `Line vs. path <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/line_vs_path.ipynb>`__
-- `Mapping US household income <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb>`__
-- `The label_format parameter in geom_text() <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/label_format.ipynb>`__
 - `Inset Map of Kotlin Island <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_kotlin_isl.ipynb>`__
 - `Formatting labels on plots <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb>`__
 
@@ -83,20 +80,9 @@ Examples:
 - `Bar geometry <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/bar.ipynb>`__
 - `Identity stat <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/geom_bar_identity.ipynb>`__
 - `Comparisons <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/comparisons.ipynb>`__
-- `Bar on livemap <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/bar_on_livemap.ipynb>`__
-- `Error bars <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/error_bars.ipynb>`__
 - `General purpose stats <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/general_purpose_stats.ipynb>`__
-- `1d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/1d_distributions.ipynb>`__
-- `Distributions <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/distributions.ipynb>`__
-- `Continuous scales <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/continuous_scales.ipynb>`__
-- `Discrete scales <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/discrete_scales.ipynb>`__
-- `Identity scales <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/identity_scales.ipynb>`__
-- `Manual scales <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/manual_scales.ipynb>`__
-- `Brewer color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/brewer_scale.ipynb>`__
-- `Grey color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/grey_scale.ipynb>`__
+- Using scales: `continuous <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/continuous_scales.ipynb>`__, `discrete <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/discrete_scales.ipynb>`__, `identity <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/identity_scales.ipynb>`__, `manual <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/manual_scales.ipynb>`__, `brewer colors <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/brewer_scale.ipynb>`__, `grey-scale colors <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/grey_scale.ipynb>`__
 - `Dodge position <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/dodge_position.ipynb>`__
-- `Guide legend <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/guide_legend.ipynb>`__
-- `Title and legend <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/scale_way.ipynb>`__
 
 
 |as_discrete-icon| Ordering categories, ``as_discrete()``
@@ -143,9 +129,7 @@ Examples:
 - `Histogram <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/histogram.ipynb>`__
 - `Distributions <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/distributions.ipynb>`__
 - `1d Distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/1d_distributions.ipynb>`__
-- `Continuous color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/gradient_scale.ipynb>`__
-- `Diverging color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/gradient2_scale.ipynb>`__
-- `Qualitative color scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/hue_scale.ipynb>`__
+- Using scales: `continuous <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/gradient_scale.ipynb>`__, `diverging <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/gradient2_scale.ipynb>`__, `qualitative <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/hue_scale.ipynb>`__
 
 
 |visualization-of-errors-icon| Visualization of Errors
@@ -173,7 +157,7 @@ Examples:
 
 Examples:
 
-- `Graph Building <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/graph_building.ipynb>`__
+- `Simple linear smoothing <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/simple_linear_smoothing.ipynb>`__
 - `Draw a scatter plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb>`__
 - `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
 
@@ -214,12 +198,13 @@ Examples:
 
 .. |facets-icon| image:: /_static/images/icons/charts/facets.png
 
-:py:mod:`Lay out panels in a grid <lets_plot.facet_grid>`,
-:py:mod:`wrap a 1d ribbon of panels into 2d <lets_plot.facet_wrap>`
+:py:mod:`facet_grid() <lets_plot.facet_grid>`,
+:py:mod:`facet_wrap() <lets_plot.facet_wrap>`
 
 Examples:
 
 - `Facets <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/facets.ipynb>`__
+- `Population mobility and COVID-19 <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/covid-19_and_mobility.ipynb>`__
 
 
 |correlation-plot-icon| Correlation Plot
@@ -233,7 +218,6 @@ Examples:
 
 - `Simple correlation plot <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/corr_plot.ipynb>`__
 - `Correlation plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb>`__
-- `Correlation statistics <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/stat_corr.ipynb>`__
 
 
 |presentation-options-icon| Presentation Options
@@ -241,16 +225,14 @@ Examples:
 
 .. |presentation-options-icon| image:: /_static/images/icons/charts/presentation-options.png
 
-Options:
-
-:py:mod:`Theme layer <lets_plot.theme>`,
-:py:mod:`title layer <lets_plot.ggtitle>`,
-:py:mod:`size layer <lets_plot.ggsize>`,
-:py:mod:`label for X axis <lets_plot.xlab>`,
-:py:mod:`label for Y axis <lets_plot.ylab>`,
-:py:mod:`both labels <lets_plot.labs>`,
-:py:mod:`legend guide <lets_plot.guide_legend>`,
-:py:mod:`continuous colour bar guide <lets_plot.guide_colorbar>`
+:py:mod:`theme() <lets_plot.theme>`,
+:py:mod:`ggtitle() <lets_plot.ggtitle>`,
+:py:mod:`ggsize() <lets_plot.ggsize>`,
+:py:mod:`xlab() <lets_plot.xlab>`,
+:py:mod:`ylab() <lets_plot.ylab>`,
+:py:mod:`labs() <lets_plot.labs>`,
+:py:mod:`guide_legend() <lets_plot.guide_legend>`,
+:py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`
 
 Examples:
 
@@ -260,7 +242,7 @@ Examples:
 - `Comparisons <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/comparisons.ipynb>`__
 - `Legend guide <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/guide_legend.ipynb>`__
 - `Legend place <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/legend_place.ipynb>`__
-- `Correlation statistics <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/stat_corr.ipynb>`__
+- `Title and labels through a scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/scale_way.ipynb>`__
 
 
 Examples
@@ -285,7 +267,7 @@ Examples
     |nobel-nbviewer|
 
     ---
-    |graph_building-nbviewer|
+    |simple_linear_smoothing-nbviewer|
 
     ---
     |jitterdodge_position-nbviewer|

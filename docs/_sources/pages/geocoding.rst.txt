@@ -197,7 +197,7 @@ Examples
     |geocoding_levels-nbviewer|
 
     ---
-    |map_US_household_income-nbviewer|
+    |map_US_household_income-datalore|
 
     ---
     |covid19_india-kaggle|

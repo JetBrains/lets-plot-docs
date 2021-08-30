@@ -204,7 +204,7 @@ Examples
     |covid19_india-kaggle|
 
     ---
-    |map_US_household_income-kaggle|
+    |map_US_household_income-datalore|
 
     ---
     |map_california_housing-nbviewer|

@@ -128,12 +128,12 @@
 
 .. |map_US_household_income-nbviewer| image:: /examples/cookbook/previews/map_US_household_income.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb
-.. |map_US_household_income-kaggle| image:: /examples/cookbook/previews/map_US_household_income.png
-    :target: https://www.kaggle.com/alshan/mapping-us-household-income
+.. |map_US_household_income-datalore| image:: /examples/cookbook/previews/map_US_household_income.png
+    :target: https://datalore.jetbrains.com/view/notebook/18vW14MKvPqWBIedhsrrSQ
 .. |map_US_household_income_4x3-nbviewer| image:: /examples/cookbook/previews/map_US_household_income_4x3.png
     :target: https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/map_US_household_income.ipynb
-.. |map_US_household_income_4x3-kaggle| image:: /examples/cookbook/previews/map_US_household_income_4x3.png
-    :target: https://www.kaggle.com/alshan/mapping-us-household-income
+.. |map_US_household_income_4x3-datalore| image:: /examples/cookbook/previews/map_US_household_income_4x3.png
+    :target: https://datalore.jetbrains.com/view/notebook/18vW14MKvPqWBIedhsrrSQ
 
 .. |ordering_examples-nbviewer| image:: /examples/cookbook/previews/ordering_examples.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/ordering_examples.ipynb

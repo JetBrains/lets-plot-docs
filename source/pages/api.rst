@@ -109,6 +109,17 @@ Extras
     arrow
 
 
+.. _api_stats:
+
+Stats
+=====
+
+.. autosummary::
+    :toctree: api
+
+    stat_corr
+
+
 .. _api_fs:
 
 Facets

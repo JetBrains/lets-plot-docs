@@ -1,7 +1,7 @@
 ﻿.. _formats:
 
 Formatting
-##########
+==========
 
 Formatting provides the ability to do complex variable substitutions and value formatting.
 
@@ -16,6 +16,7 @@ Formatting provides the ability to do complex variable substitutions and value f
   - :ref:`Examples <formats_examples_datetime>`
 
 - :ref:`Tooltip Customization <formats_tooltips>`
+- :ref:`Demo Notebooks <formats_demo_notebooks>`
 
 ----
 
@@ -23,7 +24,7 @@ Formatting provides the ability to do complex variable substitutions and value f
 .. _formats_number_format:
 
 Number format
-=============
+-------------
 
 The numeric format strings are used to format common numeric types. 
 The general form of a format specifier is:
@@ -98,7 +99,7 @@ The general form of a format specifier is:
 .. _formats_examples_number_format:
 
 Examples
---------
+~~~~~~~~
 
 Let's format the number `42`:
 
@@ -136,7 +137,7 @@ Some other examples:
 .. _formats_string_template:
 
 String template
-===============
+---------------
 
 The number format can be used in a template to create a string with variable substitution.
 The string template contains "replacement fields" surrounded by curly braces ``{}``. 
@@ -150,7 +151,7 @@ See: :ref:`Tooltip Customization in Lets-Plot <tooltips>`.
 .. _formats_datetime:
 
 Date and time format
-====================
+--------------------
 
 Provides formats for date and time values.
 
@@ -179,7 +180,7 @@ The list of supported directives to format date/time values:
 .. _formats_examples_datetime:
 
 Examples
---------
+~~~~~~~~
 
 Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35``:
 
@@ -219,6 +220,14 @@ Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35
 .. _formats_tooltips:
 
 Tooltip Customization
-=====================
+---------------------
 
 In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customization <tooltips>`.
+
+
+.. _formats_demo_notebooks:
+
+Demo Notebooks
+--------------
+
+- `The label_format parameter in geom_text() <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/label_format.ipynb>`__

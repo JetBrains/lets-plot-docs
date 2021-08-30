@@ -180,10 +180,10 @@
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/gradient2_scale.ipynb
     :alt: Diverging color scale
 
-.. |graph_building-nbviewer| image:: /examples/basics/gog/previews/graph_building.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/graph_building.ipynb
-.. |graph_building_4x3-nbviewer| image:: /examples/basics/gog/previews/graph_building_4x3.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/graph_building.ipynb
+.. |simple_linear_smoothing-nbviewer| image:: /examples/basics/gog/previews/simple_linear_smoothing.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/simple_linear_smoothing.ipynb
+.. |simple_linear_smoothing_4x3-nbviewer| image:: /examples/basics/gog/previews/simple_linear_smoothing_4x3.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/simple_linear_smoothing.ipynb
 
 .. |grey_scale-nbviewer| image:: /examples/basics/gog/previews/grey_scale.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/grey_scale.ipynb
