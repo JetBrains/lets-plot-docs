@@ -103,9 +103,6 @@ Extras
 .. autosummary::
     :toctree: api
 
-    maptiles_zxy
-    maptiles_lets_plot
-    maptiles_solid
     arrow
 
 
@@ -398,3 +395,56 @@ Geospatial
     geocode_countries
     reverse_geocode
     distance
+
+.. currentmodule:: lets_plot
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    maptiles_zxy
+    maptiles_lets_plot
+    maptiles_solid
+
+.. currentmodule:: lets_plot.tilesets
+
+.. autosummary::
+    :toctree: api
+    :template: data.rst
+
+    LETS_PLOT_COLOR
+    LETS_PLOT_LIGHT
+    LETS_PLOT_DARK
+    SOLID
+    OSM
+    OPEN_TOPO_MAP
+    STAMEN_DESIGN_TONER
+    STAMEN_DESIGN_TONER_HIRES
+    STAMEN_DESIGN_TONER_LIGHT
+    STAMEN_DESIGN_TONER_LIGHT_HIRES
+    STAMEN_DESIGN_TONER_HYBRID
+    STAMEN_DESIGN_TONER_HYBRID_HIRES
+    STAMEN_DESIGN_TONER_LABELS
+    STAMEN_DESIGN_TONER_LABELS_HIRES
+    STAMEN_DESIGN_TERRAIN
+    STAMEN_DESIGN_TERRAIN_HIRES
+    STAMEN_DESIGN_WATERCOLOR
+    CARTO_POSITRON
+    CARTO_POSITRON_HIRES
+    CARTO_POSITRON_NO_LABELS
+    CARTO_POSITRON_NO_LABELS_HIRES
+    CARTO_DARK_MATTER_NO_LABELS
+    CARTO_DARK_MATTER_NO_LABELS_HIRES
+    CARTO_VOYAGER
+    CARTO_VOYAGER_HIRES
+    CARTO_MIDNIGHT_COMMANDER
+    CARTO_MIDNIGHT_COMMANDER_HIRES
+    CARTO_ANTIQUE
+    CARTO_ANTIQUE_HIRES
+    CARTO_FLAT_BLUE
+    CARTO_FLAT_BLUE_HIRES
+    NASA_CITYLIGHTS_2012
+    NASA_BLUEMARBLE_NEXTGENERATION
+    NASA_GREYSCALE_SHADED_RELIEF_30M
+    NASA_COLOR_SHADED_RELIEF_30M
+    NASA_TERRA_TRUECOLOR

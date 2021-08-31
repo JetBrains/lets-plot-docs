@@ -104,7 +104,8 @@ Geometries
 Polygons
 ~~~~~~~~
 
-:py:mod:`geom_map() <lets_plot.geom_map>`
+:py:mod:`geom_map() <lets_plot.geom_map>`,
+:py:mod:`geom_polygon() <lets_plot.geom_polygon>`
 
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
@@ -179,9 +180,9 @@ Reverse geocoding is the process of converting geographic coordinates into a :py
 Reference
 ---------
 
-The `geocoding_reference.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb>`__ notebook contains a demonstration code covering use-cases presented here as log as many others.
+Documentation: :ref:`The Geocoding Reference Guide <advanced_geocoding>`.
 
-Learn more: :ref:`Advanced Geocoding <advanced_geocoding>`.
+An example notebook covering various geocoding use-cases: `geocoding_reference.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb>`__.
 
 
 Examples

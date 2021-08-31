@@ -9,7 +9,7 @@ Key Features
 
     ggplot2-like API
 
-    A bridge between R (ggplot2) and Python Data visualization.
+    A bridge between R (:ref:`ggplot2 <index_meet_gog>`) and Python Data visualization.
 
     ---
     ---

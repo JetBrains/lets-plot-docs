@@ -103,6 +103,8 @@ Quickstart
     </div>
 
 
+.. _index_meet_gog:
+
 Meet the Grammar of Graphics
 ----------------------------
 
@@ -116,9 +118,9 @@ Meet the Grammar of Graphics
     ---
     :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    The Lets-Plot for Python library provides an :ref:`API <api>` which is mostly based on the `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
+    Lets-Plot API is largely based on the :ref:`API <api>` provided by `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
 
-    To learn more about the grammar of graphics, we recommend an excellent book called "ggplot2: Elegant Graphics for Data Analysis". It will be a good prerequisite for further exploration of the Lets-Plot library.
+    To learn more about the grammar of graphics, we recommend an excellent book called "ggplot2: Elegant Graphics for Data Analysis". This will be a good prerequisite for further exploration of the Lets-Plot library.
 
 
 Explore Your Data with Lets-Plot

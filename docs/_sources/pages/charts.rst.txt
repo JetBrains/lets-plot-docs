@@ -57,16 +57,6 @@ Examples:
 - `Formatting labels on plots <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb>`__
 
 
-|geopandas-icon| GeoPandas Shapes
----------------------------------
-
-.. |geopandas-icon| image:: /_static/images/icons/charts/geopandas.png
-
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
-
-Learn more: :ref:`GeoPandas Support <geopandas>`.
-
-
 |discrete-icon| Discrete
 ------------------------
 
@@ -218,6 +208,16 @@ Examples:
 
 - `Simple correlation plot <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/corr_plot.ipynb>`__
 - `Correlation plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb>`__
+
+
+|geopandas-icon| GeoPandas Shapes
+---------------------------------
+
+.. |geopandas-icon| image:: /_static/images/icons/charts/geopandas.png
+
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+
+Learn more: :ref:`GeoPandas Support <geopandas>`.
 
 
 |presentation-options-icon| Presentation Options
