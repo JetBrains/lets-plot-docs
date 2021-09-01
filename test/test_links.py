@@ -8,51 +8,58 @@ import pytest
 import requests
 from bs4 import BeautifulSoup
 
-external_links = set()
+checked_external_links = set()
 
 def generate_pages():
     BUILD_DIR = "docs"
     for root, directories, filenames in os.walk(BUILD_DIR):
         for filename in filenames:
             if filename.split('.')[-1] == "html":
-                yield root, filename
+                yield os.path.join(root, filename)
 
-@pytest.mark.parametrize(('root', 'filename'), generate_pages())
-def test_links(root, filename):
-    page = os.path.join(root, filename)
-    with codecs.open(page, 'r', 'utf-8') as index:
-        soup = BeautifulSoup(index, 'html.parser')
-        for a in soup.find_all('a'):
-            classes = a['class'] if a.has_attr('class') else []
-            href = a['href']
-            message = "\nPage: {0}\nHREF: {1}".format(page, href)
-            assert href, "Wrong 'href' attribute"
-            assert href != "", "Wrong 'href' attribute"
-            if href == "#": # Not a link actually
-                continue
-            if not classes: # Bad case for checking
-                continue
-            if "internal" in classes:
-                if href[0] == "#": # Link to a section
-                    assert soup.find(id=href[1:]), message
-                else: # Link to another page of the documentation
-                    assert os.path.isfile(os.path.join(root, href.split("#")[0])), message
-            elif "external" in classes: # Link to an external resource
-                check_external_link(href, message)
-            else: # Home or header link
-                assert "headerlink" in classes or "navbar-brand" in classes, "Wrong 'class' attribute"
+def generate_links():
+    for page in generate_pages():
+        with codecs.open(page, 'r', 'utf-8') as f:
+            soup = BeautifulSoup(f, 'html.parser')
+            for a in soup.find_all('a'):
+                yield page, a
 
-def check_external_link(href, message):
-    SKIP = ["http://my.tile.com"]
-    if href in external_links:
+@pytest.mark.parametrize(('page', 'a'), generate_links())
+def test_link(page, a):
+    classes = a['class'] if a.has_attr('class') else []
+    href = a['href']
+    assert href, "Wrong 'href' attribute"
+    assert href != "", "Wrong 'href' attribute"
+    if href == "#": # Not a link actually
         return
-    external_links.add(href)
+    if not classes: # Bad case for checking
+        return
+    if "internal" in classes:
+        check_section(page, href) if href[0] == "#" else check_page(page, href)
+    elif "external" in classes:
+        check_external_link(href)
+    else: # Home or header link
+        assert "headerlink" in classes or "navbar-brand" in classes, "Wrong 'class' attribute"
+
+def check_section(page, href):
+    with codecs.open(page, 'r', 'utf-8') as f:
+        soup = BeautifulSoup(f, 'html.parser')
+        assert soup.find(id=href[1:])
+
+def check_page(page, href):
+    assert os.path.isfile(os.path.join(os.path.dirname(page), href.split("#")[0]))
+
+def check_external_link(href):
+    SKIP = ["http://my.tile.com"]
+    if href in checked_external_links:
+        return
+    checked_external_links.add(href)
     try:
         response = requests.get(href)
     except requests.exceptions.ConnectionError:
         assert href in SKIP
         return
-    assert response.status_code != 404, message
+    assert response.status_code != 404
     if response.status_code == 200:
         return
-    warnings.warn(UserWarning("{0}\nStatus code: {1}".format(message, response.status_code)))
+    warnings.warn(UserWarning("Status code {0} for href={1}".format(response.status_code, href)))

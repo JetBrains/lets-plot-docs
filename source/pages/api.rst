@@ -1,14 +1,16 @@
 .. _api:
 
+:tocdepth: 2
+
+
 API Reference
-#############
-
-
-.. currentmodule:: lets_plot.plot.core
-
-Basic Classes
 =============
 
+
+Basic Classes
+-------------
+
+.. currentmodule:: lets_plot.plot.core
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -17,9 +19,7 @@ Basic Classes
     PlotSpec
     LayerSpec
 
-
 .. currentmodule:: lets_plot
-
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -27,10 +27,8 @@ Basic Classes
     LetsPlot
 
 
-.. _api_plotting:
-
 Plotting
-========
+--------
 
 .. autosummary::
     :toctree: api
@@ -43,13 +41,11 @@ Plotting
     ggsave
 
 
-.. _api_geometries:
-
 Geometries
-==========
+----------
 
 Standard Geometries
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -88,7 +84,7 @@ Standard Geometries
     geom_text
 
 Additional Geometries
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -96,9 +92,8 @@ Additional Geometries
     geom_image
     geom_livemap
 
-
 Extras
-------
+~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -106,10 +101,8 @@ Extras
     arrow
 
 
-.. _api_stats:
-
 Stats
-=====
+-----
 
 .. autosummary::
     :toctree: api
@@ -117,10 +110,8 @@ Stats
     stat_corr
 
 
-.. _api_fs:
-
 Facets
-======
+------
 
 .. autosummary::
     :toctree: api
@@ -130,10 +121,10 @@ Facets
 
 
 Scales
-======
+------
 
 Position Scales
----------------
+~~~~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -150,7 +141,7 @@ Position Scales
     scale_y_reverse
 
 Color Scales
-------------
+~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -165,7 +156,7 @@ Color Scales
     scale_color_brewer
 
 Fill Scales
------------
+~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -180,7 +171,7 @@ Fill Scales
     scale_fill_brewer
 
 Shape Scales
-------------
+~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -189,7 +180,7 @@ Shape Scales
     scale_shape_manual
 
 Size Scales
------------
+~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -199,7 +190,7 @@ Size Scales
     scale_size_area
 
 Alpha Scales
-------------
+~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -208,7 +199,7 @@ Alpha Scales
     scale_alpha
 
 Linetype Scales
----------------
+~~~~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -216,7 +207,7 @@ Linetype Scales
     scale_linetype_manual
 
 Datetime Scales
----------------
+~~~~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -225,7 +216,7 @@ Datetime Scales
     scale_y_datetime
 
 Identity Scales
----------------
+~~~~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -238,7 +229,7 @@ Identity Scales
     scale_size_identity
 
 Scale Limits
-------------
+~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -248,7 +239,7 @@ Scale Limits
     ylim
 
 Scale Guides
-------------
+~~~~~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -258,25 +249,20 @@ Scale Guides
     guides
 
 
-.. _api_mapping:
+Mapping
+-------
 
 .. currentmodule:: lets_plot.mapping
-
-Mapping
-=======
-
 .. autosummary::
     :toctree: api
 
     as_discrete
 
 
-.. _api_pc:
-
 .. currentmodule:: lets_plot
 
 Positions
-=========
+---------
 
 .. autosummary::
     :toctree: api
@@ -288,7 +274,7 @@ Positions
 
 
 Coordinates
-===========
+-----------
 
 .. autosummary::
     :toctree: api
@@ -298,13 +284,11 @@ Coordinates
     coord_map
 
 
-.. _api_theme:
-
 Theme
-=====
+-----
 
 Base
-----
+~~~~
 
 .. autosummary::
     :toctree: api
@@ -314,7 +298,7 @@ Base
     ggsize
 
 Labels
-------
+~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -325,7 +309,7 @@ Labels
     ylab
 
 Tooltips
---------
+~~~~~~~~
 
 .. autosummary::
     :toctree: api
@@ -334,10 +318,8 @@ Tooltips
     layer_tooltips
 
 
-.. _api_sampling:
-
 Sampling
-========
+--------
 
 .. autosummary::
     :toctree: api
@@ -352,13 +334,10 @@ Sampling
     sampling_vertex_dp
 
 
-.. _api_bistro:
-
 Bistro Module
-=============
+-------------
 
 .. currentmodule:: lets_plot.bistro.im
-
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -366,7 +345,6 @@ Bistro Module
     image_matrix
 
 .. currentmodule:: lets_plot.bistro.corr
-
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -374,20 +352,16 @@ Bistro Module
     corr_plot
 
 
-.. _api_geospatial:
-
 Geospatial
-==========
+----------
 
 .. currentmodule:: lets_plot.geo_data
-
 .. autosummary::
     :toctree: api
     :template: base.rst
 
     ReverseGeocoder
     NamesGeocoder
-    
     geocode
     geocode_cities
     geocode_counties
@@ -397,7 +371,6 @@ Geospatial
     distance
 
 .. currentmodule:: lets_plot
-
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -407,7 +380,6 @@ Geospatial
     maptiles_solid
 
 .. currentmodule:: lets_plot.tilesets
-
 .. autosummary::
     :toctree: api
     :template: data.rst

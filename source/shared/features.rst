@@ -5,7 +5,7 @@ Key Features
     :container: + features-list
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/icons/features/ggplot2-like-api.png
+    .. image:: /_static/images/icons/features/ggplot2-like-api.svg
 
     ggplot2-like API
 
@@ -13,14 +13,14 @@ Key Features
 
     ---
     ---
-    .. image:: /_static/images/icons/features/tooltips.png
+    .. image:: /_static/images/icons/features/tooltips.svg
 
     Customizable Tooltips
 
     You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :ref:`Learn more <tooltips>`.
 
     ---
-    .. image:: /_static/images/icons/features/platforms.png
+    .. image:: /_static/images/icons/features/platforms.svg
 
     Suitable for Scientist and Developer
 
@@ -28,14 +28,14 @@ Key Features
 
     ---
     ---
-    .. image:: /_static/images/icons/features/graphics-grid.png
+    .. image:: /_static/images/icons/features/graphics-grid.svg
 
     Grouping Plots
 
     :py:mod:`GGBunch <lets_plot.GGBunch>` shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.
 
     ---
-    .. image:: /_static/images/icons/features/kotlin-api.png
+    .. image:: /_static/images/icons/features/kotlin-api.svg
 
     Kotlin API
 
@@ -43,14 +43,14 @@ Key Features
 
     ---
     ---
-    .. image:: /_static/images/icons/features/formatting.png
+    .. image:: /_static/images/icons/features/formatting.svg
 
     Formatting
 
     Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. :ref:`Learn more <formats>`.
 
     ---
-    .. image:: /_static/images/icons/features/geospatial-visualization.png
+    .. image:: /_static/images/icons/features/geospatial-visualization.svg
 
     Geospatial visualization
 
@@ -58,14 +58,14 @@ Key Features
 
     ---
     ---
-    .. image:: /_static/images/icons/features/sampling.png
+    .. image:: /_static/images/icons/features/sampling.svg
 
     Sampling
 
     Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting. :ref:`Learn more <sampling>`.
 
     ---
-    .. image:: /_static/images/icons/features/interactive-maps.png
+    .. image:: /_static/images/icons/features/interactive-maps.svg
 
     Interactive Maps
 
@@ -73,7 +73,7 @@ Key Features
 
     ---
     ---
-    .. image:: /_static/images/icons/features/export.png
+    .. image:: /_static/images/icons/features/export.svg
 
     Export to SVG and HTML
 
@@ -82,7 +82,7 @@ Key Features
     ---
     ---
     ---
-    .. image:: /_static/images/icons/features/offline-mode.png
+    .. image:: /_static/images/icons/features/offline-mode.svg
 
     'No Javascript' and Offline Mode
 

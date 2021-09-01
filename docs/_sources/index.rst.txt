@@ -13,7 +13,7 @@ An Open-source Plotting Library for Statistical Data
 
 |jb-official| |latest-release| |license|
 
-.. |jb-official| image:: http://jb.gg/badges/official-flat-square.svg
+.. |jb-official| image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
     :alt: JB Official
 .. |latest-release| image:: https://img.shields.io/pypi/v/lets-plot?color=green&style=flat-square
@@ -38,7 +38,7 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~
 
-- `IPython <http://ipython.org>`__
+- `IPython <https://ipython.org>`__
 - Windows users only: `MinGW toolchain <https://anaconda.org/msys2/m2w64-toolchain>`__
 
 Datalore
@@ -72,32 +72,32 @@ Quickstart
     <div class="lets-plot-platforms">
       <div>
         <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/quickstart.ipynb">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" />
+          <img src="_static/images/logo/jupyter.svg" />
         </a>
       </div>
       <div>
         <a class="reference external" href="https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA">
-          <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_datalore.svg" />
+          <img src="_static/images/logo/datalore.svg" />
         </a>
       </div>
       <div>
         <a class="reference external" href="https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview">
-          <img src="_static/images/logo/icon-pycharm.svg" />
+          <img src="_static/images/logo/pycharm.svg" />
         </a>
       </div>
       <div>
         <a class="reference external" href="https://www.kaggle.com/alshan/lets-plot-quickstart">
-          <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg" />
+          <img src="_static/images/logo/kaggle.svg" />
         </a>
       </div>
       <div>
         <a class="reference external" href="https://colab.research.google.com/drive/1uYYZcG0g0kP4lJdPkpWB8aBS96ioDii2?usp=sharing">
-          <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_colab.svg" />
+          <img src="_static/images/logo/colab.svg" />
         </a>
       </div>
       <div>
         <a class="reference external" href="https://deepnote.com/project/673ea421-638e-469d-8d04-5cc4c6e0258f#%2Fnotebook.ipynb">
-          <img src="https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_deepnote.svg" />
+          <img src="_static/images/logo/deepnote.svg" />
         </a>
       </div>
     </div>

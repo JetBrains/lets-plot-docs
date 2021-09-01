@@ -10,7 +10,7 @@ Charts
 |basic-building-blocks-icon| Basic Building Blocks
 --------------------------------------------------
 
-.. |basic-building-blocks-icon| image:: /_static/images/icons/charts/basic-building-blocks.png
+.. |basic-building-blocks-icon| image:: /_static/images/icons/charts/basic-building-blocks.svg
 
 
 Points:
@@ -60,7 +60,7 @@ Examples:
 |discrete-icon| Discrete
 ------------------------
 
-.. |discrete-icon| image:: /_static/images/icons/charts/discrete.png
+.. |discrete-icon| image:: /_static/images/icons/charts/discrete.svg
 
 :py:mod:`Bar <lets_plot.geom_bar>`,
 :py:mod:`boxplot <lets_plot.geom_boxplot>`
@@ -78,7 +78,7 @@ Examples:
 |as_discrete-icon| Ordering categories, ``as_discrete()``
 ---------------------------------------------------------
 
-.. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.png
+.. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.svg
 
 :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>`
 
@@ -93,7 +93,7 @@ Examples:
 |contours-icon| Contours
 ------------------------
 
-.. |contours-icon| image:: /_static/images/icons/charts/contours.png
+.. |contours-icon| image:: /_static/images/icons/charts/contours.svg
 
 :py:mod:`Contours <lets_plot.geom_contour>`,
 :py:mod:`filled contours <lets_plot.geom_contourf>`
@@ -108,7 +108,7 @@ Examples:
 |visualization-of-distribution-icon| Visualization of Distribution
 ------------------------------------------------------------------
 
-.. |visualization-of-distribution-icon| image:: /_static/images/icons/charts/visualization-of-distribution.png
+.. |visualization-of-distribution-icon| image:: /_static/images/icons/charts/visualization-of-distribution.svg
 
 :py:mod:`Histogram <lets_plot.geom_histogram>`,
 :py:mod:`density <lets_plot.geom_density>`,
@@ -125,7 +125,7 @@ Examples:
 |visualization-of-errors-icon| Visualization of Errors
 ------------------------------------------------------
 
-.. |visualization-of-errors-icon| image:: /_static/images/icons/charts/visualization-of-errors.png
+.. |visualization-of-errors-icon| image:: /_static/images/icons/charts/visualization-of-errors.svg
 
 :py:mod:`Crossbar <lets_plot.geom_crossbar>`,
 :py:mod:`errorbar <lets_plot.geom_errorbar>`,
@@ -141,7 +141,7 @@ Examples:
 |smoothing-icon| Smoothing
 --------------------------
 
-.. |smoothing-icon| image:: /_static/images/icons/charts/smoothing.png
+.. |smoothing-icon| image:: /_static/images/icons/charts/smoothing.svg
 
 :py:mod:`Smoothing line <lets_plot.geom_smooth>`
 
@@ -155,7 +155,7 @@ Examples:
 |bivariate-distribution-icon| Bivariate Distribution
 ----------------------------------------------------
 
-.. |bivariate-distribution-icon| image:: /_static/images/icons/charts/bivariate-distribution.png
+.. |bivariate-distribution-icon| image:: /_static/images/icons/charts/bivariate-distribution.svg
 
 :py:mod:`Heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
@@ -171,7 +171,7 @@ Examples:
 |images-icon| Images
 --------------------
 
-.. |images-icon| image:: /_static/images/icons/charts/images.png
+.. |images-icon| image:: /_static/images/icons/charts/images.svg
 
 :py:mod:`Image <lets_plot.geom_image>`,
 :py:mod:`matrix of images <lets_plot.bistro.im.image_matrix>`
@@ -186,7 +186,7 @@ Examples:
 |facets-icon| Facets
 --------------------
 
-.. |facets-icon| image:: /_static/images/icons/charts/facets.png
+.. |facets-icon| image:: /_static/images/icons/charts/facets.svg
 
 :py:mod:`facet_grid() <lets_plot.facet_grid>`,
 :py:mod:`facet_wrap() <lets_plot.facet_wrap>`
@@ -200,7 +200,7 @@ Examples:
 |correlation-plot-icon| Correlation Plot
 ----------------------------------------
 
-.. |correlation-plot-icon| image:: /_static/images/icons/charts/correlation-plot.png
+.. |correlation-plot-icon| image:: /_static/images/icons/charts/correlation-plot.svg
 
 :py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
 
@@ -213,7 +213,7 @@ Examples:
 |geopandas-icon| GeoPandas Shapes
 ---------------------------------
 
-.. |geopandas-icon| image:: /_static/images/icons/charts/geopandas.png
+.. |geopandas-icon| image:: /_static/images/icons/charts/geopandas.svg
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
@@ -223,7 +223,7 @@ Learn more: :ref:`GeoPandas Support <geopandas>`.
 |presentation-options-icon| Presentation Options
 ------------------------------------------------
 
-.. |presentation-options-icon| image:: /_static/images/icons/charts/presentation-options.png
+.. |presentation-options-icon| image:: /_static/images/icons/charts/presentation-options.svg
 
 :py:mod:`theme() <lets_plot.theme>`,
 :py:mod:`ggtitle() <lets_plot.ggtitle>`,
