@@ -44,9 +44,9 @@ State
     US states
 
     ---
-    |geocoding_level_state_china-nbviewer|
+    |geocoding_level_state_australia-nbviewer|
 
-    China states
+    Australia states
 
     ---
     |geocoding_level_state_russia-nbviewer|
@@ -177,8 +177,8 @@ Reverse Geocoding
 Reverse geocoding is the process of converting geographic coordinates into a :py:mod:`Geocoder <lets_plot.geo_data.ReverseGeocoder>` object.
 
 
-Reference
----------
+Guides to Geocoding
+-------------------
 
 Documentation: :ref:`The Geocoding Reference Guide <advanced_geocoding>`.
 

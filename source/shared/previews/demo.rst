@@ -1,9 +1,6 @@
 .. |2020-nbviewer| image:: /examples/demo/previews/2020.png
     :target: https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/2020.ipynb
 
-.. |adversarial_attack-nbviewer| image:: /examples/demo/previews/adversarial_attack.png
-    :target: https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Adversarial%20Attack.ipynb
-
 .. |bayesian_inference-nbviewer| image:: /examples/demo/previews/bayesian_inference.png
     :target: https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Bayesian%20inference.ipynb
 

@@ -315,13 +315,13 @@ Examples
     |2020-nbviewer|
 
     ---
-    |adversarial_attack-nbviewer|
-
-    ---
     |mosaic_image-nbviewer|
 
     ---
-    |map_coordinates-nbviewer|
+    |with_clipping-nbviewer|
+
+    ---
+    |without_clipping-nbviewer|
 
     ---
     |point_geometries-nbviewer|
@@ -352,12 +352,6 @@ Examples
 
     ---
     |datetime_scale-nbviewer|
-
-    ---
-    |with_clipping-nbviewer|
-
-    ---
-    |without_clipping-nbviewer|
 
 .. raw:: html
 

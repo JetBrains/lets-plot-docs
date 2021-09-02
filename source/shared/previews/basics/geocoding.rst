@@ -37,8 +37,8 @@
 .. |geocoding_level_state_us-nbviewer| image:: /examples/basics/geocoding/previews/geocoding_level_state_us.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geocoding/geocoding_level_state_us.ipynb
 
-.. |geocoding_level_state_china-nbviewer| image:: /examples/basics/geocoding/previews/geocoding_level_state_china.png
-    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geocoding/geocoding_level_state_china.ipynb
+.. |geocoding_level_state_australia-nbviewer| image:: /examples/basics/geocoding/previews/geocoding_level_state_australia.png
+    :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geocoding/geocoding_level_state_australia.ipynb
 
 .. |geocoding_level_state_russia-nbviewer| image:: /examples/basics/geocoding/previews/geocoding_level_state_russia.png
     :target: https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/geocoding/geocoding_level_state_russia.ipynb

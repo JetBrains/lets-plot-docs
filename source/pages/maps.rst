@@ -53,7 +53,7 @@ The following ggplot2 geometries can be used with interactive maps:
 |layers_primitives-icon| Primitives
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |layers_primitives-icon| image:: /_static/images/icons/maps/layers_primitives.png
+.. |layers_primitives-icon| image:: /_static/images/icons/maps/layers_primitives.svg
 
 :py:mod:`point <lets_plot.geom_point>`,
 :py:mod:`path <lets_plot.geom_path>`,
@@ -69,7 +69,7 @@ The following ggplot2 geometries can be used with interactive maps:
 |layers_contours-icon| Contours
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |layers_contours-icon| image:: /_static/images/icons/maps/layers_contours.png
+.. |layers_contours-icon| image:: /_static/images/icons/maps/layers_contours.svg
 
 :py:mod:`contour <lets_plot.geom_contour>`,
 :py:mod:`filled contour <lets_plot.geom_contourf>`.
@@ -77,7 +77,7 @@ The following ggplot2 geometries can be used with interactive maps:
 |layers_bivariate-icon| Bivariate Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |layers_bivariate-icon| image:: /_static/images/icons/maps/layers_bivariate.png
+.. |layers_bivariate-icon| image:: /_static/images/icons/maps/layers_bivariate.svg
 
 :py:mod:`heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
@@ -86,7 +86,7 @@ The following ggplot2 geometries can be used with interactive maps:
 |quickstart-icon| Quickstart
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.png
+.. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.svg
 
 `Quickstart guide to maps <https://datalore.jetbrains.com/view/notebook/9dzGjTQay4ENqj7GTEIvBU>`__.
 

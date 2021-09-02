@@ -24,7 +24,7 @@ Key Features
 
     Suitable for Scientist and Developer
 
-    We offer data visualization in `Jupyter <https://jupyter-notebook.readthedocs.io/en/stable>`__ notebooks as well as in other notebooks like `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__, `Kaggle <https://www.kaggle.com/alshan/lets-plot-quickstart>`__ or `Colab <https://colab.research.google.com/drive/1o9rFQbkGqvvixYLTogrzIjFPp1ti2cH->`__. You can also create interactive plots in PyCharm with the help of `our plugin <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__.
+    We offer data visualization in `Jupyter <https://jupyter-notebook.readthedocs.io/en/stable>`__ notebooks as well as in other notebooks like `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__, `Kaggle <https://www.kaggle.com/alshan/lets-plot-quickstart>`__ or `Colab <https://colab.research.google.com/drive/1o9rFQbkGqvvixYLTogrzIjFPp1ti2cH->`__. You can also create interactive plots in **PyCharm** with the help of `our plugin <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__.
 
     ---
     ---
