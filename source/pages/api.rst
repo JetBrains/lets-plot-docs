@@ -100,6 +100,15 @@ Extras
 
     arrow
 
+.. currentmodule:: lets_plot.mapping
+
+.. autosummary::
+    :toctree: api
+
+    as_discrete
+
+
+.. currentmodule:: lets_plot
 
 Stats
 -----
