@@ -13,26 +13,29 @@ Key Features
 
     ---
     ---
-    .. image:: /_static/images/icons/features/tooltips.svg
+    .. image:: /_static/images/icons/features/graphics-grid.svg
 
-    Customizable Tooltips
+    Grouping Plots
 
-    You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :ref:`Learn more <tooltips>`.
+    :py:mod:`GGBunch <lets_plot.GGBunch>` shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.
 
     ---
     .. image:: /_static/images/icons/features/platforms.svg
 
     Suitable for Scientist and Developer
 
-    We offer data visualization in `Jupyter <https://jupyter-notebook.readthedocs.io/en/stable>`__ notebooks as well as in other notebooks like `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__, `Kaggle <https://www.kaggle.com/alshan/lets-plot-quickstart>`__ or `Colab <https://colab.research.google.com/drive/1o9rFQbkGqvvixYLTogrzIjFPp1ti2cH->`__. You can also create interactive plots in **PyCharm** with the help of `our plugin <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__.
+    We offer data visualization in `Jupyter <https://jupyter-notebook.readthedocs.io/en/stable>`__ notebooks as well as in other notebooks like `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__, `Kaggle <https://www.kaggle.com/alshan/lets-plot-quickstart>`__ or `Colab <https://colab.research.google.com/drive/1o9rFQbkGqvvixYLTogrzIjFPp1ti2cH->`__. You can also create interactive plots in |pycharm_logo| `PyCharm <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__.
+
+    .. |pycharm_logo| image:: /_static/images/logo/pycharm.svg
+        :target: https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview
 
     ---
     ---
-    .. image:: /_static/images/icons/features/graphics-grid.svg
+    .. image:: /_static/images/icons/features/tooltips.svg
 
-    Grouping Plots
+    Customizable Tooltips
 
-    :py:mod:`GGBunch <lets_plot.GGBunch>` shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.
+    You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :ref:`Learn more <tooltips>`.
 
     ---
     .. image:: /_static/images/icons/features/kotlin-api.svg

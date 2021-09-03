@@ -7,6 +7,14 @@
 
 .. include:: /shared/previews.rst
 
+.. toctree::
+    :glob:
+    :hidden:
+    :maxdepth: 1
+
+    pages/charts
+    pages/maps
+    pages/geocoding
 
 An Open-source Plotting Library for Statistical Data
 ====================================================
