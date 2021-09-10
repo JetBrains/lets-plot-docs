@@ -38,9 +38,11 @@ extensions = [
     'sphinx_panels',
     'sphinx_reredirects',
     'create_cname',
+    'extref',
 ]
 
-cname_url = 'lets-plot.org'
+cname_url = "lets-plot.org"
+extref_conf = "extref_conf.json"
 
 # TODO: Update all references and remove this as soon as possible
 redirects = {

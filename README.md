@@ -46,7 +46,7 @@ All commands should be run from the repository root.
    Build with demonstration of specific version of Lets-Plot:
 
     ```bash
-    sphinx-build -b html ./source ./docs -D version=%version%
+    sphinx-build -b html ./source ./docs -D version=%version% -D release=%version%
     ```
 
 6. Check docs/index.html in your browser.
