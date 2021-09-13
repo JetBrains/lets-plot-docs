@@ -3,9 +3,9 @@
 'No Javascript' Mode
 ====================
 
-In the 'no javascript' mode Lets-Plot genetares plots as bare-bones SVG images.
+In the 'no javascript' mode Lets-Plot generates plots as bare-bones SVG images.
 
-This mode is halpfull when there is a requirement to render notebooks in an 'ipnb' renderer which does not suppopt javascript (like GitHub's built-in renderer).
+This mode is helpful when there is a requirement to render notebooks in an 'ipnb' renderer which does not support javascript (like GitHub's built-in renderer).
 
 Activate 'no javascript' mode using the ``LetsPlot.setup_html()`` method call:
 
@@ -15,7 +15,7 @@ Activate 'no javascript' mode using the ``LetsPlot.setup_html()`` method call:
 
     LetsPlot.setup_html(no_js=True)
 
-Alternativaly, you can set up the environment variable:
+Alternatively, you can set up the environment variable:
 
 ::
 
