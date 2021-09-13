@@ -14,7 +14,7 @@ GeoPandas supports the following three basic classes of geometric objects (shape
 - Lines / Multi-Lines
 - Polygons / Multi-Polygons
 
-All GeoPandas shapes are "undersood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape.
+All GeoPandas shapes are "understood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape.
 
 Use:
 
@@ -96,7 +96,7 @@ In this situation, in order to link aesthetics to the population numbers you wil
 - ``data`` parameter for the "population" dataframe,
 - ``map`` parameter for the state boundaries ``GeoDataframe``.
 
-The 3rd parameter, ``map_join``, will help to combime population values and state boundaries on the same chart:
+The 3rd parameter, ``map_join``, will help to combine population values and state boundaries on the same chart:
 
 .. jupyter-execute::
 

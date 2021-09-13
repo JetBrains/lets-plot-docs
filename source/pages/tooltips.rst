@@ -104,11 +104,11 @@ Labels configuration
 --------------------
 
 The default tooltip has a label before the value usually containing the name of the mapped variable.
-It has its own behaviour similar to a blank label for an axis aesthetics. 
+It has its own behavior similar to a blank label for an axis aesthetics. 
 This default label can be set in the template by using a pair of symbols ``@|``.
 You can override the label by specifying a string value before ``|`` symbol.
 
-Within the tooltip line, ou can align a label to left. The string formed by a template can be aligned to right.
+Within the tooltip line, you can align a label to left. The string formed by a template can be aligned to right.
 If you do not specify a label, the string will be centered in the tooltip. For example:
 
 - ``line('^color')``: no label, value is centered;

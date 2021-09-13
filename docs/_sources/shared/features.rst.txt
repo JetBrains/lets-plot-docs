@@ -57,7 +57,7 @@ Key Features
 
     Geospatial visualization
 
-    Find spatial objects with the help of our powerful and easy to use :ref:`Geocoding <geocoding>` module. In case you already have ``GeoDataFrame`` on hand - :ref:`plot it <geopandas>` straght away.
+    Find spatial objects with the help of our powerful and easy to use :ref:`Geocoding <geocoding>` module. In case you already have ``GeoDataFrame`` on hand - :ref:`plot it <geopandas>` straight away.
 
     ---
     ---
