@@ -1,5 +1,8 @@
 ﻿.. _tooltips:
 
+.. title:: Tooltip customization in Lets-Plot
+
+
 Tooltip Customization
 #####################
 
@@ -355,12 +358,11 @@ Set ``tooltips = "none"`` to hide tooltips from the layer.
 Example Notebooks
 =================
  
-- `tooltip_config.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/tooltip_config.ipynb>`_
+- .. extref:: tooltip_config
+      :type: text
+      :text: tooltip_config.ipynb
 
-- Visualization of Airport Data on Map: |airport_data_kaggle|
+- Visualization of Airport Data on Map: |map_airports|
 
-.. |airport_data_kaggle| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg
-    :width: 20px
-    :height: 20px
-    :alt: View at Kaggle
-    :target: https://www.kaggle.com/alshan/visualization-of-airport-data-on-map
+.. |map_airports| extref:: map_airports
+    :type: logo

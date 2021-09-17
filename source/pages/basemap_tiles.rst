@@ -1,5 +1,8 @@
 .. _basemap_tiles:
 
+.. title:: Configuring basemap tiles for interactive maps — Lets-Plot
+
+
 Configuring Basemap Tiles for Interactive Maps
 ==============================================
 

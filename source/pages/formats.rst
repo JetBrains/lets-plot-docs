@@ -1,5 +1,8 @@
 ﻿.. _formats:
 
+.. title:: Formatting values in Lets-Plot
+
+
 Formatting
 ==========
 
@@ -230,4 +233,5 @@ In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customi
 Demo Notebooks
 --------------
 
-- `The label_format parameter in geom_text() <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/label_format.ipynb>`__
+- .. extref:: label_format
+      :type: text

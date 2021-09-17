@@ -5,7 +5,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. include:: /shared/previews.rst
+.. title:: Lets-Plot: open-source plotting library for statistical data
+
 
 .. toctree::
     :glob:
