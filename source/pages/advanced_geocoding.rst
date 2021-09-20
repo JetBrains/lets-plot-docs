@@ -25,7 +25,7 @@ Advanced Geocoding
       - :ref:`closest_to <geocoding_where_closest_to>`
       - :ref:`scope <geocoding_where_scope>`
 
-  - :ref:`Working with plot <geocoding_working_with_plot>`
+  - :ref:`Working with Plots <geocoding_working_with_plot>`
 
     - :ref:`Plotting a GeoDataFrame <geocoding_plot_gdf>`
     - :ref:`Plotting a Geocoder <geocoding_plot_geocoder>`
@@ -258,7 +258,7 @@ Typical use-case: all of names belong to the same parent.
 
 .. _geocoding_fetch_all:
 
-Fetch all
+Fetch All
 ~~~~~~~~~
 
 It is possible to fetch all objects within parent - just do not set the ``names`` parameter.
@@ -419,7 +419,7 @@ Note that bbox of the polygon will be used:
 
 .. _geocoding_working_with_plot:
 
-Working with plots
+Working with Plots
 ~~~~~~~~~~~~~~~~~~
 
 

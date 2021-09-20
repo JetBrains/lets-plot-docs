@@ -80,7 +80,7 @@ Quickstart
 
     <div class="lets-plot-platforms">
       <div>
-        <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/quickstart.ipynb">
+        <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/quickstart.ipynb">
           <img src="_static/images/logo/jupyter.svg" />
         </a>
       </div>

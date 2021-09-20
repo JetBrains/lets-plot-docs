@@ -12,7 +12,7 @@ Sampling helps dealing with large datasets when unintentional attempt to plot an
 
 Sampling is also one of the ways of handling over-plotting.
 
-How it works
+How It Works
 ~~~~~~~~~~~~
 
 By default, sampling kicks-in automatically when the data volume exceeds a certain threshold.
@@ -23,7 +23,7 @@ Value ``'none'`` will disable any sampling for the given layer.
 There are several sampling methods implemented in Lets-Plot.
 The sampling methods can be chained together using the ``+`` operator.
 
-Sampling methods
+Sampling Methods
 ~~~~~~~~~~~~~~~~
 
 **random** - selects data points at randomly chosen indices without replacement.

@@ -8,8 +8,8 @@ Function ``as_discrete()``
 
 The function :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` is used to annotate a numeric data series as categorical data with the possibility of its ordering for the purposes of given visualization.
 
-Hidden Preliminaries
---------------------
+Plot Preliminaries
+------------------
 
 .. jupyter-execute::
 

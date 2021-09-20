@@ -26,8 +26,8 @@ Use:
 - :py:mod:`geom_rect() <lets_plot.geom_rect>` when used with Polygon shapes will display corresponding bounding boxes
 
 
-Hidden Preliminaries
---------------------
+Plot Preliminaries
+------------------
 
 .. jupyter-execute::
 

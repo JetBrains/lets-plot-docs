@@ -4,25 +4,25 @@
 
 
 Tooltip Customization
-#####################
+=====================
 
-- :ref:`Tooltip variable list <tooltips_variables>`
-- :ref:`Formatting tooltip fields <tooltips_formatting>`
-- :ref:`Customizing tooltip lines <tooltips_lines>`
+- :ref:`Tooltip Variable List <tooltips_variables>`
+- :ref:`Formatting Tooltip Fields <tooltips_formatting>`
+- :ref:`Customizing Tooltip Lines <tooltips_lines>`
 
-  - :ref:`Labels configuration <tooltips_labels_configuration>`
+  - :ref:`Labels Configuration <tooltips_labels_configuration>`
 
-- :ref:`Tooltip anchor <tooltips_anchor>`
-- :ref:`Minimum width of a general tooltip <tooltips_minwidth>`
-- :ref:`Tooltip color <tooltips_color>`
+- :ref:`Tooltip Anchor <tooltips_anchor>`
+- :ref:`Minimum Width of a General Tooltip <tooltips_minwidth>`
+- :ref:`Tooltip Color <tooltips_color>`
 - :ref:`Examples <tooltips_examples>`
-- :ref:`Outlier tooltips configuration <tooltips_outliers>`
+- :ref:`Outlier Tooltips Configuration <tooltips_outliers>`
 
   - :ref:`Examples <tooltips_example_outliers>`
 
-- :ref:`Hiding tooltips <tooltips_hiding_tooltips>`
+- :ref:`Hiding Tooltips <tooltips_hiding_tooltips>`
 - :ref:`Example Notebooks <tooltips_example_notebooks>`
-    
+
 ----
 
 You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions.
@@ -40,8 +40,8 @@ The following functions set lines, define formatting of the tooltip, its locatio
 
 .. _tooltips_variables:
 
-Tooltip variable list: ``layer_tooltips(variables=['var_name_1', ..., 'var_name_N'])``
-======================================================================================
+Tooltip Variable List: ``layer_tooltips(variables=['var_name_1', ..., 'var_name_N'])``
+--------------------------------------------------------------------------------------
 
 The ``variables`` parameter defines a list of variable names, which values will be placed line by line in the general tooltip.
 If formatting is specified for a variable from this list (with the ``format()`` function), it will be applied.
@@ -51,14 +51,14 @@ Additional tooltip lines can be specified using the ``line()`` functions.
 
 .. _tooltips_formatting:
 
-Formatting tooltip fields: ``layer_tooltips().format(field, format)``
-=====================================================================
+Formatting Tooltip Fields: ``layer_tooltips().format(field, format)``
+---------------------------------------------------------------------
 
 Defines the format for displaying the value.
 The format will be applied to the mapped value in the default tooltip or to the corresponding value specified in the ``line`` template.
 
 Arguments
----------
+~~~~~~~~~
 
 - ``field`` (string): The name of the variable/aesthetics. The field name begins with ``^`` for aesthetics. You can specify variable names without a prefix, but the ``@`` prefix can be also used. It's possible to set a format for all positional aesthetics: ``^X`` (all positional x) and ``^Y`` (all positional y). For example:
 
@@ -80,8 +80,8 @@ Variable's and aesthetic's formats are not interchangeable, for example, ``var``
 
 .. _tooltips_lines:
 
-Customizing tooltip lines: ``layer_tooltips().line(template)``
-==============================================================
+Customizing Tooltip Lines: ``layer_tooltips().line(template)``
+--------------------------------------------------------------
 
 Specifies the string template to use in a general tooltip. If you add ``line()``, it overrides the default tooltip.
 
@@ -103,8 +103,8 @@ A '^' symbol can be escaped with a backslash; a brace character in the literal t
 
 .. _tooltips_labels_configuration:
 
-Labels configuration
---------------------
+Labels Configuration
+~~~~~~~~~~~~~~~~~~~~
 
 The default tooltip has a label before the value usually containing the name of the mapped variable.
 It has its own behavior similar to a blank label for an axis aesthetics. 
@@ -122,8 +122,8 @@ If you do not specify a label, the string will be centered in the tooltip. For e
 
 .. _tooltips_anchor:
 
-Tooltip anchor: ``layer_tooltips().anchor(position)``
-=====================================================
+Tooltip Anchor: ``layer_tooltips().anchor(position)``
+-----------------------------------------------------
 
 Specifies a fixed position for a general tooltip.
 
@@ -142,16 +142,16 @@ The ``anchor()`` function accepts the following values:
 
 .. _tooltips_minwidth:
 
-Minimum width of a general tooltip: ``layer_tooltips().min_width(value)``
-=========================================================================
+Minimum Width of a General Tooltip: ``layer_tooltips().min_width(value)``
+-------------------------------------------------------------------------
 
 Specifies a minimum width of a general tooltip in pixels.
 
 
 .. _tooltips_color:
 
-Tooltip color: ``layer_tooltips().color(value)``
-================================================
+Tooltip Color: ``layer_tooltips().color(value)``
+------------------------------------------------
 
 Specifies a color of a general tooltip.
 
@@ -159,7 +159,7 @@ Specifies a color of a general tooltip.
 .. _tooltips_examples:
 
 Examples
-========
+--------
 
 .. jupyter-execute::
     :linenos:
@@ -271,8 +271,8 @@ Move the tooltips to the top right corner:
 
 .. _tooltips_outliers:
 
-Outlier tooltips configuration
-==============================
+Outlier Tooltips Configuration
+------------------------------
 
 The default an outlier's tooltip contains a string like ``'name: value'``: there is no label and no alignment.
 It's possible to change formatting of it with the ``format`` function. The number format (``'1.f'``) leaves 
@@ -285,7 +285,7 @@ The specified ``line`` for an outlier will move it to a general multi-line toolt
 .. _tooltips_example_outliers:
 
 Examples
---------
+~~~~~~~~
 
 Change formatting for outliers:
 
@@ -347,8 +347,8 @@ Place tooltip at the top center and change its color:
 
 .. _tooltips_hiding_tooltips:
 
-Hiding tooltips
-===============
+Hiding Tooltips
+---------------
 
 Set ``tooltips = "none"`` to hide tooltips from the layer.
 
@@ -356,7 +356,7 @@ Set ``tooltips = "none"`` to hide tooltips from the layer.
 .. _tooltips_example_notebooks:
 
 Example Notebooks
-=================
+-----------------
  
 - .. extref:: tooltip_config
       :type: text

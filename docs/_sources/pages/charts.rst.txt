@@ -106,7 +106,7 @@ Examples:
     :text: manual
 
 
-|as_discrete-icon| Ordering categories, ``as_discrete()``
+|as_discrete-icon| Ordering Categories, ``as_discrete()``
 ---------------------------------------------------------
 
 .. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.svg
