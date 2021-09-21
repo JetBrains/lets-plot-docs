@@ -28,7 +28,7 @@ You can configure global Lets-Plot options using the :py:mod:`LestPlot.set(dicti
 
 Where the ``dictionary`` can contain all sorts of Lets-Plot options, including basemap tiles configuration options.
 
-Lets-Plot provides a variety of constantas and functions which make configuring of basemap tiles simple:
+Lets-Plot provides a variety of constants and functions which make configuring of basemap tiles simple:
 
 .. code-block:: python
 
@@ -108,7 +108,7 @@ Raster Tiles
 
 With Lets-Plot you can use ZXY raster tiles provided by 3rd party maptile services.
 
-Some services provide free of charge raster tilesets. The ``tilesets`` module in Lets-Plot contains many such tilesets pre-cofigured.
+Some services provide free of charge raster tilesets. The ``tilesets`` module in Lets-Plot contains many such tilesets pre-configured.
 
 Again, you can use these tilesets to configure Lets-Plot globally or on the per-plot basis:
 

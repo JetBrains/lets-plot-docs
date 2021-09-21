@@ -207,7 +207,7 @@ Examples
     |map_US_household_income-datalore|
 
     ---
-    |map_california_housing-nbviewer|
+    |map_california_housing-datalore|
 
     ---
     |bigquery_gis-kaggle|
