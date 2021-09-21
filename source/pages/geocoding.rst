@@ -1,6 +1,7 @@
 .. _geocoding:
 
-.. include:: /shared/previews.rst
+.. title:: Geocoding in Lets-Plot
+
 
 Geocoding
 =========
@@ -17,17 +18,17 @@ Country
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_level_country_world-nbviewer|
+    .. extref:: geocoding_level_country_world
 
     World countries
 
     ---
-    |geocoding_level_country_canada-nbviewer|
+    .. extref:: geocoding_level_country_canada
 
     Canada
 
     ---
-    |geocoding_level_country_india-nbviewer|
+    .. extref:: geocoding_level_country_india
 
     India
 
@@ -39,17 +40,17 @@ State
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_level_state_us-nbviewer|
+    .. extref:: geocoding_level_state_us
 
     US states
 
     ---
-    |geocoding_level_state_australia-nbviewer|
+    .. extref:: geocoding_level_state_australia
 
     Australia states
 
     ---
-    |geocoding_level_state_russia-nbviewer|
+    .. extref:: geocoding_level_state_russia
 
     Russia states
 
@@ -61,17 +62,17 @@ County
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_level_county_us-nbviewer|
+    .. extref:: geocoding_level_county_us
 
     US counties
 
     ---
-    |geocoding_level_county_italy-nbviewer|
+    .. extref:: geocoding_level_county_italy
 
     Italy counties
 
     ---
-    |geocoding_level_county_poland-nbviewer|
+    .. extref:: geocoding_level_county_poland
 
     Poland counties
 
@@ -83,17 +84,17 @@ City
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_level_city_nyc-nbviewer|
+    .. extref:: geocoding_level_city_nyc
 
     New York
 
     ---
-    |geocoding_level_city_helsinki-nbviewer|
+    .. extref:: geocoding_level_city_helsinki
 
     Helsinki
 
     ---
-    |geocoding_level_city_london-nbviewer|
+    .. extref:: geocoding_level_city_london
 
     London
 
@@ -110,17 +111,17 @@ Polygons
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_geometries_map_brazil-nbviewer|
+    .. extref:: geocoding_geometries_map_brazil
 
     Brazil
 
     ---
-    |geocoding_geometries_map_nigeria-nbviewer|
+    .. extref:: geocoding_geometries_map_nigeria
 
     Nigeria states
 
     ---
-    |geocoding_geometries_map_greece-nbviewer|
+    .. extref:: geocoding_geometries_map_greece
 
     Greece counties
 
@@ -132,17 +133,17 @@ Points
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_geometries_point_kazakhstan-nbviewer|
+    .. extref:: geocoding_geometries_point_kazakhstan
 
     Kazakhstan state centroids
 
     ---
-    |geocoding_geometries_point_georgia-nbviewer|
+    .. extref:: geocoding_geometries_point_georgia
 
     Ceorgia county centroids
 
     ---
-    |geocoding_geometries_point_greenland-nbviewer|
+    .. extref:: geocoding_geometries_point_greenland
 
     Greenland cities
 
@@ -154,17 +155,17 @@ Rectangles
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_geometries_rectangle_japan-nbviewer|
+    .. extref:: geocoding_geometries_rectangle_japan
 
     Japan bounding box with states
 
     ---
-    |geocoding_geometries_rectangle_ireland-nbviewer|
+    .. extref:: geocoding_geometries_rectangle_ireland
 
     Ireland county bounding boxes
 
     ---
-    |geocoding_geometries_rectangle_cuba-nbviewer|
+    .. extref:: geocoding_geometries_rectangle_cuba
 
     Cuba bounding box with cities
 
@@ -182,7 +183,11 @@ Guides to Geocoding
 
 Documentation: :ref:`The Geocoding Reference Guide <advanced_geocoding>`.
 
-An example notebook covering various geocoding use-cases: `geocoding_reference.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb>`__.
+An example notebook covering various geocoding use-cases: |geocoding_reference|.
+
+.. |geocoding_reference| extref:: geocoding_reference
+    :type: text
+    :text: geocoding_reference.ipynb
 
 
 Examples
@@ -192,49 +197,49 @@ Examples
     :container: + preview-gallery
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |geocoding_examples-nbviewer|
+    .. extref:: geocoding_examples
 
     ---
-    |geocoding_levels-nbviewer|
+    .. extref:: geocoding_levels
 
     ---
-    |map_US_household_income-datalore|
+    .. extref:: map_us_household_income
 
     ---
-    |covid19_india-kaggle|
+    .. extref:: covid19_india
 
     ---
-    |maps_and_geocoding-nbviewer|
+    .. extref:: maps_and_geocoding
 
     ---
-    |geom_map-nbviewer|
+    .. extref:: geom_map
 
     ---
-    |geom_polygon-nbviewer|
+    .. extref:: geom_polygon
 
     ---
-    |map_coordinates-nbviewer|
+    .. extref:: map_coordinates
 
     ---
-    |with_clipping-nbviewer|
+    .. extref:: with_clipping
 
     ---
-    |without_clipping-nbviewer|
+    .. extref:: without_clipping
 
     ---
-    |internet_use_and_activities-nbviewer|
+    .. extref:: internet_use_and_activities
 
     ---
-    |map_airports-kaggle|
+    .. extref:: map_airports
 
     ---
-    |mapping_US_household_income-kaggle|
+    .. extref:: mapping_us_household_income
 
     ---
-    |museums-nbviewer|
+    .. extref:: museums
 
     ---
-    |titanic-kaggle|
+    .. extref:: titanic
 
 .. raw:: html
 

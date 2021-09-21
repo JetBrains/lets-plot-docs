@@ -1,6 +1,6 @@
 .. _maps:
 
-.. include:: /shared/previews.rst
+.. title:: Maps in Lets-Plot
 
 
 Maps
@@ -15,7 +15,8 @@ Proportional Symbol Map
 .. panels::
     :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |map_california_housing_4x3-datalore|
+    .. extref:: map_california_housing
+        :image: 4x3
 
     ---
     .. code-block:: python
@@ -37,7 +38,8 @@ Choropleth Map
 .. panels::
     :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |covid19_india_4x3-kaggle|
+    .. extref:: covid19_india
+        :image: 4x3
 
     ---
     .. code-block:: python
@@ -88,7 +90,10 @@ The following ggplot2 geometries can be used with interactive maps:
 
 .. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.svg
 
-`Quickstart guide to maps <https://datalore.jetbrains.com/view/notebook/9dzGjTQay4ENqj7GTEIvBU>`__.
+|map_quickstart|.
+
+.. |map_quickstart| extref:: map_quickstart
+    :type: text
 
 
 Use a Basemap That is Right for You
@@ -101,64 +106,84 @@ Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>
 .. panels::
     :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |the_gallery_of_basemaps-lets_plot_default-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: lets_plot_default
 
     ---
-    |the_gallery_of_basemaps-lets_plot_dark-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: lets_plot_dark
 
     ---
-    |the_gallery_of_basemaps-lets_plot_light-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: lets_plot_light
 
     ---
-    |the_gallery_of_basemaps-osm_standard-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: osm_standard
 
     ---
-    |the_gallery_of_basemaps-open_topo_map-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: open_topo_map
 
     ---
-    |the_gallery_of_basemaps-stamen_design_terrain-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: stamen_design_terrain
 
     ---
-    |the_gallery_of_basemaps-stamen_design_toner-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: stamen_design_toner
 
     ---
-    |the_gallery_of_basemaps-stamen_design_toner_hybrid-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: stamen_design_toner_hybrid
 
     ---
-    |the_gallery_of_basemaps-stamen_design_toner_labels-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: stamen_design_toner_labels
 
     ---
-    |the_gallery_of_basemaps-stamen_design_watercolor-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: stamen_design_watercolor
 
     ---
-    |the_gallery_of_basemaps-carto_antique-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: carto_antique
 
     ---
-    |the_gallery_of_basemaps-carto_dark_matter_no_labels-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: carto_dark_matter_no_labels
 
     ---
-    |the_gallery_of_basemaps-carto_flat_blue-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: carto_flat_blue
 
     ---
-    |the_gallery_of_basemaps-carto_midnight_commander-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: carto_midnight_commander
 
     ---
-    |the_gallery_of_basemaps-carto_positron-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: carto_positron
 
     ---
-    |the_gallery_of_basemaps-carto_positron_no_labels-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: carto_positron_no_labels
 
     ---
-    |the_gallery_of_basemaps-carto_voyager-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: carto_voyager
 
     ---
-    |the_gallery_of_basemaps-nasa_gibs_blue_marble-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: nasa_gibs_blue_marble
 
     ---
-    |the_gallery_of_basemaps-nasa_gibs_color_shaded-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: nasa_gibs_color_shaded
 
     ---
-    |the_gallery_of_basemaps-nasa_gibs_greyscale-datalore|
+    .. extref:: the_gallery_of_basemaps
+        :image: nasa_gibs_greyscale
 
 PyCharm
 -------
@@ -183,58 +208,59 @@ Examples
     :container: + preview-gallery
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |map_quickstart-datalore|
+    .. extref:: map_quickstart
 
     ---
-    |volcanoes_in_japan-kaggle|
+    .. extref:: volcanoes_in_japan
 
     ---
-    |mapping_US_household_income-kaggle|
+    .. extref:: mapping_us_household_income
 
     ---
-    |map_airports-kaggle|
+    .. extref:: map_airports
 
     ---
-    |beijing-kaggle|
+    .. extref:: beijing
 
     ---
-    |plotting_airbnb_prices_boston-medium|
+    .. extref:: plotting_airbnb_prices_boston
+        :ref: medium
 
     ---
-    |covid19_india-kaggle|
+    .. extref:: covid19_india
 
     ---
-    |map_US_household_income-datalore|
+    .. extref:: map_us_household_income
 
     ---
-    |map_california_housing-datalore|
+    .. extref:: map_california_housing
 
     ---
-    |bigquery_gis-kaggle|
+    .. extref:: bigquery_gis
 
     ---
-    |museums-nbviewer|
+    .. extref:: museums
 
     ---
-    |bar_on_livemap-nbviewer|
+    .. extref:: bar_on_livemap
 
     ---
-    |titanic-kaggle|
+    .. extref:: titanic
 
     ---
-    |minard-nbviewer|
+    .. extref:: minard
 
     ---
-    |pushkin-nbviewer|
+    .. extref:: pushkin
 
     ---
-    |spb_bakeries-nbviewer|
+    .. extref:: spb_bakeries
 
     ---
-    |maps_and_geocoding-nbviewer|
+    .. extref:: maps_and_geocoding
 
     ---
-    |internet_use_and_activities-nbviewer|
+    .. extref:: internet_use_and_activities
 
 .. raw:: html
 

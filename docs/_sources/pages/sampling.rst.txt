@@ -1,5 +1,8 @@
 .. _sampling:
 
+.. title:: Sampling in Lets-Plot
+
+
 Sampling in Lets-Plot
 =====================
 
@@ -9,7 +12,7 @@ Sampling helps dealing with large datasets when unintentional attempt to plot an
 
 Sampling is also one of the ways of handling over-plotting.
 
-How it works
+How It Works
 ~~~~~~~~~~~~
 
 By default, sampling kicks-in automatically when the data volume exceeds a certain threshold.
@@ -20,7 +23,7 @@ Value ``'none'`` will disable any sampling for the given layer.
 There are several sampling methods implemented in Lets-Plot.
 The sampling methods can be chained together using the ``+`` operator.
 
-Sampling methods
+Sampling Methods
 ~~~~~~~~~~~~~~~~
 
 **random** - selects data points at randomly chosen indices without replacement.
@@ -45,14 +48,38 @@ For this case there is always a 'safety' sampling (**random** N=200_000) ready t
 Examples
 ~~~~~~~~
 
-Random sampling on a scatter plot (might take some time to load): `sampling_random.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_random.ipynb>`__
+Random sampling on a scatter plot (might take some time to load): |sampling_random|
 
-Pick sampling on Bar-chart: `sampling_pick.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_pick.ipynb>`__
+.. |sampling_random| extref:: sampling_random
+    :type: text
+    :text: sampling_random.ipynb
 
-Systematic and random sampling on a line plot: `sampling_systematic.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_systematic.ipynb>`__
+Pick sampling on Bar-chart: |sampling_pick|
 
-Stratified sampling: `sampling_stratified.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_stratified.ipynb>`__
+.. |sampling_pick| extref:: sampling_pick
+    :type: text
+    :text: sampling_pick.ipynb
 
-Group sampling: `sampling_groups.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_groups.ipynb>`__
+Systematic and random sampling on a line plot: |sampling_systematic|
 
-Vertex sampling: `sampling_vertex.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/sampling_vertex.ipynb>`__
+.. |sampling_systematic| extref:: sampling_systematic
+    :type: text
+    :text: sampling_systematic.ipynb
+
+Stratified sampling: |sampling_stratified|
+
+.. |sampling_stratified| extref:: sampling_stratified
+    :type: text
+    :text: sampling_stratified.ipynb
+
+Group sampling: |sampling_groups|
+
+.. |sampling_groups| extref:: sampling_groups
+    :type: text
+    :text: sampling_groups.ipynb
+
+Vertex sampling: |sampling_vertex|
+
+.. |sampling_vertex| extref:: sampling_vertex
+    :type: text
+    :text: sampling_vertex.ipynb

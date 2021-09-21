@@ -1,5 +1,7 @@
 .. _geopandas:
 
+.. title:: GeoPandas support in Lets-Plot
+
 
 GeoPandas Support (`GeoPandas <https://geopandas.org>`__ and `Shapely <https://pypi.org/project/Shapely/>`__)
 =============================================================================================================
@@ -24,8 +26,8 @@ Use:
 - :py:mod:`geom_rect() <lets_plot.geom_rect>` when used with Polygon shapes will display corresponding bounding boxes
 
 
-Hidden Preliminaries
---------------------
+Plot Preliminaries
+------------------
 
 .. jupyter-execute::
 
@@ -106,17 +108,23 @@ The 3rd parameter, ``map_join``, will help to combine population values and stat
 Examples
 --------
 
-- The world map with *Lets-Plot* and *GeoPandas*: `geopandas_naturalearth.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_naturalearth.ipynb>`__
+- The world map with *Lets-Plot* and *GeoPandas*: |geopandas_naturalearth|
 
-- Plotting Airbnb prices Boston: |plotting_airbnb_prices_boston_datalore|
+.. |geopandas_naturalearth| extref:: geopandas_naturalearth
+    :type: logo
+    :height: 20
 
-.. |plotting_airbnb_prices_boston_datalore| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_datalore.svg
-    :width: 20px
-    :height: 20px
-    :alt: View in Datalore
-    :target: https://datalore.jetbrains.com/view/notebook/eifzdh96VYuNrcjuOpYPYr
+- Plotting Airbnb prices Boston: |plotting_airbnb_prices_boston|
 
-- An **inset map** of Kotlin island: `geopandas_kotlin_isl.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_kotlin_isl.ipynb>`__
+.. |plotting_airbnb_prices_boston| extref:: plotting_airbnb_prices_boston
+    :type: logo
+    :height: 20
+
+- An **inset map** of Kotlin island: |geopandas_kotlin_isl|
+
+.. |geopandas_kotlin_isl| extref:: geopandas_kotlin_isl
+    :type: logo
+    :height: 20
 
 .. image:: /_static/images/kotlin_island.png
     :width: 480px

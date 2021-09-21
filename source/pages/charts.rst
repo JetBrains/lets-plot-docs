@@ -1,6 +1,6 @@
 .. _charts:
 
-.. include:: /shared/previews.rst
+.. title:: Charts in Lets-Plot
 
 
 Charts
@@ -49,12 +49,19 @@ Text:
 
 Examples:
 
-- `Population mobility and COVID-19 <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/covid-19_and_mobility.ipynb>`__
-- `Time series visualizations <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/delhi_climate.ipynb>`__
-- `Bayesian inference <https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Bayesian%20inference.ipynb>`__
-- `Line vs. path <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/line_vs_path.ipynb>`__
-- `Inset Map of Kotlin Island <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_kotlin_isl.ipynb>`__
-- `Formatting labels on plots <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/formatting_axes_etc.ipynb>`__
+- .. extref:: covid19_and_mobility
+      :type: text
+- .. extref:: delhi_climate
+      :type: text
+      :text: Time series visualizations
+- .. extref:: bayesian_inference
+      :type: text
+- .. extref:: line_vs_path
+      :type: text
+- .. extref:: geopandas_kotlin_isl
+      :type: text
+- .. extref:: formatting_axes_etc
+      :type: text
 
 
 |discrete-icon| Discrete
@@ -67,15 +74,39 @@ Examples:
 
 Examples:
 
-- `Bar geometry <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/bar.ipynb>`__
-- `Identity stat <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/geom_bar_identity.ipynb>`__
-- `Comparisons <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/comparisons.ipynb>`__
-- `General purpose stats <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/general_purpose_stats.ipynb>`__
-- Using scales: `continuous <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/continuous_scales.ipynb>`__, `discrete <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/discrete_scales.ipynb>`__, `identity <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/identity_scales.ipynb>`__, `manual <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/manual_scales.ipynb>`__, `brewer colors <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/brewer_scale.ipynb>`__, `grey-scale colors <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/grey_scale.ipynb>`__
-- `Dodge position <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/dodge_position.ipynb>`__
+- .. extref:: bar_geometry
+      :type: text
+- .. extref:: geom_bar_identity
+      :type: text
+- .. extref:: comparisons
+      :type: text
+- .. extref:: general_purpose_stats
+      :type: text
+- Using scales: |continuous_scales|, |discrete_scales|, |identity_scales|, |manual_scales|, |brewer_scale|, |grey_scale|
+- .. extref:: dodge_position
+      :type: text
+
+.. |brewer_scale| extref:: brewer_scale
+    :type: text
+    :text: brewer colors
+.. |continuous_scales| extref:: continuous_scales
+    :type: text
+    :text: continuous
+.. |discrete_scales| extref:: discrete_scales
+    :type: text
+    :text: discrete
+.. |grey_scale| extref:: grey_scale
+    :type: text
+    :text: grey-scale colors
+.. |identity_scales| extref:: identity_scales
+    :type: text
+    :text: identity
+.. |manual_scales| extref:: manual_scales
+    :type: text
+    :text: manual
 
 
-|as_discrete-icon| Ordering categories, ``as_discrete()``
+|as_discrete-icon| Ordering Categories, ``as_discrete()``
 ---------------------------------------------------------
 
 .. |as_discrete-icon| image:: /_static/images/icons/charts/as_discrete.svg
@@ -86,8 +117,10 @@ Learn more: :ref:`Function as_discrete() <as_discrete>`.
 
 Examples:
 
-- `Guide to ordering <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/ordering_examples.ipynb>`__
-- `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
+- .. extref:: ordering_examples
+      :type: text
+- .. extref:: geom_smooth_matrix
+      :type: text
 
 
 |contours-icon| Contours
@@ -100,9 +133,12 @@ Examples:
 
 Examples:
 
-- `Contours <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/contours.ipynb>`__
-- `How to draw curve fast <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/contours.ipynb>`__
-- `3d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/3_variables.ipynb>`__
+- .. extref:: contours
+      :type: text
+- .. extref:: how_to_draw_curve
+      :type: text
+- .. extref:: 3_variables
+      :type: text
 
 
 |visualization-of-distribution-icon| Visualization of Distribution
@@ -116,10 +152,23 @@ Examples:
 
 Examples:
 
-- `Histogram <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/features/histogram.ipynb>`__
-- `Distributions <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/distributions.ipynb>`__
-- `1d Distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/1d_distributions.ipynb>`__
-- Using scales: `continuous <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/gradient_scale.ipynb>`__, `diverging <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/gradient2_scale.ipynb>`__, `qualitative <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/hue_scale.ipynb>`__
+- .. extref:: histogram_geometry
+      :type: text
+- .. extref:: distributions
+      :type: text
+- .. extref:: 1d_distributions
+      :type: text
+- Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
+
+.. |gradient_scale| extref:: gradient_scale
+      :type: text
+      :text: continuous
+.. |gradient2_scale| extref:: gradient2_scale
+      :type: text
+      :text: diverging
+.. |hue_scale| extref:: hue_scale
+      :type: text
+      :text: qualitative
 
 
 |visualization-of-errors-icon| Visualization of Errors
@@ -134,8 +183,10 @@ Examples:
 
 Examples:
 
-- `Error bars <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/error_bars.ipynb>`__
-- `Comparisons <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/comparisons.ipynb>`__
+- .. extref:: error_bars
+      :type: text
+- .. extref:: comparisons
+      :type: text
 
 
 |smoothing-icon| Smoothing
@@ -147,9 +198,12 @@ Examples:
 
 Examples:
 
-- `Simple linear smoothing <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/simple_linear_smoothing.ipynb>`__
-- `Draw a scatter plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/scatter_plot.ipynb>`__
-- `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
+- .. extref:: simple_linear_smoothing
+      :type: text
+- .. extref:: scatter_plot
+      :type: text
+- .. extref:: geom_smooth_matrix
+      :type: text
 
 
 |bivariate-distribution-icon| Bivariate Distribution
@@ -163,9 +217,12 @@ Examples:
 
 Examples:
 
-- `2d density <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/density_2d.ipynb>`__
-- `General purpose stats <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/general_purpose_stats.ipynb>`__
-- `2d distributions <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/2d_distributions.ipynb>`__
+- .. extref:: density_2d
+      :type: text
+- .. extref:: general_purpose_stats
+      :type: text
+- .. extref:: 2d_distributions
+      :type: text
 
 
 |images-icon| Images
@@ -178,9 +235,13 @@ Examples:
 
 Examples:
 
-- `"Fisher boat" image <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_fisher_boat.ipynb>`__
-- `Simple image matrix <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/basic_image_matrix.ipynb>`__
-- `Image matrix <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/image_matrix.ipynb>`__
+- .. extref:: image_fisher_boat
+      :type: text
+      :text: "Fisher boat" image
+- .. extref:: basic_image_matrix
+      :type: text
+- .. extref:: image_matrix
+      :type: text
 
 
 |facets-icon| Facets
@@ -193,8 +254,10 @@ Examples:
 
 Examples:
 
-- `Facets <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/facets.ipynb>`__
-- `Population mobility and COVID-19 <https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/covid-19_and_mobility.ipynb>`__
+- .. extref:: facets
+      :type: text
+- .. extref:: covid19_and_mobility
+      :type: text
 
 
 |correlation-plot-icon| Correlation Plot
@@ -206,8 +269,10 @@ Examples:
 
 Examples:
 
-- `Simple correlation plot <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/corr_plot.ipynb>`__
-- `Correlation plot <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/correlation_plot.ipynb>`__
+- .. extref:: corr_plot
+      :type: text
+- .. extref:: correlation_plot
+      :type: text
 
 
 |geopandas-icon| GeoPandas Shapes
@@ -236,13 +301,20 @@ Learn more: :ref:`GeoPandas Support <geopandas>`.
 
 Examples:
 
-- `Default theme <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/default_theme.ipynb>`__
-- `Legend and axis <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/legend_and_axis.ipynb>`__
-- `Tooltip customization <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/tooltip_config.ipynb>`__
-- `Comparisons <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/comparisons.ipynb>`__
-- `Legend guide <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/guide_legend.ipynb>`__
-- `Legend place <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/legend_place.ipynb>`__
-- `Title and labels through a scale <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/basics/gog/scale_way.ipynb>`__
+- .. extref:: default_theme
+      :type: text
+- .. extref:: legend_and_axis
+      :type: text
+- .. extref:: tooltip_config
+      :type: text
+- .. extref:: comparisons
+      :type: text
+- .. extref:: guide_legend
+      :type: text
+- .. extref:: legend_place
+      :type: text
+- .. extref:: scale_way
+      :type: text
 
 
 Examples
@@ -252,106 +324,106 @@ Examples
     :container: + preview-gallery
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    |covid19_and_mobility-nbviewer|
+    .. extref:: covid19_and_mobility
 
     ---
-    |delhi_climate-nbviewer|
+    .. extref:: delhi_climate
 
     ---
-    |google_play_store-nbviewer|
+    .. extref:: google_play_store
 
     ---
-    |bayesian_inference-nbviewer|
+    .. extref:: bayesian_inference
 
     ---
-    |nobel-nbviewer|
+    .. extref:: nobel
 
     ---
-    |simple_linear_smoothing-nbviewer|
+    .. extref:: simple_linear_smoothing
 
     ---
-    |jitterdodge_position-nbviewer|
+    .. extref:: jitterdodge_position
 
     ---
-    |stat_corr-nbviewer|
+    .. extref:: stat_corr
 
     ---
-    |nyc_metro-nbviewer|
+    .. extref:: nyc_metro
 
     ---
-    |google_suggestions-nbviewer|
+    .. extref:: google_suggestions
 
     ---
-    |malnutrition-nbviewer|
+    .. extref:: malnutrition
 
     ---
-    |world_coloring-nbviewer|
+    .. extref:: world_coloring
 
     ---
-    |1d_distributions-nbviewer|
+    .. extref:: 1d_distributions
 
     ---
-    |general_purpose_stats-nbviewer|
+    .. extref:: general_purpose_stats
 
     ---
-    |2d_distributions-nbviewer|
+    .. extref:: 2d_distributions
 
     ---
-    |3_variables-nbviewer|
+    .. extref:: 3_variables
 
     ---
-    |kernels_visualization-nbviewer|
+    .. extref:: kernels_visualization
 
     ---
-    |torus-nbviewer|
+    .. extref:: torus
 
     ---
-    |klein_bottle-nbviewer|
+    .. extref:: klein_bottle
 
     ---
-    |mandelbulbs-nbviewer|
+    .. extref:: mandelbulbs
 
     ---
-    |2020-nbviewer|
+    .. extref:: 2020
 
     ---
-    |mosaic_image-nbviewer|
+    .. extref:: mosaic_image
 
     ---
-    |with_clipping-nbviewer|
+    .. extref:: with_clipping
 
     ---
-    |without_clipping-nbviewer|
+    .. extref:: without_clipping
 
     ---
-    |point_geometries-nbviewer|
+    .. extref:: point_geometries
 
     ---
-    |jitter_position-nbviewer|
+    .. extref:: jitter_position
 
     ---
-    |fixed_coordinates-nbviewer|
+    .. extref:: fixed_coordinates
 
     ---
-    |guide_colorbar-nbviewer|
+    .. extref:: guide_colorbar
 
     ---
-    |legend_place-nbviewer|
+    .. extref:: legend_place
 
     ---
-    |log10_scale-nbviewer|
+    .. extref:: log10_scale
 
     ---
-    |shape_manual_scale-nbviewer|
+    .. extref:: shape_manual_scale
 
     ---
-    |size_area_scale-nbviewer|
+    .. extref:: size_area_scale
 
     ---
-    |reversed_scale-nbviewer|
+    .. extref:: reversed_scale
 
     ---
-    |datetime_scale-nbviewer|
+    .. extref:: datetime_scale
 
 .. raw:: html
 

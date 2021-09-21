@@ -5,7 +5,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. include:: /shared/previews.rst
+.. title:: Lets-Plot: open-source plotting library for statistical data
+
 
 .. toctree::
     :glob:
@@ -75,40 +76,38 @@ Quickstart
         geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
         theme(axis_line_y='blank')
 
-.. raw:: html
+.. panels::
+    :container: + lets-plot-platforms
+    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
 
-    <div class="lets-plot-platforms">
-      <div>
-        <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/quickstart.ipynb">
-          <img src="_static/images/logo/jupyter.svg" />
-        </a>
-      </div>
-      <div>
-        <a class="reference external" href="https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA">
-          <img src="_static/images/logo/datalore.svg" />
-        </a>
-      </div>
-      <div>
-        <a class="reference external" href="https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview">
-          <img src="_static/images/logo/pycharm.svg" />
-        </a>
-      </div>
-      <div>
-        <a class="reference external" href="https://www.kaggle.com/alshan/lets-plot-quickstart">
-          <img src="_static/images/logo/kaggle.svg" />
-        </a>
-      </div>
-      <div>
-        <a class="reference external" href="https://colab.research.google.com/drive/1uYYZcG0g0kP4lJdPkpWB8aBS96ioDii2?usp=sharing">
-          <img src="_static/images/logo/colab.svg" />
-        </a>
-      </div>
-      <div>
-        <a class="reference external" href="https://deepnote.com/project/673ea421-638e-469d-8d04-5cc4c6e0258f#%2Fnotebook.ipynb">
-          <img src="_static/images/logo/deepnote.svg" />
-        </a>
-      </div>
-    </div>
+    .. extref:: quickstart
+        :type: logo
+        :ref: nbviewer
+
+    ---
+    .. extref:: quickstart
+        :type: logo
+        :ref: datalore
+
+    ---
+    .. extref:: quickstart
+        :type: logo
+        :ref: sciview
+
+    ---
+    .. extref:: quickstart
+        :type: logo
+        :ref: kaggle
+
+    ---
+    .. extref:: quickstart
+        :type: logo
+        :ref: colab
+
+    ---
+    .. extref:: quickstart
+        :type: logo
+        :ref: deepnote
 
 
 .. _index_meet_gog:

@@ -1,12 +1,15 @@
 .. _as_discrete:
 
+.. title:: Function as_discrete() for ordering numeric data — Lets-Plot
+
+
 Function ``as_discrete()``
 ==========================
 
 The function :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` is used to annotate a numeric data series as categorical data with the possibility of its ordering for the purposes of given visualization.
 
-Hidden Preliminaries
---------------------
+Plot Preliminaries
+------------------
 
 .. jupyter-execute::
 
@@ -100,5 +103,7 @@ Example of ordering for two variables:
 Example Notebooks
 =================
 
-- `Guide to ordering <https://nbviewer.jupyter.org/github/ASmirnov-HORIS/lets-plot-docs/blob/redesign/source/examples/cookbook/ordering_examples.ipynb>`__
-- `Discover trends with smoothing <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geom_smooth.ipynb>`__
+- .. extref:: ordering_examples
+    :type: text
+- .. extref:: geom_smooth_matrix
+    :type: text

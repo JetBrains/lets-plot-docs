@@ -1,5 +1,7 @@
 .. _api:
 
+.. title:: Python API reference for Lets-Plot documentation
+
 :tocdepth: 2
 
 
@@ -11,6 +13,7 @@ Basic Classes
 -------------
 
 .. currentmodule:: lets_plot.plot.core
+
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -20,6 +23,7 @@ Basic Classes
     LayerSpec
 
 .. currentmodule:: lets_plot
+
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -262,6 +266,7 @@ Mapping
 -------
 
 .. currentmodule:: lets_plot.mapping
+
 .. autosummary::
     :toctree: api
 
@@ -347,6 +352,7 @@ Bistro Module
 -------------
 
 .. currentmodule:: lets_plot.bistro.im
+
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -354,6 +360,7 @@ Bistro Module
     image_matrix
 
 .. currentmodule:: lets_plot.bistro.corr
+
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -365,6 +372,7 @@ Geospatial
 ----------
 
 .. currentmodule:: lets_plot.geo_data
+
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -380,6 +388,7 @@ Geospatial
     distance
 
 .. currentmodule:: lets_plot
+
 .. autosummary::
     :toctree: api
     :template: base.rst
@@ -389,6 +398,7 @@ Geospatial
     maptiles_solid
 
 .. currentmodule:: lets_plot.tilesets
+
 .. autosummary::
     :toctree: api
     :template: data.rst
