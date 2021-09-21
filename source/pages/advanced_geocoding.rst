@@ -110,28 +110,34 @@ Examples
 
 .. |geocoding_examples| extref:: geocoding_examples
     :type: logo
+    :height: 20
 
 -  Mapping US Household Income: |mapping_us_household_income|
 
 .. |mapping_us_household_income| extref:: mapping_us_household_income
     :type: logo
+    :height: 20
 
 -  Geocoding the US counties: |map_us_household_income|
 
 .. |map_us_household_income| extref:: map_us_household_income
     :type: logo
+    :height: 20
 
 -  Visualization of the Titanic's voyage: |titanic-datalore| |titanic-kaggle| |titanic-colab|
 
 .. |titanic-datalore| extref:: titanic
     :ref: datalore
     :type: logo
+    :height: 20
 .. |titanic-kaggle| extref:: titanic
     :ref: kaggle
     :type: logo
+    :height: 20
 .. |titanic-colab| extref:: titanic
     :ref: colab
     :type: logo
+    :height: 20
 
 .. image:: /_static/images/map_titanic.png
     :width: 547px
@@ -142,6 +148,7 @@ Examples
 
 .. |map_airports| extref:: map_airports
     :type: logo
+    :height: 20
 
 .. image:: /_static/images/map_airports.png
     :width: 547px

@@ -112,16 +112,19 @@ Examples
 
 .. |geopandas_naturalearth| extref:: geopandas_naturalearth
     :type: logo
+    :height: 20
 
 - Plotting Airbnb prices Boston: |plotting_airbnb_prices_boston|
 
 .. |plotting_airbnb_prices_boston| extref:: plotting_airbnb_prices_boston
     :type: logo
+    :height: 20
 
 - An **inset map** of Kotlin island: |geopandas_kotlin_isl|
 
 .. |geopandas_kotlin_isl| extref:: geopandas_kotlin_isl
     :type: logo
+    :height: 20
 
 .. image:: /_static/images/kotlin_island.png
     :width: 480px

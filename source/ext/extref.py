@@ -14,7 +14,6 @@ from docutils.parsers.rst import Directive, directives
 REF_TYPES = ('image', 'logo', 'text')
 IMAGES_DIR = "_extref_images"
 LOGO_DIR = "logo"
-LOGO_SIZE = 20
 
 class ExtRefDirective(Directive):
     has_content = True
@@ -24,6 +23,8 @@ class ExtRefDirective(Directive):
         'url': directives.uri,
         'image': directives.unchanged,
         'text': directives.unchanged,
+        'width': directives.positive_int,
+        'height': directives.positive_int,
     }
 
     def run(self):
@@ -65,22 +66,21 @@ class ExtRefDirective(Directive):
 
     def _content(self):
         if self._type() == 'image':
-            return self._image_tag()
+            return self._image()
         if self._type() == 'logo':
-            return self._logo_tag()
+            return self._logo()
         return self._text()
 
-    def _image_tag(self):
-        image_src_path = self._image_src()
+    def _image(self):
+        image_src_path = self._image_src_path()
         image_src_fullpath = os.path.join(self._env().app.srcdir, image_src_path)
         image_doc_path = os.path.join(self._env().config['extref_images_dir'], os.path.basename(image_src_path))
         image_doc_fullpath = os.path.join(self._env().app.outdir, image_doc_path)
         if not os.path.isfile(image_doc_fullpath):
             shutil.copy(image_src_fullpath, image_doc_fullpath)
-        doc_dir = os.path.dirname(self.state.document.attributes['source'].replace(self._env().app.srcdir, ''))[1:]
-        return '<img alt="{0}" src="{1}"/>'.format(self._alt(), os.path.relpath(image_doc_path, doc_dir))
+        return self._image_tag(image_doc_path)
 
-    def _image_src(self):
+    def _image_src_path(self):
         conf_image = self._conf()['image']
         if 'image' in self.options.keys():
             return conf_image[self.options['image']]
@@ -92,15 +92,29 @@ class ExtRefDirective(Directive):
     def _alt(self):
         return self._text()
 
-    def _logo_tag(self):
+    def _logo(self):
         logo_fullpath = next((path for name, path in self._env().config['extref_logo_images'].items() if name in self._href()), None)
         if not logo_fullpath:
             raise ValueError("There is no appropriate logo for url {0}".format(self._href()))
         logo_path = logo_fullpath.replace(self._env().app.outdir, '')[1:]
+        return self._image_tag(logo_path)
+
+    def _image_tag(self, image_path):
         doc_dir = os.path.dirname(self.state.document.attributes['source'].replace(self._env().app.srcdir, ''))[1:]
-        return '<img alt="{0}" src="{1}" width="{2}" height="{2}"/>'.format(
-            self._alt(), os.path.relpath(logo_path, doc_dir), LOGO_SIZE
+        return '<img alt="{0}" src="{1}"{2}{3}/>'.format(
+            self._alt(), os.path.relpath(image_path, doc_dir),
+            self._width_tag_option(), self._height_tag_option()
         )
+
+    def _width_tag_option(self):
+        if 'width' in self.options.keys():
+            return ' width="{0}"'.format(self.options['width'])
+        return ""
+
+    def _height_tag_option(self):
+        if 'height' in self.options.keys():
+            return ' height="{0}"'.format(self.options['height'])
+        return ""
 
     def _text(self):
         if 'text' in self.options.keys():

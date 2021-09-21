@@ -366,3 +366,4 @@ Example Notebooks
 
 .. |map_airports| extref:: map_airports
     :type: logo
+    :height: 20
