@@ -8,17 +8,14 @@ import pytest
 import requests
 from bs4 import BeautifulSoup
 
+from .generator import generate_pages
+
+BUILD_DIR = "docs"
+
 checked_external_links = set()
 
-def generate_pages():
-    BUILD_DIR = "docs"
-    for root, directories, filenames in os.walk(BUILD_DIR):
-        for filename in filenames:
-            if filename.split('.')[-1] == "html":
-                yield os.path.join(root, filename)
-
 def generate_links():
-    for page in generate_pages():
+    for page in generate_pages(BUILD_DIR):
         with codecs.open(page, 'r', 'utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
