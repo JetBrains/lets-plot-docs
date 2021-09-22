@@ -377,14 +377,12 @@ Geospatial
     :toctree: api
     :template: base.rst
 
-    ReverseGeocoder
     NamesGeocoder
     geocode
     geocode_cities
     geocode_counties
     geocode_states
     geocode_countries
-    reverse_geocode
     distance
 
 .. currentmodule:: lets_plot

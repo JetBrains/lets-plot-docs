@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+import os
 import inspect
 import codecs
 import warnings
 
+import pytest
 from bs4 import BeautifulSoup
 
 import lets_plot as lp
@@ -11,9 +13,23 @@ from lets_plot.bistro.im import *
 from lets_plot.bistro.corr import *
 from lets_plot.geo_data import *
 
-def test_page_api():
+from .parser import page_parser
+from .lets_plot_errors import check_lets_plot_message_errors
+
+def generate_api_pages():
+    API_PAGES_DIR = "docs/pages/api"
+    for page in os.listdir(API_PAGES_DIR):
+        if page.split('.')[-1] == "html":
+            yield os.path.join(API_PAGES_DIR, page)
+
+@pytest.mark.parametrize(('page'), generate_api_pages())
+def test_api_example(page):
+    with page_parser(page) as (parser, parser_type):
+        check_lets_plot_message_errors(parser, parser_type, page, warn_only=False)
+
+def test_api_list():
     API_EXPECTED_EXTRA = {
-        "FeatureSpec", "PlotSpec", "LayerSpec", "NamesGeocoder", "ReverseGeocoder",
+        "FeatureSpec", "PlotSpec", "LayerSpec", "NamesGeocoder",
         "as_discrete",
         "LETS_PLOT_COLOR", "LETS_PLOT_LIGHT", "LETS_PLOT_DARK",
         "SOLID", "OSM", "OPEN_TOPO_MAP",
