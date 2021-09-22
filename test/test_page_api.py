@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import os
 import inspect
 import codecs
 import warnings
@@ -14,15 +13,12 @@ from lets_plot.bistro.corr import *
 from lets_plot.geo_data import *
 
 from .parser import page_parser
+from .generator import generate_pages
 from .lets_plot_errors import check_lets_plot_message_errors
 
-def generate_api_pages():
-    API_PAGES_DIR = "docs/pages/api"
-    for page in os.listdir(API_PAGES_DIR):
-        if page.split('.')[-1] == "html":
-            yield os.path.join(API_PAGES_DIR, page)
+API_PAGES_DIR = "docs/pages/api"
 
-@pytest.mark.parametrize(('page'), generate_api_pages())
+@pytest.mark.parametrize(('page'), generate_pages(API_PAGES_DIR))
 def test_api_example(page):
     with page_parser(page) as (parser, parser_type):
         check_lets_plot_message_errors(parser, parser_type, page, warn_only=False)
