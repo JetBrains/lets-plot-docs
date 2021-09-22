@@ -1,17 +1,20 @@
 ﻿.. _formats:
 
+.. title:: Formatting values in Lets-Plot
+
+
 Formatting
 ==========
 
 Formatting provides the ability to do complex variable substitutions and value formatting.
 
 
-- :ref:`Number format <formats_number_format>`
+- :ref:`Number Format <formats_number_format>`
 
   - :ref:`Examples <formats_examples_number_format>`
 
-- :ref:`String template <formats_string_template>`
-- :ref:`Date and time format <formats_datetime>`
+- :ref:`String Template <formats_string_template>`
+- :ref:`Date and Time Format <formats_datetime>`
 
   - :ref:`Examples <formats_examples_datetime>`
 
@@ -23,7 +26,7 @@ Formatting provides the ability to do complex variable substitutions and value f
 
 .. _formats_number_format:
 
-Number format
+Number Format
 -------------
 
 The numeric format strings are used to format common numeric types. 
@@ -136,7 +139,7 @@ Some other examples:
 
 .. _formats_string_template:
 
-String template
+String Template
 ---------------
 
 The number format can be used in a template to create a string with variable substitution.
@@ -150,7 +153,7 @@ See: :ref:`Tooltip Customization in Lets-Plot <tooltips>`.
 
 .. _formats_datetime:
 
-Date and time format
+Date and Time Format
 --------------------
 
 Provides formats for date and time values.
@@ -230,4 +233,5 @@ In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customi
 Demo Notebooks
 --------------
 
-- `The label_format parameter in geom_text() <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/label_format.ipynb>`__
+- .. extref:: label_format
+      :type: text

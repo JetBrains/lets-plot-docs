@@ -1,5 +1,8 @@
 .. _advanced_geocoding:
 
+.. title:: Advanced geocoding — Lets-Plot documentation
+
+
 Advanced Geocoding
 ==================
 
@@ -22,7 +25,7 @@ Advanced Geocoding
       - :ref:`closest_to <geocoding_where_closest_to>`
       - :ref:`scope <geocoding_where_scope>`
 
-  - :ref:`Working with plot <geocoding_working_with_plot>`
+  - :ref:`Working with Plots <geocoding_working_with_plot>`
 
     - :ref:`Plotting a GeoDataFrame <geocoding_plot_gdf>`
     - :ref:`Plotting a Geocoder <geocoding_plot_geocoder>`
@@ -103,53 +106,54 @@ Note that an internet connection is required to execute geocoding queries.
 Examples
 --------
 
--  Various geocoding cases with maps: `geocoding_examples.ipynb <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_examples.ipynb>`__
+-  Various geocoding cases with maps: |geocoding_examples|
 
--  Mapping US Household Income: |us_household_income_kaggle|
+.. |geocoding_examples| extref:: geocoding_examples
+    :type: logo
+    :height: 20
 
-.. |us_household_income_kaggle| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg
-    :width: 20px
-    :height: 20px
-    :alt: View at Kaggle
-    :target: https://www.kaggle.com/alshan/mapping-us-household-income
+-  Mapping US Household Income: |mapping_us_household_income|
 
--  Geocoding the US counties: `map_US_household_income.ipynb <https://datalore.jetbrains.com/view/notebook/18vW14MKvPqWBIedhsrrSQ>`__
+.. |mapping_us_household_income| extref:: mapping_us_household_income
+    :type: logo
+    :height: 20
 
--  Visualization of the Titanic's voyage: |titanic_voyage_datalore| |titanic_voyage_kaggle| |titanic_voyage_colab|
+-  Geocoding the US counties: |map_us_household_income|
+
+.. |map_us_household_income| extref:: map_us_household_income
+    :type: logo
+    :height: 20
+
+-  Visualization of the Titanic's voyage: |titanic-datalore| |titanic-kaggle| |titanic-colab|
+
+.. |titanic-datalore| extref:: titanic
+    :ref: datalore
+    :type: logo
+    :height: 20
+.. |titanic-kaggle| extref:: titanic
+    :ref: kaggle
+    :type: logo
+    :height: 20
+.. |titanic-colab| extref:: titanic
+    :ref: colab
+    :type: logo
+    :height: 20
 
 .. image:: /_static/images/map_titanic.png
     :width: 547px
     :height: 197px
     :alt: Couldn't load map_titanic.png
 
-.. |titanic_voyage_datalore| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_datalore.svg
-    :width: 20px
-    :height: 20px
-    :alt: View in Datalore
-    :target: https://datalore.jetbrains.com/view/notebook/c9z45DyqjHuYikaD2ikcVt
-.. |titanic_voyage_kaggle| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg
-    :width: 20px
-    :height: 20px
-    :alt: View at Kaggle
-    :target: https://www.kaggle.com/alshan/visualization-of-the-titanic-s-voyage
-.. |titanic_voyage_colab| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_colab.svg
-    :width: 20px
-    :height: 20px
-    :alt: View at Colab
-    :target: https://colab.research.google.com/drive/1PerUfSCyStcbnlXnxBj-JVI25-cXB_N5?usp=sharing
+-  Visualization of Airport Data on Map: |map_airports|
 
--  Visualization of Airport Data on Map: |airport_data_kaggle|
+.. |map_airports| extref:: map_airports
+    :type: logo
+    :height: 20
 
 .. image:: /_static/images/map_airports.png
     :width: 547px
     :height: 311px
     :alt: Couldn't load map_airports.png
-
-.. |airport_data_kaggle| image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/logo_kaggle.svg
-    :width: 20px
-    :height: 20px
-    :alt: View at Kaggle
-    :target: https://www.kaggle.com/alshan/visualization-of-airport-data-on-map
 
 
 .. _geocoding_reference:
@@ -157,7 +161,11 @@ Examples
 Reference
 ---------
 
-The `'geocoding_reference' <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geocoding_reference.ipynb>`__ notebook contains a demonstration code covering use-cases presented in this section.
+The |geocoding_reference| notebook contains a demonstration code covering use-cases presented in this section.
+
+.. |geocoding_reference| extref:: geocoding_reference
+    :type: text
+    :text: geocoding_reference.ipynb
 
 
 .. _geocoding_levels:
@@ -257,7 +265,7 @@ Typical use-case: all of names belong to the same parent.
 
 .. _geocoding_fetch_all:
 
-Fetch all
+Fetch All
 ~~~~~~~~~
 
 It is possible to fetch all objects within parent - just do not set the ``names`` parameter.
@@ -418,7 +426,7 @@ Note that bbox of the polygon will be used:
 
 .. _geocoding_working_with_plot:
 
-Working with plots
+Working with Plots
 ~~~~~~~~~~~~~~~~~~
 
 
@@ -427,7 +435,14 @@ Working with plots
 Plotting a ``GeoDataFrame``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``get_xxx()`` functions return GeoDataFrame which can be used as ``data`` or ``map`` parameter (see `this <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_naturalearth.ipynb>`__ or `this <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/examples/jupyter-notebooks/geopandas_kotlin_isl.ipynb>`__).
+``get_xxx()`` functions return GeoDataFrame which can be used as ``data`` or ``map`` parameter (see |geopandas_naturalearth| or |geopandas_kotlin_isl|).
+
+.. |geopandas_naturalearth| extref:: geopandas_naturalearth
+    :type: text
+    :text: this
+.. |geopandas_kotlin_isl| extref:: geopandas_kotlin_isl
+    :type: text
+    :text: this
 
 .. jupyter-execute::
     :linenos:

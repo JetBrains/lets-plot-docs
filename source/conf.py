@@ -42,7 +42,17 @@ extensions = [
 ]
 
 cname_url = "lets-plot.org"
+
 extref_conf = "extref_conf.json"
+extref_logo_images = {
+    'colab': "_static/images/logo/colab.svg",
+    'datalore': "_static/images/logo/datalore.svg",
+    'deepnote': "_static/images/logo/deepnote.svg",
+    'kaggle': "_static/images/logo/kaggle.svg",
+    'nbviewer': "_static/images/logo/jupyter.svg",
+    'sciview': "_static/images/logo/pycharm.svg",
+}
+extref_default_image = "square"
 
 # TODO: Update all references and remove this as soon as possible
 redirects = {
@@ -87,6 +97,7 @@ html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_show_sourcelink = False
 # TODO: html_favicon = "_static/images/favicon.ico"
+html_title = ""
 
 html_theme_options = {
     'navbar_title': 'Lets-Plot',
