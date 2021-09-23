@@ -170,14 +170,6 @@ Rectangles
     Cuba bounding box with cities
 
 
-Reverse Geocoding
------------------
-
-:py:mod:`reverse_geocode() <lets_plot.geo_data.reverse_geocode>`
-
-Reverse geocoding is the process of converting geographic coordinates into a :py:mod:`Geocoder <lets_plot.geo_data.ReverseGeocoder>` object.
-
-
 Guides to Geocoding
 -------------------
 
