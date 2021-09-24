@@ -190,7 +190,7 @@ PyCharm
 
 Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__ plugin.
 
-.. image:: https://raw.githubusercontent.com/JetBrains/lets-plot/master/docs/examples/images/pycharm_map_fr_low_65.gif
+.. image:: /_static/images/pycharm_map_fr_low_65.gif
 
 
 GeoPandas Shapes

@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   addLinkToPyPI();
   addLinkToGitHub();
-  handlePreviewsSliders();
-  handlePreviewsPickers();
   fixPanels();
   addTargetToExternalReferences();
   handlePreviewGallery();
@@ -30,70 +28,6 @@ function addLinkToGitHub() {
   linkElem.classList.add("navbar-brand", "reference", "external");
   linkElem.appendChild(logoElem);
   document.querySelector("#navbar .navbar-header").appendChild(linkElem);
-}
-
-function handlePreviewsSliders() {
-  if (document.getElementsByClassName('previews-slider-window').length == 0) return;
-  const psWindows = document.getElementsByClassName('previews-slider-window');
-  for (let i = 0; i < psWindows.length; i++) {
-    const psWindow = psWindows[i];
-    const psId = Array.from(psWindow.classList).find((className) => className.indexOf("id-") == 0);
-    const psContent = document.getElementsByClassName(`previews-slider-content ${psId}`)[0];
-    handlePreviewsSlider(psWindow, psContent);
-  }
-}
-
-function handlePreviewsSlider(psWindow, psContent) {
-  if (psWindow.getElementsByClassName('reference').length < 3) return;
-  const btnLeft = psWindow.getElementsByClassName('reference')[0];
-  const nbLinkElem = psWindow.getElementsByClassName('reference')[1];
-  const nbImgElem = nbLinkElem.getElementsByTagName('img')[0];
-  const btnRight = psWindow.getElementsByClassName('reference')[2];
-  const previews = psContent.getElementsByClassName('d-flex');
-  const previewsCount = previews.length;
-  let currentPreviewId = 0;
-  const onClick = function (event, direction) {
-    event.preventDefault();
-    if (previewsCount < 2) return;
-    currentPreviewId = (previewsCount + currentPreviewId + direction) % previewsCount;
-    const previewLinkElem = previews[currentPreviewId].getElementsByClassName('reference')[0];
-    const previewImgElem = previewLinkElem.getElementsByTagName('img')[0];
-    nbImgElem.setAttribute('src', previewImgElem.getAttribute('src').replace('.png', '_4x3.png'));
-    nbLinkElem.setAttribute('href', previewLinkElem.getAttribute('href'));
-  }
-  btnLeft.onclick = (event) => onClick(event, -1);
-  btnRight.onclick = (event) => onClick(event, 1);
-}
-
-function handlePreviewsPickers() {
-  if (document.getElementsByClassName('previews-picker-window').length == 0) return;
-  const ppWindows = document.getElementsByClassName('previews-picker-window');
-  for (let i = 0; i < ppWindows.length; i++) {
-    const ppWindow = ppWindows[i];
-    const ppId = Array.from(ppWindow.classList).find((className) => className.indexOf("id-") == 0);
-    const ppContent = document.getElementsByClassName(`previews-picker-content ${ppId}`)[0];
-    handlePreviewsPicker(ppWindow, ppContent);
-  }
-}
-
-function handlePreviewsPicker(ppWindow, ppContent) {
-  const nbLinkElem = ppWindow.getElementsByClassName('reference')[0];
-  const nbImgElem = nbLinkElem.getElementsByTagName('img')[0];
-  const titleElem = ppWindow.getElementsByClassName('card-header')[0].getElementsByTagName('p')[0];
-  const previewsImgElems = ppContent.getElementsByTagName('img');
-  const previewsLinkElems = ppContent.getElementsByClassName('reference');
-  const onClick = function (event) {
-    event.preventDefault();
-    // Place for changing image from preview to big size
-    nbImgElem.setAttribute('src', event.target.getAttribute('src'));
-    nbLinkElem.setAttribute('href', event.currentTarget.getAttribute('href'));
-    titleElem.innerHTML = event.target.getAttribute('title');
-  }
-  for (let i = 0; i < previewsImgElems.length; i++)
-    if (previewsImgElems[i].getAttribute('alt'))
-      previewsImgElems[i].setAttribute('title', previewsImgElems[i].getAttribute('alt'));
-  for (let i = 0; i < previewsLinkElems.length; i++)
-    previewsLinkElems[i].onclick = onClick;
 }
 
 function fixPanels() {

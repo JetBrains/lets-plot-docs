@@ -10,13 +10,13 @@ All commands should be run from the repository root.
 1. Create conda environment `lets-plot-docs` from file environment.yml:
 
     ```bash
-    conda env create --file ./environment.yml
+    conda env create --file .binder/environment.yml
     ```
 
     If you already have this environment or environment.yml has been changed, you need to update the environment. In that case, run:
 
     ```bash
-    conda env update --name lets-plot-docs --file ./environment.yml --prune
+    conda env update --name lets-plot-docs --file .binder/environment.yml --prune
     ```
 
 2. Activate this environment:
@@ -31,21 +31,15 @@ All commands should be run from the repository root.
     conda install m2w64-toolchain
     ```
 
-4. Install Lets-Plot Python package:
+4. Build documentation (HTML):
 
     ```bash
-    pip install lets-plot
+    sphinx-build -b html source docs
     ```
 
-5. Build documentation (HTML):
+5. Check docs/index.html in your browser.
 
-    ```bash
-    sphinx-build -b html ./source ./docs
-    ```
-
-6. Check docs/index.html in your browser.
-
-7. Commit and push new changes.
+6. Commit and push new changes.
 
 <a id="testing"></a>
 ## Testing
