@@ -47,6 +47,7 @@ extref_conf = "extref_conf.json"
 extref_logo_images = {
     'colab': "_static/images/logo/colab.svg",
     'datalore': "_static/images/logo/datalore.svg",
+    'dataspell': "_static/images/logo/dataspell.png",
     'deepnote': "_static/images/logo/deepnote.svg",
     'kaggle': "_static/images/logo/kaggle.svg",
     'nbviewer': "_static/images/logo/jupyter.svg",
