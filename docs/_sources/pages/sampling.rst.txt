@@ -1,5 +1,7 @@
 .. _sampling:
 
+:orphan:
+
 .. title:: Sampling in Lets-Plot
 
 

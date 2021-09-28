@@ -1,5 +1,7 @@
 ﻿.. _tooltips:
 
+:orphan:
+
 .. title:: Tooltip customization in Lets-Plot
 
 

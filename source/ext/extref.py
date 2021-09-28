@@ -3,6 +3,172 @@
 # Use of this source code is governed by the MIT license that can be found in the LICENSE file.
 #
 
+"""A sphinx extension for inserting references in two formats - image or text.
+
+The ``extref`` directive do the all job.
+
+For example:
+
+.. code-block:: rst
+
+    .. extref:: name
+        :type: image
+        :url: https://example.com
+        :image: default
+        :width: 400
+
+It approximately translates to the following html:
+
+.. code-block:: html
+
+    <a class="reference external image-reference" href="https://example.com">
+        <img alt="default-text" src="default-image" width="400">
+    </a>
+
+Here ``alt`` and ``src`` values comes from the JSON configuration file, and they implicitly specified by the ``name`` value.
+The first one is given by default, the second is defined through the ``:image:`` option.
+
+Configuration
+-------------
+In your configuration file add ``extref`` to your extensions list, e.g.:
+
+.. code-block:: python
+
+    extensions = [
+        ...
+        'extref',
+        ...
+    ]
+
+The extension provides the following configuration values:
+
+- ``extref_conf`` : str
+    Path to the JSON configuration file with parameters variety for each reference.
+    The structure is the following: {"name1": options, "name2": options, ...}.
+    Here for each named reference there is a standard bunch of options that is described below in the "JSON Options" section.
+    The name of the reference connects directive with this options.
+- ``extref_images_dir`` : str
+    Path to the output directory with images inside the documentation site.
+- ``extref_logo_images`` : dict
+    For each ``:ref:`` value that is used to be a logo it should be specified the path to the corresponding logo image.
+- ``extref_default_type`` : {'image', 'logo', 'text'}
+    Default ``:type:`` value if it is not specified.
+- ``extref_default_ref`` : str
+    Default ``:ref:`` value if it is not specified.
+- ``extref_default_image`` : str
+    Default ``:image:`` value if it is not specified.
+
+JSON Options
+------------
+- ``ref`` :
+    Dictionary of pairs ``"ref_type": "url"``.
+    ``:ref: ref_type`` in the reStructuredText means ``href="url"`` in html.
+    By default, if ``:ref:`` option and ``extref_default_ref`` config value are not specified, used the first reference among all.
+- ``image`` :
+    Dictionary of pairs ``"img_type": "path"``.
+    ``:image: img_type`` in the reStructuredText means ``src="path"`` in html, if reference type is image.
+    By default, if ``:image:`` option and ``extref_default_image`` config value are not specified, used the first image among all.
+- ``text`` :
+    String with default text value.
+    In html it means ``<a ...>text</a>`` when reference type is text and ``alt="text"`` in other cases.
+    Used when ``:text:`` option is not specified.
+
+Directive Options
+-----------------
+- ``type`` :
+    Should be the one of the three types of references: text, image, logo.
+- ``ref`` :
+    Reference type from the JSON configuration file.
+- ``url`` :
+    Explicit url for the reference, that used instead of the ``:ref:`` option.
+- ``image`` :
+    Image type from the JSON configuration file.
+- ``text`` :
+    Explicit text for the reference.
+- ``width`` :
+    Width of the image if the ``:type:`` value is image or logo.
+- ``height`` :
+    Height of the image if the ``:type:`` value is image or logo.
+
+Examples
+--------
+Suppose that ``extref_logo_images`` configuration value is the following:
+
+.. code-block:: python
+
+    extref_logo_images = {
+        ...
+        'kaggle': "_static/images/kaggle.svg",
+        ...
+    }
+
+Suppose that JSON configuration file is the following:
+
+.. code-block:: javascript
+
+    {
+        ...
+        "example1": {
+            "ref": {
+                "nbviewer": "https://nbviewer.jupyter.org/github/Example/example/blob/master/example/example.ipynb",
+                "kaggle": "https://www.kaggle.com/example/example"
+            },
+            "image": {
+                "default": "_static/images/example1.png"
+            },
+            "text": "My Example"
+        }
+        ...
+    }
+
+Then
+
+.. code-block:: rst
+
+    .. extref:: example1
+
+gives the following html:
+
+.. code-block:: html
+
+    <a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/Example/example/blob/master/example/example.ipynb">
+        <img alt="My Example" src="_static/images/example1.png">
+    </a>
+
+The code
+
+.. code-block:: rst
+
+    .. extref:: example1
+        :type: logo
+        :ref: kaggle
+
+gives the following html:
+
+.. code-block:: html
+
+    <a class="reference external image-reference" href="https://www.kaggle.com/example/example">
+        <img alt="My Example" src="_static/images/kaggle.svg">
+    </a>
+
+The code
+
+.. code-block:: rst
+
+    .. extref:: example1
+        :type: text
+        :url: https://example.com
+
+gives the following html:
+
+.. code-block:: html
+
+    <a class="reference external" href="https://example.com">
+        My Example
+    </a>
+
+"""
+
 import os
 import json
 import shutil
@@ -48,13 +214,18 @@ class ExtRefDirective(Directive):
     def _href(self):
         if 'url' in self.options.keys():
             return self.options['url']
-        conf_ref = self._conf()['ref']
+        return self._ref()
+
+    def _ref(self):
+        return self._conf()['ref'][self._ref_type()]
+
+    def _ref_type(self):
         if 'ref' in self.options.keys():
-            return conf_ref[self.options['ref']]
+            return self.options['ref']
         if 'extref_default_ref' in self._env().config and \
-           self._env().config['extref_default_ref'] in conf_ref:
-            return conf_ref[self._env().config['extref_default_ref']]
-        return conf_ref[list(conf_ref)[0]]
+           self._env().config['extref_default_ref'] in self._conf()['ref']:
+            return self._env().config['extref_default_ref']
+        return list(self._conf()['ref'])[0]
 
     def _class(self):
         if self._type() in ['image', 'logo']:
@@ -93,9 +264,10 @@ class ExtRefDirective(Directive):
         return self._text()
 
     def _logo(self):
-        logo_fullpath = next((path for name, path in self._env().config['extref_logo_images'].items() if name in self._href()), None)
+        logo_fullpath = next((path for name, path in self._env().config['extref_logo_images'].items() \
+                                                  if name == self._ref_type()), None)
         if not logo_fullpath:
-            raise ValueError("There is no appropriate logo for url {0}".format(self._href()))
+            raise ValueError("There is no appropriate logo for the reference {0}".format(self._ref_type()))
         logo_path = logo_fullpath.replace(self._env().app.outdir, '')[1:]
         return self._image_tag(logo_path)
 
@@ -160,17 +332,17 @@ def prepare_logo(app, config):
         config.extref_logo_images = extref_logo_images
 
 def setup(app):
-    app.add_config_value('extref_conf', None, 'html') # Path to JSON file with references
-    app.add_config_value('extref_logo_images', None, 'html') # Dict of the correspondences between logo names and logo images
-    app.add_config_value('extref_images_dir', IMAGES_DIR, 'html') # Name of the directory with images in the builded documentation
-    app.add_config_value('extref_default_type', REF_TYPES[0], 'html') # Type of the reference by default (if :type: parameter is not specified)
-    app.add_config_value('extref_default_ref', None, 'html') # Name of the reference by default (if :url: and :ref: parameters are not specified)
-    app.add_config_value('extref_default_image', None, 'html') # Name of the image by default (if :image: parameter is not specified)
+    app.add_config_value('extref_conf', None, 'html')
+    app.add_config_value('extref_logo_images', None, 'html')
+    app.add_config_value('extref_images_dir', IMAGES_DIR, 'html')
+    app.add_config_value('extref_default_type', REF_TYPES[0], 'html')
+    app.add_config_value('extref_default_ref', None, 'html')
+    app.add_config_value('extref_default_image', None, 'html')
 
     app.add_directive('extref', ExtRefDirective)
 
     app.connect('config-inited', config_inited_handler)
 
     return {
-        'version': '0.1',
+        'version': '0.2',
     }

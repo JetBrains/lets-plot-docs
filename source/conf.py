@@ -36,7 +36,6 @@ extensions = [
     'sphinx.ext.githubpages',
     'jupyter_sphinx',
     'sphinx_panels',
-    'sphinx_reredirects',
     'create_cname',
     'extref',
 ]
@@ -47,19 +46,13 @@ extref_conf = "extref_conf.json"
 extref_logo_images = {
     'colab': "_static/images/logo/colab.svg",
     'datalore': "_static/images/logo/datalore.svg",
+    'dataspell': "_static/images/logo/dataspell.png",
     'deepnote': "_static/images/logo/deepnote.svg",
     'kaggle': "_static/images/logo/kaggle.svg",
     'nbviewer': "_static/images/logo/jupyter.svg",
-    'sciview': "_static/images/logo/pycharm.svg",
+    'pycharm': "_static/images/logo/pycharm.svg",
 }
-extref_default_image = "square"
-
-# TODO: Update all references and remove this as soon as possible
-redirects = {
-    "pages/features/formats": "https://{0}/pages/formats.html".format(cname_url),
-    "pages/features/sampling": "https://{0}/pages/sampling.html".format(cname_url),
-    "pages/features/tooltips": "https://{0}/pages/tooltips.html".format(cname_url),
-}
+extref_default_image = 'square'
 
 autodoc_default_options = {
     'member-order': 'bysource',

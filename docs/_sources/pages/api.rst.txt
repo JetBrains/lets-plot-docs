@@ -1,5 +1,7 @@
 .. _api:
 
+:orphan:
+
 .. title:: Python API reference for Lets-Plot documentation
 
 :tocdepth: 2
