@@ -1,5 +1,7 @@
 .. _as_discrete:
 
+:orphan:
+
 .. title:: Function as_discrete() for ordering numeric data — Lets-Plot
 
 

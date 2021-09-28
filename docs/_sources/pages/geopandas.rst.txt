@@ -1,5 +1,7 @@
 .. _geopandas:
 
+:orphan:
+
 .. title:: GeoPandas support in Lets-Plot
 
 

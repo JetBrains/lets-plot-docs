@@ -1,5 +1,7 @@
 .. _advanced_geocoding:
 
+:orphan:
+
 .. title:: Advanced geocoding — Lets-Plot documentation
 
 
@@ -59,8 +61,7 @@ The core class is ``Geocoder``. There is a function's family for constructing th
     from lets_plot.geo_data import *
     countries = geocode_countries(['usa', 'canada'])
 
-| Note that actual geocoding process is not executing here, it starts when any ``get_xxx()`` function is called.
-We will use in examples function ``get_geocodes()`` which returns ``DataFrame`` with metadata.
+| Note that actual geocoding process is not executing here, it starts when any ``get_xxx()`` function is called. We will use in examples function ``get_geocodes()`` which returns ``DataFrame`` with metadata.
 
 Let us geocode countries. This code returns the ``DataFrame`` object containing internal IDs for Canada and the US:
 
@@ -90,9 +91,7 @@ For example, this sample returns the ``DataFrame`` object containing IDs of all 
         .where('warwick', closest_to=boston_us) \
         .get_geocodes()
 
-| Once the ``Geocoder`` object is available, it can be passed to any *Lets-Plot* geom supporting the ``map`` parameter.
-``map`` parameter can be used to simply :ref:`draw a GeoDataFrame <geocoding_plot_gdf>` or to :ref:`draw a Geocoder <geocoding_plot_geocoder>`.
-For more complex plots parameter :ref:`map_join <geocoding_join>` can be used to map data to geometries.
+| Once the ``Geocoder`` object is available, it can be passed to any *Lets-Plot* geom supporting the ``map`` parameter. ``map`` parameter can be used to simply :ref:`draw a GeoDataFrame <geocoding_plot_gdf>` or to :ref:`draw a Geocoder <geocoding_plot_geocoder>`. For more complex plots parameter :ref:`map_join <geocoding_join>` can be used to map data to geometries.
 
 If necessary, the ``Geocoder`` object can be transformed to a geopandas ``GeoDataFrame`` using one of ``get_centroids()``, ``get_boundaries()``, or ``get_limits()`` methods.
 

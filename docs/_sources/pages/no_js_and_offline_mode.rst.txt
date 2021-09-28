@@ -1,5 +1,7 @@
 .. _no_js_and_offline_mode:
 
+:orphan:
+
 .. title:: 'No Javascript' mode LetsPlot.setup_html()
 
 
