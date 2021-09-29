@@ -1,5 +1,7 @@
 .. _basemap_tiles:
 
+:orphan:
+
 .. title:: Configuring basemap tiles for interactive maps — Lets-Plot
 
 

@@ -1,5 +1,7 @@
 ﻿.. _formats:
 
+:orphan:
+
 .. title:: Formatting values in Lets-Plot
 
 
