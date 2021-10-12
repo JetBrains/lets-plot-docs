@@ -76,33 +76,28 @@ Quickstart
 
 .. panels::
     :container: + lets-plot-platforms
-    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-12 col-md-4 col-sm-6 col-xs-12 p-2
 
     .. extref:: quickstart
         :type: logo
         :ref: nbviewer
 
-    ---
     .. extref:: quickstart
         :type: logo
         :ref: datalore
 
-    ---
     .. extref:: quickstart
         :type: logo
         :ref: pycharm
 
-    ---
     .. extref:: quickstart
         :type: logo
         :ref: kaggle
 
-    ---
     .. extref:: quickstart
         :type: logo
         :ref: colab
 
-    ---
     .. extref:: quickstart
         :type: logo
         :ref: deepnote
