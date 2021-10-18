@@ -22,10 +22,10 @@ It approximately translates to the following html:
 .. code-block:: html
 
     <a class="reference external image-reference" href="https://example.com">
-        <img alt="default-text" src="default-image" width="400">
+        <img alt="default-text" title="default-text" src="default-image" width="400">
     </a>
 
-Here ``alt`` and ``src`` values comes from the JSON configuration file, and they implicitly specified by the ``name`` value.
+Here ``alt``, ``title`` and ``src`` values comes from the JSON configuration file, and they implicitly specified by the ``name`` value.
 The first one is given by default, the second is defined through the ``:image:`` option.
 
 Configuration
@@ -70,7 +70,7 @@ JSON Options
     By default, if ``:image:`` option and ``extref_default_image`` config value are not specified, used the first image among all.
 - ``text`` :
     String with default text value.
-    In html it means ``<a ...>text</a>`` when reference type is text and ``alt="text"`` in other cases.
+    In html it means ``<a ...>text</a>`` when reference type is text and ``alt="text"``, ``title="text"`` in other cases.
     Used when ``:text:`` option is not specified.
 
 Directive Options
@@ -132,7 +132,7 @@ gives the following html:
 .. code-block:: html
 
     <a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/Example/example/blob/master/example/example.ipynb">
-        <img alt="My Example" src="_static/images/example1.png">
+        <img alt="My Example" title="My Example" src="_static/images/example1.png">
     </a>
 
 The code
@@ -148,7 +148,7 @@ gives the following html:
 .. code-block:: html
 
     <a class="reference external image-reference" href="https://www.kaggle.com/example/example">
-        <img alt="My Example" src="_static/images/kaggle.svg">
+        <img alt="My Example" title="My Example" src="_static/images/kaggle.svg">
     </a>
 
 The code
@@ -189,8 +189,8 @@ class ExtRefDirective(Directive):
         'url': directives.uri,
         'image': directives.unchanged,
         'text': directives.unchanged,
-        'width': directives.positive_int,
-        'height': directives.positive_int,
+        'width': directives.unchanged,
+        'height': directives.unchanged,
     }
 
     def run(self):
@@ -263,6 +263,13 @@ class ExtRefDirective(Directive):
     def _alt(self):
         return self._text()
 
+    def _title(self):
+        if 'text' in self.options.keys():
+            return self.options['text']
+        if 'text' in self._conf():
+            return self._conf()['text']
+        return ""
+
     def _logo(self):
         logo_fullpath = next((path for name, path in self._env().config['extref_logo_images'].items() \
                                                   if name == self._ref_type()), None)
@@ -273,19 +280,25 @@ class ExtRefDirective(Directive):
 
     def _image_tag(self, image_path):
         doc_dir = os.path.dirname(self.state.document.attributes['source'].replace(self._env().app.srcdir, ''))[1:]
-        return '<img alt="{0}" src="{1}"{2}{3}/>'.format(
-            self._alt(), os.path.relpath(image_path, doc_dir),
+        return '<img alt="{0}" title="{1}" src="{2}" style="{3}{4}"/>'.format(
+            self._alt(), self._title(), os.path.relpath(image_path, doc_dir),
             self._width_tag_option(), self._height_tag_option()
         )
 
     def _width_tag_option(self):
         if 'width' in self.options.keys():
-            return ' width="{0}"'.format(self.options['width'])
+            width = self.options['width']
+            if width[-1] in "0123456789":
+                width += "px"
+            return "width: {0};".format(width)
         return ""
 
     def _height_tag_option(self):
         if 'height' in self.options.keys():
-            return ' height="{0}"'.format(self.options['height'])
+            height = self.options['height']
+            if height[-1] in "0123456789":
+                height += "px"
+            return "height: {0};".format(height)
         return ""
 
     def _text(self):
