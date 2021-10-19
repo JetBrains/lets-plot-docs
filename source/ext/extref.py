@@ -68,9 +68,11 @@ JSON Options
     Dictionary of pairs ``"img_type": "path"``.
     ``:image: img_type`` in the reStructuredText means ``src="path"`` in html, if reference type is image.
     By default, if ``:image:`` option and ``extref_default_image`` config value are not specified, used the first image among all.
+- ``title`` :
+    String with default title value, if reference type is image.
 - ``text`` :
     String with default text value.
-    In html it means ``<a ...>text</a>`` when reference type is text and ``alt="text"``, ``title="text"`` in other cases.
+    In html it means ``<a ...>text</a>`` when reference type is text and ``alt="text"`` in other cases.
     Used when ``:text:`` option is not specified.
 
 Directive Options
@@ -85,6 +87,8 @@ Directive Options
     Image type from the JSON configuration file.
 - ``text`` :
     Explicit text for the reference.
+- ``title`` :
+    Explicit title for the reference.
 - ``width`` :
     Width of the image if the ``:type:`` value is image or logo.
 - ``height`` :
@@ -188,6 +192,7 @@ class ExtRefDirective(Directive):
         'ref': directives.unchanged,
         'url': directives.uri,
         'image': directives.unchanged,
+        'title': directives.unchanged,
         'text': directives.unchanged,
         'width': directives.unchanged,
         'height': directives.unchanged,
@@ -264,6 +269,10 @@ class ExtRefDirective(Directive):
         return self._text()
 
     def _title(self):
+        if 'title' in self.options.keys():
+            return self.options['title']
+        if 'title' in self._conf():
+            return self._conf()['title']
         if 'text' in self.options.keys():
             return self.options['text']
         if 'text' in self._conf():

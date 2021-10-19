@@ -81,38 +81,38 @@ Quickstart
     .. extref:: quickstart
         :type: logo
         :ref: nbviewer
-        :text: Quickstart with Lets-Plot in NBViewer
+        :title: NBViewer
 
     .. extref:: quickstart
         :type: logo
         :ref: datalore
-        :text: Quickstart with Lets-Plot in Datalore
+        :title: Datalore
 
     .. extref:: quickstart
         :type: logo
         :ref: kaggle
-        :text: Quickstart with Lets-Plot in Kaggle
+        :title: Kaggle
 
     .. extref:: quickstart
         :type: logo
         :ref: colab
-        :text: Quickstart with Lets-Plot in Google Colab
+        :title: Google Colab
 
     .. extref:: quickstart
         :type: logo
         :ref: deepnote
-        :text: Quickstart with Lets-Plot in Deepnote
+        :title: Deepnote
         :height: 4rem
 
     .. extref:: quickstart
         :type: logo
         :ref: pycharm
-        :text: Lets-Plot in PyCharm
+        :title: PyCharm
 
     .. extref:: quickstart
         :type: logo
         :ref: dataspell
-        :text: Lets-Plot in DataSpell
+        :title: DataSpell
 
 
 .. _index_meet_gog:
