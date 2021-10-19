@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
 import os
+import subprocess
 import codecs
 import warnings
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
+
+TIMEOUT = 60 # per subprocess in seconds
 
 class page_parser():
 
@@ -35,10 +38,10 @@ class notebook_parser(page_parser):
         self.page = notebook.replace(".ipynb", ".html")
 
     def __enter__(self):
-        assert os.system("jupyter nbconvert --to notebook --inplace --execute {0}".format(self.notebook)) == 0, \
-               "Notebook {0} could not be executed".format(self.notebook)
-        assert os.system("jupyter nbconvert --to html {0}".format(self.notebook)) == 0, \
-               "Notebook {0} could not be converted into html format".format(self.notebook)
+        subprocess.check_output("jupyter nbconvert --to notebook --inplace --execute {0}".format(self.notebook), \
+                                shell=True, timeout=TIMEOUT)
+        subprocess.check_output("jupyter nbconvert --to html {0}".format(self.notebook), \
+                                shell=True, timeout=TIMEOUT)
         return super().__enter__()
 
     def __exit__(self, type, value, traceback):
