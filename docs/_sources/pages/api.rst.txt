@@ -1,10 +1,9 @@
 .. _api:
 
 :orphan:
+:tocdepth: 2
 
 .. title:: Python API reference for Lets-Plot documentation
-
-:tocdepth: 2
 
 
 API Reference
@@ -263,19 +262,6 @@ Scale Guides
     guide_colorbar
     guides
 
-
-Mapping
--------
-
-.. currentmodule:: lets_plot.mapping
-
-.. autosummary::
-    :toctree: api
-
-    as_discrete
-
-
-.. currentmodule:: lets_plot
 
 Positions
 ---------

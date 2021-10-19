@@ -55,12 +55,24 @@ def get_module_members(module=lp):
     return members
 
 def get_api_members():
-    members = set()
+    members = []
     with codecs.open("docs/pages/api.html", 'r', 'utf-8') as page:
         soup = BeautifulSoup(page, 'html.parser')
         for a in soup.select("a.internal span.pre"):
-            members.add(a.text.strip())
-    return members
+            members.append(a.text.strip())
+    duplicates = {k: v for k, v in val_counts(members).items() if v > 1}
+    if any(duplicates):
+        warnings.warn(UserWarning("\nThere is duplicates in API members:\n{0}".format(duplicates)))
+    return set(members)
+
+def val_counts(l):
+    d = {}
+    for v in l:
+        if v in d.keys():
+            d[v] += 1
+        else:
+            d[v] = 1
+    return dict(sorted(d.items(), key=lambda it: it[1], reverse=True))
 
 def format_members(members):
     members_list = ["  {0}".format(s) for s in members]
