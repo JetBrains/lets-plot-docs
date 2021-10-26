@@ -115,15 +115,6 @@ Extras
 
 .. currentmodule:: lets_plot
 
-Stats
------
-
-.. autosummary::
-    :toctree: api
-
-    stat_corr
-
-
 Facets
 ------
 

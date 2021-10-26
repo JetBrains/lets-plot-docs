@@ -71,8 +71,7 @@ Quickstart
     )
 
     ggplot(data, aes(x='rating', fill='cond')) + ggsize(500, 250) + \
-        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
-        theme(axis_line_y='blank')
+        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq')
 
 .. panels::
     :container: + lets-plot-platforms
