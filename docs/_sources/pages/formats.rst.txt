@@ -237,3 +237,5 @@ Demo Notebooks
 
 - .. extref:: label_format
       :type: text
+- .. extref:: datetime_formatting
+      :type: text
