@@ -284,6 +284,7 @@ Coordinates
     coord_cartesian
     coord_fixed
     coord_map
+    coord_flip
 
 
 Theme
@@ -296,7 +297,16 @@ Base
     :toctree: api
 
     theme
+    theme_none
+    theme_classic
+    theme_grey
+    theme_light
+    theme_minimal
+    theme_minimal2
     element_blank
+    element_rect
+    element_line
+    element_text
     ggsize
 
 Labels
