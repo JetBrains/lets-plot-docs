@@ -120,53 +120,68 @@
 <dt class="sig sig-object py" id="lets_plot.geom_smooth">
 <span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">geom_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tooltips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">se</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">other_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_smooth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a smoothed conditional mean.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mapping</strong> (<cite>FeatureSpec</cite>) – Set of aesthetic mappings created by <cite>aes()</cite> function.
+<dd class="field-odd"><dl>
+<dt><strong>mapping</strong><span class="classifier"><cite>FeatureSpec</cite></span></dt><dd><p>Set of aesthetic mappings created by <cite>aes()</cite> function.
 Aesthetic mappings describe the way that variables in the data are
-mapped to plot “aesthetics”.</p></li>
-<li><p><strong>data</strong> (dict or <cite>DataFrame</cite>) – The data to be displayed in this layer. If None, the default, the data
-is inherited from the plot data as specified in the call to ggplot.</p></li>
-<li><p><strong>stat</strong> (<em>str, default=’smooth’</em>) – The statistical transformation to use on the data for this layer, as a string.
+mapped to plot “aesthetics”.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier">dict or <cite>DataFrame</cite></span></dt><dd><p>The data to be displayed in this layer. If None, the default, the data
+is inherited from the plot data as specified in the call to ggplot.</p>
+</dd>
+<dt><strong>stat</strong><span class="classifier">str, default=’smooth’</span></dt><dd><p>The statistical transformation to use on the data for this layer, as a string.
 Supported transformations: ‘identity’ (leaves the data unchanged),
 ‘count’ (counts number of points with same x-axis coordinate),
 ‘bin’ (counts number of points with x-axis coordinate in the same bin),
 ‘smooth’ (performs smoothing - linear default),
-‘density’ (computes and draws kernel density estimate).</p></li>
-<li><p><strong>position</strong> (str or <cite>FeatureSpec</cite>) – Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
-or the result of a call to a position adjustment function.</p></li>
-<li><p><strong>show_legend</strong> (<em>bool, default=True</em>) – False - do not show legend for this layer.</p></li>
-<li><p><strong>sampling</strong> (<cite>FeatureSpec</cite>) – Result of the call to the <cite>sampling_xxx()</cite> function.
-Value None (or ‘none’) will disable sampling for this layer.</p></li>
-<li><p><strong>tooltips</strong> (<cite>layer_tooltips</cite>) – Result of the call to the <cite>layer_tooltips()</cite> function.
-Specifies appearance, style and content.</p></li>
-<li><p><strong>method</strong> (<em>str, default=’lm’</em>) – Smoothing method: ‘lm’ (Linear Model) or ‘loess’ (Locally Estimated Scatterplot Smoothing).</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – Number of points to evaluate smoother at.</p></li>
-<li><p><strong>se</strong> (<em>bool, default=True</em>) – Display confidence interval around smooth.</p></li>
-<li><p><strong>level</strong> (<em>float, default=0.95</em>) – Level of confidence interval to use.</p></li>
-<li><p><strong>span</strong> (<em>float, default=0.5</em>) – Only for ‘loess’ method. The fraction of source points closest
+‘density’ (computes and draws kernel density estimate).</p>
+</dd>
+<dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite></span></dt><dd><p>Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
+or the result of a call to a position adjustment function.</p>
+</dd>
+<dt><strong>show_legend</strong><span class="classifier">bool, default=True</span></dt><dd><p>False - do not show legend for this layer.</p>
+</dd>
+<dt><strong>sampling</strong><span class="classifier"><cite>FeatureSpec</cite></span></dt><dd><p>Result of the call to the <cite>sampling_xxx()</cite> function.
+Value None (or ‘none’) will disable sampling for this layer.</p>
+</dd>
+<dt><strong>tooltips</strong><span class="classifier"><cite>layer_tooltips</cite></span></dt><dd><p>Result of the call to the <cite>layer_tooltips()</cite> function.
+Specifies appearance, style and content.</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str, default=’lm’</span></dt><dd><p>Smoothing method: ‘lm’ (Linear Model) or ‘loess’ (Locally Estimated Scatterplot Smoothing).</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of points to evaluate smoother at.</p>
+</dd>
+<dt><strong>se</strong><span class="classifier">bool, default=True</span></dt><dd><p>Display confidence interval around smooth.</p>
+</dd>
+<dt><strong>level</strong><span class="classifier">float, default=0.95</span></dt><dd><p>Level of confidence interval to use.</p>
+</dd>
+<dt><strong>span</strong><span class="classifier">float, default=0.5</span></dt><dd><p>Only for ‘loess’ method. The fraction of source points closest
 to the current point is taken into account for computing a least-squares regression.
-A sensible value is usually 0.25 to 0.5.</p></li>
-<li><p><strong>deg</strong> (<em>int, default=1</em>) – Degree of polynomial for linear regression model.</p></li>
-<li><p><strong>seed</strong> (<em>int</em>) – Random seed for ‘loess’ sampling.</p></li>
-<li><p><strong>max_n</strong> (<em>int, default=1000</em>) – Maximum number of data-points for ‘loess’ method.
-If this quantity exceeded random sampling is applied to data.</p></li>
-<li><p><strong>other_args</strong> – Other arguments passed on to the layer.
+A sensible value is usually 0.25 to 0.5.</p>
+</dd>
+<dt><strong>deg</strong><span class="classifier">int, default=1</span></dt><dd><p>Degree of polynomial for linear regression model.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int</span></dt><dd><p>Random seed for ‘loess’ sampling.</p>
+</dd>
+<dt><strong>max_n</strong><span class="classifier">int, default=1000</span></dt><dd><p>Maximum number of data-points for ‘loess’ method.
+If this quantity exceeded random sampling is applied to data.</p>
+</dd>
+<dt><strong>other_args</strong></dt><dd><p>Other arguments passed on to the layer.
 These are often aesthetics settings used to set an aesthetic to a fixed value,
 like color=’red’, fill=’blue’, size=3 or shape=21.
-They may also be parameters to the paired geom/stat.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Geom object specification.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><cite>LayerSpec</cite></p>
+They may also be parameters to the paired geom/stat.</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><cite>LayerSpec</cite></dt><dd><p>Geom object specification.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
 <p><cite>geom_smooth()</cite> aids the eye in seeing patterns in the presence of overplotting.</p>
 <p>Computed variables:</p>
 <ul class="simple">
@@ -184,7 +199,6 @@ They may also be parameters to the paired geom/stat.</p></li>
 <li><p>linetype : type of the line of conditional mean line. Codes and names: 0 = ‘blank’, 1 = ‘solid’, 2 = ‘dashed’, 3 = ‘dotted’, 4 = ‘dotdash’, 5 = ‘longdash’, 6 = ‘twodash.</p></li>
 <li><p>size : lines width. Defines line width for conditional mean and confidence bounds lines.</p></li>
 </ul>
-</div>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -209,7 +223,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 //# sourceMappingURL=js-package.js.map
             </script>
 
-</div><div class="output text_html">   <div id="FHIDAi"></div>
+</div><div class="output text_html">   <div id="RzpwG1"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -247,7 +261,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("FHIDAi");
+           var plotContainer = document.getElementById("RzpwG1");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -280,7 +294,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 //# sourceMappingURL=js-package.js.map
             </script>
 
-</div><div class="output text_html">   <div id="IZWggY"></div>
+</div><div class="output text_html">   <div id="ANJGTN"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -319,7 +333,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("IZWggY");
+           var plotContainer = document.getElementById("ANJGTN");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -358,7 +372,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 //# sourceMappingURL=js-package.js.map
             </script>
 
-</div><div class="output text_html">   <div id="FYwzeX"></div>
+</div><div class="output text_html">   <div id="Gq8bel"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -408,7 +422,7 @@ They may also be parameters to the paired geom/stat.</p></li>
 }
 }]
 };
-           var plotContainer = document.getElementById("FYwzeX");
+           var plotContainer = document.getElementById("Gq8bel");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
