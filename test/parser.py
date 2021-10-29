@@ -21,9 +21,9 @@ class page_parser():
             self.driver = webdriver.Chrome()
             self.driver.get("file:///{0}".format(os.path.abspath(self.page)))
             return self.driver, 'driver'
-        except Exception:
+        except Exception as e:
             self._close_driver()
-            warnings.warn(UserWarning("Something went wrong with chromedriver. Please check https://chromedriver.chromium.org"))
+            warnings.warn(UserWarning(e))
             with codecs.open(self.page, 'r', 'utf-8') as f:
                 soup = BeautifulSoup(f, 'html.parser')
                 return soup, 'soup'
