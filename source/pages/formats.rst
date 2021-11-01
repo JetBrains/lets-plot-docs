@@ -235,5 +235,7 @@ In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customi
 Demo Notebooks
 --------------
 
+- .. extref:: formatting_axes_etc
+      :type: text
 - .. extref:: label_format
       :type: text

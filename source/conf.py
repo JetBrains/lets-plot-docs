@@ -31,7 +31,7 @@ author = 'JetBrains'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.napoleon',
+    'numpydoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.githubpages',
     'jupyter_sphinx',
@@ -60,9 +60,7 @@ autodoc_default_options = {
 
 autosummary_generate = True
 
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-napoleon_use_param = False
+numpydoc_show_class_members = False
 
 
 # List of patterns, relative to source directory, that match files and

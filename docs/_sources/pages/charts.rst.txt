@@ -291,6 +291,12 @@ Learn more: :ref:`GeoPandas Support <geopandas>`.
 .. |presentation-options-icon| image:: /_static/images/icons/charts/presentation-options.svg
 
 :py:mod:`theme() <lets_plot.theme>`,
+:py:mod:`theme_none() <lets_plot.theme_none>`,
+:py:mod:`theme_classic() <lets_plot.theme_classic>`,
+:py:mod:`theme_grey() <lets_plot.theme_grey>`,
+:py:mod:`theme_light() <lets_plot.theme_light>`,
+:py:mod:`theme_minimal() <lets_plot.theme_minimal>`,
+:py:mod:`theme_minimal2() <lets_plot.theme_minimal2>`,
 :py:mod:`ggtitle() <lets_plot.ggtitle>`,
 :py:mod:`ggsize() <lets_plot.ggsize>`,
 :py:mod:`xlab() <lets_plot.xlab>`,
@@ -302,6 +308,8 @@ Learn more: :ref:`GeoPandas Support <geopandas>`.
 Examples:
 
 - .. extref:: default_theme
+      :type: text
+- .. extref:: themes
       :type: text
 - .. extref:: legend_and_axis
       :type: text
@@ -396,13 +404,16 @@ Examples
     .. extref:: without_clipping
 
     ---
+    .. extref:: flip_coordinates
+
+    ---
+    .. extref:: fixed_coordinates
+
+    ---
     .. extref:: point_geometries
 
     ---
     .. extref:: jitter_position
-
-    ---
-    .. extref:: fixed_coordinates
 
     ---
     .. extref:: guide_colorbar
