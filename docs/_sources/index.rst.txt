@@ -113,6 +113,11 @@ Quickstart
         :ref: dataspell
         :title: DataSpell
 
+    .. extref:: quickstart
+        :type: logo
+        :ref: nextjournal
+        :title: Nextjournal
+
 
 .. _index_meet_gog:
 

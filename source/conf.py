@@ -50,6 +50,7 @@ extref_logo_images = {
     'deepnote': "_static/images/logo/deepnote.svg",
     'kaggle': "_static/images/logo/kaggle.svg",
     'nbviewer': "_static/images/logo/jupyter.svg",
+    'nextjournal': "_static/images/logo/nextjournal.png",
     'pycharm': "_static/images/logo/pycharm.svg",
 }
 extref_default_image = 'square'
