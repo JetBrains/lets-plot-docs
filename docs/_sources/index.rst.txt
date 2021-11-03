@@ -105,6 +105,11 @@ Quickstart
 
     .. extref:: quickstart
         :type: logo
+        :ref: nextjournal
+        :title: Nextjournal
+
+    .. extref:: quickstart
+        :type: logo
         :ref: pycharm
         :title: PyCharm
 
@@ -112,11 +117,6 @@ Quickstart
         :type: logo
         :ref: dataspell
         :title: DataSpell
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: nextjournal
-        :title: Nextjournal
 
 
 .. _index_meet_gog:
