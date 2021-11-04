@@ -185,7 +185,7 @@ An example notebook covering various geocoding use-cases: |geocoding_reference|.
 Terms of Use
 ------------
 
-Please read the :download:`"Lets-Plot geoservices terms and conditions" </_static/docs/lets-plot_terms.pdf>` document.
+Please read the :download:`"Lets-Plot geoservices terms and conditions" </_static/docs/lets-plot_terms.pdf>`.
 
 Lets-Plot geocoding service is licensed under a `CC BY 4.0 <https://creativecommons.org/licenses/by/4.0>`__.
 
