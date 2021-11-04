@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   addLinkToPyPI();
   addLinkToGitHub();
   fixPanels();
+  fixDownloadReferences();
   addTargetToExternalReferences();
   handlePreviewGallery();
 });
@@ -36,8 +37,17 @@ function fixPanels() {
     cards[i].classList.remove('shadow');
 }
 
+function fixDownloadReferences() {
+  const links = document.getElementsByClassName("reference download");
+  for (let i = 0; i < links.length; i++) {
+    const code = links[i].getElementsByTagName('code')[0];
+    while (code.childNodes.length > 0) links[i].appendChild(code.childNodes[0]);
+    code.remove();
+  }
+}
+
 function addTargetToExternalReferences() {
-  const links = document.getElementsByClassName('reference external');
+  const links = document.querySelectorAll(".reference.external,.reference.download");
   for (let i = 0; i < links.length; i++)
     links[i].setAttribute('target', '_blank');
 }

@@ -11,6 +11,9 @@ Configuring Basemap Tiles for Interactive Maps
 - :ref:`Configuring Globally <basemap_tiles_global_cfg>`
 - :ref:`Configuring for a Single Plot <basemap_tiles_plot_cfg>`
 - :ref:`Vector Tiles <basemap_tiles_vector_tiles>`
+
+  - :ref:`Terms of Use <basemap_tiles_terms_of_use>`
+
 - :ref:`Blank Tiles <basemap_tiles_blank_tiles>`
 - :ref:`Raster Tiles <basemap_tiles_raster_tiles>`
 
@@ -82,6 +85,16 @@ or with the help of a constant defined in the ``tilesets`` module:
     from lets_plot import tilesets
 
     ggplot() + geom_livemap(tiles=tilesets.LETS_PLOT_DARK)
+
+
+.. _basemap_tiles_terms_of_use:
+
+Terms of Use
+~~~~~~~~~~~~
+
+Please read the :download:`"Lets-Plot geoservices terms and conditions" </_static/docs/lets-plot_terms.pdf>` document.
+
+Lets-Plot basemap tiles service is licensed under a `CC BY 4.0 <https://creativecommons.org/licenses/by/4.0>`__.
 
 
 .. _basemap_tiles_blank_tiles:
