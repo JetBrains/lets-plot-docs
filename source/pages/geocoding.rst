@@ -6,6 +6,12 @@
 Geocoding
 =========
 
+.. image:: https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg
+    :target: http://creativecommons.org/licenses/by/4.0
+    :alt: Creative Commons License
+
+Lets-Plot geocoding is licensed under a `Creative Commons Attribution 4.0 International License <http://creativecommons.org/licenses/by/4.0>`__.
+
 
 Administrative Levels
 ---------------------
