@@ -3,14 +3,15 @@
 .. title:: Geocoding in Lets-Plot
 
 
-Geocoding
-=========
+.. rst-class:: geocoding-title
+Geocoding |licenses|
+====================
 
-.. image:: https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg
-    :target: http://creativecommons.org/licenses/by/4.0
-    :alt: Creative Commons License
+.. |licenses| raw:: html
 
-Lets-Plot geocoding is licensed under a `Creative Commons Attribution 4.0 International License <http://creativecommons.org/licenses/by/4.0>`__.
+    <a class="reference internal image-reference" href="licenses.html">
+      <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg">
+    </a>
 
 
 Administrative Levels

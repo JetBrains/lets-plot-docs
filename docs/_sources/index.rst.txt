@@ -13,22 +13,22 @@
 
     pages/charts
     pages/maps
-    pages/geocoding
+    Geocoding <pages/geocoding>
 
 An Open-source Plotting Library for Statistical Data
 ====================================================
 
-|jb-official| |latest-release| |license|
-
-.. |jb-official| image:: https://jb.gg/badges/official-flat-square.svg
+.. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
     :alt: JB Official
-.. |latest-release| image:: https://img.shields.io/pypi/v/lets-plot?color=green&style=flat-square
+.. image:: https://img.shields.io/pypi/v/lets-plot?color=green&style=flat-square
     :target: https://pypi.org/project/lets-plot
     :alt: Latest release
-.. |license| image:: https://img.shields.io/pypi/l/lets-plot?color=yellow&style=flat-square
-    :target: https://opensource.org/licenses/MIT
-    :alt: MIT License
+.. raw:: html
+
+    <a class="reference internal image-reference" href="pages/licenses.html">
+      <img alt="MIT License" src="https://img.shields.io/pypi/l/lets-plot?color=yellow&amp;style=flat-square">
+    </a>
 
 **Python versions:** 3.6-3.9
 
