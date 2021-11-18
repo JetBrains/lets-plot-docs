@@ -3,14 +3,13 @@
 .. title:: Geocoding in Lets-Plot
 
 
-.. rst-class:: geocoding-title
 Geocoding |licenses|
 ====================
 
 .. |licenses| raw:: html
 
     <a class="reference internal image-reference" href="licenses.html">
-      <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg">
+      <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg">
     </a>
 
 

@@ -347,7 +347,7 @@ Examples
     .. extref:: nobel
 
     ---
-    .. extref:: simple_linear_smoothing
+    .. extref:: bbc_cookbook
 
     ---
     .. extref:: jitterdodge_position
@@ -429,6 +429,9 @@ Examples
 
     ---
     .. extref:: size_area_scale
+
+    ---
+    .. extref:: simple_linear_smoothing
 
     ---
     .. extref:: reversed_scale
