@@ -66,12 +66,13 @@ Quickstart
 
     np.random.seed(12)
     data = dict(
-        cond=np.repeat(['A','B'], 200),
+        cond=np.repeat(['A', 'B'], 200),
         rating=np.concatenate((np.random.normal(0, 1, 200), np.random.normal(1, 1.5, 200)))
     )
 
-    ggplot(data, aes(x='rating', fill='cond')) + ggsize(500, 250) + \
-        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq')
+    ggplot(data, aes(x='rating', fill='cond')) + ggsize(700, 300) + \
+        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
+        theme(panel_grid_major_x='blank')
 
 .. panels::
     :container: + lets-plot-platforms
@@ -101,7 +102,7 @@ Quickstart
         :type: logo
         :ref: deepnote
         :title: Deepnote
-        :height: 4rem
+        :height: 3.2rem
 
     .. extref:: quickstart
         :type: logo
