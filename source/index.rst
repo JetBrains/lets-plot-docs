@@ -13,22 +13,22 @@
 
     pages/charts
     pages/maps
-    pages/geocoding
+    Geocoding <pages/geocoding>
 
 An Open-source Plotting Library for Statistical Data
 ====================================================
 
-|jb-official| |latest-release| |license|
-
-.. |jb-official| image:: https://jb.gg/badges/official-flat-square.svg
+.. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
     :alt: JB Official
-.. |latest-release| image:: https://img.shields.io/pypi/v/lets-plot?color=green&style=flat-square
+.. image:: https://img.shields.io/pypi/v/lets-plot?color=green&style=flat-square
     :target: https://pypi.org/project/lets-plot
     :alt: Latest release
-.. |license| image:: https://img.shields.io/pypi/l/lets-plot?color=yellow&style=flat-square
-    :target: https://opensource.org/licenses/MIT
-    :alt: MIT License
+.. raw:: html
+
+    <a class="reference internal image-reference" href="pages/licenses.html">
+      <img alt="MIT License" src="https://img.shields.io/pypi/l/lets-plot?color=yellow&amp;style=flat-square">
+    </a>
 
 **Python versions:** 3.6-3.9
 
@@ -66,12 +66,13 @@ Quickstart
 
     np.random.seed(12)
     data = dict(
-        cond=np.repeat(['A','B'], 200),
+        cond=np.repeat(['A', 'B'], 200),
         rating=np.concatenate((np.random.normal(0, 1, 200), np.random.normal(1, 1.5, 200)))
     )
 
-    ggplot(data, aes(x='rating', fill='cond')) + ggsize(500, 250) + \
-        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq')
+    ggplot(data, aes(x='rating', fill='cond')) + ggsize(700, 300) + \
+        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
+        theme(panel_grid_major_x='blank')
 
 .. panels::
     :container: + lets-plot-platforms
@@ -101,7 +102,12 @@ Quickstart
         :type: logo
         :ref: deepnote
         :title: Deepnote
-        :height: 4rem
+        :height: 3.2rem
+
+    .. extref:: quickstart
+        :type: logo
+        :ref: nextjournal
+        :title: Nextjournal
 
     .. extref:: quickstart
         :type: logo
