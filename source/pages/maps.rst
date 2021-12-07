@@ -96,8 +96,14 @@ The following ggplot2 geometries can be used with interactive maps:
     :type: text
 
 
-Use a Basemap That is Right for You
------------------------------------
+Use a Basemap That is Right for You |licenses|
+----------------------------------------------
+
+.. |licenses| raw:: html
+
+    <a class="reference internal image-reference" href="licenses.html">
+      <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg">
+    </a>
 
 Use quality Lets-Plot vector basemaps or choose among many raster map tiles available through 3rd party providers.
 

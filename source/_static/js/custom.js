@@ -37,7 +37,7 @@ function fixPanels() {
 }
 
 function addTargetToExternalReferences() {
-  const links = document.getElementsByClassName('reference external');
+  const links = document.getElementsByClassName("reference external");
   for (let i = 0; i < links.length; i++)
     links[i].setAttribute('target', '_blank');
 }
