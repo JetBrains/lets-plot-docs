@@ -428,16 +428,19 @@ Examples
     .. extref:: shape_manual_scale
 
     ---
-    .. extref:: size_area_scale
+    .. extref:: scale_time
 
     ---
-    .. extref:: simple_linear_smoothing
+    .. extref:: datetime_scale
 
     ---
     .. extref:: reversed_scale
 
     ---
-    .. extref:: datetime_scale
+    .. extref:: size_area_scale
+
+    ---
+    .. extref:: simple_linear_smoothing
 
 .. raw:: html
 
