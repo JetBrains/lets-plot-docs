@@ -347,13 +347,13 @@ Examples
     .. extref:: nobel
 
     ---
+    .. extref:: lets_plot_cheatbook
+
+    ---
     .. extref:: bbc_cookbook
 
     ---
-    .. extref:: jitterdodge_position
-
-    ---
-    .. extref:: stat_corr
+    .. extref:: scale_time
 
     ---
     .. extref:: nyc_metro
@@ -366,18 +366,6 @@ Examples
 
     ---
     .. extref:: world_coloring
-
-    ---
-    .. extref:: 1d_distributions
-
-    ---
-    .. extref:: general_purpose_stats
-
-    ---
-    .. extref:: 2d_distributions
-
-    ---
-    .. extref:: 3_variables
 
     ---
     .. extref:: kernels_visualization
@@ -398,49 +386,7 @@ Examples
     .. extref:: mosaic_image
 
     ---
-    .. extref:: with_clipping
-
-    ---
-    .. extref:: without_clipping
-
-    ---
     .. extref:: flip_coordinates
-
-    ---
-    .. extref:: fixed_coordinates
-
-    ---
-    .. extref:: point_geometries
-
-    ---
-    .. extref:: jitter_position
-
-    ---
-    .. extref:: guide_colorbar
-
-    ---
-    .. extref:: legend_place
-
-    ---
-    .. extref:: log10_scale
-
-    ---
-    .. extref:: shape_manual_scale
-
-    ---
-    .. extref:: scale_time
-
-    ---
-    .. extref:: datetime_scale
-
-    ---
-    .. extref:: reversed_scale
-
-    ---
-    .. extref:: size_area_scale
-
-    ---
-    .. extref:: simple_linear_smoothing
 
 .. raw:: html
 
