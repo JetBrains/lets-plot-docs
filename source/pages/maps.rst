@@ -263,6 +263,9 @@ Examples
     .. extref:: spb_bakeries
 
     ---
+    .. extref:: travel_the_world
+
+    ---
     .. extref:: maps_and_geocoding
 
     ---

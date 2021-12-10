@@ -219,6 +219,8 @@ Datetime Scales
 
     scale_x_datetime
     scale_y_datetime
+    scale_x_time
+    scale_y_time
 
 Identity Scales
 ~~~~~~~~~~~~~~~
@@ -266,8 +268,8 @@ Positions
     position_jitterdodge
 
 
-Coordinates
------------
+Coordinate Systems
+------------------
 
 .. autosummary::
     :toctree: api
