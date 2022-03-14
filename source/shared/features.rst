@@ -24,7 +24,42 @@ Key Features
 
     Suitable for Scientist and Developer
 
-    Works in computational notebooks (`Jupyter <https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/quickstart.ipynb>`__, `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__, `Kaggle <https://www.kaggle.com/alshan/lets-plot-quickstart>`__, `Colab <https://colab.research.google.com/drive/1o9rFQbkGqvvixYLTogrzIjFPp1ti2cH->`__, `Deepnote <https://deepnote.com/project/673ea421-638e-469d-8d04-5cc4c6e0258f#%2Fnotebook.ipynb>`__) and in JetBrains professional IDEs: `PyCharm <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__ and `DataSpell <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__.
+    Works in computational notebooks (|jupyter-quickstart|, |datalore-quickstart|, |kaggle-quickstart|, |colab-quickstart|, |deepnote-quickstart|) and in JetBrains professional IDEs: |pycharm-quickstart| and |dataspell-quickstart|.
+
+    .. |jupyter-quickstart| extref:: quickstart
+        :type: text
+        :ref: nbviewer
+        :text: Jupyter
+
+    .. |datalore-quickstart| extref:: quickstart
+        :type: text
+        :ref: datalore
+        :text: Datalore
+
+    .. |kaggle-quickstart| extref:: quickstart
+        :type: text
+        :ref: kaggle
+        :text: Kaggle
+
+    .. |colab-quickstart| extref:: quickstart
+        :type: text
+        :ref: colab
+        :text: Colab
+
+    .. |deepnote-quickstart| extref:: quickstart
+        :type: text
+        :ref: deepnote
+        :text: Deepnote
+
+    .. |pycharm-quickstart| extref:: quickstart
+        :type: text
+        :ref: pycharm
+        :text: PyCharm
+
+    .. |dataspell-quickstart| extref:: quickstart
+        :type: text
+        :ref: dataspell
+        :text: DataSpell
 
     ---
     ---
