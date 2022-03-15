@@ -148,6 +148,9 @@ Examples:
 
 :py:mod:`Histogram <lets_plot.geom_histogram>`,
 :py:mod:`density <lets_plot.geom_density>`,
+:py:mod:`dotplot <lets_plot.geom_dotplot>`,
+:py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
+:py:mod:`violin <lets_plot.geom_violin>`,
 :py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
 Examples:
@@ -157,6 +160,10 @@ Examples:
 - .. extref:: distributions
       :type: text
 - .. extref:: 1d_distributions
+      :type: text
+- .. extref:: dot_plots
+      :type: text
+- .. extref:: geom_violin
       :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
 
@@ -256,6 +263,8 @@ Examples:
 
 - .. extref:: facets
       :type: text
+- .. extref:: facets_free_scales
+      :type: text
 - .. extref:: covid19_and_mobility
       :type: text
 
@@ -321,7 +330,7 @@ Examples:
       :type: text
 - .. extref:: legend_place
       :type: text
-- .. extref:: scale_way
+- .. extref:: title_subtitle_caption
       :type: text
 
 

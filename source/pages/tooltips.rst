@@ -362,7 +362,9 @@ Example Notebooks
  
 - .. extref:: tooltip_config
       :type: text
-      :text: tooltip_config.ipynb
+
+- .. extref:: tooltip_title
+      :type: text
 
 - Visualization of Airport Data on Map: |map_airports|
 
