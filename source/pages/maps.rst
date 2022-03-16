@@ -47,6 +47,14 @@ Choropleth Map
         ggplot(data) + geom_livemap() + geom_polygon(aes(..))
 
 
+Livemap - is an Especial Geometry
+---------------------------------
+
+Use all standard interaction tools to improve your exploration experience with maps.
+
+.. image:: /_static/images/map_airports_zoomin.gif
+
+
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
@@ -190,6 +198,7 @@ Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>
     ---
     .. extref:: the_gallery_of_basemaps
         :image: nasa_gibs_greyscale
+
 
 PyCharm and DataSpell
 ---------------------
