@@ -234,10 +234,10 @@ Examples:
 
 .. |time_series-icon| image:: /_static/images/icons/charts/time-series.png
 
-:py:mod:`Datetime scale along x axis <lets_plot.scale_x_datetime>`,
-:py:mod:`datetime scale along y axis <lets_plot.scale_y_datetime>`,
-:py:mod:`time scale along x axis <lets_plot.scale_x_time>`,
-:py:mod:`time scale along y axis <lets_plot.scale_y_time>`
+:py:mod:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
+:py:mod:`scale_y_datetime() <lets_plot.scale_y_datetime>`,
+:py:mod:`scale_x_time() <lets_plot.scale_x_time>`,
+:py:mod:`scale_y_time() <lets_plot.scale_y_time>`
 
 Examples:
 
