@@ -114,11 +114,6 @@ Quickstart
         :ref: pycharm
         :title: PyCharm
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: dataspell
-        :title: DataSpell
-
 
 .. _index_meet_gog:
 
