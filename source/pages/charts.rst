@@ -51,9 +51,6 @@ Examples:
 
 - .. extref:: covid19_and_mobility
       :type: text
-- .. extref:: delhi_climate
-      :type: text
-      :text: Time series visualizations
 - .. extref:: bayesian_inference
       :type: text
 - .. extref:: line_vs_path
@@ -148,6 +145,9 @@ Examples:
 
 :py:mod:`Histogram <lets_plot.geom_histogram>`,
 :py:mod:`density <lets_plot.geom_density>`,
+:py:mod:`dotplot <lets_plot.geom_dotplot>`,
+:py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
+:py:mod:`violin <lets_plot.geom_violin>`,
 :py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
 Examples:
@@ -157,6 +157,10 @@ Examples:
 - .. extref:: distributions
       :type: text
 - .. extref:: 1d_distributions
+      :type: text
+- .. extref:: dot_plots
+      :type: text
+- .. extref:: geom_violin
       :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
 
@@ -225,6 +229,25 @@ Examples:
       :type: text
 
 
+|time_series-icon| Time Series
+------------------------------
+
+.. |time_series-icon| image:: /_static/images/icons/charts/time-series.svg
+
+:py:mod:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
+:py:mod:`scale_y_datetime() <lets_plot.scale_y_datetime>`,
+:py:mod:`scale_x_time() <lets_plot.scale_x_time>`,
+:py:mod:`scale_y_time() <lets_plot.scale_y_time>`
+
+Examples:
+
+- .. extref:: scale_time
+      :type: text
+- .. extref:: delhi_climate
+      :type: text
+      :text: Time series visualizations
+
+
 |images-icon| Images
 --------------------
 
@@ -255,6 +278,8 @@ Examples:
 Examples:
 
 - .. extref:: facets
+      :type: text
+- .. extref:: facets_free_scales
       :type: text
 - .. extref:: covid19_and_mobility
       :type: text
@@ -321,7 +346,7 @@ Examples:
       :type: text
 - .. extref:: legend_place
       :type: text
-- .. extref:: scale_way
+- .. extref:: title_subtitle_caption
       :type: text
 
 
