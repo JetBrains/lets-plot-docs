@@ -191,10 +191,11 @@ Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>
     .. extref:: the_gallery_of_basemaps
         :image: nasa_gibs_greyscale
 
-PyCharm and DataSpell
----------------------
 
-Create maps in PyCharm or DataSpell with the help of `Lets-Plot in SciView <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__ plugin.
+PyCharm
+-------
+
+Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__ plugin.
 
 .. image:: /_static/images/pycharm_map_fr_low_65.gif
 

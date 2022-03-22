@@ -24,7 +24,7 @@ Key Features
 
     Suitable for Scientist and Developer
 
-    Works in computational notebooks (|jupyter-quickstart|, |datalore-quickstart|, |kaggle-quickstart|, |colab-quickstart|, |deepnote-quickstart|) and in JetBrains professional IDEs: |pycharm-quickstart| and |dataspell-quickstart|.
+    Works in computational notebooks (|jupyter-quickstart|, |datalore-quickstart|, |kaggle-quickstart|, |colab-quickstart|, |deepnote-quickstart|) and in JetBrains professional IDEs - |pycharm-quickstart|.
 
     .. |jupyter-quickstart| extref:: quickstart
         :type: text
@@ -55,11 +55,6 @@ Key Features
         :type: text
         :ref: pycharm
         :text: PyCharm
-
-    .. |dataspell-quickstart| extref:: quickstart
-        :type: text
-        :ref: dataspell
-        :text: DataSpell
 
     ---
     ---

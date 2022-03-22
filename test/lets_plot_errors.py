@@ -2,11 +2,13 @@
 
 import warnings
 
+from selenium.webdriver.common.by import By
+
 def check_lets_plot_message_errors(parser, parser_type, source, warn_only=True):
     message = "Plot displaying error in {0}".format(source)
     errors_count = 0
     if parser_type == 'driver':
-        errors_count = len(parser.find_elements_by_css_selector('.lets-plot-message-error'))
+        errors_count = len(parser.find_elements(By.CSS_SELECTOR, ".lets-plot-message-error"))
     elif parser_type == 'soup':
         errors_count = len([s for s in parser.select('script[data-lets-plot-script="plot"]') if "__error_message" in str(s)])
     else:

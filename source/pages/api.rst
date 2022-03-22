@@ -61,6 +61,7 @@ Standard Geometries
     geom_smooth
     geom_bar
     geom_histogram
+    geom_dotplot
     geom_bin2d
     geom_tile
     geom_raster
@@ -76,6 +77,8 @@ Standard Geometries
     geom_hline
     geom_vline
     geom_boxplot
+    geom_violin
+    geom_ydotplot
     geom_ribbon
     geom_area
     geom_density

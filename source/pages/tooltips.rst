@@ -14,13 +14,13 @@ Tooltip Customization
 
   - :ref:`Labels Configuration <tooltips_labels_configuration>`
 
+- :ref:`Tooltip Title <tooltips_title>`
 - :ref:`Tooltip Anchor <tooltips_anchor>`
 - :ref:`Minimum Width of a General Tooltip <tooltips_minwidth>`
-- :ref:`Tooltip Color <tooltips_color>`
 - :ref:`Examples <tooltips_examples>`
-- :ref:`Outlier Tooltips Configuration <tooltips_outliers>`
+- :ref:`Side Tooltips Configuration <tooltips_side_tooltips>`
 
-  - :ref:`Examples <tooltips_example_outliers>`
+  - :ref:`Examples <tooltips_example_side_tooltips>`
 
 - :ref:`Hiding Tooltips <tooltips_hiding_tooltips>`
 - :ref:`Example Notebooks <tooltips_example_notebooks>`
@@ -122,6 +122,18 @@ If you do not specify a label, the string will be centered in the tooltip. For e
 - ``line('my label|^color')``: label is specified, value is right-aligned.
 
 
+.. _tooltips_title:
+
+Tooltip Title: ``layer_tooltips().title(text)``
+-----------------------------------------------
+
+Adds a title template to the tooltip.
+
+The specification rules are the same as for the ``lines()`` function.
+
+A long title can be split into multiple lines using ``\n`` as a text separator.
+
+
 .. _tooltips_anchor:
 
 Tooltip Anchor: ``layer_tooltips().anchor(position)``
@@ -148,14 +160,6 @@ Minimum Width of a General Tooltip: ``layer_tooltips().min_width(value)``
 -------------------------------------------------------------------------
 
 Specifies a minimum width of a general tooltip in pixels.
-
-
-.. _tooltips_color:
-
-Tooltip Color: ``layer_tooltips().color(value)``
-------------------------------------------------
-
-Specifies a color of a general tooltip.
 
 
 .. _tooltips_examples:
@@ -255,7 +259,7 @@ Place a general tooltip at the top center and define its minimum width:
                                                      .min_width(200))
 
 
-Move the tooltips to the top right corner:
+Move the tooltips to the top right corner and change its title:
 
 .. jupyter-execute::
     :linenos:
@@ -268,28 +272,28 @@ Move the tooltips to the top right corner:
     df = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv')
 
     ggplot(df) + geom_point(aes(x='displ', y='cty', fill='drv', size='hwy'), shape=21, color='black', \
-                            tooltips=layer_tooltips().anchor('top_right').format('^fill', '{.2f} (mpg)'))
+                            tooltips=layer_tooltips().title('Drive type: @drv').anchor('top_right'))
 
 
-.. _tooltips_outliers:
+.. _tooltips_side_tooltips:
 
-Outlier Tooltips Configuration
-------------------------------
+Side Tooltips Configuration
+---------------------------
 
-The default an outlier's tooltip contains a string like ``'name: value'``: there is no label and no alignment.
-It's possible to change formatting of it with the ``format`` function. The number format (``'1.f'``) leaves 
-the string as is (``'name: value'``) and formats the value. The string template replaces the default string:
+The default side tooltip contains a string with a value: there is no label and no alignment.
+It's possible to change its formatting with the ``format()`` function. The number format (``'1.f'``) leaves 
+the string as is (``value``) and formats it. The string template replaces the default string:
 ``‘{.1f}`` - with ``'value'``, ``'format text {.1f}'`` - with ``"format text value"``.
 
-The specified ``line`` for an outlier will move it to a general multi-line tooltip.
+The specified ``line`` for a side tooltip will move it to a general multi-line tooltip.
 
 
-.. _tooltips_example_outliers:
+.. _tooltips_example_side_tooltips:
 
 Examples
 ~~~~~~~~
 
-Change formatting for outliers:
+Change formatting for side tooltips:
 
 .. jupyter-execute::
     :linenos:
@@ -308,7 +312,7 @@ Change formatting for outliers:
                                               .format('^ymin', 'ymin is {.3f}')) + \
         theme(legend_position='none')
 
-Move outliers to a general tooltip:
+Move side tooltips to a general tooltip:
 
 .. jupyter-execute::
     :linenos:
@@ -324,7 +328,7 @@ Move outliers to a general tooltip:
         geom_boxplot(tooltips=layer_tooltips().line('lower/upper|^lower, ^upper')) + \
         theme(legend_position='none')
 
-Place tooltip at the top center and change its color:
+Place tooltip at the top center:
 
 .. jupyter-execute::
     :linenos:
@@ -338,7 +342,6 @@ Place tooltip at the top center and change its color:
 
     ggplot(df, aes('class', 'hwy')) + \
         geom_boxplot(tooltips=layer_tooltips().anchor('top_center')
-                                              .color('cyan')
                                               .format('^Y', '.0f')
                                               .format('^middle', '.2f')
                                               .line('@|^middle')
@@ -352,7 +355,9 @@ Place tooltip at the top center and change its color:
 Hiding Tooltips
 ---------------
 
-Set ``tooltips = "none"`` to hide tooltips from the layer.
+Set ``tooltips='none'`` to hide tooltips from the layer.
+
+To hide axis tooltips you can set ``'blank'`` or ``element_blank()`` to the ``axis_tooltip``, ``axis_tooltip_x``, ``axis_tooltip_y`` parameters of the :py:mod:`theme() <lets_plot.theme>` function.
 
 
 .. _tooltips_example_notebooks:
@@ -362,7 +367,9 @@ Example Notebooks
  
 - .. extref:: tooltip_config
       :type: text
-      :text: tooltip_config.ipynb
+
+- .. extref:: tooltip_title
+      :type: text
 
 - Visualization of Airport Data on Map: |map_airports|
 
