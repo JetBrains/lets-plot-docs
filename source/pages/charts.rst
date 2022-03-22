@@ -232,7 +232,7 @@ Examples:
 |time_series-icon| Time Series
 ------------------------------
 
-.. |time_series-icon| image:: /_static/images/icons/charts/time-series.png
+.. |time_series-icon| image:: /_static/images/icons/charts/time-series.svg
 
 :py:mod:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
 :py:mod:`scale_y_datetime() <lets_plot.scale_y_datetime>`,
