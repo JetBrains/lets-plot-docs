@@ -224,6 +224,9 @@ Examples
     .. extref:: mapping_us_household_income
 
     ---
+    .. extref:: soil_pollutants_with_gaussian_processes
+
+    ---
     .. extref:: map_airports
 
     ---
