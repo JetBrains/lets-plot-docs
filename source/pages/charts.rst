@@ -285,6 +285,26 @@ Examples:
       :type: text
 
 
+|coordinate-systems-icon| Coordinate Systems
+--------------------------------------------
+
+.. |coordinate-systems-icon| image:: /_static/images/icons/charts/coordinate-systems.svg
+
+:py:mod:`coord_cartesian() <lets_plot.coord_cartesian>`,
+:py:mod:`coord_fixed() <lets_plot.coord_fixed>`,
+:py:mod:`coord_flip() <lets_plot.coord_flip>`,
+:py:mod:`coord_map() <lets_plot.coord_map>`
+
+Examples:
+
+- .. extref:: coordinate_systems
+      :type: text
+- .. extref:: flip_coordinates
+      :type: text
+- .. extref:: map_coordinates
+      :type: text
+
+
 |correlation-plot-icon| Correlation Plot
 ----------------------------------------
 
