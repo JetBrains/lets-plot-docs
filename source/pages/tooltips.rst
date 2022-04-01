@@ -280,12 +280,12 @@ Move the tooltips to the top right corner and change its title:
 Side Tooltips Configuration
 ---------------------------
 
-The default side tooltip contains a string with a value: there is no label and no alignment.
-It's possible to change its formatting with the ``format()`` function. The number format (``'1.f'``) leaves 
-the string as is (``value``) and formats it. The string template replaces the default string:
-``‘{.1f}`` - with ``'value'``, ``'format text {.1f}'`` - with ``"format text value"``.
+In Lets-Plot certain aesthetics by default are represented by so-called "side tooltip" - a small tipped box containing just a single numeric value.
 
-The specified ``line`` for a side tooltip will move it to a general multi-line tooltip.
+You can override these defaults using the ``line()`` function.
+Configuring a "line" in a general multi-line tooltip disables side tooltip for the correspondent aesthetic.
+
+Formatting in side tooltip is configured with the help of the ``format()`` function: the same way it's done for lines in general tooltip.
 
 
 .. _tooltips_example_side_tooltips:
