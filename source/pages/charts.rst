@@ -314,13 +314,13 @@ Examples:
 
 - Q-Q plots:
 
-  - :py:mod:`Sample vs. theoretical (points) <lets_plot.bistro.corr.geom_qq>`
+  - :py:mod:`Sample vs. theoretical (points) <lets_plot.geom_qq>`
 
-  - :py:mod:`Sample vs. sample (points) <lets_plot.bistro.corr.geom_qq2>`
+  - :py:mod:`Sample vs. sample (points) <lets_plot.geom_qq2>`
 
-  - :py:mod:`Sample vs. theoretical (line) <lets_plot.bistro.corr.geom_qq_line>`
+  - :py:mod:`Sample vs. theoretical (line) <lets_plot.geom_qq_line>`
 
-  - :py:mod:`Sample vs. sample (line) <lets_plot.bistro.corr.geom_qq2_line>`
+  - :py:mod:`Sample vs. sample (line) <lets_plot.geom_qq2_line>`
 
 Examples:
 

@@ -3,7 +3,7 @@ Key Features
 
 .. panels::
     :container: + features-list
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2
 
     .. image:: /_static/images/icons/features/ggplot2-like-api.svg
 
@@ -11,7 +11,6 @@ Key Features
 
     A bridge between R (:ref:`ggplot2 <index_meet_gog>`) and Python Data visualization.
 
-    ---
     ---
     .. image:: /_static/images/icons/features/graphics-grid.svg
 
@@ -57,7 +56,6 @@ Key Features
         :text: PyCharm
 
     ---
-    ---
     .. image:: /_static/images/icons/features/tooltips.svg
 
     Customizable Tooltips
@@ -71,7 +69,6 @@ Key Features
 
     R, Python, what’s next? Right. `Lets-Plot Kotlin API <https://github.com/JetBrains/lets-plot-kotlin>`__ enables data visualization in JVM and Kotlin/JS applications as well as in scientific notebooks like Jupyter and Datalore.
 
-    ---
     ---
     .. image:: /_static/images/icons/features/formatting.svg
 
@@ -87,7 +84,6 @@ Key Features
     Find spatial objects with the help of our powerful and easy to use :ref:`Geocoding <geocoding>` module. In case you already have ``GeoDataFrame`` on hand - :ref:`plot it <geopandas>` straight away.
 
     ---
-    ---
     .. image:: /_static/images/icons/features/sampling.svg
 
     Sampling
@@ -102,14 +98,12 @@ Key Features
     Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. :ref:`Learn more <maps>`.
 
     ---
-    ---
     .. image:: /_static/images/icons/features/export.svg
 
     Export to SVG and HTML
 
     The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in SVG or HTML formats.
 
-    ---
     ---
     ---
     .. image:: /_static/images/icons/features/offline-mode.svg
