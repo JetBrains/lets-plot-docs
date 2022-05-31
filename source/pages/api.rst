@@ -90,6 +90,10 @@ Standard Geometries
     geom_rect
     geom_segment
     geom_text
+    geom_qq
+    geom_qq2
+    geom_qq_line
+    geom_qq2_line
 
 Additional Geometries
 ~~~~~~~~~~~~~~~~~~~~~

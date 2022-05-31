@@ -305,18 +305,30 @@ Examples:
       :type: text
 
 
-|correlation-plot-icon| Correlation Plot
-----------------------------------------
+|correlation-plot-icon| EDA
+---------------------------
 
 .. |correlation-plot-icon| image:: /_static/images/icons/charts/correlation-plot.svg
 
-:py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
+- :py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
+
+- Q-Q plots:
+
+  - :py:mod:`Sample vs. theoretical (points) <lets_plot.bistro.corr.geom_qq>`
+
+  - :py:mod:`Sample vs. sample (points) <lets_plot.bistro.corr.geom_qq2>`
+
+  - :py:mod:`Sample vs. theoretical (line) <lets_plot.bistro.corr.geom_qq_line>`
+
+  - :py:mod:`Sample vs. sample (line) <lets_plot.bistro.corr.geom_qq2_line>`
 
 Examples:
 
 - .. extref:: corr_plot
       :type: text
 - .. extref:: correlation_plot
+      :type: text
+- .. extref:: qq_plots
       :type: text
 
 
@@ -355,6 +367,8 @@ Examples:
 - .. extref:: default_theme
       :type: text
 - .. extref:: themes
+      :type: text
+- .. extref:: y_orientation
       :type: text
 - .. extref:: legend_and_axis
       :type: text

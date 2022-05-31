@@ -207,6 +207,9 @@ Examples
     .. extref:: covid19_india
 
     ---
+    .. extref:: tourist_cities
+
+    ---
     .. extref:: geocoding_levels
 
     ---
