@@ -148,7 +148,8 @@ Examples:
 :py:mod:`dotplot <lets_plot.geom_dotplot>`,
 :py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
 :py:mod:`violin <lets_plot.geom_violin>`,
-:py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
+:py:mod:`frequency polygon <lets_plot.geom_freqpoly>`,
+:py:mod:`ggmarginal <lets_plot.ggmarginal>`
 
 Examples:
 
@@ -161,6 +162,8 @@ Examples:
 - .. extref:: dot_plots
       :type: text
 - .. extref:: geom_violin
+      :type: text
+- .. extref:: marginal_layers
       :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
 
@@ -382,6 +385,12 @@ Examples:
       :type: text
 - .. extref:: title_subtitle_caption
       :type: text
+- .. extref:: tooltips_theme
+      :type: text
+- .. extref:: set_font_faces
+      :type: text
+- .. extref:: panel_border
+      :type: text
 
 
 Examples
@@ -446,6 +455,9 @@ Examples
 
     ---
     .. extref:: flip_coordinates
+
+    ---
+    .. extref:: scale_color_fill_gradientn
 
 .. raw:: html
 

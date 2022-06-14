@@ -146,7 +146,7 @@ Points
     ---
     .. extref:: geocoding_geometries_point_georgia
 
-    Ceorgia county centroids
+    Georgia county centroids
 
     ---
     .. extref:: geocoding_geometries_point_greenland
