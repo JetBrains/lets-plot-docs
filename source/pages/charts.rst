@@ -163,8 +163,6 @@ Examples:
       :type: text
 - .. extref:: geom_violin
       :type: text
-- .. extref:: marginal_layers
-      :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
 
 .. |gradient_scale| extref:: gradient_scale
@@ -176,6 +174,17 @@ Examples:
 .. |hue_scale| extref:: hue_scale
       :type: text
       :text: qualitative
+
+
+Marginal Plots
+--------------
+
+:py:mod:`ggmarginal <lets_plot.ggmarginal>`
+
+Examples:
+
+- .. extref:: marginal_layers
+      :type: text
 
 
 |visualization-of-errors-icon| Visualization of Errors
@@ -308,22 +317,12 @@ Examples:
       :type: text
 
 
-|correlation-plot-icon| EDA
----------------------------
+|correlation-plot-icon| Correlation Plot
+----------------------------------------
 
 .. |correlation-plot-icon| image:: /_static/images/icons/charts/correlation-plot.svg
 
-- :py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
-
-- Q-Q plots:
-
-  - :py:mod:`Sample vs. theoretical (points) <lets_plot.geom_qq>`
-
-  - :py:mod:`Sample vs. sample (points) <lets_plot.geom_qq2>`
-
-  - :py:mod:`Sample vs. theoretical (line) <lets_plot.geom_qq_line>`
-
-  - :py:mod:`Sample vs. sample (line) <lets_plot.geom_qq2_line>`
+:py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
 
 Examples:
 
@@ -331,6 +330,19 @@ Examples:
       :type: text
 - .. extref:: correlation_plot
       :type: text
+
+
+Q-Q Plot
+--------
+
+:py:mod:`Sample vs. theoretical (points) <lets_plot.geom_qq>`,
+:py:mod:`sample vs. sample (points) <lets_plot.geom_qq2>`,
+:py:mod:`sample vs. theoretical (line) <lets_plot.geom_qq_line>`,
+:py:mod:`sample vs. sample (line) <lets_plot.geom_qq2_line>`,
+:py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
+
+Examples:
+
 - .. extref:: qq_plots
       :type: text
 
