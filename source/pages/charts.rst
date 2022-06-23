@@ -148,8 +148,7 @@ Examples:
 :py:mod:`dotplot <lets_plot.geom_dotplot>`,
 :py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
 :py:mod:`violin <lets_plot.geom_violin>`,
-:py:mod:`frequency polygon <lets_plot.geom_freqpoly>`,
-:py:mod:`ggmarginal <lets_plot.ggmarginal>`
+:py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
 Examples:
 
@@ -176,8 +175,10 @@ Examples:
       :text: qualitative
 
 
-Marginal Plots
---------------
+|marginal-icon| Marginal Plots
+------------------------------
+
+.. |marginal-icon| image:: /_static/images/icons/charts/marginal.svg
 
 :py:mod:`ggmarginal <lets_plot.ggmarginal>`
 
@@ -332,8 +333,10 @@ Examples:
       :type: text
 
 
-Q-Q Plot
---------
+|q-q-icon| Q-Q Plot
+-------------------
+
+.. |q-q-icon| image:: /_static/images/icons/charts/qq.svg
 
 :py:mod:`Sample vs. theoretical (points) <lets_plot.geom_qq>`,
 :py:mod:`sample vs. sample (points) <lets_plot.geom_qq2>`,
