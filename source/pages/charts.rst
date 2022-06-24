@@ -340,10 +340,10 @@ Examples:
 
 .. |q-q-icon| image:: /_static/images/icons/charts/qq.svg
 
-:py:mod:`Sample vs. theoretical (points) <lets_plot.geom_qq>`,
-:py:mod:`sample vs. sample (points) <lets_plot.geom_qq2>`,
-:py:mod:`sample vs. theoretical (line) <lets_plot.geom_qq_line>`,
-:py:mod:`sample vs. sample (line) <lets_plot.geom_qq2_line>`,
+:py:mod:`geom_qq() <lets_plot.geom_qq>`,
+:py:mod:`geom_qq_line() <lets_plot.geom_qq_line>`,
+:py:mod:`geom_qq2() <lets_plot.geom_qq2>`,
+:py:mod:`geom_qq2_line() <lets_plot.geom_qq2_line>`,
 :py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
 
 Examples:
@@ -470,9 +470,6 @@ Examples
 
     ---
     .. extref:: flip_coordinates
-
-    ---
-    .. extref:: scale_color_fill_gradientn
 
 .. raw:: html
 
