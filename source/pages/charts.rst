@@ -162,6 +162,8 @@ Examples:
       :type: text
 - .. extref:: geom_violin
       :type: text
+- .. extref:: y_orientation
+      :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
 
 .. |gradient_scale| extref:: gradient_scale
@@ -385,8 +387,6 @@ Examples:
 - .. extref:: default_theme
       :type: text
 - .. extref:: themes
-      :type: text
-- .. extref:: y_orientation
       :type: text
 - .. extref:: legend_and_axis
       :type: text
