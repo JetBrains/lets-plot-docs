@@ -41,6 +41,7 @@ Plotting
 
     ggplot
     GGBunch
+    ggmarginal
     aes
     layer
     ggsave
@@ -90,6 +91,10 @@ Standard Geometries
     geom_rect
     geom_segment
     geom_text
+    geom_qq
+    geom_qq2
+    geom_qq_line
+    geom_qq2_line
 
 Additional Geometries
 ~~~~~~~~~~~~~~~~~~~~~
@@ -158,6 +163,7 @@ Color Scales
     scale_color_gradient
     scale_color_continuous
     scale_color_gradient2
+    scale_color_gradientn
     scale_color_hue
     scale_color_discrete
     scale_color_grey
@@ -173,6 +179,7 @@ Fill Scales
     scale_fill_gradient
     scale_fill_continuous
     scale_fill_gradient2
+    scale_fill_gradientn
     scale_fill_hue
     scale_fill_discrete
     scale_fill_grey
@@ -360,6 +367,14 @@ Bistro Module
     :template: base.rst
 
     corr_plot
+
+.. currentmodule:: lets_plot.bistro.qq
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    qq_plot
 
 
 Geospatial

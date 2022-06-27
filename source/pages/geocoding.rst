@@ -146,7 +146,7 @@ Points
     ---
     .. extref:: geocoding_geometries_point_georgia
 
-    Ceorgia county centroids
+    Georgia county centroids
 
     ---
     .. extref:: geocoding_geometries_point_greenland
@@ -205,6 +205,9 @@ Examples
 
     ---
     .. extref:: covid19_india
+
+    ---
+    .. extref:: tourist_cities
 
     ---
     .. extref:: geocoding_levels
