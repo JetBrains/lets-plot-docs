@@ -162,6 +162,8 @@ Examples:
       :type: text
 - .. extref:: geom_violin
       :type: text
+- .. extref:: y_orientation
+      :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
 
 .. |gradient_scale| extref:: gradient_scale
@@ -173,6 +175,19 @@ Examples:
 .. |hue_scale| extref:: hue_scale
       :type: text
       :text: qualitative
+
+
+|marginal-icon| Marginal Plots
+------------------------------
+
+.. |marginal-icon| image:: /_static/images/icons/charts/marginal.svg
+
+:py:mod:`ggmarginal <lets_plot.ggmarginal>`
+
+Examples:
+
+- .. extref:: marginal_layers
+      :type: text
 
 
 |visualization-of-errors-icon| Visualization of Errors
@@ -320,6 +335,23 @@ Examples:
       :type: text
 
 
+|q-q-icon| Q-Q Plot
+-------------------
+
+.. |q-q-icon| image:: /_static/images/icons/charts/qq.svg
+
+:py:mod:`geom_qq() <lets_plot.geom_qq>`,
+:py:mod:`geom_qq_line() <lets_plot.geom_qq_line>`,
+:py:mod:`geom_qq2() <lets_plot.geom_qq2>`,
+:py:mod:`geom_qq2_line() <lets_plot.geom_qq2_line>`,
+:py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
+
+Examples:
+
+- .. extref:: qq_plots
+      :type: text
+
+
 |geopandas-icon| GeoPandas Shapes
 ---------------------------------
 
@@ -367,6 +399,12 @@ Examples:
 - .. extref:: legend_place
       :type: text
 - .. extref:: title_subtitle_caption
+      :type: text
+- .. extref:: tooltips_theme
+      :type: text
+- .. extref:: set_font_faces
+      :type: text
+- .. extref:: panel_border
       :type: text
 
 
