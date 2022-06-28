@@ -23,6 +23,7 @@ Tooltip Customization
   - :ref:`Examples <tooltips_example_side_tooltips>`
 
 - :ref:`Hiding Tooltips <tooltips_hiding_tooltips>`
+- :ref:`Tooltip Theme <tooltips_tooltip_theme>`
 - :ref:`Example Notebooks <tooltips_example_notebooks>`
 
 ----
@@ -358,6 +359,34 @@ Hiding Tooltips
 Set ``tooltips='none'`` to hide tooltips from the layer.
 
 To hide axis tooltips you can set ``'blank'`` or ``element_blank()`` to the ``axis_tooltip``, ``axis_tooltip_x``, ``axis_tooltip_y`` parameters of the :py:mod:`theme() <lets_plot.theme>` function.
+
+
+.. _tooltips_tooltip_theme:
+
+Tooltip Theme
+-------------
+
+You can modify tooltip appearance using following parameters in the ``theme()`` function.
+
+- tooltip rectangle:
+
+  - ``tooltip``
+
+  - ``axis_tooltip``, ``axis_tooltip_x``, ``axis_tooltip_y``
+
+- tooltip text:
+
+  - ``tooltip_text``
+
+  - ``tooltip_title_text``
+
+  - ``axis_tooltip_text``, ``axis_tooltip_text_x``, ``axis_tooltip_text_y``
+
+See: |tooltips_theme|.
+
+.. |tooltips_theme| extref:: tooltips_theme
+    :type: text
+    :text: example notebook
 
 
 .. _tooltips_example_notebooks:
