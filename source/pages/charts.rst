@@ -361,6 +361,15 @@ GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mo
 
 Learn more: :ref:`GeoPandas Support <geopandas>`.
 
+Examples:
+
+- .. extref:: geopandas_kotlin_isl
+      :type: text
+- .. extref:: geopandas_naturalearth
+      :type: text
+- .. extref:: plotting_airbnb_prices_boston
+      :type: text
+
 
 |presentation-options-icon| Presentation Options
 ------------------------------------------------
@@ -437,6 +446,18 @@ Examples
 
     ---
     .. extref:: scale_time
+
+    ---
+    .. extref:: scale_color_fill_gradientn
+
+    ---
+    .. extref:: geopandas_kotlin_isl
+
+    ---
+    .. extref:: geopandas_naturalearth
+
+    ---
+    .. extref:: plotting_airbnb_prices_boston
 
     ---
     .. extref:: nyc_metro
