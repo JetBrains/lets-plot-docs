@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Charts in Lets-Plot</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/dataframe.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maps" href="maps.html" />
+    <link rel="prev" title="An Open-source Plotting Library for Statistical Data" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Lets-Plot</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.4.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="api.html">API</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Charts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">Geocoding</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Charts</a><ul>
+<li><a class="reference internal" href="#basic-building-blocks-icon-basic-building-blocks"> Basic Building Blocks</a></li>
+<li><a class="reference internal" href="#discrete-icon-discrete"> Discrete</a></li>
+<li><a class="reference internal" href="#as-discrete-icon-ordering-categories-as-discrete"> Ordering Categories, <code class="docutils literal notranslate"><span class="pre">as_discrete()</span></code></a></li>
+<li><a class="reference internal" href="#contours-icon-contours"> Contours</a></li>
+<li><a class="reference internal" href="#visualization-of-distribution-icon-visualization-of-distribution"> Visualization of Distribution</a></li>
+<li><a class="reference internal" href="#marginal-icon-marginal-plots"> Marginal Plots</a></li>
+<li><a class="reference internal" href="#visualization-of-errors-icon-visualization-of-errors"> Visualization of Errors</a></li>
+<li><a class="reference internal" href="#smoothing-icon-smoothing"> Smoothing</a></li>
+<li><a class="reference internal" href="#bivariate-distribution-icon-bivariate-distribution"> Bivariate Distribution</a></li>
+<li><a class="reference internal" href="#time-series-icon-time-series"> Time Series</a></li>
+<li><a class="reference internal" href="#images-icon-images"> Images</a></li>
+<li><a class="reference internal" href="#facets-icon-facets"> Facets</a></li>
+<li><a class="reference internal" href="#coordinate-systems-icon-coordinate-systems"> Coordinate Systems</a></li>
+<li><a class="reference internal" href="#correlation-plot-icon-correlation-plot"> Correlation Plot</a></li>
+<li><a class="reference internal" href="#q-q-icon-q-q-plot"> Q-Q Plot</a></li>
+<li><a class="reference internal" href="#geopandas-icon-geopandas-shapes"> GeoPandas Shapes</a></li>
+<li><a class="reference internal" href="#presentation-options-icon-presentation-options"> Presentation Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#key-features">Key Features</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="charts">
+<span id="id1"></span><h1>Charts<a class="headerlink" href="#charts" title="Permalink to this headline">¶</a></h1>
+<section id="basic-building-blocks-icon-basic-building-blocks">
+<h2><img alt="basic-building-blocks-icon" src="../_images/basic-building-blocks.svg" /> Basic Building Blocks<a class="headerlink" href="#basic-building-blocks-icon-basic-building-blocks" title="Permalink to this headline">¶</a></h2>
+<p>Points:
+<a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">points</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_jitter.html#lets_plot.geom_jitter" title="lets_plot.geom_jitter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">jittered</span> <span class="pre">points</span></code></a></p>
+<p>Lines:
+<a class="reference internal" href="api/lets_plot.geom_line.html#lets_plot.geom_line" title="lets_plot.geom_line"><code class="xref py py-mod docutils literal notranslate"><span class="pre">line</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-mod docutils literal notranslate"><span class="pre">path</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_abline.html#lets_plot.geom_abline" title="lets_plot.geom_abline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">diagonal</span> <span class="pre">line</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_hline.html#lets_plot.geom_hline" title="lets_plot.geom_hline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">horizontal</span> <span class="pre">line</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_vline.html#lets_plot.geom_vline" title="lets_plot.geom_vline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vertical</span> <span class="pre">line</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_segment.html#lets_plot.geom_segment" title="lets_plot.geom_segment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">segment</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_step.html#lets_plot.geom_step" title="lets_plot.geom_step"><code class="xref py py-mod docutils literal notranslate"><span class="pre">step-function</span></code></a></p>
+<p>Areas:
+<a class="reference internal" href="api/lets_plot.geom_area.html#lets_plot.geom_area" title="lets_plot.geom_area"><code class="xref py py-mod docutils literal notranslate"><span class="pre">area</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_ribbon.html#lets_plot.geom_ribbon" title="lets_plot.geom_ribbon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ribbon</span></code></a></p>
+<p>Polygons:
+<a class="reference internal" href="api/lets_plot.geom_polygon.html#lets_plot.geom_polygon" title="lets_plot.geom_polygon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polygon</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_map.html#lets_plot.geom_map" title="lets_plot.geom_map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">map</span></code></a></p>
+<p>Tiles:
+<a class="reference internal" href="api/lets_plot.geom_tile.html#lets_plot.geom_tile" title="lets_plot.geom_tile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tiles</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_rect.html#lets_plot.geom_rect" title="lets_plot.geom_rect"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rectangles</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_raster.html#lets_plot.geom_raster" title="lets_plot.geom_raster"><code class="xref py py-mod docutils literal notranslate"><span class="pre">raster</span> <span class="pre">plot</span></code></a></p>
+<p>Text:
+<a class="reference internal" href="api/lets_plot.geom_text.html#lets_plot.geom_text" title="lets_plot.geom_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">text</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/covid19_and_mobility.ipynb">Population mobility and COVID-19</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Bayesian%20inference.ipynb">Bayesian inference</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/line_vs_path.ipynb">Line vs. path</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geopandas_kotlin_isl.ipynb">Inset map of Kotlin island</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/formatting_axes_etc.ipynb">Formatting labels on plots</a></li>
+</ul>
+</section>
+<section id="discrete-icon-discrete">
+<h2><img alt="discrete-icon" src="../_images/discrete.svg" /> Discrete<a class="headerlink" href="#discrete-icon-discrete" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_bar.html#lets_plot.geom_bar" title="lets_plot.geom_bar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Bar</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_boxplot.html#lets_plot.geom_boxplot" title="lets_plot.geom_boxplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boxplot</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/bar.ipynb">Bar geometry</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/geom_bar_identity.ipynb">Identity stat</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/comparisons.ipynb">Comparisons</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/general_purpose_stats.ipynb">General purpose stats</a></li>
+<li><p>Using scales: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/continuous_scales.ipynb">continuous</a>, <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/discrete_scales.ipynb">discrete</a>, <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/identity_scales.ipynb">identity</a>, <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/manual_scales.ipynb">manual</a>, <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/brewer_scale.ipynb">brewer colors</a>, <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/grey_scale.ipynb">grey-scale colors</a></p></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/dodge_position.ipynb">Dodge position</a></li>
+</ul>
+</section>
+<section id="as-discrete-icon-ordering-categories-as-discrete">
+<h2><img alt="as_discrete-icon" src="../_images/as_discrete.svg" /> Ordering Categories, <code class="docutils literal notranslate"><span class="pre">as_discrete()</span></code><a class="headerlink" href="#as-discrete-icon-ordering-categories-as-discrete" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.mapping.as_discrete.html#lets_plot.mapping.as_discrete" title="lets_plot.mapping.as_discrete"><code class="xref py py-mod docutils literal notranslate"><span class="pre">as_discrete()</span></code></a></p>
+<p>Learn more: <a class="reference internal" href="as_discrete.html#as-discrete"><span class="std std-ref">Function as_discrete()</span></a>.</p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/ordering_examples.ipynb">Guide to ordering</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/smooth_matrix.ipynb">Discover trends with smoothing</a></li>
+</ul>
+</section>
+<section id="contours-icon-contours">
+<h2><img alt="contours-icon" src="../_images/contours.svg" /> Contours<a class="headerlink" href="#contours-icon-contours" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_contour.html#lets_plot.geom_contour" title="lets_plot.geom_contour"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Contours</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_contourf.html#lets_plot.geom_contourf" title="lets_plot.geom_contourf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filled</span> <span class="pre">contours</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/contours.ipynb">Contours</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/how_to_draw_curve.ipynb">How to draw curve fast</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/3_variables.ipynb">3d distributions</a></li>
+</ul>
+</section>
+<section id="visualization-of-distribution-icon-visualization-of-distribution">
+<h2><img alt="visualization-of-distribution-icon" src="../_images/visualization-of-distribution.svg" /> Visualization of Distribution<a class="headerlink" href="#visualization-of-distribution-icon-visualization-of-distribution" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_histogram.html#lets_plot.geom_histogram" title="lets_plot.geom_histogram"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Histogram</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_density.html#lets_plot.geom_density" title="lets_plot.geom_density"><code class="xref py py-mod docutils literal notranslate"><span class="pre">density</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_dotplot.html#lets_plot.geom_dotplot" title="lets_plot.geom_dotplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dotplot</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_ydotplot.html#lets_plot.geom_ydotplot" title="lets_plot.geom_ydotplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ydotplot</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_violin.html#lets_plot.geom_violin" title="lets_plot.geom_violin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">violin</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_freqpoly.html#lets_plot.geom_freqpoly" title="lets_plot.geom_freqpoly"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frequency</span> <span class="pre">polygon</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/histogram.ipynb">Histogram</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/distributions.ipynb">Distributions</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/1d_distributions.ipynb">1d distributions</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/dot_plots.ipynb">Dot plots</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geom_violin.ipynb">Violin plot</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/y_orientation.ipynb">Orientation</a></li>
+<li><p>Using scales: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/gradient_scale.ipynb">continuous</a>, <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/gradient2_scale.ipynb">diverging</a>, <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/hue_scale.ipynb">qualitative</a></p></li>
+</ul>
+</section>
+<section id="marginal-icon-marginal-plots">
+<h2><img alt="marginal-icon" src="../_images/marginal.svg" /> Marginal Plots<a class="headerlink" href="#marginal-icon-marginal-plots" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.ggmarginal.html#lets_plot.ggmarginal" title="lets_plot.ggmarginal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggmarginal</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/marginal_layers.ipynb">Marginal plots</a></li>
+</ul>
+</section>
+<section id="visualization-of-errors-icon-visualization-of-errors">
+<h2><img alt="visualization-of-errors-icon" src="../_images/visualization-of-errors.svg" /> Visualization of Errors<a class="headerlink" href="#visualization-of-errors-icon-visualization-of-errors" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_crossbar.html#lets_plot.geom_crossbar" title="lets_plot.geom_crossbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Crossbar</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_errorbar.html#lets_plot.geom_errorbar" title="lets_plot.geom_errorbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">errorbar</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_linerange.html#lets_plot.geom_linerange" title="lets_plot.geom_linerange"><code class="xref py py-mod docutils literal notranslate"><span class="pre">linerange</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_pointrange.html#lets_plot.geom_pointrange" title="lets_plot.geom_pointrange"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pointrange</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/error_bars.ipynb">Error bars</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/comparisons.ipynb">Comparisons</a></li>
+</ul>
+</section>
+<section id="smoothing-icon-smoothing">
+<h2><img alt="smoothing-icon" src="../_images/smoothing.svg" /> Smoothing<a class="headerlink" href="#smoothing-icon-smoothing" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_smooth.html#lets_plot.geom_smooth" title="lets_plot.geom_smooth"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Smoothing</span> <span class="pre">line</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/simple_linear_smoothing.ipynb">Simple linear smoothing</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/scatter_plot.ipynb">Draw a scatter plot</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/smooth_matrix.ipynb">Discover trends with smoothing</a></li>
+</ul>
+</section>
+<section id="bivariate-distribution-icon-bivariate-distribution">
+<h2><img alt="bivariate-distribution-icon" src="../_images/bivariate-distribution.svg" /> Bivariate Distribution<a class="headerlink" href="#bivariate-distribution-icon-bivariate-distribution" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_bin2d.html#lets_plot.geom_bin2d" title="lets_plot.geom_bin2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Heatmap</span> <span class="pre">of</span> <span class="pre">2d</span> <span class="pre">bin</span> <span class="pre">counts</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_density2d.html#lets_plot.geom_density2d" title="lets_plot.geom_density2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">2d</span> <span class="pre">density</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_density2df.html#lets_plot.geom_density2df" title="lets_plot.geom_density2df"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filled</span> <span class="pre">2d</span> <span class="pre">density</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/density_2d.ipynb">2d density</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/general_purpose_stats.ipynb">General purpose stats</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/2d_distributions.ipynb">2d distributions</a></li>
+</ul>
+</section>
+<section id="time-series-icon-time-series">
+<h2><img alt="time_series-icon" src="../_images/time-series.svg" /> Time Series<a class="headerlink" href="#time-series-icon-time-series" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.scale_x_datetime.html#lets_plot.scale_x_datetime" title="lets_plot.scale_x_datetime"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_x_datetime()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.scale_y_datetime.html#lets_plot.scale_y_datetime" title="lets_plot.scale_y_datetime"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_y_datetime()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.scale_x_time.html#lets_plot.scale_x_time" title="lets_plot.scale_x_time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_x_time()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.scale_y_time.html#lets_plot.scale_y_time" title="lets_plot.scale_y_time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_y_time()</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/scale_time.ipynb">Scale time</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/delhi_climate.ipynb">Time series visualizations</a></li>
+</ul>
+</section>
+<section id="images-icon-images">
+<h2><img alt="images-icon" src="../_images/images.svg" /> Images<a class="headerlink" href="#images-icon-images" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_image.html#lets_plot.geom_image" title="lets_plot.geom_image"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Image</span></code></a>,
+<a class="reference internal" href="api/lets_plot.bistro.im.image_matrix.html#lets_plot.bistro.im.image_matrix" title="lets_plot.bistro.im.image_matrix"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">of</span> <span class="pre">images</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/image_fisher_boat.ipynb">"Fisher boat" image</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/basic_image_matrix.ipynb">Simple image matrix</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/image_matrix.ipynb">Image matrix</a></li>
+</ul>
+</section>
+<section id="facets-icon-facets">
+<h2><img alt="facets-icon" src="../_images/facets.svg" /> Facets<a class="headerlink" href="#facets-icon-facets" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.facet_grid.html#lets_plot.facet_grid" title="lets_plot.facet_grid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">facet_grid()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.facet_wrap.html#lets_plot.facet_wrap" title="lets_plot.facet_wrap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">facet_wrap()</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/facets.ipynb">Facets</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/facets_free_scales.ipynb">Free scales on a faceted plot</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/covid19_and_mobility.ipynb">Population mobility and COVID-19</a></li>
+</ul>
+</section>
+<section id="coordinate-systems-icon-coordinate-systems">
+<h2><img alt="coordinate-systems-icon" src="../_images/coordinate-systems.svg" /> Coordinate Systems<a class="headerlink" href="#coordinate-systems-icon-coordinate-systems" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.coord_cartesian.html#lets_plot.coord_cartesian" title="lets_plot.coord_cartesian"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coord_cartesian()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.coord_fixed.html#lets_plot.coord_fixed" title="lets_plot.coord_fixed"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coord_fixed()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.coord_flip.html#lets_plot.coord_flip" title="lets_plot.coord_flip"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coord_flip()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.coord_map.html#lets_plot.coord_map" title="lets_plot.coord_map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coord_map()</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/coordinate_systems.ipynb">Coordinate systems</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/coord_flip.ipynb">Flipping coordinates</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/map_coordinates.ipynb">Map coordinates</a></li>
+</ul>
+</section>
+<section id="correlation-plot-icon-correlation-plot">
+<h2><img alt="correlation-plot-icon" src="../_images/correlation-plot.svg" /> Correlation Plot<a class="headerlink" href="#correlation-plot-icon-correlation-plot" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot" title="lets_plot.bistro.corr.corr_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Correlation</span> <span class="pre">plot</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/corr_plot.ipynb">Simple correlation plot</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/correlation_plot.ipynb">Correlation plot</a></li>
+</ul>
+</section>
+<section id="q-q-icon-q-q-plot">
+<h2><img alt="q-q-icon" src="../_images/qq.svg" /> Q-Q Plot<a class="headerlink" href="#q-q-icon-q-q-plot" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.geom_qq.html#lets_plot.geom_qq" title="lets_plot.geom_qq"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_qq()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_qq_line.html#lets_plot.geom_qq_line" title="lets_plot.geom_qq_line"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_qq_line()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_qq2.html#lets_plot.geom_qq2" title="lets_plot.geom_qq2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_qq2()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_qq2_line.html#lets_plot.geom_qq2_line" title="lets_plot.geom_qq2_line"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_qq2_line()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.bistro.qq.qq_plot.html#lets_plot.bistro.qq.qq_plot" title="lets_plot.bistro.qq.qq_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qq_plot()</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/qq_plots.ipynb">Q-Q plots</a></li>
+</ul>
+</section>
+<section id="geopandas-icon-geopandas-shapes">
+<h2><img alt="geopandas-icon" src="../_images/geopandas.svg" /> GeoPandas Shapes<a class="headerlink" href="#geopandas-icon-geopandas-shapes" title="Permalink to this headline">¶</a></h2>
+<p>GeoPandas <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> is supported by the following geometry layers: <a class="reference internal" href="api/lets_plot.geom_polygon.html#lets_plot.geom_polygon" title="lets_plot.geom_polygon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polygon</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_map.html#lets_plot.geom_map" title="lets_plot.geom_map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">map</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">point</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_text.html#lets_plot.geom_text" title="lets_plot.geom_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">text</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-mod docutils literal notranslate"><span class="pre">path</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_rect.html#lets_plot.geom_rect" title="lets_plot.geom_rect"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rect</span></code></a>.</p>
+<p>Learn more: <a class="reference internal" href="geopandas.html#geopandas"><span class="std std-ref">GeoPandas Support</span></a>.</p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geopandas_kotlin_isl.ipynb">Inset map of Kotlin island</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geopandas_naturalearth.ipynb">Using Lets-Plot with GeoPandas to Create Maps</a></li>
+<li><a class="reference external" href="https://datalore.jetbrains.com/view/notebook/eifzdh96VYuNrcjuOpYPYr">Plotting Airbnb prices Boston</a></li>
+</ul>
+</section>
+<section id="presentation-options-icon-presentation-options">
+<h2><img alt="presentation-options-icon" src="../_images/presentation-options.svg" /> Presentation Options<a class="headerlink" href="#presentation-options-icon-presentation-options" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="api/lets_plot.theme.html#lets_plot.theme" title="lets_plot.theme"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.theme_none.html#lets_plot.theme_none" title="lets_plot.theme_none"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_none()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.theme_classic.html#lets_plot.theme_classic" title="lets_plot.theme_classic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_classic()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.theme_grey.html#lets_plot.theme_grey" title="lets_plot.theme_grey"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_grey()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.theme_light.html#lets_plot.theme_light" title="lets_plot.theme_light"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_light()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.theme_minimal.html#lets_plot.theme_minimal" title="lets_plot.theme_minimal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_minimal()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.theme_minimal2.html#lets_plot.theme_minimal2" title="lets_plot.theme_minimal2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_minimal2()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.ggtitle.html#lets_plot.ggtitle" title="lets_plot.ggtitle"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggtitle()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.ggsize.html#lets_plot.ggsize" title="lets_plot.ggsize"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggsize()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.xlab.html#lets_plot.xlab" title="lets_plot.xlab"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xlab()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.ylab.html#lets_plot.ylab" title="lets_plot.ylab"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ylab()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.labs.html#lets_plot.labs" title="lets_plot.labs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">labs()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.guide_legend.html#lets_plot.guide_legend" title="lets_plot.guide_legend"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guide_legend()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.guide_colorbar.html#lets_plot.guide_colorbar" title="lets_plot.guide_colorbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guide_colorbar()</span></code></a></p>
+<p>Examples:</p>
+<ul>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/default_theme.ipynb">Default theme</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/themes.ipynb">Themes overview</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/legend_and_axis.ipynb">Legend and axis</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/tooltip_config.ipynb">Tooltip customization</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/comparisons.ipynb">Comparisons</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/guide_legend.ipynb">Legend guide</a></li>
+<li><a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/basics/gog/legend_place.ipynb">Legend place</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/title_subtitle_caption.ipynb">Title, subtitle, caption</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/tooltips_theme.ipynb">Tooltips theme</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/set_font_faces.ipynb">Set font faces</a></li>
+<li><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/panel_border.ipynb">Panel borders</a></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 preview-gallery docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/covid19_and_mobility.ipynb"><img alt="Population mobility and COVID-19" title="Population mobility and COVID-19" src="..\_extref_images\covid19_and_mobility.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/delhi_climate.ipynb"><img alt="Delhi climate" title="Delhi climate" src="..\_extref_images\delhi_climate.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/google_play_store.ipynb"><img alt="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/google_play_store.ipynb" title="" src="..\_extref_images\google_play_store.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Bayesian%20inference.ipynb"><img alt="Bayesian inference" title="Bayesian inference" src="..\_extref_images\bayesian_inference.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/htester/nobel-with-lets-plot"><img alt="https://www.kaggle.com/htester/nobel-with-lets-plot" title="" src="..\_extref_images\nobel.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/lets_plot_cheatbook.ipynb"><img alt="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/lets_plot_cheatbook.ipynb" title="" src="..\_extref_images\lets_plot_cheatbook.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot"><img alt="BBC visual and data journalism cookbook for Lets-Plot" title="BBC visual and data journalism cookbook for Lets-Plot" src="..\_extref_images\bbc_cookbook.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/scale_time.ipynb"><img alt="Scale time" title="Scale time" src="..\_extref_images\scale_time.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/scale_color_fill_gradientn.ipynb"><img alt="scale_(color|fill)_gradientn" title="scale_(color|fill)_gradientn" src="..\_extref_images\scale_color_fill_gradientn.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geopandas_kotlin_isl.ipynb"><img alt="Inset map of Kotlin island" title="Inset map of Kotlin island" src="..\_extref_images\geopandas_kotlin_isl.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geopandas_naturalearth.ipynb"><img alt="Using Lets-Plot with GeoPandas to Create Maps" title="Using Lets-Plot with GeoPandas to Create Maps" src="..\_extref_images\geopandas_naturalearth.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/eifzdh96VYuNrcjuOpYPYr"><img alt="Plotting Airbnb prices Boston" title="Plotting Airbnb prices Boston" src="..\_extref_images\plotting_airbnb_prices_boston.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/nyc_metro.ipynb"><img alt="https://nbviewer.jupyter.org/github/HIL-HK/lets-plot-examples/blob/master/demo/nyc_metro.ipynb" title="" src="..\_extref_images\nyc_metro.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/google_suggestions.ipynb"><img alt="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/google_suggestions.ipynb" title="" src="..\_extref_images\google_suggestions.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/malnutrition.ipynb"><img alt="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/malnutrition.ipynb" title="" src="..\_extref_images\malnutrition.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/world_coloring.ipynb"><img alt="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/world_coloring.ipynb" title="" src="..\_extref_images\world_coloring.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Kernels.ipynb"><img alt="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Kernels.ipynb" title="" src="..\_extref_images\kernels_visualization.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Torus%20-%20pseudo%203D.ipynb"><img alt="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Torus%20-%20pseudo%203D.ipynb" title="" src="..\_extref_images\torus.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Klein%20bottle%20-%20pseudo%203D.ipynb"><img alt="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Klein%20bottle%20-%20pseudo%203D.ipynb" title="" src="..\_extref_images\klein_bottle.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Mandelbulbs.ipynb"><img alt="https://nbviewer.jupyter.org/github/denisvstepanov/lets-plot-examples/blob/master/Mandelbulbs.ipynb" title="" src="..\_extref_images\mandelbulbs.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/2020.ipynb"><img alt="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/2020.ipynb" title="" src="..\_extref_images\2020.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/mosaic_image.ipynb"><img alt="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/mosaic_image.ipynb" title="" src="..\_extref_images\mosaic_image.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/coord_flip.ipynb"><img alt="Flipping coordinates" title="Flipping coordinates" src="..\_extref_images\coord_flip.png" style=""/></a></div>
+</div>
+</div>
+</div>
+</div>
+<div id="preview-gallery-more">
+  <a href="#">Show more</a>
+</div></section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 features-list docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/ggplot2-like-api.svg" src="../_images/ggplot2-like-api.svg" /><p class="card-text">ggplot2-like API</p>
+<p class="card-text">A bridge between R (<a class="reference internal" href="../index.html#index-meet-gog"><span class="std std-ref">ggplot2</span></a>) and Python Data visualization.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/graphics-grid.svg" src="../_images/graphics-grid.svg" /><p class="card-text">Grouping Plots</p>
+<p class="card-text"><a class="reference internal" href="api/lets_plot.GGBunch.html#lets_plot.GGBunch" title="lets_plot.GGBunch"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GGBunch</span></code></a> shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/platforms.svg" src="../_images/platforms.svg" /><p class="card-text">Suitable for Scientist and Developer</p>
+<p class="card-text">Works in computational notebooks (<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/quickstart.ipynb">Jupyter</a>, <a class="reference external" href="https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA">Datalore</a>, <a class="reference external" href="https://www.kaggle.com/alshan/lets-plot-quickstart">Kaggle</a>, <a class="reference external" href="https://colab.research.google.com/drive/1uYYZcG0g0kP4lJdPkpWB8aBS96ioDii2?usp=sharing">Colab</a>, <a class="reference external" href="https://deepnote.com/project/673ea421-638e-469d-8d04-5cc4c6e0258f#%2Fnotebook.ipynb">Deepnote</a>) and in JetBrains professional IDEs - <a class="reference external" href="https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview">PyCharm</a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/tooltips.svg" src="../_images/tooltips.svg" /><p class="card-text">Customizable Tooltips</p>
+<p class="card-text">You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. <a class="reference internal" href="tooltips.html#tooltips"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/kotlin.svg" src="../_images/kotlin.svg" /><p class="card-text">Kotlin API</p>
+<p class="card-text">R, Python, what’s next? Right. <a class="reference external" href="https://github.com/JetBrains/lets-plot-kotlin">Lets-Plot Kotlin API</a> enables data visualization in JVM and Kotlin/JS applications as well as in scientific notebooks like Jupyter and Datalore.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/formatting.svg" src="../_images/formatting.svg" /><p class="card-text">Formatting</p>
+<p class="card-text">Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. <a class="reference internal" href="formats.html#formats"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/geospatial-visualization.svg" src="../_images/geospatial-visualization.svg" /><p class="card-text">Geospatial Visualization</p>
+<p class="card-text">Find spatial objects with the help of our powerful and easy to use <a class="reference internal" href="geocoding.html#geocoding"><span class="std std-ref">Geocoding</span></a> module. In case you already have <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> on hand - <a class="reference internal" href="geopandas.html#geopandas"><span class="std std-ref">plot it</span></a> straight away.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/sampling.svg" src="../_images/sampling.svg" /><p class="card-text">Sampling</p>
+<p class="card-text">Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting. <a class="reference internal" href="sampling.html#sampling"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/interactive-maps.svg" src="../_images/interactive-maps.svg" /><p class="card-text">Interactive Maps</p>
+<p class="card-text">Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. <a class="reference internal" href="maps.html#maps"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/export.svg" src="../_images/export.svg" /><p class="card-text">Export to SVG and HTML</p>
+<p class="card-text">The <a class="reference internal" href="api/lets_plot.ggsave.html#lets_plot.ggsave" title="lets_plot.ggsave"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggsave()</span></code></a> function is an easy way to export plot to a file in SVG or HTML formats.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/offline-mode.svg" src="../_images/offline-mode.svg" /><p class="card-text">‘No Javascript’ and Offline Mode</p>
+<p class="card-text">In the ‘no javascript’ mode Lets-Plot generates plots as bare-bones SVG images. Plots in the notebook with option <code class="docutils literal notranslate"><span class="pre">offline=True</span></code> will be working without an Internet connection. <a class="reference internal" href="no_js_and_offline_mode.html#no-js-and-offline-mode"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a class="reference internal terms-of-service" href="../_static/docs/lets-plot_terms.pdf" target="_blank">
+        Terms
+      </a>
+      |
+      <a class="reference internal licenses" href="licenses.html">
+        Licenses
+      </a>
+    </p>
+    <p>
+      Copyright © 2019-2022 JetBrains s.r.o.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

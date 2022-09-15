@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Maps in Lets-Plot</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/dataframe.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geocoding" href="geocoding.html" />
+    <link rel="prev" title="Charts" href="charts.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Lets-Plot</a>
+        <span class="navbar-text navbar-version pull-left"><b>2.4.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="api.html">API</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="charts.html">Charts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">Geocoding</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Maps</a><ul>
+<li><a class="reference internal" href="#proportional-symbol-map">Proportional Symbol Map</a></li>
+<li><a class="reference internal" href="#choropleth-map">Choropleth Map</a></li>
+<li><a class="reference internal" href="#combine-layers-on-map-ggplot2-style">Combine Layers on Map <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> Style</a><ul>
+<li><a class="reference internal" href="#layers-primitives-icon-primitives"> Primitives</a></li>
+<li><a class="reference internal" href="#layers-contours-icon-contours"> Contours</a></li>
+<li><a class="reference internal" href="#layers-bivariate-icon-bivariate-distribution"> Bivariate Distribution</a></li>
+<li><a class="reference internal" href="#quickstart-icon-quickstart"> Quickstart</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-a-basemap-that-is-right-for-you-licenses">Use a Basemap That is Right for You <a class="reference internal image-reference" href="licenses.html">
+  <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg">
+</a></a></li>
+<li><a class="reference internal" href="#pycharm">PyCharm</a></li>
+<li><a class="reference internal" href="#geopandas-shapes">GeoPandas Shapes</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#key-features">Key Features</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="maps">
+<span id="id1"></span><h1>Maps<a class="headerlink" href="#maps" title="Permalink to this headline">¶</a></h1>
+<p>Create beautiful maps just by adding an interactive basemap layer to your plot: <a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap()</span></code></a>.</p>
+<section id="proportional-symbol-map">
+<h2>Proportional Symbol Map<a class="headerlink" href="#proportional-symbol-map" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/NCimfm45sYdFyh0JosywnO"><img alt="https://datalore.jetbrains.com/view/notebook/NCimfm45sYdFyh0JosywnO" title="" src="..\_extref_images\map_california_housing.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="o">..</span><span class="p">),</span> <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="text-center">or</div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="choropleth-map">
+<h2>Choropleth Map<a class="headerlink" href="#choropleth-map" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/alshan/covid-19-in-india-eda-and-spatial-visualization"><img alt="https://www.kaggle.com/alshan/covid-19-in-india-eda-and-spatial-visualization" title="" src="..\_extref_images\covid19_india.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_polygon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="o">..</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="combine-layers-on-map-ggplot2-style">
+<h2>Combine Layers on Map <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> Style<a class="headerlink" href="#combine-layers-on-map-ggplot2-style" title="Permalink to this headline">¶</a></h2>
+<p>The following ggplot2 geometries can be used with interactive maps:</p>
+<section id="layers-primitives-icon-primitives">
+<h3><img alt="layers_primitives-icon" src="../_images/layers_primitives.svg" /> Primitives<a class="headerlink" href="#layers-primitives-icon-primitives" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">point</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-mod docutils literal notranslate"><span class="pre">path</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_tile.html#lets_plot.geom_tile" title="lets_plot.geom_tile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tiles</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_polygon.html#lets_plot.geom_polygon" title="lets_plot.geom_polygon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polygon</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_map.html#lets_plot.geom_map" title="lets_plot.geom_map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">map</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_hline.html#lets_plot.geom_hline" title="lets_plot.geom_hline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">horizontal</span> <span class="pre">line</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_vline.html#lets_plot.geom_vline" title="lets_plot.geom_vline"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vertical</span> <span class="pre">line</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_rect.html#lets_plot.geom_rect" title="lets_plot.geom_rect"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rectangle</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_segment.html#lets_plot.geom_segment" title="lets_plot.geom_segment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">segment</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_text.html#lets_plot.geom_text" title="lets_plot.geom_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">text</span></code></a>.</p>
+</section>
+<section id="layers-contours-icon-contours">
+<h3><img alt="layers_contours-icon" src="../_images/layers_contours.svg" /> Contours<a class="headerlink" href="#layers-contours-icon-contours" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geom_contour.html#lets_plot.geom_contour" title="lets_plot.geom_contour"><code class="xref py py-mod docutils literal notranslate"><span class="pre">contour</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_contourf.html#lets_plot.geom_contourf" title="lets_plot.geom_contourf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filled</span> <span class="pre">contour</span></code></a>.</p>
+</section>
+<section id="layers-bivariate-icon-bivariate-distribution">
+<h3><img alt="layers_bivariate-icon" src="../_images/layers_bivariate.svg" /> Bivariate Distribution<a class="headerlink" href="#layers-bivariate-icon-bivariate-distribution" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geom_bin2d.html#lets_plot.geom_bin2d" title="lets_plot.geom_bin2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">heatmap</span> <span class="pre">of</span> <span class="pre">2d</span> <span class="pre">bin</span> <span class="pre">counts</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_density2d.html#lets_plot.geom_density2d" title="lets_plot.geom_density2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">2d</span> <span class="pre">density</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_density2df.html#lets_plot.geom_density2df" title="lets_plot.geom_density2df"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filled</span> <span class="pre">2d</span> <span class="pre">density</span></code></a>.</p>
+</section>
+<section id="quickstart-icon-quickstart">
+<h3><img alt="quickstart-icon" src="../_images/quickstart.svg" /> Quickstart<a class="headerlink" href="#quickstart-icon-quickstart" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://datalore.jetbrains.com/view/notebook/9dzGjTQay4ENqj7GTEIvBU">Quickstart guide to maps</a>.</p>
+</section>
+</section>
+<section id="use-a-basemap-that-is-right-for-you-licenses">
+<h2>Use a Basemap That is Right for You <a class="reference internal image-reference" href="licenses.html">
+  <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg">
+</a><a class="headerlink" href="#use-a-basemap-that-is-right-for-you-licenses" title="Permalink to this headline">¶</a></h2>
+<p>Use quality Lets-Plot vector basemaps or choose among many raster map tiles available through 3rd party providers.</p>
+<p>Learn more: <a class="reference internal" href="basemap_tiles.html#basemap-tiles"><span class="std std-ref">Configuring Basemap Tiles for Interactive Maps</span></a>.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\lets_plot_default.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\lets_plot_dark.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\lets_plot_light.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\osm_standard.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\open_topo_map.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\stamen_design_terrain.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\stamen_design_toner.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\stamen_design_toner_hybrid.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\stamen_design_toner_labels.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\stamen_design_watercolor.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\carto_antique.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\carto_dark_matter_no_labels.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\carto_flat_blue.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\carto_midnight_commander.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\carto_positron.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\carto_positron_no_labels.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\carto_voyager.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\nasa_gibs_blue_marble.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\nasa_gibs_color_shaded.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL"><img alt="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL" title="" src="..\_extref_images\nasa_gibs_greyscale.png" style=""/></a></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pycharm">
+<h2>PyCharm<a class="headerlink" href="#pycharm" title="Permalink to this headline">¶</a></h2>
+<p>Create maps in PyCharm with the help of <a class="reference external" href="https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview">Lets-Plot in SciView</a> plugin.</p>
+<img alt="../_images/pycharm_map_fr_low_65.gif" src="../_images/pycharm_map_fr_low_65.gif" />
+</section>
+<section id="geopandas-shapes">
+<h2>GeoPandas Shapes<a class="headerlink" href="#geopandas-shapes" title="Permalink to this headline">¶</a></h2>
+<p>GeoPandas <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> is supported by the following geometry layers: <a class="reference internal" href="api/lets_plot.geom_polygon.html#lets_plot.geom_polygon" title="lets_plot.geom_polygon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polygon</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_map.html#lets_plot.geom_map" title="lets_plot.geom_map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">map</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">point</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_text.html#lets_plot.geom_text" title="lets_plot.geom_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">text</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-mod docutils literal notranslate"><span class="pre">path</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_rect.html#lets_plot.geom_rect" title="lets_plot.geom_rect"><code class="xref py py-mod docutils literal notranslate"><span class="pre">rect</span></code></a>.</p>
+<p>Learn more: <a class="reference internal" href="geopandas.html#geopandas"><span class="std std-ref">GeoPandas Support</span></a>.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 preview-gallery docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/9dzGjTQay4ENqj7GTEIvBU"><img alt="Quickstart guide to maps" title="Quickstart guide to maps" src="..\_extref_images\map_quickstart.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/alshan/volcanoes-in-japan-on-map"><img alt="https://www.kaggle.com/alshan/volcanoes-in-japan-on-map" title="" src="..\_extref_images\volcanoes_in_japan.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/alshan/mapping-us-household-income"><img alt="https://www.kaggle.com/alshan/mapping-us-household-income" title="" src="..\_extref_images\mapping_US_household_income.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nextjournal.com/essicolo/spatial-prediction-of-soil-pollutants-with-multi-output-gaussian-processes"><img alt="Spatial prediction of soil pollutants with multi-output Gaussian processes" title="Spatial prediction of soil pollutants with multi-output Gaussian processes" src="..\_extref_images\soil_pollutants_with_gaussian_processes.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/alshan/visualization-of-airport-data-on-map"><img alt="https://www.kaggle.com/alshan/visualization-of-airport-data-on-map" title="" src="..\_extref_images\map_airports.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/alshan/beijing-housing-prices-on-a-map-with-spatial-join"><img alt="https://www.kaggle.com/alshan/beijing-housing-prices-on-a-map-with-spatial-join" title="" src="..\_extref_images\beijing.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://csboutique.medium.com/lets-plot-948ee80cfa5c"><img alt="Plotting Airbnb prices Boston" title="Plotting Airbnb prices Boston" src="..\_extref_images\plotting_airbnb_prices_boston.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/alshan/covid-19-in-india-eda-and-spatial-visualization"><img alt="https://www.kaggle.com/alshan/covid-19-in-india-eda-and-spatial-visualization" title="" src="..\_extref_images\covid19_india.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/18vW14MKvPqWBIedhsrrSQ"><img alt="https://datalore.jetbrains.com/view/notebook/18vW14MKvPqWBIedhsrrSQ" title="" src="..\_extref_images\map_US_household_income.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/NCimfm45sYdFyh0JosywnO"><img alt="https://datalore.jetbrains.com/view/notebook/NCimfm45sYdFyh0JosywnO" title="" src="..\_extref_images\map_california_housing.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/asmirnovhoris/bigquery-gis-and-lets-plot"><img alt="Getting started with BigQuery GIS and Lets-Plot" title="Getting started with BigQuery GIS and Lets-Plot" src="..\_extref_images\bigquery_gis.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/aaS9Klh4fU48gEZbb7C3XN"><img alt="https://datalore.jetbrains.com/view/notebook/aaS9Klh4fU48gEZbb7C3XN" title="" src="..\_extref_images\museums.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/kX5AC94O9FKVkED8eLNMXU"><img alt="https://datalore.jetbrains.com/view/notebook/kX5AC94O9FKVkED8eLNMXU" title="" src="..\_extref_images\bar_on_livemap.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://www.kaggle.com/alshan/visualization-of-the-titanic-s-voyage"><img alt="https://www.kaggle.com/alshan/visualization-of-the-titanic-s-voyage" title="" src="..\_extref_images\titanic.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/g1OrpV6Vx4CGxIInpB2b5y"><img alt="https://datalore.jetbrains.com/view/notebook/g1OrpV6Vx4CGxIInpB2b5y" title="" src="..\_extref_images\minard.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/DyD2CLrAbpfO3FMtg6QuhT"><img alt="https://datalore.jetbrains.com/view/notebook/DyD2CLrAbpfO3FMtg6QuhT" title="" src="..\_extref_images\pushkin.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/OJC8wvcJLQ6hqTYA54RU1G"><img alt="https://datalore.jetbrains.com/view/notebook/OJC8wvcJLQ6hqTYA54RU1G" title="" src="..\_extref_images\spb_bakeries.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/travel_the_world.ipynb"><img alt="Travel the world" title="Travel the world" src="..\_extref_images\travel_the_world.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/PRg5U4Zkk19xSGi7bDJ2uz"><img alt="https://datalore.jetbrains.com/view/notebook/PRg5U4Zkk19xSGi7bDJ2uz" title="" src="..\_extref_images\maps_and_geocoding.png" style=""/></a></div>
+</div>
+</div>
+<div class="d-flex col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<a class="reference external image-reference" href="https://datalore.jetbrains.com/view/notebook/yTuTJrXKW8wz5NfcVhlaXP"><img alt="https://datalore.jetbrains.com/view/notebook/yTuTJrXKW8wz5NfcVhlaXP" title="" src="..\_extref_images\internet_use_and_activities.png" style=""/></a></div>
+</div>
+</div>
+</div>
+</div>
+<div id="preview-gallery-more">
+  <a href="#">Show more</a>
+</div></section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-bs container pb-4 features-list docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/ggplot2-like-api.svg" src="../_images/ggplot2-like-api.svg" /><p class="card-text">ggplot2-like API</p>
+<p class="card-text">A bridge between R (<a class="reference internal" href="../index.html#index-meet-gog"><span class="std std-ref">ggplot2</span></a>) and Python Data visualization.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/graphics-grid.svg" src="../_images/graphics-grid.svg" /><p class="card-text">Grouping Plots</p>
+<p class="card-text"><a class="reference internal" href="api/lets_plot.GGBunch.html#lets_plot.GGBunch" title="lets_plot.GGBunch"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GGBunch</span></code></a> shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/platforms.svg" src="../_images/platforms.svg" /><p class="card-text">Suitable for Scientist and Developer</p>
+<p class="card-text">Works in computational notebooks (<a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/quickstart.ipynb">Jupyter</a>, <a class="reference external" href="https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA">Datalore</a>, <a class="reference external" href="https://www.kaggle.com/alshan/lets-plot-quickstart">Kaggle</a>, <a class="reference external" href="https://colab.research.google.com/drive/1uYYZcG0g0kP4lJdPkpWB8aBS96ioDii2?usp=sharing">Colab</a>, <a class="reference external" href="https://deepnote.com/project/673ea421-638e-469d-8d04-5cc4c6e0258f#%2Fnotebook.ipynb">Deepnote</a>) and in JetBrains professional IDEs - <a class="reference external" href="https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview">PyCharm</a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/tooltips.svg" src="../_images/tooltips.svg" /><p class="card-text">Customizable Tooltips</p>
+<p class="card-text">You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. <a class="reference internal" href="tooltips.html#tooltips"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/kotlin.svg" src="../_images/kotlin.svg" /><p class="card-text">Kotlin API</p>
+<p class="card-text">R, Python, what’s next? Right. <a class="reference external" href="https://github.com/JetBrains/lets-plot-kotlin">Lets-Plot Kotlin API</a> enables data visualization in JVM and Kotlin/JS applications as well as in scientific notebooks like Jupyter and Datalore.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/formatting.svg" src="../_images/formatting.svg" /><p class="card-text">Formatting</p>
+<p class="card-text">Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. <a class="reference internal" href="formats.html#formats"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/geospatial-visualization.svg" src="../_images/geospatial-visualization.svg" /><p class="card-text">Geospatial Visualization</p>
+<p class="card-text">Find spatial objects with the help of our powerful and easy to use <a class="reference internal" href="geocoding.html#geocoding"><span class="std std-ref">Geocoding</span></a> module. In case you already have <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> on hand - <a class="reference internal" href="geopandas.html#geopandas"><span class="std std-ref">plot it</span></a> straight away.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/sampling.svg" src="../_images/sampling.svg" /><p class="card-text">Sampling</p>
+<p class="card-text">Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting. <a class="reference internal" href="sampling.html#sampling"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/interactive-maps.svg" src="../_images/interactive-maps.svg" /><p class="card-text">Interactive Maps</p>
+<p class="card-text">Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. <a class="reference internal" href="#maps"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/export.svg" src="../_images/export.svg" /><p class="card-text">Export to SVG and HTML</p>
+<p class="card-text">The <a class="reference internal" href="api/lets_plot.ggsave.html#lets_plot.ggsave" title="lets_plot.ggsave"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggsave()</span></code></a> function is an easy way to export plot to a file in SVG or HTML formats.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<img alt="../_images/offline-mode.svg" src="../_images/offline-mode.svg" /><p class="card-text">‘No Javascript’ and Offline Mode</p>
+<p class="card-text">In the ‘no javascript’ mode Lets-Plot generates plots as bare-bones SVG images. Plots in the notebook with option <code class="docutils literal notranslate"><span class="pre">offline=True</span></code> will be working without an Internet connection. <a class="reference internal" href="no_js_and_offline_mode.html#no-js-and-offline-mode"><span class="std std-ref">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a class="reference internal terms-of-service" href="../_static/docs/lets-plot_terms.pdf" target="_blank">
+        Terms
+      </a>
+      |
+      <a class="reference internal licenses" href="licenses.html">
+        Licenses
+      </a>
+    </p>
+    <p>
+      Copyright © 2019-2022 JetBrains s.r.o.<br>
+      Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
