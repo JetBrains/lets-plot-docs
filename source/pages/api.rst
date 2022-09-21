@@ -91,6 +91,7 @@ Standard Geometries
     geom_rect
     geom_segment
     geom_text
+	geom_label
     geom_qq
     geom_qq2
     geom_qq_line
@@ -168,6 +169,7 @@ Color Scales
     scale_color_discrete
     scale_color_grey
     scale_color_brewer
+	scale_color_viridis
 
 Fill Scales
 ~~~~~~~~~~~
@@ -184,6 +186,7 @@ Fill Scales
     scale_fill_discrete
     scale_fill_grey
     scale_fill_brewer
+	scale_fill_viridis
 
 Shape Scales
 ~~~~~~~~~~~~
@@ -301,6 +304,7 @@ Base
 
     theme
     theme_none
+	theme_bw
     theme_classic
     theme_grey
     theme_light
@@ -310,6 +314,11 @@ Base
     element_rect
     element_line
     element_text
+	flavor_darcula
+	flavor_high_contrast_dark
+	flavor_high_contrast_light
+	flavor_solarized_dark
+	flavor_solarized_light
     ggsize
 
 Labels
