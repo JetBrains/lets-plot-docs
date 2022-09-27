@@ -14,7 +14,7 @@
     pages/charts
     pages/maps
     Geocoding <pages/geocoding>
-	What's new <pages/whats_new>
+    What's new <pages/whats_new>
 
 An Open-source Plotting Library for Statistical Data
 ====================================================
@@ -172,6 +172,14 @@ Explore Your Data with Lets-Plot
         <a class="reference internal image-reference" href="pages/geocoding.html">
           <img src="_static/images/previews/geocoding.png">
         </a>
+
+
+Change Log
+----------
+
+See `what is new in 2.4.0 <https://github.com/JetBrains/lets-plot#what-is-new-in-240>`__
+
+See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for other changes and fixes.
 
 
 .. include:: /shared/features.rst
