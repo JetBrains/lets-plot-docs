@@ -307,6 +307,7 @@ Base
     element_rect
     element_line
     element_text
+    margin
     ggsize
 
 Predefined Themes
