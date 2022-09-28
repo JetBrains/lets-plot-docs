@@ -397,42 +397,38 @@ Base
 Predefined Themes
 ~~~~~~~~~~~~~~~~~
 
-:py:mod:`theme_none() <lets_plot.theme_none>`,
+:py:mod:`theme_minimal2() (default) <lets_plot.theme_minimal2>`,
 :py:mod:`theme_bw() <lets_plot.theme_bw>`,
-:py:mod:`theme_classic() <lets_plot.theme_classic>`,
 :py:mod:`theme_grey() <lets_plot.theme_grey>`,
+:py:mod:`theme_classic() <lets_plot.theme_classic>`,
 :py:mod:`theme_light() <lets_plot.theme_light>`,
 :py:mod:`theme_minimal() <lets_plot.theme_minimal>`,
-:py:mod:`theme_minimal2() <lets_plot.theme_minimal2>`
+:py:mod:`theme_none() <lets_plot.theme_none>`
 
 .. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. extref:: predefined_themes
+    .. extref:: complete_themes
         :image: minimal2
 
     ---
-    .. extref:: predefined_themes
-        :image: none
-
-    ---
-    .. extref:: predefined_themes
+    .. extref:: complete_themes
         :image: bw
 
     ---
-    .. extref:: predefined_themes
-        :image: classic
-
-    ---
-    .. extref:: predefined_themes
+    .. extref:: complete_themes
         :image: grey
 
     ---
-    .. extref:: predefined_themes
+    .. extref:: complete_themes
+        :image: classic
+
+    ---
+    .. extref:: complete_themes
         :image: light
 
     ---
-    .. extref:: predefined_themes
+    .. extref:: complete_themes
         :image: minimal
 
 Color Schemes (Flavors)
@@ -445,7 +441,7 @@ Color Schemes (Flavors)
 :py:mod:`flavor_high_contrast_dark() <lets_plot.flavor_high_contrast_dark>`
 
 .. panels::
-    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
+    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
 
     .. extref:: flavors
         :image: darcula

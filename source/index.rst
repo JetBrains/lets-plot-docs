@@ -174,12 +174,4 @@ Explore Your Data with Lets-Plot
         </a>
 
 
-Change Log
-----------
-
-See `what is new in 2.4.0 <https://github.com/JetBrains/lets-plot#what-is-new-in-240>`__
-
-See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for other changes and fixes.
-
-
 .. include:: /shared/features.rst
