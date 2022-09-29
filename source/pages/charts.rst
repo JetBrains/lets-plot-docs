@@ -382,9 +382,6 @@ Examples:
 
 .. |presentation-options-icon| image:: /_static/images/icons/charts/presentation-options.svg
 
-Base
-~~~~
-
 :py:mod:`theme() <lets_plot.theme>`,
 :py:mod:`ggtitle() <lets_plot.ggtitle>`,
 :py:mod:`ggsize() <lets_plot.ggsize>`,
@@ -394,16 +391,13 @@ Base
 :py:mod:`guide_legend() <lets_plot.guide_legend>`,
 :py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`
 
-Predefined Themes
-~~~~~~~~~~~~~~~~~
-
-:py:mod:`theme_minimal2() (default) <lets_plot.theme_minimal2>`,
-:py:mod:`theme_bw() <lets_plot.theme_bw>`,
-:py:mod:`theme_grey() <lets_plot.theme_grey>`,
-:py:mod:`theme_classic() <lets_plot.theme_classic>`,
-:py:mod:`theme_light() <lets_plot.theme_light>`,
-:py:mod:`theme_minimal() <lets_plot.theme_minimal>`,
-:py:mod:`theme_none() <lets_plot.theme_none>`
+:py:mod:`minimal2 <lets_plot.theme_minimal2>`,
+:py:mod:`bw <lets_plot.theme_bw>`,
+:py:mod:`grey <lets_plot.theme_grey>`,
+:py:mod:`classic <lets_plot.theme_classic>`,
+:py:mod:`light <lets_plot.theme_light>`,
+:py:mod:`minimal <lets_plot.theme_minimal>`,
+:py:mod:`none <lets_plot.theme_none>`
 
 .. panels::
     :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
@@ -431,36 +425,16 @@ Predefined Themes
     .. extref:: complete_themes
         :image: minimal
 
-Color Schemes (Flavors)
-~~~~~~~~~~~~~~~~~~~~~~~
+:py:mod:`darcula <lets_plot.flavor_darcula>`,
+:py:mod:`solarized light <lets_plot.flavor_solarized_light>`,
+:py:mod:`solarized dark <lets_plot.flavor_solarized_dark>`,
+:py:mod:`high contrast light <lets_plot.flavor_high_contrast_light>`,
+:py:mod:`high contrast dark <lets_plot.flavor_high_contrast_dark>`
 
-:py:mod:`flavor_darcula() <lets_plot.flavor_darcula>`,
-:py:mod:`flavor_solarized_light() <lets_plot.flavor_solarized_light>`,
-:py:mod:`flavor_solarized_dark() <lets_plot.flavor_solarized_dark>`,
-:py:mod:`flavor_high_contrast_light() <lets_plot.flavor_high_contrast_light>`,
-:py:mod:`flavor_high_contrast_dark() <lets_plot.flavor_high_contrast_dark>`
-
-.. panels::
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
-
-    .. extref:: flavors
-        :image: darcula
-
-    ---
-    .. extref:: flavors
-        :image: solarized_light
-
-    ---
-    .. extref:: flavors
-        :image: solarized_dark
-
-    ---
-    .. extref:: flavors
-        :image: high_contrast_light
-
-    ---
-    .. extref:: flavors
-        :image: high_contrast_dark
+.. extref:: flavors
+  :image: common
+  :width: 1000
+  :height: 133
 
 Examples:
 
