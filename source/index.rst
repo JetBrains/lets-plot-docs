@@ -14,6 +14,7 @@
     pages/charts
     pages/maps
     Geocoding <pages/geocoding>
+    What's new <pages/whats_new>
 
 An Open-source Plotting Library for Statistical Data
 ====================================================

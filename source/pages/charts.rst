@@ -45,7 +45,8 @@ Tiles:
 
 
 Text:
-:py:mod:`text <lets_plot.geom_text>`
+:py:mod:`text <lets_plot.geom_text>`,
+:py:mod:`label <lets_plot.geom_label>`
 
 Examples:
 
@@ -58,6 +59,8 @@ Examples:
 - .. extref:: geopandas_kotlin_isl
       :type: text
 - .. extref:: formatting_axes_etc
+      :type: text
+- .. extref:: geom_label
       :type: text
 
 
@@ -79,13 +82,16 @@ Examples:
       :type: text
 - .. extref:: general_purpose_stats
       :type: text
-- Using scales: |continuous_scales|, |discrete_scales|, |identity_scales|, |manual_scales|, |brewer_scale|, |grey_scale|
+- Using scales: |continuous_scales|, |discrete_scales|, |identity_scales|, |manual_scales|, |brewer_scale|, |colors_viridis|, |grey_scale|
 - .. extref:: dodge_position
       :type: text
 
 .. |brewer_scale| extref:: brewer_scale
     :type: text
     :text: brewer colors
+.. |colors_viridis| extref:: colors_viridis
+    :type: text
+    :text: viridis colors
 .. |continuous_scales| extref:: continuous_scales
     :type: text
     :text: continuous
@@ -377,12 +383,6 @@ Examples:
 .. |presentation-options-icon| image:: /_static/images/icons/charts/presentation-options.svg
 
 :py:mod:`theme() <lets_plot.theme>`,
-:py:mod:`theme_none() <lets_plot.theme_none>`,
-:py:mod:`theme_classic() <lets_plot.theme_classic>`,
-:py:mod:`theme_grey() <lets_plot.theme_grey>`,
-:py:mod:`theme_light() <lets_plot.theme_light>`,
-:py:mod:`theme_minimal() <lets_plot.theme_minimal>`,
-:py:mod:`theme_minimal2() <lets_plot.theme_minimal2>`,
 :py:mod:`ggtitle() <lets_plot.ggtitle>`,
 :py:mod:`ggsize() <lets_plot.ggsize>`,
 :py:mod:`xlab() <lets_plot.xlab>`,
@@ -391,11 +391,62 @@ Examples:
 :py:mod:`guide_legend() <lets_plot.guide_legend>`,
 :py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`
 
+Predefined themes:
+
+:py:mod:`minimal2 <lets_plot.theme_minimal2>`,
+:py:mod:`bw <lets_plot.theme_bw>`,
+:py:mod:`grey <lets_plot.theme_grey>`,
+:py:mod:`classic <lets_plot.theme_classic>`,
+:py:mod:`light <lets_plot.theme_light>`,
+:py:mod:`minimal <lets_plot.theme_minimal>`,
+:py:mod:`none <lets_plot.theme_none>`
+
+.. panels::
+    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. extref:: complete_themes
+        :image: minimal2
+
+    ---
+    .. extref:: complete_themes
+        :image: bw
+
+    ---
+    .. extref:: complete_themes
+        :image: grey
+
+    ---
+    .. extref:: complete_themes
+        :image: classic
+
+    ---
+    .. extref:: complete_themes
+        :image: light
+
+    ---
+    .. extref:: complete_themes
+        :image: minimal
+
+Color schemes (flavors):
+
+:py:mod:`darcula <lets_plot.flavor_darcula>`,
+:py:mod:`solarized light <lets_plot.flavor_solarized_light>`,
+:py:mod:`solarized dark <lets_plot.flavor_solarized_dark>`,
+:py:mod:`high contrast light <lets_plot.flavor_high_contrast_light>`,
+:py:mod:`high contrast dark <lets_plot.flavor_high_contrast_dark>`
+
+.. extref:: flavors
+  :image: common
+  :width: 1000
+  :height: 133
+
 Examples:
 
 - .. extref:: default_theme
       :type: text
 - .. extref:: themes
+      :type: text
+- .. extref:: theme_flavors
       :type: text
 - .. extref:: legend_and_axis
       :type: text
