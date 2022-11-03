@@ -496,13 +496,10 @@ Examples
     .. extref:: bbc_cookbook
 
     ---
-    .. extref:: scale_time
-
-    ---
-    .. extref:: scale_color_fill_gradientn
-
-    ---
     .. extref:: geopandas_kotlin_isl
+
+    ---
+    .. extref:: ivindo_river
 
     ---
     .. extref:: geopandas_naturalearth
