@@ -62,6 +62,12 @@ Examples:
       :type: text
 - .. extref:: geom_label
       :type: text
+- .. extref:: geom_text_features
+      :type: text
+- .. extref:: map_use_crs
+      :type: text
+- .. extref:: position_stack
+      :type: text
 
 
 |discrete-icon| Discrete
@@ -279,6 +285,12 @@ Examples:
 
 Examples:
 
+- .. extref:: image_101
+      :type: text
+- .. extref:: image_extent
+      :type: text
+- .. extref:: image_grayscale
+      :type: text
 - .. extref:: image_fisher_boat
       :type: text
       :text: "Fisher boat" image
@@ -575,6 +587,9 @@ Examples
 
     ---
     .. extref:: viridis_scale
+
+    ---
+    .. extref:: map_use_crs
 
 .. raw:: html
 
