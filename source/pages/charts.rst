@@ -484,7 +484,13 @@ Examples
     .. extref:: google_play_store
 
     ---
+    .. extref:: malnutrition
+
+    ---
     .. extref:: bayesian_inference
+
+    ---
+    .. extref:: geopandas_naturalearth
 
     ---
     .. extref:: nobel
@@ -499,22 +505,34 @@ Examples
     .. extref:: geopandas_kotlin_isl
 
     ---
-    .. extref:: ivindo_river
+    .. extref:: y_orientation
 
     ---
-    .. extref:: geopandas_naturalearth
+    .. extref:: tooltip_title
+
+    ---
+    .. extref:: coordinate_systems
+
+    ---
+    .. extref:: correlation_plot
+
+    ---
+    .. extref:: geom_violin
+
+    ---
+    .. extref:: dot_plots
 
     ---
     .. extref:: plotting_airbnb_prices_boston
 
     ---
-    .. extref:: nyc_metro
+    .. extref:: mandelbulbs
 
     ---
-    .. extref:: google_suggestions
+    .. extref:: ivindo_river
 
     ---
-    .. extref:: malnutrition
+    .. extref:: how_to_draw_curve
 
     ---
     .. extref:: world_coloring
@@ -529,7 +547,10 @@ Examples
     .. extref:: klein_bottle
 
     ---
-    .. extref:: mandelbulbs
+    .. extref:: nyc_metro
+
+    ---
+    .. extref:: google_suggestions
 
     ---
     .. extref:: 2020
@@ -539,6 +560,18 @@ Examples
 
     ---
     .. extref:: flip_coordinates
+
+    ---
+    .. extref:: marginal_layers
+
+    ---
+    .. extref:: ordering_examples
+
+    ---
+    .. extref:: qq_plots
+
+    ---
+    .. extref:: geom_smooth_matrix
 
 .. raw:: html
 
