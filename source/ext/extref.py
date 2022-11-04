@@ -176,6 +176,7 @@ gives the following html:
 import os
 import json
 import shutil
+from argparse import ArgumentParser
 from urllib.parse import urlparse
 
 from docutils import nodes
@@ -184,6 +185,7 @@ from docutils.parsers.rst import Directive, directives
 REF_TYPES = ('image', 'logo', 'text')
 IMAGES_DIR = "_extref_images"
 LOGO_DIR = "logo"
+AVAILABLE_UTILS = ["check_using_notebook_names"]
 
 class ExtRefDirective(Directive):
     has_content = True
@@ -353,6 +355,31 @@ def prepare_logo(app, config):
                 shutil.copy(logo_src_fullpath, logo_doc_fullpath)
         config.extref_logo_images = extref_logo_images
 
+def ext_utils(util_name, conf_path, src_dir):
+    globals()[util_name](conf_path, src_dir)
+
+def check_using_notebook_names(conf_path, src_dir):
+    """
+    Calculate count of using for each notebook name from JSON configuration file.
+    """
+    import json
+
+    with open(conf_path, 'r') as f:
+        nb_names = json.load(f).keys()
+
+    nb_counts = {nb_name: 0 for nb_name in nb_names}
+    for root, dirs, files in os.walk(src_dir):
+        for file in files:
+            if os.path.splitext(file)[1] != ".rst":
+                continue
+            with open(os.path.join(root, file), 'r', errors='ignore') as f:
+                data = f.read()
+                for nb_name in nb_names:
+                    nb_counts[nb_name] += data.count(" extref:: {0}".format(nb_name))
+
+    for nb_name, count in sorted(nb_counts.items(), key=lambda p: p[1], reverse=True):
+        print(nb_name, count)
+
 def setup(app):
     app.add_config_value('extref_conf', None, 'html')
     app.add_config_value('extref_logo_images', None, 'html')
@@ -368,3 +395,12 @@ def setup(app):
     return {
         'version': '0.2',
     }
+
+if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument('-c', '--conf_path', required=True, metavar='CONF_PATH', help="Path to the JSON configuration file.")
+    parser.add_argument('-s', '--src_dir', required=True, metavar='SRC_DIR', help="Path to the source directory.")
+    parser.add_argument('-u', '--util_name', required=True, choices=AVAILABLE_UTILS, metavar='UTIL_NAME', help="Util name to use")
+    args = parser.parse_args()
+
+    ext_utils(args.util_name, args.conf_path, args.src_dir)
