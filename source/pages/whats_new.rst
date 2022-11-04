@@ -5,6 +5,18 @@
 .. title:: What's new
 
 
+What is new in 2.5.1
+====================
+
+Mostly a maintenance release.
+
+Nevertheless, few new features and improvements were added as well, among them:
+
+- New rendering options in :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_label() <lets_plot.geom_label>`.
+
+- :py:mod:`geom_imshow() <lets_plot.geom_imshow>` is now supporting ``cmap`` and ``extent`` parameters (also, ``norm``, ``vmin`` and ``vmax`` were fixed).
+
+
 What is new in 2.5.0
 ====================
 
