@@ -573,6 +573,9 @@ Examples
     ---
     .. extref:: geom_smooth_matrix
 
+    ---
+    .. extref:: viridis_scale
+
 .. raw:: html
 
     <div id="preview-gallery-more">
