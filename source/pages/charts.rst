@@ -280,7 +280,7 @@ Examples:
 
 .. |images-icon| image:: /_static/images/icons/charts/images.svg
 
-:py:mod:`Image <lets_plot.geom_image>`,
+:py:mod:`Image <lets_plot.geom_imshow>`,
 :py:mod:`matrix of images <lets_plot.bistro.im.image_matrix>`
 
 Examples:

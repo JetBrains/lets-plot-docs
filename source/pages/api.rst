@@ -103,6 +103,7 @@ Additional Geometries
 .. autosummary::
     :toctree: api
 
+    geom_imshow
     geom_image
     geom_livemap
 
