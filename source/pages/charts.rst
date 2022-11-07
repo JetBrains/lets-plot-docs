@@ -287,6 +287,7 @@ Examples:
 
 - .. extref:: image_101
       :type: text
+      :text: "geom_imshow()"
 - .. extref:: image_extent
       :type: text
 - .. extref:: image_grayscale
@@ -294,9 +295,13 @@ Examples:
 - .. extref:: image_fisher_boat
       :type: text
       :text: "Fisher boat" image
+- .. extref:: ivindo_river
+      :type: text
 - .. extref:: basic_image_matrix
       :type: text
 - .. extref:: image_matrix
+      :type: text
+- .. extref:: map_use_crs
       :type: text
 
 
@@ -499,6 +504,9 @@ Examples
     .. extref:: malnutrition
 
     ---
+    .. extref:: ggbunch
+
+    ---
     .. extref:: bayesian_inference
 
     ---
@@ -523,9 +531,6 @@ Examples
     .. extref:: tooltip_title
 
     ---
-    .. extref:: coordinate_systems
-
-    ---
     .. extref:: correlation_plot
 
     ---
@@ -545,6 +550,9 @@ Examples
 
     ---
     .. extref:: how_to_draw_curve
+
+    ---
+    .. extref:: coordinate_systems
 
     ---
     .. extref:: world_coloring
