@@ -280,6 +280,8 @@ Positions
     position_jitter
     position_nudge
     position_jitterdodge
+    position_fill
+    position_stack
 
 
 Coordinate Systems
