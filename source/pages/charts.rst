@@ -293,14 +293,14 @@ Examples:
       :type: text
 - .. extref:: image_fisher_boat
       :type: text
-      :text: "Fisher boat" image
+      :text: "Fisher boat": 'geom_imshow()' and 'geom_raster()'
 - .. extref:: ivindo_river
+      :type: text
+- .. extref:: map_use_crs
       :type: text
 - .. extref:: basic_image_matrix
       :type: text
 - .. extref:: image_matrix
-      :type: text
-- .. extref:: map_use_crs
       :type: text
 
 
