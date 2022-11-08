@@ -392,6 +392,10 @@ Examples:
       :type: text
 - .. extref:: plotting_airbnb_prices_boston
       :type: text
+- .. extref:: soil_pollutants_with_gaussian_processes
+      :type: text
+- .. extref:: ivindo_river
+      :type: text
 
 
 |presentation-options-icon| Presentation Options

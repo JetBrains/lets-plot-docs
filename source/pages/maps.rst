@@ -207,13 +207,6 @@ GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mo
 
 Learn more: :ref:`GeoPandas Support <geopandas>`.
 
-Examples:
-
-- .. extref:: soil_pollutants_with_gaussian_processes
-      :type: text
-- .. extref:: ivindo_river
-      :type: text
-
 
 Examples
 --------
