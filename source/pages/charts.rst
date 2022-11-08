@@ -62,6 +62,12 @@ Examples:
       :type: text
 - .. extref:: geom_label
       :type: text
+- .. extref:: geom_text_features
+      :type: text
+- .. extref:: map_use_crs
+      :type: text
+- .. extref:: position_stack
+      :type: text
 
 
 |discrete-icon| Discrete
@@ -274,14 +280,24 @@ Examples:
 
 .. |images-icon| image:: /_static/images/icons/charts/images.svg
 
-:py:mod:`Image <lets_plot.geom_image>`,
+:py:mod:`geom_imshow() <lets_plot.geom_imshow>`,
 :py:mod:`matrix of images <lets_plot.bistro.im.image_matrix>`
 
 Examples:
 
+- .. extref:: image_101
+      :type: text
+- .. extref:: image_extent
+      :type: text
+- .. extref:: image_grayscale
+      :type: text
 - .. extref:: image_fisher_boat
       :type: text
-      :text: "Fisher boat" image
+      :text: "Fisher boat": 'geom_imshow()' and 'geom_raster()'
+- .. extref:: ivindo_river
+      :type: text
+- .. extref:: map_use_crs
+      :type: text
 - .. extref:: basic_image_matrix
       :type: text
 - .. extref:: image_matrix
@@ -374,6 +390,10 @@ Examples:
 - .. extref:: geopandas_naturalearth
       :type: text
 - .. extref:: plotting_airbnb_prices_boston
+      :type: text
+- .. extref:: soil_pollutants_with_gaussian_processes
+      :type: text
+- .. extref:: ivindo_river
       :type: text
 
 
@@ -484,7 +504,16 @@ Examples
     .. extref:: google_play_store
 
     ---
+    .. extref:: malnutrition
+
+    ---
+    .. extref:: ggbunch
+
+    ---
     .. extref:: bayesian_inference
+
+    ---
+    .. extref:: geopandas_naturalearth
 
     ---
     .. extref:: nobel
@@ -496,28 +525,37 @@ Examples
     .. extref:: bbc_cookbook
 
     ---
-    .. extref:: scale_time
-
-    ---
-    .. extref:: scale_color_fill_gradientn
-
-    ---
     .. extref:: geopandas_kotlin_isl
 
     ---
-    .. extref:: geopandas_naturalearth
+    .. extref:: y_orientation
+
+    ---
+    .. extref:: tooltip_title
+
+    ---
+    .. extref:: correlation_plot
+
+    ---
+    .. extref:: geom_violin
+
+    ---
+    .. extref:: dot_plots
 
     ---
     .. extref:: plotting_airbnb_prices_boston
 
     ---
-    .. extref:: nyc_metro
+    .. extref:: mandelbulbs
 
     ---
-    .. extref:: google_suggestions
+    .. extref:: ivindo_river
 
     ---
-    .. extref:: malnutrition
+    .. extref:: how_to_draw_curve
+
+    ---
+    .. extref:: coordinate_systems
 
     ---
     .. extref:: world_coloring
@@ -532,7 +570,10 @@ Examples
     .. extref:: klein_bottle
 
     ---
-    .. extref:: mandelbulbs
+    .. extref:: nyc_metro
+
+    ---
+    .. extref:: google_suggestions
 
     ---
     .. extref:: 2020
@@ -542,6 +583,24 @@ Examples
 
     ---
     .. extref:: flip_coordinates
+
+    ---
+    .. extref:: marginal_layers
+
+    ---
+    .. extref:: ordering_examples
+
+    ---
+    .. extref:: qq_plots
+
+    ---
+    .. extref:: geom_smooth_matrix
+
+    ---
+    .. extref:: viridis_scale
+
+    ---
+    .. extref:: map_use_crs
 
 .. raw:: html
 

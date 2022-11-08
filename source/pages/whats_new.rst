@@ -2,22 +2,37 @@
 
 :orphan:
 
-.. title:: What's new
+.. title:: What is new
 
 
-What is new in 2.5.0
-====================
+What is new
+===========
+
+Version 2.5.1
+-------------
+
+Mostly a maintenance release.
+
+Nevertheless, few new features and improvements were added as well, among them:
+
+- New rendering options in :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_label() <lets_plot.geom_label>`.
+
+- :py:mod:`geom_imshow() <lets_plot.geom_imshow>` is now supporting ``cmap`` and ``extent`` parameters (also, ``norm``, ``vmin`` and ``vmax`` were fixed).
+
+
+Version 2.5.0
+-------------
 
 Plot Theme
-----------
+^^^^^^^^^^
 
 :py:mod:`theme_bw() <lets_plot.theme_bw>`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""
 
 See: |theme_bw-demo|.
 
 Theme Flavors
-~~~~~~~~~~~~~
+"""""""""""""
     
 Theme flavor offers an easy way to change the colors of all elements in a theme to match a specific color scheme.
 
@@ -41,7 +56,7 @@ In this release, we have added the following flavors:
 See: |theme_flavors-demo|.
 
 New parameters in :py:mod:`element_text() <lets_plot.element_text>`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 - ``size``, ``family`` (|font_size_and_family-demo|)
 
@@ -50,14 +65,14 @@ New parameters in :py:mod:`element_text() <lets_plot.element_text>`
 - ``margin`` for plot title, subtitle, caption, axis titles and tick labels (|text_margins-demo|)
 
 New Plot Types
---------------
+^^^^^^^^^^^^^^
 
 :py:mod:`geom_label() <lets_plot.geom_label>`.
 
 See: |geom_label-demo|.
 
 Color Scales
-------------
+^^^^^^^^^^^^
 
 Viridis color scales: :py:mod:`scale_color_viridis() <lets_plot.scale_color_viridis>`, :py:mod:`scale_fill_viridis() <lets_plot.scale_fill_viridis>`.
 

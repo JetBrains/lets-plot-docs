@@ -122,6 +122,18 @@ Examples
     :type: logo
     :height: 2rem
 
+- Spatial prediction of soil pollutants with multi-output Gaussian processes: |soil_pollutants_with_gaussian_processes| 
+
+.. |soil_pollutants_with_gaussian_processes| extref:: soil_pollutants_with_gaussian_processes
+    :type: logo
+    :height: 2rem
+
+- Using geom_imshow() to draw DEM on map: |ivindo_river|
+
+.. |ivindo_river| extref:: ivindo_river
+    :type: logo
+    :height: 2rem
+
 - An **inset map** of Kotlin island: |geopandas_kotlin_isl|
 
 .. |geopandas_kotlin_isl| extref:: geopandas_kotlin_isl

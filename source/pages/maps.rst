@@ -252,9 +252,6 @@ Examples
     .. extref:: museums
 
     ---
-    .. extref:: bar_on_livemap
-
-    ---
     .. extref:: titanic
 
     ---

@@ -8,7 +8,7 @@ import warnings
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-TIMEOUT = 60 # per subprocess in seconds
+TIMEOUT = 3 * 60 # per subprocess in seconds
 
 class page_parser():
 

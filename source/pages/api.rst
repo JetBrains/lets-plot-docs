@@ -103,6 +103,7 @@ Additional Geometries
 .. autosummary::
     :toctree: api
 
+    geom_imshow
     geom_image
     geom_livemap
 
@@ -279,6 +280,8 @@ Positions
     position_jitter
     position_nudge
     position_jitterdodge
+    position_fill
+    position_stack
 
 
 Coordinate Systems
