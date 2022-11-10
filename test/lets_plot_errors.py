@@ -18,3 +18,18 @@ def check_lets_plot_message_errors(parser, parser_type, source, warn_only=True):
             warnings.warn(UserWarning(message))
     else:
         assert errors_count == 0, message
+
+def check_warnings(parser, parser_type, source):
+    warning_messages = []
+    if parser_type == 'driver':
+        warning_messages = [element.text.strip()
+                    for element in parser.find_elements(By.XPATH, "//pre[contains(text(), 'Warning')]")
+                    if 'jp-OutputArea-output' in element.find_element(By.XPATH, "..").get_attribute('class')]
+    elif parser_type == 'soup':
+        warning_messages = [element.text.strip()
+                    for element in parser.select("div:-soup-contains('Warning')")
+                    if 'jp-OutputArea-output' in element['class']]
+    else:
+        raise ValueError("Bad parser type: {0}".format(parser_type))
+    for message in warning_messages:
+        warnings.warn(UserWarning('Warning in {0} in output cell: "{1}"'.format(source, message)))
