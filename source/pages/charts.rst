@@ -66,6 +66,8 @@ Examples:
       :type: text
 - .. extref:: map_use_crs
       :type: text
+- .. extref:: projection_provided
+      :type: text
 - .. extref:: position_stack
       :type: text
 
@@ -76,6 +78,7 @@ Examples:
 .. |discrete-icon| image:: /_static/images/icons/charts/discrete.svg
 
 :py:mod:`Bar <lets_plot.geom_bar>`,
+:py:mod:`pie <lets_plot.geom_pie>`,
 :py:mod:`boxplot <lets_plot.geom_boxplot>`
 
 Examples:
@@ -83,6 +86,12 @@ Examples:
 - .. extref:: bar_geometry
       :type: text
 - .. extref:: geom_bar_identity
+      :type: text
+- .. extref:: geom_pie
+      :type: text
+- .. extref:: annotations_for_pie
+      :type: text
+- .. extref:: stat_count2d_vars
       :type: text
 - .. extref:: comparisons
       :type: text
@@ -160,6 +169,7 @@ Examples:
 :py:mod:`dotplot <lets_plot.geom_dotplot>`,
 :py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
 :py:mod:`violin <lets_plot.geom_violin>`,
+:py:mod:`ridgeline <lets_plot.geom_area_ridges>`,
 :py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
 Examples:
@@ -173,6 +183,8 @@ Examples:
 - .. extref:: dot_plots
       :type: text
 - .. extref:: geom_violin
+      :type: text
+- .. extref:: ridgeline_plot
       :type: text
 - .. extref:: y_orientation
       :type: text
@@ -291,6 +303,10 @@ Examples:
       :type: text
 - .. extref:: image_grayscale
       :type: text
+- .. extref:: image_alpha_param
+      :type: text
+- .. extref:: image_nan_values
+      :type: text
 - .. extref:: image_fisher_boat
       :type: text
       :text: "Fisher boat": 'geom_imshow()' and 'geom_raster()'
@@ -371,6 +387,19 @@ Examples:
 Examples:
 
 - .. extref:: qq_plots
+      :type: text
+
+
+|residuals-icon| Residual plot
+------------------------------
+
+.. |residuals-icon| image:: /_static/images/icons/charts/residuals.png
+
+:py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
+
+Examples:
+
+- .. extref:: residual_plot
       :type: text
 
 
