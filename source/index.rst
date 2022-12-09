@@ -32,7 +32,7 @@ An Open-source Plotting Library for Statistical Data
       <img alt="MIT License" src="https://img.shields.io/pypi/l/lets-plot?color=yellow&amp;style=flat-square">
     </a>
 
-**Python versions:** 3.6-3.10
+**Python versions:** 3.7-3.11
 
 **OS:** Linux, macOS, Windows
 
