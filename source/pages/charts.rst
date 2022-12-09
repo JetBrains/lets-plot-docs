@@ -358,49 +358,14 @@ Examples:
       :type: text
 
 
-|correlation-plot-icon| Correlation Plot
-----------------------------------------
+|eda-icon| EDA
+--------------
 
-.. |correlation-plot-icon| image:: /_static/images/icons/charts/correlation-plot.svg
+.. |eda-icon| image:: /_static/images/icons/charts/qq.svg
 
-:py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
+Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
 
-Examples:
-
-- .. extref:: corr_plot
-      :type: text
-- .. extref:: correlation_plot
-      :type: text
-
-
-|q-q-icon| Q-Q Plot
--------------------
-
-.. |q-q-icon| image:: /_static/images/icons/charts/qq.svg
-
-:py:mod:`geom_qq() <lets_plot.geom_qq>`,
-:py:mod:`geom_qq_line() <lets_plot.geom_qq_line>`,
-:py:mod:`geom_qq2() <lets_plot.geom_qq2>`,
-:py:mod:`geom_qq2_line() <lets_plot.geom_qq2_line>`,
-:py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
-
-Examples:
-
-- .. extref:: qq_plots
-      :type: text
-
-
-|residuals-icon| Residual plot
-------------------------------
-
-.. |residuals-icon| image:: /_static/images/icons/charts/residuals.png
-
-:py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
-
-Examples:
-
-- .. extref:: residual_plot
-      :type: text
+Learn more about EDA in Lets-Plot: :ref:`Exploratory Data Analysis <eda>`.
 
 
 |geopandas-icon| GeoPandas Shapes
