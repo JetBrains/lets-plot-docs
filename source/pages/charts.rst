@@ -66,8 +66,6 @@ Examples:
       :type: text
 - .. extref:: map_use_crs
       :type: text
-- .. extref:: projection_provided
-      :type: text
 - .. extref:: position_stack
       :type: text
 
@@ -388,6 +386,8 @@ Examples:
 - .. extref:: soil_pollutants_with_gaussian_processes
       :type: text
 - .. extref:: ivindo_river
+      :type: text
+- .. extref:: projection_provided
       :type: text
 
 

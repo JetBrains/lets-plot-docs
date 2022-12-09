@@ -107,6 +107,23 @@ The 3rd parameter, ``map_join``, will help to combine population values and stat
     ggplot() + geom_map(aes(fill='pop_2021'), color='white', data=df, map=gdf, map_join='state')
 
 
+``use_crs`` Parameter
+---------------------
+
+Specify EPSG code of coordinate reference system (CRS). All coordinates in ``GeoDataFrame`` will be projected to this CRS.
+
+.. jupyter-execute::
+
+    ggplot() + geom_map(map=gdf, use_crs="EPSG:32616")
+
+Value "provided" tells *Lets-Plot* that the input ``GeoDataframe`` already contains coordinates in the desired CRS and should not be reprojected any further.
+
+.. jupyter-execute::
+
+    gdf_utm = gdf.to_crs("EPSG:32616")
+    ggplot() + geom_map(map=gdf_utm, use_crs="provided")
+
+
 Examples
 --------
 
@@ -131,6 +148,12 @@ Examples
 - Using geom_imshow() to draw DEM on map: |ivindo_river|
 
 .. |ivindo_river| extref:: ivindo_river
+    :type: logo
+    :height: 2rem
+
+- ``use_crs`` parameter: |map_use_crs|
+
+.. |map_use_crs| extref:: map_use_crs
     :type: logo
     :height: 2rem
 

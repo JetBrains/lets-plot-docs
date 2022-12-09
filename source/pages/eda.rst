@@ -17,8 +17,8 @@ Correlation Plot
 :py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
 
 .. extref:: correlation_plot
-  :image: 4x3
-  :width: 480
+    :image: 4x3
+    :width: 480
 
 
 Q-Q Plot
@@ -31,8 +31,8 @@ Q-Q Plot
 :py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
 
 .. extref:: qq_plots
-  :image: 4x3
-  :width: 480
+    :image: 4x3
+    :width: 480
 
 
 Residual Plot
@@ -41,5 +41,5 @@ Residual Plot
 :py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
 
 .. extref:: residual_plot
-  :image: 4x3
-  :width: 480
+    :image: 4x3
+    :width: 480
