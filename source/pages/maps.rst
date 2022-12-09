@@ -21,14 +21,6 @@ Proportional Symbol Map
     ---
     .. code-block:: python
 
-        ggplot(data) + geom_livemap(aes(..), symbol='point')
-
-    .. raw:: html
-
-        <div class="text-center">or</div>
-
-    .. code-block:: python
-
         ggplot(data) + geom_livemap() + geom_point(aes(..))
 
 
