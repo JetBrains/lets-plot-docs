@@ -22,7 +22,7 @@ All GeoPandas shapes are "understood" by Lets-Plot and can be plotted using vari
 
 Use:
 
-- :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_text() <lets_plot.geom_text>` with Points / Multi-Points
+- :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_pie() <lets_plot.geom_pie>`, :py:mod:`geom_text() <lets_plot.geom_text>` with Points / Multi-Points
 - :py:mod:`geom_path() <lets_plot.geom_path>` with Lines / Multi-Lines
 - :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>` with Polygons / Multi-Polygons
 - :py:mod:`geom_rect() <lets_plot.geom_rect>` when used with Polygon shapes will display corresponding bounding boxes
@@ -154,6 +154,12 @@ Examples
 - ``use_crs`` parameter: |map_use_crs|
 
 .. |map_use_crs| extref:: map_use_crs
+    :type: logo
+    :height: 2rem
+
+- Using exotic map projections: |projection_provided|
+
+.. |projection_provided| extref:: projection_provided
     :type: logo
     :height: 2rem
 
