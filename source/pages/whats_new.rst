@@ -5,131 +5,83 @@
 .. title:: What is new
 
 
-What is new
-===========
-
-Version 2.5.1
--------------
-
-Mostly a maintenance release.
-
-Nevertheless, few new features and improvements were added as well, among them:
-
-- New rendering options in :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_label() <lets_plot.geom_label>`.
-
-- :py:mod:`geom_imshow() <lets_plot.geom_imshow>` is now supporting ``cmap`` and ``extent`` parameters (also, ``norm``, ``vmin`` and ``vmax`` were fixed).
+What is new in 3.0.0
+====================
 
 
-Version 2.5.0
--------------
+Added
+-----
 
-Plot Theme
-^^^^^^^^^^
+-  :py:mod:`geom_imshow() <lets_plot.geom_imshow>`:
 
-:py:mod:`theme_bw() <lets_plot.theme_bw>`
-"""""""""""""""""""""""""""""""""""""""""
+   -  Improved performance by orders of magnitude.
 
-See: |theme_bw-demo|.
+   -  Transparency of ``NaN`` values in grayscale images
+      [`#631 <https://github.com/JetBrains/lets-plot/issues/631>`__].
+      See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_nan_values.ipynb>`__.
 
-Theme Flavors
-"""""""""""""
-    
-Theme flavor offers an easy way to change the colors of all elements in a theme to match a specific color scheme.
+   -  ``alpha`` parameter
+      [`#630 <https://github.com/JetBrains/lets-plot/issues/630>`__].
+      See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_alpha_param.ipynb>`__.
 
-In this release, we have added the following flavors:
+-  :py:mod:`geom_violin() <lets_plot.geom_violin>`:
 
-- *darcula*
+   -  ``tails_cutoff`` parameter. See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/violin_tails_cutoff.ipynb>`__.
 
-- *solarized_light*
+-  New 'bistro' plot - :py:mod:`residual_plot() <lets_plot.residual_plot>`.
 
-- *solarized_dark*
+   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/residual_plot.ipynb>`__.
 
-- *high_contrast_light*
+-  New geometry :py:mod:`geom_area_ridges() <lets_plot.geom_area_ridges>`.
 
-- *high_contrast_dark*
+   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/ridgeline_plot.ipynb>`__.
 
-.. image:: /_static/images/theme_flavors.png
-  :alt: _images/theme_flavors.png
-  :width: 1000
-  :height: 133
+-  New geometry :py:mod:`geom_pie() <lets_plot.geom_pie>`.
 
-See: |theme_flavors-demo|.
+   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/geom_pie.ipynb>`__.
 
-New parameters in :py:mod:`element_text() <lets_plot.element_text>`
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+-  Annotations for pie chart:
 
-- ``size``, ``family`` (|font_size_and_family-demo|)
+   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/annotations_for_pie.ipynb>`__.
 
-- ``hjust``, ``vjust`` for plot title, subtitle, caption, legend and axis titles (|hjust_vjust-demo|)
+-  New variables computed by ``'count'`` and ``'count2d'`` statistics:
+   ``'..sum..'``, ``'..prop..'``, ``'..proppct..'``.
 
-- ``margin`` for plot title, subtitle, caption, axis titles and tick labels (|text_margins-demo|)
+   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/stat_count(2d)_vars.ipynb>`__.
 
-New Plot Types
-^^^^^^^^^^^^^^
+-  Static maps:
 
-:py:mod:`geom_label() <lets_plot.geom_label>`.
+   -  The value ``"provided"`` for ``use_crs`` parameter.
 
-See: |geom_label-demo|.
+      See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/projection_provided.ipynb>`__.
 
-Color Scales
-^^^^^^^^^^^^
 
-Viridis color scales: :py:mod:`scale_color_viridis() <lets_plot.scale_color_viridis>`, :py:mod:`scale_fill_viridis() <lets_plot.scale_fill_viridis>`.
+Changed
+-------
 
-Supported colormaps:
+-  Java/Swing platf.: Apache Batik upgraded to v.1.16
+   [`#624 <https://github.com/JetBrains/lets-plot/issues/624>`__], [`LPK
+   #140 <https://github.com/JetBrains/lets-plot-kotlin/issues/140>`__].
+-  The default size is increased for the plot title and decreased for
+   the caption.
 
-- *magma*
 
-- *inferno*
+Fixed
+-----
 
-- *plasma*
-
-- *viridis*
-
-- *cividis*
-
-- *turbo*
-
-- *twilight*
-
-.. image:: /_static/images/viridis_plasma.png
-  :alt: _images/viridis_plasma.png
-  :width: 439
-  :height: 132
-
-See: |colors_viridis-demo|.
+-  Themes: can’t change plot background after applying a ``"flavor"``
+   [`#623 <https://github.com/JetBrains/lets-plot/issues/623>`__].
+-  Layout: uneven left/right, top/bottom plot margins
+   [`#625 <https://github.com/JetBrains/lets-plot/issues/625>`__].
+-  A plot building error with empty data on various geoms.
+-  Precision error in gradient
+   [`#634 <https://github.com/JetBrains/lets-plot/issues/634>`__].
+-  geom_livemap: wrong position when datapoints geodesic line goes close
+   to the N.P.
+   [`#645 <https://github.com/JetBrains/lets-plot/issues/645>`__].
 
 
 Change Log
 ----------
 
 See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for other changes and fixes.
-
-
-.. |colors_viridis-demo| extref:: colors_viridis
-  :type: text
-  :text: example notebook
-
-.. |font_size_and_family-demo| extref:: font_size_and_family
-  :type: text
-  :text: example notebook
-
-.. |geom_label-demo| extref:: geom_label
-  :type: text
-  :text: example notebook
-
-.. |hjust_vjust-demo| extref:: hjust_vjust
-  :type: text
-  :text: example notebook
-
-.. |text_margins-demo| extref:: text_margins
-  :type: text
-  :text: example notebook
-
-.. |theme_bw-demo| extref:: theme_bw
-  :type: text
-  :text: example notebook
-
-.. |theme_flavors-demo| extref:: theme_flavors
-  :type: text
-  :text: example notebook
