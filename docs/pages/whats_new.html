@@ -85,19 +85,10 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">What is new</a><ul>
-<li><a class="reference internal" href="#version-2-5-1">Version 2.5.1</a></li>
-<li><a class="reference internal" href="#version-2-5-0">Version 2.5.0</a><ul>
-<li><a class="reference internal" href="#plot-theme">Plot Theme</a><ul>
-<li><a class="reference internal" href="#theme-bw"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_bw()</span></code></a></li>
-<li><a class="reference internal" href="#theme-flavors">Theme Flavors</a></li>
-<li><a class="reference internal" href="#new-parameters-in-element-text">New parameters in <code class="xref py py-mod docutils literal notranslate"><span class="pre">element_text()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#new-plot-types">New Plot Types</a></li>
-<li><a class="reference internal" href="#color-scales">Color Scales</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">What is new in 3.0.0</a><ul>
+<li><a class="reference internal" href="#added">Added</a></li>
+<li><a class="reference internal" href="#changed">Changed</a></li>
+<li><a class="reference internal" href="#fixed">Fixed</a></li>
 <li><a class="reference internal" href="#change-log">Change Log</a></li>
 </ul>
 </li>
@@ -132,69 +123,76 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <section id="what-is-new">
-<h1>What is new<a class="headerlink" href="#what-is-new" title="Permalink to this headline">¶</a></h1>
-<section id="version-2-5-1">
-<h2>Version 2.5.1<a class="headerlink" href="#version-2-5-1" title="Permalink to this headline">¶</a></h2>
-<p>Mostly a maintenance release.</p>
-<p>Nevertheless, few new features and improvements were added as well, among them:</p>
+  <section id="what-is-new-in-3-0-0">
+<h1>What is new in 3.0.0<a class="headerlink" href="#what-is-new-in-3-0-0" title="Permalink to this headline">¶</a></h1>
+<section id="added">
+<h2>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><a class="reference internal" href="api/lets_plot.geom_imshow.html#lets_plot.geom_imshow" title="lets_plot.geom_imshow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_imshow()</span></code></a>:</p>
 <ul class="simple">
-<li><p>New rendering options in <a class="reference internal" href="api/lets_plot.geom_text.html#lets_plot.geom_text" title="lets_plot.geom_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_text()</span></code></a>, <a class="reference internal" href="api/lets_plot.geom_label.html#lets_plot.geom_label" title="lets_plot.geom_label"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_label()</span></code></a>.</p></li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_imshow.html#lets_plot.geom_imshow" title="lets_plot.geom_imshow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_imshow()</span></code></a> is now supporting <code class="docutils literal notranslate"><span class="pre">cmap</span></code> and <code class="docutils literal notranslate"><span class="pre">extent</span></code> parameters (also, <code class="docutils literal notranslate"><span class="pre">norm</span></code>, <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> were fixed).</p></li>
+<li><p>Improved performance by orders of magnitude.</p></li>
+<li><p>Transparency of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in grayscale images
+[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/631">#631</a>].
+See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_nan_values.ipynb">example notebook</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter
+[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/630">#630</a>].
+See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_alpha_param.ipynb">example notebook</a>.</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="api/lets_plot.geom_violin.html#lets_plot.geom_violin" title="lets_plot.geom_violin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_violin()</span></code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tails_cutoff</span></code> parameter. See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/violin_tails_cutoff.ipynb">example notebook</a>.</p></li>
+</ul>
+</li>
+<li><p>New ‘bistro’ plot - <code class="xref py py-mod docutils literal notranslate"><span class="pre">residual_plot()</span></code>.</p>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/residual_plot.ipynb">example notebook</a>.</p>
+</li>
+<li><p>New geometry <a class="reference internal" href="api/lets_plot.geom_area_ridges.html#lets_plot.geom_area_ridges" title="lets_plot.geom_area_ridges"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_area_ridges()</span></code></a>.</p>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/ridgeline_plot.ipynb">example notebook</a>.</p>
+</li>
+<li><p>New geometry <a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a>.</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/geom_pie.ipynb">example notebook</a>.</p>
+</li>
+<li><p>Annotations for pie chart:</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/annotations_for_pie.ipynb">example notebook</a>.</p>
+</li>
+<li><p>New variables computed by <code class="docutils literal notranslate"><span class="pre">'count'</span></code> and <code class="docutils literal notranslate"><span class="pre">'count2d'</span></code> statistics:
+<code class="docutils literal notranslate"><span class="pre">'..sum..'</span></code>, <code class="docutils literal notranslate"><span class="pre">'..prop..'</span></code>, <code class="docutils literal notranslate"><span class="pre">'..proppct..'</span></code>.</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/stat_count(2d)_vars.ipynb">example notebook</a>.</p>
+</li>
+<li><p>Static maps:</p>
+<ul>
+<li><p>The value <code class="docutils literal notranslate"><span class="pre">&quot;provided&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">use_crs</span></code> parameter.</p>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/projection_provided.ipynb">example notebook</a>.</p>
+</li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="version-2-5-0">
-<h2>Version 2.5.0<a class="headerlink" href="#version-2-5-0" title="Permalink to this headline">¶</a></h2>
-<section id="plot-theme">
-<h3>Plot Theme<a class="headerlink" href="#plot-theme" title="Permalink to this headline">¶</a></h3>
-<section id="theme-bw">
-<h4><a class="reference internal" href="api/lets_plot.theme_bw.html#lets_plot.theme_bw" title="lets_plot.theme_bw"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_bw()</span></code></a><a class="headerlink" href="#theme-bw" title="Permalink to this headline">¶</a></h4>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22c/theme_bw.ipynb">example notebook</a>.</p>
-</section>
-<section id="theme-flavors">
-<h4>Theme Flavors<a class="headerlink" href="#theme-flavors" title="Permalink to this headline">¶</a></h4>
-<p>Theme flavor offers an easy way to change the colors of all elements in a theme to match a specific color scheme.</p>
-<p>In this release, we have added the following flavors:</p>
+<section id="changed">
+<h2>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><em>darcula</em></p></li>
-<li><p><em>solarized_light</em></p></li>
-<li><p><em>solarized_dark</em></p></li>
-<li><p><em>high_contrast_light</em></p></li>
-<li><p><em>high_contrast_dark</em></p></li>
-</ul>
-<a class="reference internal image-reference" href="../_images/theme_flavors.png"><img alt="_images/theme_flavors.png" src="../_images/theme_flavors.png" style="width: 1000px; height: 133px;" /></a>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22c/theme_flavors.ipynb">example notebook</a>.</p>
-</section>
-<section id="new-parameters-in-element-text">
-<h4>New parameters in <a class="reference internal" href="api/lets_plot.element_text.html#lets_plot.element_text" title="lets_plot.element_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">element_text()</span></code></a><a class="headerlink" href="#new-parameters-in-element-text" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">family</span></code> (<a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22c/font_size_and_family.ipynb">example notebook</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hjust</span></code>, <code class="docutils literal notranslate"><span class="pre">vjust</span></code> for plot title, subtitle, caption, legend and axis titles (<a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22c/hjust_vjust.ipynb">example notebook</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">margin</span></code> for plot title, subtitle, caption, axis titles and tick labels (<a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22c/text_margins.ipynb">example notebook</a>)</p></li>
+<li><p>Java/Swing platf.: Apache Batik upgraded to v.1.16
+[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/624">#624</a>], [<a class="reference external" href="https://github.com/JetBrains/lets-plot-kotlin/issues/140">LPK
+#140</a>].</p></li>
+<li><p>The default size is increased for the plot title and decreased for
+the caption.</p></li>
 </ul>
 </section>
-</section>
-<section id="new-plot-types">
-<h3>New Plot Types<a class="headerlink" href="#new-plot-types" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="api/lets_plot.geom_label.html#lets_plot.geom_label" title="lets_plot.geom_label"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_label()</span></code></a>.</p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22c/geom_label.ipynb">example notebook</a>.</p>
-</section>
-<section id="color-scales">
-<h3>Color Scales<a class="headerlink" href="#color-scales" title="Permalink to this headline">¶</a></h3>
-<p>Viridis color scales: <a class="reference internal" href="api/lets_plot.scale_color_viridis.html#lets_plot.scale_color_viridis" title="lets_plot.scale_color_viridis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_color_viridis()</span></code></a>, <a class="reference internal" href="api/lets_plot.scale_fill_viridis.html#lets_plot.scale_fill_viridis" title="lets_plot.scale_fill_viridis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_fill_viridis()</span></code></a>.</p>
-<p>Supported colormaps:</p>
+<section id="fixed">
+<h2>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><em>magma</em></p></li>
-<li><p><em>inferno</em></p></li>
-<li><p><em>plasma</em></p></li>
-<li><p><em>viridis</em></p></li>
-<li><p><em>cividis</em></p></li>
-<li><p><em>turbo</em></p></li>
-<li><p><em>twilight</em></p></li>
+<li><p>Themes: can’t change plot background after applying a <code class="docutils literal notranslate"><span class="pre">&quot;flavor&quot;</span></code>
+[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/623">#623</a>].</p></li>
+<li><p>Layout: uneven left/right, top/bottom plot margins
+[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/625">#625</a>].</p></li>
+<li><p>A plot building error with empty data on various geoms.</p></li>
+<li><p>Precision error in gradient
+[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/634">#634</a>].</p></li>
+<li><p>geom_livemap: wrong position when datapoints geodesic line goes close
+to the N.P.
+[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/645">#645</a>].</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/viridis_plasma.png"><img alt="_images/viridis_plasma.png" src="../_images/viridis_plasma.png" style="width: 439px; height: 132px;" /></a>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22c/colors_viridis.ipynb">example notebook</a>.</p>
-</section>
 </section>
 <section id="change-log">
 <h2>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
