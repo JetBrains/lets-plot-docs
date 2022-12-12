@@ -359,7 +359,7 @@ Examples:
 |eda-icon| EDA
 --------------
 
-.. |eda-icon| image:: /_static/images/icons/charts/qq.svg
+.. |eda-icon| image:: /_static/images/icons/charts/eda.svg
 
 Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
 
