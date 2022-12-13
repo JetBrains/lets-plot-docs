@@ -61,7 +61,7 @@ Suppose we have the following data:
 
     gdf
 
-If you want to draw only shapes, then it makes no difference which parameter is used:
+| If you want to draw only shapes, then it makes no difference which parameter is used:
 
 .. panels::
     :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
@@ -95,7 +95,7 @@ Suppose you also have a dataframe with population data:
 
     df
 
-In this situation, in order to link aesthetics to the population numbers you will use:
+| In this situation, in order to link aesthetics to the population numbers you will use:
 
 - ``data`` parameter for the "population" dataframe,
 - ``map`` parameter for the state boundaries ``GeoDataframe``.
@@ -116,7 +116,7 @@ Specify EPSG code of coordinate reference system (CRS). All coordinates in ``Geo
 
     ggplot() + geom_map(map=gdf, use_crs="EPSG:32616")
 
-Value "provided" tells *Lets-Plot* that the input ``GeoDataframe`` already contains coordinates in the desired CRS and should not be reprojected any further.
+| Value "provided" tells *Lets-Plot* that the input ``GeoDataframe`` already contains coordinates in the desired CRS and should not be reprojected any further.
 
 .. jupyter-execute::
 
