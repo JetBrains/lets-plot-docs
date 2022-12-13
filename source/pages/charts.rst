@@ -356,14 +356,14 @@ Examples:
       :type: text
 
 
-|eda-icon| EDA
---------------
+|bistro-icon| 'bistro' Plots
+----------------------------
 
-.. |eda-icon| image:: /_static/images/icons/charts/eda.svg
+.. |bistro-icon| image:: /_static/images/icons/charts/bistro.svg
 
 Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
 
-Learn more about EDA in Lets-Plot: :ref:`Exploratory Data Analysis <eda>`.
+Learn more about instruments for EDA in Lets-Plot: :ref:`'bistro' Plots <bistro>`.
 
 
 |geopandas-icon| GeoPandas Shapes

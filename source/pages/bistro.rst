@@ -1,14 +1,14 @@
-.. _eda:
+.. _bistro:
 
-.. title:: EDA in Lets-Plot
+.. title:: 'bistro' plots
 
 
-Exploratory Data Analysis
-=========================
+'bistro' Plots
+==============
 
 Exploratory Data Analysis (EDA) is an art of looking at one or more datasets in an effort to understand the underlying structure of the data contained there.
 
-Below are a few instruments that could help you with your EDA investigations.
+Below are a few instruments from the 'bistro' package that could help you with your EDA investigations.
 
 
 Correlation Plot
@@ -19,19 +19,19 @@ Correlation Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/previews/examples/handmade/eda/corr_plot_1.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_1.png
         :alt: corr_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/corr_plot_2.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_2.png
         :alt: corr_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/corr_plot_3.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_3.png
         :alt: corr_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/corr_plot_4.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_4.png
         :alt: corr_plot()
 
 Examples:
@@ -60,19 +60,19 @@ Q-Q Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/previews/examples/handmade/eda/qq_plot_1.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_1.png
         :alt: qq_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/qq_plot_2.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_2.png
         :alt: qq_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/qq_plot_3.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_3.png
         :alt: qq_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/qq_plot_4.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_4.png
         :alt: qq_plot()
 
 Examples:
@@ -89,19 +89,19 @@ Residual Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/previews/examples/handmade/eda/residual_plot_1.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_1.png
         :alt: residual_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/residual_plot_2.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_2.png
         :alt: residual_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/residual_plot_3.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_3.png
         :alt: residual_plot()
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/eda/residual_plot_4.png
+    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_4.png
         :alt: residual_plot()
 
 Examples:
