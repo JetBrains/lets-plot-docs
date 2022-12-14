@@ -19,20 +19,18 @@ Correlation Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_1.png
-        :alt: corr_plot()
+    .. extref:: corr_plot
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_2.png
-        :alt: corr_plot()
+    .. extref:: correlation_plot
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_3.png
-        :alt: corr_plot()
+    .. extref:: correlation_plot
+        :image: bistro-1
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/corr_plot_4.png
-        :alt: corr_plot()
+    .. extref:: correlation_plot
+        :image: bistro-2
 
 Examples:
 
@@ -60,20 +58,20 @@ Q-Q Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_1.png
-        :alt: qq_plot()
+    .. extref:: qq_plots
+        :image: bistro-1
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_2.png
-        :alt: qq_plot()
+    .. extref:: qq_plots
+        :image: bistro-2
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_3.png
-        :alt: qq_plot()
+    .. extref:: qq_plots
+        :image: bistro-3
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/qq_plot_4.png
-        :alt: qq_plot()
+    .. extref:: qq_plots
+        :image: bistro-4
 
 Examples:
 
@@ -89,20 +87,19 @@ Residual Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_1.png
-        :alt: residual_plot()
+    .. extref:: residual_plot
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_2.png
-        :alt: residual_plot()
+    .. extref:: residual_plot
+        :image: bistro-1
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_3.png
-        :alt: residual_plot()
+    .. extref:: residual_plot
+        :image: bistro-2
 
     ---
-    .. image:: /_static/images/previews/examples/handmade/bistro/residual_plot_4.png
-        :alt: residual_plot()
+    .. extref:: residual_plot
+        :image: bistro-3
 
 Examples:
 
