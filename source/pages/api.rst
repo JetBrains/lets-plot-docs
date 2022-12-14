@@ -116,6 +116,7 @@ Extras
     :toctree: api
 
     arrow
+    layer_labels
 
 .. currentmodule:: lets_plot.mapping
 
