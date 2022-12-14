@@ -28,7 +28,7 @@ Added
 
    -  ``tails_cutoff`` parameter. See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/violin_tails_cutoff.ipynb>`__.
 
--  New 'bistro' plot - :py:mod:`residual_plot() <lets_plot.residual_plot>`.
+-  New 'bistro' plot - :py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`.
 
    See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/residual_plot.ipynb>`__.
 
