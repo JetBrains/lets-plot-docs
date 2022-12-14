@@ -140,7 +140,6 @@ Examples
 
 .. image:: /_static/images/map_titanic.png
     :width: 547px
-    :height: 197px
     :alt: Couldn't load map_titanic.png
 
 -  Visualization of Airport Data on Map: |map_airports|
@@ -151,7 +150,6 @@ Examples
 
 .. image:: /_static/images/map_airports.png
     :width: 547px
-    :height: 311px
     :alt: Couldn't load map_airports.png
 
 
