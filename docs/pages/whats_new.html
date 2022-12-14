@@ -144,7 +144,7 @@ See: <a class="reference external" href="https://nbviewer.jupyter.org/github/Jet
 <li><p><code class="docutils literal notranslate"><span class="pre">tails_cutoff</span></code> parameter. See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/violin_tails_cutoff.ipynb">example notebook</a>.</p></li>
 </ul>
 </li>
-<li><p>New ‘bistro’ plot - <code class="xref py py-mod docutils literal notranslate"><span class="pre">residual_plot()</span></code>.</p>
+<li><p>New ‘bistro’ plot - <a class="reference internal" href="api/lets_plot.bistro.residual.residual_plot.html#lets_plot.bistro.residual.residual_plot" title="lets_plot.bistro.residual.residual_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">residual_plot()</span></code></a>.</p>
 <p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/residual_plot.ipynb">example notebook</a>.</p>
 </li>
 <li><p>New geometry <a class="reference internal" href="api/lets_plot.geom_area_ridges.html#lets_plot.geom_area_ridges" title="lets_plot.geom_area_ridges"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_area_ridges()</span></code></a>.</p>
@@ -172,11 +172,13 @@ See: <a class="reference external" href="https://nbviewer.jupyter.org/github/Jet
 <section id="changed">
 <h2>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Java/Swing platf.: Apache Batik upgraded to v.1.16
-[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/624">#624</a>], [<a class="reference external" href="https://github.com/JetBrains/lets-plot-kotlin/issues/140">LPK
-#140</a>].</p></li>
-<li><p>The default size is increased for the plot title and decreased for
-the caption.</p></li>
+<li><p>[BREAKING] Dropped support for Python 3.6 as it is in the [<a class="reference external" href="https://devguide.python.org/versions/">“end-of-life”</a>] of its release cycle.</p></li>
+<li><p><a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap()</span></code></a> itself no longer draws geometry, so the following options are no longer used:
+<code class="docutils literal notranslate"><span class="pre">'symbol'</span></code>, <code class="docutils literal notranslate"><span class="pre">'data'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mapping'</span></code>, <code class="docutils literal notranslate"><span class="pre">'map'</span></code>, <code class="docutils literal notranslate"><span class="pre">'map_join'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ontop'</span></code>, <code class="docutils literal notranslate"><span class="pre">'stat'</span></code>, <code class="docutils literal notranslate"><span class="pre">'position'</span></code>, <code class="docutils literal notranslate"><span class="pre">'show_legend'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sampling'</span></code>, <code class="docutils literal notranslate"><span class="pre">'tooltips'</span></code>.
+If you need to render points or pies, please, use <a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_point()</span></code></a> and <a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a> functions.</p></li>
+<li><p>Java/Swing platf.: Apache Batik upgraded to v.1.16 [<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/624">#624</a>], [<a class="reference external" href="https://github.com/JetBrains/lets-plot-kotlin/issues/140">LPK #140</a>].</p></li>
+<li><p>The default size is increased for the plot title and decreased for the caption.</p></li>
+<li><p>Upgraded Kotlin version to 1.7.21 (was 1.7.20).</p></li>
 </ul>
 </section>
 <section id="fixed">
@@ -184,12 +186,12 @@ the caption.</p></li>
 <ul class="simple">
 <li><p>Themes: can’t change plot background after applying a <code class="docutils literal notranslate"><span class="pre">&quot;flavor&quot;</span></code>
 [<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/623">#623</a>].</p></li>
-<li><p>Layout: uneven left/right, top/bottom plot margins
+<li><p>Layout: uneven <code class="docutils literal notranslate"><span class="pre">left</span></code>/<code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">top</span></code>/<code class="docutils literal notranslate"><span class="pre">bottom</span></code> plot margins
 [<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/625">#625</a>].</p></li>
 <li><p>A plot building error with empty data on various geoms.</p></li>
 <li><p>Precision error in gradient
 [<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/634">#634</a>].</p></li>
-<li><p>geom_livemap: wrong position when datapoints geodesic line goes close
+<li><p><a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap</span></code></a>: wrong position when datapoints geodesic line goes close
 to the N.P.
 [<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/645">#645</a>].</p></li>
 </ul>
