@@ -116,7 +116,6 @@ Extras
     :toctree: api
 
     arrow
-    layer_labels
 
 .. currentmodule:: lets_plot.mapping
 
@@ -125,8 +124,14 @@ Extras
 
     as_discrete
 
-
 .. currentmodule:: lets_plot
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    layer_labels
+
 
 Facets
 ------
