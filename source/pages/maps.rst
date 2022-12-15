@@ -50,6 +50,7 @@ The following ggplot2 geometries can be used with interactive maps:
 .. |layers_primitives-icon| image:: /_static/images/icons/maps/layers_primitives.svg
 
 :py:mod:`point <lets_plot.geom_point>`,
+:py:mod:`pie <lets_plot.geom_pie>`,
 :py:mod:`path <lets_plot.geom_path>`,
 :py:mod:`tiles <lets_plot.geom_tile>`,
 :py:mod:`polygon <lets_plot.geom_polygon>`,
@@ -263,6 +264,9 @@ Examples
 
     ---
     .. extref:: internet_use_and_activities
+
+    ---
+    .. extref:: param_flat
 
 .. raw:: html
 
