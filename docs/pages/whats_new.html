@@ -86,9 +86,8 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">What is new in 3.0.0</a><ul>
-<li><a class="reference internal" href="#added">Added</a></li>
-<li><a class="reference internal" href="#changed">Changed</a></li>
-<li><a class="reference internal" href="#fixed">Fixed</a></li>
+<li><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
+<li><a class="reference internal" href="#new-features">New Features</a></li>
 <li><a class="reference internal" href="#change-log">Change Log</a></li>
 </ul>
 </li>
@@ -125,75 +124,59 @@
       
   <section id="what-is-new-in-3-0-0">
 <h1>What is new in 3.0.0<a class="headerlink" href="#what-is-new-in-3-0-0" title="Permalink to this headline">¶</a></h1>
-<section id="added">
-<h2>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h2>
+<section id="breaking-changes">
+<h2>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.6</span></code> is no longer supported as it is in the <a class="reference external" href="https://devguide.python.org/versions/">“end-of-life”</a> release cycle stage.</p></li>
+<li><p><a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap()</span></code></a> is now a pure basemap layer. The following options are no longer supported: <code class="docutils literal notranslate"><span class="pre">symbol</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">mapping</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">map_join</span></code>, <code class="docutils literal notranslate"><span class="pre">ontop</span></code>, <code class="docutils literal notranslate"><span class="pre">stat</span></code>, <code class="docutils literal notranslate"><span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">show_legend</span></code>, <code class="docutils literal notranslate"><span class="pre">sampling</span></code>, <code class="docutils literal notranslate"><span class="pre">tooltips</span></code>, <code class="docutils literal notranslate"><span class="pre">geodesic</span></code>.</p></li>
+</ul>
+<blockquote>
+<div><p>To draw <strong>point</strong> and <strong>pie</strong> markers on map, please, use the <a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_point()</span></code></a> and <a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a> geometry layers.</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/titanic.ipynb">example notebook</a>.</p>
+<p>In place of the former <code class="docutils literal notranslate"><span class="pre">geodetic</span></code> parameter in <a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap</span></code></a> please use the new parameter <code class="docutils literal notranslate"><span class="pre">flat</span></code> in <strong>path</strong> and <strong>segment</strong> geometry layers.</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/param_flat.ipynb">example notebook</a>.</p>
+</div></blockquote>
+</section>
+<section id="new-features">
+<h2>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p><a class="reference internal" href="api/lets_plot.geom_imshow.html#lets_plot.geom_imshow" title="lets_plot.geom_imshow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_imshow()</span></code></a>:</p>
-<ul class="simple">
-<li><p>Improved performance by orders of magnitude.</p></li>
-<li><p>Transparency of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in grayscale images
-[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/631">#631</a>].
-See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_nan_values.ipynb">example notebook</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter
-[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/630">#630</a>].
-See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_alpha_param.ipynb">example notebook</a>.</p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_violin.html#lets_plot.geom_violin" title="lets_plot.geom_violin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_violin()</span></code></a>:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tails_cutoff</span></code> parameter. See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/violin_tails_cutoff.ipynb">example notebook</a>.</p></li>
-</ul>
-</li>
-<li><p>New ‘bistro’ plot - <a class="reference internal" href="api/lets_plot.bistro.residual.residual_plot.html#lets_plot.bistro.residual.residual_plot" title="lets_plot.bistro.residual.residual_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">residual_plot()</span></code></a>.</p>
+<li><p class="rubric" id="residual-plot"><a class="reference internal" href="api/lets_plot.bistro.residual.residual_plot.html#lets_plot.bistro.residual.residual_plot" title="lets_plot.bistro.residual.residual_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">residual_plot()</span></code></a></p>
+<p><a class="reference internal" href="../_images/residual-light.png"><img alt="image-residual-light" src="../_images/residual-light.png" style="width: 200px;" /></a> <a class="reference internal" href="../_images/residual-dark.png"><img alt="image-residual-dark" src="../_images/residual-dark.png" style="width: 200px;" /></a></p>
 <p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/residual_plot.ipynb">example notebook</a>.</p>
 </li>
-<li><p>New geometry <a class="reference internal" href="api/lets_plot.geom_area_ridges.html#lets_plot.geom_area_ridges" title="lets_plot.geom_area_ridges"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_area_ridges()</span></code></a>.</p>
+</ul>
+<ul>
+<li><p class="rubric" id="geom-area-ridges"><a class="reference internal" href="api/lets_plot.geom_area_ridges.html#lets_plot.geom_area_ridges" title="lets_plot.geom_area_ridges"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_area_ridges()</span></code></a></p>
+<p><a class="reference internal" href="../_images/ridges-dark.png"><img alt="image-ridges-dark" src="../_images/ridges-dark.png" style="width: 400px;" /></a></p>
 <p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/ridgeline_plot.ipynb">example notebook</a>.</p>
 </li>
-<li><p>New geometry <a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a>.</p>
+</ul>
+<ul>
+<li><p class="rubric" id="geom-pie"><a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a></p>
+<p><a class="reference internal" href="../_images/pie.png"><img alt="image-pie" src="../_images/pie.png" style="width: 379px;" /></a></p>
 <p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/geom_pie.ipynb">example notebook</a>.</p>
 </li>
-<li><p>Annotations for pie chart:</p>
+</ul>
+<ul>
+<li><p class="rubric" id="annotation-labels-on-pie-chart">Annotation Labels on Pie-Chart</p>
+<p><a class="reference internal" href="../_images/pie-labels-explode.png"><img alt="image-pie-labels-explode" src="../_images/pie-labels-explode.png" style="height: 133px;" /></a> <a class="reference internal" href="../_images/pie-labels-titanic.png"><img alt="image-pie-labels-titanic" src="../_images/pie-labels-titanic.png" style="height: 133px;" /></a></p>
 <p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/annotations_for_pie.ipynb">example notebook</a>.</p>
 </li>
-<li><p>New variables computed by <code class="docutils literal notranslate"><span class="pre">'count'</span></code> and <code class="docutils literal notranslate"><span class="pre">'count2d'</span></code> statistics:
-<code class="docutils literal notranslate"><span class="pre">'..sum..'</span></code>, <code class="docutils literal notranslate"><span class="pre">'..prop..'</span></code>, <code class="docutils literal notranslate"><span class="pre">'..proppct..'</span></code>.</p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/stat_count(2d)_vars.ipynb">example notebook</a>.</p>
-</li>
-<li><p>Static maps:</p>
+</ul>
 <ul>
-<li><p>The value <code class="docutils literal notranslate"><span class="pre">&quot;provided&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">use_crs</span></code> parameter.</p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/projection_provided.ipynb">example notebook</a>.</p>
+<li><p class="rubric" id="spatial-pies">Spatial Pies</p>
+<p><a class="reference internal" href="../_images/spatial_pies_titanic.png"><img alt="image-spatial_pies_titanic" src="../_images/spatial_pies_titanic.png" style="height: 133px;" /></a></p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/titanic.ipynb">example notebook</a>.</p>
 </li>
 </ul>
+<ul>
+<li><p class="rubric" id="new-parameters-in-geom-imshow">New Parameters in <a class="reference internal" href="api/lets_plot.geom_imshow.html#lets_plot.geom_imshow" title="lets_plot.geom_imshow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_imshow()</span></code></a>:</p>
+<p><a class="reference internal" href="../_images/imshow-alpha-jp.png"><img alt="image-imshow-alpha-jp" src="../_images/imshow-alpha-jp.png" style="width: 180px;" /></a></p>
+<ul class="simple">
+<li><p>Transparency of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in grayscale images: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_nan_values.ipynb">example notebook</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_alpha_param.ipynb">example notebook</a>.</p></li>
+</ul>
 </li>
-</ul>
-</section>
-<section id="changed">
-<h2>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>[BREAKING] Dropped support for Python 3.6 as it is in the [<a class="reference external" href="https://devguide.python.org/versions/">“end-of-life”</a>] of its release cycle.</p></li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap()</span></code></a> itself no longer draws geometry, so the following options are no longer used:
-<code class="docutils literal notranslate"><span class="pre">'symbol'</span></code>, <code class="docutils literal notranslate"><span class="pre">'data'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mapping'</span></code>, <code class="docutils literal notranslate"><span class="pre">'map'</span></code>, <code class="docutils literal notranslate"><span class="pre">'map_join'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ontop'</span></code>, <code class="docutils literal notranslate"><span class="pre">'stat'</span></code>, <code class="docutils literal notranslate"><span class="pre">'position'</span></code>, <code class="docutils literal notranslate"><span class="pre">'show_legend'</span></code>, <code class="docutils literal notranslate"><span class="pre">'sampling'</span></code>, <code class="docutils literal notranslate"><span class="pre">'tooltips'</span></code>.
-If you need to render points or pies, please, use <a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_point()</span></code></a> and <a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a> functions.</p></li>
-<li><p>Java/Swing platf.: Apache Batik upgraded to v.1.16 [<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/624">#624</a>], [<a class="reference external" href="https://github.com/JetBrains/lets-plot-kotlin/issues/140">LPK #140</a>].</p></li>
-<li><p>The default size is increased for the plot title and decreased for the caption.</p></li>
-<li><p>Upgraded Kotlin version to 1.7.21 (was 1.7.20).</p></li>
-</ul>
-</section>
-<section id="fixed">
-<h2>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Themes: can’t change plot background after applying a <code class="docutils literal notranslate"><span class="pre">&quot;flavor&quot;</span></code>
-[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/623">#623</a>].</p></li>
-<li><p>Layout: uneven <code class="docutils literal notranslate"><span class="pre">left</span></code>/<code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">top</span></code>/<code class="docutils literal notranslate"><span class="pre">bottom</span></code> plot margins
-[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/625">#625</a>].</p></li>
-<li><p>A plot building error with empty data on various geoms.</p></li>
-<li><p>Precision error in gradient
-[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/634">#634</a>].</p></li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap</span></code></a>: wrong position when datapoints geodesic line goes close
-to the N.P.
-[<a class="reference external" href="https://github.com/JetBrains/lets-plot/issues/645">#645</a>].</p></li>
 </ul>
 </section>
 <section id="change-log">
