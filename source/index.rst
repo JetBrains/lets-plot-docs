@@ -14,6 +14,7 @@
     pages/charts
     pages/maps
     Geocoding <pages/geocoding>
+    'bistro' plots <pages/bistro>
     What is new <pages/whats_new>
 
 An Open-source Plotting Library for Statistical Data
@@ -31,7 +32,7 @@ An Open-source Plotting Library for Statistical Data
       <img alt="MIT License" src="https://img.shields.io/pypi/l/lets-plot?color=yellow&amp;style=flat-square">
     </a>
 
-**Python versions:** 3.6-3.10
+**Python versions:** 3.7-3.11
 
 **OS:** Linux, macOS, Windows
 
@@ -125,7 +126,7 @@ Meet the Grammar of Graphics
     :container: + gog-book
     :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. image:: _static/images/ggplot2-elegant-graphics-for-data-analysis.jpg
+    .. image:: /_static/images/ggplot2-elegant-graphics-for-data-analysis.jpg
         :target: https://ggplot2-book.org/index.html
 
     ---

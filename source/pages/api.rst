@@ -61,6 +61,7 @@ Standard Geometries
     geom_line
     geom_smooth
     geom_bar
+    geom_pie
     geom_histogram
     geom_dotplot
     geom_bin2d
@@ -79,6 +80,7 @@ Standard Geometries
     geom_vline
     geom_boxplot
     geom_violin
+    geom_area_ridges
     geom_ydotplot
     geom_ribbon
     geom_area
@@ -122,8 +124,14 @@ Extras
 
     as_discrete
 
-
 .. currentmodule:: lets_plot
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    layer_labels
+
 
 Facets
 ------
@@ -411,6 +419,14 @@ Bistro Module
     :template: base.rst
 
     qq_plot
+
+.. currentmodule:: lets_plot.bistro.residual
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    residual_plot
 
 
 Geospatial

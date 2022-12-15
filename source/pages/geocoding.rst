@@ -198,19 +198,13 @@ Examples
     .. extref:: geocoding_examples
 
     ---
-    .. extref:: travel_the_world
+    .. extref:: tourist_cities
 
     ---
     .. extref:: map_us_household_income
 
     ---
     .. extref:: covid19_india
-
-    ---
-    .. extref:: tourist_cities
-
-    ---
-    .. extref:: geocoding_levels
 
     ---
     .. extref:: map_airports
@@ -223,6 +217,9 @@ Examples
 
     ---
     .. extref:: titanic
+
+    ---
+    .. extref:: geocoding_levels
 
     ---
     .. extref:: internet_use_and_activities

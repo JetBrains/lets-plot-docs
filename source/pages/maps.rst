@@ -21,14 +21,6 @@ Proportional Symbol Map
     ---
     .. code-block:: python
 
-        ggplot(data) + geom_livemap(aes(..), symbol='point')
-
-    .. raw:: html
-
-        <div class="text-center">or</div>
-
-    .. code-block:: python
-
         ggplot(data) + geom_livemap() + geom_point(aes(..))
 
 
@@ -58,6 +50,7 @@ The following ggplot2 geometries can be used with interactive maps:
 .. |layers_primitives-icon| image:: /_static/images/icons/maps/layers_primitives.svg
 
 :py:mod:`point <lets_plot.geom_point>`,
+:py:mod:`pie <lets_plot.geom_pie>`,
 :py:mod:`path <lets_plot.geom_path>`,
 :py:mod:`tiles <lets_plot.geom_tile>`,
 :py:mod:`polygon <lets_plot.geom_polygon>`,
@@ -203,7 +196,7 @@ Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.j
 GeoPandas Shapes
 ----------------
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
 Learn more: :ref:`GeoPandas Support <geopandas>`.
 
@@ -271,6 +264,9 @@ Examples
 
     ---
     .. extref:: internet_use_and_activities
+
+    ---
+    .. extref:: param_flat
 
 .. raw:: html
 

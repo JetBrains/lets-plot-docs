@@ -76,6 +76,7 @@ Examples:
 .. |discrete-icon| image:: /_static/images/icons/charts/discrete.svg
 
 :py:mod:`Bar <lets_plot.geom_bar>`,
+:py:mod:`pie <lets_plot.geom_pie>`,
 :py:mod:`boxplot <lets_plot.geom_boxplot>`
 
 Examples:
@@ -83,6 +84,12 @@ Examples:
 - .. extref:: bar_geometry
       :type: text
 - .. extref:: geom_bar_identity
+      :type: text
+- .. extref:: geom_pie
+      :type: text
+- .. extref:: annotations_for_pie
+      :type: text
+- .. extref:: stat_count2d_vars
       :type: text
 - .. extref:: comparisons
       :type: text
@@ -160,6 +167,7 @@ Examples:
 :py:mod:`dotplot <lets_plot.geom_dotplot>`,
 :py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
 :py:mod:`violin <lets_plot.geom_violin>`,
+:py:mod:`ridgeline <lets_plot.geom_area_ridges>`,
 :py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
 Examples:
@@ -173,6 +181,8 @@ Examples:
 - .. extref:: dot_plots
       :type: text
 - .. extref:: geom_violin
+      :type: text
+- .. extref:: ridgeline_plot
       :type: text
 - .. extref:: y_orientation
       :type: text
@@ -291,6 +301,10 @@ Examples:
       :type: text
 - .. extref:: image_grayscale
       :type: text
+- .. extref:: image_alpha_param
+      :type: text
+- .. extref:: image_nan_values
+      :type: text
 - .. extref:: image_fisher_boat
       :type: text
       :text: "Fisher boat": 'geom_imshow()' and 'geom_raster()'
@@ -342,36 +356,14 @@ Examples:
       :type: text
 
 
-|correlation-plot-icon| Correlation Plot
-----------------------------------------
+|bistro-icon| 'bistro' Plots
+----------------------------
 
-.. |correlation-plot-icon| image:: /_static/images/icons/charts/correlation-plot.svg
+.. |bistro-icon| image:: /_static/images/icons/charts/bistro.svg
 
-:py:mod:`Correlation plot <lets_plot.bistro.corr.corr_plot>`
+Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
 
-Examples:
-
-- .. extref:: corr_plot
-      :type: text
-- .. extref:: correlation_plot
-      :type: text
-
-
-|q-q-icon| Q-Q Plot
--------------------
-
-.. |q-q-icon| image:: /_static/images/icons/charts/qq.svg
-
-:py:mod:`geom_qq() <lets_plot.geom_qq>`,
-:py:mod:`geom_qq_line() <lets_plot.geom_qq_line>`,
-:py:mod:`geom_qq2() <lets_plot.geom_qq2>`,
-:py:mod:`geom_qq2_line() <lets_plot.geom_qq2_line>`,
-:py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
-
-Examples:
-
-- .. extref:: qq_plots
-      :type: text
+Learn more about instruments for EDA in Lets-Plot: :ref:`'bistro' Plots <bistro>`.
 
 
 |geopandas-icon| GeoPandas Shapes
@@ -379,7 +371,7 @@ Examples:
 
 .. |geopandas-icon| image:: /_static/images/icons/charts/geopandas.svg
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
 Learn more: :ref:`GeoPandas Support <geopandas>`.
 
@@ -394,6 +386,8 @@ Examples:
 - .. extref:: soil_pollutants_with_gaussian_processes
       :type: text
 - .. extref:: ivindo_river
+      :type: text
+- .. extref:: projection_provided
       :type: text
 
 

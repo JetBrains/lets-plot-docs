@@ -5,131 +5,99 @@
 .. title:: What is new
 
 
-What is new
-===========
-
-Version 2.5.1
--------------
-
-Mostly a maintenance release.
-
-Nevertheless, few new features and improvements were added as well, among them:
-
-- New rendering options in :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_label() <lets_plot.geom_label>`.
-
-- :py:mod:`geom_imshow() <lets_plot.geom_imshow>` is now supporting ``cmap`` and ``extent`` parameters (also, ``norm``, ``vmin`` and ``vmax`` were fixed).
+What is new in 3.0.0
+====================
 
 
-Version 2.5.0
--------------
+Breaking Changes
+----------------
 
-Plot Theme
-^^^^^^^^^^
+- ``Python 3.6`` is no longer supported as it is in the `“end-of-life” <https://devguide.python.org/versions/>`__ release cycle stage.
 
-:py:mod:`theme_bw() <lets_plot.theme_bw>`
-"""""""""""""""""""""""""""""""""""""""""
+- :py:mod:`geom_livemap() <lets_plot.geom_livemap>` is now a pure basemap layer. The following options are no longer supported: ``symbol``, ``data``, ``mapping``, ``map``, ``map_join``, ``ontop``, ``stat``, ``position``, ``show_legend``, ``sampling``, ``tooltips``, ``geodesic``.
 
-See: |theme_bw-demo|.
+..
 
-Theme Flavors
-"""""""""""""
-    
-Theme flavor offers an easy way to change the colors of all elements in a theme to match a specific color scheme.
+   To draw **point** and **pie** markers on map, please, use the :py:mod:`geom_point() <lets_plot.geom_point>` and :py:mod:`geom_pie() <lets_plot.geom_pie>` geometry layers.
 
-In this release, we have added the following flavors:
+   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/titanic.ipynb>`__.
 
-- *darcula*
+   In place of the former ``geodetic`` parameter in :py:mod:`geom_livemap <lets_plot.geom_livemap>` please use the new parameter ``flat`` in **path** and **segment** geometry layers.
 
-- *solarized_light*
+   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/param_flat.ipynb>`__.
 
-- *solarized_dark*
 
-- *high_contrast_light*
+New Features
+------------
 
-- *high_contrast_dark*
+- .. rubric:: :py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
+     :name: residual_plot
 
-.. image:: /_static/images/theme_flavors.png
-  :alt: _images/theme_flavors.png
-  :width: 1000
-  :height: 133
+  |image-residual-light| |image-residual-dark|
 
-See: |theme_flavors-demo|.
+  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/residual_plot.ipynb>`__.
 
-New parameters in :py:mod:`element_text() <lets_plot.element_text>`
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.. |image-residual-light| image:: /_static/images/changelog/3.0.0/residual-light.png
+   :width: 200
+.. |image-residual-dark| image:: /_static/images/changelog/3.0.0/residual-dark.png
+   :width: 200
 
-- ``size``, ``family`` (|font_size_and_family-demo|)
+- .. rubric:: :py:mod:`geom_area_ridges() <lets_plot.geom_area_ridges>`
+     :name: geom_area_ridges
 
-- ``hjust``, ``vjust`` for plot title, subtitle, caption, legend and axis titles (|hjust_vjust-demo|)
+  |image-ridges-dark|
 
-- ``margin`` for plot title, subtitle, caption, axis titles and tick labels (|text_margins-demo|)
+  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/ridgeline_plot.ipynb>`__.
 
-New Plot Types
-^^^^^^^^^^^^^^
+.. |image-ridges-dark| image:: /_static/images/changelog/3.0.0/ridges-dark.png
+   :width: 400
 
-:py:mod:`geom_label() <lets_plot.geom_label>`.
+- .. rubric:: :py:mod:`geom_pie() <lets_plot.geom_pie>`
+     :name: geom_pie
 
-See: |geom_label-demo|.
+  |image-pie|
 
-Color Scales
-^^^^^^^^^^^^
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/geom_pie.ipynb>`__.
 
-Viridis color scales: :py:mod:`scale_color_viridis() <lets_plot.scale_color_viridis>`, :py:mod:`scale_fill_viridis() <lets_plot.scale_fill_viridis>`.
+.. |image-pie| image:: /_static/images/changelog/3.0.0/pie.png
+   :width: 379
 
-Supported colormaps:
+- .. rubric:: Annotation Labels on Pie-Chart
+     :name: annotation-labels-on-pie-chart
 
-- *magma*
+  |image-pie-labels-explode| |image-pie-labels-titanic|
 
-- *inferno*
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/annotations_for_pie.ipynb>`__.
 
-- *plasma*
+.. |image-pie-labels-explode| image:: /_static/images/changelog/3.0.0/pie-labels-explode.png
+   :height: 133
+.. |image-pie-labels-titanic| image:: /_static/images/changelog/3.0.0/pie-labels-titanic.png
+   :height: 133
 
-- *viridis*
+- .. rubric:: Spatial Pies
+     :name: spatial-pies
 
-- *cividis*
+  |image-spatial_pies_titanic|
 
-- *turbo*
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/titanic.ipynb>`__.
 
-- *twilight*
+.. |image-spatial_pies_titanic| image:: /_static/images/changelog/3.0.0/spatial_pies_titanic.png
+   :height: 133
 
-.. image:: /_static/images/viridis_plasma.png
-  :alt: _images/viridis_plasma.png
-  :width: 439
-  :height: 132
+- .. rubric:: New Parameters in :py:mod:`geom_imshow() <lets_plot.geom_imshow>`:
+     :name: new-parameters-in-geom_imshow
 
-See: |colors_viridis-demo|.
+  |image-imshow-alpha-jp|
+
+  -  Transparency of ``NaN`` values in grayscale images: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_nan_values.ipynb>`__.
+
+  -  ``alpha`` parameter: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_alpha_param.ipynb>`__.
+
+.. |image-imshow-alpha-jp| image:: /_static/images/changelog/3.0.0/imshow-alpha-jp.png
+   :width: 180
 
 
 Change Log
 ----------
 
 See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for other changes and fixes.
-
-
-.. |colors_viridis-demo| extref:: colors_viridis
-  :type: text
-  :text: example notebook
-
-.. |font_size_and_family-demo| extref:: font_size_and_family
-  :type: text
-  :text: example notebook
-
-.. |geom_label-demo| extref:: geom_label
-  :type: text
-  :text: example notebook
-
-.. |hjust_vjust-demo| extref:: hjust_vjust
-  :type: text
-  :text: example notebook
-
-.. |text_margins-demo| extref:: text_margins
-  :type: text
-  :text: example notebook
-
-.. |theme_bw-demo| extref:: theme_bw
-  :type: text
-  :text: example notebook
-
-.. |theme_flavors-demo| extref:: theme_flavors
-  :type: text
-  :text: example notebook
