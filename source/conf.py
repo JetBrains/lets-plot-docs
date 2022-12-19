@@ -38,6 +38,7 @@ extensions = [
     'sphinx_panels',
     'create_cname',
     'extref',
+    'switch_lets_plot',
 ]
 
 cname_url = "lets-plot.org"
