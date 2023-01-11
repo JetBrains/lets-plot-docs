@@ -87,6 +87,8 @@ Examples:
       :type: text
 - .. extref:: geom_pie
       :type: text
+- .. extref:: geom_pie_on_map
+      :type: text
 - .. extref:: annotations_for_pie
       :type: text
 - .. extref:: stat_count2d_vars
@@ -547,6 +549,9 @@ Examples
 
     ---
     .. extref:: how_to_draw_curve
+
+    ---
+    .. extref:: world_happiness
 
     ---
     .. extref:: coordinate_systems
