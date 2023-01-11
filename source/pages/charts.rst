@@ -484,6 +484,22 @@ Examples:
       :type: text
 
 
+Survey Notebooks
+----------------
+
+There are a few notebooks that contain overviews of many features at once. Check them out:
+
+- .. extref:: user_guide
+      :type: text
+      :text: Getting started guide
+- .. extref:: lets_plot_cheatbook
+      :type: text
+      :text: Lets-Plot API overview
+- .. extref:: themes
+      :type: text
+      :text: Themes overview
+
+
 Examples
 --------
 
@@ -513,9 +529,6 @@ Examples
 
     ---
     .. extref:: nobel
-
-    ---
-    .. extref:: lets_plot_cheatbook
 
     ---
     .. extref:: bbc_cookbook
