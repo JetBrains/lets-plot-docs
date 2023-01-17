@@ -208,9 +208,6 @@ Examples
     :container: + preview-gallery
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. extref:: map_quickstart
-
-    ---
     .. extref:: volcanoes_in_japan
 
     ---
@@ -258,6 +255,9 @@ Examples
 
     ---
     .. extref:: travel_the_world
+
+    ---
+    .. extref:: map_quickstart
 
     ---
     .. extref:: maps_and_geocoding

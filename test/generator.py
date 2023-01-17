@@ -2,10 +2,26 @@
 
 import os
 
-def generate_pages(dir, extensions=['html'], kotlin=False):
-    for root, directories, filenames in os.walk(dir):
+def _is_hidden_path(path):
+    return path[0] == "." or "/." in path or "\\." in path
+
+def _is_hidden_file(filename):
+    return filename[0] == "."
+
+def generate_notebooks(path):
+    for root, directories, filenames in os.walk(path):
+        if _is_hidden_path(root):
+            continue
         for filename in filenames:
-            if not kotlin and os.path.join(dir, 'kotlin') in root:
-                continue
-            if filename.split('.')[-1] in extensions:
+            if not _is_hidden_file(filename) and filename.split('.')[-1] == "ipynb":
+                yield os.path.join(root, filename)
+
+def generate_pages(path, extensions=['html'], kotlin=False):
+    for root, directories, filenames in os.walk(path):
+        if _is_hidden_path(root):
+            continue
+        if not kotlin and os.path.join(path, 'kotlin') in root:
+            continue
+        for filename in filenames:
+            if not _is_hidden_file(filename) and filename.split('.')[-1] in extensions:
                 yield os.path.join(root, filename)

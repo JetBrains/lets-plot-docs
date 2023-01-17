@@ -38,8 +38,6 @@ Examples:
       :type: text
 - .. extref:: correlation_plot
       :type: text
-- .. extref:: lets_plot_cheatbook
-      :type: text
 - .. extref:: themes
       :type: text
 - .. extref:: malnutrition
@@ -104,6 +102,4 @@ Residual Plot
 Examples:
 
 - .. extref:: residual_plot
-      :type: text
-- .. extref:: lets_plot_cheatbook
       :type: text

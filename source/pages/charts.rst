@@ -87,6 +87,8 @@ Examples:
       :type: text
 - .. extref:: geom_pie
       :type: text
+- .. extref:: geom_pie_on_map
+      :type: text
 - .. extref:: annotations_for_pie
       :type: text
 - .. extref:: stat_count2d_vars
@@ -482,6 +484,22 @@ Examples:
       :type: text
 
 
+Survey Notebooks
+----------------
+
+There are a few notebooks that contain overviews of many features at once. Check them out:
+
+- .. extref:: user_guide
+      :type: text
+      :text: Getting started guide
+- .. extref:: lets_plot_cheatbook
+      :type: text
+      :text: Lets-Plot API overview
+- .. extref:: themes
+      :type: text
+      :text: Themes overview
+
+
 Examples
 --------
 
@@ -511,9 +529,6 @@ Examples
 
     ---
     .. extref:: nobel
-
-    ---
-    .. extref:: lets_plot_cheatbook
 
     ---
     .. extref:: bbc_cookbook
@@ -547,6 +562,9 @@ Examples
 
     ---
     .. extref:: how_to_draw_curve
+
+    ---
+    .. extref:: world_happiness
 
     ---
     .. extref:: coordinate_systems
