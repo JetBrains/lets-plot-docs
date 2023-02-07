@@ -107,6 +107,16 @@ The 3rd parameter, ``map_join``, will help to combine population values and stat
     ggplot() + geom_map(aes(fill='pop_2021'), color='white', data=df, map=gdf, map_join='state')
 
 
+Combine with Livemap
+--------------------
+
+Add an interactive basemap layer to your plot:
+
+.. jupyter-execute::
+
+    ggplot() + geom_livemap() + geom_map(aes(fill='state'), data=gdf, alpha=.5)
+
+
 ``use_crs`` Parameter
 ---------------------
 

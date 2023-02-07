@@ -42,7 +42,17 @@ Choropleth Map
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
-The following ggplot2 geometries can be used with interactive maps:
+Some of the ggplot2 geometries can be used with interactive maps.
+
+|quickstart-icon| Quickstart
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.svg
+
+|map_quickstart|.
+
+.. |map_quickstart| extref:: map_quickstart
+    :type: text
 
 |layers_primitives-icon| Primitives
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,15 +88,13 @@ The following ggplot2 geometries can be used with interactive maps:
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`.
 
-|quickstart-icon| Quickstart
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.svg
+GeoPandas Shapes
+----------------
 
-|map_quickstart|.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
-.. |map_quickstart| extref:: map_quickstart
-    :type: text
+Learn more: :ref:`GeoPandas Support <geopandas>`.
 
 
 Use a Basemap That is Right for You |licenses|
@@ -191,14 +199,6 @@ PyCharm
 Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__ plugin.
 
 .. image:: /_static/images/pycharm_map_fr_low_65.gif
-
-
-GeoPandas Shapes
-----------------
-
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
-
-Learn more: :ref:`GeoPandas Support <geopandas>`.
 
 
 Examples
