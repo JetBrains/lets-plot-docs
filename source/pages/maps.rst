@@ -42,8 +42,6 @@ Choropleth Map
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
-Some of the ggplot2 geometries can be used with interactive maps.
-
 |quickstart-icon| Quickstart
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -69,7 +67,8 @@ Some of the ggplot2 geometries can be used with interactive maps.
 :py:mod:`vertical line <lets_plot.geom_vline>`,
 :py:mod:`rectangle <lets_plot.geom_rect>`,
 :py:mod:`segment <lets_plot.geom_segment>`,
-:py:mod:`text <lets_plot.geom_text>`.
+:py:mod:`text <lets_plot.geom_text>`,
+:py:mod:`text <lets_plot.geom_label>`.
 
 |layers_contours-icon| Contours
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
