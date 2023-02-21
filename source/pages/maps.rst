@@ -83,7 +83,7 @@ Combine Layers on Map ``ggplot2`` Style
 
 .. |layers_bivariate-icon| image:: /_static/images/icons/maps/layers_bivariate.svg
 
-:py:mod:`heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
+:py:mod:`2d bins <lets_plot.geom_bin2d>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`.
 

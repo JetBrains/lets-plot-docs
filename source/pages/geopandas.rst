@@ -107,16 +107,6 @@ The 3rd parameter, ``map_join``, will help to combine population values and stat
     ggplot() + geom_map(aes(fill='pop_2021'), color='white', data=df, map=gdf, map_join='state')
 
 
-Combine with Livemap
---------------------
-
-Add an interactive basemap layer to your plot:
-
-.. jupyter-execute::
-
-    ggplot() + geom_livemap() + geom_map(aes(fill='state'), data=gdf, alpha=.5)
-
-
 ``use_crs`` Parameter
 ---------------------
 
@@ -126,12 +116,25 @@ Specify EPSG code of coordinate reference system (CRS). All coordinates in ``Geo
 
     ggplot() + geom_map(map=gdf, use_crs="EPSG:32616")
 
-| Value "provided" tells *Lets-Plot* that the input ``GeoDataframe`` already contains coordinates in the desired CRS and should not be reprojected any further.
+| Value "provided" tells *Lets-Plot* that the input ``GeoDataframes`` already contains coordinates in the desired CRS and should not be reprojected any further.
 
 .. jupyter-execute::
 
     gdf_utm = gdf.to_crs("EPSG:32616")
     ggplot() + geom_map(map=gdf_utm, use_crs="provided")
+
+
+Interactive Maps
+----------------
+
+Apart from the ``use_crs`` parameter, ``GeoDataFrames`` are fully supported on *Lets-Plot* interactive maps.
+
+When used in combination with :py:mod:`geom_livemap() <lets_plot.geom_livemap>`,
+the value of the ``use_crs`` parameter is ignored and all coordinates are reprojected using the Mercator projection.
+
+.. jupyter-execute::
+
+    ggplot() + geom_livemap() + geom_map(aes(fill='state'), data=gdf, alpha=.5)
 
 
 Examples
