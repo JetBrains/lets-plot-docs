@@ -121,7 +121,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.position_fill">
 <span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">position_fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vjust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.position_fill" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adjust position by stacking overlapping objects on top of each other
+<dd><p>Adjust position by stacking overlapping groups of objects on top of each other
 and standardise each stack to have constant height.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -140,27 +140,26 @@ Set to 0 to align with the bottom, 0.5 for the middle, and 1 for the top.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Adjust position by stacking overlapping objects on top of each other
+<p>Adjust position by stacking overlapping groups of objects on top of each other
 and standardise each stack to have constant height.</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="linenos"> 2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos"> 3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-<span class="linenos"> 4</span>    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-<span class="linenos"> 5</span>    <span class="s1">&#39;y&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<span class="linenos"> 6</span>    <span class="s1">&#39;grp&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]</span>
-<span class="linenos"> 7</span><span class="p">}</span>
-<span class="linenos"> 8</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;grp&#39;</span><span class="p">))</span> <span class="o">+</span> \
-<span class="hll"><span class="linenos"> 9</span>    <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s1">&#39;grp&#39;</span><span class="p">),</span> <span class="n">stat</span> <span class="o">=</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="s1">&#39;fill&#39;</span><span class="p">)</span> <span class="o">+</span> \
-</span><span class="linenos">10</span>    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">position</span> <span class="o">=</span> <span class="n">position_fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-</pre></div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">4</span>    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="linenos">5</span>    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="linenos">6</span>    <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
+<span class="linenos">7</span><span class="p">}</span>
+<span class="linenos">8</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">9</span>    <span class="n">geom_point</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">position_fill</span><span class="p">(),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="hYqu9Y"></div>
+<div id="UguhtQ"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -184,58 +183,46 @@ and standardise each stack to have constant height.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("hYqu9Y").appendChild(div);
+            document.getElementById("UguhtQ").appendChild(div);
         };
-        var e = document.getElementById("hYqu9Y");
+        var e = document.getElementById("UguhtQ");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="mt8nxK"></div>
+</div><div class="output text_html">   <div id="BO0U4s"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
 "data":{
-"x":[1.0,1.0,2.0,2.0],
-"y":[1.0,3.0,2.0,1.0],
-"grp":["a","b","a","b"]
+"x":[1.0,1.0,1.0,1.0,1.0,2.0,2.0,2.0],
+"y":[1.0,2.0,3.0,4.0,5.0,1.0,2.0,3.0],
+"g":["a","a","b","b","b","a","a","b"]
 },
 "mapping":{
 "x":"x",
 "y":"y",
-"group":"grp"
+"color":"g"
 },
 "data_meta":{
 },
 "kind":"plot",
 "scales":[],
 "layers":[{
-"geom":"bar",
-"stat":"identity",
+"geom":"point",
 "mapping":{
-"fill":"grp"
-},
-"position":"fill",
-"data_meta":{
-},
-"data":{
-}
-},{
-"geom":"text",
-"mapping":{
-"label":"y"
 },
 "position":{
-"name":"fill",
-"vjust":0.5
+"name":"fill"
 },
 "data_meta":{
 },
+"size":10,
 "data":{
 }
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("mt8nxK");
+           var plotContainer = document.getElementById("BO0U4s");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
