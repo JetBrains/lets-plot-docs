@@ -68,7 +68,7 @@ Combine Layers on Map ``ggplot2`` Style
 :py:mod:`rectangle <lets_plot.geom_rect>`,
 :py:mod:`segment <lets_plot.geom_segment>`,
 :py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`text <lets_plot.geom_label>`.
+:py:mod:`label <lets_plot.geom_label>`.
 
 |layers_contours-icon| Contours
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
