@@ -42,7 +42,15 @@ Choropleth Map
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
-The following ggplot2 geometries can be used with interactive maps:
+|quickstart-icon| Quickstart
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.svg
+
+|map_quickstart|.
+
+.. |map_quickstart| extref:: map_quickstart
+    :type: text
 
 |layers_primitives-icon| Primitives
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +67,8 @@ The following ggplot2 geometries can be used with interactive maps:
 :py:mod:`vertical line <lets_plot.geom_vline>`,
 :py:mod:`rectangle <lets_plot.geom_rect>`,
 :py:mod:`segment <lets_plot.geom_segment>`,
-:py:mod:`text <lets_plot.geom_text>`.
+:py:mod:`text <lets_plot.geom_text>`,
+:py:mod:`label <lets_plot.geom_label>`.
 
 |layers_contours-icon| Contours
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,19 +83,17 @@ The following ggplot2 geometries can be used with interactive maps:
 
 .. |layers_bivariate-icon| image:: /_static/images/icons/maps/layers_bivariate.svg
 
-:py:mod:`heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
+:py:mod:`2d bins <lets_plot.geom_bin2d>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`.
 
-|quickstart-icon| Quickstart
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.svg
+GeoPandas Shapes
+----------------
 
-|map_quickstart|.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
-.. |map_quickstart| extref:: map_quickstart
-    :type: text
+Learn more: :ref:`GeoPandas Support <geopandas>`.
 
 
 Use a Basemap That is Right for You |licenses|
@@ -191,14 +198,6 @@ PyCharm
 Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview>`__ plugin.
 
 .. image:: /_static/images/pycharm_map_fr_low_65.gif
-
-
-GeoPandas Shapes
-----------------
-
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
-
-Learn more: :ref:`GeoPandas Support <geopandas>`.
 
 
 Examples

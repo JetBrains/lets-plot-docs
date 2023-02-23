@@ -75,7 +75,7 @@ Examples:
 
 .. |discrete-icon| image:: /_static/images/icons/charts/discrete.svg
 
-:py:mod:`Bar <lets_plot.geom_bar>`,
+:py:mod:`bar <lets_plot.geom_bar>`,
 :py:mod:`pie <lets_plot.geom_pie>`,
 :py:mod:`boxplot <lets_plot.geom_boxplot>`
 
@@ -146,7 +146,7 @@ Examples:
 
 .. |contours-icon| image:: /_static/images/icons/charts/contours.svg
 
-:py:mod:`Contours <lets_plot.geom_contour>`,
+:py:mod:`contours <lets_plot.geom_contour>`,
 :py:mod:`filled contours <lets_plot.geom_contourf>`
 
 Examples:
@@ -164,7 +164,7 @@ Examples:
 
 .. |visualization-of-distribution-icon| image:: /_static/images/icons/charts/visualization-of-distribution.svg
 
-:py:mod:`Histogram <lets_plot.geom_histogram>`,
+:py:mod:`histogram <lets_plot.geom_histogram>`,
 :py:mod:`density <lets_plot.geom_density>`,
 :py:mod:`dotplot <lets_plot.geom_dotplot>`,
 :py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
@@ -219,7 +219,7 @@ Examples:
 
 .. |visualization-of-errors-icon| image:: /_static/images/icons/charts/visualization-of-errors.svg
 
-:py:mod:`Crossbar <lets_plot.geom_crossbar>`,
+:py:mod:`crossbar <lets_plot.geom_crossbar>`,
 :py:mod:`errorbar <lets_plot.geom_errorbar>`,
 :py:mod:`linerange <lets_plot.geom_linerange>`,
 :py:mod:`pointrange <lets_plot.geom_pointrange>`
@@ -237,7 +237,7 @@ Examples:
 
 .. |smoothing-icon| image:: /_static/images/icons/charts/smoothing.svg
 
-:py:mod:`Smoothing line <lets_plot.geom_smooth>`
+:py:mod:`smoothing line <lets_plot.geom_smooth>`
 
 Examples:
 
@@ -254,7 +254,7 @@ Examples:
 
 .. |bivariate-distribution-icon| image:: /_static/images/icons/charts/bivariate-distribution.svg
 
-:py:mod:`Heatmap of 2d bin counts <lets_plot.geom_bin2d>`,
+:py:mod:`2d bins <lets_plot.geom_bin2d>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`
 

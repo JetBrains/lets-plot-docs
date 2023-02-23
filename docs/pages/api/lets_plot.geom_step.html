@@ -120,7 +120,7 @@
 <h1>lets_plot.geom_step<a class="headerlink" href="#lets-plot-geom-step" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.geom_step">
-<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">geom_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">other_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_step" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">geom_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">other_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect observations in the order in which they appear in the data by stairs.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -139,7 +139,7 @@ Supported transformations: ‘identity’ (leaves the data unchanged),
 ‘smooth’ (performs smoothing - linear default),
 ‘density’ (computes and draws kernel density estimate).</p>
 </dd>
-<dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite></span></dt><dd><p>Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
+<dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite>, default=’identity’</span></dt><dd><p>Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
 or the result of a call to a position adjustment function.</p>
 </dd>
 <dt><strong>show_legend</strong><span class="classifier">bool, default=True</span></dt><dd><p>False - do not show legend for this layer.</p>
@@ -149,6 +149,8 @@ To prevent any sampling for this layer pass value “none” (string “none”)
 </dd>
 <dt><strong>direction</strong><span class="classifier">{‘hv’, ‘vh’}, default=’hv’</span></dt><dd><p>‘hv’ or ‘HV’ stands for horizontal then vertical;
 ‘vh’ or ‘VH’ stands for vertical then horizontal.</p>
+</dd>
+<dt><strong>color_by</strong><span class="classifier">{‘fill’, ‘color’, ‘paint_a’, ‘paint_b’,’paint_c’}, default=’color’</span></dt><dd><p>Define the color aesthetic for the geometry.</p>
 </dd>
 <dt><strong>other_args</strong></dt><dd><p>Other arguments passed on to the layer.
 These are often aesthetics settings used to set an aesthetic to a fixed value,
@@ -193,7 +195,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="bAqP0h"></div>
+<div id="puwlmJ"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -217,13 +219,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("bAqP0h").appendChild(div);
+            document.getElementById("puwlmJ").appendChild(div);
         };
-        var e = document.getElementById("bAqP0h");
+        var e = document.getElementById("puwlmJ");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="daHwvI"></div>
+</div><div class="output text_html">   <div id="puEZ4p"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -255,7 +257,7 @@ They may also be parameters to the paired geom/stat.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("daHwvI");
+           var plotContainer = document.getElementById("puEZ4p");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -282,7 +284,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="r2YM72"></div>
+<div id="3FOdRd"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -306,13 +308,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("r2YM72").appendChild(div);
+            document.getElementById("3FOdRd").appendChild(div);
         };
-        var e = document.getElementById("r2YM72");
+        var e = document.getElementById("3FOdRd");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="nnnOuM"></div>
+</div><div class="output text_html">   <div id="CoB5bz"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -342,7 +344,7 @@ They may also be parameters to the paired geom/stat.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("nnnOuM");
+           var plotContainer = document.getElementById("CoB5bz");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
