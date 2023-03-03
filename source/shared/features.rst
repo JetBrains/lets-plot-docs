@@ -102,7 +102,11 @@ Key Features
 
     Export to SVG and HTML
 
-    The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in SVG or HTML formats.
+    The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in SVG or HTML formats. |export|.
+
+    .. |export| extref:: export
+        :type: text
+        :text: Learn more
 
     ---
     ---

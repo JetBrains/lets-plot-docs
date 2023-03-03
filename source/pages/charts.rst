@@ -482,6 +482,8 @@ Examples:
       :type: text
 - .. extref:: panel_border
       :type: text
+- .. extref:: axis_text_angle
+      :type: text
 
 
 Survey Notebooks
@@ -522,7 +524,7 @@ Examples
     .. extref:: ggbunch
 
     ---
-    .. extref:: bayesian_inference
+    .. extref:: plot_grid
 
     ---
     .. extref:: geopandas_naturalearth
@@ -534,7 +536,7 @@ Examples
     .. extref:: bbc_cookbook
 
     ---
-    .. extref:: geopandas_kotlin_isl
+    .. extref:: multiple_color_scales
 
     ---
     .. extref:: y_orientation
@@ -613,6 +615,21 @@ Examples
 
     ---
     .. extref:: map_use_crs
+
+    ---
+    .. extref:: bayesian_inference
+
+    ---
+    .. extref:: geopandas_kotlin_isl
+
+    ---
+    .. extref:: axis_position
+
+    ---
+    .. extref:: quantile_parameters
+
+    ---
+    .. extref:: scale_functions
 
 .. raw:: html
 
