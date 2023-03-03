@@ -48,7 +48,8 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 - `IPython <https://ipython.org>`__
-- Windows users only: `MinGW toolchain <https://anaconda.org/msys2/m2w64-toolchain>`__
+
+- :ref:`Some module-specific prerequisites <prerequisites>`
 
 Datalore
 ~~~~~~~~
