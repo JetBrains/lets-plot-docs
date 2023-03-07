@@ -86,9 +86,9 @@ Key Features
     ---
     .. image:: /_static/images/icons/features/export.svg
 
-    Export to SVG and HTML
+    Export to SVG, HTML and PNG
 
-    The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in SVG or HTML formats. |export|.
+    The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in SVG, HTML or PNG formats. |export|.
 
     .. |export| extref:: export
         :type: text
