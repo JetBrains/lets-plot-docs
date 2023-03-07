@@ -66,8 +66,6 @@ Examples:
       :type: text
 - .. extref:: map_use_crs
       :type: text
-- .. extref:: position_stack
-      :type: text
 
 
 |discrete-icon| Discrete
@@ -482,24 +480,26 @@ Examples:
       :type: text
 - .. extref:: panel_border
       :type: text
+- .. extref:: axis_position
+      :type: text
 - .. extref:: axis_text_angle
       :type: text
 
 
-Survey Notebooks
-----------------
+Cookbooks
+---------
 
-There are a few notebooks that contain overviews of many features at once. Check them out:
-
-- .. extref:: user_guide
-      :type: text
-      :text: Getting started guide
 - .. extref:: lets_plot_cheatbook
       :type: text
       :text: Lets-Plot API overview
-- .. extref:: themes
+- .. extref:: multiple_color_scales
       :type: text
-      :text: Themes overview
+- .. extref:: quantile_parameters
+      :type: text
+- .. extref:: scale_functions
+      :type: text
+- .. extref:: position_stack
+      :type: text
 
 
 Examples
@@ -536,7 +536,7 @@ Examples
     .. extref:: bbc_cookbook
 
     ---
-    .. extref:: multiple_color_scales
+    .. extref:: bayesian_inference
 
     ---
     .. extref:: y_orientation
@@ -617,19 +617,7 @@ Examples
     .. extref:: map_use_crs
 
     ---
-    .. extref:: bayesian_inference
-
-    ---
     .. extref:: geopandas_kotlin_isl
-
-    ---
-    .. extref:: axis_position
-
-    ---
-    .. extref:: quantile_parameters
-
-    ---
-    .. extref:: scale_functions
 
 .. raw:: html
 
