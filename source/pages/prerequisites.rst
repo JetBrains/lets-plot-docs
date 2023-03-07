@@ -8,23 +8,17 @@
 Prerequisites
 =============
 
-Necessary
----------
+Common requirements:
 
-- `IPython <https://ipython.org>`__
+- `IPython <https://ipython.org>`__.
 
 
-Module-specific
----------------
+Module-specific requirements:
 
-- `CairoSVG <https://pypi.org/project/CairoSVG/>`__ and `PyPNG <https://pypi.org/project/pypng/>`__ for :py:mod:`ggsave() <lets_plot.ggsave>`
+- `NumPy <https://numpy.org>`__ of version no less than 1.24.2.
 
-- `Palettable <https://jiffyclub.github.io/palettable/>`__ for :py:mod:`geom_imshow() <lets_plot.geom_imshow>`
+- `pandas <https://pandas.pydata.org>`__ of version no less than 1.5.3.
 
-- `NumPy <https://numpy.org>`__ for :py:mod:`geom_imshow() <lets_plot.geom_imshow>`, :ref:`geocoding functions <geocoding>` and :ref:`some 'bistro' functions <bistro>`
+- `GeoPandas <https://geopandas.org/en/stable/>`__ of version no less than 0.12.2.
 
-- `pandas <https://pandas.pydata.org>`__ for :ref:`geocoding functions <geocoding>`, :ref:`some 'bistro' functions <bistro>` and :py:mod:`geom_livemap() <lets_plot.geom_livemap>`
-
-- `GeoPandas <https://geopandas.org/en/stable/>`__ for :ref:`geocoding functions <geocoding>`
-
-- `statsmodels <https://www.statsmodels.org/stable/index.html>`__ for :ref:`some 'bistro' functions <bistro>`
+- `Shapely <https://shapely.readthedocs.io/en/stable/>`__ of version no less than 2.0.0.

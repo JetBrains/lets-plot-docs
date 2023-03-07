@@ -44,17 +44,7 @@ Installation
 
     pip install lets-plot
 
-Prerequisites
-~~~~~~~~~~~~~
-
-- `IPython <https://ipython.org>`__
-
-- :ref:`Some module-specific prerequisites <prerequisites>`
-
-Datalore
-~~~~~~~~
-
-You can try Lets-Plot in `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__ where it is available out-of-the-box.
+:ref:`Requirements <prerequisites>`.
 
 
 Quickstart
