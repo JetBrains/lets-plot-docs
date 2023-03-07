@@ -391,6 +391,21 @@ Examples:
       :type: text
 
 
+|grouping-plots-icon| Grouping Plots
+------------------------------------
+
+.. |grouping-plots-icon| image:: /_static/images/icons/charts/grouping-plots.png
+
+:py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.
+
+Examples:
+
+- .. extref:: ggbunch
+      :type: text
+- .. extref:: plot_grid
+      :type: text
+
+
 |presentation-options-icon| Presentation Options
 ------------------------------------------------
 
@@ -524,7 +539,7 @@ Examples
     .. extref:: ggbunch
 
     ---
-    .. extref:: plot_grid
+    .. extref:: geopandas_kotlin_isl
 
     ---
     .. extref:: geopandas_naturalearth
@@ -616,8 +631,6 @@ Examples
     ---
     .. extref:: map_use_crs
 
-    ---
-    .. extref:: geopandas_kotlin_isl
 
 .. raw:: html
 

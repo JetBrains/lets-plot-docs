@@ -12,11 +12,11 @@ Key Features
     A bridge between R (:ref:`ggplot2 <index_meet_gog>`) and Python Data visualization.
 
     ---
-    .. image:: /_static/images/icons/features/graphics-grid.svg
+    .. image:: /_static/images/icons/features/tooltips.svg
 
-    Grouping Plots
+    Customizable Tooltips
 
-    :py:mod:`GGBunch <lets_plot.GGBunch>` shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.
+    You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :ref:`Learn more <tooltips>`.
 
     ---
     .. image:: /_static/images/icons/features/platforms.svg
@@ -56,11 +56,11 @@ Key Features
         :text: PyCharm
 
     ---
-    .. image:: /_static/images/icons/features/tooltips.svg
+    .. image:: /_static/images/icons/features/formatting.svg
 
-    Customizable Tooltips
+    Formatting
 
-    You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :ref:`Learn more <tooltips>`.
+    Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. :ref:`Learn more <formats>`.
 
     ---
     .. image:: /_static/images/logo/kotlin.svg
@@ -70,20 +70,6 @@ Key Features
     R, Python, what’s next? Right. `Lets-Plot Kotlin API <https://github.com/JetBrains/lets-plot-kotlin>`__ enables data visualization in JVM and Kotlin/JS applications as well as in scientific notebooks like Jupyter and Datalore.
 
     ---
-    .. image:: /_static/images/icons/features/formatting.svg
-
-    Formatting
-
-    Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. :ref:`Learn more <formats>`.
-
-    ---
-    .. image:: /_static/images/icons/features/geospatial-visualization.svg
-
-    Geospatial Visualization
-
-    Find spatial objects with the help of our powerful and easy to use :ref:`Geocoding <geocoding>` module. In case you already have ``GeoDataFrame`` on hand - :ref:`plot it <geopandas>` straight away.
-
-    ---
     .. image:: /_static/images/icons/features/sampling.svg
 
     Sampling
@@ -91,11 +77,11 @@ Key Features
     Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting. :ref:`Learn more <sampling>`.
 
     ---
-    .. image:: /_static/images/icons/features/interactive-maps.svg
+    .. image:: /_static/images/icons/features/geospatial-visualization.svg
 
-    Interactive Maps
+    Geospatial Visualization
 
-    Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. :ref:`Learn more <maps>`.
+    Find spatial objects with the help of our powerful and easy to use :ref:`Geocoding <geocoding>` module. In case you already have ``GeoDataFrame`` on hand - :ref:`plot it <geopandas>` straight away.
 
     ---
     .. image:: /_static/images/icons/features/export.svg
@@ -109,6 +95,12 @@ Key Features
         :text: Learn more
 
     ---
+    .. image:: /_static/images/icons/features/interactive-maps.svg
+
+    Interactive Maps
+
+    Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. :ref:`Learn more <maps>`.
+
     ---
     .. image:: /_static/images/icons/features/offline-mode.svg
 
