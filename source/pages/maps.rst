@@ -70,9 +70,9 @@ Combine Layers on Map ``ggplot2`` Style
 :py:mod:`text <lets_plot.geom_text>`,
 :py:mod:`label <lets_plot.geom_label>`.
 
-Examples:
+|param_geodesic|.
 
-- .. extref:: param_geodesic
+.. |param_geodesic| extref:: param_geodesic
       :type: text
 
 |layers_contours-icon| Contours

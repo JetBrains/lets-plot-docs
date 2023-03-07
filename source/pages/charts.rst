@@ -396,7 +396,7 @@ Examples:
 
 .. |grouping-plots-icon| image:: /_static/images/icons/charts/grouping-plots.png
 
-:py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure. Each plot in the collection can have an arbitrary location and size.
+:py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
 Examples:
 
