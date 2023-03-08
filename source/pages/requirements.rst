@@ -8,7 +8,7 @@
 Requirements
 ============
 
-- Python >= 3.7
+- Python >= 3.8 (for geocoding)
 
 - `NumPy <https://numpy.org>`__ >= 1.24.2
 
