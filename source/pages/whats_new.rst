@@ -5,99 +5,64 @@
 .. title:: What is new
 
 
-What is new in 3.0.0
+What is new in 3.1.0
 ====================
 
+-  .. rubric:: :py:mod:`gggrid() <lets_plot.gggrid>`
+      :name: gggrid
 
-Breaking Changes
-----------------
+   See: `example
+   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/plot_grid.ipynb>`__.
 
-- ``Python 3.6`` is no longer supported as it is in the `“end-of-life” <https://devguide.python.org/versions/>`__ release cycle stage.
+-  .. rubric:: :py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
+      :name: joint_plot
 
-- :py:mod:`geom_livemap() <lets_plot.geom_livemap>` is now a pure basemap layer. The following options are no longer supported: ``symbol``, ``data``, ``mapping``, ``map``, ``map_join``, ``ontop``, ``stat``, ``position``, ``show_legend``, ``sampling``, ``tooltips``, ``geodesic``.
+   See: `example
+   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/joint_plot.ipynb>`__.
 
-..
+-  .. rubric:: Configuring Axis Position
+      :name: configuring-axis-position
 
-   To draw **point** and **pie** markers on map, please, use the :py:mod:`geom_point() <lets_plot.geom_point>` and :py:mod:`geom_pie() <lets_plot.geom_pie>` geometry layers.
+   See: `example
+   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_position.ipynb>`__.
 
-   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/titanic.ipynb>`__.
+-  .. rubric:: Showing Quantiles on Density Plots
+      :name: showing-quantiles-on-density-plots
 
-   In place of the former ``geodetic`` parameter in :py:mod:`geom_livemap <lets_plot.geom_livemap>` please use the new parameter ``flat`` in **path** and **segment** geometry layers.
+   See: `example
+   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/quantile_parameters.ipynb>`__.
 
-   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/param_flat.ipynb>`__.
+-  .. rubric:: Additional "color" aesthetics:
+      ``paint_a``, ``paint_b``, ``paint_c``.
+      :name: additional-color-aesthetics-paint_a-paint_b-paint_c.
 
+   See: `example
+   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/multiple_color_scales.ipynb>`__.
 
-New Features
-------------
+   Also added a set of related "color scale" functions with the
+   "aesthetic" parameter for configuring of additional color scales.
 
-- .. rubric:: :py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
-     :name: residual_plot
+   See `example
+   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/scale_functions.ipynb>`__
+   demo.
 
-  |image-residual-light| |image-residual-dark|
+-  .. rubric:: Other New Features and Improvements
+      :name: other-new-features-and-improvements
 
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/residual_plot.ipynb>`__.
-
-.. |image-residual-light| image:: /_static/images/changelog/3.0.0/residual-light.png
-   :width: 200
-.. |image-residual-dark| image:: /_static/images/changelog/3.0.0/residual-dark.png
-   :width: 200
-
-- .. rubric:: :py:mod:`geom_area_ridges() <lets_plot.geom_area_ridges>`
-     :name: geom_area_ridges
-
-  |image-ridges-dark|
-
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/ridgeline_plot.ipynb>`__.
-
-.. |image-ridges-dark| image:: /_static/images/changelog/3.0.0/ridges-dark.png
-   :width: 400
-
-- .. rubric:: :py:mod:`geom_pie() <lets_plot.geom_pie>`
-     :name: geom_pie
-
-  |image-pie|
-
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/geom_pie.ipynb>`__.
-
-.. |image-pie| image:: /_static/images/changelog/3.0.0/pie.png
-   :width: 379
-
-- .. rubric:: Annotation Labels on Pie-Chart
-     :name: annotation-labels-on-pie-chart
-
-  |image-pie-labels-explode| |image-pie-labels-titanic|
-
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/annotations_for_pie.ipynb>`__.
-
-.. |image-pie-labels-explode| image:: /_static/images/changelog/3.0.0/pie-labels-explode.png
-   :height: 133
-.. |image-pie-labels-titanic| image:: /_static/images/changelog/3.0.0/pie-labels-titanic.png
-   :height: 133
-
-- .. rubric:: Spatial Pies
-     :name: spatial-pies
-
-  |image-spatial_pies_titanic|
-
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/titanic.ipynb>`__.
-
-.. |image-spatial_pies_titanic| image:: /_static/images/changelog/3.0.0/spatial_pies_titanic.png
-   :height: 133
-
-- .. rubric:: New Parameters in :py:mod:`geom_imshow() <lets_plot.geom_imshow>`:
-     :name: new-parameters-in-geom_imshow
-
-  |image-imshow-alpha-jp|
-
-  -  Transparency of ``NaN`` values in grayscale images: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_nan_values.ipynb>`__.
-
-  -  ``alpha`` parameter: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-22e/image_alpha_param.ipynb>`__.
-
-.. |image-imshow-alpha-jp| image:: /_static/images/changelog/3.0.0/imshow-alpha-jp.png
-   :width: 180
-
+   -  Export to PNG file in :py:mod:`ggsave() <lets_plot.ggsave>` (requires the
+      `CairoSVG <https://pypi.org/project/CairoSVG>`__ library), see
+      `example
+      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/export_to_png.ipynb>`__.
+   -  ``angle`` parameter in :py:mod:`element_text() <lets_plot.element_text>` in :py:mod:`theme() <lets_plot.theme>`, see
+      `example
+      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_text_angle.ipynb>`__.
+   -  ``geodesic`` parameter in :py:mod:`geom_segment() <lets_plot.geom_segment>` and :py:mod:`geom_path() <lets_plot.geom_path>`,
+      see `example
+      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/param_geodesic.ipynb>`__.
 
 Change Log
 ----------
 
-See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for other changes and fixes.
+See
+`CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__
+for other changes and fixes.

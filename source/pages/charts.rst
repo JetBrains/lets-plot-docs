@@ -66,8 +66,6 @@ Examples:
       :type: text
 - .. extref:: map_use_crs
       :type: text
-- .. extref:: position_stack
-      :type: text
 
 
 |discrete-icon| Discrete
@@ -393,6 +391,21 @@ Examples:
       :type: text
 
 
+|grouping-plots-icon| Grouping Plots
+------------------------------------
+
+.. |grouping-plots-icon| image:: /_static/images/icons/charts/grouping-plots.png
+
+:py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
+
+Examples:
+
+- .. extref:: ggbunch
+      :type: text
+- .. extref:: plot_grid
+      :type: text
+
+
 |presentation-options-icon| Presentation Options
 ------------------------------------------------
 
@@ -482,22 +495,26 @@ Examples:
       :type: text
 - .. extref:: panel_border
       :type: text
-
-
-Survey Notebooks
-----------------
-
-There are a few notebooks that contain overviews of many features at once. Check them out:
-
-- .. extref:: user_guide
+- .. extref:: axis_position
       :type: text
-      :text: Getting started guide
+- .. extref:: axis_text_angle
+      :type: text
+
+
+Cookbooks
+---------
+
 - .. extref:: lets_plot_cheatbook
       :type: text
       :text: Lets-Plot API overview
-- .. extref:: themes
+- .. extref:: multiple_color_scales
       :type: text
-      :text: Themes overview
+- .. extref:: quantile_parameters
+      :type: text
+- .. extref:: scale_functions
+      :type: text
+- .. extref:: position_stack
+      :type: text
 
 
 Examples
@@ -522,7 +539,7 @@ Examples
     .. extref:: ggbunch
 
     ---
-    .. extref:: bayesian_inference
+    .. extref:: geopandas_kotlin_isl
 
     ---
     .. extref:: geopandas_naturalearth
@@ -534,7 +551,7 @@ Examples
     .. extref:: bbc_cookbook
 
     ---
-    .. extref:: geopandas_kotlin_isl
+    .. extref:: bayesian_inference
 
     ---
     .. extref:: y_orientation
@@ -613,6 +630,7 @@ Examples
 
     ---
     .. extref:: map_use_crs
+
 
 .. raw:: html
 

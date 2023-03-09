@@ -41,6 +41,7 @@ Plotting
 
     ggplot
     GGBunch
+    gggrid
     ggmarginal
     aes
     layer
@@ -197,6 +198,23 @@ Fill Scales
     scale_fill_brewer
     scale_fill_viridis
 
+Flexible Color Scales
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autosummary::
+    :toctree: api
+
+    scale_manual
+    scale_gradient
+    scale_continuous
+    scale_gradient2
+    scale_gradientn
+    scale_hue
+    scale_discrete
+    scale_grey
+    scale_brewer
+    scale_viridis
+
 Shape Scales
 ~~~~~~~~~~~~
 
@@ -250,6 +268,7 @@ Identity Scales
 .. autosummary::
     :toctree: api
 
+    scale_identity
     scale_color_identity
     scale_fill_identity
     scale_shape_identity
@@ -419,6 +438,14 @@ Bistro Module
     :template: base.rst
 
     qq_plot
+
+.. currentmodule:: lets_plot.bistro.joint
+
+.. autosummary::
+    :toctree: api
+    :template: base.rst
+
+    joint_plot
 
 .. currentmodule:: lets_plot.bistro.residual
 

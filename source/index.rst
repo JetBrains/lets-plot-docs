@@ -44,17 +44,6 @@ Installation
 
     pip install lets-plot
 
-Prerequisites
-~~~~~~~~~~~~~
-
-- `IPython <https://ipython.org>`__
-- Windows users only: `MinGW toolchain <https://anaconda.org/msys2/m2w64-toolchain>`__
-
-Datalore
-~~~~~~~~
-
-You can try Lets-Plot in `Datalore <https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA>`__ where it is available out-of-the-box.
-
 
 Quickstart
 ----------

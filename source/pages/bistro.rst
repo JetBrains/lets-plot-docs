@@ -77,6 +77,35 @@ Examples:
       :type: text
 
 
+Joint Plot
+----------
+
+:py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
+
+.. panels::
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. extref:: joint_plot
+        :image: bistro-3
+
+    ---
+    .. extref:: joint_plot
+        :image: bistro-0
+
+    ---
+    .. extref:: joint_plot
+        :image: bistro-1
+
+    ---
+    .. extref:: joint_plot
+        :image: bistro-2
+
+Examples:
+
+- .. extref:: joint_plot
+      :type: text
+
+
 Residual Plot
 -------------
 
