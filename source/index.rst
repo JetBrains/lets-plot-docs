@@ -44,8 +44,6 @@ Installation
 
     pip install lets-plot
 
-:ref:`requirements <requirements>`
-
 
 Quickstart
 ----------
