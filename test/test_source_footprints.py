@@ -13,6 +13,7 @@ BUILD_DIR = "docs"
 
 EXCEPTIONS = {
     'role': [
+        "lets_plot.bistro.joint.joint_plot.html",
         "lets_plot.bistro.residual.residual_plot.html",
     ],
 }
