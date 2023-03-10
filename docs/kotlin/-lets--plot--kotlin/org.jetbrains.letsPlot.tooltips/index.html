@@ -6,10 +6,18 @@
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -21,6 +29,7 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 <script type="text/javascript" src="../../images/custom.js" async="async"></script>
 <link href="../../styles/custom.css" rel="Stylesheet">
 </head>
@@ -33,7 +42,7 @@ if(savedDarkMode === true){
             </a>
     </div>
     <div>
-4.2.0    </div>
+4.3.0    </div>
     <div class="pull-right d-flex">
         <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
@@ -45,10 +54,10 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageIds="Lets-Plot-Kotlin::org.jetbrains.letsPlot.tooltips////PointingToDeclaration//-813667489">
-  <div class="breadcrumbs"><a href="../../index.html">Lets-Plot-Kotlin</a><span class="delimiter">/</span><a href="index.html">org.jetbrains.letsPlot.tooltips</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">Lets-Plot-Kotlin</a><span class="delimiter">/</span><span class="current">org.jetbrains.letsPlot.tooltips</span></div>
   <div class="cover ">
-    <h1 class="cover"><span><span>Package</span></span> <span>org.</span><wbr></wbr><span>jetbrains.</span><wbr></wbr><span>letsPlot.</span><wbr></wbr><span>tooltips</span></h1>
-    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><p class="paragraph">See <a href="https://github.com/JetBrains/lets-plot-kotlin/blob/master/docs/tooltips.md">tooltips.md</a>.</p><h2 class=""> Examples</h2><ul><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/tooltip_config.ipynb">tooltip_config.ipynb</a></p></li><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/tooltip_title.ipynb">tooltip_title.ipynb</a></p></li><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/tooltips_theme.ipynb">tooltips_theme.ipynb</a></p></li></ul></div></div>
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><p class="paragraph">See <a href="https://github.com/JetBrains/lets-plot-kotlin/blob/master/docs/tooltips.md">tooltips.md</a>.</p><h2 class=""> Examples</h2><ul><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/tooltip_config.ipynb">tooltip_config.ipynb</a></p></li><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/tooltip_title.ipynb">tooltip_title.ipynb</a></p></li><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/tooltips_theme.ipynb">tooltips_theme.ipynb</a></p></li></ul></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
@@ -64,7 +73,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword">class </span><a href="layer-tooltips/index.html">layerTooltips</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">variables<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Defines the format for displaying the value. The format will be applied to the mapped value in the default tooltip or to the corresponding value specified in the line template.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword">class </span><a href="layer-tooltips/index.html">layerTooltips</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">variables<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Defines the format for displaying the value. The format will be applied to the mapped value in the default tooltip or to the corresponding value specified in the line template.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -79,7 +88,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="index.html#2098657226%2FClasslikes%2F-813667489">TooltipOptions</a><span class="token operator"> = </span><a href="layer-tooltips/index.html">layerTooltips</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="index.html#2098657226%2FClasslikes%2F-813667489">TooltipOptions</a><span class="token operator"> = </span><a href="layer-tooltips/index.html">layerTooltips</a></div></div></div>
               </div>
             </div>
           </div>
@@ -96,7 +105,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><a data-name="-109814574%2FProperties%2F-813667489" anchor-label="tooltipsNone" id="-109814574%2FProperties%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="tooltips-none.html">tooltipsNone</a><span class="token operator">: </span><a href="layer-tooltips/index.html">layerTooltips</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-109814574%2FProperties%2F-813667489" anchor-label="tooltipsNone" id="-109814574%2FProperties%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a><p class="paragraph">Hide tooltips.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><a data-name="-109814574%2FProperties%2F-813667489" anchor-label="tooltipsNone" id="-109814574%2FProperties%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="tooltips-none.html">tooltipsNone</a><span class="token operator">: </span><a href="layer-tooltips/index.html">layerTooltips</a></div><div class="brief "><a data-name="-109814574%2FProperties%2F-813667489" anchor-label="tooltipsNone" id="-109814574%2FProperties%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a><p class="paragraph">Hide tooltips.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -106,7 +115,7 @@ if(savedDarkMode === true){
   </div>
 </div>
       <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>Copyright © 2019-2022 JetBrains s.r.o.</span><span
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>Copyright © 2019-2023 JetBrains s.r.o.</span><span
                 class="pull-right"><span>Generated by </span><a
                 href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>

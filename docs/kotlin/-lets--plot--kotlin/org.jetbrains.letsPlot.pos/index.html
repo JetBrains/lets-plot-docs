@@ -6,10 +6,18 @@
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -21,6 +29,7 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 <script type="text/javascript" src="../../images/custom.js" async="async"></script>
 <link href="../../styles/custom.css" rel="Stylesheet">
 </head>
@@ -33,7 +42,7 @@ if(savedDarkMode === true){
             </a>
     </div>
     <div>
-4.2.0    </div>
+4.3.0    </div>
     <div class="pull-right d-flex">
         <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
@@ -45,10 +54,10 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageIds="Lets-Plot-Kotlin::org.jetbrains.letsPlot.pos////PointingToDeclaration//-813667489">
-  <div class="breadcrumbs"><a href="../../index.html">Lets-Plot-Kotlin</a><span class="delimiter">/</span><a href="index.html">org.jetbrains.letsPlot.pos</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">Lets-Plot-Kotlin</a><span class="delimiter">/</span><span class="current">org.jetbrains.letsPlot.pos</span></div>
   <div class="cover ">
-    <h1 class="cover"><span><span>Package</span></span> <span>org.</span><wbr></wbr><span>jetbrains.</span><wbr></wbr><span>letsPlot.</span><wbr></wbr><span>pos</span></h1>
-    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><p class="paragraph">Position adjustment options.</p><p class="paragraph">Used as a value of the <code class="lang-kotlin">position</code> parameter in <code class="lang-kotlin">geom_xyz()</code> functions.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val n = 100<br>val m = 5<br>val k = 2<br>val rand = java.util.Random(42)<br>val data = mapOf(<br>    &quot;v&quot; to List(n) { rand.nextInt(m) },<br>    &quot;c&quot; to List(n) { rand.nextInt(k) }<br>)<br>letsPlot(data) +<br>    geomBar(position = positionDodge()) { x=&quot;v&quot;; fill=asDiscrete(&quot;c&quot;) }</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h2 class=""> Examples</h2><ul><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/error_bars.ipynb">error_bars.ipynb</a></p></li></ul></div></div>
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><p class="paragraph">Position adjustment options.</p><p class="paragraph">Used as a value of the <code class="lang-kotlin">position</code> parameter in <code class="lang-kotlin">geom_xyz()</code> functions.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val n = 100<br>val m = 5<br>val k = 2<br>val rand = java.util.Random(42)<br>val data = mapOf(<br>    &quot;v&quot; to List(n) { rand.nextInt(m) },<br>    &quot;c&quot; to List(n) { rand.nextInt(k) }<br>)<br>letsPlot(data) +<br>    geomBar(position = positionDodge()) { x=&quot;v&quot;; fill=asDiscrete(&quot;c&quot;) }</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h2 class=""> Examples</h2><ul><li><p class="paragraph"><a href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot-kotlin/blob/master/docs/examples/jupyter-notebooks/error_bars.ipynb">error_bars.ipynb</a></p></li></ul></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
@@ -64,22 +73,22 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-dodge.html"><span class="token function">positionDodge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Adjust position by dodging overlaps to the side.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-dodge.html"><span class="token function">positionDodge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span></div><div class="brief "><p class="paragraph">Adjust position by dodging overlaps to the side.</p></div></div></div>
               </div>
             </div>
           </div>
         </div>
-<a data-name="-2041311033%2FFunctions%2F-813667489" anchor-label="positionFill" id="-2041311033%2FFunctions%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a>
+<a data-name="-993182985%2FFunctions%2F-813667489" anchor-label="positionFill" id="-993182985%2FFunctions%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a>
         <div class="table-row" data-filterable-current=":dokka:dokkaHtml/plotAPI" data-filterable-set=":dokka:dokkaHtml/plotAPI">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
                 <div><a href="position-fill.html"><span>position</span><wbr></wbr><span><span>Fill</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2041311033%2FFunctions%2F-813667489"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-993182985%2FFunctions%2F-813667489"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-fill.html"><span class="token function">positionFill</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vjust<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Adjust position by stacking overlapping objects on top of each other and standardise each stack to have constant height.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-fill.html"><span class="token function">positionFill</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vjust<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">mode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span></div><div class="brief "><p class="paragraph">Adjust position by stacking overlapping objects on top of each other and standardise each stack to have constant height.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -94,7 +103,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-jitter.html"><span class="token function">positionJitter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Adjust position by assigning random noise to points. Better for discrete values.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-jitter.html"><span class="token function">positionJitter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span></div><div class="brief "><p class="paragraph">Adjust position by assigning random noise to points. Better for discrete values.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -109,7 +118,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-jitter-dodge.html"><span class="token function">positionJitterDodge</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;dodgeWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;jitterWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;jitterHeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-jitter-dodge.html"><span class="token function">positionJitterDodge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dodgeWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">jitterWidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">jitterHeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span></div></div></div>
               </div>
             </div>
           </div>
@@ -124,22 +133,22 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-nudge.html"><span class="token function">positionNudge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-nudge.html"><span class="token function">positionNudge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span></div></div></div>
               </div>
             </div>
           </div>
         </div>
-<a data-name="-449130314%2FFunctions%2F-813667489" anchor-label="positionStack" id="-449130314%2FFunctions%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a>
+<a data-name="1759428392%2FFunctions%2F-813667489" anchor-label="positionStack" id="1759428392%2FFunctions%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a>
         <div class="table-row" data-filterable-current=":dokka:dokkaHtml/plotAPI" data-filterable-set=":dokka:dokkaHtml/plotAPI">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
                 <div><a href="position-stack.html"><span>position</span><wbr></wbr><span><span>Stack</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-449130314%2FFunctions%2F-813667489"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1759428392%2FFunctions%2F-813667489"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-stack.html"><span class="token function">positionStack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vjust<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Adjust position by stacking overlapping objects on top of each other.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="position-stack.html"><span class="token function">positionStack</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vjust<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">mode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span></div><div class="brief "><p class="paragraph">Adjust position by stacking overlapping objects on top of each other.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -156,7 +165,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><a data-name="-1074578091%2FProperties%2F-813667489" anchor-label="positionIdentity" id="-1074578091%2FProperties%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="position-identity.html">positionIdentity</a><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokka:dokkaHtml/plotAPI"><a data-name="-1074578091%2FProperties%2F-813667489" anchor-label="positionIdentity" id="-1074578091%2FProperties%2F-813667489" data-filterable-set=":dokka:dokkaHtml/plotAPI"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="position-identity.html">positionIdentity</a><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.letsPlot.intern.layer/PosOptions///PointingToDeclaration/">PosOptions</span></div></div></div>
               </div>
             </div>
           </div>
@@ -166,7 +175,7 @@ if(savedDarkMode === true){
   </div>
 </div>
       <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>Copyright © 2019-2022 JetBrains s.r.o.</span><span
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>Copyright © 2019-2023 JetBrains s.r.o.</span><span
                 class="pull-right"><span>Generated by </span><a
                 href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
