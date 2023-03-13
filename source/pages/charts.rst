@@ -394,7 +394,7 @@ Examples:
 |grouping-plots-icon| Grouping Plots
 ------------------------------------
 
-.. |grouping-plots-icon| image:: /_static/images/icons/charts/grouping-plots.png
+.. |grouping-plots-icon| image:: /_static/images/icons/charts/grouping-plots.svg
 
 :py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
