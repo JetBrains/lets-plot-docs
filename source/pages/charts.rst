@@ -187,6 +187,8 @@ Examples:
       :type: text
 - .. extref:: ridgeline_plot
       :type: text
+- .. extref:: netflix_movies
+      :type: text
 - .. extref:: y_orientation
       :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
@@ -524,6 +526,13 @@ Cookbooks
       :type: text
 
 
+Articles
+--------
+
+- `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
+- `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
+
+
 Examples
 --------
 
@@ -543,7 +552,7 @@ Examples
     .. extref:: malnutrition
 
     ---
-    .. extref:: ggbunch
+    .. extref:: netflix
 
     ---
     .. extref:: geopandas_kotlin_isl
@@ -564,7 +573,7 @@ Examples
     .. extref:: y_orientation
 
     ---
-    .. extref:: tooltip_title
+    .. extref:: post_punk_remake
 
     ---
     .. extref:: correlation_plot
@@ -639,7 +648,16 @@ Examples
     .. extref:: map_use_crs
 
     ---
+    .. extref:: new_zealand_dem_remake
+
+    ---
     .. extref:: geom_lollipop
+
+    ---
+    .. extref:: ggbunch
+
+    ---
+    .. extref:: tooltip_title
 
 
 .. raw:: html
