@@ -5,60 +5,98 @@
 .. title:: What is new
 
 
-What is new in 3.1.0
+What is new in 3.2.0
 ====================
 
--  .. rubric:: :py:mod:`gggrid() <lets_plot.gggrid>`
-      :name: gggrid
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/plot_grid.ipynb>`__.
+Added
+-----
 
--  .. rubric:: :py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
-      :name: joint_plot
+-  New geometry :py:mod:`lollipop <lets_plot.geom_lollipop>`.
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/joint_plot.ipynb>`__.
+   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/geom_lollipop.ipynb>`__.
 
--  .. rubric:: Configuring Axis Position
-      :name: configuring-axis-position
+-  ``stroke`` aesthetic for :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_jitter() <lets_plot.geom_jitter>`, :py:mod:`geom_qq() <lets_plot.geom_qq>`, :py:mod:`geom_qq2() <lets_plot.geom_qq2>`, :py:mod:`geom_pointrange() <lets_plot.geom_pointrange>`, :py:mod:`geom_dotplot() <lets_plot.geom_dotplot>`, :py:mod:`geom_ydotplot() <lets_plot.geom_ydotplot>` and ``outlier_stroke`` parameter for :py:mod:`geom_boxplot() <lets_plot.geom_boxplot>`.
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_position.ipynb>`__.
+   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/aes_stroke.ipynb>`__.
 
--  .. rubric:: Showing Quantiles on Density Plots
-      :name: showing-quantiles-on-density-plots
+-  New aesthetic ``linewidth``. Used only for :py:mod:`geom_lollipop() <lets_plot.geom_lollipop>` at the moment.
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/quantile_parameters.ipynb>`__.
+   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/geom_lollipop.ipynb>`__.
 
--  .. rubric:: Additional "color" aesthetics:
-      ``paint_a``, ``paint_b``, ``paint_c``.
-      :name: additional-color-aesthetics-paint_a-paint_b-paint_c.
+-  The 'newline' character (``\n``) now works as ``line break`` in legend text ([`#726 <https://github.com/JetBrains/lets-plot/issues/726>`__])
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/multiple_color_scales.ipynb>`__.
+   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/legend_text_multiline.ipynb>`__.
 
-   Also added a set of related "color scale" functions with the
-   "aesthetic" parameter for configuring of additional color scales.
+-  Horizontal error bars and vertical "dodge" ([`#735 <https://github.com/JetBrains/lets-plot/issues/735>`__]).
 
-   See `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/scale_functions.ipynb>`__
-   demo.
+   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/horizontal_error_bars.ipynb>`__.
 
--  .. rubric:: Other New Features and Improvements
-      :name: other-new-features-and-improvements
+-  Colorbar in :py:mod:`geom_imshow() <lets_plot.geom_imshow>`. Parameters ``show_legend`` and ``color_by`` [`#717 <https://github.com/JetBrains/lets-plot/issues/717>`__].
 
-   -  Export to PNG file in :py:mod:`ggsave() <lets_plot.ggsave>` (requires the
-      `CairoSVG <https://pypi.org/project/CairoSVG>`__ library), see
-      `example
-      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/export_to_png.ipynb>`__.
-   -  ``angle`` parameter in :py:mod:`element_text() <lets_plot.element_text>` in :py:mod:`theme() <lets_plot.theme>`, see
-      `example
-      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_text_angle.ipynb>`__.
-   -  ``geodesic`` parameter in :py:mod:`geom_segment() <lets_plot.geom_segment>` and :py:mod:`geom_path() <lets_plot.geom_path>`,
-      see `example
-      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/param_geodesic.ipynb>`__.
+
+Changed
+-------
+
+-  [BREAKING] :py:mod:`geom_dotplot() <lets_plot.geom_dotplot>` and :py:mod:`geom_ydotplot() <lets_plot.geom_ydotplot>` no longer supports parameter ``stat``. Only default stats make sense for these geometries.
+
+-  Position adjustment settings:
+
+   -  ``width``, ``height`` parameters of :py:mod:`geom_jitter() <lets_plot.geom_jitter>` have priority over the ``width``, ``height`` parameters of :py:mod:`position_jitter() <lets_plot.position_jitter>` function;
+   -  :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_label() <lets_plot.geom_label>` use ``stat='identity'`` by default;
+   -  ``nudge_x``, ``nudge_y`` parameters of :py:mod:`geom_text() <lets_plot.geom_text>`, :py:mod:`geom_label() <lets_plot.geom_label>` have priority over ``x``, ``y`` parameters of :py:mod:`position_nudge() <lets_plot.position_jitter>` function.
+
+
+Fixed
+-----
+
+-  livemap: memory leak caused by a document event handler.
+-  livemap: flickering when zooming with the buttons.
+-  Implement the 'stroke' aesthetic
+   [`#320 <https://github.com/JetBrains/lets-plot/issues/320>`__].
+-  geom_density2d: Internal error with None values in data
+   [`#702 <https://github.com/JetBrains/lets-plot/issues/702>`__].
+-  livemap: tooltip text doesn't reflect data under the cursor
+   [`#709 <https://github.com/JetBrains/lets-plot/issues/709>`__].
+-  Quantile should be shown in tooltip if the variable ``..quantile..``
+   is mapped to geom aesthetic.
+-  Bad default formatting for stat variables
+   [`#654 <https://github.com/JetBrains/lets-plot/issues/654>`__].
+-  The scale name does not apply with ``as_discrete()``
+   [`#653 <https://github.com/JetBrains/lets-plot/issues/653>`__].
+-  Batik: geom_imshow() fail with an error: "The attribute"xlink:href"
+   of the element is required"
+-  Tooltip is not shown when configured for 'const' value
+   [`#610 <https://github.com/JetBrains/lets-plot/issues/610>`__].
+-  Fix crash when try to add a constant to a tooltip (e.g.\ ``"^size"``,
+   where ``size`` aesthetic is specified with a number).
+-  ``geom_segment()`` doesn't take into account the alpha
+   [`#748 <https://github.com/JetBrains/lets-plot/issues/748>`__].
+-  Batik bug with usage of "&"
+   [`#713 <https://github.com/JetBrains/lets-plot/issues/713>`__].
+-  HTML export: exclude computation messages from the output
+   [`#725 <https://github.com/JetBrains/lets-plot/issues/725>`__].
+-  "Variable not found" error in ggmarginal
+   [`#681 <https://github.com/JetBrains/lets-plot/issues/681>`__].
+-  Image export not working with ``geom_imshow()`` and ``geom_raster()``
+   [`LPK-175 <https://github.com/JetBrains/lets-plot-kotlin/issues/175>`__].
+-  DateTime metadata is not applied for scales other than X/Y
+   [`LPK-174 <https://github.com/JetBrains/lets-plot-kotlin/issues/174>`__].
+-  Groups not sorted similarly when using facets
+   [`#679 <https://github.com/JetBrains/lets-plot-kotlin/issues/679>`__].
+-  Categorical ordering, it's not respected for Boxplot and violin plot
+   [`#746 <https://github.com/JetBrains/lets-plot-kotlin/issues/746>`__].
+-  facet_grid: Internal error
+   [`#699 <https://github.com/JetBrains/lets-plot/issues/699>`__].
+-  Export to SVG fails if breaks are given by integers
+   [`#763 <https://github.com/JetBrains/lets-plot/issues/763>`__].
+-  Remove hard IPython dependency
+   [`#749 <https://github.com/JetBrains/lets-plot/issues/749>`__].
+-  livemap: doesn't work well with gggrid
+   [`#750 <https://github.com/JetBrains/lets-plot/issues/750>`__].
+-  Tooltips bug
+   [`LPK-176 <https://github.com/JetBrains/lets-plot-kotlin/issues/176>`__].
+
 
 Change Log
 ----------
