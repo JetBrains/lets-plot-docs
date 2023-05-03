@@ -75,6 +75,7 @@ Examples:
 
 :py:mod:`bar <lets_plot.geom_bar>`,
 :py:mod:`pie <lets_plot.geom_pie>`,
+:py:mod:`lollipop <lets_plot.geom_lollipop>`,
 :py:mod:`boxplot <lets_plot.geom_boxplot>`
 
 Examples:
@@ -88,6 +89,8 @@ Examples:
 - .. extref:: geom_pie_on_map
       :type: text
 - .. extref:: annotations_for_pie
+      :type: text
+- .. extref:: geom_lollipop
       :type: text
 - .. extref:: stat_count2d_vars
       :type: text
@@ -225,6 +228,8 @@ Examples:
 Examples:
 
 - .. extref:: error_bars
+      :type: text
+- .. extref:: horizontal_error_bars
       :type: text
 - .. extref:: comparisons
       :type: text
@@ -479,6 +484,8 @@ Examples:
       :type: text
 - .. extref:: legend_and_axis
       :type: text
+- .. extref:: legend_text_multiline
+      :type: text
 - .. extref:: tooltip_config
       :type: text
 - .. extref:: comparisons
@@ -630,6 +637,9 @@ Examples
 
     ---
     .. extref:: map_use_crs
+
+    ---
+    .. extref:: geom_lollipop
 
 
 .. raw:: html
