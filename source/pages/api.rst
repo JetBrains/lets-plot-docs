@@ -63,6 +63,7 @@ Standard Geometries
     geom_smooth
     geom_bar
     geom_pie
+    geom_lollipop
     geom_histogram
     geom_dotplot
     geom_bin2d
