@@ -570,19 +570,10 @@ Examples
     .. extref:: bayesian_inference
 
     ---
-    .. extref:: y_orientation
-
-    ---
     .. extref:: post_punk_remake
 
     ---
     .. extref:: correlation_plot
-
-    ---
-    .. extref:: geom_violin
-
-    ---
-    .. extref:: dot_plots
 
     ---
     .. extref:: plotting_airbnb_prices_boston
@@ -598,9 +589,6 @@ Examples
 
     ---
     .. extref:: world_happiness
-
-    ---
-    .. extref:: coordinate_systems
 
     ---
     .. extref:: world_coloring
@@ -621,25 +609,10 @@ Examples
     .. extref:: google_suggestions
 
     ---
-    .. extref:: 2020
-
-    ---
     .. extref:: mosaic_image
 
     ---
-    .. extref:: flip_coordinates
-
-    ---
     .. extref:: marginal_layers
-
-    ---
-    .. extref:: ordering_examples
-
-    ---
-    .. extref:: qq_plots
-
-    ---
-    .. extref:: geom_smooth_matrix
 
     ---
     .. extref:: viridis_scale
@@ -649,15 +622,6 @@ Examples
 
     ---
     .. extref:: new_zealand_dem_remake
-
-    ---
-    .. extref:: geom_lollipop
-
-    ---
-    .. extref:: ggbunch
-
-    ---
-    .. extref:: tooltip_title
 
 
 .. raw:: html
