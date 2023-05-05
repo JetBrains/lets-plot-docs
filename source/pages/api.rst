@@ -234,6 +234,8 @@ Size Scales
     scale_size_manual
     scale_size
     scale_size_area
+    scale_linewidth
+    scale_stroke
 
 Alpha Scales
 ~~~~~~~~~~~~
@@ -276,6 +278,8 @@ Identity Scales
     scale_linetype_identity
     scale_alpha_identity
     scale_size_identity
+    scale_linewidth_identity
+    scale_stroke_identity
 
 Scale Limits
 ~~~~~~~~~~~~
