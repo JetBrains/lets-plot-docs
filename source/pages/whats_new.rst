@@ -83,9 +83,9 @@ Fixed
 -  DateTime metadata is not applied for scales other than X/Y
    [`LPK-174 <https://github.com/JetBrains/lets-plot-kotlin/issues/174>`__].
 -  Groups not sorted similarly when using facets
-   [`#679 <https://github.com/JetBrains/lets-plot-kotlin/issues/679>`__].
+   [`#679 <https://github.com/JetBrains/lets-plot/issues/679>`__].
 -  Categorical ordering, it's not respected for Boxplot and violin plot
-   [`#746 <https://github.com/JetBrains/lets-plot-kotlin/issues/746>`__].
+   [`#746 <https://github.com/JetBrains/lets-plot/issues/746>`__].
 -  facet_grid: Internal error
    [`#699 <https://github.com/JetBrains/lets-plot/issues/699>`__].
 -  Export to SVG fails if breaks are given by integers
