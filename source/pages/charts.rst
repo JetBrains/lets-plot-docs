@@ -75,6 +75,7 @@ Examples:
 
 :py:mod:`bar <lets_plot.geom_bar>`,
 :py:mod:`pie <lets_plot.geom_pie>`,
+:py:mod:`lollipop <lets_plot.geom_lollipop>`,
 :py:mod:`boxplot <lets_plot.geom_boxplot>`
 
 Examples:
@@ -88,6 +89,8 @@ Examples:
 - .. extref:: geom_pie_on_map
       :type: text
 - .. extref:: annotations_for_pie
+      :type: text
+- .. extref:: geom_lollipop
       :type: text
 - .. extref:: stat_count2d_vars
       :type: text
@@ -184,6 +187,8 @@ Examples:
       :type: text
 - .. extref:: ridgeline_plot
       :type: text
+- .. extref:: netflix_movies
+      :type: text
 - .. extref:: y_orientation
       :type: text
 - Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
@@ -225,6 +230,8 @@ Examples:
 Examples:
 
 - .. extref:: error_bars
+      :type: text
+- .. extref:: horizontal_error_bars
       :type: text
 - .. extref:: comparisons
       :type: text
@@ -394,7 +401,7 @@ Examples:
 |grouping-plots-icon| Grouping Plots
 ------------------------------------
 
-.. |grouping-plots-icon| image:: /_static/images/icons/charts/grouping-plots.png
+.. |grouping-plots-icon| image:: /_static/images/icons/charts/grouping-plots.svg
 
 :py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
@@ -479,6 +486,8 @@ Examples:
       :type: text
 - .. extref:: legend_and_axis
       :type: text
+- .. extref:: legend_text_multiline
+      :type: text
 - .. extref:: tooltip_config
       :type: text
 - .. extref:: comparisons
@@ -517,6 +526,13 @@ Cookbooks
       :type: text
 
 
+Articles
+--------
+
+- `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
+- `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
+
+
 Examples
 --------
 
@@ -536,7 +552,7 @@ Examples
     .. extref:: malnutrition
 
     ---
-    .. extref:: ggbunch
+    .. extref:: netflix
 
     ---
     .. extref:: geopandas_kotlin_isl
@@ -554,19 +570,10 @@ Examples
     .. extref:: bayesian_inference
 
     ---
-    .. extref:: y_orientation
-
-    ---
-    .. extref:: tooltip_title
+    .. extref:: post_punk_remake
 
     ---
     .. extref:: correlation_plot
-
-    ---
-    .. extref:: geom_violin
-
-    ---
-    .. extref:: dot_plots
 
     ---
     .. extref:: plotting_airbnb_prices_boston
@@ -582,9 +589,6 @@ Examples
 
     ---
     .. extref:: world_happiness
-
-    ---
-    .. extref:: coordinate_systems
 
     ---
     .. extref:: world_coloring
@@ -605,31 +609,19 @@ Examples
     .. extref:: google_suggestions
 
     ---
-    .. extref:: 2020
-
-    ---
     .. extref:: mosaic_image
 
     ---
-    .. extref:: flip_coordinates
-
-    ---
     .. extref:: marginal_layers
-
-    ---
-    .. extref:: ordering_examples
-
-    ---
-    .. extref:: qq_plots
-
-    ---
-    .. extref:: geom_smooth_matrix
 
     ---
     .. extref:: viridis_scale
 
     ---
     .. extref:: map_use_crs
+
+    ---
+    .. extref:: new_zealand_dem_remake
 
 
 .. raw:: html

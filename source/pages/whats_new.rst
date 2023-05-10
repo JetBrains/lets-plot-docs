@@ -5,64 +5,66 @@
 .. title:: What is new
 
 
-What is new in 3.1.0
+What is new in 3.2.0
 ====================
 
--  .. rubric:: :py:mod:`gggrid() <lets_plot.gggrid>`
-      :name: gggrid
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/plot_grid.ipynb>`__.
+Aesthetics ``stroke`` and ``linewidth``
+---------------------------------------
 
--  .. rubric:: :py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
-      :name: joint_plot
+.. image:: /_static/images/changelog/3.2.0/stroke.png
+    :width: 336
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/joint_plot.ipynb>`__.
+See: |aes_stroke|.
 
--  .. rubric:: Configuring Axis Position
-      :name: configuring-axis-position
+.. |aes_stroke| extref:: aes_stroke
+    :type: text
+    :text: example notebook
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_position.ipynb>`__.
+See also :py:mod:`geom_lollipop() <lets_plot.geom_lollipop>` example below.
 
--  .. rubric:: Showing Quantiles on Density Plots
-      :name: showing-quantiles-on-density-plots
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/quantile_parameters.ipynb>`__.
+Lollipop Plot
+-------------
 
--  .. rubric:: Additional "color" aesthetics:
-      ``paint_a``, ``paint_b``, ``paint_c``.
-      :name: additional-color-aesthetics-paint_a-paint_b-paint_c.
+.. image:: /_static/images/changelog/3.2.0/lollipop.png
+    :width: 600
 
-   See: `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/multiple_color_scales.ipynb>`__.
+See: |geom_lollipop|.
 
-   Also added a set of related "color scale" functions with the
-   "aesthetic" parameter for configuring of additional color scales.
+.. |geom_lollipop| extref:: geom_lollipop
+    :type: text
+    :text: example notebook
 
-   See `example
-   notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/scale_functions.ipynb>`__
-   demo.
 
--  .. rubric:: Other New Features and Improvements
-      :name: other-new-features-and-improvements
+Horizontal error bars and vertical "dodge"
+------------------------------------------
 
-   -  Export to PNG file in :py:mod:`ggsave() <lets_plot.ggsave>` (requires the
-      `CairoSVG <https://pypi.org/project/CairoSVG>`__ library), see
-      `example
-      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/export_to_png.ipynb>`__.
-   -  ``angle`` parameter in :py:mod:`element_text() <lets_plot.element_text>` in :py:mod:`theme() <lets_plot.theme>`, see
-      `example
-      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_text_angle.ipynb>`__.
-   -  ``geodesic`` parameter in :py:mod:`geom_segment() <lets_plot.geom_segment>` and :py:mod:`geom_path() <lets_plot.geom_path>`,
-      see `example
-      notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/param_geodesic.ipynb>`__.
+See: |horizontal_error_bars|.
+
+.. |horizontal_error_bars| extref:: horizontal_error_bars
+    :type: text
+    :text: example notebook
+
+
+Multi-line Labels in Legends
+----------------------------
+
+See: |legend_text_multiline|.
+
+.. |legend_text_multiline| extref:: legend_text_multiline
+    :type: text
+    :text: example notebook
+
+
+Colorbar in ``geom_imshow()``
+-----------------------------
+
+.. image:: /_static/images/changelog/3.2.0/imshow_legend.png
+    :width: 514
+
 
 Change Log
 ----------
 
-See
-`CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__
-for other changes and fixes.
+See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for other changes and fixes.

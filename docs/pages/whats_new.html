@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>3.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -85,7 +85,12 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">What is new in 3.1.0</a><ul>
+<li><a class="reference internal" href="#">What is new in 3.2.0</a><ul>
+<li><a class="reference internal" href="#aesthetics-stroke-and-linewidth">Aesthetics <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth</span></code></a></li>
+<li><a class="reference internal" href="#lollipop-plot">Lollipop Plot</a></li>
+<li><a class="reference internal" href="#horizontal-error-bars-and-vertical-dodge">Horizontal error bars and vertical “dodge”</a></li>
+<li><a class="reference internal" href="#multi-line-labels-in-legends">Multi-line Labels in Legends</a></li>
+<li><a class="reference internal" href="#colorbar-in-geom-imshow">Colorbar in <code class="docutils literal notranslate"><span class="pre">geom_imshow()</span></code></a></li>
 <li><a class="reference internal" href="#change-log">Change Log</a></li>
 </ul>
 </li>
@@ -120,55 +125,34 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <section id="what-is-new-in-3-1-0">
-<h1>What is new in 3.1.0<a class="headerlink" href="#what-is-new-in-3-1-0" title="Permalink to this headline">¶</a></h1>
-<ul>
-<li><p class="rubric" id="gggrid"><a class="reference internal" href="api/lets_plot.gggrid.html#lets_plot.gggrid" title="lets_plot.gggrid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gggrid()</span></code></a></p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/plot_grid.ipynb">example
-notebook</a>.</p>
-</li>
-<li><p class="rubric" id="joint-plot"><a class="reference internal" href="api/lets_plot.bistro.joint.joint_plot.html#lets_plot.bistro.joint.joint_plot" title="lets_plot.bistro.joint.joint_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">joint_plot()</span></code></a></p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/joint_plot.ipynb">example
-notebook</a>.</p>
-</li>
-<li><p class="rubric" id="configuring-axis-position">Configuring Axis Position</p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_position.ipynb">example
-notebook</a>.</p>
-</li>
-<li><p class="rubric" id="showing-quantiles-on-density-plots">Showing Quantiles on Density Plots</p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/quantile_parameters.ipynb">example
-notebook</a>.</p>
-</li>
-<li><p class="rubric" id="additional-color-aesthetics-paint-a-paint-b-paint-c">Additional “color” aesthetics:
-<code class="docutils literal notranslate"><span class="pre">paint_a</span></code>, <code class="docutils literal notranslate"><span class="pre">paint_b</span></code>, <code class="docutils literal notranslate"><span class="pre">paint_c</span></code>.</p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/multiple_color_scales.ipynb">example
-notebook</a>.</p>
-<p>Also added a set of related “color scale” functions with the
-“aesthetic” parameter for configuring of additional color scales.</p>
-<p>See <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/scale_functions.ipynb">example
-notebook</a>
-demo.</p>
-</li>
-<li><p class="rubric" id="other-new-features-and-improvements">Other New Features and Improvements</p>
-<ul class="simple">
-<li><p>Export to PNG file in <a class="reference internal" href="api/lets_plot.ggsave.html#lets_plot.ggsave" title="lets_plot.ggsave"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggsave()</span></code></a> (requires the
-<a class="reference external" href="https://pypi.org/project/CairoSVG">CairoSVG</a> library), see
-<a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/export_to_png.ipynb">example
-notebook</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code> parameter in <a class="reference internal" href="api/lets_plot.element_text.html#lets_plot.element_text" title="lets_plot.element_text"><code class="xref py py-mod docutils literal notranslate"><span class="pre">element_text()</span></code></a> in <a class="reference internal" href="api/lets_plot.theme.html#lets_plot.theme" title="lets_plot.theme"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme()</span></code></a>, see
-<a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/axis_text_angle.ipynb">example
-notebook</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geodesic</span></code> parameter in <a class="reference internal" href="api/lets_plot.geom_segment.html#lets_plot.geom_segment" title="lets_plot.geom_segment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_segment()</span></code></a> and <a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_path()</span></code></a>,
-see <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23a/param_geodesic.ipynb">example
-notebook</a>.</p></li>
-</ul>
-</li>
-</ul>
+  <section id="what-is-new-in-3-2-0">
+<h1>What is new in 3.2.0<a class="headerlink" href="#what-is-new-in-3-2-0" title="Permalink to this headline">¶</a></h1>
+<section id="aesthetics-stroke-and-linewidth">
+<h2>Aesthetics <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth</span></code><a class="headerlink" href="#aesthetics-stroke-and-linewidth" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/stroke.png"><img alt="../_images/stroke.png" src="../_images/stroke.png" style="width: 336px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/aes_stroke.ipynb">example notebook</a>.</p>
+<p>See also <a class="reference internal" href="api/lets_plot.geom_lollipop.html#lets_plot.geom_lollipop" title="lets_plot.geom_lollipop"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_lollipop()</span></code></a> example below.</p>
+</section>
+<section id="lollipop-plot">
+<h2>Lollipop Plot<a class="headerlink" href="#lollipop-plot" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/lollipop.png"><img alt="../_images/lollipop.png" src="../_images/lollipop.png" style="width: 600px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/geom_lollipop.ipynb">example notebook</a>.</p>
+</section>
+<section id="horizontal-error-bars-and-vertical-dodge">
+<h2>Horizontal error bars and vertical “dodge”<a class="headerlink" href="#horizontal-error-bars-and-vertical-dodge" title="Permalink to this headline">¶</a></h2>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/horizontal_error_bars.ipynb">example notebook</a>.</p>
+</section>
+<section id="multi-line-labels-in-legends">
+<h2>Multi-line Labels in Legends<a class="headerlink" href="#multi-line-labels-in-legends" title="Permalink to this headline">¶</a></h2>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23b/legend_text_multiline.ipynb">example notebook</a>.</p>
+</section>
+<section id="colorbar-in-geom-imshow">
+<h2>Colorbar in <code class="docutils literal notranslate"><span class="pre">geom_imshow()</span></code><a class="headerlink" href="#colorbar-in-geom-imshow" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/imshow_legend.png"><img alt="../_images/imshow_legend.png" src="../_images/imshow_legend.png" style="width: 514px;" /></a>
+</section>
 <section id="change-log">
 <h2>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
-<p>See
-<a class="reference external" href="https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md">CHANGELOG.md</a>
-for other changes and fixes.</p>
+<p>See <a class="reference external" href="https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md">CHANGELOG.md</a> for other changes and fixes.</p>
 </section>
 </section>
 

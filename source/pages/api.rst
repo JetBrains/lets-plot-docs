@@ -63,6 +63,7 @@ Standard Geometries
     geom_smooth
     geom_bar
     geom_pie
+    geom_lollipop
     geom_histogram
     geom_dotplot
     geom_bin2d
@@ -233,6 +234,8 @@ Size Scales
     scale_size_manual
     scale_size
     scale_size_area
+    scale_linewidth
+    scale_stroke
 
 Alpha Scales
 ~~~~~~~~~~~~
@@ -275,6 +278,8 @@ Identity Scales
     scale_linetype_identity
     scale_alpha_identity
     scale_size_identity
+    scale_linewidth_identity
+    scale_stroke_identity
 
 Scale Limits
 ~~~~~~~~~~~~
@@ -304,6 +309,7 @@ Positions
     :toctree: api
 
     position_dodge
+    position_dodgev
     position_jitter
     position_nudge
     position_jitterdodge
