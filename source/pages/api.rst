@@ -309,6 +309,7 @@ Positions
     :toctree: api
 
     position_dodge
+    position_dodgev
     position_jitter
     position_nudge
     position_jitterdodge
