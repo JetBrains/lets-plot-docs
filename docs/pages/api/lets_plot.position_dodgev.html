@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>lets_plot.tilesets.LETS_PLOT_DARK</title>
+    <title>lets_plot.position_dodgev</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
@@ -84,7 +84,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">lets_plot.tilesets.LETS_PLOT_DARK</a></li>
+<li><a class="reference internal" href="#">lets_plot.position_dodgev</a></li>
 </ul>
 </ul>
 </li>
@@ -116,25 +116,51 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <section id="lets-plot-tilesets-lets-plot-dark">
-<h1>lets_plot.tilesets.LETS_PLOT_DARK<a class="headerlink" href="#lets-plot-tilesets-lets-plot-dark" title="Permalink to this headline">¶</a></h1>
-<dl class="py data">
-<dt class="sig sig-object py" id="lets_plot.tilesets.LETS_PLOT_DARK">
-<span class="sig-prename descclassname"><span class="pre">lets_plot.tilesets.</span></span><span class="sig-name descname"><span class="pre">LETS_PLOT_DARK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'maptiles_attribution':</span> <span class="pre">'Map:</span> <span class="pre">&lt;a</span> <span class="pre">href=&quot;https://github.com/JetBrains/lets-plot&quot;&gt;©</span> <span class="pre">Lets-Plot&lt;/a&gt;,</span> <span class="pre">map</span> <span class="pre">data:</span> <span class="pre">&lt;a</span> <span class="pre">href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;©</span> <span class="pre">OpenStreetMap</span> <span class="pre">contributors&lt;/a&gt;.',</span> <span class="pre">'maptiles_kind':</span> <span class="pre">'vector_lets_plot',</span> <span class="pre">'maptiles_max_zoom':</span> <span class="pre">15,</span> <span class="pre">'maptiles_min_zoom':</span> <span class="pre">1,</span> <span class="pre">'maptiles_theme':</span> <span class="pre">'dark',</span> <span class="pre">'maptiles_url':</span> <span class="pre">'wss://tiles.datalore.jetbrains.com'}</span></em><a class="headerlink" href="#lets_plot.tilesets.LETS_PLOT_DARK" title="Permalink to this definition">¶</a></dt>
-<dd><p>Vector tiles, dark theme.</p>
+  <section id="lets-plot-position-dodgev">
+<h1>lets_plot.position_dodgev<a class="headerlink" href="#lets-plot-position-dodgev" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="lets_plot.position_dodgev">
+<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">position_dodgev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.position_dodgev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjust position by dodging overlaps to the side.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>height</strong><span class="classifier">float</span></dt><dd><p>Dodging height, when different to the height of the individual elements.
+This is useful when you want to align narrow geoms with taller geoms.
+The value of height is relative and typically ranges between 0 and 1.
+Values that are greater than 1 lead to overlapping of the objects.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><cite>FeatureSpec</cite></dt><dd><p>Geom object position specification.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Adjust position by dodging overlaps to the side.</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="linenos">2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
-<span class="linenos">3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="hll"><span class="linenos">4</span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">tilesets</span><span class="o">.</span><span class="n">LETS_PLOT_DARK</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos"> 3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 4</span>    <span class="s1">&#39;xmin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">],</span>
+<span class="linenos"> 5</span>    <span class="s1">&#39;xmax&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">],</span>
+<span class="linenos"> 6</span>    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span>
+<span class="linenos"> 7</span>    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gr1&#39;</span><span class="p">,</span> <span class="s1">&#39;gr2&#39;</span><span class="p">,</span> <span class="s1">&#39;gr1&#39;</span><span class="p">,</span> <span class="s1">&#39;gr2&#39;</span><span class="p">]</span>
+<span class="linenos"> 8</span><span class="p">}</span>
+<span class="linenos"> 9</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="linenos">10</span>    <span class="n">geom_errorbar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s1">&#39;xmin&#39;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s1">&#39;xmax&#39;</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> \
+<span class="hll"><span class="linenos">11</span>                  <span class="n">position</span><span class="o">=</span><span class="n">position_dodgev</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="31ISsc"></div>
+<div id="5USDhR"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -158,43 +184,50 @@
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("31ISsc").appendChild(div);
+            document.getElementById("5USDhR").appendChild(div);
         };
-        var e = document.getElementById("31ISsc");
+        var e = document.getElementById("5USDhR");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="p6fYun"></div>
+</div><div class="output text_html">   <div id="irYyO1"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
+"data":{
+"xmin":[0.2,4.6,1.6,3.5],
+"xmax":[1.5,5.3,3.0,4.4],
+"y":["a","a","b","b"],
+"c":["gr1","gr2","gr1","gr2"]
+},
 "mapping":{
+"y":"y",
+"color":"c"
 },
 "data_meta":{
 },
 "kind":"plot",
 "scales":[],
 "layers":[{
-"geom":"livemap",
+"geom":"errorbar",
 "mapping":{
+"xmin":"xmin",
+"xmax":"xmax"
+},
+"position":{
+"name":"dodgev",
+"height":0.2
 },
 "data_meta":{
 },
-"tiles":{
-"kind":"vector_lets_plot",
-"url":"wss://tiles.datalore.jetbrains.com",
-"theme":"dark",
-"attribution":"Map: <a href=\"https://github.com/JetBrains/lets-plot\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a>."
-},
-"geocoding":{
-"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
-},
+"height":0.1,
+"size":2.0,
 "data":{
 }
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("p6fYun");
+           var plotContainer = document.getElementById("irYyO1");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
