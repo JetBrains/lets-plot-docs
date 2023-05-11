@@ -219,9 +219,6 @@ Examples
     .. extref:: titanic
 
     ---
-    .. extref:: geocoding_levels
-
-    ---
     .. extref:: internet_use_and_activities
 
     ---
