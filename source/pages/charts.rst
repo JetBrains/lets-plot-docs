@@ -7,6 +7,21 @@ Charts
 ======
 
 
+|allowed-data-types-icon| Data Types
+------------------------------------
+
+.. |allowed-data-types-icon| image:: /_static/images/icons/charts/allowed-data-types.png
+
+
+Lets-Plot allows you to work with data in the following formats: Python dictionary, pandas DataFrame, polars DataFrame.
+
+See |allowed_data_types|.
+
+.. |allowed_data_types| extref:: allowed_data_types
+    :type: text
+    :text: example notebook
+
+
 |basic-building-blocks-icon| Basic Building Blocks
 --------------------------------------------------
 
