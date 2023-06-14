@@ -16,7 +16,11 @@ Key Features
 
     Customizable Tooltips
 
-    You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :ref:`Learn more <tooltips>`.
+    You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. |tooltips_page|.
+
+    .. |tooltips_page| extref:: tooltips_page
+        :type: text
+        :text: Learn more
 
     ---
     .. image:: /_static/images/icons/features/platforms.svg
