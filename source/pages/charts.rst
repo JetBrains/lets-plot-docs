@@ -7,6 +7,24 @@ Charts
 ======
 
 
+|allowed-data-types-icon| Data
+------------------------------
+
+.. |allowed-data-types-icon| image:: /_static/images/icons/charts/allowed-data-types.png
+
+
+Every layer may have some data associated with it.
+The "data" refers to a table of data where each row contains an observation
+and each column represents a variable that describes some property of each observation.
+Data in this format is sometimes referred to as tidy data, flat data, primary data, atomic data, and unit record data.
+
+You can pass tidy data to Lets-Plot in form of a **Pandas** Dataframe, a **Polars** Dataframe or just a dictionary: |allowed_data_types|.
+
+.. |allowed_data_types| extref:: allowed_data_types
+    :type: text
+    :text: example notebook
+
+
 |basic-building-blocks-icon| Basic Building Blocks
 --------------------------------------------------
 
