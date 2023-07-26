@@ -7,10 +7,10 @@ Charts
 ======
 
 
-|allowed-data-types-icon| Data
+|data-icon| Data
 ------------------------------
 
-.. |allowed-data-types-icon| image:: /_static/images/icons/charts/allowed-data-types.png
+.. |data-icon| image:: /_static/images/icons/charts/data.svg
 
 
 Every layer may have some data associated with it.
