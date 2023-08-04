@@ -13,12 +13,14 @@ Charts
 .. |data-icon| image:: /_static/images/icons/charts/data.svg
 
 
-Every layer may have some data associated with it.
-The "data" refers to a table of data where each row contains an observation
-and each column represents a variable that describes some property of each observation.
-Data in this format is sometimes referred to as tidy data, flat data, primary data, atomic data, and unit record data.
+| Every layer may have some data associated with it. The "data" refers
+| to a table of data where each row contains an observation and each
+| column represents a variable that describes some property of each
+| observation. Data in this format is sometimes referred to as tidy data,
+| flat data, primary data, atomic data, and unit record data.
 
-You can pass tidy data to Lets-Plot in form of a **Pandas** Dataframe, a **Polars** Dataframe or just a dictionary: |allowed_data_types|.
+| You can pass tidy data to Lets-Plot in form of a **Pandas** Dataframe,
+| a **Polars** Dataframe or just a dictionary: |allowed_data_types|.
 
 .. |allowed_data_types| extref:: allowed_data_types
     :type: text
