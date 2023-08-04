@@ -100,6 +100,7 @@ Standard Geometries
     geom_qq2
     geom_qq_line
     geom_qq2_line
+    geom_function
 
 Additional Geometries
 ~~~~~~~~~~~~~~~~~~~~~
@@ -111,8 +112,20 @@ Additional Geometries
     geom_image
     geom_livemap
 
+
+Stats
+-----
+
+.. autosummary::
+    :toctree: api
+
+    stat_summary
+    stat_summary_bin
+    stat_ecdf
+
+
 Extras
-~~~~~~
+------
 
 .. autosummary::
     :toctree: api
@@ -353,6 +366,7 @@ Predefined Themes
     :toctree: api
 
     theme_none
+    theme_void
     theme_bw
     theme_classic
     theme_grey
