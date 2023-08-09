@@ -15,7 +15,6 @@
     pages/maps
     Geocoding <pages/geocoding>
     'bistro' plots <pages/bistro>
-    EDA Examples <pages/eda>
     What is new <pages/whats_new>
 
 An Open-source Plotting Library for Statistical Data
