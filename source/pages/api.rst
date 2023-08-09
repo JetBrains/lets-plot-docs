@@ -356,6 +356,7 @@ Base
     element_rect
     element_line
     element_text
+    element_geom
     margin
     ggsize
 
