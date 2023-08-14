@@ -83,6 +83,13 @@ or with the help of a constant defined in the ``tilesets`` module:
 
     ggplot() + geom_livemap(tiles=tilesets.LETS_PLOT_DARK)
 
+Note
+~~~~
+
+Vector tiles may not work with Safari.
+If the tiles don't load please try disabling the NSURLSession Websocket feature
+(`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
+
 
 .. _basemap_tiles_blank_tiles:
 
