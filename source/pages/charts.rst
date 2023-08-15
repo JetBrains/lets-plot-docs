@@ -494,7 +494,7 @@ Color schemes (flavors):
 .. extref:: flavors
   :image: common
   :width: 1000
-  :height: 108
+  :height: 117
 
 Examples:
 
