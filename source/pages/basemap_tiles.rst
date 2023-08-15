@@ -8,7 +8,11 @@
 Configuring Basemap Tiles for Interactive Maps
 ==============================================
 
-- :ref:`Tilesets <basemap_tiles_tilesets>`
+- :ref:`Configuring Globally <basemap_tiles_global_cfg>`
+- :ref:`Configuring for a Single Plot <basemap_tiles_plot_cfg>`
+- :ref:`Vector Tiles <basemap_tiles_vector_tiles>`
+- :ref:`Blank Tiles <basemap_tiles_blank_tiles>`
+- :ref:`Raster Tiles <basemap_tiles_raster_tiles>`
 
   - :ref:`OpenStreetMap <basemap_tiles_osm_tiles>`
   - :ref:`OpenTopoMap <basemap_tiles_topo_tiles>`
@@ -16,26 +20,115 @@ Configuring Basemap Tiles for Interactive Maps
   - :ref:`CARTO <basemap_tiles_carto_tiles>`
   - :ref:`NASA's Global Imagery Browse Services (GIBS) <basemap_tiles_nasa_tiles>`
 
-- :ref:`Configuring Globally <basemap_tiles_global_cfg>`
-- :ref:`Configuring for a Single Plot <basemap_tiles_plot_cfg>`
-- :ref:`Vector Tiles <basemap_tiles_vector_tiles>`
-- :ref:`Raster Tiles <basemap_tiles_raster_tiles>`
 - :ref:`Examples <basemap_tiles_examples>`
 - :ref:`Configuring Raster Tiles Manually <basemap_tiles_raster_tiles_man>`
-- :ref:`Blank Tiles <basemap_tiles_blank_tiles>`
 
 
-.. _basemap_tiles_tilesets:
+.. _basemap_tiles_global_cfg:
 
-Tilesets
---------
+Configuring Globally
+--------------------
 
-A set of pre-configured tilesets is available in Lets-Plot.
-This set is defined in the tilesets module and requires explicit import:
+You can configure global Lets-Plot options using the :py:mod:`LestPlot.set(dictionary) <lets_plot.LetsPlot>` method.
+
+Where the ``dictionary`` can contain all sorts of Lets-Plot options, including basemap tiles configuration options.
+
+Lets-Plot provides a variety of constants and functions which make configuring of basemap tiles simple:
 
 .. code-block:: python
 
     from lets_plot import tilesets
+
+    LetsPlot.set(tilesets.LETS_PLOT_DARK)
+
+
+.. _basemap_tiles_plot_cfg:
+
+Configuring for a Single Plot
+-----------------------------
+
+Use ``tiles`` parameter in the :py:mod:`geom_livemap() <lets_plot.geom_livemap>` function:
+
+.. code-block:: python
+
+    from lets_plot import tilesets
+
+    ggplot() + geom_livemap(tiles=tilesets.LETS_PLOT_DARK)
+
+
+.. _basemap_tiles_vector_tiles:
+
+Vector Tiles
+------------
+
+.. note::
+  Vector tiles may not work with Safari.
+  If the tiles don't load please try disabling the NSURLSession Websocket feature
+  (`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
+
+Lets-Plot provides its own vector basemap tiles available in three variants:
+
+- color
+- dark
+- light
+
+By default Lets-Plot uses its "color" tiles.
+
+Configure Lets-Plot vector tiles (globally or on the per-plot basis) with the help of the :py:mod:`LetsPlot.maptiles_lets_plot(...) <lets_plot.maptiles_lets_plot>` function:
+
+.. code-block:: python
+
+    ggplot() + geom_livemap(tiles=maptiles_lets_plot(theme='dark'))
+
+or with the help of a constant defined in the ``tilesets`` module:
+
+.. code-block:: python
+
+    from lets_plot import tilesets
+
+    ggplot() + geom_livemap(tiles=tilesets.LETS_PLOT_DARK)
+
+
+.. _basemap_tiles_blank_tiles:
+
+Blank Tiles
+-----------
+
+:py:mod:`Blank tiles <lets_plot.maptiles_solid>` show no other graphics but a solid background color which you can choose (a HEX value is expected):
+
+.. code-block:: python
+
+    ggplot() + geom_livemap(tiles=maptiles_solid(color='#C1C1C1'))
+
+You can also use a constant defined in the ``tilesets`` module (white tiles):
+
+.. code-block:: python
+
+    from lets_plot import tilesets
+
+    ggplot() + geom_livemap(tiles=tilesets.SOLID)
+
+Blank tiles do not require an internet connection.
+
+
+.. _basemap_tiles_raster_tiles:
+
+Raster Tiles
+------------
+
+With Lets-Plot you can use ZXY raster tiles provided by 3rd party maptile services.
+
+Some services provide free of charge raster tilesets. The ``tilesets`` module in Lets-Plot contains many such tilesets pre-configured.
+
+Again, you can use these tilesets to configure Lets-Plot globally or on the per-plot basis:
+
+.. code-block:: python
+
+    from lets_plot import tilesets
+
+    ggplot() + geom_livemap(tiles=tilesets.OSM)
+
+**Important**: always read the providers **Terms of Service** before using this provider's tiles in your project.
 
 
 .. _basemap_tiles_osm_tiles:
@@ -71,11 +164,11 @@ Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://cr
 
 Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `CC BY SA <http://creativecommons.org/licenses/by-sa/3.0>`__.
 
-- Toner:``STAMEN_DESIGN_TONER``, high-resolution: ``STAMEN_DESIGN_TONER_HIRES``
-- Toner Light: ``STAMEN_DESIGN_TONER_LIGHT``, high-resolution:``STAMEN_DESIGN_TONER_LIGHT_HIRES``
-- Terrain: ``STAMEN_DESIGN_TERRAIN``, high-resolution: ``STAMEN_DESIGN_TERRAIN_HIRES``
-- Watercolor: ``STAMEN_DESIGN_WATERCOLOR``, high-resolution: None
-- Toner Labels: ``STAMEN_DESIGN_TONER_LABELS``, high-resolution: ``STAMEN_DESIGN_TONER_LABELS_HIRES``
+- ``STAMEN_DESIGN_TONER``, ``STAMEN_DESIGN_TONER_HIRES``: Toner
+- ``STAMEN_DESIGN_TONER_LIGHT``, ``STAMEN_DESIGN_TONER_LIGHT_HIRES``: Toner Light
+- ``STAMEN_DESIGN_TERRAIN``, ``STAMEN_DESIGN_TERRAIN_HIRES`` : Terrain
+- ``STAMEN_DESIGN_WATERCOLOR`` : Watercolor
+- ``STAMEN_DESIGN_TONER_LABELS``, ``STAMEN_DESIGN_TONER_LABELS_HIRES``: Toner Labels
 
 
 .. _basemap_tiles_carto_tiles:
@@ -118,84 +211,6 @@ Global Imagery Browse Services (GIBS) API - `Generic XYZ Tile Access <https://wi
 - ``NASA_TERRA_TRUECOLOR`` : Terra TrueColor
 
 
-.. _basemap_tiles_global_cfg:
-
-Configuring Globally
---------------------
-
-You can configure global Lets-Plot options using the :py:mod:`LestPlot.set(dictionary) <lets_plot.LetsPlot>` method.
-
-Where the ``dictionary`` can contain all sorts of Lets-Plot options, including basemap tiles configuration options.
-
-Lets-Plot provides a variety of constants and functions which make configuring of basemap tiles simple:
-
-.. code-block:: python
-
-    from lets_plot import tilesets
-
-    LetsPlot.set(tilesets.LETS_PLOT_DARK)
-
-
-.. _basemap_tiles_plot_cfg:
-
-Configuring for a Single Plot
------------------------------
-
-Use ``tiles`` parameter in the :py:mod:`geom_livemap() <lets_plot.geom_livemap>` function:
-
-.. code-block:: python
-
-    from lets_plot import tilesets
-
-    ggplot() + geom_livemap(tiles=tilesets.LETS_PLOT_DARK)
-
-
-.. _basemap_tiles_vector_tiles:
-
-Vector Tiles
-------------
-
-**Note:** Vector tiles may not work with Safari.
-If the tiles don't load please try disabling the NSURLSession Websocket feature
-(`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
-
-Lets-Plot provides its own vector basemap tiles available in three variants:
-
-- color
-- dark
-- light
-
-By default Lets-Plot uses its "color" tiles.
-
-Configure Lets-Plot vector tiles (globally or on the per-plot basis) with the help of a constant defined in the ``tilesets`` module:
-
-.. code-block:: python
-
-    from lets_plot import tilesets
-
-    ggplot() + geom_livemap(tiles=tilesets.LETS_PLOT_DARK)
-
-
-.. _basemap_tiles_raster_tiles:
-
-Raster Tiles
-------------
-
-With Lets-Plot you can use ZXY raster tiles provided by 3rd party maptile services.
-
-Some services provide free of charge raster tilesets. The ``tilesets`` module in Lets-Plot contains many such tilesets pre-configured.
-
-Again, you can use these tilesets to configure Lets-Plot globally or on the per-plot basis:
-
-.. code-block:: python
-
-    from lets_plot import tilesets
-
-    ggplot() + geom_livemap(tiles=tilesets.OSM)
-
-**Important:** always read the providers **Terms of Service** before using this provider's tiles in your project.
-
-
 .. _basemap_tiles_examples:
 
 Examples
@@ -226,7 +241,7 @@ The following code will configure 'Stamen Design - Toner Hybrid' tiles:
 
     ggplot() + geom_livemap(tiles=maptiles_zxy(**settings))
 
-**Raster tiles configuration options:**
+**Raster tiles configuration options**:
 
 - ``url`` : ZXY tiles URL , e.g. ``"https://{s}.tile.com/{z}/{x}/{y}.png"``.
   Where ``{z}``, ``{x}``, ``{y}`` and ``{s}`` are placeholders for zoom, coordinates and subdomain. 
@@ -240,25 +255,3 @@ You can also provide other key-value pairs to include into the tile URL as param
 .. code-block:: python
 
     maptiles_zxy(url='http://maps.example.com/{z}/{x}/{y}.png?access_key={key}', key='MY_ACCESS_KEY')
-
-
-.. _basemap_tiles_blank_tiles:
-
-Blank Tiles
------------
-
-:py:mod:`Blank tiles <lets_plot.maptiles_solid>` show no other graphics but a solid background color which you can choose (a HEX value is expected):
-
-.. code-block:: python
-
-    ggplot() + geom_livemap(tiles=maptiles_solid(color='#C1C1C1'))
-
-You can also use a constant defined in the ``tilesets`` module (white tiles):
-
-.. code-block:: python
-
-    from lets_plot import tilesets
-
-    ggplot() + geom_livemap(tiles=tilesets.SOLID)
-
-Blank tiles do not require an internet connection.
