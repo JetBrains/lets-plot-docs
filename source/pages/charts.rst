@@ -454,6 +454,7 @@ Predefined themes:
 :py:mod:`classic <lets_plot.theme_classic>`,
 :py:mod:`light <lets_plot.theme_light>`,
 :py:mod:`minimal <lets_plot.theme_minimal>`,
+:py:mod:`void <lets_plot.theme_void>`,
 :py:mod:`none <lets_plot.theme_none>`
 
 .. panels::
@@ -493,7 +494,7 @@ Color schemes (flavors):
 .. extref:: flavors
   :image: common
   :width: 1000
-  :height: 117
+  :height: 108
 
 Examples:
 
