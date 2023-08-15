@@ -85,10 +85,6 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Configuring Basemap Tiles for Interactive Maps</a><ul>
-<li><a class="reference internal" href="#configuring-globally">Configuring Globally</a></li>
-<li><a class="reference internal" href="#configuring-for-a-single-plot">Configuring for a Single Plot</a></li>
-<li><a class="reference internal" href="#vector-tiles">Vector Tiles</a></li>
-<li><a class="reference internal" href="#raster-tiles">Raster Tiles</a><ul>
 <li><a class="reference internal" href="#tilesets">Tilesets</a><ul>
 <li><a class="reference internal" href="#openstreetmap">OpenStreetMap</a></li>
 <li><a class="reference internal" href="#opentopomap">OpenTopoMap</a></li>
@@ -97,10 +93,12 @@
 <li><a class="reference internal" href="#nasa-s-global-imagery-browse-services-gibs">NASA’s Global Imagery Browse Services (GIBS)</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#configuring-globally">Configuring Globally</a></li>
+<li><a class="reference internal" href="#configuring-for-a-single-plot">Configuring for a Single Plot</a></li>
+<li><a class="reference internal" href="#vector-tiles">Vector Tiles</a></li>
+<li><a class="reference internal" href="#raster-tiles">Raster Tiles</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#configuring-raster-tiles-manually">Configuring Raster Tiles Manually</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#blank-tiles">Blank Tiles</a></li>
 </ul>
 </li>
@@ -138,11 +136,6 @@
   <section id="configuring-basemap-tiles-for-interactive-maps">
 <h1>Configuring Basemap Tiles for Interactive Maps<a class="headerlink" href="#configuring-basemap-tiles-for-interactive-maps" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="#basemap-tiles-global-cfg"><span class="std std-ref">Configuring Globally</span></a></p></li>
-<li><p><a class="reference internal" href="#basemap-tiles-plot-cfg"><span class="std std-ref">Configuring for a Single Plot</span></a></p></li>
-<li><p><a class="reference internal" href="#basemap-tiles-vector-tiles"><span class="std std-ref">Vector Tiles</span></a></p></li>
-<li><p><a class="reference internal" href="#basemap-tiles-raster-tiles"><span class="std std-ref">Raster Tiles</span></a></p>
-<ul>
 <li><p><a class="reference internal" href="#basemap-tiles-tilesets"><span class="std std-ref">Tilesets</span></a></p>
 <ul>
 <li><p><a class="reference internal" href="#basemap-tiles-osm-tiles"><span class="std std-ref">OpenStreetMap</span></a></p></li>
@@ -152,94 +145,51 @@
 <li><p><a class="reference internal" href="#basemap-tiles-nasa-tiles"><span class="std std-ref">NASA’s Global Imagery Browse Services (GIBS)</span></a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#basemap-tiles-global-cfg"><span class="std std-ref">Configuring Globally</span></a></p></li>
+<li><p><a class="reference internal" href="#basemap-tiles-plot-cfg"><span class="std std-ref">Configuring for a Single Plot</span></a></p></li>
+<li><p><a class="reference internal" href="#basemap-tiles-vector-tiles"><span class="std std-ref">Vector Tiles</span></a></p></li>
+<li><p><a class="reference internal" href="#basemap-tiles-raster-tiles"><span class="std std-ref">Raster Tiles</span></a></p></li>
 <li><p><a class="reference internal" href="#basemap-tiles-examples"><span class="std std-ref">Examples</span></a></p></li>
 <li><p><a class="reference internal" href="#basemap-tiles-raster-tiles-man"><span class="std std-ref">Configuring Raster Tiles Manually</span></a></p></li>
-</ul>
-</li>
 <li><p><a class="reference internal" href="#basemap-tiles-blank-tiles"><span class="std std-ref">Blank Tiles</span></a></p></li>
 </ul>
-<section id="configuring-globally">
-<span id="basemap-tiles-global-cfg"></span><h2>Configuring Globally<a class="headerlink" href="#configuring-globally" title="Permalink to this headline">¶</a></h2>
-<p>You can configure global Lets-Plot options using the <a class="reference internal" href="api/lets_plot.LetsPlot.html#lets_plot.LetsPlot" title="lets_plot.LetsPlot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LestPlot.set(dictionary)</span></code></a> method.</p>
-<p>Where the <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> can contain all sorts of Lets-Plot options, including basemap tiles configuration options.</p>
-<p>Lets-Plot provides a variety of constants and functions which make configuring of basemap tiles simple:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
-
-<span class="n">LetsPlot</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tilesets</span><span class="o">.</span><span class="n">LETS_PLOT_DARK</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="configuring-for-a-single-plot">
-<span id="basemap-tiles-plot-cfg"></span><h2>Configuring for a Single Plot<a class="headerlink" href="#configuring-for-a-single-plot" title="Permalink to this headline">¶</a></h2>
-<p>Use <code class="docutils literal notranslate"><span class="pre">tiles</span></code> parameter in the <a class="reference internal" href="api/lets_plot.geom_livemap.html#lets_plot.geom_livemap" title="lets_plot.geom_livemap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap()</span></code></a> function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
-
-<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">tilesets</span><span class="o">.</span><span class="n">LETS_PLOT_DARK</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="vector-tiles">
-<span id="basemap-tiles-vector-tiles"></span><h2>Vector Tiles<a class="headerlink" href="#vector-tiles" title="Permalink to this headline">¶</a></h2>
-<p>Lets-Plot provides its own vector basemap tiles available in three variants:</p>
-<ul class="simple">
-<li><p>color</p></li>
-<li><p>dark</p></li>
-<li><p>light</p></li>
-</ul>
-<p>By default Lets-Plot uses its “color” tiles.</p>
-<p>Configure Lets-Plot vector tiles (globally or on the per-plot basis) with the help of a constant defined in the <code class="docutils literal notranslate"><span class="pre">tilesets</span></code> module:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
-
-<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">tilesets</span><span class="o">.</span><span class="n">LETS_PLOT_DARK</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Note:</strong> Vector tiles may not work with Safari.
-If the tiles don’t load please try disabling the NSURLSession Websocket feature
-(<cite>Develop -&gt; Experimental Features -&gt; NSURLSession Websocket</cite>) or use <a class="reference internal" href="#basemap-tiles-raster-tiles"><span class="std std-ref">raster tiles</span></a>.</p>
-</section>
-<section id="raster-tiles">
-<span id="basemap-tiles-raster-tiles"></span><h2>Raster Tiles<a class="headerlink" href="#raster-tiles" title="Permalink to this headline">¶</a></h2>
-<p>With Lets-Plot you can use ZXY raster tiles provided by 3rd party maptile services.</p>
-<p>Some services provide free of charge raster tilesets. The <code class="docutils literal notranslate"><span class="pre">tilesets</span></code> module in Lets-Plot contains many such tilesets pre-configured.</p>
-<p>Again, you can use these tilesets to configure Lets-Plot globally or on the per-plot basis:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
-
-<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">tilesets</span><span class="o">.</span><span class="n">OSM</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Important:</strong> always read the providers <strong>Terms of Service</strong> before using this provider’s tiles in your project.</p>
 <section id="tilesets">
-<span id="basemap-tiles-tilesets"></span><h3>Tilesets<a class="headerlink" href="#tilesets" title="Permalink to this headline">¶</a></h3>
+<span id="basemap-tiles-tilesets"></span><h2>Tilesets<a class="headerlink" href="#tilesets" title="Permalink to this headline">¶</a></h2>
+<p>A set of pre-configured tilesets is available in Lets-Plot.
+This set is defined in the tilesets module and requires explicit import:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
+</pre></div>
+</div>
 <section id="openstreetmap">
-<span id="basemap-tiles-osm-tiles"></span><h4>OpenStreetMap<a class="headerlink" href="#openstreetmap" title="Permalink to this headline">¶</a></h4>
+<span id="basemap-tiles-osm-tiles"></span><h3>OpenStreetMap<a class="headerlink" href="#openstreetmap" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">OSM</span></code>: OpenStreetMap’s Standard tile layer.</p></li>
 </ul>
 </section>
 <section id="opentopomap">
-<span id="basemap-tiles-topo-tiles"></span><h4>OpenTopoMap<a class="headerlink" href="#opentopomap" title="Permalink to this headline">¶</a></h4>
+<span id="basemap-tiles-topo-tiles"></span><h3>OpenTopoMap<a class="headerlink" href="#opentopomap" title="Permalink to this headline">¶</a></h3>
 <p>Map data: <a class="reference external" href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, <a class="reference external" href="http://viewfinderpanoramas.org">SRTM</a> | map style: <a class="reference external" href="https://opentopomap.org">© OpenTopoMap</a> (<a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA</a>).</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">OPEN_TOPO_MAP</span></code></p></li>
 </ul>
 </section>
 <section id="stamen-design">
-<span id="basemap-tiles-stamen-tiles"></span><h4>Stamen Design<a class="headerlink" href="#stamen-design" title="Permalink to this headline">¶</a></h4>
+<span id="basemap-tiles-stamen-tiles"></span><h3>Stamen Design<a class="headerlink" href="#stamen-design" title="Permalink to this headline">¶</a></h3>
 <p><em>Toner and Terrain:</em></p>
 <p>Map tiles by <a class="reference external" href="https://stamen.com">Stamen Design</a>, under <a class="reference external" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a class="reference external" href="http://openstreetmap.org">OpenStreetMap</a>, under <a class="reference external" href="http://www.openstreetmap.org/copyright">ODbL</a>.</p>
 <p><em>Watercolor:</em></p>
 <p>Map tiles by <a class="reference external" href="https://stamen.com">Stamen Design</a>, under <a class="reference external" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a class="reference external" href="http://openstreetmap.org">OpenStreetMap</a>, under <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_HIRES</span></code>: Toner</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LIGHT_HIRES</span></code>: Toner Light</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TERRAIN</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TERRAIN_HIRES</span></code> : Terrain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_WATERCOLOR</span></code> : Watercolor</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LABELS</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LABELS_HIRES</span></code>: Toner Labels</p></li>
+<li><p>Toner:<code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER</span></code>, high-resolution: <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_HIRES</span></code></p></li>
+<li><p>Toner Light: <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LIGHT</span></code>, high-resolution:<code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LIGHT_HIRES</span></code></p></li>
+<li><p>Terrain: <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TERRAIN</span></code>, high-resolution: <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TERRAIN_HIRES</span></code></p></li>
+<li><p>Watercolor: <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_WATERCOLOR</span></code>, high-resolution: None</p></li>
+<li><p>Toner Labels: <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LABELS</span></code>, high-resolution: <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LABELS_HIRES</span></code></p></li>
 </ul>
 </section>
 <section id="carto">
-<span id="basemap-tiles-carto-tiles"></span><h4>CARTO<a class="headerlink" href="#carto" title="Permalink to this headline">¶</a></h4>
+<span id="basemap-tiles-carto-tiles"></span><h3>CARTO<a class="headerlink" href="#carto" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, <a class="reference external" href="https://carto.com/attributions#basemaps">© CARTO</a>, <a class="reference external" href="https://carto.com/attributions">© CARTO</a>.</p>
 <p>Free for none-commercial services only (see <a class="reference external" href="https://github.com/CartoDB/basemap-styles#1-web-raster-basemaps">Limitations</a>, <a class="reference external" href="https://github.com/CartoDB/basemap-styles/blob/master/LICENSE.md">License</a>).</p>
 <ul class="simple">
@@ -253,7 +203,7 @@ If the tiles don’t load please try disabling the NSURLSession Websocket featur
 </ul>
 </section>
 <section id="nasa-s-global-imagery-browse-services-gibs">
-<span id="basemap-tiles-nasa-tiles"></span><h4>NASA’s Global Imagery Browse Services (GIBS)<a class="headerlink" href="#nasa-s-global-imagery-browse-services-gibs" title="Permalink to this headline">¶</a></h4>
+<span id="basemap-tiles-nasa-tiles"></span><h3>NASA’s Global Imagery Browse Services (GIBS)<a class="headerlink" href="#nasa-s-global-imagery-browse-services-gibs" title="Permalink to this headline">¶</a></h3>
 <p>Imagery provided by services from NASA’s Global Imagery Browse Services (<a class="reference external" href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs">GIBS</a>), part of NASA’s Earth Observing System Data and Information System (<a class="reference external" href="https://earthdata.nasa.gov">EOSDIS</a>).</p>
 <p><a class="reference external" href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs">NASA’s Global Imagery Browse Services (GIBS)</a>.</p>
 <p>Global Imagery Browse Services (GIBS) - <a class="reference external" href="https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers">API for Developers</a>.</p>
@@ -268,15 +218,66 @@ If the tiles don’t load please try disabling the NSURLSession Websocket featur
 </ul>
 </section>
 </section>
+<section id="configuring-globally">
+<span id="basemap-tiles-global-cfg"></span><h2>Configuring Globally<a class="headerlink" href="#configuring-globally" title="Permalink to this headline">¶</a></h2>
+<p>You can configure global Lets-Plot options using the <code class="xref py py-mod docutils literal notranslate"><span class="pre">LestPlot.set(dictionary)</span></code> method.</p>
+<p>Where the <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> can contain all sorts of Lets-Plot options, including basemap tiles configuration options.</p>
+<p>Lets-Plot provides a variety of constants and functions which make configuring of basemap tiles simple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
+
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tilesets</span><span class="o">.</span><span class="n">LETS_PLOT_DARK</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring-for-a-single-plot">
+<span id="basemap-tiles-plot-cfg"></span><h2>Configuring for a Single Plot<a class="headerlink" href="#configuring-for-a-single-plot" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">tiles</span></code> parameter in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_livemap()</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
+
+<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">tilesets</span><span class="o">.</span><span class="n">LETS_PLOT_DARK</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="vector-tiles">
+<span id="basemap-tiles-vector-tiles"></span><h2>Vector Tiles<a class="headerlink" href="#vector-tiles" title="Permalink to this headline">¶</a></h2>
+<p><strong>Note:</strong> Vector tiles may not work with Safari.
+If the tiles don’t load please try disabling the NSURLSession Websocket feature
+(<cite>Develop -&gt; Experimental Features -&gt; NSURLSession Websocket</cite>) or use <a class="reference internal" href="#basemap-tiles-raster-tiles"><span class="std std-ref">raster tiles</span></a>.</p>
+<p>Lets-Plot provides its own vector basemap tiles available in three variants:</p>
+<ul class="simple">
+<li><p>color</p></li>
+<li><p>dark</p></li>
+<li><p>light</p></li>
+</ul>
+<p>By default Lets-Plot uses its “color” tiles.</p>
+<p>Configure Lets-Plot vector tiles (globally or on the per-plot basis) with the help of a constant defined in the <code class="docutils literal notranslate"><span class="pre">tilesets</span></code> module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
+
+<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">tilesets</span><span class="o">.</span><span class="n">LETS_PLOT_DARK</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="raster-tiles">
+<span id="basemap-tiles-raster-tiles"></span><h2>Raster Tiles<a class="headerlink" href="#raster-tiles" title="Permalink to this headline">¶</a></h2>
+<p>With Lets-Plot you can use ZXY raster tiles provided by 3rd party maptile services.</p>
+<p>Some services provide free of charge raster tilesets. The <code class="docutils literal notranslate"><span class="pre">tilesets</span></code> module in Lets-Plot contains many such tilesets pre-configured.</p>
+<p>Again, you can use these tilesets to configure Lets-Plot globally or on the per-plot basis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="n">tilesets</span>
+
+<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">tilesets</span><span class="o">.</span><span class="n">OSM</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Important:</strong> always read the providers <strong>Terms of Service</strong> before using this provider’s tiles in your project.</p>
+</section>
 <section id="examples">
-<span id="basemap-tiles-examples"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<span id="basemap-tiles-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <img alt="../_images/basemaps.jpg" src="../_images/basemaps.jpg" />
 <p>Check out <a class="reference external" href="https://datalore.jetbrains.com/view/notebook/05NSsbcsOYZMBN9n4JfKzL">this notebook</a> to see examples of various tilesets.</p>
 </section>
 <section id="configuring-raster-tiles-manually">
-<span id="basemap-tiles-raster-tiles-man"></span><h3>Configuring Raster Tiles Manually<a class="headerlink" href="#configuring-raster-tiles-manually" title="Permalink to this headline">¶</a></h3>
+<span id="basemap-tiles-raster-tiles-man"></span><h2>Configuring Raster Tiles Manually<a class="headerlink" href="#configuring-raster-tiles-manually" title="Permalink to this headline">¶</a></h2>
 <p>In addition to pre-configured tilesets you can configure and use almost any other raster tilesets provided in <code class="docutils literal notranslate"><span class="pre">ZXY</span></code> format.</p>
-<p>You can do it with the help of the <a class="reference internal" href="api/lets_plot.maptiles_zxy.html#lets_plot.maptiles_zxy" title="lets_plot.maptiles_zxy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LetsPlot.maptiles_zxy()</span></code></a> function.</p>
+<p>You can do it with the help of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">LetsPlot.maptiles_zxy()</span></code> function.</p>
 <p>The following code will configure ‘Stamen Design - Toner Hybrid’ tiles:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">settings</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://stamen-tiles.a.ssl.fastly.net/toner-hybrid/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">@2x.png&quot;</span><span class="p">,</span>
@@ -300,10 +301,9 @@ Where <code class="docutils literal notranslate"><span class="pre">{z}</span></c
 </pre></div>
 </div>
 </section>
-</section>
 <section id="blank-tiles">
 <span id="basemap-tiles-blank-tiles"></span><h2>Blank Tiles<a class="headerlink" href="#blank-tiles" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="api/lets_plot.maptiles_solid.html#lets_plot.maptiles_solid" title="lets_plot.maptiles_solid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Blank</span> <span class="pre">tiles</span></code></a> show no other graphics but a solid background color which you can choose (a HEX value is expected):</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">Blank</span> <span class="pre">tiles</span></code> show no other graphics but a solid background color which you can choose (a HEX value is expected):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">maptiles_solid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#C1C1C1&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
