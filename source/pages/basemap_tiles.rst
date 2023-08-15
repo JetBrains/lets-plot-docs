@@ -8,23 +8,114 @@
 Configuring Basemap Tiles for Interactive Maps
 ==============================================
 
+- :ref:`Tilesets <basemap_tiles_tilesets>`
+
+  - :ref:`OpenStreetMap <basemap_tiles_osm_tiles>`
+  - :ref:`OpenTopoMap <basemap_tiles_topo_tiles>`
+  - :ref:`Stamen Design <basemap_tiles_stamen_tiles>`
+  - :ref:`CARTO <basemap_tiles_carto_tiles>`
+  - :ref:`NASA's Global Imagery Browse Services (GIBS) <basemap_tiles_nasa_tiles>`
+
 - :ref:`Configuring Globally <basemap_tiles_global_cfg>`
 - :ref:`Configuring for a Single Plot <basemap_tiles_plot_cfg>`
 - :ref:`Vector Tiles <basemap_tiles_vector_tiles>`
 - :ref:`Raster Tiles <basemap_tiles_raster_tiles>`
-
-  - :ref:`Tilesets <basemap_tiles_tilesets>`
-
-    - :ref:`OpenStreetMap <basemap_tiles_osm_tiles>`
-    - :ref:`OpenTopoMap <basemap_tiles_topo_tiles>`
-    - :ref:`Stamen Design <basemap_tiles_stamen_tiles>`
-    - :ref:`CARTO <basemap_tiles_carto_tiles>`
-    - :ref:`NASA's Global Imagery Browse Services (GIBS) <basemap_tiles_nasa_tiles>`
-
-  - :ref:`Examples <basemap_tiles_examples>`
-  - :ref:`Configuring Raster Tiles Manually <basemap_tiles_raster_tiles_man>`
-
+- :ref:`Examples <basemap_tiles_examples>`
+- :ref:`Configuring Raster Tiles Manually <basemap_tiles_raster_tiles_man>`
 - :ref:`Blank Tiles <basemap_tiles_blank_tiles>`
+
+
+.. _basemap_tiles_tilesets:
+
+Tilesets
+--------
+
+A set of pre-configured tilesets is available in Lets-Plot.
+This set is defined in the tilesets module and requires explicit import:
+
+.. code-block:: python
+
+    from lets_plot import tilesets
+
+
+.. _basemap_tiles_osm_tiles:
+
+OpenStreetMap
+~~~~~~~~~~~~~
+
+`© OpenStreetMap contributors <https://www.openstreetmap.org/copyright>`__
+
+- ``OSM``: OpenStreetMap's Standard tile layer.
+
+
+.. _basemap_tiles_topo_tiles:
+
+OpenTopoMap
+~~~~~~~~~~~
+
+Map data: `© OpenStreetMap contributors <https://www.openstreetmap.org/copyright>`__, `SRTM <http://viewfinderpanoramas.org>`__ | map style: `© OpenTopoMap <https://opentopomap.org>`__ (`CC-BY-SA <https://creativecommons.org/licenses/by-sa/3.0>`__).
+
+- ``OPEN_TOPO_MAP``
+
+
+.. _basemap_tiles_stamen_tiles:
+
+Stamen Design
+~~~~~~~~~~~~~
+
+*Toner and Terrain:*
+
+Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `ODbL <http://www.openstreetmap.org/copyright>`__.
+
+*Watercolor:*
+
+Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `CC BY SA <http://creativecommons.org/licenses/by-sa/3.0>`__.
+
+- Toner:``STAMEN_DESIGN_TONER``, high-resolution: ``STAMEN_DESIGN_TONER_HIRES``
+- Toner Light: ``STAMEN_DESIGN_TONER_LIGHT``, high-resolution:``STAMEN_DESIGN_TONER_LIGHT_HIRES``
+- Terrain: ``STAMEN_DESIGN_TERRAIN``, high-resolution: ``STAMEN_DESIGN_TERRAIN_HIRES``
+- Watercolor: ``STAMEN_DESIGN_WATERCOLOR``, high-resolution: None
+- Toner Labels: ``STAMEN_DESIGN_TONER_LABELS``, high-resolution: ``STAMEN_DESIGN_TONER_LABELS_HIRES``
+
+
+.. _basemap_tiles_carto_tiles:
+
+CARTO
+~~~~~
+
+`© OpenStreetMap contributors <https://www.openstreetmap.org/copyright>`__, `© CARTO <https://carto.com/attributions#basemaps>`__, `© CARTO <https://carto.com/attributions>`__.
+
+Free for none-commercial services only (see `Limitations <https://github.com/CartoDB/basemap-styles#1-web-raster-basemaps>`__, `License <https://github.com/CartoDB/basemap-styles/blob/master/LICENSE.md>`__).
+
+- ``CARTO_POSITRON``, ``CARTO_POSITRON_HIRES`` : Positron
+- ``CARTO_POSITRON_NO_LABELS``, ``CARTO_POSITRON_NO_LABELS_HIRES`` : Positron (no labels)
+- ``CARTO_DARK_MATTER_NO_LABELS``, ``CARTO_DARK_MATTER_NO_LABELS_HIRES`` : Dark Matter (no labels)
+- ``CARTO_VOYAGER``, ``CARTO_VOYAGER_HIRES`` : Voyager
+- ``CARTO_FLAT_BLUE``, ``CARTO_FLAT_BLUE_HIRES`` : Flat Blue
+- ``CARTO_MIDNIGHT_COMMANDER``, ``CARTO_MIDNIGHT_COMMANDER_HIRES`` : Midnight commander
+- ``CARTO_ANTIQUE``, ``CARTO_ANTIQUE_HIRES`` : Antique
+
+
+.. _basemap_tiles_nasa_tiles:
+
+NASA's Global Imagery Browse Services (GIBS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Imagery provided by services from NASA's Global Imagery Browse Services (`GIBS <https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs>`__), part of NASA's Earth Observing System Data and Information System (`EOSDIS <https://earthdata.nasa.gov>`__).
+
+`NASA's Global Imagery Browse Services (GIBS) <https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs>`__.
+
+Global Imagery Browse Services (GIBS) - `API for Developers <https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers>`__.
+
+Global Imagery Browse Services (GIBS) API - `Generic XYZ Tile Access <https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers#GIBSAPIforDevelopers-GenericXYZTileAccess>`__.
+
+`GIBS Available Imagery Products <https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+Available+Imagery+Products>`__.
+
+- ``NASA_CITYLIGHTS_2012`` : CityLights 2012
+- ``NASA_BLUEMARBLE_NEXTGENERATION`` : BlueMarble NextGeneration
+- ``NASA_GREYSCALE_SHADED_RELIEF_30M`` : Greyscale Shaded Relief (30m)
+- ``NASA_COLOR_SHADED_RELIEF_30M`` : Color Shaded Relief (30m)
+- ``NASA_TERRA_TRUECOLOR`` : Terra TrueColor
 
 
 .. _basemap_tiles_global_cfg:
@@ -64,6 +155,10 @@ Use ``tiles`` parameter in the :py:mod:`geom_livemap() <lets_plot.geom_livemap>`
 Vector Tiles
 ------------
 
+**Note:** Vector tiles may not work with Safari.
+If the tiles don't load please try disabling the NSURLSession Websocket feature
+(`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
+
 Lets-Plot provides its own vector basemap tiles available in three variants:
 
 - color
@@ -79,10 +174,6 @@ Configure Lets-Plot vector tiles (globally or on the per-plot basis) with the he
     from lets_plot import tilesets
 
     ggplot() + geom_livemap(tiles=tilesets.LETS_PLOT_DARK)
-
-**Note:** Vector tiles may not work with Safari.
-If the tiles don't load please try disabling the NSURLSession Websocket feature
-(`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
 
 
 .. _basemap_tiles_raster_tiles:
@@ -105,96 +196,10 @@ Again, you can use these tilesets to configure Lets-Plot globally or on the per-
 **Important:** always read the providers **Terms of Service** before using this provider's tiles in your project.
 
 
-.. _basemap_tiles_tilesets:
-
-Tilesets
-~~~~~~~~
-
-
-.. _basemap_tiles_osm_tiles:
-
-OpenStreetMap
-^^^^^^^^^^^^^
-
-`© OpenStreetMap contributors <https://www.openstreetmap.org/copyright>`__
-
-- ``OSM``: OpenStreetMap's Standard tile layer.
-
-
-.. _basemap_tiles_topo_tiles:
-
-OpenTopoMap
-^^^^^^^^^^^
-
-Map data: `© OpenStreetMap contributors <https://www.openstreetmap.org/copyright>`__, `SRTM <http://viewfinderpanoramas.org>`__ | map style: `© OpenTopoMap <https://opentopomap.org>`__ (`CC-BY-SA <https://creativecommons.org/licenses/by-sa/3.0>`__).
-
-- ``OPEN_TOPO_MAP``
-
-
-.. _basemap_tiles_stamen_tiles:
-
-Stamen Design
-^^^^^^^^^^^^^
-
-*Toner and Terrain:*
-
-Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `ODbL <http://www.openstreetmap.org/copyright>`__.
-
-*Watercolor:*
-
-Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `CC BY SA <http://creativecommons.org/licenses/by-sa/3.0>`__.
-
-- ``STAMEN_DESIGN_TONER``, ``STAMEN_DESIGN_TONER_HIRES``: Toner
-- ``STAMEN_DESIGN_TONER_LIGHT``, ``STAMEN_DESIGN_TONER_LIGHT_HIRES``: Toner Light
-- ``STAMEN_DESIGN_TERRAIN``, ``STAMEN_DESIGN_TERRAIN_HIRES`` : Terrain
-- ``STAMEN_DESIGN_WATERCOLOR`` : Watercolor
-- ``STAMEN_DESIGN_TONER_LABELS``, ``STAMEN_DESIGN_TONER_LABELS_HIRES``: Toner Labels
-
-
-.. _basemap_tiles_carto_tiles:
-
-CARTO
-^^^^^
-
-`© OpenStreetMap contributors <https://www.openstreetmap.org/copyright>`__, `© CARTO <https://carto.com/attributions#basemaps>`__, `© CARTO <https://carto.com/attributions>`__.
-
-Free for none-commercial services only (see `Limitations <https://github.com/CartoDB/basemap-styles#1-web-raster-basemaps>`__, `License <https://github.com/CartoDB/basemap-styles/blob/master/LICENSE.md>`__).
-
-- ``CARTO_POSITRON``, ``CARTO_POSITRON_HIRES`` : Positron
-- ``CARTO_POSITRON_NO_LABELS``, ``CARTO_POSITRON_NO_LABELS_HIRES`` : Positron (no labels)
-- ``CARTO_DARK_MATTER_NO_LABELS``, ``CARTO_DARK_MATTER_NO_LABELS_HIRES`` : Dark Matter (no labels)
-- ``CARTO_VOYAGER``, ``CARTO_VOYAGER_HIRES`` : Voyager
-- ``CARTO_FLAT_BLUE``, ``CARTO_FLAT_BLUE_HIRES`` : Flat Blue
-- ``CARTO_MIDNIGHT_COMMANDER``, ``CARTO_MIDNIGHT_COMMANDER_HIRES`` : Midnight commander
-- ``CARTO_ANTIQUE``, ``CARTO_ANTIQUE_HIRES`` : Antique
-
-
-.. _basemap_tiles_nasa_tiles:
-
-NASA's Global Imagery Browse Services (GIBS)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Imagery provided by services from NASA's Global Imagery Browse Services (`GIBS <https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs>`__), part of NASA's Earth Observing System Data and Information System (`EOSDIS <https://earthdata.nasa.gov>`__).
-
-`NASA's Global Imagery Browse Services (GIBS) <https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs>`__.
-
-Global Imagery Browse Services (GIBS) - `API for Developers <https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers>`__.
-
-Global Imagery Browse Services (GIBS) API - `Generic XYZ Tile Access <https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers#GIBSAPIforDevelopers-GenericXYZTileAccess>`__.
-
-`GIBS Available Imagery Products <https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+Available+Imagery+Products>`__.
-
-- ``NASA_CITYLIGHTS_2012`` : CityLights 2012
-- ``NASA_BLUEMARBLE_NEXTGENERATION`` : BlueMarble NextGeneration
-- ``NASA_GREYSCALE_SHADED_RELIEF_30M`` : Greyscale Shaded Relief (30m)
-- ``NASA_COLOR_SHADED_RELIEF_30M`` : Color Shaded Relief (30m)
-- ``NASA_TERRA_TRUECOLOR`` : Terra TrueColor
-
-
 .. _basemap_tiles_examples:
 
 Examples
-~~~~~~~~
+--------
 
 .. image:: /_static/images/basemaps.jpg
 
@@ -204,7 +209,7 @@ Check out `this notebook <https://datalore.jetbrains.com/view/notebook/05NSsbcsO
 .. _basemap_tiles_raster_tiles_man:
 
 Configuring Raster Tiles Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------
 
 In addition to pre-configured tilesets you can configure and use almost any other raster tilesets provided in ``ZXY`` format.
 
