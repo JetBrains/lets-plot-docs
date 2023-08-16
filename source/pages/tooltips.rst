@@ -10,8 +10,19 @@ Tooltip Customization
 
 You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions.
 
-For more details, see the notebook "Tooltip Customization": |tooltips_page|
+For more details, see |tooltips_page|.
 
 .. |tooltips_page| extref:: tooltips_page
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: "Tooltip Customization" (datalore link)
+
+
+Examples
+--------
+
+- .. extref:: tooltip_title
+      :type: text
+- .. extref:: tooltip_config
+      :type: text
+- .. extref:: tooltips_theme
+      :type: text
