@@ -24,5 +24,7 @@ Examples
       :type: text
 - .. extref:: tooltip_config
       :type: text
+- .. extref:: tooltips_disable_splitting
+      :type: text
 - .. extref:: tooltips_theme
       :type: text

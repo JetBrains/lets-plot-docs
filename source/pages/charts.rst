@@ -85,6 +85,8 @@ Examples:
       :type: text
 - .. extref:: map_use_crs
       :type: text
+- .. extref:: aes_size_color_variadic_lines
+      :type: text
 
 
 |discrete-icon| Discrete
@@ -109,9 +111,17 @@ Examples:
       :type: text
 - .. extref:: annotations_for_pie
       :type: text
+- .. extref:: geom_pie_size_unit
+      :type: text
+- .. extref:: geom_pie_stroke_and_spacers
+      :type: text
+- .. extref:: stat_boxplot_outlier
+      :type: text
 - .. extref:: geom_lollipop
       :type: text
 - .. extref:: stat_count2d_vars
+      :type: text
+- .. extref:: stat_sum
       :type: text
 - .. extref:: comparisons
       :type: text
@@ -221,6 +231,38 @@ Examples:
 .. |hue_scale| extref:: hue_scale
       :type: text
       :text: qualitative
+
+
+|stats-icon| Stats
+------------------
+
+.. |stats-icon| image:: /_static/images/icons/charts/stats.png
+
+:py:mod:`stat_ecdf() <lets_plot.stat_ecdf>`,
+:py:mod:`stat_summary() <lets_plot.stat_summary>`,
+:py:mod:`stat_summary_bin() <lets_plot.stat_summary_bin>`
+
+Examples:
+
+- .. extref:: stat_ecdf
+      :type: text
+- .. extref:: stat_summary
+      :type: text
+- .. extref:: stat_summary_bin
+      :type: text
+
+
+|function-icon| Function
+------------------------
+
+.. |function-icon| image:: /_static/images/icons/charts/function.png
+
+:py:mod:`function <lets_plot.geom_function>`
+
+Examples:
+
+- .. extref:: geom_function
+      :type: text
 
 
 |marginal-icon| Marginal Plots
@@ -503,6 +545,8 @@ Examples:
 - .. extref:: default_theme
       :type: text
 - .. extref:: themes
+      :type: text
+- .. extref:: geom_theme_colors
       :type: text
 - .. extref:: theme_flavors
       :type: text
