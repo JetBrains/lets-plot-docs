@@ -85,12 +85,12 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">What is new in 3.2.0</a><ul>
-<li><a class="reference internal" href="#aesthetics-stroke-and-linewidth">Aesthetics <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth</span></code></a></li>
-<li><a class="reference internal" href="#lollipop-plot">Lollipop Plot</a></li>
-<li><a class="reference internal" href="#horizontal-error-bars-and-vertical-dodge">Horizontal error bars and vertical “dodge”</a></li>
-<li><a class="reference internal" href="#multi-line-labels-in-legends">Multi-line Labels in Legends</a></li>
-<li><a class="reference internal" href="#colorbar-in-geom-imshow">Colorbar in <code class="docutils literal notranslate"><span class="pre">geom_imshow()</span></code></a></li>
+<li><a class="reference internal" href="#">What is new in 4.0.0</a><ul>
+<li><a class="reference internal" href="#a-number-of-geometry-defaults-changed">A Number of Geometry Defaults Changed</a></li>
+<li><a class="reference internal" href="#support-for-variadic-line-width-and-or-color-in-geom-line-and-geom-path">Support for Variadic Line Width and/or Color in <code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_line()</span></code> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_path()</span></code></a></li>
+<li><a class="reference internal" href="#parameter-size-unit-in-geom-pie">Parameter <code class="docutils literal notranslate"><span class="pre">&quot;size_unit&quot;</span></code> in <code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a></li>
+<li><a class="reference internal" href="#stroke-and-spacers-in-geom-pie">Stroke and Spacers in <code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a></li>
+<li><a class="reference internal" href="#new-theme-void-geometries-and-statistics">New <code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_void()</span></code>, Geometries and Statistics</a></li>
 <li><a class="reference internal" href="#change-log">Change Log</a></li>
 </ul>
 </li>
@@ -125,30 +125,57 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <section id="what-is-new-in-3-2-0">
-<h1>What is new in 3.2.0<a class="headerlink" href="#what-is-new-in-3-2-0" title="Permalink to this headline">¶</a></h1>
-<section id="aesthetics-stroke-and-linewidth">
-<h2>Aesthetics <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth</span></code><a class="headerlink" href="#aesthetics-stroke-and-linewidth" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../_images/stroke.png"><img alt="../_images/stroke.png" src="../_images/stroke.png" style="width: 336px;" /></a>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/aes_stroke.ipynb">example notebook</a>.</p>
-<p>See also <a class="reference internal" href="api/lets_plot.geom_lollipop.html#lets_plot.geom_lollipop" title="lets_plot.geom_lollipop"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_lollipop()</span></code></a> example below.</p>
+  <section id="what-is-new-in-4-0-0">
+<h1>What is new in 4.0.0<a class="headerlink" href="#what-is-new-in-4-0-0" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">The major version was bumped to 4 due to a major package refactoring that the project has undergone.</div>
+<div class="line">This refactoring doesn’t affect the Python API, however, as a result of package names changed,</div>
+<div class="line">Lets-Plot v4.0.0 is partially incompatible with Lets-Plot Kotlin API versions 4.4.1 and earlier.</div>
+</div>
+<section id="a-number-of-geometry-defaults-changed">
+<h2>A Number of Geometry Defaults Changed<a class="headerlink" href="#a-number-of-geometry-defaults-changed" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The default qualitative color palette is now
+<a class="reference external" href="https://colorbrewer2.org/#type=qualitative&amp;scheme=Set1&amp;n=9">Color Brewer “Set1”</a>
+(was <a class="reference external" href="https://colorbrewer2.org/#type=qualitative&amp;scheme=Set2&amp;n=8">“Set2”</a>).</p></li>
+<li><p>Slightly bigger default size of points and width of lines.</p></li>
+<li><p>Flavor-aware default colors for points, lines etc.
+<a class="reference internal" href="../_images/geom_defaults.png"><img alt="geom_defaults-img" src="../_images/geom_defaults.png" style="width: 504px;" /></a>
+<a class="reference internal" href="../_images/flavor_geom_colors.png"><img alt="flavor_geom_colors-img" src="../_images/flavor_geom_colors.png" style="width: 1024px;" /></a>
+See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/geom_theme_colors.ipynb">example notebook</a>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Size of points is slightly adjusted to match the width of a line of the same “size”.
+<a class="reference internal" href="../_images/point_vs_line.png"><img alt="point_vs_line-img" src="../_images/point_vs_line.png" style="width: 170px;" /></a></p></li>
+</ul>
 </section>
-<section id="lollipop-plot">
-<h2>Lollipop Plot<a class="headerlink" href="#lollipop-plot" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../_images/lollipop.png"><img alt="../_images/lollipop.png" src="../_images/lollipop.png" style="width: 600px;" /></a>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geom_lollipop.ipynb">example notebook</a>.</p>
+<section id="support-for-variadic-line-width-and-or-color-in-geom-line-and-geom-path">
+<h2>Support for Variadic Line Width and/or Color in <a class="reference internal" href="api/lets_plot.geom_line.html#lets_plot.geom_line" title="lets_plot.geom_line"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_line()</span></code></a> and <a class="reference internal" href="api/lets_plot.geom_path.html#lets_plot.geom_path" title="lets_plot.geom_path"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_path()</span></code></a><a class="headerlink" href="#support-for-variadic-line-width-and-or-color-in-geom-line-and-geom-path" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/variadic_width.png"><img alt="../_images/variadic_width.png" src="../_images/variadic_width.png" style="width: 455px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/aes_size_color_variadic_lines.ipynb">example notebook</a>.</p>
 </section>
-<section id="horizontal-error-bars-and-vertical-dodge">
-<h2>Horizontal error bars and vertical “dodge”<a class="headerlink" href="#horizontal-error-bars-and-vertical-dodge" title="Permalink to this headline">¶</a></h2>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/horizontal_error_bars.ipynb">example notebook</a>.</p>
+<section id="parameter-size-unit-in-geom-pie">
+<h2>Parameter <code class="docutils literal notranslate"><span class="pre">&quot;size_unit&quot;</span></code> in <a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a><a class="headerlink" href="#parameter-size-unit-in-geom-pie" title="Permalink to this headline">¶</a></h2>
+<p>A way to specify size of the pie in units relative to the plot size.</p>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/geom_pie_size_unit.ipynb">example notebook</a>.</p>
 </section>
-<section id="multi-line-labels-in-legends">
-<h2>Multi-line Labels in Legends<a class="headerlink" href="#multi-line-labels-in-legends" title="Permalink to this headline">¶</a></h2>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/legend_text_multiline.ipynb">example notebook</a>.</p>
+<section id="stroke-and-spacers-in-geom-pie">
+<h2>Stroke and Spacers in <a class="reference internal" href="api/lets_plot.geom_pie.html#lets_plot.geom_pie" title="lets_plot.geom_pie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pie()</span></code></a><a class="headerlink" href="#stroke-and-spacers-in-geom-pie" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/pie_stroke.png"><img alt="../_images/pie_stroke.png" src="../_images/pie_stroke.png" style="width: 162px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/geom_pie_stroke_and_spacers.ipynb">example notebook</a>.</p>
 </section>
-<section id="colorbar-in-geom-imshow">
-<h2>Colorbar in <code class="docutils literal notranslate"><span class="pre">geom_imshow()</span></code><a class="headerlink" href="#colorbar-in-geom-imshow" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../_images/imshow_legend.png"><img alt="../_images/imshow_legend.png" src="../_images/imshow_legend.png" style="width: 514px;" /></a>
+<section id="new-theme-void-geometries-and-statistics">
+<h2>New <a class="reference internal" href="api/lets_plot.theme_void.html#lets_plot.theme_void" title="lets_plot.theme_void"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_void()</span></code></a>, Geometries and Statistics<a class="headerlink" href="#new-theme-void-geometries-and-statistics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/lets_plot.theme_void.html#lets_plot.theme_void" title="lets_plot.theme_void"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme_void()</span></code></a>:
+<a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/theme_void.ipynb">example</a>.</p></li>
+<li><p><a class="reference internal" href="api/lets_plot.geom_function.html#lets_plot.geom_function" title="lets_plot.geom_function"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_function()</span></code></a>: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/geom_function.ipynb">example</a>.</p></li>
+<li><p><a class="reference internal" href="api/lets_plot.stat_ecdf.html#lets_plot.stat_ecdf" title="lets_plot.stat_ecdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat_ecdf()</span></code></a>: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/stat_ecdf.ipynb">example</a>.</p></li>
+<li><p><a class="reference internal" href="api/lets_plot.stat_summary.html#lets_plot.stat_summary" title="lets_plot.stat_summary"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat_summary()</span></code></a>: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/stat_summary.ipynb">example</a>.</p></li>
+<li><p><a class="reference internal" href="api/lets_plot.stat_summary_bin.html#lets_plot.stat_summary_bin" title="lets_plot.stat_summary_bin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat_summary_bin()</span></code></a>: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/stat_summary_bin.ipynb">example</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sum&quot;</span></code> statistic: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/stat_sum.ipynb">example</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;boxplot_outlier&quot;</span></code> statistic: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/stat_boxplot_outlier.ipynb">example</a>.</p></li>
+</ul>
 </section>
 <section id="change-log">
 <h2>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
