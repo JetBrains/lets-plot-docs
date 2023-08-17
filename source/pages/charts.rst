@@ -230,6 +230,8 @@ Examples:
 
 :py:mod:`ggmarginal <lets_plot.ggmarginal>`
 
+See also: :ref:`Joint Plot <bistro_joint_plot>`, :ref:`Residual Plot <bistro_residual_plot>`.
+
 Examples:
 
 - .. extref:: marginal_layers

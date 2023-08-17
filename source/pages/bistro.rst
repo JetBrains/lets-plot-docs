@@ -11,6 +11,8 @@ Exploratory Data Analysis (EDA) is an art of looking at one or more datasets in 
 Below are a few instruments from the 'bistro' package that could help you with your EDA investigations.
 
 
+.. _bistro_corr_plot:
+
 Correlation Plot
 ----------------
 
@@ -43,6 +45,8 @@ Examples:
 - .. extref:: malnutrition
       :type: text
 
+
+.. _bistro_qq_plot:
 
 Q-Q Plot
 --------
@@ -77,6 +81,8 @@ Examples:
       :type: text
 
 
+.. _bistro_joint_plot:
+
 Joint Plot
 ----------
 
@@ -105,6 +111,8 @@ Examples:
 - .. extref:: joint_plot
       :type: text
 
+
+.. _bistro_residual_plot:
 
 Residual Plot
 -------------
