@@ -118,6 +118,9 @@ Raster Tiles
 
 With Lets-Plot you can use ZXY raster tiles provided by 3rd party maptile services.
 
+.. warning::
+  Always read the providers **Terms of Service** before using this provider's tiles in your project.
+
 Some services provide free of charge raster tilesets. The ``tilesets`` module in Lets-Plot contains many such tilesets pre-configured.
 
 Again, you can use these tilesets to configure Lets-Plot globally or on the per-plot basis:
@@ -127,8 +130,6 @@ Again, you can use these tilesets to configure Lets-Plot globally or on the per-
     from lets_plot import tilesets
 
     ggplot() + geom_livemap(tiles=tilesets.OSM)
-
-**Important**: always read the providers **Terms of Service** before using this provider's tiles in your project.
 
 
 .. _basemap_tiles_osm_tiles:
