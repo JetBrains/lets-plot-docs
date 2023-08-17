@@ -7,15 +7,16 @@ Charts
 ======
 
 
-|allowed-data-types-icon| Data
+|data-icon| Data
 ------------------------------
 
-.. |allowed-data-types-icon| image:: /_static/images/icons/charts/allowed-data-types.png
+.. |data-icon| image:: /_static/images/icons/charts/data.svg
 
 
 Every layer may have some data associated with it.
 The "data" refers to a table of data where each row contains an observation
 and each column represents a variable that describes some property of each observation.
+
 Data in this format is sometimes referred to as tidy data, flat data, primary data, atomic data, and unit record data.
 
 You can pass tidy data to Lets-Plot in form of a **Pandas** Dataframe, a **Polars** Dataframe or just a dictionary: |allowed_data_types|.
@@ -84,6 +85,8 @@ Examples:
       :type: text
 - .. extref:: map_use_crs
       :type: text
+- .. extref:: aes_size_color_variadic_lines
+      :type: text
 
 
 |discrete-icon| Discrete
@@ -108,9 +111,17 @@ Examples:
       :type: text
 - .. extref:: annotations_for_pie
       :type: text
+- .. extref:: geom_pie_size_unit
+      :type: text
+- .. extref:: geom_pie_stroke_and_spacers
+      :type: text
+- .. extref:: stat_boxplot_outlier
+      :type: text
 - .. extref:: geom_lollipop
       :type: text
 - .. extref:: stat_count2d_vars
+      :type: text
+- .. extref:: stat_sum
       :type: text
 - .. extref:: comparisons
       :type: text
@@ -222,12 +233,46 @@ Examples:
       :text: qualitative
 
 
+|stats-icon| Stats
+------------------
+
+.. |stats-icon| image:: /_static/images/icons/charts/stats.png
+
+:py:mod:`stat_ecdf() <lets_plot.stat_ecdf>`,
+:py:mod:`stat_summary() <lets_plot.stat_summary>`,
+:py:mod:`stat_summary_bin() <lets_plot.stat_summary_bin>`
+
+Examples:
+
+- .. extref:: stat_ecdf
+      :type: text
+- .. extref:: stat_summary
+      :type: text
+- .. extref:: stat_summary_bin
+      :type: text
+
+
+|function-icon| Function
+------------------------
+
+.. |function-icon| image:: /_static/images/icons/charts/function.png
+
+:py:mod:`function <lets_plot.geom_function>`
+
+Examples:
+
+- .. extref:: geom_function
+      :type: text
+
+
 |marginal-icon| Marginal Plots
 ------------------------------
 
 .. |marginal-icon| image:: /_static/images/icons/charts/marginal.svg
 
 :py:mod:`ggmarginal <lets_plot.ggmarginal>`
+
+See also: :ref:`Joint Plot <bistro_joint_plot>`, :ref:`Residual Plot <bistro_residual_plot>`.
 
 Examples:
 
@@ -453,6 +498,7 @@ Predefined themes:
 :py:mod:`classic <lets_plot.theme_classic>`,
 :py:mod:`light <lets_plot.theme_light>`,
 :py:mod:`minimal <lets_plot.theme_minimal>`,
+:py:mod:`void <lets_plot.theme_void>`,
 :py:mod:`none <lets_plot.theme_none>`
 
 .. panels::
@@ -492,13 +538,15 @@ Color schemes (flavors):
 .. extref:: flavors
   :image: common
   :width: 1000
-  :height: 133
+  :height: 117
 
 Examples:
 
 - .. extref:: default_theme
       :type: text
 - .. extref:: themes
+      :type: text
+- .. extref:: geom_theme_colors
       :type: text
 - .. extref:: theme_flavors
       :type: text
@@ -544,9 +592,10 @@ Cookbooks
       :type: text
 
 
-Articles
---------
+Resources
+---------
 
+- :ref:`EDA Examples <eda>`
 - `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
 - `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
 

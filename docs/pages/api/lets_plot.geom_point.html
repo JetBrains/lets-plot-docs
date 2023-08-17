@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>3.2.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.0.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -129,7 +129,7 @@
 Aesthetic mappings describe the way that variables in the data are
 mapped to plot “aesthetics”.</p>
 </dd>
-<dt><strong>data</strong><span class="classifier">dict or <cite>DataFrame</cite> or <cite>polars.DataFrame</cite> or <cite>GeoDataFrame</cite></span></dt><dd><p>The data to be displayed in this layer. If None, the default, the data
+<dt><strong>data</strong><span class="classifier">dict or Pandas or Polars <cite>DataFrame</cite> or <cite>GeoDataFrame</cite></span></dt><dd><p>The data to be displayed in this layer. If None, the default, the data
 is inherited from the plot data as specified in the call to ggplot.</p>
 </dd>
 <dt><strong>stat</strong><span class="classifier">str, default=’identity’</span></dt><dd><p>The statistical transformation to use on the data for this layer, as a string.
@@ -137,7 +137,8 @@ Supported transformations: ‘identity’ (leaves the data unchanged),
 ‘count’ (counts number of points with same x-axis coordinate),
 ‘bin’ (counts number of points with x-axis coordinate in the same bin),
 ‘smooth’ (performs smoothing - linear default),
-‘density’ (computes and draws kernel density estimate).</p>
+‘density’ (computes and draws kernel density estimate),
+‘sum’ (counts the number of points at each location - might help to workaround overplotting).</p>
 </dd>
 <dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite>, default=’identity’</span></dt><dd><p>Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
 or the result of a call to a position adjustment function.</p>
@@ -189,8 +190,8 @@ and one categorical variable, or two categorical variables.</p>
 <li><p>x : x-axis value.</p></li>
 <li><p>y : y-axis value.</p></li>
 <li><p>alpha : transparency level of the point. Accept values between 0 and 1.</p></li>
-<li><p>color (colour) : color of the geometry. String in the following formats: RGB/RGBA (e.g. “rgb(0, 0, 255)”); HEX (e.g. “#0000FF”); color name (e.g. “red”).</p></li>
-<li><p>fill : fill color. Is applied only to the points of shapes having inner area. String in the following formats: RGB/RGBA (e.g. “rgb(0, 0, 255)”); HEX (e.g. “#0000FF”); color name (e.g. “red”).</p></li>
+<li><p>color (colour) : color of the geometry. String in the following formats: RGB/RGBA (e.g. “rgb(0, 0, 255)”); HEX (e.g. “#0000FF”); color name (e.g. “red”); role name (“pen”, “paper” or “brush”).</p></li>
+<li><p>fill : fill color. Is applied only to the points of shapes having inner area. String in the following formats: RGB/RGBA (e.g. “rgb(0, 0, 255)”); HEX (e.g. “#0000FF”); color name (e.g. “red”); role name (“pen”, “paper” or “brush”).</p></li>
 <li><p>shape : shape of the point, an integer from 0 to 25.</p></li>
 <li><p>size : size of the point.</p></li>
 <li><p>stroke : width of the shape border. Applied only to the shapes having border.</p></li>
@@ -240,7 +241,7 @@ and one categorical variable, or two categorical variables.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="EEXTuV"></div>
+<div id="wfOhWb"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -251,7 +252,7 @@ and one categorical variable, or two categorical variables.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v3.2.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.0.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -264,13 +265,13 @@ and one categorical variable, or two categorical variables.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("EEXTuV").appendChild(div);
+            document.getElementById("wfOhWb").appendChild(div);
         };
-        var e = document.getElementById("EEXTuV");
+        var e = document.getElementById("wfOhWb");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="T6n9RY"></div>
+</div><div class="output text_html">   <div id="n0bVWS"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -297,7 +298,7 @@ and one categorical variable, or two categorical variables.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("T6n9RY");
+           var plotContainer = document.getElementById("n0bVWS");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -324,7 +325,7 @@ and one categorical variable, or two categorical variables.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="K9Sl37"></div>
+<div id="UmZvvo"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -335,7 +336,7 @@ and one categorical variable, or two categorical variables.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v3.2.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.0.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -348,13 +349,13 @@ and one categorical variable, or two categorical variables.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("K9Sl37").appendChild(div);
+            document.getElementById("UmZvvo").appendChild(div);
         };
-        var e = document.getElementById("K9Sl37");
+        var e = document.getElementById("UmZvvo");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="yIZAt7"></div>
+</div><div class="output text_html">   <div id="yssBA6"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -385,7 +386,7 @@ and one categorical variable, or two categorical variables.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("yIZAt7");
+           var plotContainer = document.getElementById("yssBA6");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -416,7 +417,7 @@ and one categorical variable, or two categorical variables.</p>
 </pre></div>
 </div>
 <div class="output text_html">
-<div id="zliJ8q"></div>
+<div id="vOmfmA"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -427,7 +428,7 @@ and one categorical variable, or two categorical variables.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v3.2.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.0.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -440,13 +441,13 @@ and one categorical variable, or two categorical variables.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("zliJ8q").appendChild(div);
+            document.getElementById("vOmfmA").appendChild(div);
         };
-        var e = document.getElementById("zliJ8q");
+        var e = document.getElementById("vOmfmA");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="lx3fzF"></div>
+</div><div class="output text_html">   <div id="mt2dGO"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -505,7 +506,7 @@ and one categorical variable, or two categorical variables.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("lx3fzF");
+           var plotContainer = document.getElementById("mt2dGO");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
