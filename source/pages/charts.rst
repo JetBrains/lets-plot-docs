@@ -690,6 +690,9 @@ Examples
     ---
     .. extref:: new_zealand_dem_remake
 
+    ---
+    .. extref:: world_values_survey
+
 
 .. raw:: html
 
