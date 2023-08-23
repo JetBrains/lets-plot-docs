@@ -236,7 +236,7 @@ Examples:
 |stats-icon| Stats
 ------------------
 
-.. |stats-icon| image:: /_static/images/icons/charts/stats.png
+.. |stats-icon| image:: /_static/images/icons/charts/stats.svg
 
 :py:mod:`stat_ecdf() <lets_plot.stat_ecdf>`,
 :py:mod:`stat_summary() <lets_plot.stat_summary>`,
@@ -255,7 +255,7 @@ Examples:
 |function-icon| Function
 ------------------------
 
-.. |function-icon| image:: /_static/images/icons/charts/function.png
+.. |function-icon| image:: /_static/images/icons/charts/function.svg
 
 :py:mod:`function <lets_plot.geom_function>`
 
