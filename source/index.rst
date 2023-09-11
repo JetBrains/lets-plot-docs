@@ -17,8 +17,8 @@
     'bistro' plots <pages/bistro>
     What is new <pages/whats_new>
 
-An Open-source Plotting Library for Statistical Data
-====================================================
+Python Plotting Library Based on the Grammar of Graphics
+========================================================
 
 .. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
