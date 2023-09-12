@@ -121,6 +121,8 @@ Examples:
       :type: text
 - .. extref:: stat_sum
       :type: text
+- .. extref:: param_stat_sum
+      :type: text
 - .. extref:: discrete_color_scales
       :type: text
       :text: Using scales
@@ -520,6 +522,8 @@ Examples:
 - .. extref:: axis_position
       :type: text
 - .. extref:: axis_text_angle
+      :type: text
+- .. extref:: theme_plot_message
       :type: text
 
 
