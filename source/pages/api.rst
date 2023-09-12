@@ -119,6 +119,7 @@ Stats
 .. autosummary::
     :toctree: api
 
+    stat_sum
     stat_summary
     stat_summary_bin
     stat_ecdf
