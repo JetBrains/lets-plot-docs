@@ -222,6 +222,9 @@ Examples
     .. extref:: internet_use_and_activities
 
     ---
+    .. extref:: zooming
+
+    ---
     .. extref:: maps_and_geocoding
 
 .. raw:: html

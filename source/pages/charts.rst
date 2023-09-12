@@ -121,9 +121,12 @@ Examples:
       :type: text
 - .. extref:: stat_sum
       :type: text
+- .. extref:: discrete_color_scales
+      :type: text
+      :text: Using scales
 - .. extref:: colors_viridis
-    :type: text
-    :text: viridis colors
+      :type: text
+      :text: Viridis colors
 
 
 |as_discrete-icon| Ordering Categories, ``as_discrete()``
@@ -188,6 +191,9 @@ Examples:
       :type: text
 - .. extref:: y_orientation
       :type: text
+- .. extref:: continuous_color_scales
+      :type: text
+      :text: Using scales
 
 
 |stats-icon| Stats
