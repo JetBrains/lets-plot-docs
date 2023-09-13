@@ -103,8 +103,6 @@ Examples:
 
 - .. extref:: bar_geometry
       :type: text
-- .. extref:: geom_bar_identity
-      :type: text
 - .. extref:: geom_pie
       :type: text
 - .. extref:: geom_pie_on_map
@@ -121,37 +119,14 @@ Examples:
       :type: text
 - .. extref:: stat_count2d_vars
       :type: text
-- .. extref:: stat_sum
+- .. extref:: geom_count
       :type: text
-- .. extref:: comparisons
+- .. extref:: discrete_color_scales
       :type: text
-- .. extref:: general_purpose_stats
+      :text: Using scales
+- .. extref:: colors_viridis
       :type: text
-- Using scales: |continuous_scales|, |discrete_scales|, |identity_scales|, |manual_scales|, |brewer_scale|, |colors_viridis|, |grey_scale|
-- .. extref:: dodge_position
-      :type: text
-
-.. |brewer_scale| extref:: brewer_scale
-    :type: text
-    :text: brewer colors
-.. |colors_viridis| extref:: colors_viridis
-    :type: text
-    :text: viridis colors
-.. |continuous_scales| extref:: continuous_scales
-    :type: text
-    :text: continuous
-.. |discrete_scales| extref:: discrete_scales
-    :type: text
-    :text: discrete
-.. |grey_scale| extref:: grey_scale
-    :type: text
-    :text: grey-scale colors
-.. |identity_scales| extref:: identity_scales
-    :type: text
-    :text: identity
-.. |manual_scales| extref:: manual_scales
-    :type: text
-    :text: manual
+      :text: Viridis colors
 
 
 |as_discrete-icon| Ordering Categories, ``as_discrete()``
@@ -185,8 +160,6 @@ Examples:
       :type: text
 - .. extref:: how_to_draw_curve
       :type: text
-- .. extref:: 3_variables
-      :type: text
 
 
 |visualization-of-distribution-icon| Visualization of Distribution
@@ -208,8 +181,6 @@ Examples:
       :type: text
 - .. extref:: distributions
       :type: text
-- .. extref:: 1d_distributions
-      :type: text
 - .. extref:: dot_plots
       :type: text
 - .. extref:: geom_violin
@@ -220,17 +191,9 @@ Examples:
       :type: text
 - .. extref:: y_orientation
       :type: text
-- Using scales: |gradient_scale|, |gradient2_scale|, |hue_scale|
-
-.. |gradient_scale| extref:: gradient_scale
+- .. extref:: continuous_color_scales
       :type: text
-      :text: continuous
-.. |gradient2_scale| extref:: gradient2_scale
-      :type: text
-      :text: diverging
-.. |hue_scale| extref:: hue_scale
-      :type: text
-      :text: qualitative
+      :text: Using scales
 
 
 |stats-icon| Stats
@@ -296,8 +259,6 @@ Examples:
       :type: text
 - .. extref:: horizontal_error_bars
       :type: text
-- .. extref:: comparisons
-      :type: text
 
 
 |smoothing-icon| Smoothing
@@ -309,8 +270,6 @@ Examples:
 
 Examples:
 
-- .. extref:: simple_linear_smoothing
-      :type: text
 - .. extref:: scatter_plot
       :type: text
 - .. extref:: geom_smooth_matrix
@@ -329,10 +288,6 @@ Examples:
 Examples:
 
 - .. extref:: density_2d
-      :type: text
-- .. extref:: general_purpose_stats
-      :type: text
-- .. extref:: 2d_distributions
       :type: text
 
 
@@ -421,8 +376,6 @@ Examples:
 - .. extref:: coordinate_systems
       :type: text
 - .. extref:: flip_coordinates
-      :type: text
-- .. extref:: map_coordinates
       :type: text
 
 
@@ -556,12 +509,6 @@ Examples:
       :type: text
 - .. extref:: tooltip_config
       :type: text
-- .. extref:: comparisons
-      :type: text
-- .. extref:: guide_legend
-      :type: text
-- .. extref:: legend_place
-      :type: text
 - .. extref:: title_subtitle_caption
       :type: text
 - .. extref:: tooltips_theme
@@ -573,6 +520,8 @@ Examples:
 - .. extref:: axis_position
       :type: text
 - .. extref:: axis_text_angle
+      :type: text
+- .. extref:: theme_plot_message
       :type: text
 
 
@@ -596,10 +545,23 @@ Resources
 ---------
 
 - :ref:`EDA Examples <eda>`
-- `Data Visualisation <https://aeturrell.github.io/python4DS/data-visualise.html>`__ section in `Python for Data Science <https://aeturrell.github.io/python4DS>`__
 - `Easy Data Visualisation for Tidy Data with Lets-Plot <https://aeturrell.github.io/coding-for-economists/vis-letsplot.html>`__ section in `Coding for Economists <https://aeturrell.github.io/coding-for-economists>`__
 - `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
 - `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
+
+.. panels::
+    :container: + python-4ds-book
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: /_static/images/Python4DS.png
+        :target: https://aeturrell.github.io/python4DS/
+
+    ---
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+
+    This book will walk you through the main tools and technics of data science in Python: importing, cleaning, transforming, and visualising data.
+
+    In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy to read and comprehencive guides to data visualization using the Lets-Plot.
 
 
 Examples
@@ -682,9 +644,6 @@ Examples
 
     ---
     .. extref:: marginal_layers
-
-    ---
-    .. extref:: viridis_scale
 
     ---
     .. extref:: map_use_crs

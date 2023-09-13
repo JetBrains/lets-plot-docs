@@ -222,22 +222,10 @@ Examples
     .. extref:: internet_use_and_activities
 
     ---
-    .. extref:: with_clipping
-
-    ---
-    .. extref:: without_clipping
+    .. extref:: zooming
 
     ---
     .. extref:: maps_and_geocoding
-
-    ---
-    .. extref:: geom_map
-
-    ---
-    .. extref:: geom_polygon
-
-    ---
-    .. extref:: map_coordinates
 
 .. raw:: html
 

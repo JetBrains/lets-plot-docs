@@ -62,6 +62,7 @@ Standard Geometries
     geom_line
     geom_smooth
     geom_bar
+    geom_count
     geom_pie
     geom_lollipop
     geom_histogram
@@ -119,6 +120,7 @@ Stats
 .. autosummary::
     :toctree: api
 
+    stat_sum
     stat_summary
     stat_summary_bin
     stat_ecdf

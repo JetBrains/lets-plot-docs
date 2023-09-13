@@ -83,7 +83,8 @@ New :py:mod:`theme_void() <lets_plot.theme_void>`, Geometries and Statistics
 -  :py:mod:`stat_ecdf() <lets_plot.stat_ecdf>`: |stat_ecdf|.
 -  :py:mod:`stat_summary() <lets_plot.stat_summary>`: |stat_summary|.
 -  :py:mod:`stat_summary_bin() <lets_plot.stat_summary_bin>`: |stat_summary_bin|.
--  ``"sum"`` statistic: |stat_sum|.
+-  ``"sum"`` statistic:
+   `example <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23c/stat_sum.ipynb>`__.
 -  ``"boxplot_outlier"`` statistic: |stat_boxplot_outlier|.
 
 .. |geom_function| extref:: geom_function
@@ -96,9 +97,6 @@ New :py:mod:`theme_void() <lets_plot.theme_void>`, Geometries and Statistics
     :type: text
     :text: example
 .. |stat_summary_bin| extref:: stat_summary_bin
-    :type: text
-    :text: example
-.. |stat_sum| extref:: stat_sum
     :type: text
     :text: example
 .. |stat_boxplot_outlier| extref:: stat_boxplot_outlier
