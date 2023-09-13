@@ -62,6 +62,7 @@ Standard Geometries
     geom_line
     geom_smooth
     geom_bar
+    geom_count
     geom_pie
     geom_lollipop
     geom_histogram

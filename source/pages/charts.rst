@@ -119,9 +119,7 @@ Examples:
       :type: text
 - .. extref:: stat_count2d_vars
       :type: text
-- .. extref:: stat_sum
-      :type: text
-- .. extref:: param_stat_sum
+- .. extref:: geom_count
       :type: text
 - .. extref:: discrete_color_scales
       :type: text
