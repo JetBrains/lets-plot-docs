@@ -545,10 +545,23 @@ Resources
 ---------
 
 - :ref:`EDA Examples <eda>`
-- `Data Visualisation <https://aeturrell.github.io/python4DS/data-visualise.html>`__ section in `Python for Data Science <https://aeturrell.github.io/python4DS>`__
 - `Easy Data Visualisation for Tidy Data with Lets-Plot <https://aeturrell.github.io/coding-for-economists/vis-letsplot.html>`__ section in `Coding for Economists <https://aeturrell.github.io/coding-for-economists>`__
 - `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
 - `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
+
+.. panels::
+    :container: + python-4ds-book
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: /_static/images/Python4DS.png
+        :target: https://aeturrell.github.io/python4DS/
+
+    ---
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+
+    This book will walk you through the main tools and technics of data science in Python: importing, cleaning, transforming, and visualising data.
+
+    In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy to read and comprehencive guides to data visualization using the Lets-Plot.
 
 
 Examples
