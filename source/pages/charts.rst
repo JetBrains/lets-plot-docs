@@ -337,8 +337,6 @@ Examples:
       :type: text
 - .. extref:: map_use_crs
       :type: text
-- .. extref:: basic_image_matrix
-      :type: text
 - .. extref:: image_matrix
       :type: text
 

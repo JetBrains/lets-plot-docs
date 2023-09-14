@@ -21,9 +21,6 @@ Correlation Plot
 .. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
-    .. extref:: corr_plot
-
-    ---
     .. extref:: correlation_plot
 
     ---
@@ -34,10 +31,12 @@ Correlation Plot
     .. extref:: correlation_plot
         :image: bistro-2
 
+    ---
+    .. extref:: correlation_plot
+        :image: bistro-3
+
 Examples:
 
-- .. extref:: corr_plot
-      :type: text
 - .. extref:: correlation_plot
       :type: text
 - .. extref:: themes
