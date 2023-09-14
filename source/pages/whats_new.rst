@@ -33,6 +33,7 @@ A Number of Geometry Defaults Changed
 .. |geom_theme_colors| extref:: geom_theme_colors
     :type: text
     :text: example notebook
+
 -  Size of points is slightly adjusted to match the width of a line of the same "size".
    |point_vs_line-img|
 

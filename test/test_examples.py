@@ -28,8 +28,8 @@ def paths_contains_name(paths, name):
             return True
     return False
 
-def generate_local_notebook_links():
-    for page in generate_pages(BUILD_DIR):
+def generate_local_notebook_links(excluded_names=[]):
+    for page in generate_pages(BUILD_DIR, excluded_names=excluded_names):
         with codecs.open(page, 'r', 'utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
@@ -49,7 +49,7 @@ def test_notebook_has_no_errors(notebook):
         check_lets_plot_message_errors(parser, parser_type, notebook)
         check_warnings(parser, parser_type, notebook)
 
-@pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links())
+@pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links(excluded_names=["whats_new"]))
 def test_notebook_has_file(page, a):
     nb_name = a['href'].split('/')[-1]
     assert paths_contains_name(notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
