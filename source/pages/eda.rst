@@ -1,5 +1,7 @@
 .. _eda:
 
+:orphan:
+
 .. title:: EDA Examples
 
 
