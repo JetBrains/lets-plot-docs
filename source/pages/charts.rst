@@ -557,9 +557,9 @@ Resources
     ---
     :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
 
-    This book will walk you through the main tools and technics of data science in Python: importing, cleaning, transforming, and visualising data.
+    This book will walk you through the main tools and techniques of data science in Python: importing, cleaning, transforming, and visualizing data.
 
-    In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy to read and comprehencive guides to data visualization using the Lets-Plot.
+    In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy-to-read and comprehensive guides to data visualization using the Lets-Plot package.
 
 
 Examples
