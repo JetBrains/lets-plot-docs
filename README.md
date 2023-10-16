@@ -1,4 +1,8 @@
-# Lets-Plot documentation site
+# Lets-Plot Documentation Site
+
+[![official JetBrains project](http://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
+[![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://raw.githubusercontent.com/JetBrains/lets-plot-kotlin/master/LICENSE)
+
 
 This repository contains sources for building and publishing the [Lets-Plot](https://github.com/JetBrains/lets-plot) project [documentation site](https://jetbrains.github.io/lets-plot-docs) using [Sphinx](https://www.sphinx-doc.org) and [GitHub Pages](https://pages.github.com).
 
