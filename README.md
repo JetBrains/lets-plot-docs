@@ -81,6 +81,12 @@ For more details [read the docs](https://docs.pytest.org).
   - index.rst - source for the main page of the site.
 - test/ - directory with tests, running by the `pytest test` command.
 
+## Code of Conduct
+
+This project and the corresponding community are governed by the
+[JetBrains Open Source and Community Code of Conduct](https://confluence.jetbrains.com/display/ALL/JetBrains+Open+Source+and+Community+Code+of+Conduct).
+Please make sure you read it.
+
 ## License
 
 Code and documentation released under the [MIT license](https://github.com/JetBrains/lets-plot-docs/blob/master/LICENSE).
