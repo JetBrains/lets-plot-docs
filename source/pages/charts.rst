@@ -243,8 +243,6 @@ Examples:
 
 - .. extref:: marginal_layers
       :type: text
-- .. extref:: theme_plot_margin
-      :type: text
 
 
 |visualization-of-errors-icon| Visualization of Errors
