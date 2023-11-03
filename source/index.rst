@@ -32,7 +32,7 @@ Python Plotting Library Based on the Grammar of Graphics
       <img alt="MIT License" src="https://img.shields.io/pypi/l/lets-plot?color=yellow&amp;style=flat-square">
     </a>
 
-**Python versions:** 3.7-3.11
+**Python versions:** 3.7-3.12
 
 **OS:** Linux, macOS, Windows
 

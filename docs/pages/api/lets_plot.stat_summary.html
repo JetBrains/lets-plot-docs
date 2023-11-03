@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -184,18 +184,7 @@ They may also be parameters to the paired geom/stat.</p>
 <li><p>..y.. : result of calculating of <cite>fun</cite>.</p></li>
 <li><p>..ymin.. : result of calculating of <cite>fun_min</cite>.</p></li>
 <li><p>..ymax.. : result of calculating of <cite>fun_max</cite>.</p></li>
-<li><p>..count.. : number of observations.</p></li>
-<li><p>..sum.. : sum of observations.</p></li>
-<li><p>..mean.. : mean of observations.</p></li>
-<li><p>..median.. : median of observations.</p></li>
-<li><p>..lq.. : lower quantile defined by first element of the <cite>quantiles</cite> parameter.</p></li>
-<li><p>..mq.. : middle quantile defined by first element of the <cite>quantiles</cite> parameter.</p></li>
-<li><p>..uq.. : upper quantile defined by first element of the <cite>quantiles</cite> parameter.</p></li>
 </ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Variables ..count.., ..sum.., ..mean.., ..median.., ..lq.., ..mq.., ..uq.. would not be computed without mappings.</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -213,7 +202,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="H5Y9T1"></div>
+<div id="So4S91"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -224,7 +213,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.0.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.1.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -237,13 +226,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("H5Y9T1").appendChild(div);
+            document.getElementById("So4S91").appendChild(div);
         };
-        var e = document.getElementById("H5Y9T1");
+        var e = document.getElementById("So4S91");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="fOO38o"></div>
+</div><div class="output text_html">   <div id="IIEMHr"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -273,7 +262,7 @@ They may also be parameters to the paired geom/stat.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("fOO38o");
+           var plotContainer = document.getElementById("IIEMHr");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -285,22 +274,21 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="linenos"> 3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos"> 4</span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="linenos"> 5</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="linenos"> 6</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-<span class="linenos"> 7</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-<span class="linenos"> 8</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
-<span class="hll"><span class="linenos"> 9</span>    <span class="n">stat_summary</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="s1">&#39;..lq..&#39;</span><span class="p">,</span> <span class="n">middle</span><span class="o">=</span><span class="s1">&#39;..mq..&#39;</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="s1">&#39;..uq..&#39;</span><span class="p">),</span> \
-</span><span class="hll"><span class="linenos">10</span>                 <span class="n">geom</span><span class="o">=</span><span class="s1">&#39;boxplot&#39;</span><span class="p">,</span> <span class="n">fatten</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="linenos">5</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos">7</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">9</span>    <span class="n">stat_summary</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s1">&#39;crossbar&#39;</span><span class="p">,</span> <span class="n">fatten</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="OiQXPS"></div>
+<div id="4xMmxf"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -311,7 +299,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.0.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.1.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -324,13 +312,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("OiQXPS").appendChild(div);
+            document.getElementById("4xMmxf").appendChild(div);
         };
-        var e = document.getElementById("OiQXPS");
+        var e = document.getElementById("4xMmxf");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="2HScs5"></div>
+</div><div class="output text_html">   <div id="VOV70j"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -346,28 +334,23 @@ They may also be parameters to the paired geom/stat.</p>
 "kind":"plot",
 "scales":[],
 "layers":[{
-"geom":"boxplot",
+"geom":"crossbar",
 "stat":"summary",
 "mapping":{
-"lower":"..lq..",
-"middle":"..mq..",
-"upper":"..uq.."
 },
 "data_meta":{
 },
 "fatten":5.0,
 "data":{
-"..ymin..":[-2.6197451040897444,-1.5506634310661327,-1.2308643164339552],
-"..ymax..":[2.463242112485286,1.8861859012105302,1.5380365664659692],
-"..lq..":[-0.6033411020364987,-0.7641689056439481,-0.3208609334963185],
-"..mq..":[-0.010700209403377995,-0.17251920748058305,-0.027709036223607045],
-"..uq..":[0.6750714344181392,0.2768353338936702,0.5916490549418189],
-"x":["b","c","a"]
+"..ymin..":[-1.5081532895474827,-2.022314933195735,-2.65517604756347],
+"..ymax..":[1.4039587386592935,3.372296253626673,1.706604953678462],
+"x":["c","a","b"],
+"y":[0.03921067919501581,0.20282940745103578,0.031069997014506523]
 }
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("2HScs5");
+           var plotContainer = document.getElementById("VOV70j");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -395,7 +378,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="7w9YV8"></div>
+<div id="VJJJp8"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -406,7 +389,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.0.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.1.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -419,13 +402,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("7w9YV8").appendChild(div);
+            document.getElementById("VJJJp8").appendChild(div);
         };
-        var e = document.getElementById("7w9YV8");
+        var e = document.getElementById("VJJJp8");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="IqwGZz"></div>
+</div><div class="output text_html">   <div id="gx2siB"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -482,7 +465,7 @@ They may also be parameters to the paired geom/stat.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("IqwGZz");
+           var plotContainer = document.getElementById("gx2siB");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});

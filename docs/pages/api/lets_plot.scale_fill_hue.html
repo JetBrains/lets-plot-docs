@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.1.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -125,11 +125,13 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>h</strong><span class="classifier">list</span></dt><dd><p>Range of hues (two numerics), in [0, 360].</p>
+<dt><strong>h</strong><span class="classifier">list, default=[15, 375]</span></dt><dd><p>Range of hues (two numerics), in [0, 360].</p>
 </dd>
-<dt><strong>c</strong><span class="classifier">int</span></dt><dd><p>Chroma (intensity of color), maximum value varies depending on.</p>
+<dt><strong>c</strong><span class="classifier">int, default=100</span></dt><dd><p>Chroma (intensity of color), maximum value varies depending on.</p>
 </dd>
-<dt><strong>l</strong><span class="classifier">int</span></dt><dd><p>Luminance (lightness), in [0, 100].</p>
+<dt><strong>l</strong><span class="classifier">int, default=65</span></dt><dd><p>Luminance (lightness), in [0, 100].</p>
+</dd>
+<dt><strong>h_start</strong><span class="classifier">int, default=0</span></dt><dd><p>Hue starting point.</p>
 </dd>
 <dt><strong>direction</strong><span class="classifier">{1, -1}, default=1</span></dt><dd><p>Direction to travel around the color wheel, 1=clockwise, -1=counter-clockwise.</p>
 </dd>
@@ -151,7 +153,7 @@ and the default order of their display in guides.</p>
 or a call to a guide function (<cite>guide_colorbar()</cite>, <cite>guide_legend()</cite>)
 specifying additional arguments. ‘none’ will hide the guide.</p>
 </dd>
-<dt><strong>trans</strong><span class="classifier">{‘identity’, ‘log10’, ‘sqrt’, ‘reverse’}</span></dt><dd><p>Name of built-in transformation.</p>
+<dt><strong>trans</strong><span class="classifier">{‘identity’, ‘log10’, ‘log2’, ‘symlog’, ‘sqrt’, ‘reverse’}</span></dt><dd><p>Name of built-in transformation.</p>
 </dd>
 <dt><strong>format</strong><span class="classifier">str</span></dt><dd><p>Define the format for labels on the scale. The syntax resembles Python’s:
 ‘.2f’ -&gt; ‘12.45’
@@ -178,7 +180,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
 <span class="linenos">3</span><span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
 <span class="linenos">4</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
 <span class="linenos">5</span>    <span class="n">geom_tile</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
-<span class="hll"><span class="linenos">6</span>    <span class="n">scale_fill_hue</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">6</span>    <span class="n">scale_fill_hue</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span> <span class="o">+</span> \
 </span><span class="linenos">7</span>    <span class="n">coord_cartesian</span><span class="p">()</span> <span class="o">+</span> \
 <span class="linenos">8</span>    <span class="n">ggsize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </pre></div>
@@ -186,7 +188,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="VrnJS2"></div>
+<div id="jNeQ11"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -197,7 +199,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.0.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.1.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -210,13 +212,13 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("VrnJS2").appendChild(div);
+            document.getElementById("jNeQ11").appendChild(div);
         };
-        var e = document.getElementById("VrnJS2");
+        var e = document.getElementById("jNeQ11");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="srCyka"></div>
+</div><div class="output text_html">   <div id="5Q8zTy"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -239,9 +241,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
 "kind":"plot",
 "scales":[{
 "aesthetic":"fill",
-"h":[0.0,50.0],
-"c":50.0,
-"l":80.0,
+"c":85.0,
 "scale_mapper_kind":"color_hue"
 }],
 "layers":[{
@@ -256,7 +256,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("srCyka");
+           var plotContainer = document.getElementById("5Q8zTy");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
