@@ -9,7 +9,7 @@ Key Features
 
     Grammar of Graphics
 
-    To learn more about the grammar of graphics, we recommend an excellent book called `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__. This will be a good prerequisite for further exploration of the Lets-Plot library.
+    We recommend an excellent book called `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__. This will be a good prerequisite for further exploration of the Lets-Plot library.
 
     ---
     .. image:: /_static/images/icons/features/tooltips.svg
