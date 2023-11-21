@@ -5,11 +5,11 @@ Key Features
     :container: + features-list
     :column: col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2
 
-    .. image:: /_static/images/icons/features/ggplot2-like-api.svg
+    .. image:: /_static/images/icons/features/grammar-of-graphics.png
 
-    ggplot2-like API
+    Grammar of Graphics
 
-    A bridge between R (:ref:`ggplot2 <index_meet_gog>`) and Python Data visualization.
+    To learn more about the grammar of graphics, we recommend an excellent book called `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__. This will be a good prerequisite for further exploration of the Lets-Plot library.
 
     ---
     .. image:: /_static/images/icons/features/tooltips.svg

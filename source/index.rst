@@ -106,26 +106,6 @@ Quickstart
         :title: PyCharm
 
 
-.. _index_meet_gog:
-
-Meet the Grammar of Graphics
-----------------------------
-
-.. panels::
-    :container: + gog-book
-    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
-
-    .. image:: /_static/images/ggplot2-elegant-graphics-for-data-analysis.jpg
-        :target: https://ggplot2-book.org/index.html
-
-    ---
-    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
-
-    Lets-Plot API is largely based on the :ref:`API <api>` provided by `ggplot2 <https://ggplot2.tidyverse.org>`__ package well-known to data scientists who use R.
-
-    To learn more about the grammar of graphics, we recommend an excellent book called "ggplot2: Elegant Graphics for Data Analysis". This will be a good prerequisite for further exploration of the Lets-Plot library.
-
-
 Explore Your Data with Lets-Plot
 --------------------------------
 
