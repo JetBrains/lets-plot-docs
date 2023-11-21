@@ -34,7 +34,7 @@ def generate_local_notebook_links(excluded_names=[]):
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
                 href = a['href']
-                if href.startswith("https://nbviewer.org") and href.split(".")[-1] == "ipynb":
+                if href.startswith("https://nbviewer.org/github/JetBrains") and href.split(".")[-1] == "ipynb":
                     yield page, a
 
 def generate_local_notebook_refs():
