@@ -15,8 +15,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('./ext'))
 
-import sphinx_bootstrap_theme
-
 
 # -- Project information -----------------------------------------------------
 
@@ -34,6 +32,7 @@ extensions = [
     'numpydoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.githubpages',
+    "sphinx_design",
     'jupyter_sphinx',
     'sphinx_panels',
     'create_cname',
@@ -86,20 +85,24 @@ release = lets_plot.__version__
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'bootstrap'
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_theme = "pydata_sphinx_theme"
 html_show_sourcelink = False
-# TODO: html_favicon = "_static/images/favicon.ico"
 html_title = ""
 
 html_theme_options = {
-    'navbar_title': 'Lets-Plot',
-    'navbar_links': [
-      ('API', 'pages/api'),
+    "logo": {
+        "text": "Lets-Plot",
+    },
+    "header_links_before_dropdown": 1,
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/JetBrains/lets-plot",
+            "icon": "fa-brands fa-github",
+            "type": "fontawesome",
+        },
     ],
-    'bootswatch_theme': 'flatly', # List of themes for v3: https://bootswatch.com/3
-    'navbar_sidebarrel': False,
-    'bootstrap_version': '3',
+    "show_prev_next": False,
 }
 
 html_context = {
@@ -133,7 +136,4 @@ templates_path = ['_templates']
 html_sidebars = {
     # Default to no sidebar
     '**': [],
-
-    # local table of contents
-    'pages/api': ['localtoc.html'],
 }

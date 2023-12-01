@@ -18,22 +18,27 @@ Correlation Plot
 
 :py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
 
-    .. extref:: correlation_plot
+    .. grid-item-card::
 
-    ---
-    .. extref:: correlation_plot
-        :image: bistro-1
+        .. extref:: correlation_plot
 
-    ---
-    .. extref:: correlation_plot
-        :image: bistro-2
+    .. grid-item-card::
 
-    ---
-    .. extref:: correlation_plot
-        :image: bistro-3
+        .. extref:: correlation_plot
+            :image: bistro-1
+
+    .. grid-item-card::
+
+        .. extref:: correlation_plot
+            :image: bistro-2
+
+    .. grid-item-card::
+
+        .. extref:: correlation_plot
+            :image: bistro-3
+
 
 Examples:
 
@@ -56,23 +61,28 @@ Q-Q Plot
 :py:mod:`geom_qq2_line() <lets_plot.geom_qq2_line>`,
 :py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
 
-    .. extref:: qq_plots
-        :image: bistro-1
+    .. grid-item-card::
 
-    ---
-    .. extref:: qq_plots
-        :image: bistro-2
+        .. extref:: qq_plots
+            :image: bistro-1
 
-    ---
-    .. extref:: qq_plots
-        :image: bistro-3
+    .. grid-item-card::
 
-    ---
-    .. extref:: qq_plots
-        :image: bistro-4
+        .. extref:: qq_plots
+            :image: bistro-2
+
+    .. grid-item-card::
+
+        .. extref:: qq_plots
+            :image: bistro-3
+
+    .. grid-item-card::
+
+        .. extref:: qq_plots
+            :image: bistro-4
+
 
 Examples:
 
@@ -87,23 +97,28 @@ Joint Plot
 
 :py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
 
-    .. extref:: joint_plot
-        :image: bistro-3
+    .. grid-item-card::
 
-    ---
-    .. extref:: joint_plot
-        :image: bistro-0
+        .. extref:: joint_plot
+            :image: bistro-3
 
-    ---
-    .. extref:: joint_plot
-        :image: bistro-1
+    .. grid-item-card::
 
-    ---
-    .. extref:: joint_plot
-        :image: bistro-2
+        .. extref:: joint_plot
+            :image: bistro-0
+
+    .. grid-item-card::
+
+        .. extref:: joint_plot
+            :image: bistro-1
+
+    .. grid-item-card::
+
+        .. extref:: joint_plot
+            :image: bistro-2
+
 
 Examples:
 
@@ -118,22 +133,27 @@ Residual Plot
 
 :py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
 
-    .. extref:: residual_plot
+    .. grid-item-card::
 
-    ---
-    .. extref:: residual_plot
-        :image: bistro-1
+        .. extref:: residual_plot
 
-    ---
-    .. extref:: residual_plot
-        :image: bistro-2
+    .. grid-item-card::
 
-    ---
-    .. extref:: residual_plot
-        :image: bistro-3
+        .. extref:: residual_plot
+            :image: bistro-1
+
+    .. grid-item-card::
+
+        .. extref:: residual_plot
+            :image: bistro-2
+
+    .. grid-item-card::
+
+        .. extref:: residual_plot
+            :image: bistro-3
+
 
 Examples:
 

@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  addLinkToPyPI();
-  addLinkToGitHub();
-  fixPanels();
+  // TODO: addLinkToPyPI();
+  // TODO: addLinkToGitHub();
+  removeCardShadows();
   addTargetToExternalReferences();
   handlePreviewGallery();
 });
 
+/*
 function addLinkToPyPI() {
   const versionElem = document.querySelector("#navbar .navbar-version b");
   const versionParentElem = versionElem.parentElement;
@@ -15,7 +16,9 @@ function addLinkToPyPI() {
   linkElem.appendChild(versionElem);
   versionParentElem.appendChild(linkElem);
 }
+*/
 
+/*
 function addLinkToGitHub() {
   const logoSize = document.getElementsByClassName('navbar-version')[0].clientHeight;
   const logoElem = document.createElement("div");
@@ -29,11 +32,12 @@ function addLinkToGitHub() {
   linkElem.appendChild(logoElem);
   document.querySelector("#navbar .navbar-header").appendChild(linkElem);
 }
+*/
 
-function fixPanels() {
-  const cards = document.getElementsByClassName('card docutils');
+function removeCardShadows() {
+  const cards = document.getElementsByClassName('sd-card docutils');
   for (let i = 0; i < cards.length; i++)
-    cards[i].classList.remove('shadow');
+    cards[i].classList.remove('sd-shadow-sm');
 }
 
 function addTargetToExternalReferences() {
@@ -44,8 +48,9 @@ function addTargetToExternalReferences() {
 
 function handlePreviewGallery() {
   if (document.getElementsByClassName('preview-gallery').length == 0) return;
+  const gridElementClass = "sd-d-flex-row";
   const previewsPerRow = 4;
-  const previews = document.getElementsByClassName('preview-gallery')[0].getElementsByClassName('d-flex');
+  const previews = document.getElementsByClassName('preview-gallery')[0].getElementsByClassName(gridElementClass);
   const updatePreviewGallery = function (currentHiddenRowId) {
     for (let i = 0; i < previews.length; i++)
       if (i < currentHiddenRowId * previewsPerRow) {

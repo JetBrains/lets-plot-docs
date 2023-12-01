@@ -458,31 +458,37 @@ Predefined themes:
 :py:mod:`void <lets_plot.theme_void>`,
 :py:mod:`none <lets_plot.theme_none>`
 
-.. panels::
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: complete_themes
-        :image: minimal2
+    .. grid-item-card::
 
-    ---
-    .. extref:: complete_themes
-        :image: bw
+        .. extref:: complete_themes
+            :image: minimal2
 
-    ---
-    .. extref:: complete_themes
-        :image: grey
+    .. grid-item-card::
 
-    ---
-    .. extref:: complete_themes
-        :image: classic
+        .. extref:: complete_themes
+            :image: bw
 
-    ---
-    .. extref:: complete_themes
-        :image: light
+    .. grid-item-card::
 
-    ---
-    .. extref:: complete_themes
-        :image: minimal
+        .. extref:: complete_themes
+            :image: grey
+
+    .. grid-item-card::
+
+        .. extref:: complete_themes
+            :image: classic
+
+    .. grid-item-card::
+
+        .. extref:: complete_themes
+            :image: light
+
+    .. grid-item-card::
+
+        .. extref:: complete_themes
+            :image: minimal
 
 Color schemes (flavors):
 
@@ -557,111 +563,139 @@ Resources
 - `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
 - `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
 
-.. panels::
-    :container: + python-4ds-book
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 2
 
-    .. image:: /_static/images/Python4DS.png
-        :target: https://aeturrell.github.io/python4DS/
+    .. grid-item-card::
+        :columns: 3
 
-    ---
-    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+        .. image:: /_static/images/Python4DS.png
+            :target: https://aeturrell.github.io/python4DS/
 
-    This book will walk you through the main tools and techniques of data science in Python: importing, cleaning, transforming, and visualizing data.
+    .. grid-item-card::
+        :columns: auto
 
-    In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy-to-read and comprehensive guides to data visualization using the Lets-Plot package.
+        This book will walk you through the main tools and techniques of data science in Python: importing, cleaning, transforming, and visualizing data.
+
+        In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy-to-read and comprehensive guides to data visualization using the Lets-Plot package.
 
 
 Examples
 --------
 
-.. panels::
-    :container: + preview-gallery
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
+    :class-container: preview-gallery
 
-    .. extref:: covid19_and_mobility
+    .. grid-item-card::
 
-    ---
-    .. extref:: delhi_climate
+        .. extref:: covid19_and_mobility
 
-    ---
-    .. extref:: google_play_store
+    .. grid-item-card::
 
-    ---
-    .. extref:: malnutrition
+        .. extref:: delhi_climate
 
-    ---
-    .. extref:: netflix
+    .. grid-item-card::
 
-    ---
-    .. extref:: geopandas_kotlin_isl
+        .. extref:: google_play_store
 
-    ---
-    .. extref:: geopandas_naturalearth
+    .. grid-item-card::
 
-    ---
-    .. extref:: nobel
+        .. extref:: malnutrition
 
-    ---
-    .. extref:: bbc_cookbook
+    .. grid-item-card::
 
-    ---
-    .. extref:: bayesian_inference
+        .. extref:: netflix
 
-    ---
-    .. extref:: post_punk_remake
+    .. grid-item-card::
 
-    ---
-    .. extref:: correlation_plot
+        .. extref:: geopandas_kotlin_isl
 
-    ---
-    .. extref:: plotting_airbnb_prices_boston
+    .. grid-item-card::
 
-    ---
-    .. extref:: mandelbulbs
+        .. extref:: geopandas_naturalearth
 
-    ---
-    .. extref:: ivindo_river
+    .. grid-item-card::
 
-    ---
-    .. extref:: how_to_draw_curve
+        .. extref:: nobel
 
-    ---
-    .. extref:: world_happiness
+    .. grid-item-card::
 
-    ---
-    .. extref:: world_coloring
+        .. extref:: bbc_cookbook
 
-    ---
-    .. extref:: kernels_visualization
+    .. grid-item-card::
 
-    ---
-    .. extref:: torus
+        .. extref:: bayesian_inference
 
-    ---
-    .. extref:: klein_bottle
+    .. grid-item-card::
 
-    ---
-    .. extref:: nyc_metro
+        .. extref:: post_punk_remake
 
-    ---
-    .. extref:: google_suggestions
+    .. grid-item-card::
 
-    ---
-    .. extref:: mosaic_image
+        .. extref:: correlation_plot
 
-    ---
-    .. extref:: marginal_layers
+    .. grid-item-card::
 
-    ---
-    .. extref:: map_use_crs
+        .. extref:: plotting_airbnb_prices_boston
 
-    ---
-    .. extref:: new_zealand_dem_remake
+    .. grid-item-card::
 
-    ---
-    .. extref:: world_values_survey
+        .. extref:: mandelbulbs
 
+    .. grid-item-card::
+
+        .. extref:: ivindo_river
+
+    .. grid-item-card::
+
+        .. extref:: how_to_draw_curve
+
+    .. grid-item-card::
+
+        .. extref:: world_happiness
+
+    .. grid-item-card::
+
+        .. extref:: world_coloring
+
+    .. grid-item-card::
+
+        .. extref:: kernels_visualization
+
+    .. grid-item-card::
+
+        .. extref:: torus
+
+    .. grid-item-card::
+
+        .. extref:: klein_bottle
+
+    .. grid-item-card::
+
+        .. extref:: nyc_metro
+
+    .. grid-item-card::
+
+        .. extref:: google_suggestions
+
+    .. grid-item-card::
+
+        .. extref:: mosaic_image
+
+    .. grid-item-card::
+
+        .. extref:: marginal_layers
+
+    .. grid-item-card::
+
+        .. extref:: map_use_crs
+
+    .. grid-item-card::
+
+        .. extref:: new_zealand_dem_remake
+
+    .. grid-item-card::
+
+        .. extref:: world_values_survey
 
 .. raw:: html
 

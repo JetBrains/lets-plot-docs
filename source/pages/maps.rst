@@ -12,31 +12,37 @@ Create beautiful maps just by adding an interactive basemap layer to your plot: 
 Proportional Symbol Map
 -----------------------
 
-.. panels::
-    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 2
 
-    .. extref:: map_california_housing
-        :image: 4x3
+    .. grid-item-card::
 
-    ---
-    .. code-block:: python
+        .. extref:: map_california_housing
+            :image: 4x3
 
-        ggplot(data) + geom_livemap() + geom_point(aes(..))
+    .. grid-item-card::
+
+        .. code-block:: python
+
+            ggplot(data) + geom_livemap() + \
+                geom_point(aes(..))
 
 
 Choropleth Map
 --------------
 
-.. panels::
-    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 2
 
-    .. extref:: covid19_india
-        :image: 4x3
+    .. grid-item-card::
 
-    ---
-    .. code-block:: python
+        .. extref:: covid19_india
+            :image: 4x3
 
-        ggplot(data) + geom_livemap() + geom_polygon(aes(..))
+    .. grid-item-card::
+
+        .. code-block:: python
+
+            ggplot(data) + geom_livemap() + \
+                geom_polygon(aes(..))
 
 
 Combine Layers on Map ``ggplot2`` Style
@@ -114,87 +120,107 @@ Use quality Lets-Plot vector basemaps or choose among many raster map tiles avai
 
 Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>`.
 
-.. panels::
-    :column: col-lg-2 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 6
 
-    .. extref:: the_gallery_of_basemaps
-        :image: lets_plot_default
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: lets_plot_dark
+        .. extref:: the_gallery_of_basemaps
+            :image: lets_plot_default
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: lets_plot_light
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: osm_standard
+        .. extref:: the_gallery_of_basemaps
+            :image: lets_plot_dark
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: open_topo_map
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_terrain
+        .. extref:: the_gallery_of_basemaps
+            :image: lets_plot_light
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_toner
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_toner_hybrid
+        .. extref:: the_gallery_of_basemaps
+            :image: osm_standard
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_toner_labels
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_watercolor
+        .. extref:: the_gallery_of_basemaps
+            :image: open_topo_map
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: carto_antique
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: carto_dark_matter_no_labels
+        .. extref:: the_gallery_of_basemaps
+            :image: stamen_design_terrain
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: carto_flat_blue
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: carto_midnight_commander
+        .. extref:: the_gallery_of_basemaps
+            :image: stamen_design_toner
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: carto_positron
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: carto_positron_no_labels
+        .. extref:: the_gallery_of_basemaps
+            :image: stamen_design_toner_hybrid
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: carto_voyager
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: nasa_gibs_blue_marble
+        .. extref:: the_gallery_of_basemaps
+            :image: stamen_design_toner_labels
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: nasa_gibs_color_shaded
+    .. grid-item-card::
 
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: nasa_gibs_greyscale
+        .. extref:: the_gallery_of_basemaps
+            :image: stamen_design_watercolor
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_antique
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_dark_matter_no_labels
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_flat_blue
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_midnight_commander
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_positron
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_positron_no_labels
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_voyager
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: nasa_gibs_blue_marble
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: nasa_gibs_color_shaded
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: nasa_gibs_greyscale
 
 
 PyCharm
@@ -208,69 +234,89 @@ Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.j
 Examples
 --------
 
-.. panels::
-    :container: + preview-gallery
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
+    :class-container: preview-gallery
 
-    .. extref:: volcanoes_in_japan
+    .. grid-item-card::
 
-    ---
-    .. extref:: mapping_us_household_income
+        .. extref:: volcanoes_in_japan
 
-    ---
-    .. extref:: soil_pollutants_with_gaussian_processes
+    .. grid-item-card::
 
-    ---
-    .. extref:: map_airports
+        .. extref:: mapping_us_household_income
 
-    ---
-    .. extref:: beijing
+    .. grid-item-card::
 
-    ---
-    .. extref:: plotting_airbnb_prices_boston
-        :ref: medium
+        .. extref:: soil_pollutants_with_gaussian_processes
 
-    ---
-    .. extref:: covid19_india
+    .. grid-item-card::
 
-    ---
-    .. extref:: map_us_household_income
+        .. extref:: map_airports
 
-    ---
-    .. extref:: map_california_housing
+    .. grid-item-card::
 
-    ---
-    .. extref:: bigquery_gis
+        .. extref:: beijing
 
-    ---
-    .. extref:: museums
+    .. grid-item-card::
 
-    ---
-    .. extref:: titanic
+        .. extref:: plotting_airbnb_prices_boston
+            :ref: medium
 
-    ---
-    .. extref:: minard
+    .. grid-item-card::
 
-    ---
-    .. extref:: pushkin
+        .. extref:: covid19_india
 
-    ---
-    .. extref:: spb_bakeries
+    .. grid-item-card::
 
-    ---
-    .. extref:: travel_the_world
+        .. extref:: map_us_household_income
 
-    ---
-    .. extref:: map_quickstart
+    .. grid-item-card::
 
-    ---
-    .. extref:: maps_and_geocoding
+        .. extref:: map_california_housing
 
-    ---
-    .. extref:: internet_use_and_activities
+    .. grid-item-card::
 
-    ---
-    .. extref:: param_flat
+        .. extref:: bigquery_gis
+
+    .. grid-item-card::
+
+        .. extref:: museums
+
+    .. grid-item-card::
+
+        .. extref:: titanic
+
+    .. grid-item-card::
+
+        .. extref:: minard
+
+    .. grid-item-card::
+
+        .. extref:: pushkin
+
+    .. grid-item-card::
+
+        .. extref:: spb_bakeries
+
+    .. grid-item-card::
+
+        .. extref:: travel_the_world
+
+    .. grid-item-card::
+
+        .. extref:: map_quickstart
+
+    .. grid-item-card::
+
+        .. extref:: maps_and_geocoding
+
+    .. grid-item-card::
+
+        .. extref:: internet_use_and_activities
+
+    .. grid-item-card::
+
+        .. extref:: param_flat
 
 .. raw:: html
 

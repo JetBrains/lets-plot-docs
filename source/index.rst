@@ -11,6 +11,7 @@
     :hidden:
     :maxdepth: 1
 
+    API <pages/api>
     pages/charts
     pages/maps
     Geocoding <pages/geocoding>
@@ -65,83 +66,92 @@ Quickstart
         geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
         theme(panel_grid_major_x='blank')
 
-.. panels::
-    :container: + lets-plot-platforms
-    :column: col-lg-12 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 7
+    :class-container: lets-plot-platforms
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: nbviewer
-        :title: NBViewer
+    .. grid-item-card::
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: datalore
-        :title: Datalore
+        .. extref:: quickstart
+            :type: logo
+            :ref: nbviewer
+            :title: NBViewer
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: kaggle
-        :title: Kaggle
+    .. grid-item-card::
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: colab
-        :title: Google Colab
+        .. extref:: quickstart
+            :type: logo
+            :ref: datalore
+            :title: Datalore
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: deepnote
-        :title: Deepnote
-        :height: 3.2rem
+    .. grid-item-card::
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: nextjournal
-        :title: Nextjournal
+        .. extref:: quickstart
+            :type: logo
+            :ref: kaggle
+            :title: Kaggle
 
-    .. extref:: quickstart
-        :type: logo
-        :ref: pycharm
-        :title: PyCharm
+    .. grid-item-card::
+
+        .. extref:: quickstart
+            :type: logo
+            :ref: colab
+            :title: Google Colab
+
+    .. grid-item-card::
+
+        .. extref:: quickstart
+            :type: logo
+            :ref: deepnote
+            :title: Deepnote
+            :height: 3.2rem
+
+    .. grid-item-card::
+
+        .. extref:: quickstart
+            :type: logo
+            :ref: nextjournal
+            :title: Nextjournal
+
+    .. grid-item-card::
+
+        .. extref:: quickstart
+            :type: logo
+            :ref: pycharm
+            :title: PyCharm
 
 
 Explore Your Data with Lets-Plot
 --------------------------------
 
-.. panels::
-    :container: + explore-your-data-container
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
-    :header: text-center
+.. grid:: 3
+    :class-container: explore-your-data-container
 
-    :ref:`Charts <charts>`
-    ^^^^^^^^^^^^^^^^^^^^^^
+    .. grid-item-card:: :ref:`Charts <charts>`
+        :shadow: none
 
-    .. raw:: html
+        .. raw:: html
 
-        <a class="reference internal image-reference" href="pages/charts.html">
-          <img src="_static/images/previews/charts.png">
-        </a>
+            <a class="reference internal image-reference" href="pages/charts.html">
+              <img src="_static/images/previews/charts.png">
+            </a>
 
-    ---
-    :ref:`Maps <maps>`
-    ^^^^^^^^^^^^^^^^^^
+    .. grid-item-card:: :ref:`Maps <maps>`
+        :shadow: none
 
-    .. raw:: html
+        .. raw:: html
 
-        <a class="reference internal image-reference" href="pages/maps.html">
-          <img src="_static/images/previews/maps.png">
-        </a>
+            <a class="reference internal image-reference" href="pages/maps.html">
+              <img src="_static/images/previews/maps.png">
+            </a>
 
-    ---
-    :ref:`Geocoding <geocoding>`
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    .. grid-item-card:: :ref:`Geocoding <geocoding>`
+        :shadow: none
 
-    .. raw:: html
+        .. raw:: html
 
-        <a class="reference internal image-reference" href="pages/geocoding.html">
-          <img src="_static/images/previews/geocoding.png">
-        </a>
+            <a class="reference internal image-reference" href="pages/geocoding.html">
+              <img src="_static/images/previews/geocoding.png">
+            </a>
 
 
 .. include:: /shared/features.rst

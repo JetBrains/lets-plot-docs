@@ -63,17 +63,19 @@ Suppose we have the following data:
 
 | If you want to draw only shapes, then it makes no difference which parameter is used:
 
-.. panels::
-    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 2
 
-    .. jupyter-execute::
+    .. grid-item-card::
 
-        ggplot() + geom_map(data=gdf)
+        .. jupyter-execute::
 
-    ---
-    .. jupyter-execute::
+            ggplot() + geom_map(data=gdf)
 
-        ggplot() + geom_map(map=gdf)
+    .. grid-item-card::
+
+        .. jupyter-execute::
+
+            ggplot() + geom_map(map=gdf)
 
 
 Use ``data`` Parameter

@@ -12,66 +12,86 @@ Exploratory Data Analysis (EDA) is an art of looking at one or more datasets in 
 
 Below are few EDA notebooks from the net.
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
 
-    .. extref:: beijing
+    .. grid-item-card::
 
-    ---
-    .. extref:: blueberries_optuna_catboost_baseline
+        .. extref:: beijing
 
-    ---
-    .. extref:: covid19_india
+    .. grid-item-card::
 
-    ---
-    .. extref:: eda_catboost_optuna_baseline
+        .. extref:: blueberries_optuna_catboost_baseline
 
-    ---
-    .. extref:: enzyme_classification_baseline_submission
+    .. grid-item-card::
 
-    ---
-    .. extref:: feature_selection_importance_and_interactions
+        .. extref:: covid19_india
 
-    ---
-    .. extref:: fog_eda
+    .. grid-item-card::
 
-    ---
-    .. extref:: icr_eda_multiple_baselines
+        .. extref:: eda_catboost_optuna_baseline
 
-    ---
-    .. extref:: kidney_eda_catboost_baseline
+    .. grid-item-card::
 
-    ---
-    .. extref:: museums
+        .. extref:: enzyme_classification_baseline_submission
 
-    ---
-    .. extref:: netflix
+    .. grid-item-card::
 
-    ---
-    .. extref:: nobel
+        .. extref:: feature_selection_importance_and_interactions
 
-    ---
-    .. extref:: parkinson_s_eda
+    .. grid-item-card::
 
-    ---
-    .. extref:: plotting_airbnb_prices_boston
-        :ref: datalore
+        .. extref:: fog_eda
 
-    ---
-    .. extref:: predictive_insights_from_catboost
+    .. grid-item-card::
 
-    ---
-    .. extref:: pulsar_eda_xgb_optuna_baseline
+        .. extref:: icr_eda_multiple_baselines
 
-    ---
-    .. extref:: soil_pollutants_with_gaussian_processes
+    .. grid-item-card::
 
-    ---
-    .. extref:: titanic
-        :ref: datalore
+        .. extref:: kidney_eda_catboost_baseline
 
-    ---
-    .. extref:: volcanoes_in_japan
+    .. grid-item-card::
 
-    ---
-    .. extref:: world_happiness
+        .. extref:: museums
+
+    .. grid-item-card::
+
+        .. extref:: netflix
+
+    .. grid-item-card::
+
+        .. extref:: nobel
+
+    .. grid-item-card::
+
+        .. extref:: parkinson_s_eda
+
+    .. grid-item-card::
+
+        .. extref:: plotting_airbnb_prices_boston
+            :ref: datalore
+
+    .. grid-item-card::
+
+        .. extref:: predictive_insights_from_catboost
+
+    .. grid-item-card::
+
+        .. extref:: pulsar_eda_xgb_optuna_baseline
+
+    .. grid-item-card::
+
+        .. extref:: soil_pollutants_with_gaussian_processes
+
+    .. grid-item-card::
+
+        .. extref:: titanic
+            :ref: datalore
+
+    .. grid-item-card::
+
+        .. extref:: volcanoes_in_japan
+
+    .. grid-item-card::
+
+        .. extref:: world_happiness

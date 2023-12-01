@@ -21,88 +21,103 @@ Country
 
 :py:mod:`geocode_countries() <lets_plot.geo_data.geocode_countries>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: geocoding_level_country_world
+    .. grid-item-card::
 
-    World countries
+        .. extref:: geocoding_level_country_world
 
-    ---
-    .. extref:: geocoding_level_country_canada
+        World countries
 
-    Canada
+    .. grid-item-card::
 
-    ---
-    .. extref:: geocoding_level_country_india
+        .. extref:: geocoding_level_country_canada
 
-    India
+        Canada
+
+    .. grid-item-card::
+
+        .. extref:: geocoding_level_country_india
+
+        India
+
 
 State
 ~~~~~
 
 :py:mod:`geocode_states() <lets_plot.geo_data.geocode_states>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: geocoding_level_state_us
+    .. grid-item-card::
 
-    US states
+        .. extref:: geocoding_level_state_us
 
-    ---
-    .. extref:: geocoding_level_state_australia
+        US states
 
-    Australia states
+    .. grid-item-card::
 
-    ---
-    .. extref:: geocoding_level_state_russia
+        .. extref:: geocoding_level_state_australia
 
-    Russia states
+        Australia states
+
+    .. grid-item-card::
+
+        .. extref:: geocoding_level_state_russia
+
+        Russia states
+
 
 County
 ~~~~~~
 
 :py:mod:`geocode_counties() <lets_plot.geo_data.geocode_counties>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: geocoding_level_county_us
+    .. grid-item-card::
 
-    US counties
+        .. extref:: geocoding_level_county_us
 
-    ---
-    .. extref:: geocoding_level_county_italy
+        US counties
 
-    Italy counties
+    .. grid-item-card::
 
-    ---
-    .. extref:: geocoding_level_county_poland
+        .. extref:: geocoding_level_county_italy
 
-    Poland counties
+        Italy counties
+
+    .. grid-item-card::
+
+        .. extref:: geocoding_level_county_poland
+
+        Poland counties
+
 
 City
 ~~~~
 
 :py:mod:`geocode_cities() <lets_plot.geo_data.geocode_cities>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: geocoding_level_city_nyc
+    .. grid-item-card::
 
-    New York
+        .. extref:: geocoding_level_city_nyc
 
-    ---
-    .. extref:: geocoding_level_city_helsinki
+        New York
 
-    Helsinki
+    .. grid-item-card::
 
-    ---
-    .. extref:: geocoding_level_city_london
+        .. extref:: geocoding_level_city_helsinki
 
-    London
+        Helsinki
+
+    .. grid-item-card::
+
+        .. extref:: geocoding_level_city_london
+
+        London
 
 
 Geometries
@@ -114,66 +129,77 @@ Polygons
 :py:mod:`geom_map() <lets_plot.geom_map>`,
 :py:mod:`geom_polygon() <lets_plot.geom_polygon>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: geocoding_geometries_map_brazil
+    .. grid-item-card::
 
-    Brazil
+        .. extref:: geocoding_geometries_map_brazil
 
-    ---
-    .. extref:: geocoding_geometries_map_nigeria
+        Brazil
 
-    Nigeria states
+    .. grid-item-card::
 
-    ---
-    .. extref:: geocoding_geometries_map_greece
+        .. extref:: geocoding_geometries_map_nigeria
 
-    Greece counties
+        Nigeria states
+
+    .. grid-item-card::
+
+        .. extref:: geocoding_geometries_map_greece
+
+        Greece counties
+
 
 Points
 ~~~~~~
 
 :py:mod:`geom_point() <lets_plot.geom_point>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: geocoding_geometries_point_kazakhstan
+    .. grid-item-card::
 
-    Kazakhstan state centroids
+        .. extref:: geocoding_geometries_point_kazakhstan
 
-    ---
-    .. extref:: geocoding_geometries_point_georgia
+        Kazakhstan state centroids
 
-    Georgia county centroids
+    .. grid-item-card::
 
-    ---
-    .. extref:: geocoding_geometries_point_greenland
+        .. extref:: geocoding_geometries_point_georgia
 
-    Greenland cities
+        Georgia county centroids
+
+    .. grid-item-card::
+
+        .. extref:: geocoding_geometries_point_greenland
+
+        Greenland cities
+
 
 Rectangles
 ~~~~~~~~~~
 
 :py:mod:`geom_rect() <lets_plot.geom_rect>`
 
-.. panels::
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 3
 
-    .. extref:: geocoding_geometries_rectangle_japan
+    .. grid-item-card::
 
-    Japan bounding box with states
+        .. extref:: geocoding_geometries_rectangle_japan
 
-    ---
-    .. extref:: geocoding_geometries_rectangle_ireland
+        Japan bounding box with states
 
-    Ireland county bounding boxes
+    .. grid-item-card::
 
-    ---
-    .. extref:: geocoding_geometries_rectangle_cuba
+        .. extref:: geocoding_geometries_rectangle_ireland
 
-    Cuba bounding box with cities
+        Ireland county bounding boxes
+
+    .. grid-item-card::
+
+        .. extref:: geocoding_geometries_rectangle_cuba
+
+        Cuba bounding box with cities
 
 
 Guides to Geocoding
@@ -191,41 +217,52 @@ An example notebook covering various geocoding use-cases: |geocoding_reference|.
 Examples
 --------
 
-.. panels::
-    :container: + preview-gallery
-    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+.. grid:: 4
+    :class-container: preview-gallery
 
-    .. extref:: geocoding_examples
+    .. grid-item-card::
 
-    ---
-    .. extref:: tourist_cities
+        .. extref:: geocoding_examples
 
-    ---
-    .. extref:: map_us_household_income
+    .. grid-item-card::
 
-    ---
-    .. extref:: covid19_india
+        .. extref:: tourist_cities
 
-    ---
-    .. extref:: map_airports
+    .. grid-item-card::
 
-    ---
-    .. extref:: mapping_us_household_income
+        .. extref:: map_us_household_income
 
-    ---
-    .. extref:: museums
+    .. grid-item-card::
 
-    ---
-    .. extref:: titanic
+        .. extref:: covid19_india
 
-    ---
-    .. extref:: internet_use_and_activities
+    .. grid-item-card::
 
-    ---
-    .. extref:: zooming
+        .. extref:: map_airports
 
-    ---
-    .. extref:: maps_and_geocoding
+    .. grid-item-card::
+
+        .. extref:: mapping_us_household_income
+
+    .. grid-item-card::
+
+        .. extref:: museums
+
+    .. grid-item-card::
+
+        .. extref:: titanic
+
+    .. grid-item-card::
+
+        .. extref:: internet_use_and_activities
+
+    .. grid-item-card::
+
+        .. extref:: zooming
+
+    .. grid-item-card::
+
+        .. extref:: maps_and_geocoding
 
 .. raw:: html
 
