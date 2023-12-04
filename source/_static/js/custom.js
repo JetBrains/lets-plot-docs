@@ -69,7 +69,7 @@ function handlePreviewGallery() {
       hiddenRowId++;
       updatePreviewGallery(hiddenRowId);
       if (thereIsMorePreviews()) return;
-      event.target.classList.add("hidden");
+      event.target.classList.add('hidden');
     }
   }
   updatePreviewGallery(hiddenRowId);
