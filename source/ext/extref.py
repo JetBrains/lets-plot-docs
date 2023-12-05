@@ -286,11 +286,11 @@ class ExtRefDirective(Directive):
                                                   if name == self._ref_type()), None)
         if not logo_fullpath:
             raise ValueError("There is no appropriate logo for the reference {0}".format(self._ref_type()))
-        logo_path = logo_fullpath.replace(self._env().app.outdir, '')[1:]
+        logo_path = logo_fullpath.replace(str(self._env().app.outdir), '')[1:]
         return self._image_tag(logo_path)
 
     def _image_tag(self, image_path):
-        doc_dir = os.path.dirname(self.state.document.attributes['source'].replace(self._env().app.srcdir, ''))[1:]
+        doc_dir = os.path.dirname(self.state.document.attributes['source'].replace(str(self._env().app.srcdir), ''))[1:]
         return '<img alt="{0}" title="{1}" src="{2}" style="{3}{4}"/>'.format(
             self._alt(), self._title(), os.path.relpath(image_path, doc_dir),
             self._width_tag_option(), self._height_tag_option()

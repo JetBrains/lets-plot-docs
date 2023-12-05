@@ -34,7 +34,6 @@ extensions = [
     'sphinx.ext.githubpages',
     "sphinx_design",
     'jupyter_sphinx',
-    'sphinx_panels',
     'create_cname',
     'extref',
     'switch_lets_plot',
