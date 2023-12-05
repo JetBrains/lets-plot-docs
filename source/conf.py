@@ -90,7 +90,9 @@ html_title = ""
 
 html_theme_options = {
     "logo": {
-        "text": "Lets-Plot",
+        "text": "Lets-Plot v{0}".format(version),
+        "image_light": "_static/lets-plot-light.svg",
+        "image_dark": "_static/lets-plot-dark.svg",
     },
     "header_links_before_dropdown": 1,
     "icon_links": [
@@ -99,6 +101,12 @@ html_theme_options = {
             "url": "https://github.com/JetBrains/lets-plot",
             "icon": "fa-brands fa-github",
             "type": "fontawesome",
+        },
+        {
+            "name": "PyPI",
+            "url": "https://pypi.org/project/lets-plot",
+            "icon": "_static/images/logo/pypi.svg",
+            "type": "local",
         },
     ],
     "show_prev_next": False,
