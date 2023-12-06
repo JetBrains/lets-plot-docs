@@ -15,6 +15,7 @@
     pages/charts
     pages/maps
     Geocoding <pages/geocoding>
+    Gallery <pages/gallery>
     'bistro' plots <pages/bistro>
     What is new <pages/whats_new>
 
