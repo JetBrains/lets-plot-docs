@@ -56,6 +56,7 @@ Standard Geometries
 
 .. autosummary::
     :toctree: api
+    :nosignatures:
 
     geom_point
     geom_path
