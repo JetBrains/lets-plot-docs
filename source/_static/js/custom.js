@@ -1,8 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
+  fixNavLinks();
   removeCardShadows();
   addTargetToExternalReferences();
   handlePreviewGallery();
 });
+
+function fixNavLinks() {
+  const navItems = document.getElementsByClassName("navbar-nav")[0].getElementsByClassName("nav-item");
+  for (let i = 0; i < navItems.length; i++) {
+    const navLink = navItems[i].getElementsByClassName("nav-link")[0];
+    navLink.classList.remove("nav-external");
+    navLink.classList.add("nav-internal");
+  }
+}
 
 function removeCardShadows() {
   const cards = document.getElementsByClassName('sd-card docutils');

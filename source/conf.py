@@ -94,7 +94,7 @@ html_theme_options = {
         "image_light": "_static/lets-plot-light.svg",
         "image_dark": "_static/lets-plot-dark.svg",
     },
-    "header_links_before_dropdown": 1,
+    "header_links_before_dropdown": 3,
     "icon_links": [
         {
             "name": "GitHub",
