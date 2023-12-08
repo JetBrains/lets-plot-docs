@@ -22,4 +22,4 @@ Lets-Plot
 Multiplatform plotting library based on the Grammar of Graphics.
 
 
-.. include:: /shared/features.rst
+.. include:: /python/shared/features.rst

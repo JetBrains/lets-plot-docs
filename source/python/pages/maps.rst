@@ -231,4 +231,4 @@ Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.j
 .. image:: /_static/images/pycharm_map_fr_low_65.gif
 
 
-.. include:: /shared/features.rst
+.. include:: /python/shared/python_features.rst
