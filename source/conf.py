@@ -90,9 +90,10 @@ html_title = ""
 
 html_theme_options = {
     "logo": {
-        "text": "Lets-Plot v{0}".format(version),
+        "text": "Lets-Plot",
         "image_light": "_static/lets-plot-light.svg",
         "image_dark": "_static/lets-plot-dark.svg",
+        "version_link": "python/pages/whats_new",
     },
     "header_links_before_dropdown": 3,
     "icon_links": [
@@ -110,7 +111,8 @@ html_theme_options = {
         },
     ],
     "show_prev_next": False,
-    "navbar_end": ["theme-switcher", "my-navbar-icon-links"],
+    "navbar_start": ["navbar-logo", "navbar-version"],
+    "navbar_end": ["theme-switcher", "navbar-python-icon-links"],
 }
 
 html_context = {
