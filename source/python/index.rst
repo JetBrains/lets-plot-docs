@@ -6,8 +6,8 @@
 .. title:: Lets-Plot: open-source plotting library for statistical data
 
 
-Python Plotting Library Based on the Grammar of Graphics
-========================================================
+Getting started with Lets-Plot for Python
+=========================================
 
 .. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
