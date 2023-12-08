@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   fixNavLinks();
+  fixNavLinksOnLandingPage();
   removeCardShadows();
   addTargetToExternalReferences();
   handlePreviewGallery();
@@ -8,9 +9,25 @@ document.addEventListener("DOMContentLoaded", function () {
 function fixNavLinks() {
   const navItems = document.getElementsByClassName("navbar-nav")[0].getElementsByClassName("nav-item");
   for (let i = 0; i < navItems.length; i++) {
-    const navLink = navItems[i].getElementsByClassName("nav-link")[0];
+    const navLink = getNavLinkOrNull(navItems[i]);
+    if (navLink === null) continue;
     navLink.classList.remove("nav-external");
     navLink.classList.add("nav-internal");
+  }
+}
+
+function fixNavLinksOnLandingPage() {
+  const excludedNavLinks = ["github", "pypi"];
+  if (!isLandingPage()) return;
+  const navItems = document.getElementsByClassName("bd-header")[0].getElementsByClassName("nav-item");
+  for (let i = 0; i < navItems.length; i++) {
+    const navItem = navItems[i];
+    const navLink = getNavLinkOrNull(navItem);
+    if (navLink === null) continue;
+    for (let j = 0; j < excludedNavLinks.length; j++) {
+      if (navLink.href.indexOf(excludedNavLinks[j]) != -1)
+        navItem.classList.add("hidden");
+    }
   }
 }
 
@@ -54,4 +71,13 @@ function handlePreviewGallery() {
   }
   updatePreviewGallery(hiddenRowId);
   document.getElementById('preview-gallery-more').getElementsByTagName('a')[0].onclick = loadMoreOnClick;
+}
+
+function isLandingPage() {
+  return document.getElementsByClassName("bd-breadcrumbs").length == 0;
+}
+
+function getNavLinkOrNull(navItem) {
+  const navLinks = navItem.getElementsByClassName("nav-link");
+  return navLinks.length != 0 ? navLinks[0] : null;
 }
