@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   fixNavLinks();
-  fixNavLinksOnLandingPage();
   removeCardShadows();
   addTargetToExternalReferences();
   handlePreviewGallery();
@@ -13,21 +12,6 @@ function fixNavLinks() {
     if (navLink === null) continue;
     navLink.classList.remove("nav-external");
     navLink.classList.add("nav-internal");
-  }
-}
-
-function fixNavLinksOnLandingPage() {
-  const excludedNavLinks = ["github", "pypi"];
-  if (!isLandingPage()) return;
-  const navItems = document.getElementsByClassName("bd-header")[0].getElementsByClassName("nav-item");
-  for (let i = 0; i < navItems.length; i++) {
-    const navItem = navItems[i];
-    const navLink = getNavLinkOrNull(navItem);
-    if (navLink === null) continue;
-    for (let j = 0; j < excludedNavLinks.length; j++) {
-      if (navLink.href.indexOf(excludedNavLinks[j]) != -1)
-        navItem.classList.add("hidden");
-    }
   }
 }
 

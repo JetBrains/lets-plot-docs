@@ -110,6 +110,7 @@ html_theme_options = {
         },
     ],
     "show_prev_next": False,
+    "navbar_end": ["theme-switcher", "my-navbar-icon-links"],
 }
 
 html_context = {
