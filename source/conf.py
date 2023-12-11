@@ -95,7 +95,7 @@ html_theme_options = {
         "image_dark": "_static/lets-plot-dark.svg",
         "version_link": "python/pages/whats_new",
     },
-    "header_links_before_dropdown": 3,
+    "header_links_before_dropdown": 1,
     "icon_links": [
         {
             "name": "GitHub",

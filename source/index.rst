@@ -6,9 +6,7 @@
     :hidden:
     :maxdepth: 1
 
-    Lets-Plot for Python <python/index>
-    Python API <python/pages/api>
-    Kotlin API <https://lets-plot.org/kotlin>
+    API <python/pages/api>
     python/pages/charts
     python/pages/maps
     Geocoding <python/pages/geocoding>
