@@ -142,4 +142,4 @@ Explore Your Data with Lets-Plot
             </a>
 
 
-.. include:: /python/shared/python_features.rst
+.. include:: /python/shared/features.rst

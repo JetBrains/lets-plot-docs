@@ -579,4 +579,4 @@ Resources
         In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy-to-read and comprehensive guides to data visualization using the Lets-Plot package.
 
 
-.. include:: /python/shared/python_features.rst
+.. include:: /python/shared/features.rst

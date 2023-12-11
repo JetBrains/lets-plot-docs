@@ -214,4 +214,4 @@ An example notebook covering various geocoding use-cases: |geocoding_reference|.
     :text: geocoding_reference.ipynb
 
 
-.. include:: /python/shared/python_features.rst
+.. include:: /python/shared/features.rst
