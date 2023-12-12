@@ -1,5 +1,7 @@
 .. _user_guide:
 
+:orphan:
+
 .. title:: User Guide
 
 

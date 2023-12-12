@@ -14,17 +14,80 @@
     'bistro' plots <python/pages/bistro>
     What is new <python/pages/whats_new>
 
-Lets-Plot
-=========
+.. grid:: 2
+    :class-container: landing-content
 
-Multiplatform plotting library based on the Grammar of Graphics.
+    .. grid-item-card::
 
+        .. raw:: html
 
-Key Features
-------------
+            <h1>Lets-Plot</h1>
+
+        Multiplatform plotting library based on the Grammar of Graphics.
+
+        .. grid:: 3
+            :class-container: landing-buttons
+
+            .. grid-item-card::
+
+                .. button-ref:: python/index
+                    :color: primary
+
+                    Get started
+
+            .. grid-item-card::
+
+                .. button-ref:: python/pages/user_guide
+                    :color: primary
+                    :outline:
+
+                    See user guide
+
+            .. grid-item-card::
+                :text-align: center
+
+                :ref:`Visit the API <api>`
+
+    .. grid-item-card::
+
+        .. grid:: 3
+            :class-container: landing-gallery
+
+            .. grid-item-card::
+
+                .. extref:: geom_violin
+
+            .. grid-item-card::
+
+                .. extref:: world_happiness
+
+            .. grid-item-card::
+
+                .. extref:: bar_annotations
+
+            .. grid-item-card::
+
+                .. extref:: soil_pollutants_with_gaussian_processes
+
+            .. grid-item-card::
+
+                .. extref:: map_california_housing
+
+            .. grid-item-card::
+
+                .. extref:: user_guide
+
 
 .. grid:: 2
     :class-container: features-list
+
+    .. grid-item-card::
+
+        .. raw:: html
+
+            <h2>Key Features</h2>
+
+    .. grid-item-card::
 
     .. grid-item-card::
         :shadow: none
