@@ -95,6 +95,7 @@ Standard Geometries
     geom_step
     geom_rect
     geom_segment
+    geom_spoke
     geom_text
     geom_label
     geom_qq
@@ -515,6 +516,7 @@ Geospatial
     LETS_PLOT_COLOR
     LETS_PLOT_LIGHT
     LETS_PLOT_DARK
+    LETS_PLOT_BW
     SOLID
     OSM
     OPEN_TOPO_MAP
