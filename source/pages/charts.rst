@@ -436,6 +436,8 @@ Examples:
       :type: text
 - .. extref:: gggrid_theme
       :type: text
+- .. extref:: gggrid_scale_share
+      :type: text
 
 
 |presentation-options-icon| Presentation Options
