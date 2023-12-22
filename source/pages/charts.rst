@@ -516,8 +516,6 @@ Examples:
       :type: text
 - .. extref:: legend_and_axis
       :type: text
-- .. extref:: theme_plot_margin
-      :type: text
 - .. extref:: margins
       :type: text
 - .. extref:: legend_text_multiline
