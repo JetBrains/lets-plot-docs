@@ -538,7 +538,7 @@ Examples:
       :type: text
 - .. extref:: theme_plot_message
       :type: text
-- .. extref:: superscript
+- .. extref:: superscript_exponent
       :type: text
 - .. extref:: theme_label_text
       :type: text
