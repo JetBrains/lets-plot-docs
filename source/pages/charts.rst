@@ -674,9 +674,6 @@ Examples
     .. extref:: world_values_survey
 
     ---
-    .. extref:: scale_lablim
-
-    ---
     .. extref:: scale_params_with_dict
 
 
