@@ -65,7 +65,7 @@ Vector Tiles
   If the tiles don't load please try disabling the NSURLSession Websocket feature
   (`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
 
-Lets-Plot provides its own vector basemap tiles available in three variants:
+Lets-Plot provides its own vector basemap tiles available in four variants:
 
 - color
 - dark
