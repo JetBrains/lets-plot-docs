@@ -130,31 +130,15 @@ Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>
 
     ---
     .. extref:: the_gallery_of_basemaps
+        :image: lets_plot_bw
+
+    ---
+    .. extref:: the_gallery_of_basemaps
         :image: osm_standard
 
     ---
     .. extref:: the_gallery_of_basemaps
         :image: open_topo_map
-
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_terrain
-
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_toner
-
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_toner_hybrid
-
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_toner_labels
-
-    ---
-    .. extref:: the_gallery_of_basemaps
-        :image: stamen_design_watercolor
 
     ---
     .. extref:: the_gallery_of_basemaps
