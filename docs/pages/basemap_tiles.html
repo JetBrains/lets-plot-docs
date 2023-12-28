@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -92,7 +92,6 @@
 <li><a class="reference internal" href="#raster-tiles">Raster Tiles</a><ul>
 <li><a class="reference internal" href="#openstreetmap">OpenStreetMap</a></li>
 <li><a class="reference internal" href="#opentopomap">OpenTopoMap</a></li>
-<li><a class="reference internal" href="#stamen-design">Stamen Design</a></li>
 <li><a class="reference internal" href="#carto">CARTO</a></li>
 <li><a class="reference internal" href="#nasa-s-global-imagery-browse-services-gibs">NASA’s Global Imagery Browse Services (GIBS)</a></li>
 </ul>
@@ -143,7 +142,6 @@
 <ul>
 <li><p><a class="reference internal" href="#basemap-tiles-osm-tiles"><span class="std std-ref">OpenStreetMap</span></a></p></li>
 <li><p><a class="reference internal" href="#basemap-tiles-topo-tiles"><span class="std std-ref">OpenTopoMap</span></a></p></li>
-<li><p><a class="reference internal" href="#basemap-tiles-stamen-tiles"><span class="std std-ref">Stamen Design</span></a></p></li>
 <li><p><a class="reference internal" href="#basemap-tiles-carto-tiles"><span class="std std-ref">CARTO</span></a></p></li>
 <li><p><a class="reference internal" href="#basemap-tiles-nasa-tiles"><span class="std std-ref">NASA’s Global Imagery Browse Services (GIBS)</span></a></p></li>
 </ul>
@@ -179,11 +177,12 @@
 If the tiles don’t load please try disabling the NSURLSession Websocket feature
 (<cite>Develop -&gt; Experimental Features -&gt; NSURLSession Websocket</cite>) or use <a class="reference internal" href="#basemap-tiles-raster-tiles"><span class="std std-ref">raster tiles</span></a>.</p>
 </div>
-<p>Lets-Plot provides its own vector basemap tiles available in three variants:</p>
+<p>Lets-Plot provides its own vector basemap tiles available in four variants:</p>
 <ul class="simple">
 <li><p>color</p></li>
 <li><p>dark</p></li>
 <li><p>light</p></li>
+<li><p>bw</p></li>
 </ul>
 <p>By default Lets-Plot uses its “color” tiles.</p>
 <p>Configure Lets-Plot vector tiles (globally or on the per-plot basis) with the help of the <a class="reference internal" href="api/lets_plot.maptiles_lets_plot.html#lets_plot.maptiles_lets_plot" title="lets_plot.maptiles_lets_plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LetsPlot.maptiles_lets_plot(...)</span></code></a> function:</p>
@@ -239,20 +238,6 @@ If the tiles don’t load please try disabling the NSURLSession Websocket featur
 <li><p><code class="docutils literal notranslate"><span class="pre">OPEN_TOPO_MAP</span></code></p></li>
 </ul>
 </section>
-<section id="stamen-design">
-<span id="basemap-tiles-stamen-tiles"></span><h3>Stamen Design<a class="headerlink" href="#stamen-design" title="Permalink to this headline">¶</a></h3>
-<p><em>Toner and Terrain:</em></p>
-<p>Map tiles by <a class="reference external" href="https://stamen.com">Stamen Design</a>, under <a class="reference external" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a class="reference external" href="http://openstreetmap.org">OpenStreetMap</a>, under <a class="reference external" href="http://www.openstreetmap.org/copyright">ODbL</a>.</p>
-<p><em>Watercolor:</em></p>
-<p>Map tiles by <a class="reference external" href="https://stamen.com">Stamen Design</a>, under <a class="reference external" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a class="reference external" href="http://openstreetmap.org">OpenStreetMap</a>, under <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_HIRES</span></code>: Toner</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LIGHT_HIRES</span></code>: Toner Light</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TERRAIN</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TERRAIN_HIRES</span></code> : Terrain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_WATERCOLOR</span></code> : Watercolor</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LABELS</span></code>, <code class="docutils literal notranslate"><span class="pre">STAMEN_DESIGN_TONER_LABELS_HIRES</span></code>: Toner Labels</p></li>
-</ul>
-</section>
 <section id="carto">
 <span id="basemap-tiles-carto-tiles"></span><h3>CARTO<a class="headerlink" href="#carto" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, <a class="reference external" href="https://carto.com/attributions#basemaps">© CARTO</a>, <a class="reference external" href="https://carto.com/attributions">© CARTO</a>.</p>
@@ -292,10 +277,11 @@ If the tiles don’t load please try disabling the NSURLSession Websocket featur
 <span id="basemap-tiles-raster-tiles-man"></span><h2>Configuring Raster Tiles Manually<a class="headerlink" href="#configuring-raster-tiles-manually" title="Permalink to this headline">¶</a></h2>
 <p>In addition to pre-configured tilesets you can configure and use almost any other raster tilesets provided in <code class="docutils literal notranslate"><span class="pre">ZXY</span></code> format.</p>
 <p>You can do it with the help of the <a class="reference internal" href="api/lets_plot.maptiles_zxy.html#lets_plot.maptiles_zxy" title="lets_plot.maptiles_zxy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LetsPlot.maptiles_zxy()</span></code></a> function.</p>
-<p>The following code will configure ‘Stamen Design - Toner Hybrid’ tiles:</p>
+<p>The following code will configure ‘NASA, CityLights 2012’ tiles:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">settings</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://stamen-tiles.a.ssl.fastly.net/toner-hybrid/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">@2x.png&quot;</span><span class="p">,</span>
-    <span class="n">attribution</span> <span class="o">=</span> <span class="s1">&#39;Map tiles by &lt;a href=&quot;https://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, under &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt;. Data by &lt;a href=&quot;http://openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt;, under &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;ODbL&lt;/a&gt;.&#39;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_CityLights_2012/default/GoogleMapsCompatible_Level8/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">.jpg&quot;</span><span class="p">,</span>
+    <span class="n">attribution</span> <span class="o">=</span> <span class="s1">&#39;&lt;a href=&quot;https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs&quot;&gt;© NASA Global Imagery Browse Services (GIBS)&lt;/a&gt;&#39;</span><span class="p">,</span>
+    <span class="n">max_zoom</span><span class="o">=</span><span class="mi">8</span>
 <span class="p">)</span>
 
 <span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">tiles</span><span class="o">=</span><span class="n">maptiles_zxy</span><span class="p">(</span><span class="o">**</span><span class="n">settings</span><span class="p">))</span>

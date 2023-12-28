@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -120,7 +120,7 @@
 <h1>lets_plot.position_jitter<a class="headerlink" href="#lets-plot-position-jitter" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.position_jitter">
-<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">position_jitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.position_jitter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">position_jitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.position_jitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adjust position by assigning random noise to points. Better for discrete values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -132,6 +132,9 @@ Values that are greater than 0.5 lead to overlapping of the points.</p>
 <dt><strong>height</strong><span class="classifier">float</span></dt><dd><p>Jittering height.
 The value of height is relative and typically ranges between 0 and 0.5.
 Values that are greater than 0.5 lead to overlapping of the points.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int</span></dt><dd><p>A random seed to make the jitter reproducible.
+If None (the default value), the seed is initialised with a random value.</p>
 </dd>
 </dl>
 </dd>
@@ -158,13 +161,13 @@ Values that are greater than 0.5 lead to overlapping of the points.</p>
 <span class="linenos"> 9</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
 <span class="linenos">10</span>    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> \
 <span class="linenos">11</span>               <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> \
-<span class="hll"><span class="linenos">12</span>               <span class="n">position</span><span class="o">=</span><span class="n">position_jitter</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">.2</span><span class="p">))</span>
+<span class="hll"><span class="linenos">12</span>               <span class="n">position</span><span class="o">=</span><span class="n">position_jitter</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="ZICj1f"></div>
+<div id="e5lyHP"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -175,7 +178,7 @@ Values that are greater than 0.5 lead to overlapping of the points.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.1.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.2.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -188,13 +191,13 @@ Values that are greater than 0.5 lead to overlapping of the points.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("ZICj1f").appendChild(div);
+            document.getElementById("e5lyHP").appendChild(div);
         };
-        var e = document.getElementById("ZICj1f");
+        var e = document.getElementById("e5lyHP");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="t9nR3r"></div>
+</div><div class="output text_html">   <div id="FnGKMT"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -219,7 +222,8 @@ Values that are greater than 0.5 lead to overlapping of the points.</p>
 "position":{
 "name":"jitter",
 "width":0.2,
-"height":0.2
+"height":0.2,
+"seed":42.0
 },
 "show_legend":false,
 "data_meta":{
@@ -233,7 +237,7 @@ Values that are greater than 0.5 lead to overlapping of the points.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("t9nR3r");
+           var plotContainer = document.getElementById("FnGKMT");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
