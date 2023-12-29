@@ -17,7 +17,7 @@ What is new in 4.2.0
   .. warning::
     Do NOT(!) use ``exponent_format='pow'`` if you are planning to export plot to a raster format (PNG, PDF).
 
-    The ``CairoSVG`` library (which is under the hood of our ``ggsave()`` function) does not handre ``tspan`` element properly end breaks superscript notation when transforming SVG to PNG/PDF.
+    The ``CairoSVG`` library (which is under the hood of our ``ggsave()`` function) does not handle ``tspan`` element properly end breaks superscript notation when transforming SVG to PNG/PDF.
 
     More details: https://github.com/Kozea/CairoSVG/issues/317
 
@@ -43,14 +43,14 @@ What is new in 4.2.0
 
   See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_spoke.ipynb>`__.
 
-- **Hight-contrast Tileset "BW" for geom_livemap()**
+- **High-contrast Tileset "BW" for geom_livemap()**
 
   .. image:: /_static/images/changelog/4.2.0/tileset_BW.png
     :width: 512
 
   See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_livemap_bw_tiles.ipynb>`__.
 
-  See Advanced EDA example: `Spatial prediction of soil pollutants with multi-output Gaussian processes <https://nextjournal.com/asmirnov-horis/spatial-prediction-of-soil-pollutants-with-multi-output-gaussian-processes?token=26GT2sBa3Ycw6LGZxqdTay>`__.
+  See advanced example: `Spatial prediction of soil pollutants with multi-output Gaussian processes <https://nextjournal.com/asmirnov-horis/spatial-prediction-of-soil-pollutants-with-multi-output-gaussian-processes?token=26GT2sBa3Ycw6LGZxqdTay>`__. Credits: Essi Parent (`@essicolo <https://github.com/essicolo>`__).
 
 - **Other New Features and Improvements**
 
