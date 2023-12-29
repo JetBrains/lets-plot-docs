@@ -36,7 +36,7 @@ The general form of a format specifier is:
 
 .. code-block:: none
 
-    [​[fill]align][sign][symbol][0][width][,][.precision][type]
+    [​[fill]align][sign][symbol][0][width][,][.precision][~][type]
 
 - ``fill`` - can be any character, defaults to a space if omitted. The presence of a fill character is signaled by the ``align`` character following it, which must be one of the alignment options.
 
@@ -65,6 +65,8 @@ The general form of a format specifier is:
 - ``comma`` (``,``) option enables the use of a group separator, such as a comma for thousands.
 
 - ``precision`` depending on the ``type``, the ``precision`` either indicates the number of digits that follow the decimal point (types ``f`` and ``%``), or the number of significant digits (types \[space\], ``e``, ``g``, ``r``, ``s`` and ``p``). If the precision is not specified, it defaults to 6 for all types except ​ (none), which defaults to 12. Precision is ignored for integer formats (types ``b``, ``o``, ``d``, ``x``, ``X`` and ``c``).
+
+- ``~`` trims insignificant trailing zeros across all format types.
 
 - ``type`` determines how the data should be presented:
 
@@ -123,6 +125,7 @@ Let's format the number `42`:
     #b        -->  "0b101010"
     o         -->  "52"
     e         -->  "4.200000e+1"
+    ~e        -->  "4.2e+1"
     s         -->  "42.0000"
     020,s     -->  "000,000,000,042.0000"
     020.0%    -->  "0000000000000004200%"

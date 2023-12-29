@@ -5,71 +5,74 @@
 .. title:: What is new
 
 
-What is new in 4.1.0
+What is new in 4.2.0
 ====================
 
-- **Support for Python 3.12**
+- **Support for "Categoricals"**
 
-- **Annotations in Barchart**
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/factor_levels.ipynb>`__.
 
-  |annotated_bars-img|
+- **Superscript for Numbers in Scientific Notation**
 
-  See: |bar_annotations|.
+  .. warning::
+    Do NOT(!) use ``exponent_format='pow'`` if you are planning to export plot to a raster format (PNG, PDF).
 
-.. |annotated_bars-img| image:: /_static/images/changelog/4.1.0/annotated_bars.png
-   :width: 512
+    The ``CairoSVG`` library (which is under the hood of our ``ggsave()`` function) does not handle ``tspan`` element properly end breaks superscript notation when transforming SVG to PNG/PDF.
 
-.. |bar_annotations| extref:: bar_annotations
-    :type: text
-    :text: example notebook
+    More details: https://github.com/Kozea/CairoSVG/issues/317
 
-- **Common Theme for Subplots**
+  .. image:: /_static/images/changelog/4.2.0/superscript.png
+    :width: 328
 
-  |gggrid_theme-img|
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/superscript_exponent.ipynb>`__.
 
-  See: |gggrid_theme|.
+- **Exporting Plot to a File-Like Object**
 
-.. |gggrid_theme-img| image:: /_static/images/changelog/4.1.0/gggrid_theme.png
-   :width: 512
+  Convenience methods: ``to_svg()``, ``to_html()``, ``to_png()``, ``to_pdf()``
 
-.. |gggrid_theme| extref:: gggrid_theme
-    :type: text
-    :text: example notebook
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_export_methods.ipynb>`__.
 
-- **HCL and CIELAB Color Space for Hue Color Scale and Gradient Color Scales**
+- **Sharing of X,Y-scale Limits Between Subplots in gggrid()**
 
-  |hue_color_scale-img|
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/gggrid_scale_share.ipynb>`__.
 
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23e/color_space_update.ipynb>`__.
+- **geom_spoke()**
 
-.. |hue_color_scale-img| image:: /_static/images/changelog/4.1.0/hue_color_scale.png
-   :width: 512
+  .. image:: /_static/images/changelog/4.2.0/geom_spoke.png
+    :width: 248
 
-- **Scale Transformations: 'log2' and 'symlog'**
+  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_spoke.ipynb>`__.
 
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23e/new_scale_transformations.ipynb>`__.
+- **High-contrast Tileset "BW" for geom_livemap()**
 
-- **Plot Margins**
+  .. image:: /_static/images/changelog/4.2.0/tileset_BW.png
+    :width: 512
 
-  See: |theme_plot_margin|.
+  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_livemap_bw_tiles.ipynb>`__.
 
-.. |theme_plot_margin| extref:: theme_plot_margin
-    :type: text
-    :text: example notebook
+  See advanced example: `Spatial prediction of soil pollutants with multi-output Gaussian processes <https://nextjournal.com/asmirnov-horis/spatial-prediction-of-soil-pollutants-with-multi-output-gaussian-processes?token=26GT2sBa3Ycw6LGZxqdTay>`__. Credits: Essi Parent (`@essicolo <https://github.com/essicolo>`__).
 
-- **Dual Orientation in Geometries:**
+- **Other New Features and Improvements**
 
-  - :py:mod:`geom_linerange() <lets_plot.geom_linerange>`
-  - :py:mod:`geom_pointrange() <lets_plot.geom_pointrange>`
-  - :py:mod:`geom_errorbar() <lets_plot.geom_errorbar>`
-  - :py:mod:`geom_crossbar() <lets_plot.geom_crossbar>`
-  - :py:mod:`geom_ribbon() <lets_plot.geom_ribbon>`
+  - :py:mod:`scale_x_log2() <lets_plot.scale_x_log2>`, :py:mod:`scale_y_log2() <lets_plot.scale_y_log2>`
 
-  | See: |horizontal_geoms|.
+  - New variables computed by ``'count'`` and ``'count2d'`` statistics: ``'..sumprop..'``, ``'..sumpct..'``.
 
-.. |horizontal_geoms| extref:: horizontal_geoms
-    :type: text
-    :text: example notebook
+    See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_stat_count_vars.ipynb>`__.
+
+  - Support using dictionaries for breaks/labels/values customization in ``scale_xxx()`` functions.
+
+    See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_params_with_dict.ipynb>`__.
+
+  - The ``lablim`` parameter in ``scale_xxx()`` functions.
+
+    See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_lablim.ipynb>`__.
+
+  - ``label_text`` parameter in :py:mod:`theme() <lets_plot.theme>` for annotation text settings.
+
+    See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/theme_label_text.ipynb>`__.
+
+  - NumberFormat: new flag ``~`` to trim trailing zeros.
 
 
 Change Log

@@ -16,7 +16,6 @@ Configuring Basemap Tiles for Interactive Maps
 
   - :ref:`OpenStreetMap <basemap_tiles_osm_tiles>`
   - :ref:`OpenTopoMap <basemap_tiles_topo_tiles>`
-  - :ref:`Stamen Design <basemap_tiles_stamen_tiles>`
   - :ref:`CARTO <basemap_tiles_carto_tiles>`
   - :ref:`NASA's Global Imagery Browse Services (GIBS) <basemap_tiles_nasa_tiles>`
 
@@ -66,11 +65,12 @@ Vector Tiles
   If the tiles don't load please try disabling the NSURLSession Websocket feature
   (`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
 
-Lets-Plot provides its own vector basemap tiles available in three variants:
+Lets-Plot provides its own vector basemap tiles available in four variants:
 
 - color
 - dark
 - light
+- bw
 
 By default Lets-Plot uses its "color" tiles.
 
@@ -152,26 +152,6 @@ Map data: `© OpenStreetMap contributors <https://www.openstreetmap.org/copyrigh
 - ``OPEN_TOPO_MAP``
 
 
-.. _basemap_tiles_stamen_tiles:
-
-Stamen Design
-~~~~~~~~~~~~~
-
-*Toner and Terrain:*
-
-Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `ODbL <http://www.openstreetmap.org/copyright>`__.
-
-*Watercolor:*
-
-Map tiles by `Stamen Design <https://stamen.com>`__, under `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0>`__. Data by `OpenStreetMap <http://openstreetmap.org>`__, under `CC BY SA <http://creativecommons.org/licenses/by-sa/3.0>`__.
-
-- ``STAMEN_DESIGN_TONER``, ``STAMEN_DESIGN_TONER_HIRES``: Toner
-- ``STAMEN_DESIGN_TONER_LIGHT``, ``STAMEN_DESIGN_TONER_LIGHT_HIRES``: Toner Light
-- ``STAMEN_DESIGN_TERRAIN``, ``STAMEN_DESIGN_TERRAIN_HIRES`` : Terrain
-- ``STAMEN_DESIGN_WATERCOLOR`` : Watercolor
-- ``STAMEN_DESIGN_TONER_LABELS``, ``STAMEN_DESIGN_TONER_LABELS_HIRES``: Toner Labels
-
-
 .. _basemap_tiles_carto_tiles:
 
 CARTO
@@ -231,13 +211,14 @@ In addition to pre-configured tilesets you can configure and use almost any othe
 
 You can do it with the help of the :py:mod:`LetsPlot.maptiles_zxy() <lets_plot.maptiles_zxy>` function.
 
-The following code will configure 'Stamen Design - Toner Hybrid' tiles:
+The following code will configure 'NASA, CityLights 2012' tiles:
 
 .. code-block:: python
 
     settings = dict(
-        url = "https://stamen-tiles.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}@2x.png",
-        attribution = 'Map tiles by <a href="https://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+        url = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_CityLights_2012/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg",
+        attribution = '<a href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs">© NASA Global Imagery Browse Services (GIBS)</a>',
+        max_zoom=8
     )
 
     ggplot() + geom_livemap(tiles=maptiles_zxy(**settings))

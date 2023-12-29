@@ -44,6 +44,7 @@ Lines:
 :py:mod:`horizontal line <lets_plot.geom_hline>`,
 :py:mod:`vertical line <lets_plot.geom_vline>`,
 :py:mod:`segment <lets_plot.geom_segment>`,
+:py:mod:`spoke <lets_plot.geom_spoke>`,
 :py:mod:`step-function <lets_plot.geom_step>`
 
 
@@ -86,6 +87,8 @@ Examples:
 - .. extref:: map_use_crs
       :type: text
 - .. extref:: aes_size_color_variadic_lines
+      :type: text
+- .. extref:: geom_spoke
       :type: text
 
 
@@ -143,6 +146,8 @@ Learn more: :ref:`Function as_discrete() <as_discrete>`.
 Examples:
 
 - .. extref:: ordering_examples
+      :type: text
+- .. extref:: factor_levels
       :type: text
 - .. extref:: geom_smooth_matrix
       :type: text
@@ -431,6 +436,8 @@ Examples:
       :type: text
 - .. extref:: gggrid_theme
       :type: text
+- .. extref:: gggrid_scale_share
+      :type: text
 
 
 |presentation-options-icon| Presentation Options
@@ -511,7 +518,7 @@ Examples:
       :type: text
 - .. extref:: legend_and_axis
       :type: text
-- .. extref:: theme_plot_margin
+- .. extref:: margins
       :type: text
 - .. extref:: legend_text_multiline
       :type: text
@@ -530,6 +537,10 @@ Examples:
 - .. extref:: axis_text_angle
       :type: text
 - .. extref:: theme_plot_message
+      :type: text
+- .. extref:: superscript_exponent
+      :type: text
+- .. extref:: theme_label_text
       :type: text
 
 
@@ -661,6 +672,9 @@ Examples
 
     ---
     .. extref:: world_values_survey
+
+    ---
+    .. extref:: scale_params_with_dict
 
 
 .. raw:: html
