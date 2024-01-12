@@ -21,6 +21,9 @@ Formatting provides the ability to do complex variable substitutions and value f
   - :ref:`Examples <formats_examples_datetime>`
 
 - :ref:`Tooltip Customization <formats_tooltips>`
+
+  - :ref:`Axis Tooltips <formats_axis_tooltips>`
+
 - :ref:`Demo Notebooks <formats_demo_notebooks>`
 
 ----
@@ -231,6 +234,20 @@ Tooltip Customization
 ---------------------
 
 In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customization <tooltips>`.
+
+
+.. _formats_axis_tooltips:
+
+Axis Tooltips
+~~~~~~~~~~~~~
+
+To format the axis tooltips, follow the rules:
+
+- the scale's ``format`` parameter is applied to tick labels only and does not affect tooltips;
+
+- the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is also applied to the axis tooltip;
+
+- if the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is not specified, the tooltip will get the value after applying the default formatting from the scale (without using the specified format for the scale).
 
 
 .. _formats_demo_notebooks:
