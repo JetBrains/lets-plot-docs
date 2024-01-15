@@ -674,6 +674,9 @@ Examples
     .. extref:: world_values_survey
 
     ---
+    .. extref:: holidays_2023_eda
+
+    ---
     .. extref:: joyplot
 
     ---
