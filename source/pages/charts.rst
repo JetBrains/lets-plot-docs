@@ -674,6 +674,9 @@ Examples
     .. extref:: world_values_survey
 
     ---
+    .. extref:: joyplot
+
+    ---
     .. extref:: scale_params_with_dict
 
 
