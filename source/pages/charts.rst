@@ -2,6 +2,10 @@
 
 .. title:: Charts in Lets-Plot
 
+.. meta::
+   :description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.
+   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, geopandas, collection of plots, plot themes, plot flavors, cookbooks
+
 
 Charts
 ======

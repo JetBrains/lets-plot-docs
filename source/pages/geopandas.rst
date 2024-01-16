@@ -4,6 +4,10 @@
 
 .. title:: GeoPandas support in Lets-Plot
 
+.. meta::
+   :description: With Lets-Plot all GeoPandas shapes can be plotted using various geometry layers.
+   :keywords: geopandas, GeoDataFrame, shapes, geometries, coordinate reference system, CRS, interactive maps
+
 
 GeoPandas Support (`GeoPandas <https://geopandas.org>`__ and `Shapely <https://pypi.org/project/Shapely/>`__)
 =============================================================================================================

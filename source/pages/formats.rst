@@ -4,6 +4,10 @@
 
 .. title:: Formatting values in Lets-Plot
 
+.. meta::
+   :description: Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting.
+   :keywords: formatting, number format, date format, time format, tooltip customization
+
 
 Formatting
 ==========

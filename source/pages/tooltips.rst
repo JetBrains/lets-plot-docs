@@ -4,6 +4,10 @@
 
 .. title:: Tooltip customization in Lets-Plot
 
+.. meta::
+   :description: In Lets-Plot you can customize the content and the view of tooltips for the layer.
+   :keywords: tooltip customization
+
 
 Tooltip Customization
 =====================

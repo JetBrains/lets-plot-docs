@@ -4,6 +4,10 @@
 
 .. title:: Function as_discrete() for ordering numeric data — Lets-Plot
 
+.. meta::
+   :description: Plotting and ordering of the numerical data as categorical with Lets-Plot.
+   :keywords: data visualization, numeric data, categoric data, ordering
+
 
 Function ``as_discrete()``
 ==========================

@@ -1,9 +1,13 @@
 .. _api:
 
 :orphan:
+
 :tocdepth: 2
 
 .. title:: Python API reference for Lets-Plot documentation
+
+.. meta::
+   :keywords: LetsPlot, ggplot
 
 
 API Reference

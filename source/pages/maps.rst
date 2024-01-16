@@ -2,6 +2,10 @@
 
 .. title:: Maps in Lets-Plot
 
+.. meta::
+   :description: Lets-Plot allows you to create beautiful maps just by adding an interactive basemap layer to your plot.
+   :keywords: geospatial visualization, interactive maps, ggplot2, geopandas, GeoDataFrame, basemap tiles, Lets-Plot in SciView
+
 
 Maps
 ====
