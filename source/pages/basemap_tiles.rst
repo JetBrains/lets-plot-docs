@@ -4,6 +4,10 @@
 
 .. title:: Configuring basemap tiles for interactive maps — Lets-Plot
 
+.. meta::
+   :description: Lets-Plot provides a variety of constants and functions to configure the basemap tiles.
+   :keywords: basemap tiles, vector tiles, raster tiles, OpenStreetMap, OSM, OpenTopoMap, CARTO, NASA
+
 
 Configuring Basemap Tiles for Interactive Maps
 ==============================================

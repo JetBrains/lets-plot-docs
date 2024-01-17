@@ -1,7 +1,5 @@
 .. _whats_new:
 
-:orphan:
-
 .. title:: What is new
 
 

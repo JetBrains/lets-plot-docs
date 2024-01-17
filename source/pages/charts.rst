@@ -2,6 +2,10 @@
 
 .. title:: Charts in Lets-Plot
 
+.. meta::
+   :description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.
+   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, cookbooks
+
 
 Charts
 ======
@@ -564,12 +568,23 @@ Resources
 ---------
 
 - :ref:`EDA Examples <eda>`
-- `Easy Data Visualisation for Tidy Data with Lets-Plot <https://aeturrell.github.io/coding-for-economists/vis-letsplot.html>`__ section in `Coding for Economists <https://aeturrell.github.io/coding-for-economists>`__
 - `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
 - `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
 
 .. panels::
-    :container: + python-4ds-book
+    :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
+
+    .. image:: /_static/images/coding_for_economists.png
+        :target: https://aeturrell.github.io/coding-for-economists
+
+    ---
+    :column: col-lg-6 col-md-4 col-sm-6 col-xs-12 p-2
+
+    Coding for Economists is a guide for economists on what programming is, why it’s useful, and how to do it.
+
+    In the `Easy Data Visualisation for Tidy Data with Lets-Plot <https://aeturrell.github.io/coding-for-economists/vis-letsplot.html>`__ section you’ll see how to make plots quickly using the declarative plotting.
+
+.. panels::
     :column: col-lg-3 col-md-4 col-sm-6 col-xs-12 p-2
 
     .. image:: /_static/images/Python4DS.png
@@ -672,6 +687,12 @@ Examples
 
     ---
     .. extref:: world_values_survey
+
+    ---
+    .. extref:: holidays_2023_eda
+
+    ---
+    .. extref:: joyplot
 
     ---
     .. extref:: scale_params_with_dict
