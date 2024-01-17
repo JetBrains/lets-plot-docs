@@ -7,7 +7,7 @@
 
 .. meta::
    :description: Lets-Plot is a multiplatform plotting library based on the Grammar of Graphics. It provides a ggplot2-like plotting API for Python and Kotlin users.
-   :keywords: data visualization, geospatial visualization, python, kotlin, grammar of graphics, gog, ggplot2
+   :keywords: data visualization, geospatial visualization, python, kotlin, grammar of graphics, ggplot2
 
 .. toctree::
     :glob:
