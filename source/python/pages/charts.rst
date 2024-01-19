@@ -2,6 +2,10 @@
 
 .. title:: Charts in Lets-Plot
 
+.. meta::
+   :description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.
+   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, cookbooks
+
 
 Charts
 ======
@@ -44,6 +48,7 @@ Lines:
 :py:mod:`horizontal line <lets_plot.geom_hline>`,
 :py:mod:`vertical line <lets_plot.geom_vline>`,
 :py:mod:`segment <lets_plot.geom_segment>`,
+:py:mod:`spoke <lets_plot.geom_spoke>`,
 :py:mod:`step-function <lets_plot.geom_step>`
 
 
@@ -86,6 +91,8 @@ Examples:
 - .. extref:: map_use_crs
       :type: text
 - .. extref:: aes_size_color_variadic_lines
+      :type: text
+- .. extref:: geom_spoke
       :type: text
 
 
@@ -143,6 +150,8 @@ Learn more: :ref:`Function as_discrete() <as_discrete>`.
 Examples:
 
 - .. extref:: ordering_examples
+      :type: text
+- .. extref:: factor_levels
       :type: text
 - .. extref:: geom_smooth_matrix
       :type: text
@@ -431,6 +440,8 @@ Examples:
       :type: text
 - .. extref:: gggrid_theme
       :type: text
+- .. extref:: gggrid_scale_share
+      :type: text
 
 
 |presentation-options-icon| Presentation Options
@@ -517,7 +528,7 @@ Examples:
       :type: text
 - .. extref:: legend_and_axis
       :type: text
-- .. extref:: theme_plot_margin
+- .. extref:: margins
       :type: text
 - .. extref:: legend_text_multiline
       :type: text
@@ -536,6 +547,10 @@ Examples:
 - .. extref:: axis_text_angle
       :type: text
 - .. extref:: theme_plot_message
+      :type: text
+- .. extref:: superscript_exponent
+      :type: text
+- .. extref:: theme_label_text
       :type: text
 
 
@@ -559,24 +574,38 @@ Resources
 ---------	
 
 - :ref:`EDA Examples <eda>`	
-- `Easy Data Visualisation for Tidy Data with Lets-Plot <https://aeturrell.github.io/coding-for-economists/vis-letsplot.html>`__ section in `Coding for Economists <https://aeturrell.github.io/coding-for-economists>`__	
-- `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__	
-- `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__	
+- `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
+- `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
 
 .. grid:: 2	
 
     .. grid-item-card::	
         :columns: 3	
 
-        .. image:: /_static/images/Python4DS.png	
-            :target: https://aeturrell.github.io/python4DS/	
+        .. image:: /_static/images/coding_for_economists.png
+            :target: https://aeturrell.github.io/coding-for-economists
 
-    .. grid-item-card::	
-        :columns: auto	
+    .. grid-item-card::
+        :columns: auto
 
-        This book will walk you through the main tools and techniques of data science in Python: importing, cleaning, transforming, and visualizing data.	
+        Coding for Economists is a guide for economists on what programming is, why it’s useful, and how to do it.
 
-        In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy-to-read and comprehensive guides to data visualization using the Lets-Plot package.	
+        In the `Easy Data Visualisation for Tidy Data with Lets-Plot <https://aeturrell.github.io/coding-for-economists/vis-letsplot.html>`__ section you’ll see how to make plots quickly using the declarative plotting.
+
+.. grid:: 2
+
+    .. grid-item-card::
+        :columns: 3
+
+        .. image:: /_static/images/Python4DS.png
+            :target: https://aeturrell.github.io/python4DS/
+
+    .. grid-item-card::
+        :columns: auto
+
+        This book will walk you through the main tools and techniques of data science in Python: importing, cleaning, transforming, and visualizing data.
+
+        In the `visualization chapter <https://aeturrell.github.io/python4DS/data-visualise.html>`__ you will find easy-to-read and comprehensive guides to data visualization using the Lets-Plot package.
 
 
 .. include:: /python/shared/features.rst

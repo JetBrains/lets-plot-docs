@@ -4,6 +4,10 @@
 
 .. title:: Formatting values in Lets-Plot
 
+.. meta::
+   :description: Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting.
+   :keywords: formatting, number format, date format, time format, tooltip customization
+
 
 Formatting
 ==========
@@ -21,6 +25,9 @@ Formatting provides the ability to do complex variable substitutions and value f
   - :ref:`Examples <formats_examples_datetime>`
 
 - :ref:`Tooltip Customization <formats_tooltips>`
+
+  - :ref:`Axis Tooltips <formats_axis_tooltips>`
+
 - :ref:`Demo Notebooks <formats_demo_notebooks>`
 
 ----
@@ -36,7 +43,7 @@ The general form of a format specifier is:
 
 .. code-block:: none
 
-    [​[fill]align][sign][symbol][0][width][,][.precision][type]
+    [​[fill]align][sign][symbol][0][width][,][.precision][~][type]
 
 - ``fill`` - can be any character, defaults to a space if omitted. The presence of a fill character is signaled by the ``align`` character following it, which must be one of the alignment options.
 
@@ -65,6 +72,8 @@ The general form of a format specifier is:
 - ``comma`` (``,``) option enables the use of a group separator, such as a comma for thousands.
 
 - ``precision`` depending on the ``type``, the ``precision`` either indicates the number of digits that follow the decimal point (types ``f`` and ``%``), or the number of significant digits (types \[space\], ``e``, ``g``, ``r``, ``s`` and ``p``). If the precision is not specified, it defaults to 6 for all types except ​ (none), which defaults to 12. Precision is ignored for integer formats (types ``b``, ``o``, ``d``, ``x``, ``X`` and ``c``).
+
+- ``~`` trims insignificant trailing zeros across all format types.
 
 - ``type`` determines how the data should be presented:
 
@@ -123,6 +132,7 @@ Let's format the number `42`:
     #b        -->  "0b101010"
     o         -->  "52"
     e         -->  "4.200000e+1"
+    ~e        -->  "4.2e+1"
     s         -->  "42.0000"
     020,s     -->  "000,000,000,042.0000"
     020.0%    -->  "0000000000000004200%"
@@ -228,6 +238,20 @@ Tooltip Customization
 ---------------------
 
 In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customization <tooltips>`.
+
+
+.. _formats_axis_tooltips:
+
+Axis Tooltips
+~~~~~~~~~~~~~
+
+To format the axis tooltips, follow the rules:
+
+- the scale's ``format`` parameter is applied to tick labels only and does not affect tooltips;
+
+- the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is also applied to the axis tooltip;
+
+- if the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is not specified, the tooltip will get the value after applying the default formatting from the scale (without using the specified format for the scale).
 
 
 .. _formats_demo_notebooks:

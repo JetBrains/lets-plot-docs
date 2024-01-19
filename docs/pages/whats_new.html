@@ -49,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -85,7 +85,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">What is new in 4.1.0</a><ul>
+<li><a class="reference internal" href="#">What is new in 4.2.0</a><ul>
 <li><a class="reference internal" href="#change-log">Change Log</a></li>
 </ul>
 </li>
@@ -120,47 +120,55 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <section id="what-is-new-in-4-1-0">
-<h1>What is new in 4.1.0<a class="headerlink" href="#what-is-new-in-4-1-0" title="Permalink to this headline">¶</a></h1>
+  <section id="what-is-new-in-4-2-0">
+<span id="whats-new"></span><h1>What is new in 4.2.0<a class="headerlink" href="#what-is-new-in-4-2-0" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p><strong>Support for Python 3.12</strong></p></li>
-<li><p><strong>Annotations in Barchart</strong></p>
-<p><a class="reference internal" href="../_images/annotated_bars.png"><img alt="annotated_bars-img" src="../_images/annotated_bars.png" style="width: 512px;" /></a></p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/bar_annotations.ipynb">example notebook</a>.</p>
+<li><p><strong>Support for “Categoricals”</strong></p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/factor_levels.ipynb">example notebook</a>.</p>
 </li>
-</ul>
-<ul>
-<li><p><strong>Common Theme for Subplots</strong></p>
-<p><a class="reference internal" href="../_images/gggrid_theme.png"><img alt="gggrid_theme-img" src="../_images/gggrid_theme.png" style="width: 512px;" /></a></p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/gggrid_theme.ipynb">example notebook</a>.</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>HCL and CIELAB Color Space for Hue Color Scale and Gradient Color Scales</strong></p>
-<p><a class="reference internal" href="../_images/hue_color_scale.png"><img alt="hue_color_scale-img" src="../_images/hue_color_scale.png" style="width: 512px;" /></a></p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23e/color_space_update.ipynb">example notebook</a>.</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>Scale Transformations: ‘log2’ and ‘symlog’</strong></p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23e/new_scale_transformations.ipynb">example notebook</a>.</p>
-</li>
-<li><p><strong>Plot Margins</strong></p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/theme_plot_margin.ipynb">example notebook</a>.</p>
-</li>
-</ul>
-<ul>
-<li><p><strong>Dual Orientation in Geometries:</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="api/lets_plot.geom_linerange.html#lets_plot.geom_linerange" title="lets_plot.geom_linerange"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_linerange()</span></code></a></p></li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_pointrange.html#lets_plot.geom_pointrange" title="lets_plot.geom_pointrange"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_pointrange()</span></code></a></p></li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_errorbar.html#lets_plot.geom_errorbar" title="lets_plot.geom_errorbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_errorbar()</span></code></a></p></li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_crossbar.html#lets_plot.geom_crossbar" title="lets_plot.geom_crossbar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_crossbar()</span></code></a></p></li>
-<li><p><a class="reference internal" href="api/lets_plot.geom_ribbon.html#lets_plot.geom_ribbon" title="lets_plot.geom_ribbon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_ribbon()</span></code></a></p></li>
-</ul>
-<div class="line-block">
-<div class="line">See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/horizontal_geoms.ipynb">example notebook</a>.</div>
+<li><p><strong>Superscript for Numbers in Scientific Notation</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do NOT(!) use <code class="docutils literal notranslate"><span class="pre">exponent_format='pow'</span></code> if you are planning to export plot to a raster format (PNG, PDF).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CairoSVG</span></code> library (which is under the hood of our <code class="docutils literal notranslate"><span class="pre">ggsave()</span></code> function) does not handle <code class="docutils literal notranslate"><span class="pre">tspan</span></code> element properly end breaks superscript notation when transforming SVG to PNG/PDF.</p>
+<p>More details: <a class="reference external" href="https://github.com/Kozea/CairoSVG/issues/317">https://github.com/Kozea/CairoSVG/issues/317</a></p>
 </div>
+<a class="reference internal image-reference" href="../_images/superscript.png"><img alt="../_images/superscript.png" src="../_images/superscript.png" style="width: 328px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/superscript_exponent.ipynb">example notebook</a>.</p>
+</li>
+<li><p><strong>Exporting Plot to a File-Like Object</strong></p>
+<p>Convenience methods: <code class="docutils literal notranslate"><span class="pre">to_svg()</span></code>, <code class="docutils literal notranslate"><span class="pre">to_html()</span></code>, <code class="docutils literal notranslate"><span class="pre">to_png()</span></code>, <code class="docutils literal notranslate"><span class="pre">to_pdf()</span></code></p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_export_methods.ipynb">example notebook</a>.</p>
+</li>
+<li><p><strong>Sharing of X,Y-scale Limits Between Subplots in gggrid()</strong></p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/gggrid_scale_share.ipynb">example notebook</a>.</p>
+</li>
+<li><p><strong>geom_spoke()</strong></p>
+<a class="reference internal image-reference" href="../_images/geom_spoke.png"><img alt="../_images/geom_spoke.png" src="../_images/geom_spoke.png" style="width: 248px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_spoke.ipynb">example notebook</a>.</p>
+</li>
+<li><p><strong>High-contrast Tileset “BW” for geom_livemap()</strong></p>
+<a class="reference internal image-reference" href="../_images/tileset_BW.png"><img alt="../_images/tileset_BW.png" src="../_images/tileset_BW.png" style="width: 512px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_livemap_bw_tiles.ipynb">example notebook</a>.</p>
+<p>See advanced example: <a class="reference external" href="https://nextjournal.com/asmirnov-horis/spatial-prediction-of-soil-pollutants-with-multi-output-gaussian-processes?token=26GT2sBa3Ycw6LGZxqdTay">Spatial prediction of soil pollutants with multi-output Gaussian processes</a>. Credits: Essi Parent (<a class="reference external" href="https://github.com/essicolo">&#64;essicolo</a>).</p>
+</li>
+<li><p><strong>Other New Features and Improvements</strong></p>
+<ul>
+<li><p><a class="reference internal" href="api/lets_plot.scale_x_log2.html#lets_plot.scale_x_log2" title="lets_plot.scale_x_log2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_x_log2()</span></code></a>, <a class="reference internal" href="api/lets_plot.scale_y_log2.html#lets_plot.scale_y_log2" title="lets_plot.scale_y_log2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_y_log2()</span></code></a></p></li>
+<li><p>New variables computed by <code class="docutils literal notranslate"><span class="pre">'count'</span></code> and <code class="docutils literal notranslate"><span class="pre">'count2d'</span></code> statistics: <code class="docutils literal notranslate"><span class="pre">'..sumprop..'</span></code>, <code class="docutils literal notranslate"><span class="pre">'..sumpct..'</span></code>.</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_stat_count_vars.ipynb">example notebook</a>.</p>
+</li>
+<li><p>Support using dictionaries for breaks/labels/values customization in <code class="docutils literal notranslate"><span class="pre">scale_xxx()</span></code> functions.</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_params_with_dict.ipynb">example notebook</a>.</p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">lablim</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">scale_xxx()</span></code> functions.</p>
+<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_lablim.ipynb">example notebook</a>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label_text</span></code> parameter in <a class="reference internal" href="api/lets_plot.theme.html#lets_plot.theme" title="lets_plot.theme"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme()</span></code></a> for annotation text settings.</p>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/theme_label_text.ipynb">example notebook</a>.</p>
+</li>
+<li><p>NumberFormat: new flag <code class="docutils literal notranslate"><span class="pre">~</span></code> to trim trailing zeros.</p></li>
+</ul>
 </li>
 </ul>
 <section id="change-log">
@@ -186,7 +194,7 @@
       </a>
     </p>
     <p>
-      Copyright © 2019-2023 JetBrains s.r.o.<br>
+      Copyright © 2019-2024 JetBrains s.r.o.<br>
       Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
     </p>
   </div>

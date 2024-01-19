@@ -2,6 +2,10 @@
 
 .. title:: Maps in Lets-Plot
 
+.. meta::
+   :description: Lets-Plot allows you to create beautiful maps just by adding an interactive basemap layer to your plot.
+   :keywords: geospatial visualization, interactive maps, ggplot2, geopandas, GeoDataFrame, basemap tiles, Lets-Plot in SciView
+
 
 Maps
 ====
@@ -23,8 +27,7 @@ Proportional Symbol Map
 
         .. code-block:: python
 
-            ggplot(data) + geom_livemap() + \
-                geom_point(aes(..))
+            ggplot(data) + geom_livemap() + geom_point(aes(..))
 
 
 Choropleth Map
@@ -41,8 +44,7 @@ Choropleth Map
 
         .. code-block:: python
 
-            ggplot(data) + geom_livemap() + \
-                geom_polygon(aes(..))
+            ggplot(data) + geom_livemap() + geom_polygon(aes(..))
 
 
 Combine Layers on Map ``ggplot2`` Style
@@ -140,37 +142,17 @@ Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>
     .. grid-item-card::
 
         .. extref:: the_gallery_of_basemaps
+            :image: lets_plot_bw
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
             :image: osm_standard
 
     .. grid-item-card::
 
         .. extref:: the_gallery_of_basemaps
             :image: open_topo_map
-
-    .. grid-item-card::
-
-        .. extref:: the_gallery_of_basemaps
-            :image: stamen_design_terrain
-
-    .. grid-item-card::
-
-        .. extref:: the_gallery_of_basemaps
-            :image: stamen_design_toner
-
-    .. grid-item-card::
-
-        .. extref:: the_gallery_of_basemaps
-            :image: stamen_design_toner_hybrid
-
-    .. grid-item-card::
-
-        .. extref:: the_gallery_of_basemaps
-            :image: stamen_design_toner_labels
-
-    .. grid-item-card::
-
-        .. extref:: the_gallery_of_basemaps
-            :image: stamen_design_watercolor
 
     .. grid-item-card::
 

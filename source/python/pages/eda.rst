@@ -4,6 +4,10 @@
 
 .. title:: EDA Examples
 
+.. meta::
+   :description: Some exploratory data analysis examples with Lets-Plot from the net.
+   :keywords: exploratory data analysis, EDA, gallery, examples
+
 
 EDA Examples
 ============

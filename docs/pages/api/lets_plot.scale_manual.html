@@ -48,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -120,23 +120,26 @@
 <h1>lets_plot.scale_manual<a class="headerlink" href="#lets-plot-scale-manual" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.scale_manual">
-<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">scale_manual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aesthetic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breaks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.scale_manual" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">scale_manual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aesthetic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breaks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lablim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.scale_manual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create your own discrete scale for the specified aesthetics.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>aesthetic</strong><span class="classifier">str or list</span></dt><dd><p>The name(s) of the aesthetic(s) that this scale works with.</p>
 </dd>
-<dt><strong>values</strong><span class="classifier">list of str</span></dt><dd><p>A set of aesthetic values to map data values to.
-The values will be matched in order (usually alphabetical) with the limits of the scale.</p>
+<dt><strong>values</strong><span class="classifier">list of str or dict</span></dt><dd><p>A set of aesthetic values to map data values to.
+If this is a list, the values will be matched in order (usually alphabetical) with the limits of the scale.
+If a dictionary, then the values will be matched based on the names.</p>
 </dd>
 <dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name of the scale - used as the axis label or the legend title.
 If None, the default, the name of the scale
 is taken from the first mapping used for that aesthetic.</p>
 </dd>
-<dt><strong>breaks</strong><span class="classifier">list</span></dt><dd><p>A vector specifying values to display as ticks on axis.</p>
+<dt><strong>breaks</strong><span class="classifier">list or dict</span></dt><dd><p>A list of data values specifying the positions of ticks, or a dictionary which maps the tick labels to the breaks values.</p>
 </dd>
-<dt><strong>labels</strong><span class="classifier">list of str</span></dt><dd><p>A vector of labels (on ticks).</p>
+<dt><strong>labels</strong><span class="classifier">list of str or dict</span></dt><dd><p>A list of labels on ticks, or a dictionary which maps the breaks values to the tick labels.</p>
+</dd>
+<dt><strong>lablim</strong><span class="classifier">int, default=None</span></dt><dd><p>The maximum label length (in characters) before trimming is applied.</p>
 </dd>
 <dt><strong>limits</strong><span class="classifier">list</span></dt><dd><p>Continuous scale: a numeric vector of length two providing limits of the scale.
 Discrete scale: a vector specifying the data range for the scale
@@ -148,11 +151,13 @@ and the default order of their display in guides.</p>
 or a call to a guide function (<cite>guide_colorbar()</cite>, <cite>guide_legend()</cite>)
 specifying additional arguments. ‘none’ will hide the guide.</p>
 </dd>
-<dt><strong>format</strong><span class="classifier">str</span></dt><dd><p>Define the format for labels on the scale. The syntax resembles Python’s:
-‘.2f’ -&gt; ‘12.45’
-‘Num {}’ -&gt; ‘Num 12.456789’
-‘TTL: {.2f}$’ -&gt; ‘TTL: 12.45$’
-For more info see <a class="reference external" href="https://lets-plot.org/pages/formats.html">https://lets-plot.org/pages/formats.html</a>.</p>
+<dt><strong>format</strong><span class="classifier">str</span></dt><dd><p>Define the format for labels on the scale. The syntax resembles Python’s:</p>
+<ul class="simple">
+<li><p>‘.2f’ -&gt; ‘12.45’</p></li>
+<li><p>‘Num {}’ -&gt; ‘Num 12.456789’</p></li>
+<li><p>‘TTL: {.2f}$’ -&gt; ‘TTL: 12.45$’</p></li>
+</ul>
+<p>For more info see <a class="reference external" href="https://lets-plot.org/pages/formats.html">https://lets-plot.org/pages/formats.html</a>.</p>
 </dd>
 </dl>
 </dd>
@@ -180,7 +185,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="yO61Dt"></div>
+<div id="U2cJOj"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -191,7 +196,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.1.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.2.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -204,13 +209,13 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("yO61Dt").appendChild(div);
+            document.getElementById("U2cJOj").appendChild(div);
         };
-        var e = document.getElementById("yO61Dt");
+        var e = document.getElementById("U2cJOj");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="nUZgdJ"></div>
+</div><div class="output text_html">   <div id="JPiN6X"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -253,7 +258,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("nUZgdJ");
+           var plotContainer = document.getElementById("JPiN6X");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -281,7 +286,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/page
       </a>
     </p>
     <p>
-      Copyright © 2019-2023 JetBrains s.r.o.<br>
+      Copyright © 2019-2024 JetBrains s.r.o.<br>
       Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
     </p>
   </div>

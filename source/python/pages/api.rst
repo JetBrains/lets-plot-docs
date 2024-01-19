@@ -1,9 +1,13 @@
 .. _api:
 
 :orphan:
+
 :tocdepth: 2
 
 .. title:: Python API reference for Lets-Plot documentation
+
+.. meta::
+   :keywords: LetsPlot, ggplot
 
 
 API Reference
@@ -88,6 +92,7 @@ Standard Geometries
     geom_step
     geom_rect
     geom_segment
+    geom_spoke
     geom_text
     geom_label
     geom_qq
@@ -177,6 +182,8 @@ Position Scales
     scale_y_continuous
     scale_x_log10
     scale_y_log10
+    scale_x_log2
+    scale_y_log2
     scale_x_reverse
     scale_y_reverse
 
@@ -543,20 +550,10 @@ Geospatial
     LETS_PLOT_COLOR
     LETS_PLOT_LIGHT
     LETS_PLOT_DARK
+    LETS_PLOT_BW
     SOLID
     OSM
     OPEN_TOPO_MAP
-    STAMEN_DESIGN_TONER
-    STAMEN_DESIGN_TONER_HIRES
-    STAMEN_DESIGN_TONER_LIGHT
-    STAMEN_DESIGN_TONER_LIGHT_HIRES
-    STAMEN_DESIGN_TONER_HYBRID
-    STAMEN_DESIGN_TONER_HYBRID_HIRES
-    STAMEN_DESIGN_TONER_LABELS
-    STAMEN_DESIGN_TONER_LABELS_HIRES
-    STAMEN_DESIGN_TERRAIN
-    STAMEN_DESIGN_TERRAIN_HIRES
-    STAMEN_DESIGN_WATERCOLOR
     CARTO_POSITRON
     CARTO_POSITRON_HIRES
     CARTO_POSITRON_NO_LABELS

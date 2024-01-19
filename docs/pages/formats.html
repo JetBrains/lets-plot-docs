@@ -4,6 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting." name="description" />
+<meta content="formatting, number format, date format, time format, tooltip customization" name="keywords" />
 
     <title>Formatting values in Lets-Plot</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -48,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           Lets-Plot</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.1.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -94,7 +96,10 @@
 <li><a class="reference internal" href="#formats-examples-datetime">Examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#tooltip-customization">Tooltip Customization</a></li>
+<li><a class="reference internal" href="#tooltip-customization">Tooltip Customization</a><ul>
+<li><a class="reference internal" href="#axis-tooltips">Axis Tooltips</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#demo-notebooks">Demo Notebooks</a></li>
 </ul>
 </li>
@@ -144,7 +149,11 @@
 <li><p><a class="reference internal" href="#formats-examples-datetime"><span class="std std-ref">Examples</span></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#formats-tooltips"><span class="std std-ref">Tooltip Customization</span></a></p></li>
+<li><p><a class="reference internal" href="#formats-tooltips"><span class="std std-ref">Tooltip Customization</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#formats-axis-tooltips"><span class="std std-ref">Axis Tooltips</span></a></p></li>
+</ul>
+</li>
 <li><p><a class="reference internal" href="#formats-demo-notebooks"><span class="std std-ref">Demo Notebooks</span></a></p></li>
 </ul>
 <hr class="docutils" />
@@ -152,7 +161,7 @@
 <span id="formats-number-format"></span><h2>Number Format<a class="headerlink" href="#number-format" title="Permalink to this headline">¶</a></h2>
 <p>The numeric format strings are used to format common numeric types.
 The general form of a format specifier is:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[​[fill]align][sign][symbol][0][width][,][.precision][type]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[​[fill]align][sign][symbol][0][width][,][.precision][~][type]
 </pre></div>
 </div>
 <ul>
@@ -182,6 +191,7 @@ The general form of a format specifier is:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">width</span></code> defines the minimum field width; if not specified, then the width will be determined by the content.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">comma</span></code> (<code class="docutils literal notranslate"><span class="pre">,</span></code>) option enables the use of a group separator, such as a comma for thousands.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">precision</span></code> depending on the <code class="docutils literal notranslate"><span class="pre">type</span></code>, the <code class="docutils literal notranslate"><span class="pre">precision</span></code> either indicates the number of digits that follow the decimal point (types <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">%</span></code>), or the number of significant digits (types [space], <code class="docutils literal notranslate"><span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span></code>). If the precision is not specified, it defaults to 6 for all types except ​ (none), which defaults to 12. Precision is ignored for integer formats (types <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">o</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span></code> trims insignificant trailing zeros across all format types.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> determines how the data should be presented:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> - exponent notation;</p></li>
@@ -234,6 +244,7 @@ b         --&gt;  &quot;101010&quot;
 #b        --&gt;  &quot;0b101010&quot;
 o         --&gt;  &quot;52&quot;
 e         --&gt;  &quot;4.200000e+1&quot;
+~e        --&gt;  &quot;4.2e+1&quot;
 s         --&gt;  &quot;42.0000&quot;
 020,s     --&gt;  &quot;000,000,000,042.0000&quot;
 020.0%    --&gt;  &quot;0000000000000004200%&quot;
@@ -322,6 +333,15 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 <section id="tooltip-customization">
 <span id="formats-tooltips"></span><h2>Tooltip Customization<a class="headerlink" href="#tooltip-customization" title="Permalink to this headline">¶</a></h2>
 <p>In Lets-Plot you can use formatting for tooltip text, see: <a class="reference internal" href="tooltips.html#tooltips"><span class="std std-ref">Tooltip Customization</span></a>.</p>
+<section id="axis-tooltips">
+<span id="formats-axis-tooltips"></span><h3>Axis Tooltips<a class="headerlink" href="#axis-tooltips" title="Permalink to this headline">¶</a></h3>
+<p>To format the axis tooltips, follow the rules:</p>
+<ul class="simple">
+<li><p>the scale’s <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter is applied to tick labels only and does not affect tooltips;</p></li>
+<li><p>the tooltip <a class="reference internal" href="api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.format" title="lets_plot.layer_tooltips.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> is also applied to the axis tooltip;</p></li>
+<li><p>if the tooltip <a class="reference internal" href="api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.format" title="lets_plot.layer_tooltips.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> is not specified, the tooltip will get the value after applying the default formatting from the scale (without using the specified format for the scale).</p></li>
+</ul>
+</section>
 </section>
 <section id="demo-notebooks">
 <span id="formats-demo-notebooks"></span><h2>Demo Notebooks<a class="headerlink" href="#demo-notebooks" title="Permalink to this headline">¶</a></h2>
@@ -349,7 +369,7 @@ This approach is used in function <a class="reference internal" href="api/lets_p
       </a>
     </p>
     <p>
-      Copyright © 2019-2023 JetBrains s.r.o.<br>
+      Copyright © 2019-2024 JetBrains s.r.o.<br>
       Created using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
     </p>
   </div>
