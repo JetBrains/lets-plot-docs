@@ -4,6 +4,7 @@
    :description: Lets-Plot is a multiplatform plotting library based on the Grammar of Graphics. It provides a ggplot2-like plotting API for Python and Kotlin users.
    :keywords: data visualization, geospatial visualization, python, kotlin, grammar of graphics, ggplot2
 
+
 .. toctree::
     :glob:
     :hidden:
@@ -53,32 +54,11 @@
 
     .. grid-item-card::
 
-        .. grid:: 3
-            :class-container: landing-gallery
+        .. raw:: html
 
-            .. grid-item-card::
-
-                .. extref:: geom_violin
-
-            .. grid-item-card::
-
-                .. extref:: world_happiness
-
-            .. grid-item-card::
-
-                .. extref:: bar_annotations
-
-            .. grid-item-card::
-
-                .. extref:: soil_pollutants_with_gaussian_processes
-
-            .. grid-item-card::
-
-                .. extref:: map_california_housing
-
-            .. grid-item-card::
-
-                .. extref:: user_guide
+            <a class="reference internal image-reference" href="python/pages/gallery.html">
+              <img alt="Gallery" src="_static/images/gallery.png">
+            </a>
 
 
 .. grid:: 2
