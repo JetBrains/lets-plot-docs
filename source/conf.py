@@ -113,6 +113,10 @@ html_theme_options = {
     "show_prev_next": False,
     "navbar_start": ["navbar-logo", "navbar-version"],
     "navbar_end": ["theme-switcher", "navbar-python-icon-links"],
+    "secondary_sidebar_items": {
+        "**": ["page-toc", "sourcelink"],
+        "index": [],
+    }
 }
 
 html_context = {
