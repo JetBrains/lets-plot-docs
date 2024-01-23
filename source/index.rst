@@ -20,8 +20,8 @@
     'bistro' plots <pages/bistro>
     What is new <pages/whats_new>
 
-Python Plotting Library Based on the Grammar of Graphics
-========================================================
+Grammar of Graphics for Python
+==============================
 
 .. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
