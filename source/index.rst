@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. title:: Lets-Plot: open-source plotting library for statistical data
+.. title:: Grammar of Graphics for Python
 
 .. meta::
    :description: Lets-Plot is a multiplatform plotting library based on the Grammar of Graphics. It provides a ggplot2-like plotting API for Python and Kotlin users.
@@ -20,8 +20,8 @@
     'bistro' plots <pages/bistro>
     What is new <pages/whats_new>
 
-Python Plotting Library Based on the Grammar of Graphics
-========================================================
+Grammar of Graphics for Python
+==============================
 
 .. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
