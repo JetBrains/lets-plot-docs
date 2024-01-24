@@ -2,7 +2,7 @@ Key Features
 ------------
 
 .. grid:: 2
-    :class-container: features-list
+    :class-container: features-list grid-2
 
     .. grid-item-card::
         :shadow: none
