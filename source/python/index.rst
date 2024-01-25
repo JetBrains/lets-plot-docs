@@ -60,65 +60,48 @@ Quickstart
         geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
         theme(panel_grid_major_x='blank')
 
-.. grid:: 7
-    :class-container: lets-plot-platforms
+.. extref:: quickstart
+    :type: logo
+    :ref: nbviewer
+    :title: NBViewer
 
-    .. grid-item-card::
+.. extref:: quickstart
+    :type: logo
+    :ref: datalore
+    :title: Datalore
 
-        .. extref:: quickstart
-            :type: logo
-            :ref: nbviewer
-            :title: NBViewer
+.. extref:: quickstart
+    :type: logo
+    :ref: kaggle
+    :title: Kaggle
 
-    .. grid-item-card::
+.. extref:: quickstart
+    :type: logo
+    :ref: colab
+    :title: Google Colab
 
-        .. extref:: quickstart
-            :type: logo
-            :ref: datalore
-            :title: Datalore
+.. extref:: quickstart
+    :type: logo
+    :ref: deepnote
+    :title: Deepnote
+    :height: 3.2rem
 
-    .. grid-item-card::
+.. extref:: quickstart
+    :type: logo
+    :ref: nextjournal
+    :title: Nextjournal
 
-        .. extref:: quickstart
-            :type: logo
-            :ref: kaggle
-            :title: Kaggle
-
-    .. grid-item-card::
-
-        .. extref:: quickstart
-            :type: logo
-            :ref: colab
-            :title: Google Colab
-
-    .. grid-item-card::
-
-        .. extref:: quickstart
-            :type: logo
-            :ref: deepnote
-            :title: Deepnote
-            :height: 3.2rem
-
-    .. grid-item-card::
-
-        .. extref:: quickstart
-            :type: logo
-            :ref: nextjournal
-            :title: Nextjournal
-
-    .. grid-item-card::
-
-        .. extref:: quickstart
-            :type: logo
-            :ref: pycharm
-            :title: PyCharm
+.. extref:: quickstart
+    :type: logo
+    :ref: pycharm
+    :title: PyCharm
 
 
 Explore Your Data with Lets-Plot
 --------------------------------
 
 .. grid:: 3
-    :class-container: explore-your-data-container
+    :class-container: explore-your-data-container wide-grid wide-grid-3
 
     .. grid-item-card:: :ref:`Charts <charts>`
         :shadow: none

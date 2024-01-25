@@ -19,7 +19,7 @@
     What is new <python/pages/whats_new>
 
 .. grid:: 2
-    :class-container: landing-content grid-2
+    :class-container: landing-content wide-grid wide-grid-2
 
     .. grid-item-card::
 
@@ -53,7 +53,7 @@
 
 
 .. grid:: 2
-    :class-container: features-list grid-2
+    :class-container: features-list wide-grid wide-grid-2
 
     .. grid-item-card::
 
