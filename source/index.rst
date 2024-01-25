@@ -30,28 +30,18 @@
                 — multiplatform plotting library based on the grammar of graphics
             </h1>
 
-        .. grid:: 3
-            :class-container: landing-buttons
+        .. button-ref:: python/index
+            :color: primary
 
-            .. grid-item-card::
+            Get started
 
-                .. button-ref:: python/index
-                    :color: primary
+        .. button-ref:: python/pages/user_guide
+            :color: primary
+            :outline:
 
-                    Get started
+            See user guide
 
-            .. grid-item-card::
-
-                .. button-ref:: python/pages/user_guide
-                    :color: primary
-                    :outline:
-
-                    See user guide
-
-            .. grid-item-card::
-                :text-align: center
-
-                :ref:`Visit the API <api>`
+        :ref:`Visit the API <api>`
 
     .. grid-item-card::
 
