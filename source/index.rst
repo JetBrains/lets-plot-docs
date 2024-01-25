@@ -1,4 +1,4 @@
-.. title:: Grammar of Graphics for Python
+.. title:: Lets-Plot: Plotting Library Based on the Grammar of Graphics
 
 .. meta::
    :description: Lets-Plot is a multiplatform plotting library based on the Grammar of Graphics. It provides a ggplot2-like plotting API for Python and Kotlin users.
@@ -25,9 +25,10 @@
 
         .. raw:: html
 
-            <h1>Lets-Plot</h1>
-
-        Multiplatform plotting library based on the Grammar of Graphics.
+            <h1>
+                <span id="landing-title">Lets-Plot</span>
+                — multiplatform plotting library based on the grammar of graphics
+            </h1>
 
         .. grid:: 3
             :class-container: landing-buttons
