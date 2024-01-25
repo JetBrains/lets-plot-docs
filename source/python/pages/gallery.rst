@@ -9,6 +9,7 @@ Gallery of Examples
 ===================
 
 .. grid:: 4
+    :class-container: wide-grid wide-grid-4
 
     .. grid-item-card::
 

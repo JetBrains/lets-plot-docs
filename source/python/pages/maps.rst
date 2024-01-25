@@ -17,6 +17,7 @@ Proportional Symbol Map
 -----------------------
 
 .. grid:: 2
+    :class-container: wide-grid wide-grid-2
 
     .. grid-item-card::
 
@@ -34,6 +35,7 @@ Choropleth Map
 --------------
 
 .. grid:: 2
+    :class-container: wide-grid wide-grid-2
 
     .. grid-item-card::
 
@@ -123,6 +125,7 @@ Use quality Lets-Plot vector basemaps or choose among many raster map tiles avai
 Learn more: :ref:`Configuring Basemap Tiles for Interactive Maps <basemap_tiles>`.
 
 .. grid:: 6
+    :class-container: wide-grid wide-grid-6
 
     .. grid-item-card::
 

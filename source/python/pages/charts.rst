@@ -470,6 +470,7 @@ Predefined themes:
 :py:mod:`none <lets_plot.theme_none>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 

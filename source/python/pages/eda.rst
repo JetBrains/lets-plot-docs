@@ -17,6 +17,7 @@ Exploratory Data Analysis (EDA) is an art of looking at one or more datasets in 
 Below are few EDA notebooks from the net.
 
 .. grid:: 4
+    :class-container: wide-grid wide-grid-4
 
     .. grid-item-card::
 

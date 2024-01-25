@@ -26,6 +26,7 @@ Country
 :py:mod:`geocode_countries() <lets_plot.geo_data.geocode_countries>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 
@@ -52,6 +53,7 @@ State
 :py:mod:`geocode_states() <lets_plot.geo_data.geocode_states>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 
@@ -78,6 +80,7 @@ County
 :py:mod:`geocode_counties() <lets_plot.geo_data.geocode_counties>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 
@@ -104,6 +107,7 @@ City
 :py:mod:`geocode_cities() <lets_plot.geo_data.geocode_cities>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 
@@ -134,6 +138,7 @@ Polygons
 :py:mod:`geom_polygon() <lets_plot.geom_polygon>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 
@@ -160,6 +165,7 @@ Points
 :py:mod:`geom_point() <lets_plot.geom_point>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 
@@ -186,6 +192,7 @@ Rectangles
 :py:mod:`geom_rect() <lets_plot.geom_rect>`
 
 .. grid:: 3
+    :class-container: wide-grid wide-grid-3
 
     .. grid-item-card::
 

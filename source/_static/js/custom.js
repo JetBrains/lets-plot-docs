@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   fixNavLinks();
-  removeSidebarFromLanding();
+  removeEmptySecondarySidebar();
   removeCardShadows();
   addTargetToExternalReferences();
   handlePreviewGallery();
@@ -16,11 +16,13 @@ function fixNavLinks() {
   }
 }
 
-function removeSidebarFromLanding() {
-  if (!isLandingPage()) return;
+function removeEmptySecondarySidebar() {
   const sidebarElements = document.getElementsByClassName("bd-sidebar-secondary bd-toc");
-  for (let i = 0; i < sidebarElements.length; i++)
-    sidebarElements[i].style.display = "none";
+  for (let i = 0; i < sidebarElements.length; i++) {
+    const sidebarElement = sidebarElements[i];
+    if (sidebarElement.hasChildNodes()) continue;
+    sidebarElement.style.display = "none";
+  }
 }
 
 function removeCardShadows() {
