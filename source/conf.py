@@ -52,6 +52,7 @@ extref_logo_images = {
     'pycharm': "_static/images/logo/pycharm.svg",
 }
 extref_default_image = 'square'
+extref_class = "extref"
 
 autodoc_default_options = {
     'member-order': 'bysource',
