@@ -57,6 +57,8 @@ The extension provides the following configuration values:
     Default ``:ref:`` value if it is not specified.
 - ``extref_default_image`` : str
     Default ``:image:`` value if it is not specified.
+- ``extref_class`` : str
+    Additional custom class for the link tag.
 
 JSON Options
 ------------
@@ -235,9 +237,20 @@ class ExtRefDirective(Directive):
         return list(self._conf()['ref'])[0]
 
     def _class(self):
-        if self._type() in ['image', 'logo']:
-            return "reference {0} image-reference".format(self._url_type())
-        return "reference {0}".format(self._url_type())
+        class_text = "reference {0}".format(self._url_type())
+        if self._type() == 'image':
+            class_text += " image-reference preview"
+        if self._type() == 'logo':
+            class_text += " image-reference logo"
+        if self._custom_class() is not None:
+            class_text += " {0}".format(self._custom_class())
+        return class_text
+
+    def _custom_class(self):
+        if 'extref_class' in self._env().config:
+            return self._env().config['extref_class']
+        else:
+            return None
 
     def _url_type(self):
         return "external" if urlparse(self._href()).netloc else "internal"
@@ -387,13 +400,14 @@ def setup(app):
     app.add_config_value('extref_default_type', REF_TYPES[0], 'html')
     app.add_config_value('extref_default_ref', None, 'html')
     app.add_config_value('extref_default_image', None, 'html')
+    app.add_config_value('extref_class', None, 'html')
 
     app.add_directive('extref', ExtRefDirective)
 
     app.connect('config-inited', config_inited_handler)
 
     return {
-        'version': '0.2',
+        'version': '0.3',
     }
 
 if __name__ == '__main__':
