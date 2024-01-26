@@ -19,7 +19,6 @@ sys.path.insert(0, os.path.abspath('./ext'))
 # -- Project information -----------------------------------------------------
 
 project = 'lets-plot'
-copyright = '2021, JetBrains'
 author = 'JetBrains'
 
 
@@ -113,10 +112,13 @@ html_theme_options = {
     "show_prev_next": False,
     "navbar_start": ["navbar-logo", "navbar-version"],
     "navbar_end": ["theme-switcher", "navbar-python-icon-links"],
+    "footer_start": ["copyright"],
+    "footer_center": ["sphinx-and-theme-version"],
+    "footer_end": ["terms"],
     "secondary_sidebar_items": {
         "**": ["page-toc", "sourcelink"],
         "index": [],
-    }
+    },
 }
 
 html_favicon = "_static/favicon.ico"
