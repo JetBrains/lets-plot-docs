@@ -91,8 +91,8 @@ html_title = ""
 html_theme_options = {
     "logo": {
         "text": "Lets-Plot",
-        "image_light": "_static/lets-plot.png",
-        "image_dark": "_static/lets-plot.png",
+        "image_light": "_static/logo.png",
+        "image_dark": "_static/logo.png",
         "version_link": "python/pages/whats_new",
     },
     "header_links_before_dropdown": 1,
@@ -118,6 +118,8 @@ html_theme_options = {
         "index": [],
     }
 }
+
+html_favicon = "_static/favicon.ico"
 
 html_context = {
     'cur_year': datetime.now().year,
