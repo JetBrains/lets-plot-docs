@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: GeoPandas support in Lets-Plot
+.. title:: GeoPandas Support
 
 .. meta::
    :description: With Lets-Plot all GeoPandas shapes can be plotted using various geometry layers.

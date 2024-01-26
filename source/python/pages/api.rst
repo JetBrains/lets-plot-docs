@@ -4,7 +4,7 @@
 
 :tocdepth: 2
 
-.. title:: Python API reference for Lets-Plot documentation
+.. title:: Python API Reference
 
 .. meta::
    :keywords: LetsPlot, ggplot

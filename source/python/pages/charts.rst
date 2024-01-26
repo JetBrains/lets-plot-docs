@@ -1,6 +1,6 @@
 .. _charts:
 
-.. title:: Charts in Lets-Plot
+.. title:: Charts
 
 .. meta::
    :description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.

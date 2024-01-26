@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: Formatting values in Lets-Plot
+.. title:: Formatting Values
 
 .. meta::
    :description: Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting.

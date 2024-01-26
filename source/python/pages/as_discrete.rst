@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: Function as_discrete() for ordering numeric data — Lets-Plot
+.. title:: Function as_discrete() for Ordering Numeric Data
 
 .. meta::
    :description: Plotting and ordering of the numerical data as categorical with Lets-Plot.

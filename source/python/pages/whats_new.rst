@@ -1,6 +1,6 @@
 .. _whats_new:
 
-.. title:: What is new
+.. title:: What is New
 
 
 What is new in 4.2.0

@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: Advanced geocoding — Lets-Plot documentation
+.. title:: Advanced Geocoding
 
 .. meta::
    :description: Lets-Plot offers geocoding API that allows a user to execute a single and batch geocoding queries to convert names of places into geographic coordinates.

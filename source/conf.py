@@ -125,6 +125,8 @@ html_favicon = "_static/favicon.ico"
 
 html_context = {
     'cur_year': datetime.now().year,
+    'python_root_doc': "python/index",
+    'python_root_name': "Lets-Plot for Python",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

@@ -1,6 +1,6 @@
 .. _maps:
 
-.. title:: Maps in Lets-Plot
+.. title:: Maps
 
 .. meta::
    :description: Lets-Plot allows you to create beautiful maps just by adding an interactive basemap layer to your plot.
