@@ -3,7 +3,7 @@
 .. title:: What is New
 
 
-What is new in 4.2.0
+What is New in 4.2.0
 ====================
 
 - **Support for "Categoricals"**

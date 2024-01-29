@@ -12,8 +12,8 @@
    :keywords: data visualization, geospatial visualization, python, grammar of graphics, ggplot2
 
 
-Getting started with Lets-Plot for Python
-=========================================
+Getting Started
+===============
 
 .. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub

@@ -113,6 +113,7 @@ html_theme_options = {
     "show_prev_next": False,
     "navbar_start": ["navbar-logo", "navbar-version"],
     "navbar_end": ["theme-switcher", "navbar-python-icon-links"],
+    "article_header_start": [],
     "footer_start": ["copyright"],
     "footer_center": ["sphinx-and-theme-version"],
     "footer_end": ["terms"],

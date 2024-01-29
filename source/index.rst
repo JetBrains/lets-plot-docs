@@ -15,8 +15,8 @@
     python/pages/maps
     Geocoding <python/pages/geocoding>
     Gallery <python/pages/gallery>
-    'bistro' plots <python/pages/bistro>
-    What is new <python/pages/whats_new>
+    'bistro' Plots <python/pages/bistro>
+    What is New <python/pages/whats_new>
 
 .. grid:: 2
     :class-container: landing-content wide-grid wide-grid-2
@@ -27,7 +27,7 @@
 
             <h1>
                 <span id="landing-title">Lets-Plot</span>
-                — multiplatform plotting library based on the grammar of graphics
+                — multiplatform plotting library built on the principles of the Grammar of Graphics
             </h1>
 
         .. button-ref:: python/index
@@ -59,7 +59,7 @@
 
         .. raw:: html
 
-            <h2>Key Features</h2>
+            <h2>At a Glance</h2>
 
     .. grid-item-card::
 
@@ -68,7 +68,7 @@
 
         .. image:: /_static/images/icons/features/grammar-of-graphics.png
 
-        Grammar of Graphics
+        Inspired by ggplot2
 
         We recommend an excellent book called `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__. This will be a good prerequisite for further exploration of the Lets-Plot library.
 

@@ -2,11 +2,11 @@
 
 :orphan:
 
-.. title:: Gallery of Examples
+.. title:: Gallery
 
 
-Gallery of Examples
-===================
+Gallery
+=======
 
 .. grid:: 4
     :class-container: preview-gallery wide-grid wide-grid-4
