@@ -90,7 +90,7 @@ html_title = ""
 
 html_theme_options = {
     "logo": {
-        "text": "Lets-Plot",
+        "alt_text": "Lets-Plot",
         "image_light": "_static/logo.png",
         "image_dark": "_static/logo.png",
         "version_link": "python/pages/whats_new",
