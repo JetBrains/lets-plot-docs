@@ -29,8 +29,11 @@ def test_link(page, a):
     assert href != "", "Wrong 'href' attribute"
     if href == "#": # Not a link actually
         return
-    if href[0] == "#" and classes == ["headerlink"]: # Headerlink
-        return
+    if href[0] == "#":
+        if classes == ["headerlink"]: # Headerlink
+            return
+        if classes == ["skip-link"]: # Skip link
+            return
     if not classes: # Bad case for checking
         return
     if "internal" in classes or "nav-internal" in classes:
