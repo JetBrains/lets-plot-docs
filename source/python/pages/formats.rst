@@ -15,24 +15,6 @@ Formatting
 Formatting provides the ability to do complex variable substitutions and value formatting.
 
 
-- :ref:`Number Format <formats_number_format>`
-
-  - :ref:`Examples <formats_examples_number_format>`
-
-- :ref:`String Template <formats_string_template>`
-- :ref:`Date and Time Format <formats_datetime>`
-
-  - :ref:`Examples <formats_examples_datetime>`
-
-- :ref:`Tooltip Customization <formats_tooltips>`
-
-  - :ref:`Axis Tooltips <formats_axis_tooltips>`
-
-- :ref:`Demo Notebooks <formats_demo_notebooks>`
-
-----
-
-
 .. _formats_number_format:
 
 Number Format

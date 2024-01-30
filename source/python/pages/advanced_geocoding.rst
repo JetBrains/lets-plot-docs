@@ -12,34 +12,6 @@
 Advanced Geocoding
 ==================
 
-- :ref:`Overview <geocoding_overview>`
-- :ref:`Examples <geocoding_examples>`
-- :ref:`Reference <geocoding_reference>`
-
-  - :ref:`Levels <geocoding_levels>`
-  - :ref:`Parents <geocoding_parents>`
-  - :ref:`Scope <geocoding_scope>`
-  - :ref:`Fetch All <geocoding_fetch_all>`
-  - :ref:`US-48 <geocoding_us_48>`
-  - :ref:`Ambiguity <geocoding_ambiguity>`
-
-    - :ref:`allow_ambiguous() <geocoding_allow_ambiguous>`
-    - :ref:`ignore_not_found() <geocoding_ignore_not_found>`
-    - :ref:`ignore_all_errors() <geocoding_ignore_all_errors>`
-    - :ref:`where() <geocoding_where>`
-
-      - :ref:`closest_to <geocoding_where_closest_to>`
-      - :ref:`scope <geocoding_where_scope>`
-
-  - :ref:`Working with Plots <geocoding_working_with_plot>`
-
-    - :ref:`Plotting a GeoDataFrame <geocoding_plot_gdf>`
-    - :ref:`Plotting a Geocoder <geocoding_plot_geocoder>`
-    - :ref:`map and map_join <geocoding_join>`
-
-      - :ref:`Join with GeoDataFrame <geocoding_join_gdf>`
-      - :ref:`Join with Geocoder <geocoding_join_geocoder>`
-
 
 .. _geocoding_overview:
 

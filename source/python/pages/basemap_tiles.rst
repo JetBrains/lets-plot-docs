@@ -12,20 +12,6 @@
 Configuring Basemap Tiles for Interactive Maps
 ==============================================
 
-- :ref:`Configuring Globally <basemap_tiles_global_cfg>`
-- :ref:`Configuring for a Single Plot <basemap_tiles_plot_cfg>`
-- :ref:`Vector Tiles <basemap_tiles_vector_tiles>`
-- :ref:`Blank Tiles <basemap_tiles_blank_tiles>`
-- :ref:`Raster Tiles <basemap_tiles_raster_tiles>`
-
-  - :ref:`OpenStreetMap <basemap_tiles_osm_tiles>`
-  - :ref:`OpenTopoMap <basemap_tiles_topo_tiles>`
-  - :ref:`CARTO <basemap_tiles_carto_tiles>`
-  - :ref:`NASA's Global Imagery Browse Services (GIBS) <basemap_tiles_nasa_tiles>`
-
-- :ref:`Examples <basemap_tiles_examples>`
-- :ref:`Configuring Raster Tiles Manually <basemap_tiles_raster_tiles_man>`
-
 
 .. _basemap_tiles_global_cfg:
 
