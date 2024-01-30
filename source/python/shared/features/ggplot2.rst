@@ -2,4 +2,4 @@
 
 Inspired by ggplot2
 
-We recommend an excellent book called `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__. This will be a good prerequisite for further exploration of the Lets-Plot library.
+A faithful port of R ggplot2 to Python/Kotlin. You can learn R ggplot2 and the grammar of grapthics in the `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__ book by Hadley Wickham.
