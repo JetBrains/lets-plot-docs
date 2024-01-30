@@ -52,8 +52,8 @@ Choropleth Map
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
-|quickstart-icon| Quickstart
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|quickstart-icon| Quick Start
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. |quickstart-icon| image:: /_static/images/icons/maps/quickstart.svg
 

@@ -12,8 +12,8 @@
    :keywords: data visualization, geospatial visualization, python, grammar of graphics, ggplot2
 
 
-Getting Started
-===============
+Get Started
+===========
 
 .. image:: https://jb.gg/badges/official-flat-square.svg
     :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
@@ -40,8 +40,8 @@ Installation
     pip install lets-plot
 
 
-Quickstart
-----------
+Quick Start
+-----------
 
 .. jupyter-execute::
     :linenos:
