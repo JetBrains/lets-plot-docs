@@ -1,5 +1,5 @@
-At a Glance
------------
+Key Features
+------------
 
 .. grid:: 2
     :class-container: features-list wide-grid wide-grid-2
