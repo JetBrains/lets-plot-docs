@@ -97,6 +97,12 @@ Quick Start
     :title: PyCharm
 
 
+References
+----------
+
+.. include:: /python/shared/books.rst
+
+
 Explore Your Data with Lets-Plot
 --------------------------------
 

@@ -1,9 +1,3 @@
-- :ref:`EDA Examples <eda>`
-
-- `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
-
-- `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
-
 .. grid:: 2
 
     .. grid-item-card::

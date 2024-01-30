@@ -35,12 +35,6 @@
 
             Get started
 
-        .. button-ref:: python/pages/user_guide
-            :color: primary
-            :outline:
-
-            See user guide
-
         :ref:`Visit the API <api>`
 
     .. grid-item-card::
