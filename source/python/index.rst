@@ -106,34 +106,43 @@ References
 Explore Your Data with Lets-Plot
 --------------------------------
 
-.. grid:: 3
-    :class-container: explore-your-data-container wide-grid wide-grid-3
+.. grid:: 1
+    :class-container: explore-your-data-container wide-grid wide-grid-1
 
-    .. grid-item-card:: :ref:`Charts <charts>`
+    .. grid-item-card::
         :shadow: none
 
         .. raw:: html
 
             <a class="reference internal image-reference" href="pages/charts.html">
-              <img src="../_static/images/previews/charts.png">
+              <div class="container">
+                <img src="../_static/images/previews/charts.png" alt="Charts">
+                <div class="page-title">CHARTS</div>
+              </div>
             </a>
 
-    .. grid-item-card:: :ref:`Maps <maps>`
+    .. grid-item-card::
         :shadow: none
 
         .. raw:: html
 
             <a class="reference internal image-reference" href="pages/maps.html">
-              <img src="../_static/images/previews/maps.png">
+              <div class="container">
+                <img src="../_static/images/previews/maps.png" alt="Maps">
+                <div class="page-title">MAPS</div>
+              </div>
             </a>
 
-    .. grid-item-card:: :ref:`Geocoding <geocoding>`
+    .. grid-item-card::
         :shadow: none
 
         .. raw:: html
 
             <a class="reference internal image-reference" href="pages/geocoding.html">
-              <img src="../_static/images/previews/geocoding.png">
+              <div class="container">
+                <img src="../_static/images/previews/geocoding.png" alt="Geocoding">
+                <div class="page-title">GEOCODING</div>
+              </div>
             </a>
 
 
