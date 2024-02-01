@@ -2,4 +2,4 @@
 
 Sampling
 
-Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting. :ref:`Learn more <sampling>`.
+Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting. :doc:`Learn more </python/pages/sampling>`.

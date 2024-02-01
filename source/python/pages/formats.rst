@@ -142,7 +142,7 @@ Anything that is not contained in braces is considered literal text, which is co
 If you need to include a brace character in the literal text, it can be escaped by doubling: {{ and }}.
 This approach is used in function :py:mod:`layer_tooltips() <lets_plot.layer_tooltips>` to customize the content of tooltips.
 
-See: :ref:`Tooltip Customization in Lets-Plot <tooltips>`.
+See: :doc:`Tooltip Customization in Lets-Plot </python/pages/tooltips>`.
 
 
 .. _formats_datetime:
@@ -219,7 +219,7 @@ Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35
 Tooltip Customization
 ---------------------
 
-In Lets-Plot you can use formatting for tooltip text, see: :ref:`Tooltip Customization <tooltips>`.
+In Lets-Plot you can use formatting for tooltip text, see: :doc:`Tooltip Customization </python/pages/tooltips>`.
 
 
 .. _formats_axis_tooltips:

@@ -216,7 +216,7 @@ Rectangles
 Guides to Geocoding
 -------------------
 
-Documentation: :ref:`The Geocoding Reference Guide <advanced_geocoding>`.
+Documentation: :doc:`The Geocoding Reference Guide </python/pages/advanced_geocoding>`.
 
 An example notebook covering various geocoding use-cases: |geocoding_reference|.
 

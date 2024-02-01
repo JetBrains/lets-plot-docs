@@ -41,7 +41,7 @@
 
             User Guide
 
-        :ref:`Visit the API <api>`
+        :doc:`Visit the API </python/pages/api>`
 
     .. grid-item-card::
 

@@ -145,7 +145,7 @@ Examples:
 
 :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>`
 
-Learn more: :ref:`Function as_discrete() <as_discrete>`.
+Learn more: :doc:`Function as_discrete() </python/pages/as_discrete>`.
 
 Examples:
 
@@ -397,7 +397,7 @@ Examples:
 
 Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
 
-Learn more about instruments for EDA in Lets-Plot: :ref:`'bistro' Plots <bistro>`.
+Learn more about instruments for EDA in Lets-Plot: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
 |geopandas-icon| GeoPandas Shapes
@@ -407,7 +407,7 @@ Learn more about instruments for EDA in Lets-Plot: :ref:`'bistro' Plots <bistro>
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
-Learn more: :ref:`GeoPandas Support <geopandas>`.
+Learn more: :doc:`GeoPandas Support </python/pages/geopandas>`.
 
 Examples:
 
@@ -574,7 +574,7 @@ Cookbooks
 Resources
 ---------
 
-- :ref:`EDA Examples <eda>`
+- :doc:`EDA Examples </python/pages/eda>`
 
 - `Picking the Perfect Data Visualization: Line Plots <https://blog.jetbrains.com/dataspell/2023/02/picking-the-perfect-data-visualization-line-plots/>`__
 

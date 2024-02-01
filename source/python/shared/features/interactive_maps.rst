@@ -2,4 +2,4 @@
 
 Interactive Maps
 
-Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. :ref:`Learn more <maps>`.
+Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. :doc:`Learn more </python/pages/maps>`.
