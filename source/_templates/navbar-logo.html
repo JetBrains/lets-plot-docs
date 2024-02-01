@@ -1,24 +1,36 @@
-<a class="navbar-brand logo" href="{{ pathto(root_doc) }}">
-  {% set is_logo = "light" in theme_logo["image_relative"] %}
-  {% set alt = theme_logo.get("alt_text", "" if theme_logo.get("text") else "%s - Home" % docstitle) %}
-  {% if is_logo %}
-    {% if default_mode is undefined or default_mode == "auto" %}
-      {% set default_mode = "light" %}
-    {% endif %}
-    {% set js_mode = "light" if default_mode == "dark" else "dark" %}
-    <img src="{{ theme_logo['image_relative'][default_mode] }}" class="logo__image only-{{ default_mode }}" alt="{{ alt }}"/>
-    <script>document.write(`<img src="{{ theme_logo['image_relative'][js_mode] }}" class="logo__image only-{{ js_mode }}" alt="{{ alt }}"/>`);</script>
-  {% endif %}
-</a>
+{# LOGO IMAGE #}
 
 {% if pagename == "index" %}
-  {% set href = pathto(root_doc) %}
-  {% set title = "Lets-Plot" %}
+  <span class="navbar-brand logo landing">
 {% else %}
-  {% set href = pathto("python/index") %}
-  {% set title = "Lets-Plot for Python" %}
+  <a class="navbar-brand logo" href="{{ pathto(root_doc) }}">
 {% endif %}
 
-<a class="navbar-brand logo-title" href="{{ href }}">
-  <p class="title logo__title">{{ title }}</p>
-</a>
+{% set is_logo = "light" in theme_logo["image_relative"] %}
+{% set alt = theme_logo.get("alt_text", "" if theme_logo.get("text") else "%s - Home" % docstitle) %}
+{% if is_logo %}
+  {% if default_mode is undefined or default_mode == "auto" %}
+    {% set default_mode = "light" %}
+  {% endif %}
+  {% set js_mode = "light" if default_mode == "dark" else "dark" %}
+  <img src="{{ theme_logo['image_relative'][default_mode] }}" class="logo__image only-{{ default_mode }}" alt="{{ alt }}"/>
+  <script>document.write(`<img src="{{ theme_logo['image_relative'][js_mode] }}" class="logo__image only-{{ js_mode }}" alt="{{ alt }}"/>`);</script>
+{% endif %}
+
+{% if pagename == "index" %}
+  </span>
+{% else %}
+  </a>
+{% endif %}
+
+{# LOGO TEXT #}
+
+{% if pagename == "index" %}
+  <span class="navbar-brand logo-title landing">
+    <p class="title logo__title">Lets-Plot</p>
+  </span>
+{% else %}
+  <a class="navbar-brand logo-title" href="{{ pathto('python/index') }}">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+{% endif %}
