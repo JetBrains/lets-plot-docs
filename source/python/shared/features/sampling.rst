@@ -1,4 +1,8 @@
-.. image:: /_static/images/icons/features/sampling.svg
+.. image:: /_static/images/icons/features/sampling-light.svg
+    :class: only-light
+
+.. image:: /_static/images/icons/features/sampling-dark.svg
+    :class: only-dark
 
 Sampling
 

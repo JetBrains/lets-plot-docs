@@ -1,4 +1,8 @@
-.. image:: /_static/images/icons/features/offline-mode.svg
+.. image:: /_static/images/icons/features/offline-mode-light.svg
+    :class: only-light
+
+.. image:: /_static/images/icons/features/offline-mode-dark.svg
+    :class: only-dark
 
 'No Javascript' and Offline Mode
 

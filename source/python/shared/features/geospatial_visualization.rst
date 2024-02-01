@@ -1,4 +1,8 @@
-.. image:: /_static/images/icons/features/geospatial-visualization.svg
+.. image:: /_static/images/icons/features/geospatial-visualization-light.svg
+    :class: only-light
+
+.. image:: /_static/images/icons/features/geospatial-visualization-dark.svg
+    :class: only-dark
 
 Geospatial Visualization
 

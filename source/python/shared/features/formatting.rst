@@ -1,4 +1,8 @@
-.. image:: /_static/images/icons/features/formatting.svg
+.. image:: /_static/images/icons/features/formatting-light.svg
+    :class: only-light
+
+.. image:: /_static/images/icons/features/formatting-dark.svg
+    :class: only-dark
 
 Formatting
 

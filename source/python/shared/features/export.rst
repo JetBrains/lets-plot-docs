@@ -1,4 +1,8 @@
-.. image:: /_static/images/icons/features/export.svg
+.. image:: /_static/images/icons/features/export-light.svg
+    :class: only-light
+
+.. image:: /_static/images/icons/features/export-dark.svg
+    :class: only-dark
 
 Export to SVG, PDF, HTML and PNG
 
