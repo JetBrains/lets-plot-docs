@@ -17,7 +17,7 @@ Key Features
     .. grid-item-card::
         :shadow: none
 
-        .. include:: /python/shared/features/platforms.rst
+        .. include:: /python/shared/features/multiplatform.rst
 
     .. grid-item-card::
         :shadow: none
@@ -27,7 +27,7 @@ Key Features
     .. grid-item-card::
         :shadow: none
 
-        .. include:: /python/shared/features/multiplatform.rst
+        .. include:: /python/shared/features/geospatial_visualization.rst
 
     .. grid-item-card::
         :shadow: none
@@ -37,17 +37,12 @@ Key Features
     .. grid-item-card::
         :shadow: none
 
-        .. include:: /python/shared/features/geospatial_visualization.rst
+        .. include:: /python/shared/features/interactive_maps.rst
 
     .. grid-item-card::
         :shadow: none
 
         .. include:: /python/shared/features/export.rst
-
-    .. grid-item-card::
-        :shadow: none
-
-        .. include:: /python/shared/features/interactive_maps.rst
 
     .. grid-item-card::
         :shadow: none

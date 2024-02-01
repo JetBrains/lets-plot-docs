@@ -65,7 +65,7 @@
     .. grid-item-card::
         :shadow: none
 
-        .. include:: /python/shared/features/multiplatform.rst
+        .. include:: /python/shared/features/multiplatform_landing.rst
 
     .. grid-item-card::
         :shadow: none
