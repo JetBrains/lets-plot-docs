@@ -54,7 +54,7 @@ Quick Start
 
     import numpy as np
     from lets_plot import *
-    LetsPlot.setup_html()        
+    LetsPlot.setup_html()
 
     np.random.seed(12)
     data = dict(
@@ -65,6 +65,31 @@ Quick Start
     ggplot(data, aes(x='rating', fill='cond')) + ggsize(700, 300) + \
         geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
         theme(panel_grid_major_x='blank')
+
+.. jupyter-execute::
+    :linenos:
+
+    import numpy as np
+    from lets_plot import *
+    LetsPlot.setup_html()
+
+    np.random.seed(12)
+    data = dict(
+        cond=np.repeat(['A', 'B'], 200),
+        rating=np.concatenate((np.random.normal(0, 1, 200), np.random.normal(1, 1.5, 200)))
+    )
+
+    ggplot(data, aes(x='rating', fill='cond')) + ggsize(700, 300) + \
+        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
+        theme(panel_grid_major_x='blank') + flavor_darcula()
+
+.. raw:: html
+
+    <script>
+        const jupyterElements = document.getElementById("quick-start").getElementsByClassName("jupyter_container");
+        jupyterElements[0].classList.add("only-light");
+        jupyterElements[1].classList.add("only-dark");
+    </script>
 
 .. extref:: quickstart
     :type: logo
