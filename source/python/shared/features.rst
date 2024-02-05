@@ -12,17 +12,7 @@ Key Features
     .. grid-item-card::
         :shadow: none
 
-        .. include:: /python/shared/features/tooltips.rst
-
-    .. grid-item-card::
-        :shadow: none
-
         .. include:: /python/shared/features/multiplatform.rst
-
-    .. grid-item-card::
-        :shadow: none
-
-        .. include:: /python/shared/features/formatting.rst
 
     .. grid-item-card::
         :shadow: none
@@ -32,12 +22,17 @@ Key Features
     .. grid-item-card::
         :shadow: none
 
-        .. include:: /python/shared/features/sampling.rst
+        .. include:: /python/shared/features/interactive_maps.rst
 
     .. grid-item-card::
         :shadow: none
 
-        .. include:: /python/shared/features/interactive_maps.rst
+        .. include:: /python/shared/features/tooltips.rst
+
+    .. grid-item-card::
+        :shadow: none
+
+        .. include:: /python/shared/features/formatting.rst
 
     .. grid-item-card::
         :shadow: none
@@ -48,3 +43,8 @@ Key Features
         :shadow: none
 
         .. include:: /python/shared/features/offline_mode.rst
+
+    .. grid-item-card::
+        :shadow: none
+
+        .. include:: /python/shared/features/sampling.rst
