@@ -9,7 +9,7 @@ Gallery
 =======
 
 .. grid:: 4
-    :class-container: preview-gallery wide-grid wide-grid-4
+    :class-container: preview-gallery wide-grid
 
     .. grid-item-card::
 

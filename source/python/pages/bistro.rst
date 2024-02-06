@@ -23,7 +23,7 @@ Correlation Plot
 :py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`
 
 .. grid:: 4
-    :class-container: preview-gallery wide-grid wide-grid-4
+    :class-container: preview-gallery wide-grid
 
     .. grid-item-card::
 
@@ -67,7 +67,7 @@ Q-Q Plot
 :py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
 
 .. grid:: 4
-    :class-container: preview-gallery wide-grid wide-grid-4
+    :class-container: preview-gallery wide-grid
 
     .. grid-item-card::
 
@@ -104,7 +104,7 @@ Joint Plot
 :py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
 
 .. grid:: 4
-    :class-container: preview-gallery wide-grid wide-grid-4
+    :class-container: preview-gallery wide-grid
 
     .. grid-item-card::
 
@@ -141,7 +141,7 @@ Residual Plot
 :py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
 
 .. grid:: 4
-    :class-container: preview-gallery wide-grid wide-grid-4
+    :class-container: preview-gallery wide-grid
 
     .. grid-item-card::
 
