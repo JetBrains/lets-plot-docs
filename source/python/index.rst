@@ -79,9 +79,11 @@ Quick Start
         rating=np.concatenate((np.random.normal(0, 1, 200), np.random.normal(1, 1.5, 200)))
     )
 
+    background = element_rect(fill='#14181e')
     ggplot(data, aes(x='rating', fill='cond')) + ggsize(700, 300) + \
         geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
-        theme(panel_grid_major_x='blank') + flavor_darcula()
+        flavor_high_contrast_dark() + \
+        theme(panel_grid_major_x='blank', plot_background=background, legend_background=background)
 
 .. raw:: html
 
