@@ -91,8 +91,8 @@ html_title = ""
 html_theme_options = {
     "logo": {
         "alt_text": "Lets-Plot",
-        "image_light": "_static/logo.png",
-        "image_dark": "_static/logo.png",
+        "image_light": "_static/logo-light.svg",
+        "image_dark": "_static/logo-dark.svg",
         "version_link": "python/pages/whats_new",
     },
     "header_links_before_dropdown": 1,
