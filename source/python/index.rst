@@ -5,10 +5,10 @@
 
 :orphan:
 
-.. title:: Grammar of Graphics for Python
+.. title:: Lets-Plot for Python: Plotting Library Based on Grammar of Graphics
 
 .. meta::
-   :description: Lets-Plot is a multiplatform plotting library based on the Grammar of Graphics. It is a faithful port of R ggplot2 to Python.
+   :description: Dive into data visualization using Lets-Plot for Python, inspired by ggplot2. Master the grammar of graphics to unlock insightful and beautiful plots.
    :keywords: data visualization, geospatial visualization, python, grammar of graphics, ggplot2
 
 

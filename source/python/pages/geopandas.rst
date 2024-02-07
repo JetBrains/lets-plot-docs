@@ -2,10 +2,10 @@
 
 :orphan:
 
-.. title:: GeoPandas Support
+.. title:: Support Geopandas in Geometry Layers and Interactive Maps
 
 .. meta::
-   :description: With Lets-Plot all GeoPandas shapes can be plotted using various geometry layers.
+   :description: All GeoPandas shapes are "understood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape.
    :keywords: geopandas, GeoDataFrame, shapes, geometries, coordinate reference system, CRS, interactive maps
 
 

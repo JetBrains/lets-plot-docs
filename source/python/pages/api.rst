@@ -4,9 +4,10 @@
 
 :tocdepth: 2
 
-.. title:: Python API Reference
+.. title:: Lets-Plot Python API Reference: Detailed Documentation
 
 .. meta::
+   :description: Basic classes, geometries, stats, themes, geocoding API and other useful features to build beautiful plots.
    :keywords: LetsPlot, ggplot
 
 

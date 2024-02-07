@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: Tooltip Customization
+.. title:: Interactive Tooltips in Lets-Plot
 
 .. meta::
    :description: In Lets-Plot you can customize the content and the view of tooltips for the layer.

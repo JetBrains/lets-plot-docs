@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: Configuring Basemap Tiles for Interactive Maps
+.. title:: Configuring Basemap Tiles for Interactive Maps in Lets-Plot
 
 .. meta::
    :description: Lets-Plot provides a variety of constants and functions to configure the basemap tiles.

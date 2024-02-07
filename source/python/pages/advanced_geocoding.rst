@@ -2,10 +2,10 @@
 
 :orphan:
 
-.. title:: Advanced Geocoding
+.. title:: Advanced Geocoding With Lets-Plot: Tuning Queries and Handling Ambiguities
 
 .. meta::
-   :description: Lets-Plot offers geocoding API that allows a user to execute a single and batch geocoding queries to convert names of places into geographic coordinates.
+   :description: Utilize conflict resolution and fine-tune search settings for geospatial data, converting place names into coordinates.
    :keywords: geocoding, administrative levels, geopandas, GeoDataFrame
 
 

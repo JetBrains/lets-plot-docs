@@ -2,10 +2,10 @@
 
 :orphan:
 
-.. title:: Sampling
+.. title:: Sampling in Lets-Plot: Data Transformation Techniques
 
 .. meta::
-   :description: Sampling is a special technique of data transformation, which is built into Lets-Plot and is applied after statistical transformation.
+   :description: Sampling is a special data transformation technique that helps to work with large datasets and is also a way of handling over-plotting.
    :keywords: sampling, data transformation
 
 

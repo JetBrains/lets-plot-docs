@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: Gallery
+.. title:: Gallery of Examples With Lets-Plot
 
 
 Gallery

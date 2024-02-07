@@ -2,7 +2,7 @@
 
 :orphan:
 
-.. title:: EDA Examples
+.. title:: EDA Examples With Lets-Plot
 
 .. meta::
    :description: Some exploratory data analysis examples with Lets-Plot from the net.
