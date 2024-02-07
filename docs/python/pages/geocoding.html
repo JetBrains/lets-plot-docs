@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Lets-Plot offers geocoding API that allows a user to execute a single and batch geocoding queries to convert names of places into geographic coordinates." name="description" />
+<meta content="geocoding, administrative levels" name="keywords" />
+
+    <title>Lets-Plot Geocoding: Convert Place Names to Geographic Coordinates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=c560025d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=ab5ecf78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=d0ae6d56"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python/pages/geocoding';</script>
+    <script src="../../_static/js/custom.js?v=9b4d3288"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Gallery" href="gallery.html" />
+    <link rel="prev" title="Maps" href="maps.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="whats_new.html">
+  <p>v4.2.0</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="api.html">
+                        API
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="charts.html">
+                        Charts
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="maps.html">
+                        Maps
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="#">
+                        Geocoding
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="gallery.html">
+                        Gallery
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="bistro.html">
+                        'bistro' Plots
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="whats_new.html">
+                        What is New
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="api.html">
+                        API
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="charts.html">
+                        Charts
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="maps.html">
+                        Maps
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="#">
+                        Geocoding
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="gallery.html">
+                        Gallery
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="bistro.html">
+                        'bistro' Plots
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="whats_new.html">
+                        What is New
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="geocoding-licenses">
+<span id="geocoding"></span><h1>Geocoding <a class="reference internal image-reference" href="licenses.html">
+  <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg">
+</a><a class="headerlink" href="#geocoding-licenses" title="Link to this heading">#</a></h1>
+<section id="administrative-levels">
+<h2>Administrative Levels<a class="headerlink" href="#administrative-levels" title="Link to this heading">#</a></h2>
+<section id="country">
+<h3>Country<a class="headerlink" href="#country" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geo_data.geocode_countries.html#lets_plot.geo_data.geocode_countries" title="lets_plot.geo_data.geocode_countries"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geocode_countries()</span></code></a></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 preview-gallery wide-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_country_world.ipynb"><img alt="Example of geocoding with all countries" title="Example of geocoding with all countries" src="../../_extref_images/square-geocoding_level_country_world.png" style=""/></a><p class="sd-card-text">World countries</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_country_canada.ipynb"><img alt="Example of geocoding of countries: Canada" title="Example of geocoding of countries: Canada" src="../../_extref_images/square-geocoding_level_country_canada.png" style=""/></a><p class="sd-card-text">Canada</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_country_india.ipynb"><img alt="Example of geocoding of countries: India" title="Example of geocoding of countries: India" src="../../_extref_images/square-geocoding_level_country_india.png" style=""/></a><p class="sd-card-text">India</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="state">
+<h3>State<a class="headerlink" href="#state" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geo_data.geocode_states.html#lets_plot.geo_data.geocode_states" title="lets_plot.geo_data.geocode_states"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geocode_states()</span></code></a></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 preview-gallery wide-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_state_us.ipynb"><img alt="Example of geocoding of states: United States" title="Example of geocoding of states: United States" src="../../_extref_images/square-geocoding_level_state_us.png" style=""/></a><p class="sd-card-text">US states</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_state_australia.ipynb"><img alt="Example of geocoding of states: Australia" title="Example of geocoding of states: Australia" src="../../_extref_images/square-geocoding_level_state_australia.png" style=""/></a><p class="sd-card-text">Australia states</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_state_russia.ipynb"><img alt="Example of geocoding of states: Russia" title="Example of geocoding of states: Russia" src="../../_extref_images/square-geocoding_level_state_russia.png" style=""/></a><p class="sd-card-text">Russia states</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="county">
+<h3>County<a class="headerlink" href="#county" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geo_data.geocode_counties.html#lets_plot.geo_data.geocode_counties" title="lets_plot.geo_data.geocode_counties"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geocode_counties()</span></code></a></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 preview-gallery wide-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_county_us.ipynb"><img alt="Example of geocoding of counties: United States" title="Example of geocoding of counties: United States" src="../../_extref_images/square-geocoding_level_county_us.png" style=""/></a><p class="sd-card-text">US counties</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_county_italy.ipynb"><img alt="Example of geocoding of counties: Italy" title="Example of geocoding of counties: Italy" src="../../_extref_images/square-geocoding_level_county_italy.png" style=""/></a><p class="sd-card-text">Italy counties</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_county_poland.ipynb"><img alt="Example of geocoding of counties: Poland" title="Example of geocoding of counties: Poland" src="../../_extref_images/square-geocoding_level_county_poland.png" style=""/></a><p class="sd-card-text">Poland counties</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="city">
+<h3>City<a class="headerlink" href="#city" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geo_data.geocode_cities.html#lets_plot.geo_data.geocode_cities" title="lets_plot.geo_data.geocode_cities"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geocode_cities()</span></code></a></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 preview-gallery wide-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_city_nyc.ipynb"><img alt="Example of geocoding of cities: New York City" title="Example of geocoding of cities: New York City" src="../../_extref_images/square-geocoding_level_city_nyc.png" style=""/></a><p class="sd-card-text">New York</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_city_helsinki.ipynb"><img alt="Example of geocoding of cities: Helsinki" title="Example of geocoding of cities: Helsinki" src="../../_extref_images/square-geocoding_level_city_helsinki.png" style=""/></a><p class="sd-card-text">Helsinki</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_level_city_london.ipynb"><img alt="Example of geocoding of cities: London" title="Example of geocoding of cities: London" src="../../_extref_images/square-geocoding_level_city_london.png" style=""/></a><p class="sd-card-text">London</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="geometries">
+<h2>Geometries<a class="headerlink" href="#geometries" title="Link to this heading">#</a></h2>
+<section id="polygons">
+<h3>Polygons<a class="headerlink" href="#polygons" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geom_map.html#lets_plot.geom_map" title="lets_plot.geom_map"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_map()</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_polygon.html#lets_plot.geom_polygon" title="lets_plot.geom_polygon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_polygon()</span></code></a></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 preview-gallery wide-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_map_brazil.ipynb"><img alt="Example of geocoding with map geometry: Brazil" title="Example of geocoding with map geometry: Brazil" src="../../_extref_images/square-geocoding_geometries_map_brazil.png" style=""/></a><p class="sd-card-text">Brazil</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_map_nigeria.ipynb"><img alt="Example of geocoding with map geometry: Nigeria" title="Example of geocoding with map geometry: Nigeria" src="../../_extref_images/square-geocoding_geometries_map_nigeria.png" style=""/></a><p class="sd-card-text">Nigeria states</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_map_greece.ipynb"><img alt="Example of geocoding with map geometry: Greece" title="Example of geocoding with map geometry: Greece" src="../../_extref_images/square-geocoding_geometries_map_greece.png" style=""/></a><p class="sd-card-text">Greece counties</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="points">
+<h3>Points<a class="headerlink" href="#points" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geom_point.html#lets_plot.geom_point" title="lets_plot.geom_point"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_point()</span></code></a></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 preview-gallery wide-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_point_kazakhstan.ipynb"><img alt="Example of geocoding with point geometry: Kazakhstan" title="Example of geocoding with point geometry: Kazakhstan" src="../../_extref_images/square-geocoding_geometries_point_kazakhstan.png" style=""/></a><p class="sd-card-text">Kazakhstan state centroids</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_point_georgia.ipynb"><img alt="Example of geocoding with point geometry: Georgia" title="Example of geocoding with point geometry: Georgia" src="../../_extref_images/square-geocoding_geometries_point_georgia.png" style=""/></a><p class="sd-card-text">Georgia county centroids</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_point_greenland.ipynb"><img alt="Example of geocoding with point geometry: Greenland" title="Example of geocoding with point geometry: Greenland" src="../../_extref_images/square-geocoding_geometries_point_greenland.png" style=""/></a><p class="sd-card-text">Greenland cities</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="rectangles">
+<h3>Rectangles<a class="headerlink" href="#rectangles" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/lets_plot.geom_rect.html#lets_plot.geom_rect" title="lets_plot.geom_rect"><code class="xref py py-mod docutils literal notranslate"><span class="pre">geom_rect()</span></code></a></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 preview-gallery wide-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_rectangle_japan.ipynb"><img alt="Example of geocoding with rectangle geometry: Japan" title="Example of geocoding with rectangle geometry: Japan" src="../../_extref_images/square-geocoding_geometries_rectangle_japan.png" style=""/></a><p class="sd-card-text">Japan bounding box with states</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_rectangle_ireland.ipynb"><img alt="Example of geocoding with rectangle geometry: Ireland" title="Example of geocoding with rectangle geometry: Ireland" src="../../_extref_images/square-geocoding_geometries_rectangle_ireland.png" style=""/></a><p class="sd-card-text">Ireland county bounding boxes</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<a class="reference external image-reference preview extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding/geocoding_geometries_rectangle_cuba.ipynb"><img alt="Example of geocoding with rectangle geometry: Cuba" title="Example of geocoding with rectangle geometry: Cuba" src="../../_extref_images/square-geocoding_geometries_rectangle_cuba.png" style=""/></a><p class="sd-card-text">Cuba bounding box with cities</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="guides-to-geocoding">
+<h2>Guides to Geocoding<a class="headerlink" href="#guides-to-geocoding" title="Link to this heading">#</a></h2>
+<p>Documentation: <a class="reference internal" href="advanced_geocoding.html"><span class="doc">The Geocoding Reference Guide</span></a>.</p>
+<p>An example notebook covering various geocoding use-cases: <a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geocoding_reference.ipynb">geocoding_reference.ipynb</a>.</p>
+</section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading">#</a></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 features-list wide-grid docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/ggplot2.png" src="../../_images/ggplot2.png" />
+<p class="sd-card-text">Inspired by ggplot2</p>
+<p class="sd-card-text">A faithful port of R ggplot2 to Python.</p>
+<p class="sd-card-text">You can learn R ggplot2 and the grammar of graphics in the <a class="reference external" href="https://ggplot2-book.org/index.html">“ggplot2: Elegant Graphics for Data Analysis”</a> book by Hadley Wickham.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/kotlin.svg" src="../../_images/kotlin.svg" /><p class="sd-card-text">Multiplatform</p>
+<p class="sd-card-text">A <a class="reference internal" href="../index.html"><span class="doc">Grammar of Graphics for Python</span></a> - works in Python notebooks (<a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/quickstart.ipynb">Jupyter</a>, <a class="reference external extref" href="https://datalore.jetbrains.com/view/notebook/Vl3fAET56UBray6rPufmDA">Datalore</a>, <a class="reference external extref" href="https://www.kaggle.com/alshan/lets-plot-quickstart">Kaggle</a>, <a class="reference external extref" href="https://colab.research.google.com/drive/1uYYZcG0g0kP4lJdPkpWB8aBS96ioDii2?usp=sharing">Colab</a>, <a class="reference external extref" href="https://deepnote.com/project/673ea421-638e-469d-8d04-5cc4c6e0258f#%2Fnotebook.ipynb">Deepnote</a>, <a class="reference external extref" href="https://nextjournal.com/alshan/lets-plot-quickstart?token=H8DPBC6A3kZqWmusxWzZ9c">Nextjournal</a>) as well as in <a class="reference external extref" href="https://plugins.jetbrains.com/plugin/14379-lets-plot-in-sciview">PyCharm and Intellij IDEA IDEs</a>.</p>
+<p class="sd-card-text">A <a class="reference external" href="https://github.com/JetBrains/lets-plot-kotlin">Grammar of Graphics for Kotlin</a> - a Kotlin multiplatform visualization library which fulfills your needs in the Kotlin ecosystem: from Kotlin notebooks to <a class="reference external" href="https://github.com/JetBrains/lets-plot-skia">Compose-Multiplatform apps</a>.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/geospatial-visualization-light.svg" class="only-light" src="../../_images/geospatial-visualization-light.svg" /><img alt="../../_images/geospatial-visualization-dark.svg" class="only-dark" src="../../_images/geospatial-visualization-dark.svg" /><p class="sd-card-text">Geospatial Visualization</p>
+<p class="sd-card-text">Find spatial objects with the help of our powerful and easy to use <a class="reference internal" href="#"><span class="doc">Geocoding</span></a> module. In case you already have <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> on hand - <a class="reference internal" href="geopandas.html"><span class="doc">plot it</span></a> straight away.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/interactive-maps.svg" src="../../_images/interactive-maps.svg" /><p class="sd-card-text">Interactive Maps</p>
+<p class="sd-card-text">Interactive maps allow zooming and panning around your geospatial data with customizable vector or raster basemaps as a backdrop. <a class="reference internal" href="maps.html"><span class="doc">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/tooltips-light.svg" class="only-light" src="../../_images/tooltips-light.svg" /><img alt="../../_images/tooltips-dark.svg" class="only-dark" src="../../_images/tooltips-dark.svg" /><p class="sd-card-text">Customizable Tooltips and Annotations</p>
+<p class="sd-card-text">You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. <a class="reference internal" href="tooltips.html"><span class="doc">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/formatting-light.svg" class="only-light" src="../../_images/formatting-light.svg" /><img alt="../../_images/formatting-dark.svg" class="only-dark" src="../../_images/formatting-dark.svg" /><p class="sd-card-text">Formatting</p>
+<p class="sd-card-text">Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. <a class="reference internal" href="formats.html"><span class="doc">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/export-light.svg" class="only-light" src="../../_images/export-light.svg" /><img alt="../../_images/export-dark.svg" class="only-dark" src="../../_images/export-dark.svg" /><p class="sd-card-text">Export to SVG, PDF, HTML and PNG</p>
+<p class="sd-card-text">The <a class="reference internal" href="api/lets_plot.ggsave.html#lets_plot.ggsave" title="lets_plot.ggsave"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggsave()</span></code></a> function is an easy way to export plot to a file in SVG, PDF, HTML or PNG formats. Learn more <a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/export.ipynb">here</a> or <a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/export_methods.ipynb">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/offline-mode-light.svg" class="only-light" src="../../_images/offline-mode-light.svg" /><img alt="../../_images/offline-mode-dark.svg" class="only-dark" src="../../_images/offline-mode-dark.svg" /><p class="sd-card-text">‘No Javascript’ and Offline Mode</p>
+<p class="sd-card-text">In the ‘no javascript’ mode Lets-Plot generates plots as bare-bones SVG images. Plots in the notebook with option <code class="docutils literal notranslate"><span class="pre">offline=True</span></code> will be working without an Internet connection. <a class="reference internal" href="no_js_and_offline_mode.html"><span class="doc">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<img alt="../../_images/sampling-light.svg" class="only-light" src="../../_images/sampling-light.svg" /><img alt="../../_images/sampling-dark.svg" class="only-dark" src="../../_images/sampling-dark.svg" /><p class="sd-card-text">Sampling</p>
+<p class="sd-card-text">Sampling is a special technique of data transformation, which helps to deal with large datasets and overplotting. <a class="reference internal" href="sampling.html"><span class="doc">Learn more</span></a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#administrative-levels">Administrative Levels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#country">Country</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state">State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#county">County</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#city">City</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometries">Geometries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygons">Polygons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#points">Points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangles">Rectangles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guides-to-geocoding">Guides to Geocoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2024 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  7.2.6 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.15.2.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
