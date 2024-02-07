@@ -41,7 +41,6 @@ Plotting
     gggrid
     ggmarginal
     aes
-    layer
     ggsave
 
 
@@ -110,7 +109,6 @@ Additional Geometries
     :nosignatures:
 
     geom_imshow
-    geom_image
     geom_livemap
 
 
