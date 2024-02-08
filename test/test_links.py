@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 from .generator import generate_pages
 
 BUILD_DIR = "docs"
+REPLACE_LP_TO_FORK = True
 
 checked_external_links = set()
 
@@ -53,6 +54,8 @@ def check_page(page, href):
 
 def check_external_link(href):
     SKIP = ["http://my.tile.com"]
+    if REPLACE_LP_TO_FORK:
+        href = href.replace("lets-plot.org", "asmirnov-horis.github.io/lets-plot-docs")
     if href in checked_external_links:
         return
     checked_external_links.add(href)
