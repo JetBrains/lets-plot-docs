@@ -29,14 +29,19 @@ def test_link(page, a):
     assert href != "", "Wrong 'href' attribute"
     if href == "#": # Not a link actually
         return
+    if href[0] == "#":
+        if classes == ["headerlink"]: # Headerlink
+            return
+        if classes == ["skip-link"]: # Skip link
+            return
     if not classes: # Bad case for checking
         return
-    if "internal" in classes:
+    if "internal" in classes or "nav-internal" in classes:
         check_section(page, href) if href[0] == "#" else check_page(page, href)
-    elif "external" in classes:
+    elif "external" in classes or "nav-external" in classes:
         check_external_link(href)
     else: # Home or header link
-        assert "headerlink" in classes or "navbar-brand" in classes, "Wrong 'class' attribute"
+        assert "navbar-brand" in classes or "nav-link" in classes, "Wrong 'class' attribute"
 
 def check_section(page, href):
     with codecs.open(page, 'r', 'utf-8') as f:
