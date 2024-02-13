@@ -1,3 +1,5 @@
+:og:description: Discover Lets-Plot - a faithful port of R ggplot2 to Python and Kotlin for enhanced data visualization.
+
 .. title:: Lets-Plot - Multiplatform Plotting Library Based on the Grammar of Graphics
 
 .. meta::

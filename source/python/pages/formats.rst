@@ -1,5 +1,7 @@
 ﻿.. _formats:
 
+:og:description: Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting.
+
 :orphan:
 
 .. title:: Lets-Plot: Advanced Formatting and Substitutions

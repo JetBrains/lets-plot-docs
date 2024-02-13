@@ -1,5 +1,7 @@
 .. _basemap_tiles:
 
+:og:description: Lets-Plot provides a variety of constants and functions to configure the basemap tiles.
+
 :orphan:
 
 .. title:: Configuring Basemap Tiles for Interactive Maps in Lets-Plot

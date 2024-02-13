@@ -1,5 +1,7 @@
 .. _no_js_and_offline_mode:
 
+:og:description: In the 'no javascript' mode Lets-Plot generates plots as bare-bones SVG images. In the 'offline' mode Lets-Plot adding the full JS bundle to the notebook.
+
 :orphan:
 
 .. title:: 'No Javascript' Mode and Offline Mode

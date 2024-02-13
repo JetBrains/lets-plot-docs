@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+:og:description: Dive into data visualization using Lets-Plot - a faithful port of R ggplot2 to Python.
+
 :orphan:
 
 .. title:: Lets-Plot for Python: Plotting Library Based on Grammar of Graphics

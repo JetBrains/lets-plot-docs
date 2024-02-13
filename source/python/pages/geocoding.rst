@@ -1,5 +1,7 @@
 .. _geocoding:
 
+:og:description: Lets-Plot offers geocoding API that allows a user to execute a single and batch geocoding queries to convert names of places into geographic coordinates.
+
 .. title:: Lets-Plot Geocoding: Convert Place Names to Geographic Coordinates
 
 .. meta::

@@ -31,6 +31,7 @@ extensions = [
     'numpydoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.githubpages',
+    "sphinxext.opengraph",
     "sphinx_design",
     'jupyter_sphinx',
     'create_cname',
@@ -61,6 +62,10 @@ autodoc_default_options = {
 autosummary_generate = True
 
 numpydoc_show_class_members = False
+
+ogp_site_url = "https://lets-plot.org/"
+ogp_site_name = "Lets-Plot"
+ogp_image = "_static/images/open-graph.png"
 
 
 # List of patterns, relative to source directory, that match files and

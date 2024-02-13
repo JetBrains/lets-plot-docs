@@ -1,5 +1,7 @@
 .. _bistro:
 
+:og:description: The 'bistro' package of Lets-Plot exists to help you with your EDA investigations by providing some useful charts right out of the box.
+
 .. title:: Lets-Plot 'bistro': Streamline Your Eda With Ready-To-Use Charts
 
 .. meta::

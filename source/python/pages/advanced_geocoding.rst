@@ -1,5 +1,7 @@
 .. _advanced_geocoding:
 
+:og:description: Utilize conflict resolution and fine-tune search settings for geospatial data, converting place names into coordinates.
+
 :orphan:
 
 .. title:: Advanced Geocoding With Lets-Plot: Tuning Queries and Handling Ambiguities
