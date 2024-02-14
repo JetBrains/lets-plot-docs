@@ -63,7 +63,7 @@ autosummary_generate = True
 
 numpydoc_show_class_members = False
 
-ogp_site_url = "https://lets-plot.org/"
+ogp_site_url = "https://asmirnov-horis.github.io/lets-plot-docs/"
 ogp_site_name = "Lets-Plot"
 ogp_image = "_static/images/open-graph.png"
 
