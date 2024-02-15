@@ -43,7 +43,7 @@
 
             User Guide
 
-        :doc:`Visit the API </python/pages/api>`
+        :doc:`Visit the Gallery </python/pages/gallery>`
 
     .. grid-item-card::
 
