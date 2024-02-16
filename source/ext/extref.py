@@ -57,8 +57,6 @@ The extension provides the following configuration values:
     Default ``:ref:`` value if it is not specified.
 - ``extref_default_image`` : str
     Default ``:image:`` value if it is not specified.
-- ``extref_class`` : str
-    Additional custom class for the link tag.
 
 JSON Options
 ------------
@@ -237,20 +235,9 @@ class ExtRefDirective(Directive):
         return list(self._conf()['ref'])[0]
 
     def _class(self):
-        class_text = "reference {0}".format(self._url_type())
-        if self._type() == 'image':
-            class_text += " image-reference preview"
-        if self._type() == 'logo':
-            class_text += " image-reference logo"
-        if self._custom_class() is not None:
-            class_text += " {0}".format(self._custom_class())
-        return class_text
-
-    def _custom_class(self):
-        if 'extref_class' in self._env().config:
-            return self._env().config['extref_class']
-        else:
-            return None
+        if self._type() in ['image', 'logo']:
+            return "reference {0} image-reference".format(self._url_type())
+        return "reference {0}".format(self._url_type())
 
     def _url_type(self):
         return "external" if urlparse(self._href()).netloc else "internal"
@@ -299,11 +286,11 @@ class ExtRefDirective(Directive):
                                                   if name == self._ref_type()), None)
         if not logo_fullpath:
             raise ValueError("There is no appropriate logo for the reference {0}".format(self._ref_type()))
-        logo_path = logo_fullpath.replace(str(self._env().app.outdir), '')[1:]
+        logo_path = logo_fullpath.replace(self._env().app.outdir, '')[1:]
         return self._image_tag(logo_path)
 
     def _image_tag(self, image_path):
-        doc_dir = os.path.dirname(self.state.document.attributes['source'].replace(str(self._env().app.srcdir), ''))[1:]
+        doc_dir = os.path.dirname(self.state.document.attributes['source'].replace(self._env().app.srcdir, ''))[1:]
         return '<img alt="{0}" title="{1}" src="{2}" style="{3}{4}"/>'.format(
             self._alt(), self._title(), os.path.relpath(image_path, doc_dir),
             self._width_tag_option(), self._height_tag_option()
@@ -400,14 +387,13 @@ def setup(app):
     app.add_config_value('extref_default_type', REF_TYPES[0], 'html')
     app.add_config_value('extref_default_ref', None, 'html')
     app.add_config_value('extref_default_image', None, 'html')
-    app.add_config_value('extref_class', None, 'html')
 
     app.add_directive('extref', ExtRefDirective)
 
     app.connect('config-inited', config_inited_handler)
 
     return {
-        'version': '0.3',
+        'version': '0.2',
     }
 
 if __name__ == '__main__':

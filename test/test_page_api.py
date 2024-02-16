@@ -17,7 +17,7 @@ from .parser import page_parser
 from .generator import generate_pages
 from .lets_plot_errors import check_lets_plot_message_errors
 
-API_PAGES_DIR = "docs/python/pages/api"
+API_PAGES_DIR = "docs/pages/api"
 
 @pytest.mark.parametrize(('page'), generate_pages(API_PAGES_DIR))
 def test_api_example(page):
@@ -30,6 +30,7 @@ def test_api_list():
         "as_discrete",
         "LETS_PLOT_COLOR", "LETS_PLOT_LIGHT", "LETS_PLOT_DARK", "LETS_PLOT_BW",
         "SOLID", "OSM", "OPEN_TOPO_MAP",
+        "STAMEN_DESIGN_TONER", "STAMEN_DESIGN_TONER_HIRES", "STAMEN_DESIGN_TONER_LIGHT", "STAMEN_DESIGN_TONER_LIGHT_HIRES", "STAMEN_DESIGN_TONER_HYBRID", "STAMEN_DESIGN_TONER_HYBRID_HIRES", "STAMEN_DESIGN_TONER_LABELS", "STAMEN_DESIGN_TONER_LABELS_HIRES", "STAMEN_DESIGN_TERRAIN", "STAMEN_DESIGN_TERRAIN_HIRES", "STAMEN_DESIGN_WATERCOLOR",
         "CARTO_POSITRON", "CARTO_POSITRON_HIRES", "CARTO_POSITRON_NO_LABELS", "CARTO_POSITRON_NO_LABELS_HIRES", "CARTO_DARK_MATTER_NO_LABELS", "CARTO_DARK_MATTER_NO_LABELS_HIRES", "CARTO_VOYAGER", "CARTO_VOYAGER_HIRES", "CARTO_MIDNIGHT_COMMANDER", "CARTO_MIDNIGHT_COMMANDER_HIRES", "CARTO_ANTIQUE", "CARTO_ANTIQUE_HIRES", "CARTO_FLAT_BLUE", "CARTO_FLAT_BLUE_HIRES",
         "NASA_CITYLIGHTS_2012", "NASA_BLUEMARBLE_NEXTGENERATION", "NASA_GREYSCALE_SHADED_RELIEF_30M", "NASA_COLOR_SHADED_RELIEF_30M", "NASA_TERRA_TRUECOLOR",
     }
@@ -56,7 +57,7 @@ def get_module_members(module=lp):
 
 def get_api_members():
     members = []
-    with codecs.open("docs/python/pages/api.html", 'r', 'utf-8') as page:
+    with codecs.open("docs/pages/api.html", 'r', 'utf-8') as page:
         soup = BeautifulSoup(page, 'html.parser')
         for a in soup.select("a.internal span.pre"):
             members.append(a.text.strip())
