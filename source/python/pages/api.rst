@@ -1,5 +1,7 @@
 .. _api:
 
+:og:description: Basic classes, geometries, stats, themes, geocoding API and other useful features to build beautiful plots.
+
 :orphan:
 
 :tocdepth: 2

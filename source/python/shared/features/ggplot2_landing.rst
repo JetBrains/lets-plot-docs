@@ -2,6 +2,6 @@
 
 Inspired by ggplot2
 
-A faithful port of R ggplot2 to Python and Kotlin.
+A faithful port of R's ggplot2 to Python and Kotlin.
 
-You can learn R ggplot2 and the grammar of graphics in the `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__ book by Hadley Wickham.
+You can learn R's ggplot2 and the grammar of graphics in the `"ggplot2: Elegant Graphics for Data Analysis" <https://ggplot2-book.org/index.html>`__ book by Hadley Wickham.

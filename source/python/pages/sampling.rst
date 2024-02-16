@@ -1,5 +1,7 @@
 .. _sampling:
 
+:og:description: Sampling is a special data transformation technique that helps to work with large datasets and is also a way of handling over-plotting.
+
 :orphan:
 
 .. title:: Sampling in Lets-Plot: Data Transformation Techniques

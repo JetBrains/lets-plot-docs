@@ -1,5 +1,7 @@
 .. _geopandas:
 
+:og:description: All GeoPandas shapes are "understood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape.
+
 :orphan:
 
 .. title:: Support Geopandas in Geometry Layers and Interactive Maps

@@ -1,5 +1,7 @@
 .. _eda:
 
+:og:description: Some exploratory data analysis examples with Lets-Plot from the net.
+
 :orphan:
 
 .. title:: EDA Examples With Lets-Plot

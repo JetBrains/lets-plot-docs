@@ -1,5 +1,7 @@
 .. _charts:
 
+:og:description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.
+
 .. title:: Lets-Plot Charts: From Basics to Advanced Visualizations
 
 .. meta::
