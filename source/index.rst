@@ -1,150 +1,86 @@
-.. lets-plot documentation master file, created by
-   sphinx-quickstart on Fri May 15 17:50:59 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+:og:description: Discover Lets-Plot - a faithful port of R's ggplot2 to Python and Kotlin for enhanced data visualization.
 
-.. title:: Grammar of Graphics for Python
+.. title:: Lets-Plot - Multiplatform Plotting Library Based on the Grammar of Graphics
 
 .. meta::
-   :description: Lets-Plot is a multiplatform plotting library based on the Grammar of Graphics. It provides a ggplot2-like plotting API for Python and Kotlin users.
+   :description: Discover Lets-Plot - a faithful port of R's ggplot2 to Python and Kotlin for enhanced data visualization.
    :keywords: data visualization, geospatial visualization, python, kotlin, grammar of graphics, ggplot2
+
 
 .. toctree::
     :glob:
     :hidden:
     :maxdepth: 1
 
-    pages/charts
-    pages/maps
-    Geocoding <pages/geocoding>
-    'bistro' plots <pages/bistro>
-    What is new <pages/whats_new>
+    API <python/pages/api>
+    python/pages/charts
+    python/pages/maps
+    Geocoding <python/pages/geocoding>
+    Gallery <python/pages/gallery>
+    'bistro' Plots <python/pages/bistro>
+    What is New <python/pages/whats_new>
 
-Grammar of Graphics for Python
-==============================
+.. grid:: 2
+    :class-container: landing-content wide-grid
 
-.. image:: https://jb.gg/badges/official-flat-square.svg
-    :target: https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub
-    :alt: JB Official
-.. image:: https://img.shields.io/pypi/v/lets-plot?color=green&style=flat-square
-    :target: https://pypi.org/project/lets-plot
-    :alt: Latest release
-.. raw:: html
+    .. grid-item-card::
 
-    <a class="reference internal image-reference" href="pages/licenses.html">
-      <img alt="MIT License" src="https://img.shields.io/pypi/l/lets-plot?color=yellow&amp;style=flat-square">
-    </a>
+        .. raw:: html
 
-**Python versions:** 3.7-3.12
+            <h1>
+                <span id="landing-title">Lets-Plot</span>
+                — multiplatform plotting library built on the principles of the Grammar of Graphics
+            </h1>
 
-**OS:** Linux, macOS, Windows
+        .. button-ref:: python/index
+            :color: primary
 
+            Get started
 
-Installation
-------------
+        .. button-ref:: python-index-user-guide
+            :color: primary
+            :outline:
 
-.. code:: shell
+            User Guide
 
-    pip install lets-plot
+        :doc:`Visit the Gallery </python/pages/gallery>`
 
+    .. grid-item-card::
 
-Quickstart
-----------
+        .. raw:: html
 
-.. jupyter-execute::
-    :linenos:
-
-    import numpy as np
-    from lets_plot import *
-    LetsPlot.setup_html()        
-
-    np.random.seed(12)
-    data = dict(
-        cond=np.repeat(['A', 'B'], 200),
-        rating=np.concatenate((np.random.normal(0, 1, 200), np.random.normal(1, 1.5, 200)))
-    )
-
-    ggplot(data, aes(x='rating', fill='cond')) + ggsize(700, 300) + \
-        geom_density(color='dark_green', alpha=.7) + scale_fill_brewer(type='seq') + \
-        theme(panel_grid_major_x='blank')
-
-.. panels::
-    :container: + lets-plot-platforms
-    :column: col-lg-12 col-md-4 col-sm-6 col-xs-12 p-2
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: nbviewer
-        :title: NBViewer
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: datalore
-        :title: Datalore
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: kaggle
-        :title: Kaggle
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: colab
-        :title: Google Colab
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: deepnote
-        :title: Deepnote
-        :height: 3.2rem
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: nextjournal
-        :title: Nextjournal
-
-    .. extref:: quickstart
-        :type: logo
-        :ref: pycharm
-        :title: PyCharm
+            <a class="reference internal image-reference" href="python/pages/gallery.html">
+              <img alt="Gallery" src="_static/images/gallery.png">
+            </a>
 
 
-Explore Your Data with Lets-Plot
---------------------------------
+.. grid:: 2
+    :class-container: features-list wide-grid
 
-.. panels::
-    :container: + explore-your-data-container
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
-    :header: text-center
+    .. grid-item-card::
 
-    :ref:`Charts <charts>`
-    ^^^^^^^^^^^^^^^^^^^^^^
+        .. raw:: html
 
-    .. raw:: html
+            <h2>At a Glance</h2>
 
-        <a class="reference internal image-reference" href="pages/charts.html">
-          <img src="_static/images/previews/charts.png">
-        </a>
+    .. grid-item-card::
 
-    ---
-    :ref:`Maps <maps>`
-    ^^^^^^^^^^^^^^^^^^
+    .. grid-item-card::
+        :shadow: none
 
-    .. raw:: html
+        .. include:: /python/shared/features/ggplot2_landing.rst
 
-        <a class="reference internal image-reference" href="pages/maps.html">
-          <img src="_static/images/previews/maps.png">
-        </a>
+    .. grid-item-card::
+        :shadow: none
 
-    ---
-    :ref:`Geocoding <geocoding>`
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        .. include:: /python/shared/features/multiplatform_landing.rst
 
-    .. raw:: html
+    .. grid-item-card::
+        :shadow: none
 
-        <a class="reference internal image-reference" href="pages/geocoding.html">
-          <img src="_static/images/previews/geocoding.png">
-        </a>
+        .. include:: /python/shared/features/geospatial_visualization.rst
 
+    .. grid-item-card::
+        :shadow: none
 
-.. include:: /shared/features.rst
+        .. include:: /python/shared/features/tooltips.rst
