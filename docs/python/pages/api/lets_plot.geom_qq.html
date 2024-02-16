@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="lets_plot.geom_qq" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/python/pages/api/lets_plot.geom_qq.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+
+    <title>lets_plot.geom_qq</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=f903742b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=ab5ecf78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=d0ae6d56"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python/pages/api/lets_plot.geom_qq';</script>
+    <script src="../../../_static/js/custom.js?v=9b4d3288"></script>
+    <script src="../../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="lets_plot.geom_qq2" href="lets_plot.geom_qq2.html" />
+    <link rel="prev" title="lets_plot.geom_label" href="lets_plot.geom_label.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+  <a class="navbar-brand logo" href="../../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../whats_new.html">
+  <p>v4.2.0</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../api.html">
+                        API
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../charts.html">
+                        Charts
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../maps.html">
+                        Maps
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../geocoding.html">
+                        Geocoding
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../gallery.html">
+                        Gallery
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../bistro.html">
+                        'bistro' Plots
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../whats_new.html">
+                        What is New
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../api.html">
+                        API
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../charts.html">
+                        Charts
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../maps.html">
+                        Maps
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../geocoding.html">
+                        Geocoding
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../gallery.html">
+                        Gallery
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../bistro.html">
+                        'bistro' Plots
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../whats_new.html">
+                        What is New
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="lets-plot-geom-qq">
+<h1>lets_plot.geom_qq<a class="headerlink" href="#lets-plot-geom-qq" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="lets_plot.geom_qq">
+<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">geom_qq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tooltips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dparams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">other_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_qq" title="Link to this definition">#</a></dt>
+<dd><p>Display quantile-quantile plot.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>mapping</strong><span class="classifier"><cite>FeatureSpec</cite></span></dt><dd><p>Set of aesthetic mappings created by <cite>aes()</cite> function.
+Aesthetic mappings describe the way that variables in the data are
+mapped to plot “aesthetics”.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier">dict or Pandas or Polars <cite>DataFrame</cite></span></dt><dd><p>The data to be displayed in this layer. If None, the default, the data
+is inherited from the plot data as specified in the call to ggplot.</p>
+</dd>
+<dt><strong>stat</strong><span class="classifier">str, default=’qq’</span></dt><dd><p>The statistical transformation to use on the data for this layer, as a string.
+Supported transformations: ‘identity’ (leaves the data unchanged),
+‘qq’ (compare two probability distributions),
+‘count’ (counts number of points with same x-axis coordinate),
+‘bin’ (counts number of points with x-axis coordinate in the same bin),
+‘smooth’ (performs smoothing - linear default),
+‘density’ (computes and draws kernel density estimate).</p>
+</dd>
+<dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite>, default=’identity’</span></dt><dd><p>Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
+or the result of a call to a position adjustment function.</p>
+</dd>
+<dt><strong>show_legend</strong><span class="classifier">bool, default=True</span></dt><dd><p>False - do not show legend for this layer.</p>
+</dd>
+<dt><strong>sampling</strong><span class="classifier"><cite>FeatureSpec</cite></span></dt><dd><p>Result of the call to the <cite>sampling_xxx()</cite> function.
+To prevent any sampling for this layer pass value “none” (string “none”).</p>
+</dd>
+<dt><strong>tooltips</strong><span class="classifier"><cite>layer_tooltips</cite></span></dt><dd><p>Result of the call to the <cite>layer_tooltips()</cite> function.
+Specify appearance, style and content.</p>
+</dd>
+<dt><strong>distribution</strong><span class="classifier">{‘norm’, ‘uniform’, ‘t’, ‘gamma’, ‘exp’, ‘chi2’}, default=’norm’</span></dt><dd><p>Distribution function to use.</p>
+</dd>
+<dt><strong>dparams</strong><span class="classifier">list</span></dt><dd><p>Additional parameters (of float type) passed on to distribution function.
+If <cite>distribution</cite> is <cite>‘norm’</cite> then <cite>dparams</cite> is a pair [mean, std] (=[0.0, 1.0] by default).
+If <cite>distribution</cite> is <cite>‘uniform’</cite> then <cite>dparams</cite> is a pair [a, b] (=[0.0, 1.0] by default).
+If <cite>distribution</cite> is <cite>‘t’</cite> then <cite>dparams</cite> is an integer number [d] (=[1] by default).
+If <cite>distribution</cite> is <cite>‘gamma’</cite> then <cite>dparams</cite> is a pair [alpha, beta] (=[1.0, 1.0] by default).
+If <cite>distribution</cite> is <cite>‘exp’</cite> then <cite>dparams</cite> is a float number [lambda] (=[1.0] by default).
+If <cite>distribution</cite> is <cite>‘chi2’</cite> then <cite>dparams</cite> is an integer number [k] (=[1] by default).</p>
+</dd>
+<dt><strong>color_by</strong><span class="classifier">{‘fill’, ‘color’, ‘paint_a’, ‘paint_b’, ‘paint_c’}, default=’color’</span></dt><dd><p>Define the color aesthetic for the geometry.</p>
+</dd>
+<dt><strong>fill_by</strong><span class="classifier">{‘fill’, ‘color’, ‘paint_a’, ‘paint_b’, ‘paint_c’}, default=’fill’</span></dt><dd><p>Define the fill aesthetic for the geometry.</p>
+</dd>
+<dt><strong>other_args</strong></dt><dd><p>Other arguments passed on to the layer.
+These are often aesthetics settings used to set an aesthetic to a fixed value,
+like color=’red’, fill=’blue’, size=3 or shape=21.
+They may also be parameters to the paired geom/stat.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><cite>LayerSpec</cite></dt><dd><p>Geom object specification.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The Q-Q plot is used for comparing two probability distributions
+(sample and theoretical) by plotting their quantiles against each other.</p>
+<p>If the two distributions being compared are similar, the points in the Q-Q plot
+will approximately lie on the straight line.</p>
+<p>Computed variables:</p>
+<ul class="simple">
+<li><p>..theoretical.. : theoretical quantiles.</p></li>
+<li><p>..sample.. : sample quantiles.</p></li>
+</ul>
+<p><cite>geom_qq()</cite> understands the following aesthetics mappings:</p>
+<ul class="simple">
+<li><p>sample : y-axis value.</p></li>
+<li><p>alpha : transparency level of a point. Accept values between 0 and 1.</p></li>
+<li><p>color (colour) : color of the geometry. String in the following formats: RGB/RGBA (e.g. “rgb(0, 0, 255)”); HEX (e.g. “#0000FF”); color name (e.g. “red”); role name (“pen”, “paper” or “brush”).</p></li>
+<li><p>fill : fill color. Is applied only to the points of shapes having inner area. String in the following formats: RGB/RGBA (e.g. “rgb(0, 0, 255)”); HEX (e.g. “#0000FF”); color name (e.g. “red”); role name (“pen”, “paper” or “brush”).</p></li>
+<li><p>shape : shape of the point, an integer from 0 to 25.</p></li>
+<li><p>size : size of the point.</p></li>
+<li><p>stroke : width of the shape border. Applied only to the shapes having border.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="linenos">5</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="hll"><span class="linenos">7</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;sample&#39;</span><span class="p">:</span> <span class="n">sample</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_qq</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="uPrv6u"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.2.0/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("uPrv6u").appendChild(div);
+        };
+        var e = document.getElementById("uPrv6u");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="8vAvdW"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+},
+"mapping":{
+"sample":"sample"
+},
+"data_meta":{
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"qq",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+"..theoretical..":[-2.5758293035489,-2.17009037758456,-1.9599639845400538,-1.8119106729525978,-1.6953977102721358,-1.5981931399228173,-1.5141018876192833,-1.4395314709384557,-1.3722038089987258,-1.310579112168129,-1.2535654384704509,-1.200358858030859,-1.1503493803760079,-1.1030625561995975,-1.058121617684777,-1.015222033217028,-0.974113877059309,-0.9345892910734802,-0.8964733640019162,-0.8596173642419114,-0.8238936303385576,-0.7891916526582223,-0.7554150263604693,-0.7224790519280627,-0.690308823933034,-0.6588376927361879,-0.6280060144375696,-0.5977601260424784,-0.5680514983389829,-0.5388360302784503,-0.5100734569685947,-0.4817268495847302,-0.4537621901698793,-0.4261480078412781,-0.39885506564233686,-0.3718560893850747,-0.34512553147047226,-0.31863936396437514,-0.2923748962268042,-0.26631061320409494,-0.24042603114230793,-0.21470156800174453,-0.1891184262727925,-0.16365848623314122,-0.1383042079614045,-0.11303854064456507,-0.08784483789587168,-0.06270677794321383,-0.037608287661255936,-0.012533469508069278,0.012533469508069278,0.037608287661255936,0.06270677794321383,0.08784483789587182,0.11303854064456521,0.13830420796140463,0.16365848623314108,0.18911842627279238,0.2147015680017444,0.24042603114230793,0.26631061320409494,0.2923748962268042,0.31863936396437514,0.34512553147047226,0.3718560893850747,0.39885506564233686,0.42614800784127826,0.4537621901698796,0.48172684958473033,0.5100734569685945,0.5388360302784502,0.5680514983389827,0.5977601260424784,0.6280060144375696,0.6588376927361879,0.690308823933034,0.7224790519280627,0.7554150263604693,0.7891916526582223,0.8238936303385576,0.8596173642419117,0.8964733640019159,0.9345892910734798,0.974113877059309,1.015222033217028,1.058121617684777,1.1030625561995975,1.1503493803760079,1.200358858030859,1.2535654384704509,1.310579112168129,1.3722038089987263,1.439531470938456,1.514101887619284,1.5981931399228169,1.6953977102721358,1.8119106729525971,1.9599639845400536,2.17009037758456,2.5758293035489],
+"..sample..":[-2.6197451040897444,-1.9875689146008928,-1.9596701238797756,-1.913280244657798,-1.763040155362734,-1.7249178325130328,-1.4785219903674274,-1.4635149481321186,-1.4247481862134568,-1.4123037013352915,-1.3281860488984305,-1.2208436499710222,-1.1962066240806708,-1.1509935774223028,-1.1063349740060282,-1.0577109289559004,-1.0128311203344238,-0.9080240755212109,-0.8392175232226385,-0.8084936028931876,-0.7198442083947086,-0.7020530938773524,-0.6769220003059587,-0.6451197546051243,-0.6017066122293969,-0.600638689918805,-0.5622875292409727,-0.5443827245251827,-0.5297602037670388,-0.5182702182736474,-0.5017570435845365,-0.47917423784528995,-0.4694743859349521,-0.46572975357025687,-0.46341769281246226,-0.4606387709597875,-0.39210815313215763,-0.38508228041631654,-0.3276621465977682,-0.3092123758512146,-0.3011036955892888,-0.29900735046586746,-0.2916937497932768,-0.23458713337514692,-0.23415337472333597,-0.23413695694918055,-0.22577630048653566,-0.21967188783751193,-0.18565897666381712,-0.13826430117118466,-0.11564828238824053,-0.07201012158033385,-0.03582603910995154,-0.013497224737933921,0.00511345664246089,0.06752820468792384,0.08704706823817122,0.0917607765355023,0.09707754934804039,0.11092258970986608,0.1713682811899705,0.19686123586912352,0.2088635950047554,0.24196227156603412,0.26105527217988933,0.29612027706457605,0.3142473325952739,0.324083969394795,0.32875110965968446,0.33126343140356396,0.3436182895684614,0.3571125715117464,0.36139560550841393,0.36163602504763415,0.37569801834567196,0.4967141530112327,0.5132674331133561,0.5425600435859647,0.6116762888408679,0.6476885381006925,0.7384665799954104,0.7674347291529088,0.812525822394198,0.8219025043752238,0.822544912103189,0.9154021177020741,0.9312801191161986,0.9686449905328892,0.9755451271223592,1.0035328978920242,1.030999522495951,1.0571222262189157,1.356240028570823,1.465648768921554,1.477894044741516,1.5230298564080254,1.5380365664659692,1.5646436558140062,1.5792128155073915,1.8522781845089378],
+"sample":[-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384,-0.10384651739409384]
+}
+}],
+"metainfo_list":[]
+};
+           var plotContainer = document.getElementById("8vAvdW");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="linenos">5</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="linenos">7</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;sample&#39;</span><span class="p">:</span> <span class="n">sample</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">8</span>    <span class="n">geom_qq</span><span class="p">(</span><span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;exp&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="k4OziV"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.2.0/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("k4OziV").appendChild(div);
+        };
+        var e = document.getElementById("k4OziV");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="sZ9rOx"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+},
+"mapping":{
+"sample":"sample"
+},
+"data_meta":{
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"qq",
+"mapping":{
+},
+"data_meta":{
+},
+"distribution":"exp",
+"data":{
+"..theoretical..":[0.005012541814813951,0.015113638045445086,0.02531780798458715,0.03562717764550125,0.0460439385124269,0.05657035152623817,0.067208749799077,0.07796154172395074,0.08883121325416884,0.09982033528221171,0.1109315607072838,0.12216763397421301,0.1335313926245353,0.14502577205028547,0.1566538100454338,0.16841865162507447,0.1803235541314894,0.19237189264782922,0.2045671657419212,0.21691300156465998,0.2294131643295781,0.24207156120254772,0.2548922496331669,0.2678794451622485,0.28103752974300467,0.2943710606170223,0.30788477979002343,0.32158362415670294,0.33547273628800534,0.3495574761697112,0.3638434334171489,0.37833644071967126,0.3930425881093168,0.40796823832593776,0.4231200433464809,0.43850496218589824,0.4541302800889154,0.4700036292451415,0.4861330111749636,0.5025268209505821,0.5191938734357426,0.5361434317494723,0.5533852381839458,0.5709295478348346,0.5887871652348342,0.6069694843180312,0.6254885320852895,0.6443570163897077,0.6635883783176426,0.6831968497060774,0.7031975164128137,0.7236063880440938,0.7444404749470119,0.7657178733943726,0.7874578600308516,0.8096809968156298,0.8324092478932473,0.8556661100575669,0.8794767587513295,0.9038682118755232,0.9288695140809667,0.9545119446943223,0.9808292530117088,1.0078579253996365,1.0356374895067162,1.064210861950775,1.09362474715707,1.1239300966523995,1.155182640156503,1.1874435023747247,1.2207799226423164,1.255266098908231,1.2909841813281513,1.328025452995922,1.3664917338237725,1.4064970684502023,1.4481697650539158,1.491654876777717,1.5371172508544928,1.5847452998438605,1.63475572041915,1.6873994539073012,1.742969305072195,1.801809805128015,1.864330162206566,1.9310215369705943,2.0024805005437076,2.079441541679836,2.162823150618888,2.2537949288246137,2.3538783873815956,2.465104022491819,2.590267165445818,2.7333680090864734,2.9004220937496163,3.101092789223645,3.352407217493319,3.6888794541162637,4.199705077894158,5.298317366560461],
+"..sample..":[0.005537420375935475,0.020799307999138622,0.02574777399011373,0.034993721443479085,0.046281965686831954,0.047563849756408545,0.059838768608680676,0.06566806580478289,0.06726393087930424,0.07692926551379635,0.07747586881130901,0.09265545895311562,0.10277731500250624,0.11416743519186584,0.12315010460444965,0.1273723936155019,0.13015223395444864,0.15023452872733867,0.15189814782062885,0.16959629191460518,0.16962487046234628,0.18696125197741642,0.20067898874966336,0.20261142283225705,0.20438859950790575,0.21813469463126745,0.22153944050588595,0.2227358621286903,0.238687625248947,0.2994577768406861,0.3165604432088257,0.3298028401342492,0.3442229925539415,0.34551551200240227,0.3627537294604771,0.3632878599687583,0.3724883504103537,0.37354658165762367,0.39331421318413134,0.3935320868030868,0.401818801251301,0.44122699952987016,0.4438926724162325,0.45627721822084705,0.4692680899768591,0.4921302917942186,0.5578141939084273,0.5655370667803367,0.5800908425853983,0.608934687859775,0.6390661333763098,0.6808147315102779,0.6835472281341501,0.7220291550331277,0.7341108959092286,0.739678838777267,0.7439278308608545,0.782407083207746,0.7912237979817975,0.8238874948858288,0.8975047213097606,0.911054412383275,0.9129425537759532,0.9190821536272645,0.9353330206496101,0.9463708738997987,0.9763011917123741,1.01488935892602,1.0862557985649803,1.1527507630986618,1.2270959073870447,1.2312500617045903,1.2491263443165994,1.305662908787999,1.3078757839577408,1.3167456935454493,1.430392753076864,1.4738899667213645,1.4752145260435134,1.4794837762415114,1.4922453771381408,1.537936011030912,1.6204835957747312,1.6523315728128767,1.689896777486126,1.764557865240934,1.786429543354675,1.9885295716582227,2.0112308644799395,2.1822519124015147,2.2521519975341966,2.400422887393024,2.549435379269405,2.8050944192915823,2.973687793506931,3.010121430917521,3.3706303424611725,3.4928071327362264,3.503557475158312,4.33414633958732],
+"sample":[0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717,0.9147480390388717]
+}
+}],
+"metainfo_list":[]
+};
+           var plotContainer = document.getElementById("sZ9rOx");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();    
+   </script></div></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lets_plot.geom_qq"><code class="docutils literal notranslate"><span class="pre">geom_qq()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2024 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  7.2.6 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.15.2.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
