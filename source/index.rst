@@ -3,7 +3,7 @@
 .. title:: Lets-Plot - Multiplatform Plotting Library Based on the Grammar of Graphics
 
 .. meta::
-   :description: Discover Lets-Plot - a faithful port of R's ggplot2 to Python and Kotlin for enhanced data visualization.
+   :description: Lets-Plot - a faithful port of R's ggplot2 to Python and Kotlin.
    :keywords: data visualization, geospatial visualization, python, kotlin, grammar of graphics, ggplot2
 
 
