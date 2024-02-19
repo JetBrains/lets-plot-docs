@@ -33,6 +33,7 @@ extensions = [
     'sphinx.ext.githubpages',
     "sphinxext.opengraph",
     "sphinx_design",
+    'sphinx_reredirects',
     'jupyter_sphinx',
     'create_cname',
     'extref',
@@ -164,4 +165,25 @@ templates_path = ['_templates']
 html_sidebars = {
     # Default to no sidebar
     '**': [],
+}
+
+# Redirects
+
+redirects = {
+    "pages/advanced_geocoding": "../python/pages/advanced_geocoding.html",
+    "pages/api": "../python/pages/api.html",
+    "pages/as_discrete": "../python/pages/as_discrete.html",
+    "pages/basemap_tiles": "../python/pages/basemap_tiles.html",
+    "pages/bistro": "../python/pages/bistro.html",
+    "pages/charts": "../python/pages/charts.html",
+    "pages/eda": "../python/pages/eda.html",
+    "pages/formats": "../python/pages/formats.html",
+    "pages/geocoding": "../python/pages/geocoding.html",
+    "pages/geopandas": "../python/pages/geopandas.html",
+    "pages/licenses": "../python/pages/licenses.html",
+    "pages/maps": "../python/pages/maps.html",
+    "pages/no_js_and_offline_mode": "../python/pages/no_js_and_offline_mode.html",
+    "pages/sampling": "../python/pages/sampling.html",
+    "pages/tooltips": "../python/pages/tooltips.html",
+    "pages/whats_new": "../python/pages/whats_new.html",
 }
