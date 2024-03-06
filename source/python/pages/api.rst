@@ -94,6 +94,7 @@ Standard Geometries
     geom_step
     geom_rect
     geom_segment
+    geom_curve
     geom_spoke
     geom_text
     geom_label
@@ -361,6 +362,7 @@ Coordinate Systems
 
     coord_cartesian
     coord_fixed
+    coord_polar
     coord_map
     coord_flip
 
@@ -570,7 +572,6 @@ Geospatial
     CARTO_FLAT_BLUE
     CARTO_FLAT_BLUE_HIRES
     NASA_CITYLIGHTS_2012
-    NASA_BLUEMARBLE_NEXTGENERATION
     NASA_GREYSCALE_SHADED_RELIEF_30M
     NASA_COLOR_SHADED_RELIEF_30M
     NASA_TERRA_TRUECOLOR
