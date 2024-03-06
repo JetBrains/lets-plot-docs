@@ -93,6 +93,8 @@ Examples:
       :type: text
 - .. extref:: geopandas_kotlin_isl
       :type: text
+- .. extref:: graph_edges
+      :type: text
 - .. extref:: formatting_axes_etc
       :type: text
 - .. extref:: geom_label
@@ -459,6 +461,8 @@ Examples:
       :type: text
 - .. extref:: flip_coordinates
       :type: text
+- .. extref:: coord_polar
+      :type: text
 
 
 |l17| |d17| 'bistro' Plots
@@ -618,6 +622,8 @@ Examples:
 - .. extref:: legend_and_axis
       :type: text
 - .. extref:: margins
+      :type: text
+- .. extref:: theme_panel_inset
       :type: text
 - .. extref:: legend_text_multiline
       :type: text

@@ -13,6 +13,18 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: wind_rose
+
+    .. grid-item-card::
+
+        .. extref:: periodic_table
+
+    .. grid-item-card::
+
+        .. extref:: palmer_penguins
+
+    .. grid-item-card::
+
         .. extref:: covid19_and_mobility
 
     .. grid-item-card::
