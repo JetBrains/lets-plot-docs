@@ -214,11 +214,6 @@ Learn more: :doc:`Configuring Basemap Tiles for Interactive Maps </python/pages/
     .. grid-item-card::
 
         .. extref:: the_gallery_of_basemaps
-            :image: nasa_gibs_blue_marble
-
-    .. grid-item-card::
-
-        .. extref:: the_gallery_of_basemaps
             :image: nasa_gibs_color_shaded
 
     .. grid-item-card::
