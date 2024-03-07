@@ -17,6 +17,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: heatmap_in_polar_coord
+
+    .. grid-item-card::
+
         .. extref:: periodic_table
 
     .. grid-item-card::
