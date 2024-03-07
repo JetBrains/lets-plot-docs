@@ -40,6 +40,7 @@ Key Features
         .. include:: /python/shared/features/export.rst
 
     .. grid-item-card::
+        :class-item: show-ext
         :shadow: none
 
         .. include:: /python/shared/features/show_ext.rst
