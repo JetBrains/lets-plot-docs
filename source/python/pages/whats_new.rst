@@ -3,74 +3,92 @@
 .. title:: What is New
 
 
-What is New in 4.2.0
+What is new in 4.3.0
 ====================
 
-- **Support for "Categoricals"**
+- **coord_polar()**
 
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/factor_levels.ipynb>`__.
+  The polar coordinate system is most commonly used for pie charts, but it can also be used for constructing **Spyder or Radar charts** using the ``flat`` option.
 
-- **Superscript for Numbers in Scientific Notation**
+  .. image:: /_static/images/changelog/4.3.0/polar_coord_pie.png
+    :width: 256
 
-  .. warning::
-    Do NOT(!) use ``exponent_format='pow'`` if you are planning to export plot to a raster format (PNG, PDF).
+  .. image:: /_static/images/changelog/4.3.0/radar_chart.png
+    :width: 256
 
-    The ``CairoSVG`` library (which is under the hood of our ``ggsave()`` function) does not handle ``tspan`` element properly end breaks superscript notation when transforming SVG to PNG/PDF.
+  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/coord_polar.ipynb>`__.
 
-    More details: https://github.com/Kozea/CairoSVG/issues/317
+- **In the theme()**
 
-  .. image:: /_static/images/changelog/4.2.0/superscript.png
-    :width: 328
+  - ``panel_inset`` parameter - primarily used for plots with polar coordinates.
 
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/superscript_exponent.ipynb>`__.
+    See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/theme_panel_inset.ipynb>`__.
 
-- **Exporting Plot to a File-Like Object**
+  - ``panel_border_ontop`` parameter - enables the drawing of panel border on top of the plot geoms.
 
-  Convenience methods: ``to_svg()``, ``to_html()``, ``to_png()``, ``to_pdf()``
+  - ``panel_grid_ontop``, ``panel_grid_ontop_x``, ``panel_grid_ontop_y`` parameters - enable the drawing of grid lines on top of the plot geoms.
 
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_export_methods.ipynb>`__.
+- **geom_curve()**
 
-- **Sharing of X,Y-scale Limits Between Subplots in gggrid()**
+  .. image:: /_static/images/changelog/4.3.0/curve_annotation.png
+    :width: 338
 
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/gggrid_scale_share.ipynb>`__.
+  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_curve.ipynb>`__.
 
-- **geom_spoke()**
+- **[UNIQUE] Visualizing Graph-like Data with geom_segment() and geom_curve()**
 
-  .. image:: /_static/images/changelog/4.2.0/geom_spoke.png
-    :width: 248
+  - Aesthetics ``size_start``, ``size_end``, ``stroke_start`` and ``stroke_end`` enable better alignment of segments/curves with nodes of the graph by considering the size of the nodes.
 
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_spoke.ipynb>`__.
+  - The ``spacer`` parameter allows for additional manual fine-tuning.
 
-- **High-contrast Tileset "BW" for geom_livemap()**
+  .. image:: /_static/images/changelog/4.3.0/graph_simple.png
+    :width: 256
 
-  .. image:: /_static/images/changelog/4.2.0/tileset_BW.png
-    :width: 512
+  .. image:: /_static/images/changelog/4.3.0/graph_on_map.png
+    :width: 256
 
-  See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_livemap_bw_tiles.ipynb>`__.
+  See:
 
-  See advanced example: `Spatial prediction of soil pollutants with multi-output Gaussian processes <https://nextjournal.com/asmirnov-horis/spatial-prediction-of-soil-pollutants-with-multi-output-gaussian-processes?token=26GT2sBa3Ycw6LGZxqdTay>`__. Credits: Essi Parent (`@essicolo <https://github.com/essicolo>`__).
+  - `A simple graph example <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/graph_edges.ipynb>`__
 
-- **Other New Features and Improvements**
+  - `An interactive map example <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_curve_on_map.ipynb>`__
 
-  - :py:mod:`scale_x_log2() <lets_plot.scale_x_log2>`, :py:mod:`scale_y_log2() <lets_plot.scale_y_log2>`
+- **The alpha_stroke Parameter in geom_label()**
 
-  - New variables computed by ``'count'`` and ``'count2d'`` statistics: ``'..sumprop..'``, ``'..sumpct..'``.
+  Use the ``alpha_stroke`` parameter to apply ``alpha`` to entire ``label``. By default, ``alpha`` is only applied to the label background.
 
-    See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_stat_count_vars.ipynb>`__.
+  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_label_alpha_stroke.ipynb>`__.
 
-  - Support using dictionaries for breaks/labels/values customization in ``scale_xxx()`` functions.
+- **Showing Plots in External Browser**
 
-    See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_params_with_dict.ipynb>`__.
+  The :py:meth:`LetsPlot.setup_show_ext() <lets_plot.LetsPlot.setup_show_ext>` directive allows plots to be displayed in an external browser window.
 
-  - The ``lablim`` parameter in ``scale_xxx()`` functions.
+- **Updates in the Gallery**
 
-    See: `example notebook <https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_lablim.ipynb>`__.
+  .. image:: /_static/images/changelog/4.3.0/gal_bbc_cookbook.png
+    :width: 128
+    :height: 128
+    :target: https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot
 
-  - ``label_text`` parameter in :py:mod:`theme() <lets_plot.theme>` for annotation text settings.
+  .. image:: /_static/images/changelog/4.3.0/gal_penguins.png
+    :width: 128
+    :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/palmer_penguins.ipynb
 
-    See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/theme_label_text.ipynb>`__.
+  .. image:: /_static/images/changelog/4.3.0/gal_periodic_table.png
+    :width: 128
+    :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/periodic_table.ipynb
 
-  - NumberFormat: new flag ``~`` to trim trailing zeros.
+  .. image:: /_static/images/changelog/4.3.0/gal_wind_rose.png
+    :width: 128
+    :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/wind_rose.ipynb
+
+  .. image:: /_static/images/changelog/4.3.0/gal_polar_heatmap.png
+    :width: 128
+    :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/heatmap_in_polar_coord.ipynb
 
 
 Change Log

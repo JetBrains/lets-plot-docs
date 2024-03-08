@@ -40,11 +40,17 @@ Key Features
         .. include:: /python/shared/features/export.rst
 
     .. grid-item-card::
+        :class-item: show-ext
         :shadow: none
 
-        .. include:: /python/shared/features/offline_mode.rst
+        .. include:: /python/shared/features/show_ext.rst
 
     .. grid-item-card::
         :shadow: none
 
         .. include:: /python/shared/features/sampling.rst
+
+    .. grid-item-card::
+        :shadow: none
+
+        .. include:: /python/shared/features/offline_mode.rst

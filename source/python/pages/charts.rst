@@ -58,6 +58,7 @@ Lines:
 :py:mod:`horizontal line <lets_plot.geom_hline>`,
 :py:mod:`vertical line <lets_plot.geom_vline>`,
 :py:mod:`segment <lets_plot.geom_segment>`,
+:py:mod:`curve <lets_plot.geom_curve>`,
 :py:mod:`spoke <lets_plot.geom_spoke>`,
 :py:mod:`step-function <lets_plot.geom_step>`
 
@@ -92,6 +93,8 @@ Examples:
       :type: text
 - .. extref:: geopandas_kotlin_isl
       :type: text
+- .. extref:: graph_edges
+      :type: text
 - .. extref:: formatting_axes_etc
       :type: text
 - .. extref:: geom_label
@@ -103,6 +106,8 @@ Examples:
 - .. extref:: aes_size_color_variadic_lines
       :type: text
 - .. extref:: geom_spoke
+      :type: text
+- .. extref:: geom_curve
       :type: text
 
 
@@ -118,7 +123,8 @@ Examples:
 :py:mod:`bar <lets_plot.geom_bar>`,
 :py:mod:`pie <lets_plot.geom_pie>`,
 :py:mod:`lollipop <lets_plot.geom_lollipop>`,
-:py:mod:`boxplot <lets_plot.geom_boxplot>`
+:py:mod:`boxplot <lets_plot.geom_boxplot>`,
+:py:mod:`count <lets_plot.geom_count>`/:py:mod:`sum <lets_plot.stat_sum>`
 
 Examples:
 
@@ -445,6 +451,7 @@ Examples:
 
 :py:mod:`coord_cartesian() <lets_plot.coord_cartesian>`,
 :py:mod:`coord_fixed() <lets_plot.coord_fixed>`,
+:py:mod:`coord_polar() <lets_plot.coord_polar>`,
 :py:mod:`coord_flip() <lets_plot.coord_flip>`,
 :py:mod:`coord_map() <lets_plot.coord_map>`
 
@@ -453,6 +460,8 @@ Examples:
 - .. extref:: coordinate_systems
       :type: text
 - .. extref:: flip_coordinates
+      :type: text
+- .. extref:: coord_polar
       :type: text
 
 
@@ -538,7 +547,8 @@ Examples:
 :py:mod:`ylab() <lets_plot.ylab>`,
 :py:mod:`labs() <lets_plot.labs>`,
 :py:mod:`guide_legend() <lets_plot.guide_legend>`,
-:py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`
+:py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`,
+:py:mod:`guides() <lets_plot.guides>`
 
 Predefined themes:
 
@@ -612,6 +622,8 @@ Examples:
 - .. extref:: legend_and_axis
       :type: text
 - .. extref:: margins
+      :type: text
+- .. extref:: theme_panel_inset
       :type: text
 - .. extref:: legend_text_multiline
       :type: text

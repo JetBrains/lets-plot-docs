@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/whats_new.html" />
 <meta property="og:site_name" content="Lets-Plot" />
-<meta property="og:description" content="What is New in 4.2.0: Support for “Categoricals” See: example notebook., Superscript for Numbers in Scientific Notation See: example notebook., Exporting Plot to a File-Like Object Convenience meth..." />
+<meta property="og:description" content="What is new in 4.3.0: coord_polar() The polar coordinate system is most commonly used for pie charts, but it can also be used for constructing Spyder or Radar charts using the flat option. See: exa..." />
 <meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
 <meta property="og:image:alt" content="Lets-Plot" />
-<meta name="description" content="What is New in 4.2.0: Support for “Categoricals” See: example notebook., Superscript for Numbers in Scientific Notation See: example notebook., Exporting Plot to a File-Like Object Convenience meth..." />
+<meta name="description" content="What is new in 4.3.0: coord_polar() The polar coordinate system is most commonly used for pie charts, but it can also be used for constructing Spyder or Radar charts using the flat option. See: exa..." />
 
     <title>What is New</title>
   
@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=f903742b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=04c7815a" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=ab5ecf78" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
   
@@ -49,7 +49,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=d0ae6d56"></script>
+    <script src="../../_static/documentation_options.js?v=a17b270f"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -158,7 +158,7 @@
    
 
 <a class="navbar-brand version" href="#">
-  <p>v4.2.0</p>
+  <p>v4.3.0</p>
 </a>
 </div>
     
@@ -470,55 +470,54 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="what-is-new-in-4-2-0">
-<span id="whats-new"></span><h1>What is New in 4.2.0<a class="headerlink" href="#what-is-new-in-4-2-0" title="Link to this heading">#</a></h1>
+  <section id="what-is-new-in-4-3-0">
+<span id="whats-new"></span><h1>What is new in 4.3.0<a class="headerlink" href="#what-is-new-in-4-3-0" title="Link to this heading">#</a></h1>
 <ul>
-<li><p><strong>Support for “Categoricals”</strong></p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/factor_levels.ipynb">example notebook</a>.</p>
+<li><p><strong>coord_polar()</strong></p>
+<p>The polar coordinate system is most commonly used for pie charts, but it can also be used for constructing <strong>Spyder or Radar charts</strong> using the <code class="docutils literal notranslate"><span class="pre">flat</span></code> option.</p>
+<a class="reference internal image-reference" href="../../_images/polar_coord_pie.png"><img alt="../../_images/polar_coord_pie.png" src="../../_images/polar_coord_pie.png" style="width: 256px;" /></a>
+<a class="reference internal image-reference" href="../../_images/radar_chart.png"><img alt="../../_images/radar_chart.png" src="../../_images/radar_chart.png" style="width: 256px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/coord_polar.ipynb">example notebook</a>.</p>
 </li>
-<li><p><strong>Superscript for Numbers in Scientific Notation</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Do NOT(!) use <code class="docutils literal notranslate"><span class="pre">exponent_format='pow'</span></code> if you are planning to export plot to a raster format (PNG, PDF).</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">CairoSVG</span></code> library (which is under the hood of our <code class="docutils literal notranslate"><span class="pre">ggsave()</span></code> function) does not handle <code class="docutils literal notranslate"><span class="pre">tspan</span></code> element properly end breaks superscript notation when transforming SVG to PNG/PDF.</p>
-<p>More details: <a class="github reference external" href="https://github.com/Kozea/CairoSVG/issues/317">Kozea/CairoSVG#317</a></p>
-</div>
-<a class="reference internal image-reference" href="../../_images/superscript.png"><img alt="../../_images/superscript.png" src="../../_images/superscript.png" style="width: 328px;" /></a>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/superscript_exponent.ipynb">example notebook</a>.</p>
-</li>
-<li><p><strong>Exporting Plot to a File-Like Object</strong></p>
-<p>Convenience methods: <code class="docutils literal notranslate"><span class="pre">to_svg()</span></code>, <code class="docutils literal notranslate"><span class="pre">to_html()</span></code>, <code class="docutils literal notranslate"><span class="pre">to_png()</span></code>, <code class="docutils literal notranslate"><span class="pre">to_pdf()</span></code></p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_export_methods.ipynb">example notebook</a>.</p>
-</li>
-<li><p><strong>Sharing of X,Y-scale Limits Between Subplots in gggrid()</strong></p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/gggrid_scale_share.ipynb">example notebook</a>.</p>
-</li>
-<li><p><strong>geom_spoke()</strong></p>
-<a class="reference internal image-reference" href="../../_images/geom_spoke.png"><img alt="../../_images/geom_spoke.png" src="../../_images/geom_spoke.png" style="width: 248px;" /></a>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_spoke.ipynb">example notebook</a>.</p>
-</li>
-<li><p><strong>High-contrast Tileset “BW” for geom_livemap()</strong></p>
-<a class="reference internal image-reference" href="../../_images/tileset_BW.png"><img alt="../../_images/tileset_BW.png" src="../../_images/tileset_BW.png" style="width: 512px;" /></a>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/geom_livemap_bw_tiles.ipynb">example notebook</a>.</p>
-<p>See advanced example: <a class="reference external" href="https://nextjournal.com/asmirnov-horis/spatial-prediction-of-soil-pollutants-with-multi-output-gaussian-processes?token=26GT2sBa3Ycw6LGZxqdTay">Spatial prediction of soil pollutants with multi-output Gaussian processes</a>. Credits: Essi Parent (<a class="reference external" href="https://github.com/essicolo">&#64;essicolo</a>).</p>
-</li>
-<li><p><strong>Other New Features and Improvements</strong></p>
+<li><p><strong>In the theme()</strong></p>
 <ul>
-<li><p><a class="reference internal" href="api/lets_plot.scale_x_log2.html#lets_plot.scale_x_log2" title="lets_plot.scale_x_log2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_x_log2()</span></code></a>, <a class="reference internal" href="api/lets_plot.scale_y_log2.html#lets_plot.scale_y_log2" title="lets_plot.scale_y_log2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scale_y_log2()</span></code></a></p></li>
-<li><p>New variables computed by <code class="docutils literal notranslate"><span class="pre">'count'</span></code> and <code class="docutils literal notranslate"><span class="pre">'count2d'</span></code> statistics: <code class="docutils literal notranslate"><span class="pre">'..sumprop..'</span></code>, <code class="docutils literal notranslate"><span class="pre">'..sumpct..'</span></code>.</p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/new_stat_count_vars.ipynb">example notebook</a>.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">panel_inset</span></code> parameter - primarily used for plots with polar coordinates.</p>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/theme_panel_inset.ipynb">example notebook</a>.</p>
 </li>
-<li><p>Support using dictionaries for breaks/labels/values customization in <code class="docutils literal notranslate"><span class="pre">scale_xxx()</span></code> functions.</p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_params_with_dict.ipynb">example notebook</a>.</p>
-</li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">lablim</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">scale_xxx()</span></code> functions.</p>
-<p>See: <a class="reference external" href="https://nbviewer.jupyter.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/scale_lablim.ipynb">example notebook</a>.</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">label_text</span></code> parameter in <a class="reference internal" href="api/lets_plot.theme.html#lets_plot.theme" title="lets_plot.theme"><code class="xref py py-mod docutils literal notranslate"><span class="pre">theme()</span></code></a> for annotation text settings.</p>
-<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-23f/theme_label_text.ipynb">example notebook</a>.</p>
-</li>
-<li><p>NumberFormat: new flag <code class="docutils literal notranslate"><span class="pre">~</span></code> to trim trailing zeros.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">panel_border_ontop</span></code> parameter - enables the drawing of panel border on top of the plot geoms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">panel_grid_ontop</span></code>, <code class="docutils literal notranslate"><span class="pre">panel_grid_ontop_x</span></code>, <code class="docutils literal notranslate"><span class="pre">panel_grid_ontop_y</span></code> parameters - enable the drawing of grid lines on top of the plot geoms.</p></li>
 </ul>
+</li>
+<li><p><strong>geom_curve()</strong></p>
+<a class="reference internal image-reference" href="../../_images/curve_annotation.png"><img alt="../../_images/curve_annotation.png" src="../../_images/curve_annotation.png" style="width: 338px;" /></a>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_curve.ipynb">example notebook</a>.</p>
+</li>
+<li><p><strong>[UNIQUE] Visualizing Graph-like Data with geom_segment() and geom_curve()</strong></p>
+<ul class="simple">
+<li><p>Aesthetics <code class="docutils literal notranslate"><span class="pre">size_start</span></code>, <code class="docutils literal notranslate"><span class="pre">size_end</span></code>, <code class="docutils literal notranslate"><span class="pre">stroke_start</span></code> and <code class="docutils literal notranslate"><span class="pre">stroke_end</span></code> enable better alignment of segments/curves with nodes of the graph by considering the size of the nodes.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">spacer</span></code> parameter allows for additional manual fine-tuning.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/graph_simple.png"><img alt="../../_images/graph_simple.png" src="../../_images/graph_simple.png" style="width: 256px;" /></a>
+<a class="reference internal image-reference" href="../../_images/graph_on_map.png"><img alt="../../_images/graph_on_map.png" src="../../_images/graph_on_map.png" style="width: 256px;" /></a>
+<p>See:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/graph_edges.ipynb">A simple graph example</a></p></li>
+<li><p><a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_curve_on_map.ipynb">An interactive map example</a></p></li>
+</ul>
+</li>
+<li><p><strong>The alpha_stroke Parameter in geom_label()</strong></p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">alpha_stroke</span></code> parameter to apply <code class="docutils literal notranslate"><span class="pre">alpha</span></code> to entire <code class="docutils literal notranslate"><span class="pre">label</span></code>. By default, <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is only applied to the label background.</p>
+<p>See: <a class="reference external" href="https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_label_alpha_stroke.ipynb">example notebook</a>.</p>
+</li>
+<li><p><strong>Showing Plots in External Browser</strong></p>
+<p>The <a class="reference internal" href="api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.setup_show_ext" title="lets_plot.LetsPlot.setup_show_ext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LetsPlot.setup_show_ext()</span></code></a> directive allows plots to be displayed in an external browser window.</p>
+</li>
+<li><p><strong>Updates in the Gallery</strong></p>
+<a class="reference external image-reference" href="https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot"><img alt="../../_images/gal_bbc_cookbook.png" src="../../_images/gal_bbc_cookbook.png" style="width: 128px; height: 128px;" /></a>
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/palmer_penguins.ipynb"><img alt="../../_images/gal_penguins.png" src="../../_images/gal_penguins.png" style="width: 128px; height: 128px;" /></a>
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/periodic_table.ipynb"><img alt="../../_images/gal_periodic_table.png" src="../../_images/gal_periodic_table.png" style="width: 128px; height: 128px;" /></a>
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/wind_rose.ipynb"><img alt="../../_images/gal_wind_rose.png" src="../../_images/gal_wind_rose.png" style="width: 128px; height: 128px;" /></a>
+<a class="reference external image-reference" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/heatmap_in_polar_coord.ipynb"><img alt="../../_images/gal_polar_heatmap.png" src="../../_images/gal_polar_heatmap.png" style="width: 128px; height: 128px;" /></a>
 </li>
 </ul>
 <section id="change-log">

@@ -178,7 +178,6 @@ Global Imagery Browse Services (GIBS) API - `Generic XYZ Tile Access <https://wi
 `GIBS Available Imagery Products <https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+Available+Imagery+Products>`__.
 
 - ``NASA_CITYLIGHTS_2012`` : CityLights 2012
-- ``NASA_BLUEMARBLE_NEXTGENERATION`` : BlueMarble NextGeneration
 - ``NASA_GREYSCALE_SHADED_RELIEF_30M`` : Greyscale Shaded Relief (30m)
 - ``NASA_COLOR_SHADED_RELIEF_30M`` : Color Shaded Relief (30m)
 - ``NASA_TERRA_TRUECOLOR`` : Terra TrueColor

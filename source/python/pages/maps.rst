@@ -87,6 +87,7 @@ Combine Layers on Map ``ggplot2`` Style
 :py:mod:`vertical line <lets_plot.geom_vline>`,
 :py:mod:`rectangle <lets_plot.geom_rect>`,
 :py:mod:`segment <lets_plot.geom_segment>`,
+:py:mod:`curve <lets_plot.geom_curve>`,
 :py:mod:`text <lets_plot.geom_text>`,
 :py:mod:`label <lets_plot.geom_label>`.
 
@@ -209,11 +210,6 @@ Learn more: :doc:`Configuring Basemap Tiles for Interactive Maps </python/pages/
 
         .. extref:: the_gallery_of_basemaps
             :image: carto_voyager
-
-    .. grid-item-card::
-
-        .. extref:: the_gallery_of_basemaps
-            :image: nasa_gibs_blue_marble
 
     .. grid-item-card::
 
