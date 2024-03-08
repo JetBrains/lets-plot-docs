@@ -68,28 +68,27 @@ What is new in 4.3.0
   .. image:: /_static/images/changelog/4.3.0/gal_bbc_cookbook.png
     :width: 128
     :height: 128
+    :target: https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot
 
   .. image:: /_static/images/changelog/4.3.0/gal_penguins.png
     :width: 128
     :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/palmer_penguins.ipynb
 
   .. image:: /_static/images/changelog/4.3.0/gal_periodic_table.png
     :width: 128
     :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/periodic_table.ipynb
 
   .. image:: /_static/images/changelog/4.3.0/gal_wind_rose.png
     :width: 128
     :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/wind_rose.ipynb
 
-  See:
-
-  - `A BBC visual and data journalism cookbook <https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot>`__
-
-  - `A Palmer penguins example <https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/palmer_penguins.ipynb>`__
-
-  - `A Mendeleev's periodic table example <https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/periodic_table.ipynb>`__
-
-  - `A wind rose example <https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/wind_rose.ipynb>`__
+  .. image:: /_static/images/changelog/4.3.0/gal_polar_heatmap.png
+    :width: 128
+    :height: 128
+    :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/heatmap_in_polar_coord.ipynb
 
 
 Change Log
