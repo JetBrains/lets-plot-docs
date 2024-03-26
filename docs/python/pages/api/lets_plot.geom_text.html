@@ -492,8 +492,9 @@ Supported transformations: ‘identity’ (leaves the data unchanged),
 ‘smooth’ (performs smoothing - linear default),
 ‘density’ (computes and draws kernel density estimate).</p>
 </dd>
-<dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite>, default=’identity’</span></dt><dd><p>Position adjustment, either as a string (‘identity’, ‘stack’, ‘dodge’, …),
-or the result of a call to a position adjustment function.</p>
+<dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite>, default=’identity’</span></dt><dd><p>Position adjustment.
+Either a position adjustment name: ‘dodge’, ‘dodgev’, ‘jitter’, ‘nudge’, ‘jitterdodge’, ‘fill’,
+‘stack’ or ‘identity’, or the result of calling a position adjustment function (e.g., position_dodge() etc.).</p>
 </dd>
 <dt><strong>show_legend</strong><span class="classifier">bool, default=True</span></dt><dd><p>False - do not show legend for this layer.</p>
 </dd>
@@ -604,7 +605,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="gMY4uj"></div>
+<div id="T7bwUt"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -628,13 +629,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("gMY4uj").appendChild(div);
+            document.getElementById("T7bwUt").appendChild(div);
         };
-        var e = document.getElementById("gMY4uj");
+        var e = document.getElementById("T7bwUt");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="LFjnsn"></div>
+</div><div class="output text_html">   <div id="tz0C2d"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -658,7 +659,119 @@ They may also be parameters to the paired geom/stat.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("LFjnsn");
+           var plotContainer = document.getElementById("tz0C2d");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="linenos"> 5</span>    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="linenos"> 6</span>    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="linenos"> 7</span>    <span class="s2">&quot;hjust&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="linenos"> 8</span>    <span class="s2">&quot;vjust&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="linenos"> 9</span><span class="p">})</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+<span class="linenos">10</span>    <span class="n">label</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;hjust=&quot;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;hjust&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
+<span class="linenos">11</span>        <span class="s2">&quot;vjust=&quot;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;vjust&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
+<span class="linenos">12</span>        <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="linenos">13</span>    <span class="p">)</span>
+<span class="linenos">14</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">16</span>    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="s2">&quot;hjust&quot;</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="s2">&quot;vjust&quot;</span><span class="p">))</span> <span class="o">+</span> \
+</span><span class="linenos">17</span>    <span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span> \
+<span class="linenos">18</span>    <span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="J2QrqV"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.3.0/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("J2QrqV").appendChild(div);
+        };
+        var e = document.getElementById("J2QrqV");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="Efusqt"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+"x":[0.0,-1.0,-1.0,-1.0,0.0,0.0,1.0,1.0,1.0],
+"y":[0.0,-1.0,1.0,0.0,-1.0,1.0,-1.0,0.0,1.0],
+"hjust":[0.5,1.0,1.0,1.0,0.5,0.5,0.0,0.0,0.0],
+"vjust":[0.5,1.0,0.0,0.5,1.0,0.0,1.0,0.5,0.0],
+"label":["hjust=0.5\nvjust=0.5","hjust=1.0\nvjust=1.0","hjust=1.0\nvjust=0.0","hjust=1.0\nvjust=0.5","hjust=0.5\nvjust=1.0","hjust=0.5\nvjust=0.0","hjust=0.0\nvjust=1.0","hjust=0.0\nvjust=0.5","hjust=0.0\nvjust=0.0"]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"limits":[-1.2,1.2]
+},{
+"aesthetic":"y",
+"limits":[-1.2,1.2]
+}],
+"layers":[{
+"geom":"text",
+"mapping":{
+"label":"label",
+"hjust":"hjust",
+"vjust":"vjust"
+},
+"data_meta":{
+},
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[]
+};
+           var plotContainer = document.getElementById("Efusqt");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -686,7 +799,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="6kJXos"></div>
+<div id="5Ugtgd"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -710,13 +823,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("6kJXos").appendChild(div);
+            document.getElementById("5Ugtgd").appendChild(div);
         };
-        var e = document.getElementById("6kJXos");
+        var e = document.getElementById("5Ugtgd");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="BxS2f2"></div>
+</div><div class="output text_html">   <div id="3hiSUR"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -762,7 +875,7 @@ They may also be parameters to the paired geom/stat.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("BxS2f2");
+           var plotContainer = document.getElementById("3hiSUR");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -794,7 +907,7 @@ They may also be parameters to the paired geom/stat.</p>
 </pre></div>
 </div>
 <div class="output text_html">
-<div id="SBqtzg"></div>
+<div id="MfadDw"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -818,13 +931,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("SBqtzg").appendChild(div);
+            document.getElementById("MfadDw").appendChild(div);
         };
-        var e = document.getElementById("SBqtzg");
+        var e = document.getElementById("MfadDw");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="BDtjY8"></div>
+</div><div class="output text_html">   <div id="8K2xzv"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -881,7 +994,7 @@ They may also be parameters to the paired geom/stat.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("BDtjY8");
+           var plotContainer = document.getElementById("8K2xzv");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
