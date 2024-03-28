@@ -29,6 +29,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: indonesia_volcanoes_on_map
+
+    .. grid-item-card::
+
         .. extref:: covid19_and_mobility
 
     .. grid-item-card::
