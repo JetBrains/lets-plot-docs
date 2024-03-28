@@ -45,7 +45,7 @@ Gallery
 
     .. grid-item-card::
 
-        .. extref:: volcanoes_in_japan
+        .. extref:: japanese_volcanoes_on_map
 
     .. grid-item-card::
 
