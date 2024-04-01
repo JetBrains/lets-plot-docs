@@ -54,6 +54,24 @@
             </a>
 
 
+.. grid:: 1
+    :class-container: demo-stickers wide-grid
+
+    .. grid-item-card::
+
+        .. extref:: wind_rose
+
+        .. extref:: heatmap_in_polar_coord
+
+        .. extref:: periodic_table
+
+    .. grid-item-card::
+
+        .. extref:: palmer_penguins
+
+        .. extref:: indonesia_volcanoes_on_map
+
+
 .. grid:: 2
     :class-container: features-list wide-grid
 
