@@ -6,7 +6,7 @@
 
 Export to SVG, PDF, HTML and PNG
 
-The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in SVG, PDF, HTML or PNG formats. Learn more |export| or |export_methods|.
+The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in :py:meth:`SVG <lets_plot.plot.core.PlotSpec.to_svg>`, :py:meth:`PDF <lets_plot.plot.core.PlotSpec.to_pdf>`, :py:meth:`HTML <lets_plot.plot.core.PlotSpec.to_html>` or :py:meth:`PNG <lets_plot.plot.core.PlotSpec.to_png>` formats. Learn more |export| or |export_methods|.
 
 .. |export| extref:: export
     :type: text
