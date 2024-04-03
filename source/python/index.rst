@@ -145,133 +145,41 @@ User Guide
 Explore Your Data with Lets-Plot
 --------------------------------
 
-.. jupyter-execute::
-    :hide-code:
-    :hide-output:
-
-    from lets_plot import *
-    from lets_plot import tilesets
-    from lets_plot.geo_data import *
-
-    LetsPlot.setup_html()
-
-    plot_side = 400
-
-    colors = dict(
-        light=dict(
-            geom="#474747",
-            background="white",
-        ),
-        dark=dict(
-            geom="white",
-            background="#14181e",
-        ),
-    )
-
 .. grid:: 3
     :class-container: explore-your-data-container wide-grid
 
     .. grid-item-card:: :doc:`Charts </python/pages/charts>`
         :shadow: none
 
-        .. jupyter-execute::
-            :hide-code:
+        .. image:: /_static/images/previews/charts-light.png
+            :class: only-light
+            :target: pages/charts.html
 
-            def get_charts_data():
-                return [0] * 1 + [1] * 3 + [2] * 5 + [3] * 5 + [4] * 5 + [5] * 3 + [6] * 1
-
-            def get_charts_preview(*, theme_type):
-                return ggplot() + \
-                    geom_ydotplot(aes(y=get_charts_data()), dotsize=3, stackratio=2.2, fill=colors[theme_type]["geom"], stroke=0, \
-                                  tooltips=layer_tooltips().format("@..count..", 'd')) + \
-                    ggsize(plot_side, plot_side) + \
-                    theme_void() + theme(plot_background=element_rect(fill=colors[theme_type]["background"], color='lightgray', size=1))
-
-        .. jupyter-execute::
-            :hide-code:
-
-            get_charts_preview(theme_type='light')
-
-        .. jupyter-execute::
-            :hide-code:
-
-            get_charts_preview(theme_type='dark')
+        .. image:: /_static/images/previews/charts-dark.png
+            :class: only-dark
+            :target: pages/charts.html
 
     .. grid-item-card:: :doc:`Maps </python/pages/maps>`
         :shadow: none
 
-        .. jupyter-execute::
-            :hide-code:
+        .. image:: /_static/images/previews/maps-light.png
+            :class: only-light
+            :target: pages/maps.html
 
-            def get_maps_preview(*, theme_type):
-                if theme_type == 'light':
-                    tiles = tilesets.LETS_PLOT_LIGHT
-                elif theme_type == 'dark':
-                    tiles = tilesets.LETS_PLOT_DARK
-                else:
-                    tiles = tilesets.LETS_PLOT_COLOR
-                return ggplot() + \
-                    geom_livemap(location=[18, 5], zoom=3, tiles=tiles) + \
-                    ggsize(plot_side, plot_side) + \
-                    theme(plot_background=element_rect(color='lightgray', size=1), plot_margin=0)
-
-        .. jupyter-execute::
-            :hide-code:
-
-            get_maps_preview(theme_type='light')
-
-        .. jupyter-execute::
-            :hide-code:
-
-            get_maps_preview(theme_type='dark')
+        .. image:: /_static/images/previews/maps-dark.png
+            :class: only-dark
+            :target: pages/maps.html
 
     .. grid-item-card:: :doc:`Geocoding </python/pages/geocoding>`
         :shadow: none
 
-        .. jupyter-execute::
-            :hide-code:
+        .. image:: /_static/images/previews/geocoding-light.png
+            :class: only-light
+            :target: pages/geocoding.html
 
-            delta = 16
-            xmin = 129.5
-            xmax = xmin + delta
-            ymin = 30
-            ymax = ymin + delta
-
-            def get_geocoding_data():
-                country = "Japan"
-                bbox = geocode_countries(names=country)
-                return geocode_states().scope(bbox).inc_res(4).get_boundaries()
-
-            def get_geocoding_preview(*, theme_type):
-                return ggplot() + \
-                    geom_map(data=get_geocoding_data(), fill=colors[theme_type]["geom"], color=colors[theme_type]["background"], size=.25, \
-                             tooltips=layer_tooltips().line("@{found name}")) + \
-                    coord_fixed(ratio=1, xlim=[xmin, xmax], ylim=[ymin, ymax]) + \
-                    ggsize(plot_side, plot_side) + \
-                    theme_void() + theme(plot_background=element_rect(fill=colors[theme_type]["background"], color='lightgray', size=1))
-
-        .. jupyter-execute::
-            :hide-code:
-
-            get_geocoding_preview(theme_type='light')
-
-        .. jupyter-execute::
-            :hide-code:
-
-            get_geocoding_preview(theme_type='dark')
-
-        The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
-
-.. raw:: html
-
-    <script>
-        const cards = document.querySelectorAll("#explore-your-data-with-lets-plot .explore-your-data-container .sd-card-body");
-        for (let i = 0; i < cards.length; i++) {
-            const jupyterCells = cards[i].getElementsByClassName("jupyter_cell");
-            jupyterCells[1].classList.add("only-light");
-            jupyterCells[2].classList.add("only-dark");
-        }
-    </script>
+        .. image:: /_static/images/previews/geocoding-dark.png
+            :class: only-dark
+            :target: pages/geocoding.html
 
 
 .. include:: /python/shared/features.rst

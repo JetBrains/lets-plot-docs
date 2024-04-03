@@ -31,9 +31,19 @@ function removeCardShadows() {
 }
 
 function addTargetToExternalReferences() {
-  const links = document.getElementsByClassName("reference external");
-  for (let i = 0; i < links.length; i++)
-    links[i].setAttribute('target', '_blank');
+  const exceptions = [
+    "pages/charts.html",
+    "pages/maps.html",
+    "pages/geocoding.html",
+  ];
+  Array.from(document.getElementsByClassName("reference external")).forEach(function (linkElement) {
+    if (exceptions.indexOf(linkElement.getAttribute("href")) == -1) {
+        linkElement.setAttribute('target', '_blank');
+    } else {
+        linkElement.classList.remove("external");
+        linkElement.classList.add("internal");
+    }
+  });
 }
 
 function isLandingPage() {
