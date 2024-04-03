@@ -148,7 +148,7 @@ Explore Your Data with Lets-Plot
 .. grid:: 3
     :class-container: explore-your-data-container wide-grid
 
-    .. grid-item-card:: :doc:`Charts </python/pages/charts>`
+    .. grid-item-card::
         :shadow: none
 
         .. image:: /_static/images/previews/charts-light.png
@@ -159,7 +159,13 @@ Explore Your Data with Lets-Plot
             :class: only-dark
             :target: pages/charts.html
 
-    .. grid-item-card:: :doc:`Maps </python/pages/maps>`
+        .. button-ref:: /python/pages/charts
+            :color: primary
+            :outline:
+
+            Visit Charts
+
+    .. grid-item-card::
         :shadow: none
 
         .. image:: /_static/images/previews/maps-light.png
@@ -170,7 +176,13 @@ Explore Your Data with Lets-Plot
             :class: only-dark
             :target: pages/maps.html
 
-    .. grid-item-card:: :doc:`Geocoding </python/pages/geocoding>`
+        .. button-ref:: /python/pages/maps
+            :color: primary
+            :outline:
+
+            Visit Maps
+
+    .. grid-item-card::
         :shadow: none
 
         .. image:: /_static/images/previews/geocoding-light.png
@@ -180,6 +192,12 @@ Explore Your Data with Lets-Plot
         .. image:: /_static/images/previews/geocoding-dark.png
             :class: only-dark
             :target: pages/geocoding.html
+
+        .. button-ref:: /python/pages/geocoding
+            :color: primary
+            :outline:
+
+            Visit Geocoding
 
 
 .. include:: /python/shared/features.rst
