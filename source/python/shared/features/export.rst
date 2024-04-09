@@ -4,9 +4,9 @@
 .. image:: /_static/images/icons/features/export-dark.svg
     :class: only-dark
 
-Export to SVG, PDF, HTML and PNG
+Export to SVG, HTML, PNG and PDF
 
-The :py:mod:`ggsave() <lets_plot.ggsave>` function is an easy way to export plot to a file in :py:meth:`SVG <lets_plot.plot.core.PlotSpec.to_svg>`, :py:meth:`PDF <lets_plot.plot.core.PlotSpec.to_pdf>`, :py:meth:`HTML <lets_plot.plot.core.PlotSpec.to_html>` or :py:meth:`PNG <lets_plot.plot.core.PlotSpec.to_png>` formats. |export|.
+Use the :py:mod:`ggsave() <lets_plot.ggsave>` function to save your plot to a file. Alternatively, leverage the :py:meth:`to_svg() <lets_plot.plot.core.PlotSpec.to_svg>`, :py:meth:`to_html() <lets_plot.plot.core.PlotSpec.to_html>`, :py:meth:`to_png() <lets_plot.plot.core.PlotSpec.to_png>`, or :py:meth:`to_pdf() <lets_plot.plot.core.PlotSpec.to_pdf>` methods of the plot object to save it to a file or an in-memory file-like object. |export|.
 
 .. |export| extref:: export
     :type: text
