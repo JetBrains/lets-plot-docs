@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   fixNavLinks();
+  fixSearchResults();
   removeEmptySecondarySidebar();
   removeCardShadows();
   addTargetToExternalReferences();
@@ -13,6 +14,42 @@ function fixNavLinks() {
     navLink.classList.remove("nav-external");
     navLink.classList.add("nav-internal");
   }
+}
+
+function fixSearchResults() {
+  const searchResultRoot = document.getElementById("search-results");
+  if (searchResultRoot == null) return;
+  const observerConfig = { attributes: false, childList: true, subtree: false };
+  const observerCallback = (mutationList, observer) => {
+    for (const mutation of mutationList) {
+      if (mutation.type !== "childList") continue;
+      const searchResultContainers = searchResultRoot.querySelectorAll("ul.search");
+      if (searchResultContainers.length == 0) continue;
+      removeSearchItemsWithoutTitle(searchResultContainers[searchResultContainers.length - 1]);
+    }
+  };
+  const observer = new MutationObserver(observerCallback);
+  observer.observe(searchResultRoot, observerConfig);
+}
+
+function removeSearchItemsWithoutTitle(searchResultContainer) {
+  function removeSearchItemWithoutTitle(searchItem) {
+    const linkElement = searchItem.getElementsByTagName("a")[0];
+    if (linkElement.textContent.trim() == "<no title>") {
+      searchItem.remove();
+    }
+  }
+  const observerConfig = { attributes: false, childList: true, subtree: false };
+  const observerCallback = (mutationList, observer) => {
+    for (const mutation of mutationList) {
+      if (mutation.type !== "childList") continue;
+      const searchResultElements = searchResultContainer.querySelectorAll("li");
+      if (searchResultElements.length == 0) continue;
+      removeSearchItemWithoutTitle(searchResultElements[searchResultElements.length - 1]);
+    }
+  };
+  const observer = new MutationObserver(observerCallback);
+  observer.observe(searchResultContainer, observerConfig);
 }
 
 function removeEmptySecondarySidebar() {
