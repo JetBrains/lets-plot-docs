@@ -7,10 +7,12 @@ import re
 
 import pytest
 from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
 
 from .parser import notebook_parser
 from .generator import generate_pages, generate_notebooks
 from .lets_plot_errors import check_lets_plot_message_errors, check_warnings
+from .test_links import check_url
 
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
@@ -47,6 +49,7 @@ def generate_local_notebook_refs():
 def test_notebook_has_no_errors(notebook):
     with notebook_parser(notebook) as (parser, parser_type):
         check_lets_plot_message_errors(parser, parser_type, notebook)
+        _check_links(parser, parser_type, notebook)
         check_warnings(parser, parser_type, notebook)
 
 @pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links(excluded_names=["whats_new"]))
@@ -62,3 +65,20 @@ def test_notebook_ref_has_origin(page, nb_ref):
     if nbv_ref is not None and nbv_ref.startswith("https://nbviewer.org/github/JetBrains/lets-plot-docs"):
         nb_name = nbv_ref.split('/')[-1]
         assert paths_contains_name(notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
+
+def _check_links(parser, parser_type, source):
+    if parser_type == 'driver':
+        for a in parser.find_elements(By.CSS_SELECTOR, 'a'):
+            _check_href(a.get_attribute('href'), source)
+    elif parser_type == 'soup':
+        for a in parser.find_all('a'):
+            _check_href(a['href'], source)
+    else:
+        raise ValueError("Bad parser type: {0}".format(parser_type))
+
+def _check_href(href, source):
+    if href is None or href == "":
+        return
+    if href.startswith("#") or href.startswith("file:"):
+        return
+    check_url(href, source)
