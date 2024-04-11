@@ -12,6 +12,15 @@ from .generator import generate_pages
 
 BUILD_DIR = "docs"
 SKIP = ["http://my.tile.com"]
+INTERNAL_LINKS = [
+    "pages/charts.html",
+    "pages/maps.html",
+    "pages/geocoding.html",
+]
+NO_WARNING_STATUS_CODES = [
+    403, # access to the requested resource is forbidden
+    429, # too many requests in a given amount of time
+]
 REPLACE_LP_TO_FORK = True
 REPLACE_TO_BRANCH = "dev"
 REPLACES = {
@@ -43,7 +52,7 @@ def test_link(page, a):
             return
     if not classes: # Bad case for checking
         return
-    if "internal" in classes or "nav-internal" in classes:
+    if href in INTERNAL_LINKS or "internal" in classes or "nav-internal" in classes:
         _check_section(page, href) if href[0] == "#" else _check_page(page, href)
     elif "external" in classes or "nav-external" in classes:
         check_url(href, page)
@@ -58,7 +67,7 @@ def check_url(href, source):
     if response is None:
         return
     assert response.status_code != 404
-    if response.status_code == 200:
+    if response.status_code in [200] + NO_WARNING_STATUS_CODES:
         return
     warnings.warn(UserWarning("Warning in {0}: status code {1} for href={2}".format(source, response.status_code, href)))
 
