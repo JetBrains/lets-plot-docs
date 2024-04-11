@@ -621,8 +621,6 @@ Examples:
       :type: text
 - .. extref:: margins
       :type: text
-- .. extref:: theme_panel_inset
-      :type: text
 - .. extref:: legend_text_multiline
       :type: text
 - .. extref:: tooltip_config
