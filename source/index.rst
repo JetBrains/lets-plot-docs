@@ -49,21 +49,8 @@
 
         .. raw:: html
 
-            <a class="reference internal" href="python/pages/gallery.html">
-              <div class="gallery-link-container">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-how_to_draw_curve.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-new_zealand_dem_remake.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-post-punk_remake.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-mosaic_image.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-spb_bakeries.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-wind_rose.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-covid19_india.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-plotting_airbnb_prices_boston.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-mandelbulbs.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-japanese_volcanoes_on_map.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-titanic.png">
-                <img alt="Gallery" src="_static/images/previews/examples/generated/square-map_use_crs.png">
-              </div>
+            <a class="reference internal image-reference" href="python/pages/gallery.html">
+              <img alt="Gallery" src="_static/images/gallery.png">
             </a>
 
 
