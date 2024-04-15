@@ -13,6 +13,14 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: venn_diagram
+
+    .. grid-item-card::
+
+        .. extref:: geom_spoke
+
+    .. grid-item-card::
+
         .. extref:: wind_rose
 
     .. grid-item-card::
