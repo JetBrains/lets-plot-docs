@@ -13,6 +13,14 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: venn_diagram
+
+    .. grid-item-card::
+
+        .. extref:: geom_spoke
+
+    .. grid-item-card::
+
         .. extref:: wind_rose
 
     .. grid-item-card::
@@ -26,6 +34,10 @@ Gallery
     .. grid-item-card::
 
         .. extref:: palmer_penguins
+
+    .. grid-item-card::
+
+        .. extref:: indonesia_volcanoes_on_map
 
     .. grid-item-card::
 
@@ -45,7 +57,7 @@ Gallery
 
     .. grid-item-card::
 
-        .. extref:: volcanoes_in_japan
+        .. extref:: japanese_volcanoes_on_map
 
     .. grid-item-card::
 

@@ -19,12 +19,14 @@ def generate_notebooks(path, included_names=None):
             if visible and is_notebook and pass_filters:
                 yield os.path.join(root, filename)
 
-def generate_pages(path, extensions=['html'], excluded_names=[], kotlin=False):
+def generate_pages(path, extensions=['html'], included_names=None, excluded_names=[], kotlin=False):
     for root, directories, filenames in os.walk(path):
         if _is_hidden_path(root):
             continue
         if not kotlin and os.path.join(path, 'kotlin') in root:
             continue
         for filename in filenames:
-            if not _is_hidden_file(filename) and filename.split('.')[-1] in extensions and os.path.splitext(filename)[0] not in excluded_names:
+            pass_filters = (included_names is None or os.path.splitext(filename)[0] in included_names) and \
+                           os.path.splitext(filename)[0] not in excluded_names
+            if not _is_hidden_file(filename) and filename.split('.')[-1] in extensions and pass_filters:
                 yield os.path.join(root, filename)

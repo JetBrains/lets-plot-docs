@@ -97,9 +97,7 @@ Examples:
       :type: text
 - .. extref:: formatting_axes_etc
       :type: text
-- .. extref:: geom_label
-      :type: text
-- .. extref:: geom_text_features
+- .. extref:: text_geoms
       :type: text
 - .. extref:: map_use_crs
       :type: text
@@ -622,8 +620,6 @@ Examples:
 - .. extref:: legend_and_axis
       :type: text
 - .. extref:: margins
-      :type: text
-- .. extref:: theme_panel_inset
       :type: text
 - .. extref:: legend_text_multiline
       :type: text

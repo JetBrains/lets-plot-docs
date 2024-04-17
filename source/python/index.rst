@@ -145,44 +145,59 @@ User Guide
 Explore Your Data with Lets-Plot
 --------------------------------
 
-.. grid:: 1
+.. grid:: 3
     :class-container: explore-your-data-container wide-grid
 
     .. grid-item-card::
         :shadow: none
 
-        .. raw:: html
+        .. image:: /_static/images/previews/charts-light.png
+            :class: only-light
+            :target: pages/charts.html
 
-            <a class="reference internal image-reference" href="pages/charts.html">
-              <div class="container">
-                <img src="../_static/images/previews/charts.png" alt="Charts">
-                <div class="page-title">CHARTS</div>
-              </div>
-            </a>
+        .. image:: /_static/images/previews/charts-dark.png
+            :class: only-dark
+            :target: pages/charts.html
 
-    .. grid-item-card::
-        :shadow: none
+        .. button-ref:: /python/pages/charts
+            :color: primary
+            :outline:
 
-        .. raw:: html
-
-            <a class="reference internal image-reference" href="pages/maps.html">
-              <div class="container">
-                <img src="../_static/images/previews/maps.png" alt="Maps">
-                <div class="page-title">MAPS</div>
-              </div>
-            </a>
+            Visit Charts
 
     .. grid-item-card::
         :shadow: none
 
-        .. raw:: html
+        .. image:: /_static/images/previews/maps-light.png
+            :class: only-light
+            :target: pages/maps.html
 
-            <a class="reference internal image-reference" href="pages/geocoding.html">
-              <div class="container">
-                <img src="../_static/images/previews/geocoding.png" alt="Geocoding">
-                <div class="page-title">GEOCODING</div>
-              </div>
-            </a>
+        .. image:: /_static/images/previews/maps-dark.png
+            :class: only-dark
+            :target: pages/maps.html
+
+        .. button-ref:: /python/pages/maps
+            :color: primary
+            :outline:
+
+            Visit Maps
+
+    .. grid-item-card::
+        :shadow: none
+
+        .. image:: /_static/images/previews/geocoding-light.png
+            :class: only-light
+            :target: pages/geocoding.html
+
+        .. image:: /_static/images/previews/geocoding-dark.png
+            :class: only-dark
+            :target: pages/geocoding.html
+
+        .. button-ref:: /python/pages/geocoding
+            :color: primary
+            :outline:
+
+            Visit Geocoding
 
 
 .. include:: /python/shared/features.rst

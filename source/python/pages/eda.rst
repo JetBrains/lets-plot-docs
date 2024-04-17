@@ -23,6 +23,10 @@ Below are few EDA notebooks from the net.
 
     .. grid-item-card::
 
+        .. extref:: indonesia_volcanoes_on_map
+
+    .. grid-item-card::
+
         .. extref:: beijing
 
     .. grid-item-card::
@@ -97,7 +101,7 @@ Below are few EDA notebooks from the net.
 
     .. grid-item-card::
 
-        .. extref:: volcanoes_in_japan
+        .. extref:: japanese_volcanoes_on_map
 
     .. grid-item-card::
 

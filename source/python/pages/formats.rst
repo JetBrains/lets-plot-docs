@@ -245,5 +245,5 @@ Demo Notebooks
 
 - .. extref:: formatting_axes_etc
       :type: text
-- .. extref:: label_format
+- .. extref:: text_geoms
       :type: text

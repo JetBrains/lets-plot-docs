@@ -33,6 +33,17 @@ Configuring
 Plotting
 --------
 
+.. currentmodule:: lets_plot.plot.core
+
+.. autosummary::
+    :toctree: api
+    :nosignatures:
+    :template: base.rst
+
+    PlotSpec
+
+.. currentmodule:: lets_plot
+
 .. autosummary::
     :toctree: api
     :nosignatures:
