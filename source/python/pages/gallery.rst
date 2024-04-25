@@ -17,6 +17,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: mpg_corrgram
+
+    .. grid-item-card::
+
         .. extref:: venn_diagram
 
     .. grid-item-card::
