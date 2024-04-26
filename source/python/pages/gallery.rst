@@ -13,6 +13,14 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: 30_day_chart_2
+
+    .. grid-item-card::
+
+        .. extref:: mpg_corrgram
+
+    .. grid-item-card::
+
         .. extref:: venn_diagram
 
     .. grid-item-card::
