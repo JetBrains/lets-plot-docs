@@ -312,11 +312,7 @@ Examples:
 
 Examples:
 
-- .. extref:: error_bars
-      :type: text
-- .. extref:: horizontal_geoms
-      :type: text
-- .. extref:: horizontal_error_bars
+- .. extref:: vertical_intervals
       :type: text
 
 
