@@ -132,10 +132,6 @@ Examples:
       :type: text
 - .. extref:: annotations
       :type: text
-- .. extref:: geom_pie_size_unit
-      :type: text
-- .. extref:: geom_pie_stroke_and_spacers
-      :type: text
 - .. extref:: stat_boxplot_outlier
       :type: text
 - .. extref:: geom_lollipop
