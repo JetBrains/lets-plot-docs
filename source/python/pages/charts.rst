@@ -426,8 +426,6 @@ Examples:
 
 - .. extref:: facets
       :type: text
-- .. extref:: facets_free_scales
-      :type: text
 - .. extref:: covid19_and_mobility
       :type: text
 
