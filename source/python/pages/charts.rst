@@ -128,13 +128,11 @@ Examples:
 
 - .. extref:: bar_geometry
       :type: text
-- .. extref:: bar_annotations
-      :type: text
 - .. extref:: geom_pie
       :type: text
 - .. extref:: geom_pie_on_map
       :type: text
-- .. extref:: annotations_for_pie
+- .. extref:: annotations
       :type: text
 - .. extref:: geom_pie_size_unit
       :type: text
@@ -637,7 +635,7 @@ Examples:
       :type: text
 - .. extref:: superscript_exponent
       :type: text
-- .. extref:: theme_label_text
+- .. extref:: annotations
       :type: text
 
 
