@@ -515,9 +515,9 @@ Examples:
       :type: text
 - .. extref:: plot_grid
       :type: text
-- .. extref:: gggrid_theme
-      :type: text
 - .. extref:: gggrid_scale_share
+      :type: text
+- .. extref:: themes
       :type: text
 
 
@@ -607,29 +607,17 @@ Examples:
       :type: text
 - .. extref:: theme_flavors
       :type: text
-- .. extref:: gggrid_theme
-      :type: text
 - .. extref:: legend_and_axis
-      :type: text
-- .. extref:: margins
       :type: text
 - .. extref:: legend_text_multiline
       :type: text
 - .. extref:: tooltip_config
       :type: text
-- .. extref:: title_subtitle_caption
-      :type: text
-- .. extref:: tooltips_theme
-      :type: text
 - .. extref:: set_font_faces
-      :type: text
-- .. extref:: panel_border
       :type: text
 - .. extref:: axis_position
       :type: text
 - .. extref:: axis_text_angle
-      :type: text
-- .. extref:: theme_plot_message
       :type: text
 - .. extref:: superscript_exponent
       :type: text

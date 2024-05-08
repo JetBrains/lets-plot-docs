@@ -32,5 +32,5 @@ Examples
       :type: text
 - .. extref:: tooltips_disable_splitting
       :type: text
-- .. extref:: tooltips_theme
+- .. extref:: themes
       :type: text
