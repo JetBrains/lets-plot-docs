@@ -130,8 +130,6 @@ Examples:
       :type: text
 - .. extref:: geom_pie
       :type: text
-- .. extref:: geom_pie_on_map
-      :type: text
 - .. extref:: annotations
       :type: text
 - .. extref:: geom_pie_size_unit
