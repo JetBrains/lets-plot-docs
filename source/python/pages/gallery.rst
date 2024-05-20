@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: sunshine_hours
+
+    .. grid-item-card::
+
         .. extref:: 30_day_chart_2
 
     .. grid-item-card::
