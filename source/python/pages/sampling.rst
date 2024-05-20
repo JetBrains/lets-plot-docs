@@ -56,38 +56,6 @@ For this case there is always a 'safety' sampling (**random** N=200_000) ready t
 Examples
 ~~~~~~~~
 
-Random sampling on a scatter plot (might take some time to load): |sampling_random|
-
-.. |sampling_random| extref:: sampling_random
-    :type: text
-    :text: sampling_random.ipynb
-
-Pick sampling on Bar-chart: |sampling_pick|
-
-.. |sampling_pick| extref:: sampling_pick
-    :type: text
-    :text: sampling_pick.ipynb
-
-Systematic and random sampling on a line plot: |sampling_systematic|
-
-.. |sampling_systematic| extref:: sampling_systematic
-    :type: text
-    :text: sampling_systematic.ipynb
-
-Stratified sampling: |sampling_stratified|
-
-.. |sampling_stratified| extref:: sampling_stratified
-    :type: text
-    :text: sampling_stratified.ipynb
-
-Group sampling: |sampling_groups|
-
-.. |sampling_groups| extref:: sampling_groups
-    :type: text
-    :text: sampling_groups.ipynb
-
-Vertex sampling: |sampling_vertex|
-
-.. |sampling_vertex| extref:: sampling_vertex
-    :type: text
-    :text: sampling_vertex.ipynb
+- .. extref:: sampling_methods
+      :type: text
+      :text: Sampling methods (might take some time to load)

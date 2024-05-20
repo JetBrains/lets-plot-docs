@@ -128,17 +128,9 @@ Examples:
 
 - .. extref:: bar_geometry
       :type: text
-- .. extref:: bar_annotations
-      :type: text
 - .. extref:: geom_pie
       :type: text
-- .. extref:: geom_pie_on_map
-      :type: text
-- .. extref:: annotations_for_pie
-      :type: text
-- .. extref:: geom_pie_size_unit
-      :type: text
-- .. extref:: geom_pie_stroke_and_spacers
+- .. extref:: annotations
       :type: text
 - .. extref:: stat_boxplot_outlier
       :type: text
@@ -312,11 +304,7 @@ Examples:
 
 Examples:
 
-- .. extref:: error_bars
-      :type: text
-- .. extref:: horizontal_geoms
-      :type: text
-- .. extref:: horizontal_error_bars
+- .. extref:: vertical_intervals
       :type: text
 
 
@@ -432,8 +420,6 @@ Examples:
 
 - .. extref:: facets
       :type: text
-- .. extref:: facets_free_scales
-      :type: text
 - .. extref:: covid19_and_mobility
       :type: text
 
@@ -486,7 +472,7 @@ Learn more about instruments for EDA in Lets-Plot: :doc:`'bistro' Plots </python
 .. |d18| image:: /_static/images/icons/charts/geopandas-dark.svg
     :class: only-dark
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`label <lets_plot.geom_label>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
 Learn more: :doc:`GeoPandas Support </python/pages/geopandas>`.
 
@@ -523,9 +509,9 @@ Examples:
       :type: text
 - .. extref:: plot_grid
       :type: text
-- .. extref:: gggrid_theme
-      :type: text
 - .. extref:: gggrid_scale_share
+      :type: text
+- .. extref:: themes
       :type: text
 
 
@@ -615,33 +601,21 @@ Examples:
       :type: text
 - .. extref:: theme_flavors
       :type: text
-- .. extref:: gggrid_theme
-      :type: text
 - .. extref:: legend_and_axis
-      :type: text
-- .. extref:: margins
       :type: text
 - .. extref:: legend_text_multiline
       :type: text
 - .. extref:: tooltip_config
       :type: text
-- .. extref:: title_subtitle_caption
-      :type: text
-- .. extref:: tooltips_theme
-      :type: text
 - .. extref:: set_font_faces
-      :type: text
-- .. extref:: panel_border
       :type: text
 - .. extref:: axis_position
       :type: text
 - .. extref:: axis_text_angle
       :type: text
-- .. extref:: theme_plot_message
-      :type: text
 - .. extref:: superscript_exponent
       :type: text
-- .. extref:: theme_label_text
+- .. extref:: annotations
       :type: text
 
 

@@ -49,6 +49,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: montenegrin_independence_referendum
+
+    .. grid-item-card::
+
         .. extref:: covid19_and_mobility
 
     .. grid-item-card::
