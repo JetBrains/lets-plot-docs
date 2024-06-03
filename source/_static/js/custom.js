@@ -43,9 +43,9 @@ function removeSearchItemsWithoutTitle(searchResultContainer) {
   const observerCallback = (mutationList, observer) => {
     for (const mutation of mutationList) {
       if (mutation.type !== "childList") continue;
-      const searchResultElements = searchResultContainer.querySelectorAll("li");
-      if (searchResultElements.length == 0) continue;
-      removeSearchItemWithoutTitle(searchResultElements[searchResultElements.length - 1]);
+      Array.from(searchResultContainer.querySelectorAll("li")).forEach(function (searchResultElement) {
+        removeSearchItemWithoutTitle(searchResultElement);
+      });
     }
   };
   const observer = new MutationObserver(observerCallback);

@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: sunshine_hours
+
+    .. grid-item-card::
+
         .. extref:: 30_day_chart_2
 
     .. grid-item-card::
@@ -46,6 +50,10 @@ Gallery
     .. grid-item-card::
 
         .. extref:: indonesia_volcanoes_on_map
+
+    .. grid-item-card::
+
+        .. extref:: montenegrin_independence_referendum
 
     .. grid-item-card::
 

@@ -6,4 +6,4 @@
 
 Customizable Tooltips and Annotations
 
-You can customize the content, values formatting and appearance of tooltip for any geometry layer in your plot. :doc:`Learn more </python/pages/tooltips>`.
+You can customize the content, values formatting and appearance of :doc:`tooltip </python/pages/tooltips>` and :doc:`annotation </python/pages/annotations>` for layers of your plot.

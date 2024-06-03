@@ -66,6 +66,11 @@ What is new in 4.3.0
 Recent Updates in the Gallery
 -----------------------------
 
+.. image:: /_static/images/changelog/4.3.3/sunshine_hours.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/sunshine_hours.ipynb
+
 .. image:: /_static/images/changelog/4.3.2/30_day_chart_2.png
   :width: 128
   :height: 128
@@ -91,14 +96,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://www.kaggle.com/code/alshan/indonesia-volcanoes-on-map
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.3.1/gal_japanese_volcanoes_on_map.png
   :width: 128
   :height: 128
   :target: https://www.kaggle.com/code/alshan/japanese-volcanoes-on-map
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.0/gal_bbc_cookbook.png
   :width: 128
