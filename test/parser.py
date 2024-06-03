@@ -7,6 +7,7 @@ import warnings
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 TIMEOUT = 3 * 60 # per subprocess in seconds
 
@@ -18,7 +19,9 @@ class page_parser():
     def __enter__(self):
         self.driver = None
         try:
-            self.driver = webdriver.Chrome()
+            driver_options = Options()
+            driver_options.add_argument("--start-maximized")
+            self.driver = webdriver.Chrome(options=driver_options)
             self.driver.get("file:///{0}".format(os.path.abspath(self.page)))
             return self.driver, 'driver'
         except Exception as e:
