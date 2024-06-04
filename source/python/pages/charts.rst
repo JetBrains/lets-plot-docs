@@ -534,7 +534,8 @@ Examples:
 :py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`,
 :py:mod:`guides() <lets_plot.guides>`
 
-Predefined themes:
+Predefined themes
+~~~~~~~~~~~~~~~~~
 
 :py:mod:`minimal2 <lets_plot.theme_minimal2>`,
 :py:mod:`bw <lets_plot.theme_bw>`,
@@ -578,7 +579,8 @@ Predefined themes:
         .. extref:: complete_themes
             :image: minimal
 
-Color schemes (flavors):
+Color schemes (flavors)
+~~~~~~~~~~~~~~~~~~~~~~~
 
 :py:mod:`darcula <lets_plot.flavor_darcula>`,
 :py:mod:`solarized light <lets_plot.flavor_solarized_light>`,
