@@ -16,10 +16,13 @@ from .test_links import check_url
 
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
-NOTEBOOKS_DIR = "source/examples"
+PYTHON_NOTEBOOKS_DIR = "source/examples"
+KOTLIN_NOTEBOOKS_DIR = "source/kotlin_examples"
 EXTREF_CONF = "source/extref_conf.json"
 
-notebook_paths = list(generate_notebooks(NOTEBOOKS_DIR))
+python_notebook_paths = list(generate_notebooks(PYTHON_NOTEBOOKS_DIR))
+kotlin_notebook_paths = list(generate_notebooks(KOTLIN_NOTEBOOKS_DIR))
+notebook_paths = python_notebook_paths + kotlin_notebook_paths
 extref_json = None
 with open(EXTREF_CONF, 'r') as f:
     extref_json = json.load(f)
@@ -55,7 +58,7 @@ def test_notebook_has_no_errors(notebook):
 @pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links(excluded_names=["whats_new"]))
 def test_notebook_has_file(page, a):
     nb_name = a['href'].split('/')[-1]
-    assert paths_contains_name(notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
+    assert paths_contains_name(python_notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
 
 @pytest.mark.parametrize(('page', 'nb_ref'), generate_local_notebook_refs())
 def test_notebook_ref_has_origin(page, nb_ref):
@@ -64,7 +67,7 @@ def test_notebook_ref_has_origin(page, nb_ref):
     nbv_ref = nb_data['ref'].get('nbviewer', None)
     if nbv_ref is not None and nbv_ref.startswith("https://nbviewer.org/github/JetBrains/lets-plot-docs"):
         nb_name = nbv_ref.split('/')[-1]
-        assert paths_contains_name(notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
+        assert paths_contains_name(python_notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
 
 def _check_links(parser, parser_type, source):
     if parser_type == 'driver':
