@@ -186,3 +186,4 @@ html_sidebars = {
 
 redirects_conf = open("redirects.json")
 redirects = dict(json.load(redirects_conf))
+redirect_html_template_file = "_templates/redirect.html.template"
