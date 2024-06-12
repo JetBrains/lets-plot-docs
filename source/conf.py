@@ -35,7 +35,6 @@ extensions = [
     "sphinxext.opengraph",
     "sphinx_design",
     'sphinx_reredirects',
-    'sphinx_sitemap',
     'jupyter_sphinx',
     'create_cname',
     'extref',
@@ -43,18 +42,6 @@ extensions = [
 ]
 
 cname_url = "lets-plot.org"
-
-# Configure sitemap
-html_baseurl = "https://{0}/".format(cname_url)
-sitemap_url_scheme = "{link}"
-sitemap_excludes = [
-    "search.html",
-    "genindex.html",
-]
-for root, dirs, files in os.walk("python/shared", topdown=False):
-    for name in files:
-        if ".rst" in name:
-            sitemap_excludes.append("{0}".format(os.path.join(root, name.replace(".rst", ".html"))))
 
 extref_conf = "extref_conf.json"
 extref_logo_images = {
@@ -186,3 +173,4 @@ html_sidebars = {
 
 redirects_conf = open("redirects.json")
 redirects = dict(json.load(redirects_conf))
+redirect_html_template_file = "_templates/redirect.html.template"
