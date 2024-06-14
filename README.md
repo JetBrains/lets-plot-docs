@@ -67,6 +67,7 @@ For more details [read the docs](https://docs.pytest.org).
   - source/\_static/ - standard Sphinx folder that contains custom static files (such as style sheets or script files).
   - source/\_templates/ - standard Sphinx folder for custom templates.
   - source/examples/ - directory with example notebooks.
+  - source/kotlin_examples/ - directory with example notebooks for Lets-Plot-Kotlin.
   - source/ext/ - contains the custom Sphinx extensions.
   - source/python/
     - source/python/pages/ - static pages of the documentation site in the ReST format.
@@ -76,6 +77,7 @@ For more details [read the docs](https://docs.pytest.org).
   - source/extref_conf.json - extref extension configuration file.
   - source/index.rst - source for the [landing page](https://lets-plot.org).
 - test/ - directory with tests, running by the `pytest test` command.
+- utils/ - directory with additional utilities.
 
 ## Code of Conduct
 
