@@ -602,19 +602,61 @@ Examples:
       :type: text
 
 
-Cookbooks
----------
+Miscellaneous
+-------------
 
-- .. extref:: lets_plot_cheatbook
-      :type: text
-      :text: Lets-Plot API overview
+Multiple Color Scales
+~~~~~~~~~~~~~~~~~~~~~
+
+Use ``color_by``/``fill_by`` parameters and ``paint_a``/``paint_b``/``paint_c`` aesthetics if you need to display two different layers with the same color aesthetic but different color scales.
+
+Examples:
+
 - .. extref:: multiple_color_scales
       :type: text
-- .. extref:: quantile_parameters
+- .. extref:: mpg_corrgram
       :type: text
+- .. extref:: montenegrin_independence_referendum
+      :type: text
+
+Scale Functions
+~~~~~~~~~~~~~~~
+
+To specify a scale for any group of aesthetics, use the special scale functions: :py:mod:`scale_manual() <lets_plot.scale_manual>`, :py:mod:`scale_continuous() <lets_plot.scale_continuous>`, :py:mod:`scale_gradient() <lets_plot.scale_gradient>`, etc.
+
+Examples:
+
 - .. extref:: scale_functions
       :type: text
+- .. extref:: palmer_penguins
+      :type: text
+- .. extref:: montenegrin_independence_referendum
+      :type: text
+- .. extref:: google_play_store
+      :type: text
+
+Quantiles
+~~~~~~~~~
+
+Density-like plots let you show the quantiles by mapping them to a particular colour palette.
+
+Examples:
+
+- .. extref:: quantile_parameters
+      :type: text
+- .. extref:: ridgeline_plot
+      :type: text
+
+Stackable Position Adjustments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To configure positioning where groups are stacked on top of each other, use the :py:mod:`position_stack() <lets_plot.position_stack>` and :py:mod:`position_fill() <lets_plot.position_fill>` functions.
+
+Examples:
+
 - .. extref:: position_stack
+      :type: text
+- .. extref:: nobel
       :type: text
 
 
