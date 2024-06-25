@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: earthquake
+
+    .. grid-item-card::
+
         .. extref:: sunshine_hours
 
     .. grid-item-card::
