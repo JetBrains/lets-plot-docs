@@ -124,6 +124,8 @@ Examples:
 :py:mod:`boxplot <lets_plot.geom_boxplot>`,
 :py:mod:`count <lets_plot.geom_count>`/:py:mod:`sum <lets_plot.stat_sum>`
 
+To set to a custom order for a discrete variable, you can use the :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function, see: :doc:`Ordering Categories </python/pages/as_discrete>`.
+
 Examples:
 
 - .. extref:: bar_geometry
@@ -146,38 +148,17 @@ Examples:
 - .. extref:: colors_viridis
       :type: text
       :text: Viridis colors
-
-
-|l4| |d4| Ordering Categories, ``as_discrete()``
-------------------------------------------------
-
-.. |l4| image:: /_static/images/icons/charts/as_discrete-light.svg
-    :class: only-light
-
-.. |d4| image:: /_static/images/icons/charts/as_discrete-dark.svg
-    :class: only-dark
-
-:py:mod:`as_discrete() <lets_plot.mapping.as_discrete>`
-
-Learn more: :doc:`Function as_discrete() </python/pages/as_discrete>`.
-
-Examples:
-
 - .. extref:: ordering_examples
       :type: text
-- .. extref:: factor_levels
-      :type: text
-- .. extref:: geom_smooth_matrix
-      :type: text
 
 
-|l5| |d5| Contours
+|l4| |d4| Contours
 ------------------
 
-.. |l5| image:: /_static/images/icons/charts/contours-light.svg
+.. |l4| image:: /_static/images/icons/charts/contours-light.svg
     :class: only-light
 
-.. |d5| image:: /_static/images/icons/charts/contours-dark.svg
+.. |d4| image:: /_static/images/icons/charts/contours-dark.svg
     :class: only-dark
 
 :py:mod:`contours <lets_plot.geom_contour>`,
@@ -191,13 +172,13 @@ Examples:
       :type: text
 
 
-|l6| |d6| Visualization of Distribution
+|l5| |d5| Visualization of Distribution
 ---------------------------------------
 
-.. |l6| image:: /_static/images/icons/charts/visualization-of-distribution-light.svg
+.. |l5| image:: /_static/images/icons/charts/visualization-of-distribution-light.svg
     :class: only-light
 
-.. |d6| image:: /_static/images/icons/charts/visualization-of-distribution-dark.svg
+.. |d5| image:: /_static/images/icons/charts/visualization-of-distribution-dark.svg
     :class: only-dark
 
 :py:mod:`histogram <lets_plot.geom_histogram>`,
@@ -229,13 +210,13 @@ Examples:
       :text: Using scales
 
 
-|l7| |d7| Stats
+|l6| |d6| Stats
 ---------------
 
-.. |l7| image:: /_static/images/icons/charts/stats-light.svg
+.. |l6| image:: /_static/images/icons/charts/stats-light.svg
     :class: only-light
 
-.. |d7| image:: /_static/images/icons/charts/stats-dark.svg
+.. |d6| image:: /_static/images/icons/charts/stats-dark.svg
     :class: only-dark
 
 :py:mod:`stat_ecdf() <lets_plot.stat_ecdf>`,
@@ -252,13 +233,13 @@ Examples:
       :type: text
 
 
-|l8| |d8| Function
+|l7| |d7| Function
 ------------------
 
-.. |l8| image:: /_static/images/icons/charts/function-light.svg
+.. |l7| image:: /_static/images/icons/charts/function-light.svg
     :class: only-light
 
-.. |d8| image:: /_static/images/icons/charts/function-dark.svg
+.. |d7| image:: /_static/images/icons/charts/function-dark.svg
     :class: only-dark
 
 :py:mod:`function <lets_plot.geom_function>`
@@ -269,32 +250,13 @@ Examples:
       :type: text
 
 
-|l9| |d9| Marginal Plots
-------------------------
+|l8| |d8| Visualization of Errors
+---------------------------------
 
-.. |l9| image:: /_static/images/icons/charts/marginal-light.svg
+.. |l8| image:: /_static/images/icons/charts/visualization-of-errors-light.svg
     :class: only-light
 
-.. |d9| image:: /_static/images/icons/charts/marginal-dark.svg
-    :class: only-dark
-
-:py:mod:`ggmarginal <lets_plot.ggmarginal>`
-
-See also: :ref:`Joint Plot <bistro_joint_plot>`, :ref:`Residual Plot <bistro_residual_plot>`.
-
-Examples:
-
-- .. extref:: marginal_layers
-      :type: text
-
-
-|l10| |d10| Visualization of Errors
------------------------------------
-
-.. |l10| image:: /_static/images/icons/charts/visualization-of-errors-light.svg
-    :class: only-light
-
-.. |d10| image:: /_static/images/icons/charts/visualization-of-errors-dark.svg
+.. |d8| image:: /_static/images/icons/charts/visualization-of-errors-dark.svg
     :class: only-dark
 
 :py:mod:`crossbar <lets_plot.geom_crossbar>`,
@@ -308,13 +270,13 @@ Examples:
       :type: text
 
 
-|l11| |d11| Smoothing
----------------------
+|l9| |d9| Smoothing
+-------------------
 
-.. |l11| image:: /_static/images/icons/charts/smoothing-light.svg
+.. |l9| image:: /_static/images/icons/charts/smoothing-light.svg
     :class: only-light
 
-.. |d11| image:: /_static/images/icons/charts/smoothing-dark.svg
+.. |d9| image:: /_static/images/icons/charts/smoothing-dark.svg
     :class: only-dark
 
 :py:mod:`smoothing line <lets_plot.geom_smooth>`
@@ -327,13 +289,13 @@ Examples:
       :type: text
 
 
-|l12| |d12| Bivariate Distribution
+|l10| |d10| Bivariate Distribution
 ----------------------------------
 
-.. |l12| image:: /_static/images/icons/charts/bivariate-distribution-light.svg
+.. |l10| image:: /_static/images/icons/charts/bivariate-distribution-light.svg
     :class: only-light
 
-.. |d12| image:: /_static/images/icons/charts/bivariate-distribution-dark.svg
+.. |d10| image:: /_static/images/icons/charts/bivariate-distribution-dark.svg
     :class: only-dark
 
 :py:mod:`2d bins <lets_plot.geom_bin2d>`,
@@ -346,13 +308,32 @@ Examples:
       :type: text
 
 
-|l13| |d13| Time Series
------------------------
+|l11| |d11| Marginal Plots
+--------------------------
 
-.. |l13| image:: /_static/images/icons/charts/time-series-light.svg
+.. |l11| image:: /_static/images/icons/charts/marginal-light.svg
     :class: only-light
 
-.. |d13| image:: /_static/images/icons/charts/time-series-dark.svg
+.. |d11| image:: /_static/images/icons/charts/marginal-dark.svg
+    :class: only-dark
+
+:py:mod:`ggmarginal <lets_plot.ggmarginal>`
+
+See also: :ref:`Joint Plot <bistro_joint_plot>`, :ref:`Residual Plot <bistro_residual_plot>`.
+
+Examples:
+
+- .. extref:: marginal_layers
+      :type: text
+
+
+|l12| |d12| Time Series
+-----------------------
+
+.. |l12| image:: /_static/images/icons/charts/time-series-light.svg
+    :class: only-light
+
+.. |d12| image:: /_static/images/icons/charts/time-series-dark.svg
     :class: only-dark
 
 :py:mod:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
@@ -369,13 +350,13 @@ Examples:
       :text: Time series visualizations
 
 
-|l14| |d14| Images
+|l13| |d13| Images
 ------------------
 
-.. |l14| image:: /_static/images/icons/charts/images-light.svg
+.. |l13| image:: /_static/images/icons/charts/images-light.svg
     :class: only-light
 
-.. |d14| image:: /_static/images/icons/charts/images-dark.svg
+.. |d13| image:: /_static/images/icons/charts/images-dark.svg
     :class: only-dark
 
 :py:mod:`geom_imshow() <lets_plot.geom_imshow>`,
@@ -404,13 +385,13 @@ Examples:
       :type: text
 
 
-|l15| |d15| Facets
+|l14| |d14| Facets
 ------------------
 
-.. |l15| image:: /_static/images/icons/charts/facets-light.svg
+.. |l14| image:: /_static/images/icons/charts/facets-light.svg
     :class: only-light
 
-.. |d15| image:: /_static/images/icons/charts/facets-dark.svg
+.. |d14| image:: /_static/images/icons/charts/facets-dark.svg
     :class: only-dark
 
 :py:mod:`facet_grid() <lets_plot.facet_grid>`,
@@ -424,13 +405,13 @@ Examples:
       :type: text
 
 
-|l16| |d16| Coordinate Systems
+|l15| |d15| Coordinate Systems
 ------------------------------
 
-.. |l16| image:: /_static/images/icons/charts/coordinate-systems-light.svg
+.. |l15| image:: /_static/images/icons/charts/coordinate-systems-light.svg
     :class: only-light
 
-.. |d16| image:: /_static/images/icons/charts/coordinate-systems-dark.svg
+.. |d15| image:: /_static/images/icons/charts/coordinate-systems-dark.svg
     :class: only-dark
 
 :py:mod:`coord_cartesian() <lets_plot.coord_cartesian>`,
@@ -449,13 +430,13 @@ Examples:
       :type: text
 
 
-|l17| |d17| 'bistro' Plots
+|l16| |d16| 'bistro' Plots
 --------------------------
 
-.. |l17| image:: /_static/images/icons/charts/bistro-light.svg
+.. |l16| image:: /_static/images/icons/charts/bistro-light.svg
     :class: only-light
 
-.. |d17| image:: /_static/images/icons/charts/bistro-dark.svg
+.. |d16| image:: /_static/images/icons/charts/bistro-dark.svg
     :class: only-dark
 
 Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
@@ -463,13 +444,13 @@ Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative 
 Learn more about instruments for EDA in Lets-Plot: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
-|l18| |d18| GeoPandas Shapes
+|l17| |d17| GeoPandas Shapes
 ----------------------------
 
-.. |l18| image:: /_static/images/icons/charts/geopandas-light.svg
+.. |l17| image:: /_static/images/icons/charts/geopandas-light.svg
     :class: only-light
 
-.. |d18| image:: /_static/images/icons/charts/geopandas-dark.svg
+.. |d17| image:: /_static/images/icons/charts/geopandas-dark.svg
     :class: only-dark
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`label <lets_plot.geom_label>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
@@ -492,13 +473,13 @@ Examples:
       :type: text
 
 
-|l19| |d19| Grouping Plots
+|l18| |d18| Grouping Plots
 --------------------------
 
-.. |l19| image:: /_static/images/icons/charts/grouping-plots-light.svg
+.. |l18| image:: /_static/images/icons/charts/grouping-plots-light.svg
     :class: only-light
 
-.. |d19| image:: /_static/images/icons/charts/grouping-plots-dark.svg
+.. |d18| image:: /_static/images/icons/charts/grouping-plots-dark.svg
     :class: only-dark
 
 :py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
@@ -515,13 +496,13 @@ Examples:
       :type: text
 
 
-|l20| |d20| Presentation Options
+|l19| |d19| Presentation Options
 --------------------------------
 
-.. |l20| image:: /_static/images/icons/charts/presentation-options-light.svg
+.. |l19| image:: /_static/images/icons/charts/presentation-options-light.svg
     :class: only-light
 
-.. |d20| image:: /_static/images/icons/charts/presentation-options-dark.svg
+.. |d19| image:: /_static/images/icons/charts/presentation-options-dark.svg
     :class: only-dark
 
 :py:mod:`theme() <lets_plot.theme>`,

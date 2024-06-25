@@ -126,7 +126,9 @@ Apply sampling to the plot after reordering:
 Example Notebooks
 -----------------
 
+- .. extref:: geom_smooth_matrix
+    :type: text
 - .. extref:: ordering_examples
     :type: text
-- .. extref:: geom_smooth_matrix
+- .. extref:: factor_levels
     :type: text
