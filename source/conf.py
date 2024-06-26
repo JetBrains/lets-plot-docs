@@ -159,9 +159,8 @@ html_theme_options = {
 
 notfound_context = {
     'title': "Page not found",
-    'body': """<h1>404</h1>
-<h2>Page not found</h2>
-
+    'body': """
+<h1>Page not found</h1>
 <p>
   Unfortunately we couldn't find the content you were looking for.
 </p>
