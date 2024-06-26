@@ -6,4 +6,4 @@
 
 Formatting
 
-Lets-Plot supports formatting of numeric and date-time values in tooltips, legends, on the axes and text geometry layer. :doc:`Learn more </python/pages/formats>`.
+Lets-Plot supports formatting of numeric and date-time values in tooltips, annotations, legends, on the axes and text geometry layer. :doc:`Learn more </python/pages/formats>`.

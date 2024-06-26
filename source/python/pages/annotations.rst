@@ -16,9 +16,13 @@ Annotating Charts
 
 You can customize the content of annotations for pie and bar charts by using the parameter ``labels`` of the corresponding functions.
 
-.. extref:: annotations
+|learn_more|.
+
+.. |learn_more| extref:: annotations
     :type: text
-    :text: Learn more.
+    :text: Learn more (reference notebook)
+
+See also the :doc:`formatting reference </python/pages/formats>` to learn how to format numeric and date-time values in annotations.
 
 
 Examples
