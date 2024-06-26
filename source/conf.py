@@ -165,7 +165,7 @@ notfound_context = {
   Unfortunately we couldn't find the content you were looking for.
 </p>
 <p>
-  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal" href="index.html">Take me back to the homepage</a>
+  Try <a class="reference internal" href="/search.html">searching</a> or head back to the <a class="reference internal" href="/index.html">homepage</a>.
 </p>""",
 }
 notfound_urls_prefix = None
