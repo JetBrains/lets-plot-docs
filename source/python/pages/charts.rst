@@ -225,6 +225,8 @@ Examples:
 
 Examples:
 
+- .. extref:: stats
+      :type: text
 - .. extref:: stat_ecdf
       :type: text
 - .. extref:: stat_summary
