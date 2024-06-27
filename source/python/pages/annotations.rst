@@ -18,7 +18,7 @@ You can customize the content of annotations for pie and bar charts by using the
 
 |learn_more|.
 
-.. |learn_more| extref:: annotations
+.. |learn_more| extref:: annotations_page
     :type: text
     :text: Learn more (reference notebook)
 

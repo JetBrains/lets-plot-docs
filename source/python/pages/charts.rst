@@ -132,7 +132,7 @@ Examples:
       :type: text
 - .. extref:: geom_pie
       :type: text
-- .. extref:: annotations
+- .. extref:: annotations_page
       :type: text
 - .. extref:: stat_boxplot_outlier
       :type: text
@@ -600,7 +600,7 @@ Examples:
       :type: text
 - .. extref:: superscript_exponent
       :type: text
-- .. extref:: annotations
+- .. extref:: annotations_page
       :type: text
 
 
