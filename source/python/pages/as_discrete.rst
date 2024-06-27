@@ -78,7 +78,7 @@ Boxplot example:
 
     p + geom_boxplot(aes('class', 'hwy'))
 
-Order ``x`` alphabetically
+Order ``x`` alphabetically:
 
 .. jupyter-execute::
 
