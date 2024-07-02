@@ -11,10 +11,23 @@
    :keywords: data visualization, categorical data, ordering, discrete scale, as_discrete
 
 
-Function ``as_discrete()``
-==========================
+Visualizing Discrete Data: Working with Categorical Variables and the ``as_discrete()`` Function
+================================================================================================
 
-The :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function converts a column in your dataset to a discrete scale. It also allows you to specify the order of categories, useful for both continuous and initially discrete columns.
+In data analysis and visualization, discrete data commonly appears as categorical variables. These can be classified as:
+
+- Nominal: unordered categories (e.g., colors, names)
+- Ordinal: categories with a meaningful order (e.g., education levels, rating scales)
+
+When visualizing Pandas series in Lets-Plot, ordinal data can be represented using `Pandas Categorical <https://pandas.pydata.org/docs/user_guide/categorical.html>`__ type with the ordered parameter set to ``True`` and a specified category order. Lets-Plot will respect this ordering in the resulting visualizations.
+
+Alternatively, Lets-Plot provides the :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function, which offers similar capabilities for any data type, not limited to Pandas DataFrames. This function allows for flexible manipulation of discrete data, including:
+
+1. Annotation of numeric data as discrete: This allows continuous variables to be treated as categorical for visualization purposes.
+2. Specification of discrete variable ordering: The order can be based on the variable’s own values or the values of another variable.
+3. Custom ordering through explicit "factor levels": This feature allows for manual specification of category order.
+
+The :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function thus allows for precise control over how categories are represented and ordered in plots, regardless of the original data format.
 
 .. jupyter-execute::
     :hide-code:
@@ -43,12 +56,9 @@ where
 - ``order : int`` - the ordering direction - ``1`` for ascending direction and ``-1`` for descending (default value).
 - ``levels : list`` - the list of values that defines a specific order of categories.
 
-
 To enable ordering mode, at least one ordering parameter (``order_by`` or ``order``) should be specified. By the default, it will use descending direction and ordering by eigenvalues. You cannot specify different order settings for the same variable. However, if these settings don't contradict each other, they will be combined.
 
 The ``order_by`` is a numeric variable, which values are used for reordering. It's also possible to use statistical variables. The reordering uses the average value. The exception is plots with the ``stack`` position adjustment, where multiple bars occupying the same ``x`` position are stacked atop one another: in this case, the sum is calculated to get the order of the stack sizes.
-
-The ``levels`` parameter enables to define a custom order for the categories explicitly.
 
 
 Examples
@@ -111,7 +121,6 @@ Use the ``levels`` parameter to specify the exact order for the variable:
     custom_order = ['subcompact', 'compact', 'suv', 'minivan', 'midsize', 'pickup', '2seater']
     p + geom_boxplot(aes(as_discrete('class', levels=custom_order), 'hwy', color='class'))
 
-Also Lets-Plot supports `pandas Categorical data type <https://pandas.pydata.org/docs/user_guide/categorical.html>`__.
 The following example is similar to the previous one, but uses the categorical column:
 
 .. jupyter-execute::

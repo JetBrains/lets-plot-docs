@@ -124,7 +124,9 @@ Examples:
 :py:mod:`boxplot <lets_plot.geom_boxplot>`,
 :py:mod:`count <lets_plot.geom_count>`/:py:mod:`sum <lets_plot.stat_sum>`
 
-To set to a custom order for a discrete variable, you can use the :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function, see: :doc:`Ordering Categories </python/pages/as_discrete>`.
+.. note::
+
+    To set to a custom order for a discrete variable, you can use the :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function, see: :doc:`Visualizing Discrete Data: Working with Categorical Variables and the as_discrete() Function </python/pages/as_discrete>`.
 
 Examples:
 
