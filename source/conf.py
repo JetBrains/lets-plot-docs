@@ -139,7 +139,7 @@ html_theme_options = {
             "url": "https://pypi.org/project/lets-plot",
             "icon": "_static/images/logo/pypi.svg",
             "type": "local",
-            "attributes": {"excluded_from": ["index"]},
+            "attributes": {"excluded_from": ["index", "404"]},
         },
     ],
     "show_prev_next": False,
