@@ -29,7 +29,7 @@ and each column represents a variable that describes some property of each obser
 
 Data in this format is sometimes referred to as tidy data, flat data, primary data, atomic data, and unit record data.
 
-You can pass tidy data to Lets-Plot in form of a **Pandas** Dataframe, a **Polars** Dataframe or just a dictionary: |allowed_data_types|.
+You can pass tidy data to *Lets-Plot* in form of a **Pandas** Dataframe, a **Polars** Dataframe or just a dictionary: |allowed_data_types|.
 
 .. |allowed_data_types| extref:: allowed_data_types
     :type: text
@@ -445,7 +445,7 @@ Examples:
 
 Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
 
-Learn more about instruments for EDA in Lets-Plot: :doc:`'bistro' Plots </python/pages/bistro>`.
+Learn more about instruments for EDA in *Lets-Plot*: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
 |l17| |d17| GeoPandas Shapes

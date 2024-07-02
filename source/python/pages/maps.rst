@@ -139,7 +139,7 @@ Use a Basemap That is Right for You |licenses|
       <img alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg">
     </a>
 
-Use quality Lets-Plot vector basemaps or choose among many raster map tiles available through 3rd party providers.
+Use quality *Lets-Plot* vector basemaps or choose among many raster map tiles available through 3rd party providers.
 
 Learn more: :doc:`Configuring Basemap Tiles for Interactive Maps </python/pages/basemap_tiles>`.
 

@@ -24,7 +24,7 @@ GeoPandas supports the following three basic classes of geometric objects (shape
 - Lines / Multi-Lines
 - Polygons / Multi-Polygons
 
-All GeoPandas shapes are "understood" by Lets-Plot and can be plotted using various geometry layers, depending on the type of the shape.
+All GeoPandas shapes are "understood" by *Lets-Plot* and can be plotted using various geometry layers, depending on the type of the shape.
 
 Use:
 

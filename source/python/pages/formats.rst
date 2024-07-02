@@ -276,7 +276,7 @@ The format of numbers in scientific notation can be further customised using the
 Tooltip Customization
 ---------------------
 
-In Lets-Plot you can use formatting for tooltip text, see: :doc:`Tooltip Customization </python/pages/tooltips>`.
+In *Lets-Plot* you can use formatting for tooltip text, see: :doc:`Tooltip Customization </python/pages/tooltips>`.
 
 
 .. _formats_axis_tooltips:

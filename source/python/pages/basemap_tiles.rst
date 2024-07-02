@@ -20,11 +20,11 @@ Configuring Basemap Tiles for Interactive Maps
 Configuring Globally
 --------------------
 
-You can configure global Lets-Plot options using the :py:mod:`LestPlot.set(dictionary) <lets_plot.LetsPlot>` method.
+You can configure global *Lets-Plot* options using the :py:mod:`LestPlot.set(dictionary) <lets_plot.LetsPlot>` method.
 
-Where the ``dictionary`` can contain all sorts of Lets-Plot options, including basemap tiles configuration options.
+Where the ``dictionary`` can contain all sorts of *Lets-Plot* options, including basemap tiles configuration options.
 
-Lets-Plot provides a variety of constants and functions which make configuring of basemap tiles simple:
+*Lets-Plot* provides a variety of constants and functions which make configuring of basemap tiles simple:
 
 .. code-block:: python
 
@@ -57,16 +57,16 @@ Vector Tiles
   If the tiles don't load please try disabling the NSURLSession Websocket feature
   (`Develop -> Experimental Features -> NSURLSession Websocket`) or use :ref:`raster tiles <basemap_tiles_raster_tiles>`.
 
-Lets-Plot provides its own vector basemap tiles available in four variants:
+*Lets-Plot* provides its own vector basemap tiles available in four variants:
 
 - color
 - dark
 - light
 - bw
 
-By default Lets-Plot uses its "color" tiles.
+By default *Lets-Plot* uses its "color" tiles.
 
-Configure Lets-Plot vector tiles (globally or on the per-plot basis) with the help of the :py:mod:`LetsPlot.maptiles_lets_plot(...) <lets_plot.maptiles_lets_plot>` function:
+Configure *Lets-Plot* vector tiles (globally or on the per-plot basis) with the help of the :py:mod:`LetsPlot.maptiles_lets_plot(...) <lets_plot.maptiles_lets_plot>` function:
 
 .. code-block:: python
 
@@ -108,14 +108,14 @@ Blank tiles do not require an internet connection.
 Raster Tiles
 ------------
 
-With Lets-Plot you can use ZXY raster tiles provided by 3rd party maptile services.
+With *Lets-Plot* you can use ZXY raster tiles provided by 3rd party maptile services.
 
 .. warning::
   Always read the providers **Terms of Service** before using this provider's tiles in your project.
 
-Some services provide free of charge raster tilesets. The ``tilesets`` module in Lets-Plot contains many such tilesets pre-configured.
+Some services provide free of charge raster tilesets. The ``tilesets`` module in *Lets-Plot* contains many such tilesets pre-configured.
 
-Again, you can use these tilesets to configure Lets-Plot globally or on the per-plot basis:
+Again, you can use these tilesets to configure *Lets-Plot* globally or on the per-plot basis:
 
 .. code-block:: python
 
