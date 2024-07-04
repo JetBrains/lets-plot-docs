@@ -100,6 +100,7 @@ html_sidebars = {
 
 autodoc_default_options = {
     'member-order': 'bysource',
+    'autosummary-undoc-members': False,
 }
 autosummary_generate = True
 
