@@ -11,8 +11,8 @@
    :keywords: data visualization, categorical data, ordering, discrete scale, as_discrete
 
 
-Visualizing Discrete Data: Working with Categorical Variables and the ``as_discrete()`` Function
-================================================================================================
+Working with Categorical Variables and the ``as_discrete()`` Function
+=====================================================================
 
 In data analysis and visualization, discrete data commonly appears as categorical variables. These can be classified as:
 
