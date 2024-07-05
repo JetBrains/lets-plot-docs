@@ -7,56 +7,56 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content="Plotting and ordering of the numerical data as categorical with Lets-Plot." name="description" />
-<meta content="data visualization, numeric data, categoric data, ordering" name="keywords" />
-<meta property="og:title" content="Function as_discrete() for Ordering Numeric Data in Lets-Plot" />
+<meta content="The as_discrete() function converts a column to a discrete scale and allows you to specify the order of its values." name="description" />
+<meta content="data visualization, categorical data, ordering, discrete scale, as_discrete" name="keywords" />
+<meta property="og:title" content="Ordering Categories, as_discrete()" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/as_discrete.html" />
 <meta property="og:site_name" content="Lets-Plot" />
-<meta property="og:description" content="Plotting and ordering of the numerical data as categorical with Lets-Plot." />
+<meta property="og:description" content="The as_discrete() function converts a column to a discrete scale and allows you to specify the order of its values." />
 <meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
 <meta property="og:image:alt" content="Lets-Plot" />
 
-    <title>Function as_discrete() for Ordering Numeric Data in Lets-Plot</title>
+    <title>Ordering Categories, as_discrete()</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6153f54f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ac35cfe9" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9683ad65"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python/pages/as_discrete';</script>
     <script src="../../_static/js/custom.js?v=a8badf0c"></script>
     <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
@@ -72,27 +72,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -114,12 +110,17 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
@@ -174,59 +175,59 @@
   <ul class="bd-navbar-elements navbar-nav">
     
       
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="api.html">
-                        API
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api.html">
+    API
+  </a>
+</li>
+
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="charts.html">
-                        Charts
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="charts.html">
+    Charts
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="maps.html">
-                        Maps
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="geocoding.html">
-                        Geocoding
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="maps.html">
+    Maps
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="gallery.html">
-                        Gallery
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="bistro.html">
-                        'bistro' Plots
-                      </a>
-                    </li>
-                
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="geocoding.html">
+    Geocoding
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="whats_new.html">
-                        What is New
-                      </a>
-                    </li>
-                
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="whats_new.html">
+    What is New
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -244,7 +245,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -258,10 +259,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script></div>
@@ -297,7 +298,7 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
 </ul></div>
       
@@ -310,7 +311,7 @@ document.write(`
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -321,9 +322,9 @@ document.write(`
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
@@ -346,70 +347,65 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
+          
+          
+            <div class="navbar-item">
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
       
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="api.html">
-                        API
-                      </a>
-                    </li>
-                
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
-                    More
-                </button>
-                <ul id="pst-nav-more-links-2" class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="charts.html">
-                        Charts
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api.html">
+    API
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="maps.html">
-                        Maps
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="geocoding.html">
-                        Geocoding
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="charts.html">
+    Charts
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="gallery.html">
-                        Gallery
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="bistro.html">
-                        'bistro' Plots
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="maps.html">
+    Maps
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="whats_new.html">
-                        What is New
-                      </a>
-                    </li>
-                
-                </ul>
-            </li>
-            
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_new.html">
+    What is New
+  </a>
+</li>
+
     
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -421,10 +417,10 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script></div>
@@ -460,7 +456,7 @@ document.write(`
           
           
           
-          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
         </li>
 </ul></div>
         
@@ -477,13 +473,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article"></div>
+              <div class="bd-header-article d-print-none"></div>
               
               
               
@@ -491,26 +487,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="function-as-discrete">
-<h1>Function <code class="docutils literal notranslate"><span class="pre">as_discrete()</span></code><a class="headerlink" href="#function-as-discrete" title="Link to this heading">#</a></h1>
-<p>The function <a class="reference internal" href="api/lets_plot.mapping.as_discrete.html#lets_plot.mapping.as_discrete" title="lets_plot.mapping.as_discrete"><code class="xref py py-mod docutils literal notranslate"><span class="pre">as_discrete()</span></code></a> is used to annotate a numeric data series as categorical data with the possibility of its ordering for the purposes of given visualization.</p>
-<section id="plot-preliminaries">
-<h2>Plot Preliminaries<a class="headerlink" href="#plot-preliminaries" title="Link to this heading">#</a></h2>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">lets_plot.mapping</span> <span class="kn">import</span> <span class="n">as_discrete</span>
-<span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-
-<span class="n">mpg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+  <section id="working-with-categorical-variables-and-the-as-discrete-function">
+<h1>Working with Categorical Variables and the <code class="docutils literal notranslate"><span class="pre">as_discrete()</span></code> Function<a class="headerlink" href="#working-with-categorical-variables-and-the-as-discrete-function" title="Link to this heading">#</a></h1>
+<p>In data analysis and visualization, discrete data commonly appears as categorical variables. These can be classified as:</p>
+<ul class="simple">
+<li><p>Nominal: unordered categories (e.g., colors, names)</p></li>
+<li><p>Ordinal: categories with a meaningful order (e.g., education levels, rating scales)</p></li>
+</ul>
+<p>When visualizing Pandas series in <em>Lets-Plot</em>, ordinal data can be represented using <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/categorical.html">Pandas Categorical</a> type with the ordered parameter set to <code class="docutils literal notranslate"><span class="pre">True</span></code> and a specified category order. <em>Lets-Plot</em> will respect this ordering in the resulting visualizations.</p>
+<p>Alternatively, <em>Lets-Plot</em> provides the <a class="reference internal" href="api/lets_plot.mapping.as_discrete.html#lets_plot.mapping.as_discrete" title="lets_plot.mapping.as_discrete"><code class="xref py py-mod docutils literal notranslate"><span class="pre">as_discrete()</span></code></a> function, which offers similar capabilities for any data type, not limited to Pandas DataFrames. This function allows for flexible manipulation of discrete data, including:</p>
+<ol class="arabic simple">
+<li><p>Annotation of numeric data as discrete: This allows continuous variables to be treated as categorical for visualization purposes.</p></li>
+<li><p>Specification of discrete variable ordering: The order can be based on the variable’s own values or the values of another variable.</p></li>
+<li><p>Custom ordering through explicit “factor levels”: This feature allows for manual specification of category order.</p></li>
+</ol>
+<p>The <a class="reference internal" href="api/lets_plot.mapping.as_discrete.html#lets_plot.mapping.as_discrete" title="lets_plot.mapping.as_discrete"><code class="xref py py-mod docutils literal notranslate"><span class="pre">as_discrete()</span></code></a> function thus allows for precise control over how categories are represented and ordered in plots, regardless of the original data format.</p>
+<div class="jupyter_cell docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="IuObk9"></div>
+<div id="x0UZse"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -534,26 +529,26 @@ document.write(`
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("IuObk9").appendChild(div);
+            document.getElementById("x0UZse").appendChild(div);
         };
-        var e = document.getElementById("IuObk9");
+        var e = document.getElementById("x0UZse");
         e.appendChild(script);
     })()
 </script>
 </div></div>
 </div>
-</section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">as_discrete</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">as_discrete</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>where</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">variable</span></code> (string) - the name of the data variable (which is mapped to the plot aesthetic);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> (string) - the name of the scale - it will be used as the axis label or as the legend title;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">order_by</span></code> (string) - the name of the variable by which the ordering will be performed;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">order</span></code> (int) - the ordering direction - <code class="docutils literal notranslate"><span class="pre">1</span></code> for ascending direction and <code class="docutils literal notranslate"><span class="pre">-1</span></code> for descending (default value).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">variable</span> <span class="pre">:</span> <span class="pre">str</span></code> - the name of the data variable (which is mapped to the plot aesthetic);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span> <span class="pre">:</span> <span class="pre">str</span></code> - the name of the scale - it will be used as the axis label or as the legend title;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">order_by</span> <span class="pre">:</span> <span class="pre">str</span></code> - the name of the variable by which the ordering will be performed;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">:</span> <span class="pre">int</span></code> - the ordering direction - <code class="docutils literal notranslate"><span class="pre">1</span></code> for ascending direction and <code class="docutils literal notranslate"><span class="pre">-1</span></code> for descending (default value).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">levels</span> <span class="pre">:</span> <span class="pre">list</span></code> - the list of values that defines a specific order of categories.</p></li>
 </ul>
 <p>To enable ordering mode, at least one ordering parameter (<code class="docutils literal notranslate"><span class="pre">order_by</span></code> or <code class="docutils literal notranslate"><span class="pre">order</span></code>) should be specified. By the default, it will use descending direction and ordering by eigenvalues. You cannot specify different order settings for the same variable. However, if these settings don’t contradict each other, they will be combined.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">order_by</span></code> is a numeric variable, which values are used for reordering. It’s also possible to use statistical variables. The reordering uses the average value. The exception is plots with the <code class="docutils literal notranslate"><span class="pre">stack</span></code> position adjustment, where multiple bars occupying the same <code class="docutils literal notranslate"><span class="pre">x</span></code> position are stacked atop one another: in this case, the sum is calculated to get the order of the stack sizes.</p>
@@ -568,7 +563,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="LIxA0G"></div>
+<div class="output text_html">   <div id="L7ym0o"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -597,14 +592,15 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("LIxA0G");
+           var plotContainer = document.getElementById("L7ym0o");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
        })();
    </script></div></div>
 </div>
-<p>Let’s annotate the <code class="docutils literal notranslate"><span class="pre">'cyl'</span></code> variable as discrete using the <code class="docutils literal notranslate"><span class="pre">as_discrete('cyl')</span></code> function. As a result, the data is divided into groups, a discrete color scale is assigned instead of a continuous one:</p>
+<p>Let’s annotate the <code class="docutils literal notranslate"><span class="pre">'cyl'</span></code> variable as discrete using the <code class="docutils literal notranslate"><span class="pre">as_discrete('cyl')</span></code> function.
+As a result, the data is divided into groups, a discrete color scale is assigned instead of a continuous one:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;displ&#39;</span><span class="p">,</span> <span class="s1">&#39;hwy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;cyl&#39;</span><span class="p">)))</span>
@@ -612,7 +608,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="wbDJdW"></div>
+<div class="output text_html">   <div id="n0pcHF"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -648,7 +644,7 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("wbDJdW");
+           var plotContainer = document.getElementById("n0pcHF");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -663,7 +659,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="NUhiKx"></div>
+<div class="output text_html">   <div id="5lyT7y"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -700,7 +696,7 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("NUhiKx");
+           var plotContainer = document.getElementById("5lyT7y");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -715,7 +711,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="F9r6cr"></div>
+<div class="output text_html">   <div id="EI6ZpG"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -765,14 +761,14 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("F9r6cr");
+           var plotContainer = document.getElementById("EI6ZpG");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
        })();
    </script></div></div>
 </div>
-<p>Order <code class="docutils literal notranslate"><span class="pre">x</span></code> alphabetically</p>
+<p>Order <code class="docutils literal notranslate"><span class="pre">x</span></code> alphabetically:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;hwy&#39;</span><span class="p">))</span>
@@ -780,7 +776,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="NrqWdM"></div>
+<div class="output text_html">   <div id="BVMz8f"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -846,7 +842,7 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("NrqWdM");
+           var plotContainer = document.getElementById("BVMz8f");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -861,7 +857,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="YvCfWz"></div>
+<div class="output text_html">   <div id="2EEKj4"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -927,7 +923,7 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("YvCfWz");
+           var plotContainer = document.getElementById("2EEKj4");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -942,7 +938,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="ydxYU0"></div>
+<div class="output text_html">   <div id="mhfecq"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1010,14 +1006,15 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("ydxYU0");
+           var plotContainer = document.getElementById("mhfecq");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
        })();
    </script></div></div>
 </div>
-<p>Two different ordering settings are specified for the <code class="docutils literal notranslate"><span class="pre">class</span></code> variable. These settings don’t contradict each other. This means that they will be combined, and the variable will be ordered in ascending order <code class="docutils literal notranslate"><span class="pre">ymax</span></code>:</p>
+<p>Two different ordering settings are specified for the <code class="docutils literal notranslate"><span class="pre">class</span></code> variable. These settings don’t contradict each other.
+This means that they will be combined, and the variable will be ordered in ascending order <code class="docutils literal notranslate"><span class="pre">ymax</span></code>:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;..ymax..&#39;</span><span class="p">),</span> <span class="s1">&#39;hwy&#39;</span><span class="p">,</span> \
@@ -1026,7 +1023,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="Tuy7gX"></div>
+<div class="output text_html">   <div id="f0wRCA"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1108,7 +1105,163 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("Tuy7gX");
+           var plotContainer = document.getElementById("f0wRCA");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();
+   </script></div></div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">levels</span></code> parameter to specify the exact order for the variable:</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;subcompact&#39;</span><span class="p">,</span> <span class="s1">&#39;compact&#39;</span><span class="p">,</span> <span class="s1">&#39;suv&#39;</span><span class="p">,</span> <span class="s1">&#39;minivan&#39;</span><span class="p">,</span> <span class="s1">&#39;midsize&#39;</span><span class="p">,</span> <span class="s1">&#39;pickup&#39;</span><span class="p">,</span> <span class="s1">&#39;2seater&#39;</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">custom_order</span><span class="p">),</span> <span class="s1">&#39;hwy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="8j870U"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+},
+"mapping":{
+},
+"data_meta":{
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+"x":"class",
+"y":"hwy",
+"color":"class"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"class",
+"factor_levels":["subcompact","compact","suv","minivan","midsize","pickup","2seater"]
+}]
+},
+"data":{
+"..middle..":[27.0,27.0,17.5,25.0,23.0,17.0,26.0],
+"..lower..":[26.0,26.0,17.0,24.0,22.0,16.0,24.5],
+"..upper..":[29.0,29.0,19.0,26.0,24.0,18.0,30.5],
+"..ymin..":[23.0,23.0,14.0,23.0,21.0,15.0,20.0],
+"..ymax..":[33.0,32.0,22.0,26.0,24.0,20.0,36.0],
+"class":["compact","midsize","suv","2seater","minivan","pickup","subcompact"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+"x":"class",
+"y":"hwy",
+"color":"class"
+},
+"show_legend":false,
+"data_meta":{
+"series_annotations":[{
+"column":"class",
+"factor_levels":["subcompact","compact","suv","minivan","midsize","pickup","2seater"]
+}]
+},
+"data":{
+"..middle..":[27.0,27.0,27.0,27.0,27.0,17.5,17.5,17.5,17.5,17.5,17.5,17.5,17.5,25.0,23.0,17.0,17.0,17.0,17.0,26.0,26.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,17.0,17.0,17.0,17.0,17.0,17.0,17.0,17.0,24.0,22.0,16.0,16.0,16.0,16.0,24.5,24.5],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,19.0,19.0,19.0,19.0,19.0,19.0,19.0,19.0,26.0,24.0,18.0,18.0,18.0,18.0,30.5,30.5],
+"..ymin..":[23.0,23.0,23.0,23.0,23.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,23.0,21.0,15.0,15.0,15.0,15.0,20.0,20.0],
+"..ymax..":[33.0,33.0,33.0,33.0,32.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,26.0,24.0,20.0,20.0,20.0,20.0,36.0,36.0],
+"class":["compact","compact","compact","compact","midsize","suv","suv","suv","suv","suv","suv","suv","suv","2seater","minivan","pickup","pickup","pickup","pickup","subcompact","subcompact"],
+"hwy":[35.0,37.0,35.0,44.0,NaN,12.0,12.0,25.0,24.0,27.0,25.0,26.0,23.0,NaN,17.0,12.0,12.0,12.0,22.0,44.0,41.0]
+}
+}],
+"metainfo_list":[]
+};
+           var plotContainer = document.getElementById("8j870U");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();
+   </script></div></div>
+</div>
+<p>The following example is similar to the previous one, but uses the categorical column:</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpg</span><span class="p">[</span><span class="s1">&#39;cat_class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">mpg</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">custom_order</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;cat_class&#39;</span><span class="p">,</span> <span class="s1">&#39;hwy&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cat_class&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="4n9xP8"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"column":"cat_class",
+"factor_levels":["subcompact","compact","suv","minivan","midsize","pickup","2seater"]
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+"x":"cat_class",
+"y":"hwy",
+"color":"cat_class"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"cat_class",
+"factor_levels":["subcompact","compact","suv","minivan","midsize","pickup","2seater"]
+}]
+},
+"data":{
+"..middle..":[27.0,27.0,17.5,25.0,23.0,17.0,26.0],
+"..lower..":[26.0,26.0,17.0,24.0,22.0,16.0,24.5],
+"..upper..":[29.0,29.0,19.0,26.0,24.0,18.0,30.5],
+"..ymin..":[23.0,23.0,14.0,23.0,21.0,15.0,20.0],
+"..ymax..":[33.0,32.0,22.0,26.0,24.0,20.0,36.0],
+"cat_class":["compact","midsize","suv","2seater","minivan","pickup","subcompact"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+"x":"cat_class",
+"y":"hwy",
+"color":"cat_class"
+},
+"show_legend":false,
+"data_meta":{
+"series_annotations":[{
+"column":"cat_class",
+"factor_levels":["subcompact","compact","suv","minivan","midsize","pickup","2seater"]
+}]
+},
+"data":{
+"..middle..":[27.0,27.0,27.0,27.0,27.0,17.5,17.5,17.5,17.5,17.5,17.5,17.5,17.5,25.0,23.0,17.0,17.0,17.0,17.0,26.0,26.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,17.0,17.0,17.0,17.0,17.0,17.0,17.0,17.0,24.0,22.0,16.0,16.0,16.0,16.0,24.5,24.5],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,19.0,19.0,19.0,19.0,19.0,19.0,19.0,19.0,26.0,24.0,18.0,18.0,18.0,18.0,30.5,30.5],
+"..ymin..":[23.0,23.0,23.0,23.0,23.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,14.0,23.0,21.0,15.0,15.0,15.0,15.0,20.0,20.0],
+"..ymax..":[33.0,33.0,33.0,33.0,32.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,26.0,24.0,20.0,20.0,20.0,20.0,36.0,36.0],
+"cat_class":["compact","compact","compact","compact","midsize","suv","suv","suv","suv","suv","suv","suv","suv","2seater","minivan","pickup","pickup","pickup","pickup","subcompact","subcompact"],
+"hwy":[35.0,37.0,35.0,44.0,NaN,12.0,12.0,25.0,24.0,27.0,25.0,26.0,23.0,NaN,17.0,12.0,12.0,12.0,22.0,44.0,41.0]
+}
+}],
+"metainfo_list":[]
+};
+           var plotContainer = document.getElementById("4n9xP8");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1118,13 +1271,14 @@ document.write(`
 <p>Example of ordering for two variables:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> \
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> \
+                 <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> \
              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="eFGU9h"></div>
+<div class="output text_html">   <div id="bCxHqP"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1168,7 +1322,7 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("eFGU9h");
+           var plotContainer = document.getElementById("bCxHqP");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1178,13 +1332,14 @@ document.write(`
 <p>Reorder <code class="docutils literal notranslate"><span class="pre">x</span></code> by counts to get from highest on the left to lowest on the right:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;..count..&#39;</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> \
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;..count..&#39;</span><span class="p">),</span> \
+                 <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> \
              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="ximVoh"></div>
+<div class="output text_html">   <div id="KmYp59"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1228,7 +1383,7 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("ximVoh");
+           var plotContainer = document.getElementById("KmYp59");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1238,13 +1393,14 @@ document.write(`
 <p>Apply sampling to the plot after reordering:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;..count..&#39;</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> \
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;..count..&#39;</span><span class="p">),</span> \
+                 <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> \
              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="n">sampling_pick</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="v6W46c"></div>
+<div class="output text_html">   <div id="yHFvcm"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -1293,7 +1449,7 @@ document.write(`
 "metainfo_list":[],
 "computation_messages":["sampling_pick(n=4) was applied to [bar/count stat] layer"]
 };
-           var plotContainer = document.getElementById("v6W46c");
+           var plotContainer = document.getElementById("yHFvcm");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -1304,8 +1460,9 @@ document.write(`
 <section id="example-notebooks">
 <h2>Example Notebooks<a class="headerlink" href="#example-notebooks" title="Link to this heading">#</a></h2>
 <ul>
-<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/ordering_examples.ipynb">Guide to ordering</a></li>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/smooth_matrix.ipynb">Discover trends with smoothing</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/ordering_examples.ipynb">Guide to ordering</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/factor_levels.ipynb">Factor levels</a></li>
 </ul>
 </section>
 </section>
@@ -1332,7 +1489,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-preliminaries">Plot Preliminaries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-notebooks">Example Notebooks</a></li>
@@ -1352,8 +1508,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1375,7 +1531,7 @@ document.write(`
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
   7.3.7 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
-  0.15.2.
+  0.15.4.
 <p></div>
       
     </div>
