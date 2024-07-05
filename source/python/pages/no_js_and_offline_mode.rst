@@ -14,7 +14,7 @@
 'No Javascript' Mode
 ====================
 
-In the 'no javascript' mode Lets-Plot generates plots as bare-bones SVG images.
+In the 'no javascript' mode *Lets-Plot* generates plots as bare-bones SVG images.
 
 This mode is helpful when there is a requirement to render notebooks in an 'ipnb' renderer which does not support javascript (like GitHub's built-in renderer).
 
@@ -37,8 +37,8 @@ Note: interactive maps do not support the 'no javascript' mode.
 Offline Mode
 ============
 
-In classic Jupyter notebook the ``LetsPlot.setup_html()`` statement by default pre-loads ``Lets-Plot`` JS library from CDN.
-Alternatively, option ``offline=True`` will force ``Lets-Plot`` adding the full Lets-Plot JS bundle to the notebook.
+In classic Jupyter notebook the ``LetsPlot.setup_html()`` statement by default pre-loads ``lets-plot`` JS library from CDN.
+Alternatively, option ``offline=True`` will force ``lets-plot`` adding the full *Lets-Plot* JS bundle to the notebook.
 In this case, plots in the notebook will be working without an Internet connection.
 
 .. code:: python

@@ -16,6 +16,12 @@
 API Reference
 =============
 
+For an overview of all the main functions in one notebook, see the |lets_plot_cheatbook|.
+
+.. |lets_plot_cheatbook| extref:: lets_plot_cheatbook
+    :type: text
+    :text: Lets-Plot cheatbook
+
 
 Configuring
 -----------

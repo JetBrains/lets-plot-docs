@@ -216,12 +216,67 @@ Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35
     %B %e %Y %H:%M %p      -->  "August 6 2019 04:46 AM"
 
 
+.. _formats_exponent:
+
+Exponent Format
+---------------
+
+The format of numbers in scientific notation can be further customised using the :py:mod:`theme <lets_plot.theme>` parameter ``exponent_format``:
+
+.. jupyter-execute::
+    :hide-code:
+
+    from lets_plot import *
+
+    LetsPlot.setup_html()
+
+.. grid:: 2
+
+    .. grid-item-card::
+        :shadow: none
+
+        .. raw:: html
+
+            <h3>"e" notation</h3>
+
+        .. jupyter-execute::
+            :linenos:
+            :emphasize-lines: 5
+
+            ggplot() + \
+                geom_label(x=0, label=10**12, \
+                           label_format=".2~e", \
+                           size=15) + \
+                theme(exponent_format='e')
+
+    .. grid-item-card::
+        :shadow: none
+
+        .. raw:: html
+
+            <h3>"pow" notation</h3>
+
+        .. jupyter-execute::
+            :linenos:
+            :emphasize-lines: 5
+
+            ggplot() + \
+                geom_label(x=0, label=10**12, \
+                           label_format=".2~e", \
+                           size=15) + \
+                theme(exponent_format='pow')
+
+.. note::
+
+    Superscript is not fully support by CairoSVG library and export to PNG/PDF may produce unexpected results.
+
+
 .. _formats_tooltips:
 
 Tooltip Customization
 ---------------------
 
-In Lets-Plot you can use formatting for tooltip text, see: :doc:`Tooltip Customization </python/pages/tooltips>`.
+In *Lets-Plot* you can use formatting for tooltip text, see: :doc:`Tooltip Customization </python/pages/tooltips>`.
 
 
 .. _formats_axis_tooltips:
@@ -246,4 +301,6 @@ Demo Notebooks
 - .. extref:: formatting_axes_etc
       :type: text
 - .. extref:: text_geoms
+      :type: text
+- .. extref:: superscript_exponent
       :type: text

@@ -16,9 +16,13 @@ Tooltip Customization
 
 You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions.
 
-.. extref:: tooltips_page
+|learn_more|.
+
+.. |learn_more| extref:: tooltips_page
     :type: text
-    :text: Learn more (datalore link).
+    :text: Learn more (datalore link)
+
+See also the :doc:`formatting reference </python/pages/formats>` to learn how to format numeric and date-time values in tooltips.
 
 
 Examples

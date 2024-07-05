@@ -11,7 +11,10 @@ from bs4 import BeautifulSoup
 from .generator import generate_pages
 
 BUILD_DIR = "docs"
-SKIP = ["http://my.tile.com"]
+SKIP = [
+    "http://my.tile.com",
+    "https://csboutique.medium.com",
+]
 INTERNAL_LINKS = [
     "pages/charts.html",
     "pages/maps.html",
@@ -80,7 +83,7 @@ def _get_response(href, first_query=True):
             response = _get_response(href, False)
         return response
     except requests.exceptions.ConnectionError:
-        assert href in SKIP
+        assert next((url for url in SKIP if href.startswith(url))) is not None
         return None
 
 def _check_section(page, href):
@@ -89,4 +92,8 @@ def _check_section(page, href):
         assert soup.find(id=href[1:])
 
 def _check_page(page, href):
-    assert os.path.isfile(os.path.join(os.path.dirname(page), href.split("#")[0]))
+    fullpath = os.path.join(os.path.dirname(page), href.split("#")[0])
+    # Fix for 404:
+    if fullpath.startswith("/"):
+        fullpath = BUILD_DIR + fullpath
+    assert os.path.isfile(fullpath)

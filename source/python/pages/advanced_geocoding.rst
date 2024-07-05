@@ -475,7 +475,7 @@ Join with ``GeoDataFrame``
   same as ``[['data_column_1', 'data_column_2'], ['map_column_1', 'map_column_2']]``
 - ``map_join=[['City_Name', 'State_Name'], ['city', 'state']]``:
 
-Single string key is not allowed - Lets-Plot can't deduce a map key on a user generated GeoDataFrames.
+Single string key is not allowed - *Lets-Plot* can't deduce a map key on a user generated GeoDataFrames.
 
 
 .. _geocoding_join_geocoder:
@@ -483,7 +483,7 @@ Single string key is not allowed - Lets-Plot can't deduce a map key on a user ge
 Join with ``Geocoder``
 ''''''''''''''''''''''
 
-``Geocoder`` and ``GeoDataFrame``, returned by a ``Geocoder`` geometries fetching functions, contains metadata so in most cases only data keys have to be provided - Lets-Plot will generate map keys automatically with columns that were used for geocoding.
+``Geocoder`` and ``GeoDataFrame``, returned by a ``Geocoder`` geometries fetching functions, contains metadata so in most cases only data keys have to be provided - *Lets-Plot* will generate map keys automatically with columns that were used for geocoding.
 
 - ``map_join='State_Name'``:
   same as ``[['State_Name'], ['state']]``

@@ -66,6 +66,11 @@ What is new in 4.3.0
 Recent Updates in the Gallery
 -----------------------------
 
+.. image:: /_static/images/changelog/4.3.3/earthquake.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/earthquake.ipynb
+
 .. image:: /_static/images/changelog/4.3.3/sunshine_hours.png
   :width: 128
   :height: 128
@@ -86,6 +91,10 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/venn_diagram.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.3.1/gal_spoke.png
   :width: 128
   :height: 128
@@ -95,10 +104,6 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://www.kaggle.com/code/alshan/indonesia-volcanoes-on-map
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.1/gal_japanese_volcanoes_on_map.png
   :width: 128
@@ -114,6 +119,10 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/palmer_penguins.ipynb
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.3.0/gal_periodic_table.png
   :width: 128

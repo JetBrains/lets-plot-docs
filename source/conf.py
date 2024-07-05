@@ -22,53 +22,29 @@ sys.path.insert(0, os.path.abspath('./ext'))
 project = 'lets-plot'
 author = 'JetBrains'
 
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'numpydoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.githubpages',
+    # built in extensions
+    "sphinx.ext.autosummary",
+    "sphinx.ext.githubpages",
+    # installed extensions
+    "jupyter_sphinx",
+    "notfound.extension",
+    "numpydoc",
     "sphinxext.opengraph",
     "sphinx_design",
-    'sphinx_reredirects',
-    'jupyter_sphinx',
-    'create_cname',
-    'extref',
-    'switch_lets_plot',
+    "sphinx_reredirects",
+    # custom extensions
+    "create_cname",
+    "extref",
+    "switch_lets_plot",
 ]
 
-cname_url = "lets-plot.org"
-
-extref_conf = "extref_conf.json"
-extref_logo_images = {
-    'colab': "_static/images/logo/colab.svg",
-    'datalore': "_static/images/logo/datalore.svg",
-    'dataspell': "_static/images/logo/dataspell.png",
-    'deepnote': "_static/images/logo/deepnote.svg",
-    'kaggle': "_static/images/logo/kaggle.svg",
-    'nbviewer': "_static/images/logo/jupyter.svg",
-    'nextjournal': "_static/images/logo/nextjournal.svg",
-    'pycharm': "_static/images/logo/pycharm.svg",
-}
-extref_default_image = 'square'
-extref_class = "extref"
-
-autodoc_default_options = {
-    'member-order': 'bysource',
-}
-
-autosummary_generate = True
-
-numpydoc_show_class_members = False
-
-ogp_site_url = "https://lets-plot.org/"
-ogp_site_name = "Lets-Plot"
-ogp_image = "_static/images/open-graph.png"
-
+# -- Sphinx own configuration ------------------------------------------------
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -84,60 +60,6 @@ import lets_plot
 version = lets_plot.__version__
 # The full version, including alpha/beta/rc tags.
 release = lets_plot.__version__
-
-
-# -- Options for HTML output -------------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = "pydata_sphinx_theme"
-html_show_sourcelink = False
-html_title = ""
-
-html_theme_options = {
-    "logo": {
-        "alt_text": "Lets-Plot",
-        "image_light": "_static/logo-light.svg",
-        "image_dark": "_static/logo-dark.svg",
-        "version_link": "python/pages/whats_new",
-    },
-    "header_links_before_dropdown": 1,
-    "icon_links": [
-        {
-            "name": "GitHub",
-            "url": "https://github.com/JetBrains/lets-plot",
-            "icon": "fa-brands fa-github",
-            "type": "fontawesome",
-        },
-        {
-            "name": "PyPI",
-            "url": "https://pypi.org/project/lets-plot",
-            "icon": "_static/images/logo/pypi.svg",
-            "type": "local",
-            "attributes": {"excluded_from": ["index"]},
-        },
-    ],
-    "show_prev_next": False,
-    "navbar_start": ["navbar-logo", "navbar-version"],
-    "navbar_end": ["theme-switcher", "navbar-icon-links"],
-    "article_header_start": [],
-    "footer_start": ["copyright"],
-    "footer_center": ["sphinx-and-theme-version"],
-    "footer_end": ["terms"],
-    "secondary_sidebar_items": {
-        "**": ["page-toc", "sourcelink"],
-        "index": [],
-    },
-}
-
-html_favicon = "_static/favicon.ico"
-
-html_context = {
-    'cur_year': datetime.now().year,
-    'python_root_doc': "python/index",
-    'python_root_name': "Lets-Plot for Python",
-}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -169,8 +91,123 @@ html_sidebars = {
     '**': [],
 }
 
-# Redirects
+
+# ----------------------------------------------------------------------------
+# -- Built in extensions -----------------------------------------------------
+# ----------------------------------------------------------------------------
+
+# -- Autosummary extension ---------------------------------------------------
+
+autodoc_default_options = {
+    'member-order': 'bysource',
+    'autosummary-undoc-members': False,
+}
+autosummary_generate = True
+
+
+# ----------------------------------------------------------------------------
+# -- Installed extensions ----------------------------------------------------
+# ----------------------------------------------------------------------------
+
+# -- Built in theme and PyData Sphinx theme extension ------------------------
+
+html_theme = "pydata_sphinx_theme"
+html_show_sourcelink = False
+html_title = ""
+html_favicon = "_static/favicon.ico"
+html_context = {
+    'cur_year': datetime.now().year,
+    'python_root_doc': "python/index",
+    'python_root_name': "Lets-Plot for Python",
+}
+html_theme_options = {
+    "logo": {
+        "alt_text": "Lets-Plot",
+        "image_light": "_static/logo-light.svg",
+        "image_dark": "_static/logo-dark.svg",
+        "version_link": "python/pages/whats_new",
+    },
+    "header_links_before_dropdown": 1,
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/JetBrains/lets-plot",
+            "icon": "fa-brands fa-github",
+            "type": "fontawesome",
+        },
+        {
+            "name": "PyPI",
+            "url": "https://pypi.org/project/lets-plot",
+            "icon": "_static/images/logo/pypi.svg",
+            "type": "local",
+            "attributes": {"excluded_from": ["index", "404"]},
+        },
+    ],
+    "show_prev_next": False,
+    "navbar_start": ["navbar-logo", "navbar-version"],
+    "navbar_end": ["theme-switcher", "navbar-icon-links"],
+    "article_header_start": [],
+    "footer_start": ["copyright"],
+    "footer_center": ["sphinx-and-theme-version"],
+    "footer_end": ["terms"],
+    "secondary_sidebar_items": {
+        "**": ["page-toc", "sourcelink"],
+        "index": [],
+    },
+}
+
+# -- Not found (404) extension -----------------------------------------------
+
+notfound_context = {
+    'title': "Page not found",
+    'body': """
+<h1>Page not found</h1>
+<p>
+  Unfortunately we couldn't find the content you were looking for.
+</p>
+<p>
+  Try <a class="reference internal" href="/search.html">searching</a> or head back to the <a class="reference internal" href="/index.html">homepage</a>.
+</p>""",
+}
+notfound_urls_prefix = None
+
+# -- Numpydoc extension ------------------------------------------------------
+
+numpydoc_show_class_members = False
+
+# -- OpenGraph extension -----------------------------------------------------
+
+ogp_site_url = "https://lets-plot.org/"
+ogp_site_name = "Lets-Plot"
+ogp_image = "_static/images/open-graph.png"
+
+# -- Sphinx redirects extension ----------------------------------------------
 
 redirects_conf = open("redirects.json")
 redirects = dict(json.load(redirects_conf))
 redirect_html_template_file = "_templates/redirect.html.template"
+
+
+# ----------------------------------------------------------------------------
+# -- Custom extensions -------------------------------------------------------
+# ----------------------------------------------------------------------------
+
+# -- CNAME generator (extension) ---------------------------------------------
+
+cname_url = "lets-plot.org"
+
+# -- Examples references manager (extension) ---------------------------------
+
+extref_conf = "extref_conf.json"
+extref_logo_images = {
+    'colab': "_static/images/logo/colab.svg",
+    'datalore': "_static/images/logo/datalore.svg",
+    'dataspell': "_static/images/logo/dataspell.png",
+    'deepnote': "_static/images/logo/deepnote.svg",
+    'kaggle': "_static/images/logo/kaggle.svg",
+    'nbviewer': "_static/images/logo/jupyter.svg",
+    'nextjournal': "_static/images/logo/nextjournal.svg",
+    'pycharm': "_static/images/logo/pycharm.svg",
+}
+extref_default_image = 'square'
+extref_class = "extref"

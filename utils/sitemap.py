@@ -88,6 +88,7 @@ def _set_priority(priority: float):
 
 
 transformations = [
+    Transformation(re.compile(r"^404\.html$"), _set_to_remove()),
     Transformation(re.compile(r"^_static\/.*"), _set_to_remove()),
     Transformation(re.compile(r"^genindex\.html$"), _set_to_remove()),
     Transformation(re.compile(r"^search\.html$"), _set_to_remove()),
@@ -107,7 +108,7 @@ def _get_all_html_filenames(html_dir: str):
     for root, dirs, files in os.walk(html_dir):
         for filename in files:
             if filename.endswith(".html"):
-                yield os.path.join(root.replace(html_dir, ""), filename)
+                yield os.path.join(root.replace(html_dir, ""), filename).replace("\\", "/")
 
 
 def generate_sitemap(html_dir: str, sitemap_filename: str = DEF_SITEMAP_FILENAME, *, web_root: str = DEF_WEB_ROOT):
