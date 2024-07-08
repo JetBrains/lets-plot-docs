@@ -446,9 +446,16 @@ Examples:
 .. |d16| image:: /_static/images/icons/charts/bistro-dark.svg
     :class: only-dark
 
-Exploratory Data Analysis (EDA) is an open-ended, highly interactive, iterative process, whose actual steps are segments of a stubbily branching, tree-like pattern of possible actions.
+:py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
+:py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`,
+:py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`,
+:py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
 
-Learn more about instruments for EDA in *Lets-Plot*: :doc:`'bistro' Plots </python/pages/bistro>`.
+"Bistro" plots is a collection of "compound plots" allowing users to generate intricate charts without the need for extensive coding.
+
+With these high-level functions you can create visualizations like correlation matrices, quantile-quantile plots, and joint distribution plots using single function calls.
+
+Learn more: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
 |l17| |d17| GeoPandas Shapes
