@@ -598,9 +598,7 @@ Examples:
       :type: text
 - .. extref:: theme_flavors
       :type: text
-- .. extref:: legend_and_axis
-      :type: text
-- .. extref:: legend_text_multiline
+- .. extref:: legend
       :type: text
 - .. extref:: tooltip_config
       :type: text
