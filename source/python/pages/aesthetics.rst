@@ -2,6 +2,8 @@
 
 :og:description: A detailed description of the possible values for some aesthetics.
 
+:orphan:
+
 .. title:: Aesthetic Specifications in Lets-Plot
 
 .. meta::
