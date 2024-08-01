@@ -617,6 +617,18 @@ Examples:
 Miscellaneous
 -------------
 
+Manual Legend
+~~~~~~~~~~~~~
+
+In Lets-Plot, as in ggplot2, legends are automatically generated based on the aesthetic mappings in the plot.
+Sometimes, however, this automatic generation doesn't provide the precise control needed for complex visualizations.
+Options ``manual_key`` and ``override_aes`` addresses this limitation.
+
+Examples:
+
+- .. extref:: legend
+      :type: text
+
 Multiple Color Scales
 ~~~~~~~~~~~~~~~~~~~~~
 
