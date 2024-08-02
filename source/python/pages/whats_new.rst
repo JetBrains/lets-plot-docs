@@ -3,68 +3,50 @@
 .. title:: What is New
 
 
-What is new in 4.3.0
+What is new in 4.4.0
 ====================
 
-- **coord_polar()**
+- **Waterfall Plot**
 
-  The polar coordinate system is most commonly used for pie charts, but it can also be used for constructing **Spyder or Radar charts** using the ``flat`` option.
+  .. image:: /_static/images/changelog/4.4.0/waterfall.png
+    :width: 460
 
-  .. image:: /_static/images/changelog/4.3.0/polar_coord_pie.png
-    :width: 256
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/waterfall_plot.ipynb>`__.
 
-  .. image:: /_static/images/changelog/4.3.0/radar_chart.png
-    :width: 256
+- **geom_band()**
 
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/coord_polar.ipynb>`__.
+  .. image:: /_static/images/changelog/4.4.0/geom_band.png
+    :width: 615
 
-- **In the theme()**
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/geom_band.ipynb>`__.
 
-  - ``panel_inset`` parameter - primarily used for plots with polar coordinates.
+- **Custom Legends**
 
-    See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/theme_panel_inset.ipynb>`__.
+  - ``manual_key`` parameter in plot layer
+  - :py:mod:`layer_key() <lets_plot.layer_key>` function
 
-  - ``panel_border_ontop`` parameter - enables the drawing of panel border on top of the plot geoms.
+  .. image:: /_static/images/changelog/4.4.0/custom_legend.png
+    :width: 294
 
-  - ``panel_grid_ontop``, ``panel_grid_ontop_x``, ``panel_grid_ontop_y`` parameters - enable the drawing of grid lines on top of the plot geoms.
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/manual_legend.ipynb>`__.
 
-- **geom_curve()**
+- **Customizing Legends Appearence**
 
-  .. image:: /_static/images/changelog/4.3.0/curve_annotation.png
-    :width: 338
+  The ``override_aes`` parameter in the ``guide_legend()`` function.
 
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_curve.ipynb>`__.
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/legend_override_aes.ipynb>`__.
 
-- **[UNIQUE] Visualizing Graph-like Data with geom_segment() and geom_curve()**
+- **And More**
 
-  - Aesthetics ``size_start``, ``size_end``, ``stroke_start`` and ``stroke_end`` enable better alignment of segments/curves with nodes of the graph by considering the size of the nodes.
-
-  - The ``spacer`` parameter allows for additional manual fine-tuning.
-
-  .. image:: /_static/images/changelog/4.3.0/graph_simple.png
-    :width: 256
-
-  .. image:: /_static/images/changelog/4.3.0/graph_on_map.png
-    :width: 256
-
-  See:
-
-  - `A simple graph example <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/graph_edges.ipynb>`__
-
-  - `An interactive map example <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_curve_on_map.ipynb>`__
-
-- **The alpha_stroke Parameter in geom_label()**
-
-  Use the ``alpha_stroke`` parameter to apply ``alpha`` to entire ``label``. By default, ``alpha`` is only applied to the label background.
-
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24a/geom_label_alpha_stroke.ipynb>`__.
-
-- **Showing Plots in External Browser**
-
-  The :py:meth:`LetsPlot.setup_show_ext() <lets_plot.LetsPlot.setup_show_ext>` directive allows plots to be displayed in an external browser window.
+  See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for a full list of changes.
 
 Recent Updates in the Gallery
 -----------------------------
+
+.. image:: /_static/images/changelog/4.4.0/us_unemployment.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/us_unemployment.ipynb
 
 .. image:: /_static/images/changelog/4.3.3/earthquake.png
   :width: 128
@@ -86,14 +68,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/mpg_corrgram.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.3.1/gal_venn_diagram.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/venn_diagram.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.1/gal_spoke.png
   :width: 128
@@ -115,14 +97,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.3.0/gal_penguins.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/palmer_penguins.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.0/gal_periodic_table.png
   :width: 128
