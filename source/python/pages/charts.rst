@@ -452,7 +452,7 @@ Examples:
 :py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`,
 :py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`,
 :py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`,
-:py:mod:`waterfall_plot() <lets_plot.bistro.residual.waterfall_plot>`
+:py:mod:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
 
 "Bistro" plots is a collection of "compound plots" allowing users to generate intricate charts without the need for extensive coding.
 
