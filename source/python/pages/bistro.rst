@@ -176,7 +176,7 @@ Examples:
 Waterfall Plot
 --------------
 
-:py:mod:`waterfall_plot() <lets_plot.bistro.residual.waterfall_plot>`
+:py:mod:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
 
 .. grid:: 4
     :class-container: preview-gallery wide-grid
