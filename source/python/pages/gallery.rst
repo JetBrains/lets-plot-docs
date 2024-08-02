@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: us_unemployment
+
+    .. grid-item-card::
+
         .. extref:: earthquake
 
     .. grid-item-card::
