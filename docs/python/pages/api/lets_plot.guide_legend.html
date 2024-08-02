@@ -47,7 +47,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9683ad65"></script>
+    <script src="../../../_static/documentation_options.js?v=2f20d6c1"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -159,7 +159,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.3.3</p>
+  <p>v4.4.0</p>
 </a>
 </div>
     
@@ -488,16 +488,21 @@ document.write(`
 <h1>lets_plot.guide_legend<a class="headerlink" href="#lets-plot-guide-legend" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.guide_legend">
-<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">guide_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.guide_legend" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">guide_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_aes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.guide_legend" title="Link to this definition">#</a></dt>
 <dd><p>Legend guide.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>title</strong><span class="classifier">str</span></dt><dd><p>Title of guide.</p>
+</dd>
 <dt><strong>nrow</strong><span class="classifier">int</span></dt><dd><p>Number of rows in legend’s guide.</p>
 </dd>
 <dt><strong>ncol</strong><span class="classifier">int</span></dt><dd><p>Number of columns in legend’s guide.</p>
 </dd>
 <dt><strong>byrow</strong><span class="classifier">bool, default=True</span></dt><dd><p>Type of output: by row, or by column.</p>
+</dd>
+<dt><strong>override_aes</strong><span class="classifier">dict</span></dt><dd><p>Dictionary that maps aesthetic parameters to new values, overriding the default legend appearance.
+Each value can be a constant applied to all keys or a list that changes particular keys.</p>
 </dd>
 </dl>
 </dd>
@@ -523,13 +528,13 @@ document.write(`
 <span class="linenos"> 8</span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcdefgh&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
 <span class="linenos"> 9</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">c</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
 <span class="linenos">10</span>    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span> <span class="o">+</span> \
-<span class="hll"><span class="linenos">11</span>    <span class="n">scale_shape</span><span class="p">(</span><span class="n">guide</span><span class="o">=</span><span class="n">guide_legend</span><span class="p">(</span><span class="n">nrow</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="hll"><span class="linenos">11</span>    <span class="n">scale_shape</span><span class="p">(</span><span class="n">guide</span><span class="o">=</span><span class="n">guide_legend</span><span class="p">(</span><span class="n">nrow</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">override_aes</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">}))</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="Wxj709"></div>
+<div id="zHrR7Y"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -540,7 +545,7 @@ document.write(`
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.3.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -553,13 +558,13 @@ document.write(`
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("Wxj709").appendChild(div);
+            document.getElementById("zHrR7Y").appendChild(div);
         };
-        var e = document.getElementById("Wxj709");
+        var e = document.getElementById("zHrR7Y");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="HD1UDN"></div>
+</div><div class="output text_html">   <div id="9pCPln"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -573,13 +578,26 @@ document.write(`
 "y":"y"
 },
 "data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"str",
+"column":"c"
+}]
 },
 "kind":"plot",
 "scales":[{
 "aesthetic":"shape",
 "guide":{
 "name":"legend",
-"nrow":3.0
+"nrow":3.0,
+"override_aes":{
+"color":"red"
+}
 },
 "solid":true
 }],
@@ -597,7 +615,7 @@ document.write(`
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("HD1UDN");
+           var plotContainer = document.getElementById("9pCPln");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -668,7 +686,7 @@ document.write(`
 <p class="sphinx-version theme-version">
   Created using
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
-  7.3.7 and
+  7.4.7 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
   0.15.4.
 <p></div>
