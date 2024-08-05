@@ -47,7 +47,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9683ad65"></script>
+    <script src="../../../_static/documentation_options.js?v=2f20d6c1"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -60,7 +60,7 @@
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="lets_plot.position_dodge" href="lets_plot.position_dodge.html" />
+    <link rel="next" title="lets_plot.layer_key" href="lets_plot.layer_key.html" />
     <link rel="prev" title="lets_plot.guide_colorbar" href="lets_plot.guide_colorbar.html" />
   <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
 
@@ -159,7 +159,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.3.3</p>
+  <p>v4.4.0</p>
 </a>
 </div>
     
@@ -490,13 +490,21 @@ document.write(`
 <dt class="sig sig-object py" id="lets_plot.guides">
 <span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">guides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.guides" title="Link to this definition">#</a></dt>
 <dd><p>Set guides for each scale.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>kwargs</strong></dt><dd><p>Name-guide pairs where name should be an aesthetic.
-The guide can either be a string (‘colorbar’, ‘legend’),
-or a call to a guide function (<cite>guide_colorbar()</cite>, <cite>guide_legend()</cite>)
-specifying additional arguments, or ‘none’ to hide the guide.</p>
+<dd class="field-odd"><dl>
+<dt><strong>kwargs</strong></dt><dd><p>Key-value pairs where the key can be:</p>
+<ul class="simple">
+<li><p>An aesthetic name</p></li>
+<li><p>‘manual’ - a key referring to the default custom legend</p></li>
+<li><p>A group name referring to a custom legend where the group is defined via the <cite>layer_key()</cite> function</p></li>
+</ul>
+<p>The value can be either:</p>
+<ul class="simple">
+<li><p>A string (‘colorbar’, ‘legend’)</p></li>
+<li><p>A call to a guide function (<cite>guide_colorbar()</cite>, <cite>guide_legend()</cite>) specifying additional arguments</p></li>
+<li><p>‘none’ to hide the guide</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -529,7 +537,7 @@ specifying additional arguments, or ‘none’ to hide the guide.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="UgmRgn"></div>
+<div id="zMy0v1"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -540,7 +548,7 @@ specifying additional arguments, or ‘none’ to hide the guide.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.3.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -553,13 +561,13 @@ specifying additional arguments, or ‘none’ to hide the guide.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("UgmRgn").appendChild(div);
+            document.getElementById("zMy0v1").appendChild(div);
         };
-        var e = document.getElementById("UgmRgn");
+        var e = document.getElementById("zMy0v1");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="4iOieL"></div>
+</div><div class="output text_html">   <div id="Siwynz"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -574,6 +582,19 @@ specifying additional arguments, or ‘none’ to hide the guide.</p>
 "y":"y"
 },
 "data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"str",
+"column":"c"
+},{
+"type":"float",
+"column":"v"
+}]
 },
 "guides":{
 "shape":{
@@ -609,7 +630,118 @@ specifying additional arguments, or ‘none’ to hide the guide.</p>
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("4iOieL");
+           var plotContainer = document.getElementById("Siwynz");
+           window.letsPlotCall(function() {{
+               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+           }});
+       })();
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos"> 5</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="linenos"> 7</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">ggplot</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">},</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="linenos"> 9</span>    <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">manual_key</span><span class="o">=</span><span class="s2">&quot;point&quot;</span><span class="p">)</span> <span class="o">+</span> \
+<span class="linenos">10</span>    <span class="n">geom_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">manual_key</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">11</span>    <span class="n">guides</span><span class="p">(</span><span class="n">manual</span><span class="o">=</span><span class="n">guide_legend</span><span class="p">(</span><span class="s1">&#39;Zones&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="UZ2Gn4"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.0/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("UZ2Gn4").appendChild(div);
+        };
+        var e = document.getElementById("UZ2Gn4");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="l7sDdL"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+       (function() {
+           var plotSpec={
+"data":{
+"x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0],
+"y":[0.3745401188473625,0.9507143064099162,0.7319939418114051,0.5986584841970366,0.15601864044243652,0.15599452033620265,0.05808361216819946,0.8661761457749352,0.6011150117432088,0.7080725777960455]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+}]
+},
+"guides":{
+"manual":{
+"name":"legend",
+"title":"Zones",
+"ncol":2.0
+}
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"manual_key":"point",
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+},
+"manual_key":"line",
+"data_meta":{
+},
+"color":"blue",
+"data":{
+}
+}],
+"metainfo_list":[]
+};
+           var plotContainer = document.getElementById("l7sDdL");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -680,7 +812,7 @@ specifying additional arguments, or ‘none’ to hide the guide.</p>
 <p class="sphinx-version theme-version">
   Created using
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
-  7.3.7 and
+  7.4.7 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
   0.15.4.
 <p></div>

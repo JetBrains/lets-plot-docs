@@ -35,7 +35,6 @@ The :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function thus allows
     import pandas as pd
 
     from lets_plot import *
-    from lets_plot.mapping import as_discrete
     LetsPlot.setup_html()
 
     mpg = pd.read_csv('https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv')

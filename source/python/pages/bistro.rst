@@ -169,3 +169,40 @@ Examples:
 
 - .. extref:: residual_plot
       :type: text
+
+
+.. _bistro_waterfall_plot:
+
+Waterfall Plot
+--------------
+
+:py:mod:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
+
+.. grid:: 4
+    :class-container: preview-gallery wide-grid
+
+    .. grid-item-card::
+
+        .. extref:: waterfall_plot
+            :image: bistro-0
+
+    .. grid-item-card::
+
+        .. extref:: waterfall_plot
+            :image: bistro-1
+
+    .. grid-item-card::
+
+        .. extref:: waterfall_plot
+            :image: bistro-2
+
+    .. grid-item-card::
+
+        .. extref:: waterfall_plot
+            :image: bistro-3
+
+
+Examples:
+
+- .. extref:: waterfall_plot
+      :type: text

@@ -47,7 +47,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9683ad65"></script>
+    <script src="../../../_static/documentation_options.js?v=2f20d6c1"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -159,7 +159,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.3.3</p>
+  <p>v4.4.0</p>
 </a>
 </div>
     
@@ -522,34 +522,33 @@ boxplots, or other distribution visualization layers in the margins of the x- an
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">lets_plot.mapping</span> <span class="kn">import</span> <span class="n">as_discrete</span>
-<span class="linenos"> 4</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos"> 5</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">theme_light</span><span class="p">())</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="n">cov0</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.8</span><span class="p">],</span>
-<span class="linenos">10</span>     <span class="p">[</span><span class="o">-</span><span class="mf">.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<span class="linenos">11</span><span class="n">cov1</span><span class="o">=</span><span class="p">[[</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.1</span><span class="p">],</span>
-<span class="linenos">12</span>       <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">]]</span>
-<span class="linenos">13</span>
-<span class="linenos">14</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="linenos">15</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-<span class="linenos">18</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">)),</span>
-<span class="linenos">19</span>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y0</span><span class="p">,</span><span class="n">y1</span><span class="p">)),</span>
-<span class="linenos">20</span>    <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">200</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">200</span>
-<span class="linenos">21</span><span class="p">)</span>
-<span class="linenos">22</span>
-<span class="linenos">23</span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">()</span>
-<span class="hll"><span class="linenos">24</span><span class="n">p</span> <span class="o">+</span> <span class="n">ggmarginal</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">geom_density</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="linenos"> 3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">theme_light</span><span class="p">())</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">cov0</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.8</span><span class="p">],</span>
+<span class="linenos"> 9</span>     <span class="p">[</span><span class="o">-</span><span class="mf">.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="linenos">10</span><span class="n">cov1</span><span class="o">=</span><span class="p">[[</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.1</span><span class="p">],</span>
+<span class="linenos">11</span>       <span class="p">[</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">]]</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="linenos">14</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<span class="linenos">17</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">)),</span>
+<span class="linenos">18</span>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y0</span><span class="p">,</span><span class="n">y1</span><span class="p">)),</span>
+<span class="linenos">19</span>    <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">200</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">200</span>
+<span class="linenos">20</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">()</span>
+<span class="hll"><span class="linenos">23</span><span class="n">p</span> <span class="o">+</span> <span class="n">ggmarginal</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">geom_density</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="XZ2C0n"></div>
+<div id="7pQ2l9"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -560,7 +559,7 @@ boxplots, or other distribution visualization layers in the margins of the x- an
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.3.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -573,13 +572,13 @@ boxplots, or other distribution visualization layers in the margins of the x- an
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("XZ2C0n").appendChild(div);
+            document.getElementById("7pQ2l9").appendChild(div);
         };
-        var e = document.getElementById("XZ2C0n");
+        var e = document.getElementById("7pQ2l9");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="e9P9ak"></div>
+</div><div class="output text_html">   <div id="ioN5a3"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -595,6 +594,16 @@ boxplots, or other distribution visualization layers in the margins of the x- an
 "fill":"c"
 },
 "data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"str",
+"column":"c"
+}]
 },
 "theme":{
 "name":"light"
@@ -645,7 +654,7 @@ boxplots, or other distribution visualization layers in the margins of the x- an
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("e9P9ak");
+           var plotContainer = document.getElementById("ioN5a3");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -716,7 +725,7 @@ boxplots, or other distribution visualization layers in the margins of the x- an
 <p class="sphinx-version theme-version">
   Created using
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
-  7.3.7 and
+  7.4.7 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
   0.15.4.
 <p></div>

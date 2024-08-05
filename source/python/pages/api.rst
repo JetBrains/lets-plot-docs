@@ -97,6 +97,7 @@ Standard Geometries
     geom_abline
     geom_hline
     geom_vline
+    geom_band
     geom_boxplot
     geom_violin
     geom_area_ridges
@@ -223,6 +224,7 @@ Color Scales
     scale_color_grey
     scale_color_brewer
     scale_color_viridis
+    scale_color_cmapmpl
 
 Fill Scales
 ~~~~~~~~~~~
@@ -241,6 +243,7 @@ Fill Scales
     scale_fill_grey
     scale_fill_brewer
     scale_fill_viridis
+    scale_fill_cmapmpl
 
 Flexible Color Scales
 ~~~~~~~~~~~~~~~~~~~~~
@@ -259,6 +262,7 @@ Flexible Color Scales
     scale_grey
     scale_brewer
     scale_viridis
+    scale_cmapmpl
 
 Shape Scales
 ~~~~~~~~~~~~
@@ -352,6 +356,7 @@ Scale Guides
     guide_legend
     guide_colorbar
     guides
+    layer_key
 
 
 Positions
@@ -529,6 +534,15 @@ Bistro Module
     :template: base.rst
 
     residual_plot
+
+.. currentmodule:: lets_plot.bistro.waterfall
+
+.. autosummary::
+    :toctree: api
+    :nosignatures:
+    :template: base.rst
+
+    waterfall_plot
 
 
 Geospatial

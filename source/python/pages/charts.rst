@@ -213,6 +213,8 @@ Examples:
 - .. extref:: continuous_color_scales
       :type: text
       :text: Using scales
+- .. extref:: geom_histogram_threshold
+      :type: text
 
 
 |l6| |d6| Stats
@@ -449,7 +451,8 @@ Examples:
 :py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
 :py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`,
 :py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`,
-:py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
+:py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`,
+:py:mod:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
 
 "Bistro" plots is a collection of "compound plots" allowing users to generate intricate charts without the need for extensive coding.
 
@@ -598,9 +601,7 @@ Examples:
       :type: text
 - .. extref:: theme_flavors
       :type: text
-- .. extref:: legend_and_axis
-      :type: text
-- .. extref:: legend_text_multiline
+- .. extref:: legend
       :type: text
 - .. extref:: tooltip_config
       :type: text
@@ -618,6 +619,18 @@ Examples:
 
 Miscellaneous
 -------------
+
+Manual Legend
+~~~~~~~~~~~~~
+
+In Lets-Plot, as in ggplot2, legends are automatically generated based on the aesthetic mappings in the plot.
+Sometimes, however, this automatic generation doesn't provide the precise control needed for complex visualizations.
+Options ``manual_key`` and ``override_aes`` addresses this limitation.
+
+Examples:
+
+- .. extref:: legend
+      :type: text
 
 Multiple Color Scales
 ~~~~~~~~~~~~~~~~~~~~~
