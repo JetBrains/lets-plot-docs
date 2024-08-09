@@ -196,3 +196,51 @@ Line Types
        scale_linetype_identity() + \
        ggsize(800, 600) + \
        theme_void()
+
+
+Text
+----
+
+Font Family
+~~~~~~~~~~~
+
+Universal font names:
+
+.. jupyter-execute::
+   :hide-code:
+
+   families = ['sans', 'serif', 'mono']
+   data = dict(
+       y = list(range(len(families))),
+       f = families
+   )
+   ggplot(data) + \
+       geom_label(aes(y='y', label='f', family='f'), \
+                  x=0, size=1, size_unit='y') + \
+       scale_y_reverse(limits=[-.5, len(families) - .5]) + \
+       ggsize(200, 400) + \
+       theme_void()
+
+The default font family is ``'sans'``.
+
+You can also use the name of any other font installed on your system (e.g. ``"Times New Roman"``).
+
+Font Face
+~~~~~~~~~
+
+.. jupyter-execute::
+   :hide-code:
+
+   faces = ['plain', 'bold', 'italic', 'bold italic']
+   data = dict(
+       y = list(range(len(faces))),
+       f = faces
+   )
+   ggplot(data) + \
+       geom_label(aes(y='y', label='f', fontface='f'), \
+                  x=0, size=1, size_unit='y') + \
+       scale_y_reverse(limits=[-.5, len(faces) - .5]) + \
+       ggsize(300, 400) + \
+       theme_void()
+
+The default font face is ``'plain'``.
