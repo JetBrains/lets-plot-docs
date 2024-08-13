@@ -28,7 +28,7 @@ REPLACE_LP_TO_FORK = True
 REPLACE_TO_BRANCH = "dev"
 REPLACES = {
     "lets-plot.org": "asmirnov-horis.github.io/lets-plot-docs",
-    "nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples": "nbviewer.org/github/ASmirnov-HORIS/lets-plot-docs/blob/{0}/source/examples".format(REPLACE_TO_BRANCH),
+    "nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source": "nbviewer.org/github/ASmirnov-HORIS/lets-plot-docs/blob/{0}/source".format(REPLACE_TO_BRANCH),
 }
 
 checked_external_links = set()
