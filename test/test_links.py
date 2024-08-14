@@ -24,11 +24,11 @@ NO_WARNING_STATUS_CODES = [
     403, # access to the requested resource is forbidden
     429, # too many requests in a given amount of time
 ]
-REPLACE_LP_TO_FORK = True
-REPLACE_TO_BRANCH = "dev"
+PREPUBLISH_BRANCH = os.getenv("prepublish_branch")
+REPLACE_LP_TO_FORK = PREPUBLISH_BRANCH != ""
 REPLACES = {
     "lets-plot.org": "asmirnov-horis.github.io/lets-plot-docs",
-    "nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source": "nbviewer.org/github/ASmirnov-HORIS/lets-plot-docs/blob/{0}/source".format(REPLACE_TO_BRANCH),
+    "nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source": "nbviewer.org/github/ASmirnov-HORIS/lets-plot-docs/blob/{0}/source".format(PREPUBLISH_BRANCH),
 }
 
 checked_external_links = set()
