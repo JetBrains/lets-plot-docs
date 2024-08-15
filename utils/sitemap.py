@@ -19,7 +19,7 @@ class SitemapURL:
     priority = None
 
     def __init__(self, path: str, web_root: str):
-        self._path = path
+        self._path = path[1:] if path.startswith("/") else path
         self.url = "{0}/{1}".format(web_root, self._path)
 
     def apply(self, transformation):
