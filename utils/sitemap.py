@@ -117,7 +117,7 @@ def generate_sitemap(html_dir: str, sitemap_filename: str = DEF_SITEMAP_FILENAME
     urlset.setAttribute('xmlns', "http://www.sitemaps.org/schemas/sitemap/0.9")
     xml_doc.appendChild(urlset)
 
-    for html_filename in _get_all_html_filenames(html_dir):
+    for html_filename in sorted(_get_all_html_filenames(html_dir)):
         sitemap_url = SitemapURL(html_filename, web_root)
         for transformation in transformations:
             sitemap_url = sitemap_url.apply(transformation)
