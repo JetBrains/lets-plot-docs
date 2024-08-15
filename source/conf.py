@@ -40,6 +40,7 @@ extensions = [
     "sphinx_reredirects",
     # custom extensions
     "create_cname",
+    "create_sitemap",
     "extref",
     "switch_lets_plot",
 ]
