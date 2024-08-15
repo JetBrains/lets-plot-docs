@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting." name="description" />
-<meta content="formatting, number format, date format, time format, tooltip customization" name="keywords" />
+<meta content="formatting, number format, date format, time format, tooltip customization, annotation customization" name="keywords" />
 <meta property="og:title" content="Lets-Plot: Advanced Formatting and Substitutions" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/formats.html" />
@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ac35cfe9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=a3daccbf" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
   
@@ -600,8 +600,9 @@ s         --&gt;  &quot;42.0000&quot;
 The string template contains “replacement fields” surrounded by curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>.
 Anything that is not contained in braces is considered literal text, which is copied unchanged to the result string.
 If you need to include a brace character in the literal text, it can be escaped by doubling: {{ and }}.
-This approach is used in function <a class="reference internal" href="api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips" title="lets_plot.layer_tooltips"><code class="xref py py-mod docutils literal notranslate"><span class="pre">layer_tooltips()</span></code></a> to customize the content of tooltips.</p>
-<p>See: <a class="reference internal" href="tooltips.html"><span class="doc">Tooltip Customization in Lets-Plot</span></a>.</p>
+This approach is used in functions <a class="reference internal" href="api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips" title="lets_plot.layer_tooltips"><code class="xref py py-mod docutils literal notranslate"><span class="pre">layer_tooltips()</span></code></a> and
+<a class="reference internal" href="api/lets_plot.layer_labels.html#lets_plot.layer_labels" title="lets_plot.layer_labels"><code class="xref py py-mod docutils literal notranslate"><span class="pre">layer_labels()</span></code></a> to customize the content of tooltips and annotations.</p>
+<p>See: <a class="reference internal" href="tooltips.html"><span class="doc">Tooltip Customization in Lets-Plot</span></a> and <a class="reference internal" href="annotations.html"><span class="doc">Annotating Charts in Lets-Plot</span></a>.</p>
 </section>
 <section id="date-and-time-format">
 <span id="formats-datetime"></span><h2>Date and Time Format<a class="headerlink" href="#date-and-time-format" title="Link to this heading">#</a></h2>
@@ -669,7 +670,7 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 <div class="jupyter_cell docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="pnUz2U"></div>
+<div id="1Sq7sR"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -693,9 +694,9 @@ This approach is used in function <a class="reference internal" href="api/lets_p
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("pnUz2U").appendChild(div);
+            document.getElementById("1Sq7sR").appendChild(div);
         };
-        var e = document.getElementById("pnUz2U");
+        var e = document.getElementById("1Sq7sR");
         e.appendChild(script);
     })()
 </script>
@@ -717,7 +718,7 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="t0Jpzb"></div>
+<div class="output text_html">   <div id="Duzj51"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -745,7 +746,7 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("t0Jpzb");
+           var plotContainer = document.getElementById("Duzj51");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -769,7 +770,7 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="bbZxI7"></div>
+<div class="output text_html">   <div id="M3xGt6"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
        (function() {
            var plotSpec={
@@ -797,7 +798,7 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 }],
 "metainfo_list":[]
 };
-           var plotContainer = document.getElementById("bbZxI7");
+           var plotContainer = document.getElementById("M3xGt6");
            window.letsPlotCall(function() {{
                LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
            }});
@@ -826,6 +827,10 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 <li><p>if the tooltip <a class="reference internal" href="api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.format" title="lets_plot.layer_tooltips.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> is not specified, the tooltip will get the value after applying the default formatting from the scale (without using the specified format for the scale).</p></li>
 </ul>
 </section>
+</section>
+<section id="annotating-charts">
+<span id="formats-annotations"></span><h2>Annotating Charts<a class="headerlink" href="#annotating-charts" title="Link to this heading">#</a></h2>
+<p>In the same way you can use formatting for annotation pies and bar charts, see: <a class="reference internal" href="annotations.html"><span class="doc">Annotating Charts</span></a>.</p>
 </section>
 <section id="demo-notebooks">
 <span id="formats-demo-notebooks"></span><h2>Demo Notebooks<a class="headerlink" href="#demo-notebooks" title="Link to this heading">#</a></h2>
@@ -873,6 +878,7 @@ This approach is used in function <a class="reference internal" href="api/lets_p
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-tooltips">Axis Tooltips</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotating-charts">Annotating Charts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-notebooks">Demo Notebooks</a></li>
 </ul>
   </nav></div>
