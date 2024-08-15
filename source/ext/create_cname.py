@@ -11,7 +11,7 @@ def env_updated_handler(app, env):
 
 def setup(app):
     app.add_config_value('cname_url', None, '')
-    # A list of all core events can be found here: https://www.sphinx-doc.org/en/master/extdev/appapi.html#sphinx-core-events
+    # A list of all core events can be found here: https://www.sphinx-doc.org/en/master/extdev/event_callbacks.html#core-events-overview
     # If you start creating a CNAME one step earlier (env-merge-info event), it will be deleted
     app.connect('env-updated', env_updated_handler)
     return {
