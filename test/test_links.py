@@ -24,17 +24,17 @@ NO_WARNING_STATUS_CODES = [
     403, # access to the requested resource is forbidden
     429, # too many requests in a given amount of time
 ]
-REPLACE_LP_TO_FORK = True
-REPLACE_TO_BRANCH = "dev"
+PREPUBLISH_BRANCH = os.getenv("prepublish_branch")
+REPLACE_LP_TO_FORK = PREPUBLISH_BRANCH != ""
 REPLACES = {
     "lets-plot.org": "asmirnov-horis.github.io/lets-plot-docs",
-    "nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples": "nbviewer.org/github/ASmirnov-HORIS/lets-plot-docs/blob/{0}/source/examples".format(REPLACE_TO_BRANCH),
+    "nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source": "nbviewer.org/github/ASmirnov-HORIS/lets-plot-docs/blob/{0}/source".format(PREPUBLISH_BRANCH),
 }
 
 checked_external_links = set()
 
 def generate_links():
-    for page in generate_pages(BUILD_DIR):
+    for page in generate_pages(BUILD_DIR, kotlin=True):
         with codecs.open(page, 'r', 'utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
@@ -42,6 +42,12 @@ def generate_links():
 
 @pytest.mark.parametrize(('page', 'a'), generate_links())
 def test_link(page, a):
+    if not page.startswith("{0}/kotlin".format(BUILD_DIR)):
+        check_lp_link(page, a)
+    else:
+        check_lpk_link(page, a)
+
+def check_lp_link(page, a):
     classes = a['class'] if a.has_attr('class') else []
     href = a['href']
     assert href, "Wrong 'href' attribute"
@@ -61,6 +67,19 @@ def test_link(page, a):
         check_url(href, page)
     else: # Home or header link
         assert "navbar-brand" in classes or "nav-link" in classes, "Wrong 'class' attribute"
+
+def check_lpk_link(page, a):
+    classes = a['class'] if a.has_attr('class') else []
+    if not a.has_attr('href'):
+        return
+    href = a['href']
+    assert href, "Wrong 'href' attribute"
+    assert href != "", "Wrong 'href' attribute"
+    if href == "#": # Not a link actually
+        return
+    if not href.startswith("http"): # For LPK only external links will be checked
+        return
+    check_url(href, page)
 
 def check_url(href, source):
     if href in checked_external_links:

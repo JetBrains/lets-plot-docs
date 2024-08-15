@@ -65,6 +65,7 @@ Lines:
 
 Areas:
 :py:mod:`area <lets_plot.geom_area>`,
+:py:mod:`band <lets_plot.geom_band>`,
 :py:mod:`ribbon <lets_plot.geom_ribbon>`
 
 

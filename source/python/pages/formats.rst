@@ -8,7 +8,7 @@
 
 .. meta::
    :description: Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting.
-   :keywords: formatting, number format, date format, time format, tooltip customization
+   :keywords: formatting, number format, date format, time format, tooltip customization, annotation customization
 
 
 Formatting
@@ -142,9 +142,10 @@ The number format can be used in a template to create a string with variable sub
 The string template contains "replacement fields" surrounded by curly braces ``{}``. 
 Anything that is not contained in braces is considered literal text, which is copied unchanged to the result string. 
 If you need to include a brace character in the literal text, it can be escaped by doubling: {{ and }}.
-This approach is used in function :py:mod:`layer_tooltips() <lets_plot.layer_tooltips>` to customize the content of tooltips.
+This approach is used in functions :py:mod:`layer_tooltips() <lets_plot.layer_tooltips>` and
+:py:mod:`layer_labels() <lets_plot.layer_labels>` to customize the content of tooltips and annotations.
 
-See: :doc:`Tooltip Customization in Lets-Plot </python/pages/tooltips>`.
+See: :doc:`Tooltip Customization in Lets-Plot </python/pages/tooltips>` and :doc:`Annotating Charts in Lets-Plot </python/pages/annotations>`.
 
 
 .. _formats_datetime:
@@ -291,6 +292,14 @@ To format the axis tooltips, follow the rules:
 - the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is also applied to the axis tooltip;
 
 - if the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is not specified, the tooltip will get the value after applying the default formatting from the scale (without using the specified format for the scale).
+
+
+.. _formats_annotations:
+
+Annotating Charts
+-----------------
+
+In the same way you can use formatting for annotation pies and bar charts, see: :doc:`Annotating Charts</python/pages/annotations>`.
 
 
 .. _formats_demo_notebooks:

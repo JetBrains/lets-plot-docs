@@ -11,3 +11,8 @@ def test_cname():
     assert os.path.isfile(cname_fullpath), "CNAME file isn't presented in the build directory"
     with open(cname_fullpath, 'r') as f:
         assert f.read() == CNAME_CONTENT
+
+def test_sitemap():
+    SITEMAP_PATH = "sitemap.xml"
+    sitemap_fullpath = os.path.join(BUILD_DIR, SITEMAP_PATH)
+    assert os.path.isfile(sitemap_fullpath), "sitemap.xml file isn't presented in the build directory"

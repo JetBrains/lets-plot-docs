@@ -20,6 +20,243 @@ Aesthetics
    from lets_plot import *
    LetsPlot.setup_html()
 
+   pst_color_background = "#14181e"
+
+   def dark_theme():
+      return theme(
+          plot_background=element_rect(fill=pst_color_background),
+          geom=element_geom(pen="white", paper=pst_color_background)
+      )
+
+
+Color and Fill
+--------------
+
+Colors and fills of geometries can be specified in the following ways:
+
+- RGB/RGBA (e.g. ``"rgb(0, 0, 255)"``).
+
+- HEX (e.g. ``"#0000ff"``).
+
+- A name, one of:
+
+.. jupyter-execute::
+   :hide-code:
+
+   def get_cname(name):
+       if "_" in name:
+           return "{0}\n{1}\n{2}".format(name, name.replace("_", "-"), name.replace("_", ""))
+       else:
+           return name
+
+   cols = 5
+   border = .5
+   xcoeff = 1.5
+   ycoeff = 1.5
+   variant_colors = [
+       "dark_blue", "dark_green", "dark_magenta",
+       "light_blue", "light_gray", "light_green",
+       "light_yellow", "light_magenta", "light_cyan",
+       "light_pink", "very_light_gray", "very_light_yellow",
+   ]
+   colors = [
+       "white", "black", "gray",
+       "red", "green", "blue",
+       "yellow", "magenta", "cyan",
+       "orange", "pink",
+   ] + variant_colors
+   n = len(colors)
+   data = dict(
+       x = (int(n / cols + 1) * [xcoeff * v for v in range(cols)])[:n],
+       y = [ycoeff * int(i / cols) for i in range(n)],
+       c = colors,
+       cname = [get_cname(name) for name in colors],
+   )
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot(data, aes("x", "y", fill="c")) + \
+       geom_point(shape=22, size=.75, size_unit='x', tooltips=layer_tooltips().line("@cname")) + \
+       geom_text(aes(label="c"), position=position_nudge(y=.6), family='mono') + \
+       scale_y_reverse() + \
+       scale_fill_identity() + \
+       coord_fixed() + \
+       xlim(-xcoeff * border, xcoeff * (cols - 1 + border)) + ylim(-border, ycoeff * int((n - 1) / cols) + border) + \
+       ggsize(800, 800) + \
+       theme_void()
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot(data, aes("x", "y", fill="c")) + \
+       geom_point(shape=22, size=.75, size_unit='x', tooltips=layer_tooltips().line("@cname")) + \
+       geom_text(aes(label="c"), position=position_nudge(y=.6), family='mono') + \
+       scale_y_reverse() + \
+       scale_fill_identity() + \
+       coord_fixed() + \
+       xlim(-xcoeff * border, xcoeff * (cols - 1 + border)) + ylim(-border, ycoeff * int((n - 1) / cols) + border) + \
+       ggsize(800, 800) + \
+       theme_void() + dark_theme()
+
+.. raw:: html
+
+    <script>
+        const colorJupyterElements = document.getElementById("color-and-fill").getElementsByClassName("jupyter_cell");
+        colorJupyterElements[1].classList.add("only-light");
+        colorJupyterElements[2].classList.add("only-dark");
+    </script>
+
+- A system color name, one of:
+
+.. jupyter-execute::
+    :hide-code:
+
+    import pandas as pd
+    w, h = 360, 270
+    th, lh = 50, 75
+    df = pd.read_csv("https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv")
+
+.. grid:: 3
+
+    .. grid-item-card::
+        :shadow: none
+        :class-item: system-color-pen
+
+        .. jupyter-execute::
+            :hide-code:
+
+            p1_title = ggplot() + \
+                geom_label(x=0, label="pen", \
+                           size=10, label_size=0, color='paper', fill='pen', family='mono') + \
+                theme_void()
+            p1_label = ggplot() + \
+                geom_text(x=0, label='A hight-contrast color\ncommonly used to draw dots and lines', \
+                          size=10) + \
+                theme_void()
+            p1_example = ggplot(df, aes("cty", "hwy")) + \
+                geom_point()
+            bunch = GGBunch()
+            bunch.add_plot(p1_title, 0, 0, w, th)
+            bunch.add_plot(p1_label, 0, th, w, lh)
+            bunch.add_plot(p1_example, 0, th + lh, w, h)
+            bunch.show()
+
+        .. jupyter-execute::
+            :hide-code:
+
+            p1_title = ggplot() + \
+                geom_label(x=0, label="pen", \
+                           size=10, label_size=0, color='paper', fill='pen', family='mono') + \
+                theme_void() + dark_theme()
+            p1_label = ggplot() + \
+                geom_text(x=0, label='A hight-contrast color\ncommonly used to draw dots and lines', \
+                          size=10) + \
+                theme_void() + dark_theme()
+            p1_example = ggplot(df, aes("cty", "hwy")) + \
+                geom_point() + dark_theme()
+            bunch = GGBunch()
+            bunch.add_plot(p1_title, 0, 0, w, th)
+            bunch.add_plot(p1_label, 0, th, w, lh)
+            bunch.add_plot(p1_example, 0, th + lh, w, h)
+            bunch.show()
+
+    .. grid-item-card::
+        :shadow: none
+        :class-item: system-color-brush
+
+        .. jupyter-execute::
+            :hide-code:
+
+            p2_title = ggplot() + \
+                geom_label(x=0, label="brush", \
+                           size=10, label_size=0, color='paper', fill='brush', family='mono') + \
+                theme_void()
+            p2_label = ggplot() + \
+                geom_text(x=0, label='A color we often use to fill shapes', \
+                          size=10) + \
+                theme_void()
+            p2_example = ggplot(df, aes("fl")) + \
+                geom_bar()
+            bunch = GGBunch()
+            bunch.add_plot(p2_title, 0, 0, w, th)
+            bunch.add_plot(p2_label, 0, th, w, lh)
+            bunch.add_plot(p2_example, 0, th + lh, w, h)
+            bunch.show()
+
+        .. jupyter-execute::
+            :hide-code:
+
+            p2_title = ggplot() + \
+                geom_label(x=0, label="brush", \
+                           size=10, label_size=0, color='paper', fill='brush', family='mono') + \
+                theme_void() + dark_theme()
+            p2_label = ggplot() + \
+                geom_text(x=0, label='A color we often use to fill shapes', \
+                          size=10) + \
+                theme_void() + dark_theme()
+            p2_example = ggplot(df, aes("fl")) + \
+                geom_bar() + dark_theme()
+            bunch = GGBunch()
+            bunch.add_plot(p2_title, 0, 0, w, th)
+            bunch.add_plot(p2_label, 0, th, w, lh)
+            bunch.add_plot(p2_example, 0, th + lh, w, h)
+            bunch.show()
+
+    .. grid-item-card::
+        :shadow: none
+        :class-item: system-color-paper
+
+        .. jupyter-execute::
+            :hide-code:
+
+            p3_title = ggplot() + \
+                geom_label(x=0, label="paper", \
+                           size=10, color='pen', fill='paper', family='mono') + \
+                theme_void()
+            p3_label = ggplot() + \
+                geom_text(x=0, label='A "background" color\nwe often use to fill shapes as well', \
+                          size=10) + \
+                theme_void()
+            p3_example = ggplot(df, aes("drv", "cty")) + \
+                geom_boxplot()
+            bunch = GGBunch()
+            bunch.add_plot(p3_title, 0, 0, w, th)
+            bunch.add_plot(p3_label, 0, th, w, lh)
+            bunch.add_plot(p3_example, 0, th + lh, w, h)
+            bunch.show()
+
+        .. jupyter-execute::
+            :hide-code:
+
+            p3_title = ggplot() + \
+                geom_label(x=0, label="paper", \
+                           size=10, color='pen', fill='paper', family='mono') + \
+                theme_void() + dark_theme()
+            p3_label = ggplot() + \
+                geom_text(x=0, label='A "background" color\nwe often use to fill shapes as well', \
+                          size=10) + \
+                theme_void() + dark_theme()
+            p3_example = ggplot(df, aes("drv", "cty")) + \
+                geom_boxplot() + dark_theme()
+            bunch = GGBunch()
+            bunch.add_plot(p3_title, 0, 0, w, th)
+            bunch.add_plot(p3_label, 0, th, w, lh)
+            bunch.add_plot(p3_example, 0, th + lh, w, h)
+            bunch.show()
+
+.. raw:: html
+
+    <script>
+        const gridItemNames = ["system-color-pen", "system-color-brush", "system-color-paper"];
+        for (let i = 0; i < gridItemNames.length; i++) {
+            const className = gridItemNames[i];
+            const gridItemJupyterElements = document.getElementsByClassName(className)[0].getElementsByClassName("jupyter_cell");
+            gridItemJupyterElements[0].classList.add("only-light");
+            gridItemJupyterElements[1].classList.add("only-dark");
+        }
+    </script>
+
 
 Point Shapes
 ------------
@@ -34,12 +271,33 @@ Point Shapes
        'shape': list(range(n)),
    }
 
+.. jupyter-execute::
+   :hide-code:
+
    ggplot(points_data, aes('x', 'y')) + scale_shape_identity() + \
-       geom_text(aes(label='shape'), size=15, fontface='bold', position=position_nudge(y=.3)) + \
+       geom_text(aes(label='shape'), size=15, fontface='bold', family='mono', position=position_nudge(y=.3)) + \
        geom_point(aes(shape='shape'), size=10, fill="#fa9fb5", tooltips='none') + \
        xlim(0, 6) + ylim(0, 3) + \
        ggsize(800, 600) + \
        theme_void()
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot(points_data, aes('x', 'y')) + scale_shape_identity() + \
+       geom_text(aes(label='shape'), size=15, fontface='bold', family='mono', position=position_nudge(y=.3)) + \
+       geom_point(aes(shape='shape'), size=10, fill="#fa9fb5", tooltips='none') + \
+       xlim(0, 6) + ylim(0, 3) + \
+       ggsize(800, 600) + \
+       theme_void() + dark_theme()
+
+.. raw:: html
+
+    <script>
+        const shapeJupyterElements = document.getElementById("point-shapes").getElementsByClassName("jupyter_cell");
+        shapeJupyterElements[1].classList.add("only-light");
+        shapeJupyterElements[2].classList.add("only-dark");
+    </script>
 
 
 Line Types
@@ -51,13 +309,134 @@ Line Types
    linetype_names = ['blank', 'solid', 'dashed', 'dotted', 'dotdash', 'longdash', 'twodash']
    linetype_ids = list(range(len(linetype_names)))
 
+.. jupyter-execute::
+   :hide-code:
+
    ggplot() + \
        geom_spoke(aes(y=linetype_ids), x=0, angle=0, radius=1, size=4, color="#fa9fb5", alpha=.25) + \
        geom_spoke(aes(y=linetype_ids, linetype=linetype_ids), x=0, angle=0, radius=1, size=2, show_legend=False) + \
-       geom_label(aes(y=linetype_ids, label=linetype_ids), x=0, hjust=0, size=12, label_size=0, label_format="{d}:", position=position_nudge(y=.3)) + \
-       geom_label(aes(y=linetype_ids, label=linetype_names), x=.04, hjust=0, size=12, label_size=0, label_format="'{}'", position=position_nudge(y=.3)) + \
+       geom_label(aes(y=linetype_ids, label=linetype_ids), \
+                  x=0, hjust=0, size=12, label_size=0, label_format="{d}:", position=position_nudge(y=.3), family='mono') + \
+       geom_label(aes(y=linetype_ids, label=linetype_names), \
+                  x=.04, hjust=0, size=12, label_size=0, label_format="'{}'", position=position_nudge(y=.3), family='mono') + \
        scale_x_continuous(limits=[0, 1]) + \
        scale_y_reverse() + \
        scale_linetype_identity() + \
        ggsize(800, 600) + \
        theme_void()
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot() + \
+       geom_spoke(aes(y=linetype_ids), x=0, angle=0, radius=1, size=4, color="#fa9fb5", alpha=.25) + \
+       geom_spoke(aes(y=linetype_ids, linetype=linetype_ids), x=0, angle=0, radius=1, size=2, show_legend=False) + \
+       geom_label(aes(y=linetype_ids, label=linetype_ids), \
+                  x=0, hjust=0, size=12, label_size=0, label_format="{d}:", position=position_nudge(y=.3), family='mono') + \
+       geom_label(aes(y=linetype_ids, label=linetype_names), \
+                  x=.04, hjust=0, size=12, label_size=0, label_format="'{}'", position=position_nudge(y=.3), family='mono') + \
+       scale_x_continuous(limits=[0, 1]) + \
+       scale_y_reverse() + \
+       scale_linetype_identity() + \
+       ggsize(800, 600) + \
+       theme_void() + dark_theme()
+
+.. raw:: html
+
+    <script>
+        const linetypeJupyterElements = document.getElementById("line-types").getElementsByClassName("jupyter_cell");
+        linetypeJupyterElements[1].classList.add("only-light");
+        linetypeJupyterElements[2].classList.add("only-dark");
+    </script>
+
+
+Text
+----
+
+Font Family
+~~~~~~~~~~~
+
+Universal font names:
+
+.. jupyter-execute::
+   :hide-code:
+
+   families = ['sans', 'serif', 'mono']
+   data = dict(
+       y = list(range(len(families))),
+       f = families
+   )
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot(data) + \
+       geom_label(aes(y='y', label='f', family='f'), \
+                  x=0, size=1, size_unit='y') + \
+       scale_y_reverse(limits=[-.5, len(families) - .5]) + \
+       ggsize(200, 400) + \
+       theme_void()
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot(data) + \
+       geom_label(aes(y='y', label='f', family='f'), \
+                  x=0, size=1, size_unit='y') + \
+       scale_y_reverse(limits=[-.5, len(families) - .5]) + \
+       ggsize(200, 400) + \
+       theme_void() + dark_theme()
+
+.. raw:: html
+
+    <script>
+        const fontFamilyJupyterElements = document.getElementById("font-family").getElementsByClassName("jupyter_cell");
+        fontFamilyJupyterElements[1].classList.add("only-light");
+        fontFamilyJupyterElements[2].classList.add("only-dark");
+    </script>
+
+The default font family is ``'sans'``.
+
+You can also use the name of any other font installed on your system (e.g. ``"Times New Roman"``).
+
+Font Face
+~~~~~~~~~
+
+.. jupyter-execute::
+   :hide-code:
+
+   faces = ['plain', 'bold', 'italic', 'bold italic']
+   data = dict(
+       y = list(range(len(faces))),
+       f = faces
+   )
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot(data) + \
+       geom_label(aes(y='y', label='f', fontface='f'), \
+                  x=0, size=1, size_unit='y') + \
+       scale_y_reverse(limits=[-.5, len(faces) - .5]) + \
+       ggsize(300, 400) + \
+       theme_void()
+
+.. jupyter-execute::
+   :hide-code:
+
+   ggplot(data) + \
+       geom_label(aes(y='y', label='f', fontface='f'), \
+                  x=0, size=1, size_unit='y') + \
+       scale_y_reverse(limits=[-.5, len(faces) - .5]) + \
+       ggsize(300, 400) + \
+       theme_void() + dark_theme()
+
+.. raw:: html
+
+    <script>
+        const fontFaceJupyterElements = document.getElementById("font-face").getElementsByClassName("jupyter_cell");
+        fontFaceJupyterElements[1].classList.add("only-light");
+        fontFaceJupyterElements[2].classList.add("only-dark");
+    </script>
+
+The default font face is ``'plain'``.
