@@ -42,7 +42,7 @@ def generate_links():
 
 @pytest.mark.parametrize(('page', 'a'), generate_links())
 def test_link(page, a):
-    if not page.startswith("{0}/kotlin".format(BUILD_DIR)):
+    if not page.startswith(os.path.join(BUILD_DIR, "kotlin")):
         check_lp_link(page, a)
     else:
         check_lpk_link(page, a)
