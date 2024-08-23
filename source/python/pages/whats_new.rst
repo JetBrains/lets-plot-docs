@@ -30,7 +30,7 @@ What is new in 4.4.0
 
   See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/manual_legend.ipynb>`__.
 
-- **Customizing Legends Appearence**
+- **Customizing Legends Appearance**
 
   The ``override_aes`` parameter in the ``guide_legend()`` function.
 

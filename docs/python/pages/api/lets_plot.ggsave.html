@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=a3daccbf" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
@@ -47,7 +47,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=2f20d6c1"></script>
+    <script src="../../../_static/documentation_options.js?v=8b5852d8"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -159,7 +159,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.4.0</p>
+  <p>v4.4.1</p>
 </a>
 </div>
     
@@ -502,7 +502,7 @@ if not specified otherwise (see the <cite>path</cite> parameter).</p>
 to one of the supported formats: SVG, HTML (or HTM), PNG (requires CairoSVG library), PDF.</p>
 </dd>
 <dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path to a directory to save image files in.
-By default it is ${user.dir}/lets-plot-images.</p>
+By default, it is ${user.dir}/lets-plot-images.</p>
 </dd>
 <dt><strong>iframe</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether to wrap HTML page into a iFrame.
 Only applicable when exporting to HTML.
@@ -532,6 +532,29 @@ Only applicable when exporting to PNG or PDF.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Output format is inferred from the filename extension.</p>
+<p>For PNG and PDF formats:</p>
+<ol class="arabic simple">
+<li><p>If <cite>w</cite>, <cite>h</cite>, <cite>unit</cite>, and <cite>dpi</cite> are all specified:</p>
+<ul class="simple">
+<li><p><cite>scale</cite> is ignored.</p></li>
+<li><p>The plot’s pixel size (default or set by <cite>ggsize()</cite>) is converted to the specified units using the given dpi.</p></li>
+<li><p>If the aspect ratio of <cite>w</cite> and <cite>h</cite> differs from the plot’s pixel aspect ratio:</p>
+<ul>
+<li><p>The plot maintains its original (pixel) aspect ratio.</p></li>
+<li><p>It’s fitted within the specified <cite>w</cite> x <cite>h</cite> area.</p></li>
+<li><p>Any extra space is left empty.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>If <cite>w</cite>, <cite>h</cite> are not specified:</p>
+<ul class="simple">
+<li><p>The <cite>scale</cite> parameter is used to determine the output size.</p></li>
+</ul>
+</li>
+</ol>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">lets_plot</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
