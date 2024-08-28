@@ -39,12 +39,15 @@ class page_parser():
             self.driver.close()
 
 class notebook_parser(page_parser):
+    import re
 
-    def __init__(self, notebook):
+    def __init__(self, notebook, lpk_descriptor):
         self.notebook = notebook
+        self.lpk_descriptor = lpk_descriptor
         self.page = notebook.replace(".ipynb", ".html")
 
     def __enter__(self):
+        self._update_descriptors(revert=False)
         subprocess.check_output("jupyter nbconvert --to notebook --inplace --execute {0}".format(self.notebook), \
                                 shell=True, timeout=TIMEOUT)
         subprocess.check_output("jupyter nbconvert --to html {0}".format(self.notebook), \
@@ -54,3 +57,48 @@ class notebook_parser(page_parser):
     def __exit__(self, type, value, traceback):
         super().__exit__(type, value, traceback)
         os.remove(self.page)
+        self._update_descriptors(revert=True)
+
+    def _update_descriptors(self, *, revert):
+        if self.lpk_descriptor is None:
+            return
+
+        if revert:
+            search_lp_descriptor = '%use lets-plot@.+"'
+            from_lp_descriptor = "%use lets-plot@{0}".format(self.lpk_descriptor)
+            to_lp_descriptor = "%use lets-plot"
+            search_lpgt_descriptor = '%use lets-plot-gt@.+"'
+            from_lpgt_descriptor = "%use lets-plot-gt@{0}".format(self.lpk_descriptor.replace("lets-plot.json", "lets-plot-gt.json"))
+            to_lpgt_descriptor = "%use lets-plot-gt"
+        else:
+            search_lp_descriptor = '%use lets-plot[^-]*"'
+            from_lp_descriptor = "%use lets-plot"
+            to_lp_descriptor = "%use lets-plot@{0}".format(self.lpk_descriptor)
+            search_lpgt_descriptor = "%use lets-plot-gt"
+            from_lpgt_descriptor = "%use lets-plot-gt"
+            to_lpgt_descriptor = "%use lets-plot-gt@{0}".format(self.lpk_descriptor.replace("lets-plot.json", "lets-plot-gt.json"))
+
+        self._replace_descriptors(search_lp_descriptor, from_lp_descriptor, to_lp_descriptor,
+                                  search_lpgt_descriptor, from_lpgt_descriptor, to_lpgt_descriptor)
+
+    def _replace_descriptors(self, search_lp_descriptor, from_lp_descriptor, to_lp_descriptor,
+                                   search_lpgt_descriptor, from_lpgt_descriptor, to_lpgt_descriptor):
+        lp_descriptor_is_replaced = False
+        lpgt_descriptor_is_replaced = False
+        with open(self.notebook, 'r') as file:
+            data = []
+            for line in file.readlines():
+                line, lp_descriptor_is_replaced = self._update_descriptor_line(line, lp_descriptor_is_replaced, \
+                                                                               search_lp_descriptor, \
+                                                                               from_lp_descriptor, to_lp_descriptor)
+                line, lpgt_descriptor_is_replaced = self._update_descriptor_line(line, lpgt_descriptor_is_replaced, \
+                                                                                 search_lpgt_descriptor, \
+                                                                                 from_lpgt_descriptor, to_lpgt_descriptor)
+                data.append(line)
+        with open(self.notebook, 'w') as file:
+            file.writelines(data)
+
+    def _update_descriptor_line(self, line, descriptor_is_replaced, search_descriptor, from_descriptor, to_descriptor):
+        if descriptor_is_replaced or self.re.search(search_descriptor, line) is None:
+            return line, False
+        return line.replace(from_descriptor, to_descriptor), True
