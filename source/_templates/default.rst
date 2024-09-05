@@ -2,4 +2,4 @@
 
 .. currentmodule:: {{ module }}
 
-.. autodata:: {{ objname }}
+.. auto{{ objtype }}:: {{ objname }}
