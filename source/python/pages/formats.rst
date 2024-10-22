@@ -267,7 +267,7 @@ The format of numbers in scientific notation can be further customised using the
                            size=15) + \
                 theme(exponent_format='pow')
 
-.. note::
+.. warning::
 
     Superscript is not fully support by CairoSVG library and export to PNG/PDF may produce unexpected results.
 
