@@ -157,9 +157,6 @@ Free for none-commercial services only (see `Limitations <https://github.com/Car
 - ``CARTO_POSITRON_NO_LABELS``, ``CARTO_POSITRON_NO_LABELS_HIRES`` : Positron (no labels)
 - ``CARTO_DARK_MATTER_NO_LABELS``, ``CARTO_DARK_MATTER_NO_LABELS_HIRES`` : Dark Matter (no labels)
 - ``CARTO_VOYAGER``, ``CARTO_VOYAGER_HIRES`` : Voyager
-- ``CARTO_FLAT_BLUE``, ``CARTO_FLAT_BLUE_HIRES`` : Flat Blue
-- ``CARTO_MIDNIGHT_COMMANDER``, ``CARTO_MIDNIGHT_COMMANDER_HIRES`` : Midnight commander
-- ``CARTO_ANTIQUE``, ``CARTO_ANTIQUE_HIRES`` : Antique
 
 
 .. _basemap_tiles_nasa_tiles:
