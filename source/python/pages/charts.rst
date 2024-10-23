@@ -84,6 +84,7 @@ Text:
 :py:mod:`text <lets_plot.geom_text>`,
 :py:mod:`label <lets_plot.geom_label>`
 
+
 Examples:
 
 - .. extref:: covid19_and_mobility
@@ -620,6 +621,14 @@ Examples:
 
 Miscellaneous
 -------------
+
+Interactivity
+~~~~~~~~~~~~~
+
+Use the :py:mod:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`` interactivity on a chart.
+
+This function adds a toolbar containing three tool-buttons: pan, rubber-band zoom, and center-point zoom.
+
 
 Extended Text Markup
 ~~~~~~~~~~~~~~~~~~~~
