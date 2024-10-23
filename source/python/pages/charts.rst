@@ -109,6 +109,10 @@ Examples:
       :type: text
 - .. extref:: geom_curve
       :type: text
+- .. extref:: linetype_custom
+      :type: text
+- .. extref:: expand_limits
+      :type: text
 
 
 |l3| |d3| Discrete
@@ -629,6 +633,11 @@ Use the :py:mod:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`
 
 This function adds a toolbar containing three tool-buttons: pan, rubber-band zoom, and center-point zoom.
 
+Examples:
+
+- .. extref:: interact_pan_zoom
+      :type: text
+
 
 Extended Text Markup
 ~~~~~~~~~~~~~~~~~~~~
@@ -643,6 +652,13 @@ In tooltips/labels/texts and wherever else there is text, you can use:
   - subscript, e.g. ``\( x_i \)``;
   - Greek letters, e.g. ``\( \Omega \)``, and
   - some special symbols, e.g. ``\( a \cdot b \neq c \)``.
+
+Examples:
+
+- .. extref:: interactive_links
+      :type: text
+- .. extref:: latex_support
+      :type: text
 
 
 Manual Legend
