@@ -59,6 +59,7 @@ Plotting
     GGBunch
     gggrid
     ggmarginal
+    ggtb
     aes
     ggsave
 
@@ -122,6 +123,7 @@ Standard Geometries
     geom_qq_line
     geom_qq2_line
     geom_function
+    geom_blank
 
 Additional Geometries
 ~~~~~~~~~~~~~~~~~~~~~
@@ -158,6 +160,7 @@ Extras
     :template: default.rst
 
     arrow
+    expand_limits
 
 .. currentmodule:: lets_plot.mapping
 
