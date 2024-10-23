@@ -3,38 +3,66 @@
 .. title:: What is New
 
 
-What is new in 4.4.0
+What is new in 4.5.0
 ====================
 
-- **Waterfall Plot**
+- **Panning and Zooming**
 
-  .. image:: /_static/images/changelog/4.4.0/waterfall.png
-    :width: 460
+  .. image:: /_static/images/changelog/4.5.0/ggtb.png
+    :width: 300
+    :height: 134
 
-  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/waterfall_plot.ipynb>`__.
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/interact_pan_zoom.ipynb>`__.
 
-- **geom_band()**
+- **Clickable Links**
 
-  .. image:: /_static/images/changelog/4.4.0/geom_band.png
-    :width: 615
+  .. image:: /_static/images/changelog/4.5.0/lp_verse.png
+    :width: 400
+    :height: 270
 
-  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/geom_band.ipynb>`__.
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/interactive_links.ipynb>`__.
 
-- **Custom Legends**
+- **LaTeX Support: Subscript, Superscript, Greek Letters and Special Characters**
 
-  - ``manual_key`` parameter in plot layer
-  - :py:mod:`layer_key() <lets_plot.layer_key>` function
+  .. image:: /_static/images/changelog/4.5.0/latex.png
+    :width: 300
+    :height: 227
 
-  .. image:: /_static/images/changelog/4.4.0/custom_legend.png
-    :width: 294
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/latex_support.ipynb>`__.
 
-  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/manual_legend.ipynb>`__.
+  .. warning::
 
-- **Customizing Legends Appearance**
+    Subscripts and superscripts are not supported in PDF and PNG exports.
 
-  The ``override_aes`` parameter in the ``guide_legend()`` function.
+- **Compact Scientific Notation Formatting**
 
-  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24e/legend_override_aes.ipynb>`__.
+  .. image:: /_static/images/changelog/4.5.0/compact_exp.png
+    :width: 400
+    :height: 174
+
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/superscript_exponent.ipynb>`__.
+
+  .. warning::
+
+     ``pow`` and ``pow_full`` options are not supported in PDF and PNG exports.
+
+- **QQ-Plot: Marginal Distributions**
+
+  .. image:: /_static/images/changelog/4.5.0/gg_marins.png
+    :width: 400
+    :height: 249
+
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/qq_plot_marginal.ipynb>`__.
+
+- **More Theme Settings**
+
+  .. image:: /_static/images/changelog/4.5.0/theme_legend_scheme.png
+    :width: 400
+    :height: 320
+
+  See examples: `legend margins <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/theme_legend_margins.ipynb>`__,
+  `legend key <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/theme_legend_key.ipynb>`__,
+  `facet strip <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-24g/theme_facet_strip_xy.ipynb>`__.
 
 - **And More**
 
