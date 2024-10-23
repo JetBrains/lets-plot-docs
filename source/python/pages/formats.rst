@@ -222,50 +222,35 @@ Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35
 Exponent Format
 ---------------
 
-The format of numbers in scientific notation can be further customised using the :py:mod:`theme <lets_plot.theme>` parameter ``exponent_format``:
+The appearance of numbers in scientific notation can be further customized using the ``exponent_format`` parameter of the :py:mod:`theme() <lets_plot.theme>` function:
 
-.. jupyter-execute::
-    :hide-code:
+- Scientific notation is used for numbers formatted with the ``e`` or ``g`` types.
 
-    from lets_plot import *
+- The ``exponent_format`` parameter can take a string value:
 
-    LetsPlot.setup_html()
+  - ``"e"`` for e-notation (e.g. 1e+6);
+  - ``"pow_full"`` for power-notation (e.g. 1x10^6). This will enable superscript formatting for the exponent;
+  - ``"pow"`` works as ``"pow_full"`` but will shorten powers of 10 (e.g. 10^6 instead of 1x10^6).
 
-.. grid:: 2
+- Additionally, the ``exponent_format`` parameter can be a tuple with three elements, where:
 
-    .. grid-item-card::
-        :shadow: none
+  - the first value specifies the appearance (``"e"``/``"pow"``/``"pow_full"``);
+  - the second value sets the minimum exponent at which scientific notation starts being used (-7 by default);
+  - the third value sets the maximum exponent at which scientific notation starts being used (6 by default).
 
-        .. raw:: html
+  This only makes sense when the ``g`` type formatting is applied.
 
-            <h3>"e" notation</h3>
+It can be summarized in the following table:
 
-        .. jupyter-execute::
-            :linenos:
-            :emphasize-lines: 5
+.. image:: /_static/images/pages/formats/formats_scientific_notation_table.png
+    :class: only-light
+    :width: 800
+    :alt: Scientific notation table
 
-            ggplot() + \
-                geom_label(x=0, label=10**12, \
-                           label_format=".2~e", \
-                           size=15) + \
-                theme(exponent_format='e')
-
-    .. grid-item-card::
-        :shadow: none
-
-        .. raw:: html
-
-            <h3>"pow" notation</h3>
-
-        .. jupyter-execute::
-            :linenos:
-            :emphasize-lines: 5
-
-            ggplot() + \
-                geom_label(x=0, label=10**12, \
-                           label_format=".2~e", \
-                           size=15) + \
-                theme(exponent_format='pow')
+.. image:: /_static/images/pages/formats/formats_scientific_notation_table_dark.png
+    :class: only-dark
+    :width: 800
+    :alt: Scientific notation table (dark)
 
 .. warning::
 
