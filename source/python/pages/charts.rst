@@ -621,6 +621,21 @@ Examples:
 Miscellaneous
 -------------
 
+Extended Text Markup
+~~~~~~~~~~~~~~~~~~~~
+
+In tooltips/labels/texts and wherever else there is text, you can use:
+
+- Interactive links, e.g. ``<a href="https://github.com">GitHub</a>``.
+
+- LaTeX formulas with
+
+  - superscript, e.g. ``\( a^b \)``;
+  - subscript, e.g. ``\( x_i \)``;
+  - Greek letters, e.g. ``\( \Omega \)``, and
+  - some special symbols, e.g. ``\( a \cdot b \neq c \)``.
+
+
 Manual Legend
 ~~~~~~~~~~~~~
 
