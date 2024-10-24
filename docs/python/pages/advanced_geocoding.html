@@ -25,33 +25,36 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=a3daccbf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=0b0cc58a" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../_static/documentation_options.js?v=8b5852d8"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/documentation_options.js?v=5ef59c98"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -80,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -100,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -108,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -160,7 +151,7 @@
    
 
 <a class="navbar-brand version" href="whats_new.html">
-  <p>v4.4.1</p>
+  <p>v4.5.0</p>
 </a>
 </div>
     
@@ -243,29 +234,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -309,15 +292,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -338,7 +317,8 @@ document.write(`
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -415,15 +395,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -2052,7 +2028,7 @@ In this case error will be generated:</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">geocode_cities</span><span class="p">([</span><span class="s1">&#39;warwick&#39;</span><span class="p">,</span> <span class="s1">&#39;worcester&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_geocodes</span><span class="p">()</span>
 
-<span class="nn">File ~/.local/lib/python3.10/site-packages/lets_plot/geo_data/geocoder.py:334,</span> in <span class="ni">Geocoder.get_geocodes</span><span class="nt">(self)</span>
+<span class="nn">File ~/Applications/miniconda3/envs/lets-plot-docs/lib/python3.10/site-packages/lets_plot/geo_data/geocoder.py:334,</span> in <span class="ni">Geocoder.get_geocodes</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">315</span> <span class="k">def</span> <span class="nf">get_geocodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;DataFrame&#39;</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">316</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">317</span><span class="sd">     Return metadata for given regions.</span>
@@ -2062,14 +2038,14 @@ In this case error will be generated:</p>
 <span class="g g-Whitespace">    </span><span class="mi">333</span><span class="sd">     &quot;&quot;&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">334</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geocode</span><span class="p">()</span><span class="o">.</span><span class="n">to_data_frame</span><span class="p">()</span>
 
-<span class="nn">File ~/.local/lib/python3.10/site-packages/lets_plot/geo_data/geocoder.py:935,</span> in <span class="ni">NamesGeocoder._geocode</span><span class="nt">(self)</span>
+<span class="nn">File ~/Applications/miniconda3/envs/lets-plot-docs/lib/python3.10/site-packages/lets_plot/geo_data/geocoder.py:935,</span> in <span class="ni">NamesGeocoder._geocode</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">933</span>     <span class="n">response</span><span class="p">:</span> <span class="n">Response</span> <span class="o">=</span> <span class="n">GeocodingService</span><span class="p">()</span><span class="o">.</span><span class="n">do_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">934</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">SuccessResponse</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">935</span>         <span class="n">_raise_exception</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_geocodes</span> <span class="o">=</span> <span class="n">Geocodes</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">answers</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">region_queries</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_highlights</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">938</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geocodes</span>
 
-<span class="nn">File ~/.local/lib/python3.10/site-packages/lets_plot/geo_data/geocodes.py:344,</span> in <span class="ni">_raise_exception</span><span class="nt">(response)</span>
+<span class="nn">File ~/Applications/miniconda3/envs/lets-plot-docs/lib/python3.10/site-packages/lets_plot/geo_data/geocodes.py:344,</span> in <span class="ni">_raise_exception</span><span class="nt">(response)</span>
 <span class="g g-Whitespace">    </span><span class="mi">342</span> <span class="k">def</span> <span class="nf">_raise_exception</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">343</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">_format_error_message</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">344</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -2785,7 +2761,7 @@ Note that bbox of the polygon will be used:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="dqiorO"></div>
+<div id="MOM8J2"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -2796,7 +2772,7 @@ Note that bbox of the polygon will be used:</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -2809,16 +2785,31 @@ Note that bbox of the polygon will be used:</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("dqiorO").appendChild(div);
+            document.getElementById("MOM8J2").appendChild(div);
         };
-        var e = document.getElementById("dqiorO");
+        var e = document.getElementById("MOM8J2");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="AaePNg"></div>
+</div><div class="output text_html">   <div id="emJ0zr"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("emJ0zr");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "mapping":{
 },
 "data_meta":{
@@ -2844,13 +2835,37 @@ Note that bbox of the polygon will be used:</p>
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"1"
 };
-           var plotContainer = document.getElementById("AaePNg");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </section>
@@ -2865,10 +2880,25 @@ Just pass a <code class="docutils literal notranslate"><span class="pre">Geocode
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="sMUV3n"></div>
+<div class="output text_html">   <div id="44RYw9"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("44RYw9");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "mapping":{
 },
 "data_meta":{
@@ -2894,13 +2924,37 @@ Just pass a <code class="docutils literal notranslate"><span class="pre">Geocode
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"2"
 };
-           var plotContainer = document.getElementById("sMUV3n");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 <div class="line-block">
@@ -2985,7 +3039,8 @@ Data columns should follow the same order or result of join operation will be in
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -3039,8 +3094,8 @@ Data columns should follow the same order or result of join operation will be in
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -3060,9 +3115,9 @@ Data columns should follow the same order or result of join operation will be in
 <p class="sphinx-version theme-version">
   Created using
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
-  7.4.7 and
+  8.1.3 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
-  0.15.4.
+  0.16.0.
 <p></div>
       
     </div>

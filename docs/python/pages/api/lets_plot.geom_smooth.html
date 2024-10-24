@@ -7,14 +7,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="lets_plot.geom_smooth" />
+<meta property="og:title" content="geom_smooth" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/api/lets_plot.geom_smooth.html" />
 <meta property="og:site_name" content="Lets-Plot" />
 <meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
 <meta property="og:image:alt" content="Lets-Plot" />
 
-    <title>lets_plot.geom_smooth</title>
+    <title>geom_smooth</title>
   
   
   
@@ -22,33 +22,36 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=a3daccbf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=0b0cc58a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../_static/documentation_options.js?v=8b5852d8"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/documentation_options.js?v=5ef59c98"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -60,8 +63,8 @@
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="lets_plot.geom_bar" href="lets_plot.geom_bar.html" />
-    <link rel="prev" title="lets_plot.geom_line" href="lets_plot.geom_line.html" />
+    <link rel="next" title="geom_bar" href="lets_plot.geom_bar.html" />
+    <link rel="prev" title="geom_line" href="lets_plot.geom_line.html" />
   <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
 
   </head>
@@ -79,19 +82,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -99,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -107,8 +98,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -159,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.4.1</p>
+  <p>v4.5.0</p>
 </a>
 </div>
     
@@ -242,29 +233,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -308,15 +291,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -335,7 +314,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -412,15 +392,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -484,11 +460,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="lets-plot-geom-smooth">
-<h1>lets_plot.geom_smooth<a class="headerlink" href="#lets-plot-geom-smooth" title="Link to this heading">#</a></h1>
+  <section id="geom-smooth">
+<h1>geom_smooth<a class="headerlink" href="#geom-smooth" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.geom_smooth">
-<span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">geom_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manual_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tooltips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">se</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">other_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_smooth" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">geom_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inherit_aes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manual_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tooltips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">se</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">other_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_smooth" title="Link to this definition">#</a></dt>
 <dd><p>Add a smoothed conditional mean.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -513,6 +489,8 @@ Either a position adjustment name: ‘dodge’, ‘dodgev’, ‘jitter’, ‘n
 </dd>
 <dt><strong>show_legend</strong><span class="classifier">bool, default=True</span></dt><dd><p>False - do not show legend for this layer.</p>
 </dd>
+<dt><strong>inherit_aes</strong><span class="classifier">bool, default=True</span></dt><dd><p>False - do not combine the layer aesthetic mappings with the plot shared mappings.</p>
+</dd>
 <dt><strong>manual_key</strong><span class="classifier">str or <cite>layer_key</cite></span></dt><dd><p>The key to show in the manual legend.
 Specify text for the legend label or advanced settings using the <cite>layer_key()</cite> function.</p>
 </dd>
@@ -520,7 +498,8 @@ Specify text for the legend label or advanced settings using the <cite>layer_key
 To prevent any sampling for this layer pass value “none” (string “none”).</p>
 </dd>
 <dt><strong>tooltips</strong><span class="classifier"><cite>layer_tooltips</cite></span></dt><dd><p>Result of the call to the <cite>layer_tooltips()</cite> function.
-Specify appearance, style and content.</p>
+Specify appearance, style and content.
+Set tooltips=’none’ to hide tooltips from the layer.</p>
 </dd>
 <dt><strong>orientation</strong><span class="classifier">str, default=’x’</span></dt><dd><p>Specify the axis that the layer’s stat and geom should run along.
 Possible values: ‘x’, ‘y’.</p>
@@ -577,11 +556,14 @@ They may also be parameters to the paired geom/stat.</p>
 <li><p>x : x-axis value.</p></li>
 <li><p>y : y-axis value.</p></li>
 <li><p>alpha : transparency level of a layer. Accept values between 0 and 1.</p></li>
-<li><p>color (colour) : color of the geometry. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#color-and-fill">https://lets-plot.org/python/pages/aesthetics.html#color-and-fill</a>.</p></li>
-<li><p>fill : fill color for the confidence interval around the line. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#color-and-fill">https://lets-plot.org/python/pages/aesthetics.html#color-and-fill</a>.</p></li>
-<li><p>linetype : type of the line of conditional mean line. Codes and names: 0 = ‘blank’, 1 = ‘solid’, 2 = ‘dashed’, 3 = ‘dotted’, 4 = ‘dotdash’, 5 = ‘longdash’, 6 = ‘twodash’. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#line-types">https://lets-plot.org/python/pages/aesthetics.html#line-types</a>.</p></li>
+<li><p>color (colour) : color of the geometry. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#color-and-fill">Color and Fill</a>.</p></li>
+<li><p>fill : fill color for the confidence interval around the line. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#color-and-fill">Color and Fill</a>.</p></li>
+<li><p>linetype : type of the line of conditional mean line. Accept codes or names (0 = ‘blank’, 1 = ‘solid’, 2 = ‘dashed’, 3 = ‘dotted’, 4 = ‘dotdash’, 5 = ‘longdash’, 6 = ‘twodash’), a hex string (up to 8 digits for dash-gap lengths), or a list pattern [offset, [dash, gap, …]] / [dash, gap, …]. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#line-types">Line Types</a>.</p></li>
 <li><p>size : line width. Define line width for conditional mean and confidence bounds lines.</p></li>
 </ul>
+<hr class="docutils" />
+<p>To hide axis tooltips, set ‘blank’ or the result of <cite>element_blank()</cite>
+to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the <cite>theme()</cite>.</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -599,7 +581,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="MxgV4g"></div>
+<div id="yOYMpg"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -610,7 +592,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -623,16 +605,31 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("MxgV4g").appendChild(div);
+            document.getElementById("yOYMpg").appendChild(div);
         };
-        var e = document.getElementById("MxgV4g");
+        var e = document.getElementById("yOYMpg");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="AamyHs"></div>
+</div><div class="output text_html">   <div id="07DjMV"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("07DjMV");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0],
 "y":[4.967141530112327,-0.38264301171184645,8.476885381006925,18.230298564080254,1.6584662527666403,2.6586304305081945,21.792128155073915,14.674347291529088,3.305256140650479,14.425600435859646,5.365823071875377,6.342702464297432,14.419622715660342,-6.13280244657798,-3.249178325130327,9.377124707590273,5.8716887966557625,20.14247332595274,8.91975924478789,4.876962986647085,34.65648768921554,18.742236995134643,22.67528204687924,8.752518137865433,18.556172754748175,26.10922589709866,14.490064225776973,30.75698018345672,21.99361310081195,26.083062502067232,23.98293387770603,49.522781845089376,31.865027752620662,22.422890710440996,42.225449121031886,22.791563500289776,38.08863595004755,17.403298761202244,24.718139511015693,40.96861235869123,47.38466579995411,42.7136828118997,40.843517176117594,39.98896304410711,29.214780096325725,37.801557916052914,41.393612290402125,57.57122226218915,51.43618289568462,31.36959844637266]
@@ -673,13 +670,37 @@ They may also be parameters to the paired geom/stat.</p>
 "y":[0.6444309220297164,1.1912873783691817,1.738143834708647,2.2850002910481124,2.8318567473875778,3.3787132037270426,3.9255696600665084,4.472426116405973,5.019282572745439,5.566139029084904,6.112995485424369,6.659851941763835,7.2067083981033,7.753564854442766,8.30042131078223,8.847277767121696,9.394134223461162,9.940990679800626,10.487847136140092,11.034703592479557,11.581560048819021,12.128416505158489,12.675272961497953,13.222129417837419,13.768985874176884,14.315842330516348,14.862698786855816,15.409555243195278,15.956411699534746,16.50326815587421,17.050124612213676,17.596981068553138,18.143837524892607,18.690693981232073,19.237550437571535,19.784406893911004,20.331263350250467,20.878119806589932,21.4249762629294,21.971832719268864,22.518689175608326,23.065545631947792,23.61240208828726,24.159258544626724,24.70611500096619,25.252971457305655,25.79982791364512,26.346684369984583,26.893540826324053,27.44039728266352,27.98725373900298,28.534110195342446,29.080966651681916,29.627823108021374,30.17467956436084,30.72153602070031,31.268392477039775,31.81524893337924,32.36210538971871,32.90896184605816,33.45581830239763,34.0026747587371,34.549531215076556,35.096387671416025,35.643244127755494,36.190100584094964,36.73695704043443,37.28381349677389,37.83066995311336,38.37752640945283,38.924382865792296,39.47123932213175,40.01809577847122,40.56495223481069,41.111808691150145,41.658665147489614,42.205521603829084,42.75237806016854,43.29923451650801,43.84609097284748]
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"1"
 };
-           var plotContainer = document.getElementById("AamyHs");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 <div class="line-block">
@@ -701,7 +722,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="qarYnS"></div>
+<div id="vxAdkj"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -712,7 +733,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -725,16 +746,31 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("qarYnS").appendChild(div);
+            document.getElementById("vxAdkj").appendChild(div);
         };
-        var e = document.getElementById("qarYnS");
+        var e = document.getElementById("vxAdkj");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="iSCGNw"></div>
+</div><div class="output text_html">   <div id="xCNzd5"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("xCNzd5");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "x":[-2.0,-1.9595959595959596,-1.9191919191919191,-1.878787878787879,-1.8383838383838385,-1.797979797979798,-1.7575757575757576,-1.7171717171717171,-1.6767676767676767,-1.6363636363636362,-1.595959595959596,-1.5555555555555556,-1.5151515151515151,-1.4747474747474747,-1.4343434343434343,-1.393939393939394,-1.3535353535353534,-1.3131313131313131,-1.2727272727272727,-1.2323232323232323,-1.1919191919191918,-1.1515151515151514,-1.1111111111111112,-1.0707070707070705,-1.0303030303030303,-0.9898989898989898,-0.9494949494949494,-0.909090909090909,-0.8686868686868685,-0.8282828282828283,-0.7878787878787878,-0.7474747474747474,-0.707070707070707,-0.6666666666666665,-0.6262626262626261,-0.5858585858585856,-0.5454545454545454,-0.505050505050505,-0.46464646464646453,-0.4242424242424241,-0.38383838383838365,-0.3434343434343432,-0.303030303030303,-0.26262626262626254,-0.2222222222222221,-0.18181818181818166,-0.14141414141414121,-0.10101010101010077,-0.06060606060606055,-0.02020202020202011,0.020202020202020332,0.060606060606060996,0.10101010101010122,0.14141414141414144,0.1818181818181821,0.22222222222222232,0.262626262626263,0.3030303030303032,0.3434343434343434,0.3838383838383841,0.4242424242424243,0.464646464646465,0.5050505050505052,0.5454545454545459,0.5858585858585861,0.6262626262626263,0.666666666666667,0.7070707070707072,0.7474747474747478,0.7878787878787881,0.8282828282828287,0.868686868686869,0.9090909090909092,0.9494949494949498,0.9898989898989901,1.0303030303030307,1.070707070707071,1.1111111111111112,1.1515151515151518,1.191919191919192,1.2323232323232327,1.272727272727273,1.3131313131313136,1.3535353535353538,1.393939393939394,1.4343434343434347,1.474747474747475,1.5151515151515156,1.5555555555555558,1.5959595959595965,1.6363636363636367,1.676767676767677,1.7171717171717176,1.7575757575757578,1.7979797979797985,1.8383838383838387,1.878787878787879,1.9191919191919196,1.9595959595959598,2.0],
 "y":[4.496714153011233,3.7017520236936248,4.330986160792254,5.052873749888283,3.145501762507559,2.9985943969942945,4.66828535912539,3.7161134354073724,2.3420754559179198,3.220245993999187,2.0836693391230545,1.9540233328494963,2.537646385431966,0.2615998696162558,0.33242325513108506,1.3807795047351523,0.8192268329356502,2.0385611781212405,0.7118106352225907,0.10631684758828763,2.886320128986853,1.1002108436824265,1.3020961059224918,-0.2783345549513412,0.5171416097264243,1.0908225999129064,-0.24945291830588634,1.2021442993374072,0.15397818591019174,0.3943586938349244,0.019046372159951086,2.4109966826213753,0.48645176005953555,-0.6132664845114562,1.2147497891565506,-0.8776133673468005,0.5063842561617802,-1.7045941112280054,-1.1122897117899724,0.37684287039621245,0.8857984849030728,0.2893154294401489,-0.02382091783360328,-0.23213114176825017,-1.4291392743180447,-0.6867863571550393,-0.44064081156788876,1.0673252667249864,0.3472913841506469,-1.7626320337424912,0.32449209101503784,-0.38140918583413097,-0.6667189597998878,0.6316742482327666,1.0640573737356205,0.9806628351655813,-0.7702449694015997,-0.2173850112965772,0.4492105796537425,1.1228770320300219,-0.29919260331820086,0.03023736044464151,-0.8512589613542578,-0.8986859629236456,1.1557561050184204,1.7484449056241849,0.37243432286411104,1.503481882689494,0.9203545231600722,-0.024366770215775935,1.0474480491366158,2.2926534422949665,0.7906202418817841,2.4661843149304237,-1.6398450938867035,1.8834268386268316,1.233460699500288,0.9355605507687006,1.4177479207044654,-0.566897554535593,1.2989486610860683,1.9769472822555487,3.202207890267484,1.3137877349964278,1.1345734310829374,1.5555840440595827,3.0902822319761283,2.6244352235256176,1.8899928826527153,3.0603544650488748,2.7747634997612645,3.780194832385762,2.246625612377113,2.7614103970202306,2.8406232008113195,1.9161401890987775,3.8259641705448333,3.944352894871453,3.8451297815072714,3.765412866624853]
@@ -776,13 +812,37 @@ They may also be parameters to the paired geom/stat.</p>
 "y":[3.948123648399789,3.740740354782583,3.5387193503147203,3.3420606349962014,3.1507642088270247,2.9648300718071914,2.7842582239367006,2.6090486652155525,2.4392013956437486,2.274716415221287,2.115593723948168,1.9618333218243929,1.8134352088499597,1.6703993850248708,1.5327258503491241,1.4004146048227204,1.2734656484456603,1.1518789812179422,1.0356546031395681,0.9247925142105364,0.819292714430848,0.7191552038005029,0.6243799823195002,0.5349670499878407,0.45091640680552425,0.3722280527725508,0.2989019878889207,0.23093821215463306,0.16833672556968865,0.11109752813408724,0.05922061984782903,0.012706000710913573,-0.028446329276658827,-0.06423637011488822,-0.09466412180377459,-0.11972958434331785,-0.1394327577335182,-0.15377364197437554,-0.16275223706588987,-0.16636854300806114,-0.16462255980088944,-0.15751428744437473,-0.14504372593851708,-0.12721087528331626,-0.1040157354787726,-0.07545830652488571,-0.04153858842165606,-0.002256581169083449,0.04238771523283255,0.09239430078409117,0.14776317548469325,0.2084943393346379,0.2745877923339255,0.34604353448255665,0.42286156578053014,0.5050418862278466,0.5925844958245071,0.6854893945705096,0.7837565824658559,0.8873860595105443,0.9963778257045759,1.1107318810479514,1.2304482255406688,1.3555268591827303,1.4859677819741337,1.6217709939148803,1.762936495004971,1.9094642852444035,2.0613543646331802,2.2186067331712986,2.38122139085876,2.549198337695566,2.7225375736817132,2.9012390988172054,3.0853029131020384,3.274729016536215,3.4695174091197356,3.669668090852598,3.8751810617348035,4.086056321766354]
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"2"
 };
-           var plotContainer = document.getElementById("iSCGNw");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 <div class="line-block">
@@ -810,7 +870,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="I4dixH"></div>
+<div id="YdSMqS"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -821,7 +881,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -834,16 +894,31 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("I4dixH").appendChild(div);
+            document.getElementById("YdSMqS").appendChild(div);
         };
-        var e = document.getElementById("I4dixH");
+        var e = document.getElementById("YdSMqS");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="cSP84v"></div>
+</div><div class="output text_html">   <div id="68XQxC"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("68XQxC");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "t":[0.0,0.010101010101010102,0.020202020202020204,0.030303030303030304,0.04040404040404041,0.05050505050505051,0.06060606060606061,0.07070707070707072,0.08080808080808081,0.09090909090909091,0.10101010101010102,0.11111111111111112,0.12121212121212122,0.13131313131313133,0.14141414141414144,0.15151515151515152,0.16161616161616163,0.17171717171717174,0.18181818181818182,0.19191919191919193,0.20202020202020204,0.21212121212121213,0.22222222222222224,0.23232323232323235,0.24242424242424243,0.25252525252525254,0.26262626262626265,0.27272727272727276,0.2828282828282829,0.29292929292929293,0.30303030303030304,0.31313131313131315,0.32323232323232326,0.33333333333333337,0.3434343434343435,0.3535353535353536,0.36363636363636365,0.37373737373737376,0.38383838383838387,0.393939393939394,0.4040404040404041,0.4141414141414142,0.42424242424242425,0.43434343434343436,0.4444444444444445,0.4545454545454546,0.4646464646464647,0.4747474747474748,0.48484848484848486,0.494949494949495,0.5050505050505051,0.5151515151515152,0.5252525252525253,0.5353535353535354,0.5454545454545455,0.5555555555555556,0.5656565656565657,0.5757575757575758,0.5858585858585859,0.595959595959596,0.6060606060606061,0.6161616161616162,0.6262626262626263,0.6363636363636365,0.6464646464646465,0.6565656565656566,0.6666666666666667,0.6767676767676768,0.686868686868687,0.696969696969697,0.7070707070707072,0.7171717171717172,0.7272727272727273,0.7373737373737375,0.7474747474747475,0.7575757575757577,0.7676767676767677,0.7777777777777778,0.787878787878788,0.797979797979798,0.8080808080808082,0.8181818181818182,0.8282828282828284,0.8383838383838385,0.8484848484848485,0.8585858585858587,0.8686868686868687,0.8787878787878789,0.888888888888889,0.8989898989898991,0.9090909090909092,0.9191919191919192,0.9292929292929294,0.9393939393939394,0.9494949494949496,0.9595959595959597,0.9696969696969697,0.9797979797979799,0.98989898989899,1.0,0.0,0.010101010101010102,0.020202020202020204,0.030303030303030304,0.04040404040404041,0.05050505050505051,0.06060606060606061,0.07070707070707072,0.08080808080808081,0.09090909090909091,0.10101010101010102,0.11111111111111112,0.12121212121212122,0.13131313131313133,0.14141414141414144,0.15151515151515152,0.16161616161616163,0.17171717171717174,0.18181818181818182,0.19191919191919193,0.20202020202020204,0.21212121212121213,0.22222222222222224,0.23232323232323235,0.24242424242424243,0.25252525252525254,0.26262626262626265,0.27272727272727276,0.2828282828282829,0.29292929292929293,0.30303030303030304,0.31313131313131315,0.32323232323232326,0.33333333333333337,0.3434343434343435,0.3535353535353536,0.36363636363636365,0.37373737373737376,0.38383838383838387,0.393939393939394,0.4040404040404041,0.4141414141414142,0.42424242424242425,0.43434343434343436,0.4444444444444445,0.4545454545454546,0.4646464646464647,0.4747474747474748,0.48484848484848486,0.494949494949495,0.5050505050505051,0.5151515151515152,0.5252525252525253,0.5353535353535354,0.5454545454545455,0.5555555555555556,0.5656565656565657,0.5757575757575758,0.5858585858585859,0.595959595959596,0.6060606060606061,0.6161616161616162,0.6262626262626263,0.6363636363636365,0.6464646464646465,0.6565656565656566,0.6666666666666667,0.6767676767676768,0.686868686868687,0.696969696969697,0.7070707070707072,0.7171717171717172,0.7272727272727273,0.7373737373737375,0.7474747474747475,0.7575757575757577,0.7676767676767677,0.7777777777777778,0.787878787878788,0.797979797979798,0.8080808080808082,0.8181818181818182,0.8282828282828284,0.8383838383838385,0.8484848484848485,0.8585858585858587,0.8686868686868687,0.8787878787878789,0.888888888888889,0.8989898989898991,0.9090909090909092,0.9191919191919192,0.9292929292929294,0.9393939393939394,0.9494949494949496,0.9595959595959597,0.9696969696969697,0.9797979797979799,0.98989898989899,1.0],
 "variable":["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y"],
@@ -899,13 +974,37 @@ They may also be parameters to the paired geom/stat.</p>
 "variable":["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y","y"]
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"3"
 };
-           var plotContainer = document.getElementById("cSP84v");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </dd></dl>
@@ -923,7 +1022,8 @@ They may also be parameters to the paired geom/stat.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -951,8 +1051,8 @@ They may also be parameters to the paired geom/stat.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -972,9 +1072,9 @@ They may also be parameters to the paired geom/stat.</p>
 <p class="sphinx-version theme-version">
   Created using
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
-  7.4.7 and
+  8.1.3 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
-  0.15.4.
+  0.16.0.
 <p></div>
       
     </div>

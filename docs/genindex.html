@@ -15,33 +15,36 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a3daccbf" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=0b0cc58a" />
     <link rel="stylesheet" type="text/css" href="_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="_static/css/dataframe.css?v=1855a575" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="_static/documentation_options.js?v=8b5852d8"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/documentation_options.js?v=5ef59c98"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -70,19 +73,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -90,7 +82,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -98,8 +89,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -150,7 +141,7 @@
    
 
 <a class="navbar-brand version" href="python/pages/whats_new.html">
-  <p>v4.4.1</p>
+  <p>v4.5.0</p>
 </a>
 </div>
     
@@ -233,29 +224,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -299,15 +282,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -324,7 +303,8 @@ document.write(`
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -401,15 +381,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -505,20 +481,20 @@ document.write(`
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.__add__">__add__() (lets_plot.plot.core.PlotSpec method)</a>
+      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.__add__">__add__() (PlotSpec method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.__init__">__init__() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.__init__">__init__() (corr_plot method)</a>
 
       <ul>
-        <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.__init__">(lets_plot.geo_data.NamesGeocoder method)</a>
+        <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.__init__">(GGBunch method)</a>
 </li>
-        <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.__init__">(lets_plot.GGBunch method)</a>
+        <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.__init__">(layer_labels method)</a>
 </li>
-        <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.__init__">(lets_plot.layer_labels method)</a>
+        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.__init__">(layer_tooltips method)</a>
 </li>
-        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.__init__">(lets_plot.layer_tooltips method)</a>
+        <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.__init__">(NamesGeocoder method)</a>
 </li>
-        <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.__init__">(lets_plot.plot.core.PlotSpec method)</a>
+        <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.__init__">(PlotSpec method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -527,26 +503,26 @@ document.write(`
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.add_plot">add_plot() (lets_plot.GGBunch method)</a>
+      <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.add_plot">add_plot() (GGBunch method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.aes.html#lets_plot.aes">aes() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.allow_ambiguous">allow_ambiguous() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.allow_ambiguous">allow_ambiguous() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.anchor">anchor() (lets_plot.layer_tooltips method)</a>
+      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.anchor">anchor() (layer_tooltips method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.arrow.html#lets_plot.arrow">arrow() (in module lets_plot)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.as_dict">as_dict() (lets_plot.GGBunch method)</a>
+      <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.as_dict">as_dict() (GGBunch method)</a>
 
       <ul>
-        <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.as_dict">(lets_plot.layer_labels method)</a>
+        <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.as_dict">(layer_labels method)</a>
 </li>
-        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.as_dict">(lets_plot.layer_tooltips method)</a>
+        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.as_dict">(layer_tooltips method)</a>
 </li>
-        <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.as_dict">(lets_plot.plot.core.PlotSpec method)</a>
+        <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.as_dict">(PlotSpec method)</a>
 </li>
       </ul></li>
       <li><a href="python/pages/api/lets_plot.mapping.as_discrete.html#lets_plot.mapping.as_discrete">as_discrete() (in module lets_plot.mapping)</a>
@@ -557,7 +533,7 @@ document.write(`
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.build">build() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.build">build() (corr_plot method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -565,21 +541,9 @@ document.write(`
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.tilesets.CARTO_ANTIQUE.html#lets_plot.tilesets.CARTO_ANTIQUE">CARTO_ANTIQUE (in module lets_plot.tilesets)</a>
-</li>
-      <li><a href="python/pages/api/lets_plot.tilesets.CARTO_ANTIQUE_HIRES.html#lets_plot.tilesets.CARTO_ANTIQUE_HIRES">CARTO_ANTIQUE_HIRES (in module lets_plot.tilesets)</a>
-</li>
       <li><a href="python/pages/api/lets_plot.tilesets.CARTO_DARK_MATTER_NO_LABELS.html#lets_plot.tilesets.CARTO_DARK_MATTER_NO_LABELS">CARTO_DARK_MATTER_NO_LABELS (in module lets_plot.tilesets)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.tilesets.CARTO_DARK_MATTER_NO_LABELS_HIRES.html#lets_plot.tilesets.CARTO_DARK_MATTER_NO_LABELS_HIRES">CARTO_DARK_MATTER_NO_LABELS_HIRES (in module lets_plot.tilesets)</a>
-</li>
-      <li><a href="python/pages/api/lets_plot.tilesets.CARTO_FLAT_BLUE.html#lets_plot.tilesets.CARTO_FLAT_BLUE">CARTO_FLAT_BLUE (in module lets_plot.tilesets)</a>
-</li>
-      <li><a href="python/pages/api/lets_plot.tilesets.CARTO_FLAT_BLUE_HIRES.html#lets_plot.tilesets.CARTO_FLAT_BLUE_HIRES">CARTO_FLAT_BLUE_HIRES (in module lets_plot.tilesets)</a>
-</li>
-      <li><a href="python/pages/api/lets_plot.tilesets.CARTO_MIDNIGHT_COMMANDER.html#lets_plot.tilesets.CARTO_MIDNIGHT_COMMANDER">CARTO_MIDNIGHT_COMMANDER (in module lets_plot.tilesets)</a>
-</li>
-      <li><a href="python/pages/api/lets_plot.tilesets.CARTO_MIDNIGHT_COMMANDER_HIRES.html#lets_plot.tilesets.CARTO_MIDNIGHT_COMMANDER_HIRES">CARTO_MIDNIGHT_COMMANDER_HIRES (in module lets_plot.tilesets)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.tilesets.CARTO_POSITRON.html#lets_plot.tilesets.CARTO_POSITRON">CARTO_POSITRON (in module lets_plot.tilesets)</a>
 </li>
@@ -587,15 +551,15 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.tilesets.CARTO_POSITRON_NO_LABELS.html#lets_plot.tilesets.CARTO_POSITRON_NO_LABELS">CARTO_POSITRON_NO_LABELS (in module lets_plot.tilesets)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python/pages/api/lets_plot.tilesets.CARTO_POSITRON_NO_LABELS_HIRES.html#lets_plot.tilesets.CARTO_POSITRON_NO_LABELS_HIRES">CARTO_POSITRON_NO_LABELS_HIRES (in module lets_plot.tilesets)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.tilesets.CARTO_VOYAGER.html#lets_plot.tilesets.CARTO_VOYAGER">CARTO_VOYAGER (in module lets_plot.tilesets)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.tilesets.CARTO_VOYAGER_HIRES.html#lets_plot.tilesets.CARTO_VOYAGER_HIRES">CARTO_VOYAGER_HIRES (in module lets_plot.tilesets)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.color">color() (lets_plot.layer_tooltips method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.color">color() (layer_tooltips method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.coord_cartesian.html#lets_plot.coord_cartesian">coord_cartesian() (in module lets_plot)</a>
 </li>
@@ -609,9 +573,9 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot">corr_plot (class in lets_plot.bistro.corr)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.counties">counties() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.counties">counties() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.countries">countries() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.countries">countries() (NamesGeocoder method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -619,7 +583,7 @@ document.write(`
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.disable_splitting">disable_splitting() (lets_plot.layer_tooltips method)</a>
+      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.disable_splitting">disable_splitting() (layer_tooltips method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -635,13 +599,15 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.element_geom.html#lets_plot.element_geom">element_geom() (in module lets_plot)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python/pages/api/lets_plot.element_line.html#lets_plot.element_line">element_line() (in module lets_plot)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python/pages/api/lets_plot.element_rect.html#lets_plot.element_rect">element_rect() (in module lets_plot)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.element_text.html#lets_plot.element_text">element_text() (in module lets_plot)</a>
+</li>
+      <li><a href="python/pages/api/lets_plot.expand_limits.html#lets_plot.expand_limits">expand_limits() (in module lets_plot)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -669,10 +635,10 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.font_metrics_adjustment.html#lets_plot.font_metrics_adjustment">font_metrics_adjustment() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.format">format() (lets_plot.layer_labels method)</a>
+      <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.format">format() (layer_labels method)</a>
 
       <ul>
-        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.format">(lets_plot.layer_tooltips method)</a>
+        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.format">(layer_tooltips method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -702,6 +668,8 @@ document.write(`
       <li><a href="python/pages/api/lets_plot.geom_bar.html#lets_plot.geom_bar">geom_bar() (in module lets_plot)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.geom_bin2d.html#lets_plot.geom_bin2d">geom_bin2d() (in module lets_plot)</a>
+</li>
+      <li><a href="python/pages/api/lets_plot.geom_blank.html#lets_plot.geom_blank">geom_blank() (in module lets_plot)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.geom_boxplot.html#lets_plot.geom_boxplot">geom_boxplot() (in module lets_plot)</a>
 </li>
@@ -793,15 +761,15 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.geom_ydotplot.html#lets_plot.geom_ydotplot">geom_ydotplot() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_boundaries">get_boundaries() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_boundaries">get_boundaries() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_centroids">get_centroids() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_centroids">get_centroids() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_geocodes">get_geocodes() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_geocodes">get_geocodes() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_limits">get_limits() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.get_limits">get_limits() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.get_plot_shared_data">get_plot_shared_data() (lets_plot.plot.core.PlotSpec method)</a>
+      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.get_plot_shared_data">get_plot_shared_data() (PlotSpec method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch">GGBunch (class in lets_plot)</a>
 </li>
@@ -814,6 +782,8 @@ document.write(`
       <li><a href="python/pages/api/lets_plot.ggsave.html#lets_plot.ggsave">ggsave() (in module lets_plot)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.ggsize.html#lets_plot.ggsize">ggsize() (in module lets_plot)</a>
+</li>
+      <li><a href="python/pages/api/lets_plot.ggtb.html#lets_plot.ggtb">ggtb() (in module lets_plot)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.ggtitle.html#lets_plot.ggtitle">ggtitle() (in module lets_plot)</a>
 </li>
@@ -829,11 +799,11 @@ document.write(`
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.has_layers">has_layers() (lets_plot.plot.core.PlotSpec method)</a>
+      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.has_layers">has_layers() (PlotSpec method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.highlights">highlights() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.highlights">highlights() (NamesGeocoder method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -841,15 +811,15 @@ document.write(`
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.ignore_all_errors">ignore_all_errors() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.ignore_all_errors">ignore_all_errors() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.ignore_not_found">ignore_not_found() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.ignore_not_found">ignore_not_found() (NamesGeocoder method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python/pages/api/lets_plot.bistro.im.image_matrix.html#lets_plot.bistro.im.image_matrix">image_matrix() (in module lets_plot.bistro.im)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.inc_res">inc_res() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.inc_res">inc_res() (NamesGeocoder method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -865,7 +835,7 @@ document.write(`
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.labels">labels() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.labels">labels() (corr_plot method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.labs.html#lets_plot.labs">labs() (in module lets_plot)</a>
 </li>
@@ -889,10 +859,10 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.lims.html#lets_plot.lims">lims() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.line">line() (lets_plot.layer_labels method)</a>
+      <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.line">line() (layer_labels method)</a>
 
       <ul>
-        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.line">(lets_plot.layer_tooltips method)</a>
+        <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.line">(layer_tooltips method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -911,7 +881,7 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.margin.html#lets_plot.margin">margin() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.min_width">min_width() (lets_plot.layer_tooltips method)</a>
+      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.min_width">min_width() (layer_tooltips method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -949,31 +919,31 @@ document.write(`
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_BrBG">palette_BrBG() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_BrBG">palette_BrBG() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_gradient">palette_gradient() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_gradient">palette_gradient() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_PiYG">palette_PiYG() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_PiYG">palette_PiYG() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_PRGn">palette_PRGn() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_PRGn">palette_PRGn() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_PuOr">palette_PuOr() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_PuOr">palette_PuOr() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdBu">palette_RdBu() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdBu">palette_RdBu() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdGy">palette_RdGy() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdGy">palette_RdGy() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdYlBu">palette_RdYlBu() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdYlBu">palette_RdYlBu() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdYlGn">palette_RdYlGn() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_RdYlGn">palette_RdYlGn() (corr_plot method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_Spectral">palette_Spectral() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.palette_Spectral">palette_Spectral() (corr_plot method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec">PlotSpec (class in lets_plot.plot.core)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.points">points() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.points">points() (corr_plot method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.position_dodge.html#lets_plot.position_dodge">position_dodge() (in module lets_plot)</a>
 </li>
@@ -1165,23 +1135,23 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.scale_y_time.html#lets_plot.scale_y_time">scale_y_time() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.scope">scope() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.scope">scope() (NamesGeocoder method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.set">set() (lets_plot.LetsPlot class method)</a>
+      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.set">set() (LetsPlot class method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.set_theme">set_theme() (lets_plot.LetsPlot class method)</a>
+      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.set_theme">set_theme() (LetsPlot class method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.setup_html">setup_html() (lets_plot.LetsPlot class method)</a>
+      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.setup_html">setup_html() (LetsPlot class method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.setup_show_ext">setup_show_ext() (lets_plot.LetsPlot class method)</a>
+      <li><a href="python/pages/api/lets_plot.LetsPlot.html#lets_plot.LetsPlot.setup_show_ext">setup_show_ext() (LetsPlot class method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.show">show() (lets_plot.GGBunch method)</a>
+      <li><a href="python/pages/api/lets_plot.GGBunch.html#lets_plot.GGBunch.show">show() (GGBunch method)</a>
 
       <ul>
-        <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.show">(lets_plot.plot.core.PlotSpec method)</a>
+        <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.show">(PlotSpec method)</a>
 </li>
       </ul></li>
-      <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.size">size() (lets_plot.layer_labels method)</a>
+      <li><a href="python/pages/api/lets_plot.layer_labels.html#lets_plot.layer_labels.size">size() (layer_labels method)</a>
 </li>
       <li><a href="python/pages/api/lets_plot.tilesets.SOLID.html#lets_plot.tilesets.SOLID">SOLID (in module lets_plot.tilesets)</a>
 </li>
@@ -1193,7 +1163,7 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.stat_summary_bin.html#lets_plot.stat_summary_bin">stat_summary_bin() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.states">states() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.states">states() (NamesGeocoder method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1221,17 +1191,17 @@ document.write(`
 </li>
       <li><a href="python/pages/api/lets_plot.theme_void.html#lets_plot.theme_void">theme_void() (in module lets_plot)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.tiles">tiles() (lets_plot.bistro.corr.corr_plot method)</a>
+      <li><a href="python/pages/api/lets_plot.bistro.corr.corr_plot.html#lets_plot.bistro.corr.corr_plot.tiles">tiles() (corr_plot method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.title">title() (lets_plot.layer_tooltips method)</a>
+      <li><a href="python/pages/api/lets_plot.layer_tooltips.html#lets_plot.layer_tooltips.title">title() (layer_tooltips method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_html">to_html() (lets_plot.plot.core.PlotSpec method)</a>
+      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_html">to_html() (PlotSpec method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_pdf">to_pdf() (lets_plot.plot.core.PlotSpec method)</a>
+      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_pdf">to_pdf() (PlotSpec method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_png">to_png() (lets_plot.plot.core.PlotSpec method)</a>
+      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_png">to_png() (PlotSpec method)</a>
 </li>
-      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_svg">to_svg() (lets_plot.plot.core.PlotSpec method)</a>
+      <li><a href="python/pages/api/lets_plot.plot.core.PlotSpec.html#lets_plot.plot.core.PlotSpec.to_svg">to_svg() (PlotSpec method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1243,7 +1213,7 @@ document.write(`
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.where">where() (lets_plot.geo_data.NamesGeocoder method)</a>
+      <li><a href="python/pages/api/lets_plot.geo_data.NamesGeocoder.html#lets_plot.geo_data.NamesGeocoder.where">where() (NamesGeocoder method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1295,8 +1265,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1316,9 +1286,9 @@ document.write(`
 <p class="sphinx-version theme-version">
   Created using
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
-  7.4.7 and
+  8.1.3 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
-  0.15.4.
+  0.16.0.
 <p></div>
       
     </div>
