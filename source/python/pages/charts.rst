@@ -84,6 +84,7 @@ Text:
 :py:mod:`text <lets_plot.geom_text>`,
 :py:mod:`label <lets_plot.geom_label>`
 
+
 Examples:
 
 - .. extref:: covid19_and_mobility
@@ -107,6 +108,10 @@ Examples:
 - .. extref:: geom_spoke
       :type: text
 - .. extref:: geom_curve
+      :type: text
+- .. extref:: linetype_custom
+      :type: text
+- .. extref:: expand_limits
       :type: text
 
 
@@ -620,6 +625,41 @@ Examples:
 
 Miscellaneous
 -------------
+
+Panning and Zooming
+~~~~~~~~~~~~~~~~~~~
+
+Use the :py:mod:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`` interactivity on a chart.
+
+This function adds a toolbar containing three tool-buttons: pan, rubber-band zoom, and center-point zoom.
+
+Examples:
+
+- .. extref:: interact_pan_zoom
+      :type: text
+
+
+Extended Text Markup
+~~~~~~~~~~~~~~~~~~~~
+
+In tooltips/labels/texts and wherever else there is text, you can use:
+
+- Interactive links, e.g. ``<a href="https://github.com">GitHub</a>``.
+
+- LaTeX formulas with
+
+  - superscript, e.g. ``\( a^b \)``;
+  - subscript, e.g. ``\( x_i \)``;
+  - Greek letters, e.g. ``\( \Omega \)``, and
+  - some special symbols, e.g. ``\( a \cdot b \neq c \)``.
+
+Examples:
+
+- .. extref:: lp_verse
+      :type: text
+- .. extref:: latex_support
+      :type: text
+
 
 Manual Legend
 ~~~~~~~~~~~~~

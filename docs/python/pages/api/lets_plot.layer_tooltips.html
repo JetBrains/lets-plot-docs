@@ -7,14 +7,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="lets_plot.layer_tooltips" />
+<meta property="og:title" content="layer_tooltips" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/api/lets_plot.layer_tooltips.html" />
 <meta property="og:site_name" content="Lets-Plot" />
 <meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
 <meta property="og:image:alt" content="Lets-Plot" />
 
-    <title>lets_plot.layer_tooltips</title>
+    <title>layer_tooltips</title>
   
   
   
@@ -22,33 +22,36 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=a3daccbf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=0b0cc58a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../_static/documentation_options.js?v=8b5852d8"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/documentation_options.js?v=5ef59c98"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -60,8 +63,8 @@
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="lets_plot.font_metrics_adjustment" href="lets_plot.font_metrics_adjustment.html" />
-    <link rel="prev" title="lets_plot.ylab" href="lets_plot.ylab.html" />
+    <link rel="next" title="font_metrics_adjustment" href="lets_plot.font_metrics_adjustment.html" />
+    <link rel="prev" title="ylab" href="lets_plot.ylab.html" />
   <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
 
   </head>
@@ -79,19 +82,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -99,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -107,8 +98,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -159,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.4.1</p>
+  <p>v4.5.0</p>
 </a>
 </div>
     
@@ -242,29 +233,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -308,15 +291,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -335,7 +314,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -412,15 +392,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item">
 <ul class="navbar-icon-links navbar-nav"
@@ -484,11 +460,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="lets-plot-layer-tooltips">
-<h1>lets_plot.layer_tooltips<a class="headerlink" href="#lets-plot-layer-tooltips" title="Link to this heading">#</a></h1>
+  <section id="layer-tooltips">
+<h1>layer_tooltips<a class="headerlink" href="#layer-tooltips" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="lets_plot.layer_tooltips">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lets_plot.</span></span><span class="sig-name descname"><span class="pre">layer_tooltips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_tooltips" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layer_tooltips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_tooltips" title="Link to this definition">#</a></dt>
 <dd><p>Configure tooltips.</p>
 <p class="rubric">Notes</p>
 <p>Set tooltips=’none’ to hide tooltips from this layer.</p>
@@ -520,7 +496,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="E921mq"></div>
+<div id="J9bM5p"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -531,7 +507,7 @@ document.write(`
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -544,16 +520,31 @@ document.write(`
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("E921mq").appendChild(div);
+            document.getElementById("J9bM5p").appendChild(div);
         };
-        var e = document.getElementById("E921mq");
+        var e = document.getElementById("J9bM5p");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="I8TA4y"></div>
+</div><div class="output text_html">   <div id="h4gVwY"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("h4gVwY");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "id":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0],
 "x":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.324083969394795,-0.38508228041631654,-0.6769220003059587,0.6116762888408679,1.030999522495951,0.9312801191161986,-0.8392175232226385,-0.3092123758512146,0.33126343140356396,0.9755451271223592,-0.47917423784528995,-0.18565897666381712,-1.1063349740060282,-1.1962066240806708,0.812525822394198,1.356240028570823,-0.07201012158033385,1.0035328978920242,0.36163602504763415,-0.6451197546051243,0.36139560550841393,1.5380365664659692,-0.03582603910995154,1.5646436558140062,-2.6197451040897444,0.8219025043752238,0.08704706823817122,-0.29900735046586746,0.0917607765355023,-1.9875689146008928,-0.21967188783751193,0.3571125715117464,1.477894044741516,-0.5182702182736474,-0.8084936028931876,-0.5017570435845365,0.9154021177020741,0.32875110965968446,-0.5297602037670388,0.5132674331133561,0.09707754934804039,0.9686449905328892,-0.7020530938773524,-0.3276621465977682,-0.39210815313215763,-1.4635149481321186,0.29612027706457605,0.26105527217988933,0.00511345664246089,-0.23458713337514692],
@@ -606,13 +597,37 @@ document.write(`
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"1"
 };
-           var plotContainer = document.getElementById("I8TA4y");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 <div class="line-block">
@@ -637,7 +652,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="cv3ZkY"></div>
+<div id="0uxX2M"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -648,7 +663,7 @@ document.write(`
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -661,16 +676,31 @@ document.write(`
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("cv3ZkY").appendChild(div);
+            document.getElementById("0uxX2M").appendChild(div);
         };
-        var e = document.getElementById("cv3ZkY");
+        var e = document.getElementById("0uxX2M");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="Ds64T9"></div>
+</div><div class="output text_html">   <div id="UMXdrO"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("UMXdrO");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "x":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.324083969394795,-0.38508228041631654,-0.6769220003059587,0.6116762888408679,1.030999522495951,0.9312801191161986,-0.8392175232226385,-0.3092123758512146,0.33126343140356396,0.9755451271223592,-0.47917423784528995,-0.18565897666381712,-1.1063349740060282,-1.1962066240806708,0.812525822394198,1.356240028570823,-0.07201012158033385,1.0035328978920242,0.36163602504763415,-0.6451197546051243,0.36139560550841393,1.5380365664659692,-0.03582603910995154,1.5646436558140062,-2.6197451040897444,0.8219025043752238,0.08704706823817122,-0.29900735046586746,0.0917607765355023,-1.9875689146008928,-0.21967188783751193,0.3571125715117464,1.477894044741516,-0.5182702182736474,-0.8084936028931876,-0.5017570435845365,0.9154021177020741,0.32875110965968446,-0.5297602037670388,0.5132674331133561,0.09707754934804039,0.9686449905328892,-0.7020530938773524,-0.3276621465977682,-0.39210815313215763,-1.4635149481321186,0.29612027706457605,0.26105527217988933,0.00511345664246089,-0.23458713337514692],
 "y":[-1.4153707420504142,-0.42064532276535904,-0.3427145165267695,-0.8022772692216189,-0.16128571166600914,0.4040508568145384,1.8861859012105302,0.17457781283183896,0.25755039072276437,-0.07444591576616721,-1.9187712152990415,-0.026513875449216878,0.06023020994102644,2.463242112485286,-0.19236096478112252,0.30154734233361247,-0.03471176970524331,-1.168678037619532,1.1428228145150205,0.7519330326867741,0.7910319470430469,-0.9093874547947389,1.4027943109360992,-1.4018510627922809,0.5868570938002703,2.1904556258099785,-0.9905363251306883,-0.5662977296027719,0.09965136508764122,-0.5034756541161992,-1.5506634310661327,0.06856297480602733,-1.0623037137261049,0.4735924306351816,-0.9194242342338032,1.5499344050175394,-0.7832532923362371,-0.3220615162056756,0.8135172173696698,-1.2308643164339552,0.22745993460412942,1.307142754282428,-1.6074832345612275,0.1846338585323042,0.25988279424842353,0.7818228717773104,-1.236950710878082,-1.3204566130842763,0.5219415656168976,0.29698467323318606,0.25049285034587654,0.3464482094969757,-0.6800247215784908,0.23225369716100355,0.29307247329868125,-0.7143514180263678,1.8657745111447566,0.4738329209117875,-1.1913034972026486,0.6565536086338297,-0.9746816702273214,0.787084603742452,1.158595579007404,-0.8206823183517105,0.9633761292443218,0.4127809269364983,0.82206015999449,1.8967929826539474,-0.2453881160028705,-0.7537361643574896,-0.8895144296255233,-0.8158102849654383,-0.0771017094141042,0.3411519748166439,0.27669079933001905,0.8271832490360238,0.01300189187790702,1.4535340771573169,-0.2646568332379561,2.720169166589619,0.6256673477650062,-0.8571575564162826,-1.0708924980611123,0.4824724152431853,-0.2234627853258509,0.714000494092092,0.47323762457354485,-0.07282891265687277,-0.846793718068405,-1.5148472246858646,-0.4465149520670211,0.8563987943234723,0.21409374413020396,-1.245738778711988,0.173180925851182,0.3853173797288368,-0.883857436201133,0.1537251059455279,0.058208718445999896,-1.142970297830623],
@@ -705,13 +735,37 @@ document.write(`
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"2"
 };
-           var plotContainer = document.getElementById("Ds64T9");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 <dl class="py method">
@@ -754,7 +808,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="1PvBlY"></div>
+<div id="obQllp"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -765,7 +819,7 @@ document.write(`
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -778,9 +832,9 @@ document.write(`
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("1PvBlY").appendChild(div);
+            document.getElementById("obQllp").appendChild(div);
         };
-        var e = document.getElementById("1PvBlY");
+        var e = document.getElementById("obQllp");
         e.appendChild(script);
     })()
 </script>
@@ -832,7 +886,7 @@ Also the template will change the line for side tooltips.
 Aes and var formats are not interchangeable, i.e. var format
 will not be applied to aes, mapped to this variable.</p>
 <hr class="docutils" />
-<p>For more info see <a class="reference external" href="https://lets-plot.org/python/pages/formats.html">https://lets-plot.org/python/pages/formats.html</a>.</p>
+<p>For more info see <a class="reference external" href="https://lets-plot.org/python/pages/formats.html">Formatting</a>.</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -865,7 +919,7 @@ will not be applied to aes, mapped to this variable.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="DrFpID"></div>
+<div id="p4t8w1"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -876,7 +930,7 @@ will not be applied to aes, mapped to this variable.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -889,16 +943,31 @@ will not be applied to aes, mapped to this variable.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("DrFpID").appendChild(div);
+            document.getElementById("p4t8w1").appendChild(div);
         };
-        var e = document.getElementById("DrFpID");
+        var e = document.getElementById("p4t8w1");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="QqPCrB"></div>
+</div><div class="output text_html">   <div id="PHj5xQ"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("PHj5xQ");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "a":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.324083969394795,-0.38508228041631654,-0.6769220003059587,0.6116762888408679,1.030999522495951,0.9312801191161986,-0.8392175232226385,-0.3092123758512146,0.33126343140356396,0.9755451271223592,-0.47917423784528995,-0.18565897666381712,-1.1063349740060282,-1.1962066240806708,0.812525822394198,1.356240028570823,-0.07201012158033385,1.0035328978920242,0.36163602504763415,-0.6451197546051243,0.36139560550841393,1.5380365664659692,-0.03582603910995154,1.5646436558140062,-2.6197451040897444,0.8219025043752238,0.08704706823817122,-0.29900735046586746,0.0917607765355023,-1.9875689146008928,-0.21967188783751193,0.3571125715117464,1.477894044741516,-0.5182702182736474,-0.8084936028931876,-0.5017570435845365,0.9154021177020741,0.32875110965968446,-0.5297602037670388,0.5132674331133561,0.09707754934804039,0.9686449905328892,-0.7020530938773524,-0.3276621465977682,-0.39210815313215763,-1.4635149481321186,0.29612027706457605,0.26105527217988933,0.00511345664246089,-0.23458713337514692],
 "b":[-1.4153707420504142,-0.42064532276535904,-0.3427145165267695,-0.8022772692216189,-0.16128571166600914,0.4040508568145384,1.8861859012105302,0.17457781283183896,0.25755039072276437,-0.07444591576616721,-1.9187712152990415,-0.026513875449216878,0.06023020994102644,2.463242112485286,-0.19236096478112252,0.30154734233361247,-0.03471176970524331,-1.168678037619532,1.1428228145150205,0.7519330326867741,0.7910319470430469,-0.9093874547947389,1.4027943109360992,-1.4018510627922809,0.5868570938002703,2.1904556258099785,-0.9905363251306883,-0.5662977296027719,0.09965136508764122,-0.5034756541161992,-1.5506634310661327,0.06856297480602733,-1.0623037137261049,0.4735924306351816,-0.9194242342338032,1.5499344050175394,-0.7832532923362371,-0.3220615162056756,0.8135172173696698,-1.2308643164339552,0.22745993460412942,1.307142754282428,-1.6074832345612275,0.1846338585323042,0.25988279424842353,0.7818228717773104,-1.236950710878082,-1.3204566130842763,0.5219415656168976,0.29698467323318606,0.25049285034587654,0.3464482094969757,-0.6800247215784908,0.23225369716100355,0.29307247329868125,-0.7143514180263678,1.8657745111447566,0.4738329209117875,-1.1913034972026486,0.6565536086338297,-0.9746816702273214,0.787084603742452,1.158595579007404,-0.8206823183517105,0.9633761292443218,0.4127809269364983,0.82206015999449,1.8967929826539474,-0.2453881160028705,-0.7537361643574896,-0.8895144296255233,-0.8158102849654383,-0.0771017094141042,0.3411519748166439,0.27669079933001905,0.8271832490360238,0.01300189187790702,1.4535340771573169,-0.2646568332379561,2.720169166589619,0.6256673477650062,-0.8571575564162826,-1.0708924980611123,0.4824724152431853,-0.2234627853258509,0.714000494092092,0.47323762457354485,-0.07282891265687277,-0.846793718068405,-1.5148472246858646,-0.4465149520670211,0.8563987943234723,0.21409374413020396,-1.245738778711988,0.173180925851182,0.3853173797288368,-0.883857436201133,0.1537251059455279,0.058208718445999896,-1.142970297830623],
@@ -965,13 +1034,37 @@ will not be applied to aes, mapped to this variable.</p>
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"3"
 };
-           var plotContainer = document.getElementById("QqPCrB");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 <div class="line-block">
@@ -997,7 +1090,7 @@ will not be applied to aes, mapped to this variable.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="KXXAi6"></div>
+<div id="CaSKMT"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1008,7 +1101,7 @@ will not be applied to aes, mapped to this variable.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1021,16 +1114,31 @@ will not be applied to aes, mapped to this variable.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("KXXAi6").appendChild(div);
+            document.getElementById("CaSKMT").appendChild(div);
         };
-        var e = document.getElementById("KXXAi6");
+        var e = document.getElementById("CaSKMT");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="EibA5E"></div>
+</div><div class="output text_html">   <div id="5Y9EUK"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("5Y9EUK");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 },
 "mapping":{
@@ -1092,13 +1200,37 @@ will not be applied to aes, mapped to this variable.</p>
 "v":[1.5230298564080254,-1.4247481862134568,NaN,NaN]
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"4"
 };
-           var plotContainer = document.getElementById("EibA5E");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </dd></dl>
@@ -1168,7 +1300,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="Ke0pkW"></div>
+<div id="Oi9S7A"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1179,7 +1311,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1192,16 +1324,31 @@ If a label is not specified, the string will be centered in the tooltip.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("Ke0pkW").appendChild(div);
+            document.getElementById("Oi9S7A").appendChild(div);
         };
-        var e = document.getElementById("Ke0pkW");
+        var e = document.getElementById("Oi9S7A");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="D3O1Yt"></div>
+</div><div class="output text_html">   <div id="xt40dB"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("xt40dB");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "x":[-3.0,-2.9393939393939394,-2.878787878787879,-2.8181818181818183,-2.757575757575758,-2.696969696969697,-2.6363636363636362,-2.5757575757575757,-2.515151515151515,-2.4545454545454546,-2.393939393939394,-2.333333333333333,-2.2727272727272725,-2.212121212121212,-2.1515151515151514,-2.090909090909091,-2.0303030303030303,-1.9696969696969697,-1.9090909090909092,-1.8484848484848484,-1.7878787878787878,-1.7272727272727273,-1.6666666666666665,-1.606060606060606,-1.5454545454545454,-1.4848484848484849,-1.4242424242424243,-1.3636363636363635,-1.303030303030303,-1.2424242424242424,-1.1818181818181817,-1.121212121212121,-1.0606060606060606,-1.0,-0.9393939393939394,-0.8787878787878789,-0.8181818181818183,-0.7575757575757573,-0.6969696969696968,-0.6363636363636362,-0.5757575757575757,-0.5151515151515151,-0.4545454545454546,-0.39393939393939403,-0.33333333333333304,-0.2727272727272725,-0.21212121212121193,-0.15151515151515138,-0.09090909090909083,-0.030303030303030276,0.030303030303030276,0.09090909090909083,0.15151515151515138,0.21212121212121238,0.27272727272727293,0.3333333333333335,0.39393939393939403,0.4545454545454546,0.5151515151515151,0.5757575757575757,0.6363636363636367,0.6969696969696972,0.7575757575757578,0.8181818181818183,0.8787878787878789,0.9393939393939394,1.0,1.0606060606060606,1.121212121212121,1.1818181818181817,1.2424242424242422,1.3030303030303028,1.3636363636363633,1.4242424242424248,1.4848484848484853,1.5454545454545459,1.6060606060606064,1.666666666666667,1.7272727272727275,1.787878787878788,1.8484848484848486,1.9090909090909092,1.9696969696969697,2.0303030303030303,2.090909090909091,2.1515151515151514,2.212121212121212,2.2727272727272725,2.333333333333334,2.3939393939393945,2.454545454545455,2.5151515151515156,2.575757575757576,2.6363636363636367,2.6969696969696972,2.757575757575758,2.8181818181818183,2.878787878787879,2.9393939393939394,3.0],
 "9 - x^2":[0.14901424590336979,0.31848397870282313,0.9068869103741917,1.5147601965918283,1.3255299288134843,1.6561133665424277,2.523350621511722,2.5957033296733294,2.533170540050552,3.1379746246460374,3.130028870301348,3.41583662948448,3.9072994252714643,3.532535669486041,3.8535072030468256,4.459412914781428,4.5740202690420055,5.214568047345158,5.082964678170083,5.15941265452136,6.2431840705295425,5.948796035473873,6.2424806836286,5.993144873796202,6.44825543057633,6.828501753956118,6.626235443761371,7.253205273272297,7.121920422409116,7.368873876898564,7.422793801455148,8.298566834599697,7.871065616784313,7.68268672131323,8.364302500260893,7.861478769104193,8.39323759089812,7.838177934369584,8.115777426836441,8.654099693074787,8.890043187956383,8.786029400794089,8.758693945035594,8.754480645225875,8.44533229177866,8.709666572192331,8.816812960080291,9.294179826727015,9.094821024060622,8.470169679745634,9.096306917172893,8.876210853065189,8.773966558769553,9.138507478020488,9.23491969145953,9.168272924623748,8.593046496935871,8.700624716996701,8.833997945858167,8.961166752094467,8.451289050960462,8.458535548506823,8.094178479331708,7.971716525172494,8.471489610813759,8.524411035201183,7.9783969635259,8.1761746535733,7.851374186761306,7.40976985874243,7.564800683489072,7.763522999324548,7.129748056035611,7.4409266137322625,6.009301445816234,6.858140999246451,6.4466834501316885,6.132520017082461,6.044057158580485,5.207218765472808,5.5172021985706925,5.4625056722799705,5.56366206098903,4.722388539660238,4.3855510926857635,4.220455439725375,4.381140378194003,3.9333360766995598,3.396627494425441,3.4230344080790918,3.004329876374657,2.9646063529909026,2.154856982764249,1.951288132880172,1.6087220076875317,0.9567214567908495,1.1466873227887935,0.7908969305979507,0.36149730604691677,-0.07037614001254407]
@@ -1240,13 +1387,37 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"5"
 };
-           var plotContainer = document.getElementById("D3O1Yt");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 <div class="line-block">
@@ -1280,7 +1451,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="wYJSFm"></div>
+<div id="WSMFAw"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1291,7 +1462,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1304,16 +1475,31 @@ If a label is not specified, the string will be centered in the tooltip.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("wYJSFm").appendChild(div);
+            document.getElementById("WSMFAw").appendChild(div);
         };
-        var e = document.getElementById("wYJSFm");
+        var e = document.getElementById("WSMFAw");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="LRebFW"></div>
+</div><div class="output text_html">   <div id="XpBv9G"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("XpBv9G");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "x":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.324083969394795,-0.38508228041631654,-0.6769220003059587,0.6116762888408679,1.030999522495951,0.9312801191161986,-0.8392175232226385,-0.3092123758512146,0.33126343140356396,0.9755451271223592,-0.47917423784528995,-0.18565897666381712,-1.1063349740060282,-1.1962066240806708,0.812525822394198,1.356240028570823,-0.07201012158033385,1.0035328978920242,0.36163602504763415,-0.6451197546051243,0.36139560550841393,1.5380365664659692,-0.03582603910995154,1.5646436558140062,-2.6197451040897444,0.8219025043752238,0.08704706823817122,-0.29900735046586746,0.0917607765355023,-1.9875689146008928,-0.21967188783751193,0.3571125715117464,1.477894044741516,-0.5182702182736474,-0.8084936028931876,-0.5017570435845365,0.9154021177020741,0.32875110965968446,-0.5297602037670388,0.5132674331133561,0.09707754934804039,0.9686449905328892,-0.7020530938773524,-0.3276621465977682,-0.39210815313215763,-1.4635149481321186,0.29612027706457605,0.26105527217988933,0.00511345664246089,-0.23458713337514692],
 "y":[-1.4153707420504142,-0.42064532276535904,-0.3427145165267695,-0.8022772692216189,-0.16128571166600914,0.4040508568145384,1.8861859012105302,0.17457781283183896,0.25755039072276437,-0.07444591576616721,-1.9187712152990415,-0.026513875449216878,0.06023020994102644,2.463242112485286,-0.19236096478112252,0.30154734233361247,-0.03471176970524331,-1.168678037619532,1.1428228145150205,0.7519330326867741,0.7910319470430469,-0.9093874547947389,1.4027943109360992,-1.4018510627922809,0.5868570938002703,2.1904556258099785,-0.9905363251306883,-0.5662977296027719,0.09965136508764122,-0.5034756541161992,-1.5506634310661327,0.06856297480602733,-1.0623037137261049,0.4735924306351816,-0.9194242342338032,1.5499344050175394,-0.7832532923362371,-0.3220615162056756,0.8135172173696698,-1.2308643164339552,0.22745993460412942,1.307142754282428,-1.6074832345612275,0.1846338585323042,0.25988279424842353,0.7818228717773104,-1.236950710878082,-1.3204566130842763,0.5219415656168976,0.29698467323318606,0.25049285034587654,0.3464482094969757,-0.6800247215784908,0.23225369716100355,0.29307247329868125,-0.7143514180263678,1.8657745111447566,0.4738329209117875,-1.1913034972026486,0.6565536086338297,-0.9746816702273214,0.787084603742452,1.158595579007404,-0.8206823183517105,0.9633761292443218,0.4127809269364983,0.82206015999449,1.8967929826539474,-0.2453881160028705,-0.7537361643574896,-0.8895144296255233,-0.8158102849654383,-0.0771017094141042,0.3411519748166439,0.27669079933001905,0.8271832490360238,0.01300189187790702,1.4535340771573169,-0.2646568332379561,2.720169166589619,0.6256673477650062,-0.8571575564162826,-1.0708924980611123,0.4824724152431853,-0.2234627853258509,0.714000494092092,0.47323762457354485,-0.07282891265687277,-0.846793718068405,-1.5148472246858646,-0.4465149520670211,0.8563987943234723,0.21409374413020396,-1.245738778711988,0.173180925851182,0.3853173797288368,-0.883857436201133,0.1537251059455279,0.058208718445999896,-1.142970297830623],
@@ -1371,13 +1557,37 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"6"
 };
-           var plotContainer = document.getElementById("LRebFW");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </dd></dl>
@@ -1418,7 +1628,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="ReWd5y"></div>
+<div id="BLZsGi"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1429,7 +1639,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1442,16 +1652,31 @@ If a label is not specified, the string will be centered in the tooltip.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("ReWd5y").appendChild(div);
+            document.getElementById("BLZsGi").appendChild(div);
         };
-        var e = document.getElementById("ReWd5y");
+        var e = document.getElementById("BLZsGi");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="AZpKft"></div>
+</div><div class="output text_html">   <div id="U1yhOh"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("U1yhOh");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "x":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.324083969394795,-0.38508228041631654,-0.6769220003059587,0.6116762888408679,1.030999522495951,0.9312801191161986,-0.8392175232226385,-0.3092123758512146,0.33126343140356396,0.9755451271223592,-0.47917423784528995,-0.18565897666381712,-1.1063349740060282,-1.1962066240806708,0.812525822394198,1.356240028570823,-0.07201012158033385,1.0035328978920242,0.36163602504763415,-0.6451197546051243,0.36139560550841393,1.5380365664659692,-0.03582603910995154,1.5646436558140062,-2.6197451040897444,0.8219025043752238,0.08704706823817122,-0.29900735046586746,0.0917607765355023,-1.9875689146008928,-0.21967188783751193,0.3571125715117464,1.477894044741516,-0.5182702182736474,-0.8084936028931876,-0.5017570435845365,0.9154021177020741,0.32875110965968446,-0.5297602037670388,0.5132674331133561,0.09707754934804039,0.9686449905328892,-0.7020530938773524,-0.3276621465977682,-0.39210815313215763,-1.4635149481321186,0.29612027706457605,0.26105527217988933,0.00511345664246089,-0.23458713337514692],
 "y":[-1.4153707420504142,-0.42064532276535904,-0.3427145165267695,-0.8022772692216189,-0.16128571166600914,0.4040508568145384,1.8861859012105302,0.17457781283183896,0.25755039072276437,-0.07444591576616721,-1.9187712152990415,-0.026513875449216878,0.06023020994102644,2.463242112485286,-0.19236096478112252,0.30154734233361247,-0.03471176970524331,-1.168678037619532,1.1428228145150205,0.7519330326867741,0.7910319470430469,-0.9093874547947389,1.4027943109360992,-1.4018510627922809,0.5868570938002703,2.1904556258099785,-0.9905363251306883,-0.5662977296027719,0.09965136508764122,-0.5034756541161992,-1.5506634310661327,0.06856297480602733,-1.0623037137261049,0.4735924306351816,-0.9194242342338032,1.5499344050175394,-0.7832532923362371,-0.3220615162056756,0.8135172173696698,-1.2308643164339552,0.22745993460412942,1.307142754282428,-1.6074832345612275,0.1846338585323042,0.25988279424842353,0.7818228717773104,-1.236950710878082,-1.3204566130842763,0.5219415656168976,0.29698467323318606,0.25049285034587654,0.3464482094969757,-0.6800247215784908,0.23225369716100355,0.29307247329868125,-0.7143514180263678,1.8657745111447566,0.4738329209117875,-1.1913034972026486,0.6565536086338297,-0.9746816702273214,0.787084603742452,1.158595579007404,-0.8206823183517105,0.9633761292443218,0.4127809269364983,0.82206015999449,1.8967929826539474,-0.2453881160028705,-0.7537361643574896,-0.8895144296255233,-0.8158102849654383,-0.0771017094141042,0.3411519748166439,0.27669079933001905,0.8271832490360238,0.01300189187790702,1.4535340771573169,-0.2646568332379561,2.720169166589619,0.6256673477650062,-0.8571575564162826,-1.0708924980611123,0.4824724152431853,-0.2234627853258509,0.714000494092092,0.47323762457354485,-0.07282891265687277,-0.846793718068405,-1.5148472246858646,-0.4465149520670211,0.8563987943234723,0.21409374413020396,-1.245738778711988,0.173180925851182,0.3853173797288368,-0.883857436201133,0.1537251059455279,0.058208718445999896,-1.142970297830623]
@@ -1485,13 +1710,37 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"7"
 };
-           var plotContainer = document.getElementById("AZpKft");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </dd></dl>
@@ -1532,7 +1781,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="UJAdwV"></div>
+<div id="wTPtxU"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1543,7 +1792,7 @@ If a label is not specified, the string will be centered in the tooltip.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1556,16 +1805,31 @@ If a label is not specified, the string will be centered in the tooltip.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("UJAdwV").appendChild(div);
+            document.getElementById("wTPtxU").appendChild(div);
         };
-        var e = document.getElementById("UJAdwV");
+        var e = document.getElementById("wTPtxU");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="dbd1IS"></div>
+</div><div class="output text_html">   <div id="9KHya8"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("9KHya8");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "x":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.324083969394795,-0.38508228041631654,-0.6769220003059587,0.6116762888408679,1.030999522495951,0.9312801191161986,-0.8392175232226385,-0.3092123758512146,0.33126343140356396,0.9755451271223592,-0.47917423784528995,-0.18565897666381712,-1.1063349740060282,-1.1962066240806708,0.812525822394198,1.356240028570823,-0.07201012158033385,1.0035328978920242,0.36163602504763415,-0.6451197546051243,0.36139560550841393,1.5380365664659692,-0.03582603910995154,1.5646436558140062,-2.6197451040897444,0.8219025043752238,0.08704706823817122,-0.29900735046586746,0.0917607765355023,-1.9875689146008928,-0.21967188783751193,0.3571125715117464,1.477894044741516,-0.5182702182736474,-0.8084936028931876,-0.5017570435845365,0.9154021177020741,0.32875110965968446,-0.5297602037670388,0.5132674331133561,0.09707754934804039,0.9686449905328892,-0.7020530938773524,-0.3276621465977682,-0.39210815313215763,-1.4635149481321186,0.29612027706457605,0.26105527217988933,0.00511345664246089,-0.23458713337514692],
 "y":[-1.4153707420504142,-0.42064532276535904,-0.3427145165267695,-0.8022772692216189,-0.16128571166600914,0.4040508568145384,1.8861859012105302,0.17457781283183896,0.25755039072276437,-0.07444591576616721,-1.9187712152990415,-0.026513875449216878,0.06023020994102644,2.463242112485286,-0.19236096478112252,0.30154734233361247,-0.03471176970524331,-1.168678037619532,1.1428228145150205,0.7519330326867741,0.7910319470430469,-0.9093874547947389,1.4027943109360992,-1.4018510627922809,0.5868570938002703,2.1904556258099785,-0.9905363251306883,-0.5662977296027719,0.09965136508764122,-0.5034756541161992,-1.5506634310661327,0.06856297480602733,-1.0623037137261049,0.4735924306351816,-0.9194242342338032,1.5499344050175394,-0.7832532923362371,-0.3220615162056756,0.8135172173696698,-1.2308643164339552,0.22745993460412942,1.307142754282428,-1.6074832345612275,0.1846338585323042,0.25988279424842353,0.7818228717773104,-1.236950710878082,-1.3204566130842763,0.5219415656168976,0.29698467323318606,0.25049285034587654,0.3464482094969757,-0.6800247215784908,0.23225369716100355,0.29307247329868125,-0.7143514180263678,1.8657745111447566,0.4738329209117875,-1.1913034972026486,0.6565536086338297,-0.9746816702273214,0.787084603742452,1.158595579007404,-0.8206823183517105,0.9633761292443218,0.4127809269364983,0.82206015999449,1.8967929826539474,-0.2453881160028705,-0.7537361643574896,-0.8895144296255233,-0.8158102849654383,-0.0771017094141042,0.3411519748166439,0.27669079933001905,0.8271832490360238,0.01300189187790702,1.4535340771573169,-0.2646568332379561,2.720169166589619,0.6256673477650062,-0.8571575564162826,-1.0708924980611123,0.4824724152431853,-0.2234627853258509,0.714000494092092,0.47323762457354485,-0.07282891265687277,-0.846793718068405,-1.5148472246858646,-0.4465149520670211,0.8563987943234723,0.21409374413020396,-1.245738778711988,0.173180925851182,0.3853173797288368,-0.883857436201133,0.1537251059455279,0.058208718445999896,-1.142970297830623]
@@ -1599,13 +1863,37 @@ If a label is not specified, the string will be centered in the tooltip.</p>
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"8"
 };
-           var plotContainer = document.getElementById("dbd1IS");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </dd></dl>
@@ -1665,7 +1953,7 @@ A long title can be split into multiple lines using <cite>\n</cite> as a text se
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="AQljCW"></div>
+<div id="Ojgiv5"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1676,7 +1964,7 @@ A long title can be split into multiple lines using <cite>\n</cite> as a text se
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1689,16 +1977,31 @@ A long title can be split into multiple lines using <cite>\n</cite> as a text se
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("AQljCW").appendChild(div);
+            document.getElementById("Ojgiv5").appendChild(div);
         };
-        var e = document.getElementById("AQljCW");
+        var e = document.getElementById("Ojgiv5");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="oy2SeP"></div>
+</div><div class="output text_html">   <div id="XPvtjk"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("XPvtjk");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 "id":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0],
 "x":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.324083969394795,-0.38508228041631654,-0.6769220003059587,0.6116762888408679,1.030999522495951,0.9312801191161986,-0.8392175232226385,-0.3092123758512146,0.33126343140356396,0.9755451271223592,-0.47917423784528995,-0.18565897666381712,-1.1063349740060282,-1.1962066240806708,0.812525822394198,1.356240028570823,-0.07201012158033385,1.0035328978920242,0.36163602504763415,-0.6451197546051243,0.36139560550841393,1.5380365664659692,-0.03582603910995154,1.5646436558140062,-2.6197451040897444,0.8219025043752238,0.08704706823817122,-0.29900735046586746,0.0917607765355023,-1.9875689146008928,-0.21967188783751193,0.3571125715117464,1.477894044741516,-0.5182702182736474,-0.8084936028931876,-0.5017570435845365,0.9154021177020741,0.32875110965968446,-0.5297602037670388,0.5132674331133561,0.09707754934804039,0.9686449905328892,-0.7020530938773524,-0.3276621465977682,-0.39210815313215763,-1.4635149481321186,0.29612027706457605,0.26105527217988933,0.00511345664246089,-0.23458713337514692],
@@ -1747,13 +2050,37 @@ A long title can be split into multiple lines using <cite>\n</cite> as a text se
 "data":{
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"9"
 };
-           var plotContainer = document.getElementById("oy2SeP");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </dd></dl>
@@ -1793,7 +2120,7 @@ the general tooltip will get the given lines, and the side tooltips will be hidd
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="MEVPJO"></div>
+<div id="KTkUIF"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1804,7 +2131,7 @@ the general tooltip will get the given lines, and the side tooltips will be hidd
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1817,16 +2144,31 @@ the general tooltip will get the given lines, and the side tooltips will be hidd
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("MEVPJO").appendChild(div);
+            document.getElementById("KTkUIF").appendChild(div);
         };
-        var e = document.getElementById("MEVPJO");
+        var e = document.getElementById("KTkUIF");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="aWcN7w"></div>
+</div><div class="output text_html">   <div id="eM6n3I"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
-       (function() {
-           var plotSpec={
+
+   (function() {
+   // ----------
+
+   var containerDiv = document.getElementById("eM6n3I");
+   var observer = new ResizeObserver(function(entries) {
+       for (let entry of entries) {
+           var width = containerDiv.clientWidth
+           if (entry.contentBoxSize && width > 0) {
+
+               // Render plot
+               if (observer) {
+                   observer.disconnect();
+                   observer = null;
+               }
+
+               var plotSpec={
 "data":{
 },
 "mapping":{
@@ -1880,13 +2222,37 @@ the general tooltip will get the given lines, and the side tooltips will be hidd
 "v":[1.5230298564080254,-1.4247481862134568,NaN,NaN]
 }
 }],
-"metainfo_list":[]
+"metainfo_list":[],
+"spec_id":"10"
 };
-           var plotContainer = document.getElementById("aWcN7w");
-           window.letsPlotCall(function() {{
-               LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
-           }});
-       })();
+               window.letsPlotCall(function() {
+
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+
+                   var options = {
+                       sizing: {
+                           width_mode: "min",
+                           height_mode: "scaled",
+                           width: width
+                       }
+                   };
+                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+                   if (toolbar) {
+                     toolbar.bind(fig);
+                   }
+               });
+
+               break;
+           }
+       }
+   });
+
+   observer.observe(containerDiv);
+
+   // ----------
+   })();
+
    </script></div></div>
 </div>
 </dd></dl>
@@ -1906,7 +2272,8 @@ the general tooltip will get the given lines, and the side tooltips will be hidd
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1945,8 +2312,8 @@ the general tooltip will get the given lines, and the side tooltips will be hidd
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1966,9 +2333,9 @@ the general tooltip will get the given lines, and the side tooltips will be hidd
 <p class="sphinx-version theme-version">
   Created using
   <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
-  7.4.7 and
+  8.1.3 and
   <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
-  0.15.4.
+  0.16.0.
 <p></div>
       
     </div>

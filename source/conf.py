@@ -104,6 +104,7 @@ autodoc_default_options = {
     'autosummary-undoc-members': False,
 }
 autosummary_generate = True
+add_module_names = False
 
 
 # ----------------------------------------------------------------------------

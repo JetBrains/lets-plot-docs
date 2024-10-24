@@ -20,9 +20,9 @@ Color and Fill
 
 Colors and fills of geometries can be specified in the following ways:
 
-- RGB/RGBA (e.g. ``"rgb(0, 0, 255)"``).
+- RGB/RGBA (e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``).
 
-- HEX (e.g. ``"#0000ff"``).
+- HEX (e.g. ``"#0000ff"``, ``"#00f"``).
 
 - A name, one of:
 
@@ -94,15 +94,37 @@ Point Shapes
 Line Types
 ----------
 
+Predefined Patterns
+~~~~~~~~~~~~~~~~~~~
+
 .. image:: /_static/images/pages/aesthetics/aesthetics_linetype.png
     :class: only-light
     :width: 800
-    :alt: Line types
+    :alt: Predefined line types
 
 .. image:: /_static/images/pages/aesthetics/aesthetics_linetype_dark.png
     :class: only-dark
     :width: 800
-    :alt: Line types (dark)
+    :alt: Predefined line types (dark)
+
+Custom Patterns
+~~~~~~~~~~~~~~~
+
+Ways to specify the ``linetype``:
+
+- list, defining the pattern of dashes and gaps used to draw the line: ``[dash, gap, ...]``;
+- list with specified offset: ``[offset, [dash, gap, ...]]``;
+- string of an even number (up to eight) of hexadecimal digits which give the lengths in consecutive positions in the string.
+
+.. image:: /_static/images/pages/aesthetics/aesthetics_custom_linetype.png
+    :class: only-light
+    :width: 800
+    :alt: Custom line types
+
+.. image:: /_static/images/pages/aesthetics/aesthetics_custom_linetype_dark.png
+    :class: only-dark
+    :width: 800
+    :alt: Custom line types (dark)
 
 
 Text

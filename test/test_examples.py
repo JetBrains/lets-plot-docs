@@ -20,6 +20,8 @@ PYTHON_NOTEBOOKS_DIR = "source/examples"
 KOTLIN_NOTEBOOKS_DIR = "source/kotlin_examples"
 EXTREF_CONF = "source/extref_conf.json"
 
+LPK_DESCRIPTOR = os.getenv("lpk_descriptor")
+
 python_notebook_paths = list(generate_notebooks(PYTHON_NOTEBOOKS_DIR))
 kotlin_notebook_paths = list(generate_notebooks(KOTLIN_NOTEBOOKS_DIR))
 notebook_paths = python_notebook_paths + kotlin_notebook_paths
@@ -50,7 +52,11 @@ def generate_local_notebook_refs():
 
 @pytest.mark.parametrize('notebook', notebook_paths)
 def test_notebook_has_no_errors(notebook):
-    with notebook_parser(notebook) as (parser, parser_type):
+    lpk_descriptor = None
+    if "kotlin_examples" in notebook:
+        assert LPK_DESCRIPTOR != "", "LPK descriptor shouldn't be empty (use option '--lpk-descriptor')"
+        lpk_descriptor = LPK_DESCRIPTOR
+    with notebook_parser(notebook, lpk_descriptor) as (parser, parser_type):
         check_lets_plot_message_errors(parser, parser_type, notebook)
         _check_links(parser, parser_type, notebook)
         check_warnings(parser, parser_type, notebook)

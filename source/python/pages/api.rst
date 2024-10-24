@@ -59,6 +59,7 @@ Plotting
     GGBunch
     gggrid
     ggmarginal
+    ggtb
     aes
     ggsave
 
@@ -72,6 +73,7 @@ Standard Geometries
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     geom_point
     geom_path
@@ -121,6 +123,7 @@ Standard Geometries
     geom_qq_line
     geom_qq2_line
     geom_function
+    geom_blank
 
 Additional Geometries
 ~~~~~~~~~~~~~~~~~~~~~
@@ -128,6 +131,7 @@ Additional Geometries
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     geom_imshow
     geom_livemap
@@ -139,6 +143,7 @@ Stats
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     stat_sum
     stat_summary
@@ -152,14 +157,17 @@ Extras
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     arrow
+    expand_limits
 
 .. currentmodule:: lets_plot.mapping
 
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     as_discrete
 
@@ -179,6 +187,7 @@ Facets
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     facet_grid
     facet_wrap
@@ -193,6 +202,7 @@ Position Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_x_discrete
     scale_y_discrete
@@ -213,6 +223,7 @@ Color Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_color_manual
     scale_color_gradient
@@ -232,6 +243,7 @@ Fill Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_fill_manual
     scale_fill_gradient
@@ -251,6 +263,7 @@ Flexible Color Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_manual
     scale_gradient
@@ -270,6 +283,7 @@ Shape Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_shape
     scale_shape_manual
@@ -280,6 +294,7 @@ Size Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_size_manual
     scale_size
@@ -293,6 +308,7 @@ Alpha Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_alpha_manual
     scale_alpha
@@ -303,6 +319,7 @@ Linetype Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_linetype_manual
 
@@ -312,6 +329,7 @@ Datetime Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_x_datetime
     scale_y_datetime
@@ -324,6 +342,7 @@ Identity Scales
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     scale_identity
     scale_color_identity
@@ -341,6 +360,7 @@ Scale Limits
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     lims
     xlim
@@ -352,6 +372,7 @@ Scale Guides
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     guide_legend
     guide_colorbar
@@ -365,6 +386,7 @@ Positions
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     position_dodge
     position_dodgev
@@ -381,6 +403,7 @@ Coordinate Systems
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     coord_cartesian
     coord_fixed
@@ -398,6 +421,7 @@ Base
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     theme
     element_blank
@@ -414,6 +438,7 @@ Predefined Themes
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     theme_none
     theme_void
@@ -430,6 +455,7 @@ Flavors
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     flavor_darcula
     flavor_high_contrast_dark
@@ -443,6 +469,7 @@ Labels
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     ggtitle
     labs
@@ -465,6 +492,7 @@ Font Features
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     font_metrics_adjustment
     font_family_info
@@ -476,6 +504,7 @@ Sampling
 .. autosummary::
     :toctree: api
     :nosignatures:
+    :template: default.rst
 
     sampling_random
     sampling_random_stratified
@@ -596,12 +625,6 @@ Geospatial
     CARTO_DARK_MATTER_NO_LABELS_HIRES
     CARTO_VOYAGER
     CARTO_VOYAGER_HIRES
-    CARTO_MIDNIGHT_COMMANDER
-    CARTO_MIDNIGHT_COMMANDER_HIRES
-    CARTO_ANTIQUE
-    CARTO_ANTIQUE_HIRES
-    CARTO_FLAT_BLUE
-    CARTO_FLAT_BLUE_HIRES
     NASA_CITYLIGHTS_2012
     NASA_GREYSCALE_SHADED_RELIEF_30M
     NASA_COLOR_SHADED_RELIEF_30M
