@@ -16,7 +16,7 @@ What is new in 4.5.0
 
 - **Clickable Links**
 
-  .. image:: /_static/images/changelog/4.5.0/lp_verse.png
+  .. image:: /_static/images/changelog/4.5.0/interactive_links.png
     :width: 400
     :height: 270
 
@@ -76,6 +76,11 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/interact_pan_zoom.ipynb
 
+.. image:: /_static/images/changelog/4.5.0/lp_verse.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lp_verse.ipynb
+
 .. image:: /_static/images/changelog/4.4.0/us_unemployment.png
   :width: 128
   :height: 128
@@ -85,6 +90,10 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/earthquake.ipynb
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.3.3/sunshine_hours.png
   :width: 128
@@ -96,10 +105,6 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://www.ddanieltan.com/posts/30-day-chart-2/index.html
 
-.. raw:: html
-
-    <br/>
-
 .. image:: /_static/images/changelog/4.3.2/mpg_corrgram.png
   :width: 128
   :height: 128
@@ -109,6 +114,10 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/venn_diagram.ipynb
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.3.1/gal_spoke.png
   :width: 128
@@ -125,14 +134,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://www.kaggle.com/code/alshan/japanese-volcanoes-on-map
 
-.. raw:: html
-
-    <br/>
-
 .. image:: /_static/images/changelog/4.3.0/gal_bbc_cookbook.png
   :width: 128
   :height: 128
   :target: https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.3.0/gal_penguins.png
   :width: 128

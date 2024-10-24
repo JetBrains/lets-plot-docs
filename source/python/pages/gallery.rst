@@ -17,6 +17,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: lp_verse
+
+    .. grid-item-card::
+
         .. extref:: us_unemployment
 
     .. grid-item-card::

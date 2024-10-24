@@ -655,7 +655,7 @@ In tooltips/labels/texts and wherever else there is text, you can use:
 
 Examples:
 
-- .. extref:: interactive_links
+- .. extref:: lp_verse
       :type: text
 - .. extref:: latex_support
       :type: text
