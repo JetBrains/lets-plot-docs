@@ -626,8 +626,8 @@ Examples:
 Miscellaneous
 -------------
 
-Interactivity
-~~~~~~~~~~~~~
+Panning and Zooming
+~~~~~~~~~~~~~~~~~~~
 
 Use the :py:mod:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`` interactivity on a chart.
 
