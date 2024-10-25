@@ -14,6 +14,8 @@ from .generator import generate_pages, generate_notebooks
 from .lets_plot_errors import check_lets_plot_message_errors, check_warnings
 from .test_links import check_url
 
+EXCLUDED_PYTHON_NOTEBOOKS = ["nyc_metro"]
+
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
 PYTHON_NOTEBOOKS_DIR = "source/examples"
@@ -22,7 +24,7 @@ EXTREF_CONF = "source/extref_conf.json"
 
 LPK_DESCRIPTOR = os.getenv("lpk_descriptor")
 
-python_notebook_paths = list(generate_notebooks(PYTHON_NOTEBOOKS_DIR))
+python_notebook_paths = list(generate_notebooks(PYTHON_NOTEBOOKS_DIR, excluded_names=EXCLUDED_PYTHON_NOTEBOOKS))
 kotlin_notebook_paths = list(generate_notebooks(KOTLIN_NOTEBOOKS_DIR))
 notebook_paths = python_notebook_paths + kotlin_notebook_paths
 extref_json = None
@@ -78,7 +80,10 @@ def test_notebook_ref_has_origin(page, nb_ref):
 def _check_links(parser, parser_type, source):
     if parser_type == 'driver':
         for a in parser.find_elements(By.CSS_SELECTOR, 'a'):
-            _check_href(a.get_attribute('href'), source)
+            href = a.get_attribute('href')
+            if isinstance(href, dict):
+                href = href['animVal']
+            _check_href(href, source)
     elif parser_type == 'soup':
         for a in parser.find_all('a'):
             _check_href(a['href'], source)

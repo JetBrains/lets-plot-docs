@@ -9,7 +9,8 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-TIMEOUT = 3 * 60 # per subprocess in seconds
+HEADLESS = True # for Selenium webdriver
+TIMEOUT = 3 * 60 # `jupyter nbconvert` timeout: per subprocess in seconds
 
 class page_parser():
 
@@ -21,6 +22,8 @@ class page_parser():
         try:
             driver_options = Options()
             driver_options.add_argument("--start-maximized")
+            if HEADLESS:
+                driver_options.add_argument("--headless=new")
             self.driver = webdriver.Chrome(options=driver_options)
             self.driver.get("file:///{0}".format(os.path.abspath(self.page)))
             return self.driver, 'driver'
