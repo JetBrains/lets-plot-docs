@@ -14,6 +14,8 @@ from .generator import generate_pages, generate_notebooks
 from .lets_plot_errors import check_lets_plot_message_errors, check_warnings
 from .test_links import check_url
 
+EXCLUDED_NOTEBOOKS = ["nyc_metro"]
+
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
 PYTHON_NOTEBOOKS_DIR = "source/examples"
