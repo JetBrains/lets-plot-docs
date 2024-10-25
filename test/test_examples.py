@@ -78,7 +78,10 @@ def test_notebook_ref_has_origin(page, nb_ref):
 def _check_links(parser, parser_type, source):
     if parser_type == 'driver':
         for a in parser.find_elements(By.CSS_SELECTOR, 'a'):
-            _check_href(a.get_attribute('href'), source)
+            href = a.get_attribute('href')
+            if isinstance(href, dict):
+                href = href['animVal']
+            _check_href(href, source)
     elif parser_type == 'soup':
         for a in parser.find_all('a'):
             _check_href(a['href'], source)
