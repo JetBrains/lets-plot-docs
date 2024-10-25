@@ -14,7 +14,7 @@ from .generator import generate_pages, generate_notebooks
 from .lets_plot_errors import check_lets_plot_message_errors, check_warnings
 from .test_links import check_url
 
-EXCLUDED_NOTEBOOKS = ["nyc_metro"]
+EXCLUDED_PYTHON_NOTEBOOKS = ["nyc_metro"]
 
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
@@ -24,7 +24,7 @@ EXTREF_CONF = "source/extref_conf.json"
 
 LPK_DESCRIPTOR = os.getenv("lpk_descriptor")
 
-python_notebook_paths = list(generate_notebooks(PYTHON_NOTEBOOKS_DIR))
+python_notebook_paths = list(generate_notebooks(PYTHON_NOTEBOOKS_DIR, excluded_names=EXCLUDED_PYTHON_NOTEBOOKS))
 kotlin_notebook_paths = list(generate_notebooks(KOTLIN_NOTEBOOKS_DIR))
 notebook_paths = python_notebook_paths + kotlin_notebook_paths
 extref_json = None
