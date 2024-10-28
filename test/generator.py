@@ -15,7 +15,7 @@ def generate_notebooks(path, included_names=None, excluded_names=[]):
         for filename in filenames:
             visible = not _is_hidden_file(filename)
             is_notebook = filename.split('.')[-1] == "ipynb"
-            pass_filters = included_names is None or os.path.splitext(filename)[0] in included_names and \
+            pass_filters = (included_names is None or os.path.splitext(filename)[0] in included_names) and \
                            os.path.splitext(filename)[0] not in excluded_names
             if visible and is_notebook and pass_filters:
                 yield os.path.join(root, filename)
