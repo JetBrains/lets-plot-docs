@@ -607,7 +607,7 @@ Examples:
       :type: text
 - .. extref:: theme_flavors
       :type: text
-- .. extref:: legend
+- .. extref:: legend_theme
       :type: text
 - .. extref:: tooltip_config
       :type: text
@@ -670,6 +670,8 @@ Options ``manual_key`` and ``override_aes`` addresses this limitation.
 
 Examples:
 
+- .. extref:: manual_legend
+      :type: text
 - .. extref:: legend
       :type: text
 

@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: legend_theme
+
+    .. grid-item-card::
+
         .. extref:: interact_pan_zoom
 
     .. grid-item-card::
