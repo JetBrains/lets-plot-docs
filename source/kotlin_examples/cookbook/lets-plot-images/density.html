@@ -2,11 +2,15 @@
    &lt;head>
        &lt;meta charset=&quot;UTF-8&quot;>
        &lt;style> html, body { margin: 0; overflow: hidden; } &lt;/style>
-       &lt;script type=&quot;text/javascript&quot; data-lets-plot-script=&quot;library&quot; src=&quot;https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.0/js-package/distr/lets-plot.min.js&quot;>&lt;/script>
+       &lt;script type=&quot;text/javascript&quot; data-lets-plot-script=&quot;library&quot; src=&quot;https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.1/js-package/distr/lets-plot.min.js&quot;>&lt;/script>
    &lt;/head>
    &lt;body>
-          &lt;div id=&quot;JPDa68&quot;>&lt;/div>
+          &lt;div id=&quot;3m6Bto&quot;>&lt;/div>
    &lt;script type=&quot;text/javascript&quot; data-lets-plot-script=&quot;plot&quot;>
+   
+   (function() {
+   // ----------
+   
        var plotSpec={
 &quot;mapping&quot;:{
 },
@@ -41,10 +45,30 @@
 &quot;type&quot;:&quot;str&quot;,
 &quot;column&quot;:&quot;cond&quot;
 }]
-}
+},
+&quot;spec_id&quot;:&quot;3&quot;
 };
-       var plotContainer = document.getElementById(&quot;JPDa68&quot;);
-       LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer);
+       var containerDiv = document.getElementById(&quot;3m6Bto&quot;);
+       
+               var toolbar = null;
+               var plotContainer = containerDiv;               
+               
+       var options = {
+           sizing: {
+               width_mode: &quot;fixed&quot;,
+               height_mode: &quot;fixed&quot;,
+               width: 500.0,
+               height: 250.0
+           }
+       };
+       var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
+       if (toolbar) {
+         toolbar.bind(fig);
+       }
+       
+   // ----------
+   })();
+   
    &lt;/script>
    &lt;/body>
 &lt;/html>"></iframe>    

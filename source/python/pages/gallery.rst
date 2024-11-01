@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: legend_theme
+
+    .. grid-item-card::
+
         .. extref:: interact_pan_zoom
 
     .. grid-item-card::
@@ -198,7 +202,7 @@ Gallery
 
     .. grid-item-card::
 
-        .. extref:: travel_the_world
+        .. extref:: tourist_cities
 
     .. grid-item-card::
 
@@ -263,10 +267,6 @@ Gallery
     .. grid-item-card::
 
         .. extref:: geocoding_examples
-
-    .. grid-item-card::
-
-        .. extref:: tourist_cities
 
     .. grid-item-card::
 

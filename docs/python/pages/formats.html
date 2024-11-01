@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=13c09b03" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=31aeeec5" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
   
@@ -506,7 +506,7 @@ The general form of a format specifier is:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> - exponent notation;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> - fixed point notation;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">g</span></code> - either decimal or exponent notation, rounded to significant digits;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> - decimal notation with an SI prefix, rounded to significant digits;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> - decimal notation followed by SI prefix symbol, rounded to significant digits;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">%</span></code> - multiply by 100, and then decimal notation with a percent sign;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> - binary notation, rounded to integer;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">o</span></code> - octal notation, rounded to integer;</p></li>
@@ -515,7 +515,7 @@ The general form of a format specifier is:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">X</span></code> - hexadecimal notation, using upper-case letters, rounded to integer;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">c</span></code> - simple toString.</p></li>
 </ul>
-<p>The following SI prefixes are supported for <code class="docutils literal notranslate"><span class="pre">s</span></code> type:</p>
+<p>The following prefix symbols are supported for <code class="docutils literal notranslate"><span class="pre">s</span></code> type:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> - yocto, 10⁻²⁴</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> - zepto, 10⁻²¹</p></li>
@@ -539,24 +539,24 @@ The general form of a format specifier is:</p>
 </ul>
 <section id="examples">
 <span id="formats-examples-number-format"></span><h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
-<p>Let’s format the number <cite>42</cite>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>08d       --&gt;  &quot;00000042&quot;
-_&lt;8d      --&gt;  &quot;______42&quot;
-_=8d      --&gt;  &quot;___42___&quot;
-_=+8d     --&gt;  &quot;+_____42&quot;
-_^11.0%   --&gt;  &quot;____42%____&quot;
-_^11,.0%  --&gt;  &quot;__42,200%__&quot;
-+08,d     --&gt;  &quot;+0,000,042&quot;
-.1f       --&gt;  &quot;42.0&quot;
-+.3f      --&gt;  &quot;+42.000&quot;
-b         --&gt;  &quot;101010&quot;
-#b        --&gt;  &quot;0b101010&quot;
-o         --&gt;  &quot;52&quot;
-e         --&gt;  &quot;4.200000e+1&quot;
-~e        --&gt;  &quot;4.2e+1&quot;
-s         --&gt;  &quot;42.0000&quot;
-020,s     --&gt;  &quot;000,000,000,042.0000&quot;
-020.0%    --&gt;  &quot;0000000000000004200%&quot;
+<p>Let’s format the number <code class="docutils literal notranslate"><span class="pre">1024</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>010d      --&gt;  &quot;0000001024&quot;
+_&lt;10d     --&gt;  &quot;1024______&quot;
+_=10d     --&gt;  &quot;______1024&quot;
+_=+10d    --&gt;  &quot;+_____1024&quot;
+_^11.0%   --&gt;  &quot;__102400%__&quot;
+_^11,.0%  --&gt;  &quot;_102,400%__&quot;
++010,d    --&gt;  &quot;+00,001,024&quot;
+.1f       --&gt;  &quot;1024.0&quot;
++.3f      --&gt;  &quot;+1024.000&quot;
+b         --&gt;  &quot;10000000000&quot;
+#b        --&gt;  &quot;0b10000000000&quot;
+o         --&gt;  &quot;2000&quot;
+e         --&gt;  &quot;1.024000e+3&quot;
+~e        --&gt;  &quot;1.024e+3&quot;
+s         --&gt;  &quot;1.02400k&quot;
+020,s     --&gt;  &quot;0,000,000,001.02400k&quot;
+020.0%    --&gt;  &quot;0000000000000102400%&quot;
 </pre></div>
 </div>
 <p>Some other examples:</p>

@@ -71,6 +71,11 @@ What is new in 4.5.0
 Recent Updates in the Gallery
 -----------------------------
 
+.. image:: /_static/images/changelog/4.5.0/legend_theme.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/legend_theme.ipynb
+
 .. image:: /_static/images/changelog/4.5.0/interact_pan_zoom.png
   :width: 128
   :height: 128
@@ -115,14 +120,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/venn_diagram.ipynb
 
-.. raw:: html
-
-    <br/>
-
 .. image:: /_static/images/changelog/4.3.1/gal_spoke.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geom_spoke.ipynb
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.3.1/gal_indonesia_volcanoes_on_map.png
   :width: 128
@@ -139,10 +144,6 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nextjournal.com/asmirnov-horis/bbc-visual-and-data-journalism-cookbook-for-lets-plot
 
-.. raw:: html
-
-    <br/>
-
 .. image:: /_static/images/changelog/4.3.0/gal_penguins.png
   :width: 128
   :height: 128
@@ -152,6 +153,10 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/periodic_table.ipynb
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.3.0/gal_wind_rose.png
   :width: 128
