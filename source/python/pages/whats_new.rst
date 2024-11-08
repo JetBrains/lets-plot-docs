@@ -74,7 +74,7 @@ Recent Updates in the Gallery
 .. image:: /_static/images/changelog/4.5.0/legend_theme.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/legend_theme.ipynb
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/theme_legend_scheme.ipynb
 
 .. image:: /_static/images/changelog/4.5.0/interact_pan_zoom.png
   :width: 128

@@ -13,7 +13,7 @@ Gallery
 
     .. grid-item-card::
 
-        .. extref:: legend_theme
+        .. extref:: theme_legend_scheme
 
     .. grid-item-card::
 
