@@ -538,6 +538,29 @@ Examples:
 :py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`,
 :py:mod:`guides() <lets_plot.guides>`
 
+Examples:
+
+- .. extref:: themes
+      :type: text
+- .. extref:: default_theme
+      :type: text
+- .. extref:: geom_theme_colors
+      :type: text
+- .. extref:: legend_theme
+      :type: text
+- .. extref:: tooltip_config
+      :type: text
+- .. extref:: set_font_faces
+      :type: text
+- .. extref:: axis_position
+      :type: text
+- .. extref:: axis_text_angle
+      :type: text
+- .. extref:: superscript_exponent
+      :type: text
+- .. extref:: annotations_page
+      :type: text
+
 Predefined themes
 ~~~~~~~~~~~~~~~~~
 
@@ -583,6 +606,15 @@ Predefined themes
         .. extref:: complete_themes
             :image: minimal
 
+Examples:
+
+- .. extref:: default_theme
+      :type: text
+- .. extref:: theme_flavors
+      :type: text
+- .. extref:: annotations_page
+      :type: text
+
 Color schemes (flavors)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -599,27 +631,9 @@ Color schemes (flavors)
 
 Examples:
 
-- .. extref:: default_theme
-      :type: text
-- .. extref:: themes
-      :type: text
 - .. extref:: geom_theme_colors
       :type: text
 - .. extref:: theme_flavors
-      :type: text
-- .. extref:: legend_theme
-      :type: text
-- .. extref:: tooltip_config
-      :type: text
-- .. extref:: set_font_faces
-      :type: text
-- .. extref:: axis_position
-      :type: text
-- .. extref:: axis_text_angle
-      :type: text
-- .. extref:: superscript_exponent
-      :type: text
-- .. extref:: annotations_page
       :type: text
 
 
