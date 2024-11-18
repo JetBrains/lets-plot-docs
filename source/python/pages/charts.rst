@@ -739,7 +739,7 @@ Resources
 
 - `Picking the Perfect Data Visualization: Barplots <https://blog.jetbrains.com/dataspell/2023/03/picking-the-perfect-data-visualization-barplots/>`__
 
-.. include:: /python/shared/books.rst
+.. include:: /python/shared/links.rst
 
 
 .. include:: /python/shared/features.rst

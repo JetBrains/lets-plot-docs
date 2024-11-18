@@ -137,7 +137,7 @@ Quick Start
 User Guide
 ----------
 
-.. include:: /python/shared/books.rst
+.. include:: /python/shared/links.rst
 
 
 .. _python-index-pages:
