@@ -445,13 +445,39 @@ Examples:
       :type: text
 
 
-|l16| |d16| 'bistro' Plots
---------------------------
+|l16| |d16| Legends and Guides
+------------------------------
 
-.. |l16| image:: /_static/images/icons/charts/bistro-light.svg
+.. |l16| image:: /_static/images/icons/charts/legend-light.png
     :class: only-light
 
-.. |d16| image:: /_static/images/icons/charts/bistro-dark.svg
+.. |d16| image:: /_static/images/icons/charts/legend-dark.png
+    :class: only-dark
+
+:py:mod:`guide_legend() <lets_plot.guide_legend>`,
+:py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`,
+:py:mod:`guides() <lets_plot.guides>`,
+:py:mod:`layer_key() <lets_plot.layer_key>`
+
+Examples:
+
+- .. extref:: legend
+      :type: text
+- .. extref:: manual_legend
+      :type: text
+- .. extref:: legend_theme
+      :type: text
+- .. extref:: theme_legend_scheme
+      :type: text
+
+
+|l17| |d17| 'bistro' Plots
+--------------------------
+
+.. |l17| image:: /_static/images/icons/charts/bistro-light.svg
+    :class: only-light
+
+.. |d17| image:: /_static/images/icons/charts/bistro-dark.svg
     :class: only-dark
 
 :py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
@@ -467,13 +493,13 @@ With these high-level functions you can create visualizations like correlation m
 Learn more: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
-|l17| |d17| GeoPandas Shapes
+|l18| |d18| GeoPandas Shapes
 ----------------------------
 
-.. |l17| image:: /_static/images/icons/charts/geopandas-light.svg
+.. |l18| image:: /_static/images/icons/charts/geopandas-light.svg
     :class: only-light
 
-.. |d17| image:: /_static/images/icons/charts/geopandas-dark.svg
+.. |d18| image:: /_static/images/icons/charts/geopandas-dark.svg
     :class: only-dark
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`label <lets_plot.geom_label>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
@@ -496,13 +522,13 @@ Examples:
       :type: text
 
 
-|l18| |d18| Grouping Plots
+|l19| |d19| Grouping Plots
 --------------------------
 
-.. |l18| image:: /_static/images/icons/charts/grouping-plots-light.svg
+.. |l19| image:: /_static/images/icons/charts/grouping-plots-light.svg
     :class: only-light
 
-.. |d18| image:: /_static/images/icons/charts/grouping-plots-dark.svg
+.. |d19| image:: /_static/images/icons/charts/grouping-plots-dark.svg
     :class: only-dark
 
 :py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
@@ -519,13 +545,13 @@ Examples:
       :type: text
 
 
-|l19| |d19| Presentation Options
+|l20| |d20| Presentation Options
 --------------------------------
 
-.. |l19| image:: /_static/images/icons/charts/presentation-options-light.svg
+.. |l20| image:: /_static/images/icons/charts/presentation-options-light.svg
     :class: only-light
 
-.. |d19| image:: /_static/images/icons/charts/presentation-options-dark.svg
+.. |d20| image:: /_static/images/icons/charts/presentation-options-dark.svg
     :class: only-dark
 
 :py:mod:`theme() <lets_plot.theme>`,
@@ -533,10 +559,7 @@ Examples:
 :py:mod:`ggsize() <lets_plot.ggsize>`,
 :py:mod:`xlab() <lets_plot.xlab>`,
 :py:mod:`ylab() <lets_plot.ylab>`,
-:py:mod:`labs() <lets_plot.labs>`,
-:py:mod:`guide_legend() <lets_plot.guide_legend>`,
-:py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`,
-:py:mod:`guides() <lets_plot.guides>`
+:py:mod:`labs() <lets_plot.labs>`
 
 Examples:
 
@@ -547,6 +570,8 @@ Examples:
 - .. extref:: geom_theme_colors
       :type: text
 - .. extref:: legend_theme
+      :type: text
+- .. extref:: theme_legend_scheme
       :type: text
 - .. extref:: tooltip_config
       :type: text
@@ -685,8 +710,6 @@ Options ``manual_key`` and ``override_aes`` addresses this limitation.
 Examples:
 
 - .. extref:: manual_legend
-      :type: text
-- .. extref:: legend
       :type: text
 
 Multiple Color Scales
