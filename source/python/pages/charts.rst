@@ -448,10 +448,10 @@ Examples:
 |l16| |d16| Legends and Guides
 ------------------------------
 
-.. |l16| image:: /_static/images/icons/charts/legend-light.png
+.. |l16| image:: /_static/images/icons/charts/legend-light.svg
     :class: only-light
 
-.. |d16| image:: /_static/images/icons/charts/legend-dark.png
+.. |d16| image:: /_static/images/icons/charts/legend-dark.svg
     :class: only-dark
 
 :py:mod:`guide_legend() <lets_plot.guide_legend>`,
