@@ -15,6 +15,7 @@ Tooltip Customization
 =====================
 
 You can customize the content of tooltips for the layer by using the parameter ``tooltips`` of ``geom`` functions.
+The parameter takes as value the result of the :py:meth:`layer_tooltips() <lets_plot.layer_tooltips>` function call.
 
 |learn_more|.
 

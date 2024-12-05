@@ -284,7 +284,7 @@ To format the axis tooltips, follow the rules:
 Annotating Charts
 -----------------
 
-In the same way you can use formatting for annotation pies and bar charts, see: :doc:`Annotating Charts</python/pages/annotations>`.
+In the same way you can use formatting for annotation pies and bar charts using the :py:meth:`format() <lets_plot.layer_labels.format>` method, see: :doc:`Annotating Charts</python/pages/annotations>`.
 
 
 .. _formats_demo_notebooks:
