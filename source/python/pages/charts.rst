@@ -467,8 +467,6 @@ Examples:
       :type: text
 - .. extref:: legend_theme
       :type: text
-- .. extref:: theme_legend_scheme
-      :type: text
 
 
 |l17| |d17| 'bistro' Plots
@@ -568,10 +566,6 @@ Examples:
 - .. extref:: default_theme
       :type: text
 - .. extref:: geom_theme_colors
-      :type: text
-- .. extref:: legend_theme
-      :type: text
-- .. extref:: theme_legend_scheme
       :type: text
 - .. extref:: tooltip_config
       :type: text
