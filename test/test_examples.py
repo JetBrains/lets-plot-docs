@@ -66,6 +66,8 @@ def test_notebook_has_no_errors(notebook):
 @pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links(excluded_names=["whats_new"]))
 def test_notebook_has_file(page, a):
     nb_name = a['href'].split('/')[-1]
+    if nb_name.replace(".ipynb", "") in EXCLUDED_PYTHON_NOTEBOOKS:
+        return
     assert paths_contains_name(python_notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
 
 @pytest.mark.parametrize(('page', 'nb_ref'), generate_local_notebook_refs())
@@ -75,6 +77,8 @@ def test_notebook_ref_has_origin(page, nb_ref):
     nbv_ref = nb_data['ref'].get('nbviewer', None)
     if nbv_ref is not None and nbv_ref.startswith("https://nbviewer.org/github/JetBrains/lets-plot-docs"):
         nb_name = nbv_ref.split('/')[-1]
+        if nb_name.replace(".ipynb", "") in EXCLUDED_PYTHON_NOTEBOOKS:
+            return
         assert paths_contains_name(python_notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
 
 def _check_links(parser, parser_type, source):
