@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=31aeeec5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=67d8bc3f" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=32b6ea70" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
   
@@ -537,6 +537,10 @@ The general form of a format specifier is:</p>
 </ul>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These formatting rules are compatible with formatting from the d3 library, so you can find out more about the options listed above by visiting <a class="reference external" href="https://d3js.org/d3-format">this page</a>.</p>
+</div>
 <section id="examples">
 <span id="formats-examples-number-format"></span><h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <p>Let’s format the number <code class="docutils literal notranslate"><span class="pre">1024</span></code>:</p>
@@ -562,12 +566,19 @@ s         --&gt;  &quot;1.02400k&quot;
 <p>Some other examples:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>format   number        result
 .1f      0.42          &quot;0.4&quot;
-.3g      0.4449        &quot;0.445&quot;
-,.12g    -4200000      &quot;-4,200,000&quot;
-0,.2f    1234567.449   &quot;1,234,567.45&quot;
+0,.1f    1234567.89    &quot;1,234,567.9&quot;
 +$,.2f   1e4           &quot;+$10,000.00&quot;
++$,.2~f  1e4           &quot;+$10,000&quot;
+~g       0.0000042     &quot;0.0000042&quot;
+~g       0.00000042    &quot;4.2e-7&quot;
+~g       420000        &quot;420000&quot;
+~g       4200000       &quot;4.2e+6&quot;
+,.2g     -4231         &quot;-4,2e+3&quot;
+,.6g     -4231         &quot;-4,231.00&quot;
+,.6~g    -4231         &quot;-4,231&quot;
 </pre></div>
 </div>
+<p>See more examples <a class="reference external" href="https://observablehq.com/&#64;d3/d3-format">here</a>.</p>
 </section>
 </section>
 <section id="string-template">
@@ -686,7 +697,7 @@ This approach is used in functions <a class="reference internal" href="api/lets_
 </section>
 <section id="annotating-charts">
 <span id="formats-annotations"></span><h2>Annotating Charts<a class="headerlink" href="#annotating-charts" title="Link to this heading">#</a></h2>
-<p>In the same way you can use formatting for annotation pies and bar charts, see: <a class="reference internal" href="annotations.html"><span class="doc">Annotating Charts</span></a>.</p>
+<p>In the same way you can use formatting for annotation pies and bar charts using the <a class="reference internal" href="api/lets_plot.layer_labels.html#lets_plot.layer_labels.format" title="lets_plot.layer_labels.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method, see: <a class="reference internal" href="annotations.html"><span class="doc">Annotating Charts</span></a>.</p>
 </section>
 <section id="demo-notebooks">
 <span id="formats-demo-notebooks"></span><h2>Demo Notebooks<a class="headerlink" href="#demo-notebooks" title="Link to this heading">#</a></h2>

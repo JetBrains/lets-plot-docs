@@ -15,6 +15,7 @@ Annotating Charts
 =================
 
 You can customize the content of annotations for pie and bar charts by using the parameter ``labels`` of the corresponding functions.
+The parameter takes as value the result of the :py:meth:`layer_labels() <lets_plot.layer_labels>` function call.
 
 |learn_more|.
 
