@@ -304,6 +304,8 @@ In the same way you can use formatting for annotation pies and bar charts using 
 Demo Notebooks
 --------------
 
+- .. extref:: formatting
+      :type: text
 - .. extref:: formatting_axes_etc
       :type: text
 - .. extref:: text_geoms
