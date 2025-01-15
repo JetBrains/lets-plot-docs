@@ -28,7 +28,7 @@
 
         *Python4DS* by Arthur Turrell
 
-        - `Data Visualisation <https://aeturrell.github.io/python4DS/data-visualise.html>`__ - will teach you how to visualise your data using using *Lets-Plot*.
+        - `Data Visualisation <https://aeturrell.github.io/python4DS/data-visualise.html>`__ - will teach you how to visualise your data using *Lets-Plot*.
 
         - `Layers <https://aeturrell.github.io/python4DS/vis-layers.html>`__ - a deeper dive into aesthetic mappings, geometric objects, and facets.
 
