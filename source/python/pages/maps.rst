@@ -118,6 +118,7 @@ Combine Layers on Map ``ggplot2`` Style
     :class: only-dark
 
 :py:mod:`2d bins <lets_plot.geom_bin2d>`,
+:py:mod:`2d hexagonal bins <lets_plot.geom_hex>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`.
 

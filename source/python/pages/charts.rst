@@ -314,6 +314,7 @@ Examples:
     :class: only-dark
 
 :py:mod:`2d bins <lets_plot.geom_bin2d>`,
+:py:mod:`2d hexagonal bins <lets_plot.geom_hex>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`
 
@@ -529,7 +530,7 @@ Examples:
 .. |d19| image:: /_static/images/icons/charts/grouping-plots-dark.svg
     :class: only-dark
 
-:py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
+:py:mod:`ggbunch <lets_plot.ggbunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
 Examples:
 
