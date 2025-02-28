@@ -56,7 +56,7 @@ Plotting
     :template: base.rst
 
     ggplot
-    GGBunch
+    ggbunch
     gggrid
     ggmarginal
     ggtb
@@ -87,6 +87,7 @@ Standard Geometries
     geom_dotplot
     geom_bin2d
     geom_tile
+    geom_hex
     geom_raster
     geom_errorbar
     geom_crossbar
@@ -437,6 +438,7 @@ Base
     element_rect
     element_line
     element_text
+    element_markdown
     element_geom
     margin
     ggsize
