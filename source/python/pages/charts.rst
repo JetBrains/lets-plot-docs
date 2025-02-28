@@ -6,7 +6,7 @@
 
 .. meta::
    :description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.
-   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, cookbooks
+   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, panning, zooming, interactive links, LaTeX, manual legend, multiple color scales, quantiles, cookbooks
 
 
 Charts
