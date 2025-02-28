@@ -6,7 +6,7 @@
 
 .. meta::
    :description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.
-   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, panning, zooming, interactive links, LaTeX, manual legend, multiple color scales, quantiles, cookbooks
+   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, panning, zooming, interactive links, LaTeX, markdown, manual legend, multiple color scales, quantiles, cookbooks
 
 
 Charts
@@ -112,6 +112,8 @@ Examples:
 - .. extref:: linetype_custom
       :type: text
 - .. extref:: expand_limits
+      :type: text
+- .. extref:: geom_text_nudge_unit
       :type: text
 
 
@@ -321,6 +323,10 @@ Examples:
 Examples:
 
 - .. extref:: density_2d
+      :type: text
+- .. extref:: geom_hex
+      :type: text
+- .. extref:: param_width_unit
       :type: text
 
 
@@ -536,6 +542,8 @@ Examples:
 
 - .. extref:: ggbunch
       :type: text
+- .. extref:: ggbunch_indonesia
+      :type: text
 - .. extref:: plot_grid
       :type: text
 - .. extref:: gggrid_scale_share
@@ -680,18 +688,27 @@ In tooltips/labels/texts and wherever else there is text, you can use:
 
 - Interactive links, e.g. ``<a href="https://github.com">GitHub</a>``.
 
-- LaTeX formulas with
+- Limited LaTeX support:
 
-  - superscript, e.g. ``\( a^b \)``;
-  - subscript, e.g. ``\( x_i \)``;
+  - superscript, e.g. ``\( a^b \)``,
+  - subscript, e.g. ``\( x_i \)``,
   - Greek letters, e.g. ``\( \Omega \)``, and
   - some special symbols, e.g. ``\( a \cdot b \neq c \)``.
+
+- Limited markdown support:
+
+  - emphasis (``*``, ``**``, ``***``, ``_``, ``__``, ``___``),
+  - coloring with inline style (``<span style='color:red'>text</span>``),
+  - links with anchor tags (``<a href="https://lets-plot.org">Lets-Plot</a>``), and
+  - multiple lines using double space and a newline delimiter (``\n``).
 
 Examples:
 
 - .. extref:: lp_verse
       :type: text
 - .. extref:: latex_support
+      :type: text
+- .. extref:: markdown
       :type: text
 
 
