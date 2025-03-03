@@ -113,7 +113,7 @@ Examples:
       :type: text
 - .. extref:: expand_limits
       :type: text
-- .. extref:: geom_text_nudge_unit
+- .. extref:: position_nudge_unit
       :type: text
 
 
