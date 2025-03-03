@@ -540,13 +540,15 @@ Examples:
 
 Examples:
 
-- .. extref:: ggbunch
-      :type: text
 - .. extref:: ggbunch_indonesia
+      :type: text
+- .. extref:: geopandas_kotlin_isl
       :type: text
 - .. extref:: plot_grid
       :type: text
 - .. extref:: gggrid_scale_share
+      :type: text
+- .. extref:: ggbunch
       :type: text
 - .. extref:: themes
       :type: text
