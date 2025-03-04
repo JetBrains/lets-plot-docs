@@ -24,6 +24,8 @@ Colors and fills of geometries can be specified in the following ways:
 
 - HEX (e.g. ``"#0000ff"``, ``"#00f"``).
 
+- Blank string (``""``) or aliases: ``"blank"``, ``"transparent"`` for a fully transparent color.
+
 - A name, one of:
 
 .. image:: /_static/images/pages/aesthetics/aesthetics_color.png
