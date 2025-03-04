@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -515,7 +515,7 @@ False - allow a line to be reprojected, so it can become a curve.</p>
 </dd>
 <dt><strong>geodesic</strong><span class="classifier">bool, default=False</span></dt><dd><p>Draw geodesic. Coordinates expected to be in WGS84. Works only with <cite>geom_livemap()</cite>.</p>
 </dd>
-<dt><strong>spacer</strong><span class="classifier">float, default=0.0</span></dt><dd><p>Space to shorten a segment by moving the start/end.</p>
+<dt><strong>spacer</strong><span class="classifier">float, default=0.0</span></dt><dd><p>Pixels to shorten segment, creating gaps at start/end points.</p>
 </dd>
 <dt><strong>color_by</strong><span class="classifier">{‘fill’, ‘color’, ‘paint_a’, ‘paint_b’, ‘paint_c’}, default=’color’</span></dt><dd><p>Define the color aesthetic for the geometry.</p>
 </dd>
@@ -561,7 +561,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="kOV1pC"></div>
+<div id="7gRZQg"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -572,7 +572,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -585,31 +585,43 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("kOV1pC").appendChild(div);
+            document.getElementById("7gRZQg").appendChild(div);
         };
-        var e = document.getElementById("kOV1pC");
+        var e = document.getElementById("7gRZQg");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="svdS9O"></div>
+</div><div class="output text_html">   <div id="DgL8yF"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("svdS9O");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("DgL8yF");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -632,30 +644,42 @@ They may also be parameters to the paired geom/stat.</p>
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -686,7 +710,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="DtHZh8"></div>
+<div id="n4k5FG"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -697,7 +721,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -710,31 +734,43 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("DtHZh8").appendChild(div);
+            document.getElementById("n4k5FG").appendChild(div);
         };
-        var e = document.getElementById("DtHZh8");
+        var e = document.getElementById("n4k5FG");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="yK799K"></div>
+</div><div class="output text_html">   <div id="HitEKI"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("yK799K");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("HitEKI");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[1.0,1.8791531404847617,2.869609849809497,3.6670903857520876,3.7148386939304308,4.687549817459901,5.660264750102799,5.651848360756817,6.371542441697068,7.263348650126051,8.119738311745856,9.014268300749759,9.907762390247205,10.878632058221015,10.542804272115973,10.389292194764975,11.235329986124896,11.764791096351983,12.71582039468639,13.331124944808954,13.488954849714574,13.593908762609537,14.568529378392267,15.566250215468596,15.711779706915152],
 "y":[0.0,0.4765393536485533,0.3387151650834943,0.9420598383778881,1.940919237425675,1.7088996904861244,1.4768961133293876,2.4768606948973435,3.1711520097354065,2.718734407726465,3.2350644838122156,2.788056543421132,2.3389815919563124,2.578589788411324,1.6366663849013645,0.6485196133601216,0.11539668608084142,-0.7329375244500669,-0.4238367743546206,-1.2121262583631724,-2.199592572278479,-1.205115485479574,-1.4289785134482242,-1.3615016191531404,-2.350855533139084],
@@ -792,30 +828,42 @@ They may also be parameters to the paired geom/stat.</p>
 "metainfo_list":[],
 "spec_id":"2"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -852,7 +900,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="NBc63D"></div>
+<div id="N9pHhV"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -863,7 +911,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -876,31 +924,43 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("NBc63D").appendChild(div);
+            document.getElementById("N9pHhV").appendChild(div);
         };
-        var e = document.getElementById("NBc63D");
+        var e = document.getElementById("N9pHhV");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="bd25cM"></div>
+</div><div class="output text_html">   <div id="iSDLns"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("bd25cM");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("iSDLns");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "dep_city":["Moscow","Oryol","Novocherkassk","Stavropol","Georgiyevsk","Vladikavkaz","Tiflis","Kars"],
 "arr_city":["Oryol","Novocherkassk","Stavropol","Georgiyevsk","Vladikavkaz","Tiflis","Kars","Erzurum"],
@@ -977,30 +1037,42 @@ They may also be parameters to the paired geom/stat.</p>
 "metainfo_list":[],
 "spec_id":"3"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

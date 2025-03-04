@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -559,7 +559,7 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="hPWDNK"></div>
+<div id="W0f74M"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -570,7 +570,7 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -583,31 +583,43 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("hPWDNK").appendChild(div);
+            document.getElementById("W0f74M").appendChild(div);
         };
-        var e = document.getElementById("hPWDNK");
+        var e = document.getElementById("W0f74M");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="3WyXe7"></div>
+</div><div class="output text_html">   <div id="jLu9Zh"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("3WyXe7");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("jLu9Zh");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0],
 "y":[3.0,4.0,2.0,4.0,4.0,1.0,2.0,2.0,2.0,4.0,3.0,2.0,4.0,1.0,3.0,1.0,3.0,4.0,0.0,3.0]
@@ -644,30 +656,42 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -694,7 +718,7 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="Ck81Wz"></div>
+<div id="HNlDXL"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -705,7 +729,7 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -718,31 +742,43 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("Ck81Wz").appendChild(div);
+            document.getElementById("HNlDXL").appendChild(div);
         };
-        var e = document.getElementById("Ck81Wz");
+        var e = document.getElementById("HNlDXL");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="47AxZ0"></div>
+</div><div class="output text_html">   <div id="81tt16"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("47AxZ0");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("81tt16");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "t":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0],
 "x":[0.0,0.0,0.0,1.0,1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,1.0,0.0,0.0,-1.0,-1.0,-1.0,-2.0,-1.0,-1.0,-1.0,-2.0,-2.0,-2.0,-3.0,-3.0,-3.0,-3.0,-3.0,-2.0,-2.0,-3.0,-3.0,-4.0,-4.0,-5.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-7.0,-7.0,-7.0,-6.0,-6.0,-7.0,-7.0,-7.0,-7.0,-7.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-7.0,-8.0,-8.0,-7.0,-7.0,-6.0,-6.0,-6.0,-6.0,-5.0,-5.0,-4.0,-6.0,-6.0,-6.0,-6.0,-6.0,-7.0,-7.0,-7.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-6.0,-7.0,-7.0,-7.0,-7.0,-7.0]
@@ -777,30 +813,42 @@ to the <cite>axis_tooltip</cite> or <cite>axis_tooltip_x</cite> parameter of the
 "metainfo_list":[],
 "spec_id":"2"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -535,7 +535,7 @@ Defaults: multiplicative = 0.05, additive = 0.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="ooje1X"></div>
+<div id="LtF9GN"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -546,7 +546,7 @@ Defaults: multiplicative = 0.05, additive = 0.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -559,31 +559,43 @@ Defaults: multiplicative = 0.05, additive = 0.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("ooje1X").appendChild(div);
+            document.getElementById("LtF9GN").appendChild(div);
         };
-        var e = document.getElementById("ooje1X");
+        var e = document.getElementById("LtF9GN");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="exKE42"></div>
+</div><div class="output text_html">   <div id="2lkcQy"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("exKE42");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("2lkcQy");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 },
 "mapping":{
@@ -620,30 +632,42 @@ Defaults: multiplicative = 0.05, additive = 0.</p>
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

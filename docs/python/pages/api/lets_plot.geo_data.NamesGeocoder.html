@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -521,7 +521,7 @@ If it is of <cite>Geocoder</cite> type then it must contain only one object.</p>
 </pre></div>
 </div>
 <div class="output text_html">
-<div id="p9eRBr"></div>
+<div id="Lx5xSX"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -532,7 +532,7 @@ If it is of <cite>Geocoder</cite> type then it must contain only one object.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -545,9 +545,9 @@ If it is of <cite>Geocoder</cite> type then it must contain only one object.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("p9eRBr").appendChild(div);
+            document.getElementById("Lx5xSX").appendChild(div);
         };
-        var e = document.getElementById("p9eRBr");
+        var e = document.getElementById("Lx5xSX");
         e.appendChild(script);
     })()
 </script>
@@ -583,25 +583,37 @@ If it is of <cite>Geocoder</cite> type then it must contain only one object.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="H8oedj"></div>
+</div></div><div class="output text_html">   <div id="uEGOZM"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("H8oedj");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("uEGOZM");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -637,30 +649,42 @@ If it is of <cite>Geocoder</cite> type then it must contain only one object.</p>
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -790,7 +814,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="zNOZAn"></div>
+<div id="cYZ9dh"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -801,7 +825,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -814,9 +838,9 @@ as the number of names of <cite>Geocoder</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("zNOZAn").appendChild(div);
+            document.getElementById("cYZ9dh").appendChild(div);
         };
-        var e = document.getElementById("zNOZAn");
+        var e = document.getElementById("cYZ9dh");
         e.appendChild(script);
     })()
 </script>
@@ -861,25 +885,37 @@ as the number of names of <cite>Geocoder</cite>.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="iJOKWc"></div>
+</div></div><div class="output text_html">   <div id="OSKdqc"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("iJOKWc");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("OSKdqc");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -934,30 +970,42 @@ as the number of names of <cite>Geocoder</cite>.</p>
 "metainfo_list":[],
 "spec_id":"2"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -1006,7 +1054,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="ELDQ9A"></div>
+<div id="EatTtN"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1017,7 +1065,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1030,9 +1078,9 @@ as the number of names of <cite>Geocoder</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("ELDQ9A").appendChild(div);
+            document.getElementById("EatTtN").appendChild(div);
         };
-        var e = document.getElementById("ELDQ9A");
+        var e = document.getElementById("EatTtN");
         e.appendChild(script);
     })()
 </script>
@@ -1077,25 +1125,37 @@ as the number of names of <cite>Geocoder</cite>.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="yVk3p5"></div>
+</div></div><div class="output text_html">   <div id="zmpqtc"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("yVk3p5");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("zmpqtc");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -1150,30 +1210,42 @@ as the number of names of <cite>Geocoder</cite>.</p>
 "metainfo_list":[],
 "spec_id":"3"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -1223,7 +1295,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="npuCEz"></div>
+<div id="axglmy"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1234,7 +1306,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1247,9 +1319,9 @@ as the number of names of <cite>Geocoder</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("npuCEz").appendChild(div);
+            document.getElementById("axglmy").appendChild(div);
         };
-        var e = document.getElementById("npuCEz");
+        var e = document.getElementById("axglmy");
         e.appendChild(script);
     })()
 </script>
@@ -1294,25 +1366,37 @@ as the number of names of <cite>Geocoder</cite>.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="yolOz4"></div>
+</div></div><div class="output text_html">   <div id="OyEiK9"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("yolOz4");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("OyEiK9");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -1367,30 +1451,42 @@ as the number of names of <cite>Geocoder</cite>.</p>
 "metainfo_list":[],
 "spec_id":"4"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -1427,7 +1523,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="gjwFgB"></div>
+<div id="Jnozm6"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1438,7 +1534,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1451,9 +1547,9 @@ as the number of names of <cite>Geocoder</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("gjwFgB").appendChild(div);
+            document.getElementById("Jnozm6").appendChild(div);
         };
-        var e = document.getElementById("gjwFgB");
+        var e = document.getElementById("Jnozm6");
         e.appendChild(script);
     })()
 </script>
@@ -1495,25 +1591,37 @@ as the number of names of <cite>Geocoder</cite>.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="83vR0z"></div>
+</div></div><div class="output text_html">   <div id="RWGxjM"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("83vR0z");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("RWGxjM");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -1549,30 +1657,42 @@ as the number of names of <cite>Geocoder</cite>.</p>
 "metainfo_list":[],
 "spec_id":"5"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -1609,7 +1729,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="wlFaLQ"></div>
+<div id="n9cNSl"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1620,7 +1740,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1633,9 +1753,9 @@ as the number of names of <cite>Geocoder</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("wlFaLQ").appendChild(div);
+            document.getElementById("n9cNSl").appendChild(div);
         };
-        var e = document.getElementById("wlFaLQ");
+        var e = document.getElementById("n9cNSl");
         e.appendChild(script);
     })()
 </script>
@@ -1677,25 +1797,37 @@ as the number of names of <cite>Geocoder</cite>.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="Rhatf3"></div>
+</div></div><div class="output text_html">   <div id="sHWUhU"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("Rhatf3");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("sHWUhU");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -1747,30 +1879,42 @@ as the number of names of <cite>Geocoder</cite>.</p>
 "metainfo_list":[],
 "spec_id":"6"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -1807,7 +1951,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="IOGFnC"></div>
+<div id="xZCkVF"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1818,7 +1962,7 @@ as the number of names of <cite>Geocoder</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1831,9 +1975,9 @@ as the number of names of <cite>Geocoder</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("IOGFnC").appendChild(div);
+            document.getElementById("xZCkVF").appendChild(div);
         };
-        var e = document.getElementById("IOGFnC");
+        var e = document.getElementById("xZCkVF");
         e.appendChild(script);
     })()
 </script>
@@ -1881,25 +2025,37 @@ as the number of names of <cite>Geocoder</cite>.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="iNYLh6"></div>
+</div></div><div class="output text_html">   <div id="1b3DTF"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("iNYLh6");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("1b3DTF");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -1951,30 +2107,42 @@ as the number of names of <cite>Geocoder</cite>.</p>
 "metainfo_list":[],
 "spec_id":"7"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -2034,7 +2202,7 @@ geoobject centroid should fall into bbox of the polygon.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="foEkZt"></div>
+<div id="gLEs9G"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -2045,7 +2213,7 @@ geoobject centroid should fall into bbox of the polygon.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -2058,9 +2226,9 @@ geoobject centroid should fall into bbox of the polygon.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("foEkZt").appendChild(div);
+            document.getElementById("gLEs9G").appendChild(div);
         };
-        var e = document.getElementById("foEkZt");
+        var e = document.getElementById("gLEs9G");
         e.appendChild(script);
     })()
 </script>
@@ -2098,25 +2266,37 @@ geoobject centroid should fall into bbox of the polygon.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="9acTtk"></div>
+</div></div><div class="output text_html">   <div id="vw1Sar"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("9acTtk");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("vw1Sar");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -2171,30 +2351,42 @@ geoobject centroid should fall into bbox of the polygon.</p>
 "metainfo_list":[],
 "spec_id":"8"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -2220,7 +2412,7 @@ geoobject centroid should fall into bbox of the polygon.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="OJ144A"></div>
+<div id="yqksWS"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -2231,7 +2423,7 @@ geoobject centroid should fall into bbox of the polygon.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -2244,9 +2436,9 @@ geoobject centroid should fall into bbox of the polygon.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("OJ144A").appendChild(div);
+            document.getElementById("yqksWS").appendChild(div);
         };
-        var e = document.getElementById("OJ144A");
+        var e = document.getElementById("yqksWS");
         e.appendChild(script);
     })()
 </script>
@@ -2282,25 +2474,37 @@ geoobject centroid should fall into bbox of the polygon.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="ZqsDDP"></div>
+</div></div><div class="output text_html">   <div id="XgcXoC"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("ZqsDDP");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("XgcXoC");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -2352,30 +2556,42 @@ geoobject centroid should fall into bbox of the polygon.</p>
 "metainfo_list":[],
 "spec_id":"9"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -2454,7 +2670,7 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="PYwtxy"></div>
+<div id="jKtsYl"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -2465,7 +2681,7 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -2478,9 +2694,9 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("PYwtxy").appendChild(div);
+            document.getElementById("jKtsYl").appendChild(div);
         };
-        var e = document.getElementById("PYwtxy");
+        var e = document.getElementById("jKtsYl");
         e.appendChild(script);
     })()
 </script>
@@ -2522,25 +2738,37 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="YaeFyZ"></div>
+</div></div><div class="output text_html">   <div id="QXR6nk"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("YaeFyZ");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("QXR6nk");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -2576,30 +2804,42 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
 "metainfo_list":[],
 "spec_id":"10"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -2635,7 +2875,7 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="lXMCPN"></div>
+<div id="sndL3s"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -2646,7 +2886,7 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -2659,9 +2899,9 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("lXMCPN").appendChild(div);
+            document.getElementById("sndL3s").appendChild(div);
         };
-        var e = document.getElementById("lXMCPN");
+        var e = document.getElementById("sndL3s");
         e.appendChild(script);
     })()
 </script>
@@ -2703,25 +2943,37 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="V2V3t7"></div>
+</div></div><div class="output text_html">   <div id="erlPUO"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("V2V3t7");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("erlPUO");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -2757,30 +3009,42 @@ Use explicit resolution or <cite>inc_res()</cite> function for better quality.</
 "metainfo_list":[],
 "spec_id":"11"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -2890,7 +3154,7 @@ and stored as two rows.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="Kt61Yc"></div>
+<div id="zSCO5A"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -2901,7 +3165,7 @@ and stored as two rows.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -2914,9 +3178,9 @@ and stored as two rows.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("Kt61Yc").appendChild(div);
+            document.getElementById("zSCO5A").appendChild(div);
         };
-        var e = document.getElementById("Kt61Yc");
+        var e = document.getElementById("zSCO5A");
         e.appendChild(script);
     })()
 </script>
@@ -2958,25 +3222,37 @@ and stored as two rows.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="Jwb1zY"></div>
+</div></div><div class="output text_html">   <div id="cxXFe3"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("Jwb1zY");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("cxXFe3");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -3012,30 +3288,42 @@ and stored as two rows.</p>
 "metainfo_list":[],
 "spec_id":"12"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -3077,7 +3365,7 @@ and stored as two rows.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="04Ug2B"></div>
+<div id="JMMjQd"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -3088,7 +3376,7 @@ and stored as two rows.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -3101,9 +3389,9 @@ and stored as two rows.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("04Ug2B").appendChild(div);
+            document.getElementById("JMMjQd").appendChild(div);
         };
-        var e = document.getElementById("04Ug2B");
+        var e = document.getElementById("JMMjQd");
         e.appendChild(script);
     })()
 </script>
@@ -3145,25 +3433,37 @@ and stored as two rows.</p>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output text_html">   <div id="y4mO4i"></div>
+</div></div><div class="output text_html">   <div id="Gqbh03"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("y4mO4i");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("Gqbh03");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -3199,30 +3499,42 @@ and stored as two rows.</p>
 "metainfo_list":[],
 "spec_id":"13"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

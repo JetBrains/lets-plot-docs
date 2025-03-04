@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -63,7 +63,7 @@
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="element_geom" href="lets_plot.element_geom.html" />
+    <link rel="next" title="element_markdown" href="lets_plot.element_markdown.html" />
     <link rel="prev" title="element_line" href="lets_plot.element_line.html" />
   <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
 
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -499,13 +499,14 @@ Can be used with values out of range, but behaviour is not specified.</p>
 0.5 - middle-justified.
 Can be used with values out of range, but behaviour is not specified.</p>
 </dd>
-<dt><strong>margin</strong><span class="classifier">number or list of numbers</span></dt><dd><p>Margins around the text.</p>
-<p>The margin may be specified using a number or a list of numbers:
-- a number or list of one number - the same margin it applied to all four sides;
-- a list of two numbers - the first margin applies to the top and bottom, the second - to the left and right;
-- a list of three numbers -  the first margin applies to the top, the second - to the right and left,
-the third - to the bottom;
-- a list of four numbers - the margins are applied to the top, right, bottom and left in that order.</p>
+<dt><strong>margin</strong><span class="classifier">number or list of numbers</span></dt><dd><p>Margins around the text.
+The margin may be specified using a number or a list of numbers:</p>
+<ul class="simple">
+<li><p>a number or list of one number - the same margin it applied to all four sides;</p></li>
+<li><p>a list of two numbers - the first margin applies to the top and bottom, the second - to the left and right;</p></li>
+<li><p>a list of three numbers - the first margin applies to the top, the second - to the right and left, the third - to the bottom;</p></li>
+<li><p>a list of four numbers - the margins are applied to the top, right, bottom and left in that order.</p></li>
+</ul>
 <p>It is acceptable to use None for any side; in this case, the default side value for this element will be used.</p>
 </dd>
 <dt><strong>blank</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True - draws nothing, and assigns no space.</p>
@@ -534,7 +535,7 @@ the third - to the bottom;
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="9TlZG4"></div>
+<div id="SAdfte"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -545,7 +546,7 @@ the third - to the bottom;
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -558,31 +559,43 @@ the third - to the bottom;
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("9TlZG4").appendChild(div);
+            document.getElementById("SAdfte").appendChild(div);
         };
-        var e = document.getElementById("9TlZG4");
+        var e = document.getElementById("SAdfte");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="LI2sHw"></div>
+</div><div class="output text_html">   <div id="J9ZMOC"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("LI2sHw");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("J9ZMOC");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 },
 "mapping":{
@@ -618,30 +631,42 @@ the third - to the bottom;
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

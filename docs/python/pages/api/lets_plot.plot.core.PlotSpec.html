@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -507,7 +507,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="qQnTwH"></div>
+<div id="an93jN"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -518,7 +518,7 @@
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -531,9 +531,9 @@
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("qQnTwH").appendChild(div);
+            document.getElementById("an93jN").appendChild(div);
         };
-        var e = document.getElementById("qQnTwH");
+        var e = document.getElementById("an93jN");
         e.appendChild(script);
     })()
 </script>
@@ -570,7 +570,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="k1FPlD"></div>
+<div id="enTUH3"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -581,7 +581,7 @@
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -594,9 +594,9 @@
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("k1FPlD").appendChild(div);
+            document.getElementById("enTUH3").appendChild(div);
         };
-        var e = document.getElementById("k1FPlD");
+        var e = document.getElementById("enTUH3");
         e.appendChild(script);
     })()
 </script>
@@ -627,7 +627,7 @@ True
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="hJ3cu4"></div>
+<div id="kri5xi"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -638,7 +638,7 @@ True
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -651,31 +651,43 @@ True
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("hJ3cu4").appendChild(div);
+            document.getElementById("kri5xi").appendChild(div);
         };
-        var e = document.getElementById("hJ3cu4");
+        var e = document.getElementById("kri5xi");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="5k6GKv"></div>
+</div><div class="output text_html">   <div id="YLEnvT"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("5k6GKv");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("YLEnvT");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[0.0,1.0,2.0],
 "y":[0.0,1.0,2.0]
@@ -714,30 +726,42 @@ True
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -771,7 +795,7 @@ applied recursively to all subproperties of <cite>FeatureSpec</cite> type.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="mdZvWj"></div>
+<div id="qNSiab"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -782,7 +806,7 @@ applied recursively to all subproperties of <cite>FeatureSpec</cite> type.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -795,9 +819,9 @@ applied recursively to all subproperties of <cite>FeatureSpec</cite> type.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("mdZvWj").appendChild(div);
+            document.getElementById("qNSiab").appendChild(div);
         };
-        var e = document.getElementById("mdZvWj");
+        var e = document.getElementById("qNSiab");
         e.appendChild(script);
     })()
 </script>
@@ -833,7 +857,7 @@ applied recursively to all subproperties of <cite>FeatureSpec</cite> type.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="BkKbs2"></div>
+<div id="nNPHhB"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -844,7 +868,7 @@ applied recursively to all subproperties of <cite>FeatureSpec</cite> type.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -857,31 +881,43 @@ applied recursively to all subproperties of <cite>FeatureSpec</cite> type.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("BkKbs2").appendChild(div);
+            document.getElementById("nNPHhB").appendChild(div);
         };
-        var e = document.getElementById("BkKbs2");
+        var e = document.getElementById("nNPHhB");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="kxTRbs"></div>
+</div><div class="output text_html">   <div id="JRbaI5"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("kxTRbs");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("JRbaI5");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -902,30 +938,42 @@ applied recursively to all subproperties of <cite>FeatureSpec</cite> type.</p>
 "metainfo_list":[],
 "spec_id":"2"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -976,7 +1024,7 @@ SVG content as a string or None if a file-like object is provided.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="bgCkFc"></div>
+<div id="bB8EKl"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -987,7 +1035,7 @@ SVG content as a string or None if a file-like object is provided.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1000,9 +1048,9 @@ SVG content as a string or None if a file-like object is provided.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("bgCkFc").appendChild(div);
+            document.getElementById("bB8EKl").appendChild(div);
         };
-        var e = document.getElementById("bgCkFc");
+        var e = document.getElementById("bB8EKl");
         e.appendChild(script);
     })()
 </script>
@@ -1053,7 +1101,7 @@ HTML content as a string or None if a file-like object is provided.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="jwufst"></div>
+<div id="CG7WFf"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1064,7 +1112,7 @@ HTML content as a string or None if a file-like object is provided.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1077,9 +1125,9 @@ HTML content as a string or None if a file-like object is provided.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("jwufst").appendChild(div);
+            document.getElementById("CG7WFf").appendChild(div);
         };
-        var e = document.getElementById("jwufst");
+        var e = document.getElementById("CG7WFf");
         e.appendChild(script);
     })()
 </script>
@@ -1145,7 +1193,7 @@ For more details visit: <a class="reference external" href="https://cairosvg.org
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="z5NeWD"></div>
+<div id="f8AppZ"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1156,7 +1204,7 @@ For more details visit: <a class="reference external" href="https://cairosvg.org
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1169,9 +1217,9 @@ For more details visit: <a class="reference external" href="https://cairosvg.org
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("z5NeWD").appendChild(div);
+            document.getElementById("f8AppZ").appendChild(div);
         };
-        var e = document.getElementById("z5NeWD");
+        var e = document.getElementById("f8AppZ");
         e.appendChild(script);
     })()
 </script>
@@ -1241,7 +1289,7 @@ For more details visit: <a class="reference external" href="https://cairosvg.org
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="uOAn1r"></div>
+<div id="yx9gPL"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1252,7 +1300,7 @@ For more details visit: <a class="reference external" href="https://cairosvg.org
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1265,9 +1313,9 @@ For more details visit: <a class="reference external" href="https://cairosvg.org
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("uOAn1r").appendChild(div);
+            document.getElementById("yx9gPL").appendChild(div);
         };
-        var e = document.getElementById("uOAn1r");
+        var e = document.getElementById("yx9gPL");
         e.appendChild(script);
     })()
 </script>

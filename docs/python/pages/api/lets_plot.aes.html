@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -515,7 +515,7 @@ aesthetic mapping.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="6cGtA7"></div>
+<div id="mHpukU"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -526,7 +526,7 @@ aesthetic mapping.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -539,31 +539,43 @@ aesthetic mapping.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("6cGtA7").appendChild(div);
+            document.getElementById("mHpukU").appendChild(div);
         };
-        var e = document.getElementById("6cGtA7");
+        var e = document.getElementById("mHpukU");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="4JQQyt"></div>
+</div><div class="output text_html">   <div id="dV5FbA"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("4JQQyt");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("dV5FbA");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[-0.250919762305275,0.9014286128198323,0.4639878836228102,0.1973169683940732,-0.687962719115127,-0.6880109593275947,-0.8838327756636011,0.7323522915498704,0.2022300234864176,0.416145155592091,-0.9588310114083951,0.9398197043239886,0.6648852816008435,-0.5753217786434477,-0.6363500655857988,-0.6331909802931324,-0.39151551408092455,0.04951286326447568,-0.13610996271576847,-0.4175417196039162,0.22370578944475894,-0.7210122786959163,-0.4157107029295637,-0.2672763134126166,-0.08786003156592814,0.5703519227860272,-0.6006524356832805,0.02846887682722321,0.18482913772408494,-0.9070991745600046,0.21508970380287673,-0.6589517526254169,-0.869896814029441,0.8977710745066665,0.9312640661491187,0.6167946962329223,-0.39077246165325863,-0.8046557719872323,0.3684660530243138,-0.1196950125207974,-0.7559235303104423,-0.00964617977745963,-0.9312229577695632,0.8186408041575641,-0.48244003679996617,0.32504456870796394,-0.3765778478211781,0.040136042355621626,0.0934205586865593,-0.6302910889489459,0.9391692555291171,0.5502656467222291,0.8789978831283782,0.7896547008552977,0.19579995762217028,0.8437484700462337,-0.823014995896161,-0.6080342751617096,-0.9095454221789239,-0.3493393384734713,-0.22264542062103598,-0.4573019364522082,0.6574750183038587,-0.28649334661282144,-0.4381309806252385,0.08539216631649693,-0.7181515500504747,0.6043939615080793,-0.8508987126404584,0.9737738732010346,0.5444895385933148,-0.6025686369316552,-0.9889557657527952,0.6309228569096683,0.41371468769523423,0.4580143360819746,0.5425406933718915,-0.8519106965318193,-0.2830685429114548,-0.7682618809497406,0.726206851751187,0.24659625365511584,-0.3382039502947016,-0.8728832994279527,-0.3780353565686756,-0.3496333559465059,0.45921235667612814,0.27511494271042625,0.7744254851526531,-0.05557014967610141,-0.7608115081233966,0.42648957444599,0.5215700972337949,0.12255439513899247,0.541934359909122,-0.012408807271218514,0.045465658763988115,-0.14491796328290074,-0.9491617465118096,-0.7842171460133911],
 "y":[1.6610652461215638,20.015331249791313,5.473879680254864,-1.0142192641952006,11.612645684469465,12.191089575383677,21.006903428172148,12.890226755185012,0.21393095708973775,3.8276627194846036,23.899324828663218,22.410278025550422,10.522050738468785,8.78814615764986,10.220612698624299,10.991915428647337,3.1300568502739132,-0.26637405588160157,0.07103989563003943,2.8950122421127658,1.5472272828421467,13.257522922936833,4.32549816989726,1.5513285594108344,-1.222386113381267,7.7118875728775995,8.676869195779668,-0.7820153455265287,0.6927595421297098,20.97477366900058,3.0427754182607614,11.030013120034555,19.175562067187055,20.0753766397552,19.76254780721571,9.484378557077354,3.877808129604714,18.650014897294504,3.201819841001788,0.6597197428924586,14.250797822219813,-1.1663518180120553,22.822227741442365,17.506252188480357,6.609741674731865,1.7319618363689182,4.948066197676859,-1.3615785153929745,0.805042113432992,12.122127046021179,21.060435938147215,7.003509319463054,19.415583328691895,15.08538801045554,-0.5922228459450407,17.86634999244003,15.871538373022844,9.71623442492082,19.762397640932118,4.600883740144603,0.45602129075171394,4.906065010867811,11.620352209711152,0.8210966249014009,5.026428839194957,1.489438305988035,11.28605798643626,9.316935376218048,18.360598273578155,24.48771177500093,6.174770730060939,7.756767442257544,24.972779231009337,10.248575957509631,4.529488920715006,5.590876510912276,6.678735377532829,18.37604956879424,2.296267472949034,14.041306524984465,15.05018429940402,1.9940757288302433,1.6682443026708766,19.704684969139553,2.5980866001728207,3.8431716935028546,6.430495292108492,1.0715234742123174,15.956746930592374,0.48998196531210614,15.292913932319419,6.444126910431988,6.555496042208886,-0.37824667016038205,6.452806831627219,-0.8119608225180821,-0.025423556243018966,0.8661823768682482,22.799391325363736,16.202096551570733],
@@ -618,30 +630,42 @@ aesthetic mapping.</p>
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -662,7 +686,7 @@ aesthetic mapping.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="a1c6jJ"></div>
+<div id="o1wx4U"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -673,7 +697,7 @@ aesthetic mapping.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -686,31 +710,43 @@ aesthetic mapping.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("a1c6jJ").appendChild(div);
+            document.getElementById("o1wx4U").appendChild(div);
         };
-        var e = document.getElementById("a1c6jJ");
+        var e = document.getElementById("o1wx4U");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="ZugNJV"></div>
+</div><div class="output text_html">   <div id="etNOnq"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("ZugNJV");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("etNOnq");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -736,30 +772,42 @@ aesthetic mapping.</p>
 "metainfo_list":[],
 "spec_id":"2"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

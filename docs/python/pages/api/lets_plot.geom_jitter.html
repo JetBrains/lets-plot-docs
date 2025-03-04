@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -570,7 +570,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="lr1CW3"></div>
+<div id="H0G1EY"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -581,7 +581,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -594,31 +594,43 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("lr1CW3").appendChild(div);
+            document.getElementById("H0G1EY").appendChild(div);
         };
-        var e = document.getElementById("lr1CW3");
+        var e = document.getElementById("H0G1EY");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="omyJ3W"></div>
+</div><div class="output text_html">   <div id="SocqjN"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("omyJ3W");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("SocqjN");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[1.0,-2.0,5.0,2.0,-1.0,1.0,4.0,-3.0,1.0,5.0,5.0,2.0,-1.0,-2.0,2.0,2.0,-3.0,0.0,-1.0,-4.0,2.0,0.0,-4.0,-1.0,-5.0,4.0,0.0,3.0,-5.0,5.0,5.0,4.0,-3.0,1.0,-2.0,3.0,-3.0,-1.0,-3.0,1.0,-1.0,3.0,1.0,-4.0,-2.0,3.0,-4.0,4.0,3.0,4.0,-1.0,-4.0,-2.0,1.0,2.0,-3.0,-5.0,-2.0,-4.0,2.0,-2.0,-4.0,0.0,0.0,4.0,-2.0,0.0,-4.0,4.0,-4.0,4.0,-2.0,2.0,1.0,3.0,2.0,-1.0,-4.0,-1.0,2.0,4.0,3.0,3.0,-5.0,3.0,1.0,3.0,2.0,-5.0,2.0,2.0,5.0,-3.0,-5.0,2.0,-3.0,-3.0,-5.0,5.0,-1.0,4.0,1.0,4.0,3.0,1.0,3.0,2.0,-4.0,-5.0,1.0,1.0,2.0,-1.0,-3.0,2.0,0.0,5.0,-3.0,-5.0,-3.0,-1.0,-3.0,-5.0,-1.0,4.0,1.0,1.0,5.0,3.0,4.0,4.0,-3.0,1.0,-5.0,-2.0,-2.0,-1.0,1.0,1.0,5.0,-2.0,1.0,5.0,-3.0,0.0,-4.0,4.0,3.0,-1.0,0.0,-2.0,5.0,4.0,1.0,3.0,1.0,-5.0,-5.0,3.0,5.0,3.0,-2.0,3.0,-3.0,1.0,0.0,2.0,5.0,3.0,-1.0,-5.0,-3.0,4.0,2.0,5.0,0.0,2.0,3.0,-2.0,-5.0,-5.0,4.0,-2.0,1.0,-4.0,-3.0,-5.0,-1.0,-5.0,2.0,-5.0,5.0,-5.0,-4.0,-4.0,0.0,1.0,-1.0,-5.0,-5.0,-3.0,-4.0,-1.0,4.0,0.0,1.0,-2.0,1.0,5.0,2.0,5.0,-5.0,0.0,2.0,-1.0,-2.0,-4.0,0.0,0.0,5.0,-5.0,3.0,5.0,0.0,-3.0,-2.0,5.0,-2.0,-3.0,4.0,-3.0,-3.0,-2.0,1.0,-2.0,3.0,-5.0,2.0,1.0,-4.0,2.0,-5.0,5.0,3.0,3.0,-4.0,1.0,4.0,-3.0,1.0,4.0,3.0,-2.0,-5.0,-4.0,-5.0,-1.0,-1.0,5.0,1.0,3.0,3.0,-3.0,-3.0,-3.0,-2.0,2.0,0.0,2.0,-5.0,2.0,-2.0,5.0,-5.0,2.0,-2.0,0.0,2.0,-2.0,-3.0,3.0,-3.0,3.0,-4.0,-4.0,-4.0,0.0,-3.0,3.0,-2.0,-5.0,-2.0,-5.0,-1.0,-2.0,2.0,2.0,1.0,-3.0,-5.0,-5.0,5.0,-3.0,0.0,1.0,0.0,0.0,0.0,-3.0,0.0,2.0,5.0,5.0,-4.0,-1.0,-5.0,-5.0,-1.0,-3.0,-2.0,-3.0,-5.0,-5.0,-1.0,0.0,-3.0,3.0,-1.0,2.0,-5.0,-1.0,-3.0,-5.0,-2.0,-1.0,1.0,-5.0,-3.0,-4.0,3.0,4.0,0.0,4.0,-3.0,2.0,2.0,-4.0,0.0,1.0,-4.0,5.0,4.0,-4.0,4.0,-5.0,2.0,-5.0,3.0,5.0,0.0,1.0,4.0,1.0,4.0,-3.0,-4.0,3.0,2.0,4.0,1.0,3.0,-2.0,-2.0,-5.0,2.0,-3.0,1.0,-4.0,-4.0,1.0,0.0,-3.0,3.0,4.0,0.0,4.0,4.0,0.0,-5.0,-2.0,4.0,0.0,0.0,5.0,-1.0,-5.0,2.0,-1.0,-1.0,1.0,-2.0,0.0,-2.0,-3.0,1.0,2.0,-2.0,-4.0,4.0,-3.0,-5.0,2.0,-3.0,4.0,1.0,4.0,-1.0,4.0,-1.0,1.0,3.0,-1.0,-5.0,4.0,4.0,-5.0,-4.0,0.0,3.0,2.0,-1.0,-5.0,1.0,-1.0,0.0,1.0,-3.0,4.0,-3.0,-1.0,0.0,3.0,-1.0,-5.0,-2.0,-1.0,4.0,4.0,-1.0,1.0,-2.0,-5.0,-1.0,1.0,4.0,4.0,0.0,-1.0,-2.0,-4.0,-2.0,4.0,4.0,-3.0,4.0,-5.0,2.0,-1.0,-2.0,2.0,1.0,-4.0,-5.0,5.0,-2.0,2.0,-4.0,-3.0,-5.0,-5.0,-3.0,5.0,-1.0,-3.0,-5.0,-5.0,2.0,4.0,5.0,-4.0,-3.0,-4.0,-3.0,1.0,-5.0,4.0,2.0,4.0,4.0,4.0,-4.0,-3.0,3.0,1.0,-2.0,4.0,-1.0,-4.0,5.0,2.0,-2.0,3.0,-1.0,3.0,-2.0,4.0,-1.0,3.0,2.0,-3.0,-5.0,-3.0,-2.0,-4.0,-5.0,1.0,2.0,1.0,-1.0,-5.0,1.0,1.0,3.0,-3.0,3.0,-5.0,-5.0,-2.0,3.0,0.0,5.0,-3.0,-5.0,-2.0,3.0,-3.0,3.0,1.0,-2.0,-3.0,4.0,-1.0,-1.0,-3.0,3.0,-2.0,5.0,-1.0,-2.0,-1.0,1.0,3.0,1.0,-1.0,4.0,4.0,1.0,4.0,-1.0,-3.0,1.0,5.0,5.0,-4.0,3.0,4.0,4.0,-5.0,0.0,1.0,2.0,4.0,3.0,-4.0,5.0,4.0,-4.0,-1.0,-1.0,0.0,-3.0,2.0,-5.0,0.0,-2.0,-5.0,1.0,3.0,-2.0,-2.0,0.0,-3.0,0.0,1.0,5.0,4.0,4.0,-3.0,1.0,-3.0,-4.0,4.0,-2.0,2.0,3.0,1.0,-5.0,-3.0,3.0,-5.0,3.0,2.0,-5.0,0.0,-1.0,0.0,4.0,-1.0,0.0,-1.0,5.0,-1.0,-2.0,-3.0,-3.0,-2.0,3.0,-4.0,3.0,-5.0,-5.0,-1.0,0.0,0.0,-3.0,1.0,3.0,5.0,4.0,2.0,0.0,2.0,-1.0,2.0,4.0,-2.0,4.0,2.0,4.0,-4.0,-1.0,3.0,-2.0,5.0,0.0,-5.0,3.0,-5.0,-1.0,-2.0,-3.0,0.0,-4.0,-3.0,-1.0,3.0,-4.0,4.0,2.0,-4.0,5.0,-1.0,1.0,2.0,-5.0,0.0,-5.0,-4.0,-5.0,5.0,-1.0,4.0,3.0,0.0,5.0,5.0,-5.0,-5.0,-4.0,3.0,-3.0,-5.0,-1.0,1.0,0.0,-5.0,-1.0,-1.0,0.0,-3.0,-1.0,1.0,-1.0,-1.0,-1.0,4.0,4.0,-3.0,-5.0,-1.0,3.0,-5.0,-3.0,-2.0,-5.0,-5.0,2.0,-4.0,2.0,1.0,4.0,4.0,-4.0,0.0,0.0,-3.0,5.0,-4.0,-5.0,0.0,-1.0,5.0,3.0,-5.0,1.0,-1.0,-1.0,-4.0,5.0,-3.0,1.0,0.0,-4.0,0.0,-4.0,-4.0,-4.0,5.0,-3.0,-4.0,-2.0,3.0,0.0,-5.0,2.0,1.0,4.0,-3.0,-5.0,-1.0,-2.0,4.0,2.0,-5.0,4.0,-5.0,-2.0,2.0,-1.0,-4.0,0.0,-1.0,-4.0,5.0,5.0,5.0,-3.0,3.0,1.0,1.0,5.0,0.0,2.0,-2.0,2.0,-2.0,2.0,3.0,-3.0,-3.0,5.0,-4.0,4.0,-3.0,-3.0,-1.0,-1.0,-4.0,4.0,0.0,-1.0,0.0,-5.0,-1.0,3.0,4.0,-4.0,-5.0,4.0,5.0,3.0,4.0,3.0,3.0,0.0,2.0,5.0,-5.0,4.0,-2.0,-5.0,2.0,-5.0,-3.0,-2.0,2.0,0.0,4.0,1.0,2.0,-4.0,4.0,5.0,2.0,-3.0,1.0,-3.0,1.0,5.0,-4.0,4.0,0.0,-3.0,-3.0,3.0,1.0,-1.0,4.0,1.0,3.0,-5.0,1.0,0.0,4.0,3.0,-5.0,-2.0,3.0,-2.0,4.0,-3.0,3.0,-4.0,-2.0,0.0,-4.0,2.0,2.0,-5.0,-3.0,4.0,3.0,-1.0,0.0,-2.0,4.0,-4.0,5.0,2.0,5.0,0.0,-1.0,3.0,-5.0,-1.0,0.0,-1.0,0.0,0.0,1.0,-2.0,5.0,2.0,1.0,3.0,1.0,-3.0,-3.0,2.0,-1.0,-2.0,2.0,0.0,-4.0,-2.0,5.0,-2.0,0.0,0.0,-5.0,2.0,0.0,-3.0,3.0,-4.0,5.0,2.0,4.0,-3.0,-1.0,0.0,4.0,0.0,-2.0,-3.0,-2.0,-5.0,-2.0,-5.0,-5.0,4.0,0.0,-1.0,5.0,-2.0,5.0,-3.0,-5.0,0.0,-4.0,2.0,4.0,-1.0,1.0,4.0,-4.0,2.0,-4.0,-2.0,-5.0,-1.0,3.0,-5.0,3.0,5.0,2.0,0.0,1.0,-3.0,-5.0,-1.0,-4.0,-1.0,2.0,5.0,3.0,-4.0,-3.0,-3.0,-5.0,2.0,0.0,2.0,5.0,3.0,-1.0,-3.0,-1.0,-1.0,-1.0,-3.0,5.0,4.0,-2.0,3.0,4.0,3.0,-4.0,2.0,2.0],
 "y":[6.0,7.0,2.0,5.0,0.0,6.0,0.0,8.0,0.0,0.0,6.0,1.0,4.0,7.0,7.0,2.0,6.0,2.0,5.0,5.0,2.0,6.0,2.0,7.0,9.0,3.0,0.0,3.0,6.0,3.0,5.0,8.0,0.0,4.0,6.0,0.0,3.0,5.0,1.0,9.0,4.0,9.0,0.0,5.0,5.0,3.0,7.0,3.0,7.0,7.0,4.0,3.0,1.0,2.0,2.0,3.0,3.0,9.0,4.0,3.0,9.0,7.0,5.0,5.0,7.0,6.0,9.0,9.0,7.0,1.0,8.0,0.0,7.0,3.0,3.0,4.0,7.0,4.0,7.0,9.0,0.0,9.0,8.0,5.0,2.0,7.0,8.0,5.0,6.0,0.0,4.0,4.0,9.0,3.0,5.0,6.0,8.0,0.0,5.0,6.0,2.0,7.0,4.0,8.0,4.0,8.0,9.0,3.0,8.0,4.0,9.0,8.0,2.0,3.0,8.0,9.0,5.0,1.0,6.0,1.0,1.0,0.0,2.0,5.0,7.0,8.0,6.0,3.0,5.0,4.0,7.0,0.0,0.0,5.0,9.0,1.0,4.0,0.0,6.0,0.0,3.0,8.0,0.0,3.0,5.0,5.0,7.0,0.0,6.0,0.0,6.0,2.0,7.0,2.0,0.0,7.0,2.0,1.0,0.0,2.0,1.0,1.0,5.0,0.0,1.0,5.0,2.0,3.0,0.0,7.0,6.0,6.0,2.0,9.0,9.0,2.0,1.0,0.0,6.0,6.0,1.0,6.0,7.0,0.0,8.0,6.0,2.0,7.0,6.0,7.0,5.0,8.0,4.0,2.0,2.0,0.0,7.0,1.0,2.0,7.0,7.0,3.0,3.0,4.0,5.0,4.0,6.0,1.0,6.0,9.0,6.0,0.0,6.0,4.0,2.0,2.0,3.0,1.0,1.0,0.0,4.0,3.0,9.0,1.0,2.0,6.0,6.0,3.0,4.0,4.0,5.0,8.0,1.0,4.0,2.0,3.0,9.0,5.0,7.0,0.0,9.0,7.0,6.0,0.0,1.0,2.0,0.0,8.0,7.0,1.0,8.0,6.0,8.0,5.0,5.0,3.0,9.0,9.0,1.0,6.0,4.0,5.0,1.0,4.0,9.0,3.0,8.0,5.0,1.0,0.0,4.0,8.0,5.0,9.0,6.0,4.0,9.0,5.0,4.0,8.0,5.0,7.0,1.0,8.0,4.0,6.0,9.0,0.0,9.0,4.0,9.0,1.0,5.0,0.0,2.0,4.0,3.0,2.0,9.0,4.0,7.0,3.0,0.0,6.0,7.0,2.0,5.0,1.0,6.0,7.0,5.0,5.0,4.0,7.0,0.0,9.0,3.0,3.0,2.0,2.0,3.0,0.0,1.0,8.0,9.0,1.0,4.0,8.0,8.0,7.0,0.0,0.0,8.0,7.0,9.0,8.0,6.0,2.0,2.0,1.0,4.0,2.0,5.0,1.0,2.0,4.0,0.0,0.0,9.0,8.0,6.0,0.0,7.0,2.0,7.0,4.0,0.0,6.0,4.0,5.0,5.0,7.0,8.0,1.0,8.0,9.0,8.0,9.0,9.0,6.0,0.0,6.0,9.0,4.0,5.0,9.0,6.0,4.0,6.0,8.0,2.0,7.0,1.0,6.0,1.0,3.0,6.0,2.0,1.0,9.0,6.0,0.0,7.0,2.0,1.0,2.0,4.0,7.0,9.0,6.0,6.0,6.0,7.0,0.0,3.0,5.0,8.0,1.0,0.0,9.0,1.0,6.0,2.0,9.0,1.0,6.0,1.0,2.0,6.0,3.0,0.0,4.0,8.0,7.0,8.0,9.0,8.0,6.0,3.0,4.0,0.0,0.0,2.0,7.0,1.0,3.0,1.0,4.0,8.0,0.0,4.0,8.0,0.0,8.0,7.0,3.0,9.0,4.0,4.0,5.0,6.0,7.0,7.0,1.0,8.0,6.0,3.0,3.0,7.0,3.0,5.0,4.0,2.0,9.0,1.0,8.0,9.0,8.0,0.0,9.0,2.0,7.0,5.0,4.0,4.0,5.0,6.0,0.0,8.0,2.0,3.0,9.0,0.0,9.0,2.0,1.0,1.0,0.0,7.0,2.0,2.0,5.0,7.0,8.0,8.0,3.0,4.0,1.0,8.0,7.0,2.0,8.0,2.0,8.0,1.0,9.0,8.0,7.0,8.0,4.0,1.0,7.0,5.0,7.0,4.0,9.0,1.0,5.0,4.0,4.0,0.0,1.0,7.0,2.0,9.0,2.0,7.0,7.0,1.0,7.0,0.0,5.0,7.0,2.0,7.0,0.0,8.0,8.0,4.0,9.0,3.0,5.0,6.0,4.0,9.0,8.0,2.0,6.0,9.0,9.0,4.0,6.0,1.0,3.0,1.0,6.0,1.0,0.0,8.0,0.0,7.0,1.0,7.0,2.0,5.0,2.0,6.0,9.0,8.0,1.0,4.0,5.0,3.0,3.0,3.0,1.0,3.0,0.0,5.0,0.0,9.0,5.0,0.0,5.0,9.0,7.0,1.0,1.0,3.0,2.0,3.0,6.0,0.0,5.0,2.0,9.0,6.0,9.0,1.0,1.0,3.0,0.0,2.0,8.0,6.0,6.0,3.0,1.0,3.0,5.0,2.0,0.0,7.0,4.0,4.0,3.0,5.0,2.0,8.0,4.0,2.0,0.0,9.0,5.0,1.0,2.0,0.0,8.0,7.0,1.0,7.0,8.0,0.0,4.0,7.0,1.0,3.0,6.0,2.0,4.0,7.0,9.0,2.0,3.0,8.0,6.0,0.0,3.0,3.0,8.0,5.0,8.0,5.0,5.0,4.0,4.0,1.0,7.0,7.0,0.0,7.0,4.0,1.0,1.0,5.0,8.0,0.0,5.0,8.0,7.0,5.0,2.0,7.0,8.0,0.0,8.0,5.0,5.0,3.0,0.0,9.0,7.0,1.0,0.0,1.0,0.0,0.0,8.0,0.0,3.0,9.0,5.0,6.0,1.0,5.0,6.0,9.0,9.0,1.0,1.0,9.0,6.0,0.0,7.0,2.0,5.0,8.0,5.0,8.0,6.0,8.0,1.0,7.0,7.0,1.0,3.0,6.0,3.0,3.0,5.0,9.0,5.0,9.0,2.0,8.0,9.0,1.0,5.0,6.0,8.0,2.0,9.0,2.0,6.0,3.0,7.0,6.0,4.0,6.0,2.0,1.0,5.0,1.0,2.0,5.0,4.0,7.0,8.0,2.0,9.0,2.0,2.0,5.0,0.0,6.0,0.0,4.0,9.0,7.0,3.0,4.0,3.0,3.0,7.0,1.0,0.0,2.0,8.0,3.0,9.0,4.0,1.0,3.0,1.0,1.0,3.0,5.0,6.0,9.0,2.0,2.0,9.0,5.0,2.0,1.0,7.0,4.0,0.0,2.0,9.0,7.0,3.0,6.0,9.0,1.0,6.0,4.0,4.0,5.0,8.0,5.0,7.0,6.0,8.0,3.0,1.0,6.0,5.0,0.0,8.0,8.0,1.0,2.0,4.0,4.0,0.0,7.0,7.0,3.0,6.0,9.0,2.0,5.0,9.0,9.0,8.0,0.0,4.0,3.0,7.0,0.0,8.0,5.0,3.0,8.0,4.0,4.0,4.0,0.0,0.0,7.0,7.0,5.0,3.0,1.0,1.0,8.0,4.0,3.0,9.0,0.0,6.0,2.0,5.0,4.0,4.0,4.0,0.0,0.0,2.0,9.0,3.0,4.0,1.0,7.0,1.0,8.0,1.0,8.0,6.0,7.0,1.0,6.0,5.0,3.0,6.0,3.0,1.0,9.0,6.0,7.0,1.0,4.0,0.0,6.0,7.0,5.0,4.0,5.0,1.0,0.0,6.0,6.0,9.0,9.0,1.0,1.0,0.0,9.0,7.0,7.0,0.0,7.0,8.0,3.0,0.0,0.0,2.0,4.0,4.0,8.0,9.0,1.0,1.0,5.0,8.0,0.0,8.0,8.0,8.0,4.0,8.0,3.0,1.0,5.0,3.0,5.0,2.0,5.0,1.0,1.0,8.0,6.0,2.0,0.0,7.0,5.0,6.0,8.0,4.0,0.0,9.0,6.0,4.0,2.0,8.0,0.0,0.0,0.0,2.0,5.0,9.0,2.0,7.0,9.0,1.0,8.0,2.0,4.0,9.0,7.0,1.0,5.0,4.0,9.0,8.0,4.0,1.0,4.0,3.0,6.0,5.0,1.0,4.0,6.0,6.0,4.0,8.0,3.0,2.0,3.0,4.0,5.0,2.0,1.0,3.0,4.0,3.0,2.0,7.0,9.0,3.0,1.0,1.0,0.0,3.0,9.0,8.0,6.0,9.0]
@@ -661,30 +673,42 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -714,7 +738,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="9wreWl"></div>
+<div id="jeX4Fh"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -725,7 +749,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -738,31 +762,43 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("9wreWl").appendChild(div);
+            document.getElementById("jeX4Fh").appendChild(div);
         };
-        var e = document.getElementById("9wreWl");
+        var e = document.getElementById("jeX4Fh");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="iFCbVv"></div>
+</div><div class="output text_html">   <div id="T38IVK"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("iFCbVv");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("T38IVK");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 },
 "mapping":{
@@ -813,30 +849,42 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 "spec_id":"2",
 "computation_messages":["sampling_random(n=600, seed=60) was applied to [jitter/identity stat] layer"]
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

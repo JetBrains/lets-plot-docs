@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -513,7 +513,7 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="QyefWt"></div>
+<div id="zYimdd"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -524,7 +524,7 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -537,31 +537,43 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("QyefWt").appendChild(div);
+            document.getElementById("zYimdd").appendChild(div);
         };
-        var e = document.getElementById("QyefWt");
+        var e = document.getElementById("zYimdd");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="pUKLAx"></div>
+</div><div class="output text_html">   <div id="kcWPEe"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("pUKLAx");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("kcWPEe");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[0.0],
 "y":[0.0]
@@ -593,30 +605,42 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -636,7 +660,7 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div style="color:darkblue;">Lets-Plot v4.5.2: static SVG output configured.</div></div><div class="output text_html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
+<div class="output text_html"><div style="color:darkblue;">Lets-Plot v4.6.0: static SVG output configured.</div></div><div class="output text_html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
   <style type="text/css">
   .plt-container {
    font-family: Lucida Grande, sans-serif;
@@ -648,117 +672,117 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
 text {
    text-rendering: optimizeLegibility;
 }
-#pzM0lrE .plot-title {
+#p5P5lLr .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#pzM0lrE .plot-subtitle {
+#p5P5lLr .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pzM0lrE .plot-caption {
+#p5P5lLr .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pzM0lrE .hyperlink-element {
+#p5P5lLr .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#pzM0lrE .legend-title {
+#p5P5lLr .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pzM0lrE .legend-item {
+#p5P5lLr .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pzM0lrE .axis-title-x {
+#p5P5lLr .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pzM0lrE .axis-text-x {
+#p5P5lLr .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dZ1hDZf .axis-tooltip-text-x {
+#dgo9QOZ .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pzM0lrE .axis-title-y {
+#p5P5lLr .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pzM0lrE .axis-text-y {
+#p5P5lLr .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dZ1hDZf .axis-tooltip-text-y {
+#dgo9QOZ .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pzM0lrE .facet-strip-text-x {
+#p5P5lLr .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pzM0lrE .facet-strip-text-y {
+#p5P5lLr .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dZ1hDZf .tooltip-text {
+#dgo9QOZ .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dZ1hDZf .tooltip-title {
+#dgo9QOZ .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dZ1hDZf .tooltip-label {
+#dgo9QOZ .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -767,7 +791,7 @@ font-size: 13.0px;
 }
 
   </style>
-  <g id="pzM0lrE">
+  <g id="p5P5lLr">
     <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z">
     </path>
     <g transform="translate(29.5 6.5 ) ">
@@ -801,7 +825,7 @@ font-size: 13.0px;
           </g>
         </g>
       </g>
-      <g clip-path="url(#cANHHYo)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (528.9846933242504, 341.0)]">
+      <g clip-path="url(#cMVcWav)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (528.9846933242504, 341.0)]">
         <g transform="translate(35.01530667574961 0.0 ) ">
           <g>
             <g>
@@ -814,7 +838,7 @@ font-size: 13.0px;
           </g>
         </g>
         <defs>
-          <clipPath id="cANHHYo">
+          <clipPath id="cMVcWav">
             <rect x="35.01530667574961" y="0.0" width="528.9846933242504" height="341.0">
             </rect>
           </clipPath>
@@ -826,7 +850,7 @@ font-size: 13.0px;
             <line stroke-width="1.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" x2="0.0" y2="4.0">
             </line>
             <g transform="translate(0.0 7.0 ) ">
-              <text class="axis-text-x" text-anchor="middle" dy="0.7em">
+              <text class="axis-text-x" text-anchor="middle" dy="0.7em" y="0.0">
                 <tspan>-0.4</tspan>
               </text>
             </g>
@@ -835,7 +859,7 @@ font-size: 13.0px;
             <line stroke-width="1.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" x2="0.0" y2="4.0">
             </line>
             <g transform="translate(0.0 7.0 ) ">
-              <text class="axis-text-x" text-anchor="middle" dy="0.7em">
+              <text class="axis-text-x" text-anchor="middle" dy="0.7em" y="0.0">
                 <tspan>-0.2</tspan>
               </text>
             </g>
@@ -844,7 +868,7 @@ font-size: 13.0px;
             <line stroke-width="1.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" x2="0.0" y2="4.0">
             </line>
             <g transform="translate(0.0 7.0 ) ">
-              <text class="axis-text-x" text-anchor="middle" dy="0.7em">
+              <text class="axis-text-x" text-anchor="middle" dy="0.7em" y="0.0">
                 <tspan>0</tspan>
               </text>
             </g>
@@ -853,7 +877,7 @@ font-size: 13.0px;
             <line stroke-width="1.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" x2="0.0" y2="4.0">
             </line>
             <g transform="translate(0.0 7.0 ) ">
-              <text class="axis-text-x" text-anchor="middle" dy="0.7em">
+              <text class="axis-text-x" text-anchor="middle" dy="0.7em" y="0.0">
                 <tspan>0.2</tspan>
               </text>
             </g>
@@ -862,7 +886,7 @@ font-size: 13.0px;
             <line stroke-width="1.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" x2="0.0" y2="4.0">
             </line>
             <g transform="translate(0.0 7.0 ) ">
-              <text class="axis-text-x" text-anchor="middle" dy="0.7em">
+              <text class="axis-text-x" text-anchor="middle" dy="0.7em" y="0.0">
                 <tspan>0.4</tspan>
               </text>
             </g>
@@ -873,35 +897,35 @@ font-size: 13.0px;
         <g transform="translate(35.01530667574961 0.0 ) ">
           <g transform="translate(0.0 306.9 ) ">
             <g transform="translate(-3.0 0.0 ) ">
-              <text class="axis-text-y" text-anchor="end" dy="0.35em">
+              <text class="axis-text-y" text-anchor="end" dy="0.35em" y="0.0">
                 <tspan>-0.4</tspan>
               </text>
             </g>
           </g>
           <g transform="translate(0.0 238.7 ) ">
             <g transform="translate(-3.0 0.0 ) ">
-              <text class="axis-text-y" text-anchor="end" dy="0.35em">
+              <text class="axis-text-y" text-anchor="end" dy="0.35em" y="0.0">
                 <tspan>-0.2</tspan>
               </text>
             </g>
           </g>
           <g transform="translate(0.0 170.5 ) ">
             <g transform="translate(-3.0 0.0 ) ">
-              <text class="axis-text-y" text-anchor="end" dy="0.35em">
+              <text class="axis-text-y" text-anchor="end" dy="0.35em" y="0.0">
                 <tspan>0</tspan>
               </text>
             </g>
           </g>
           <g transform="translate(0.0 102.3 ) ">
             <g transform="translate(-3.0 0.0 ) ">
-              <text class="axis-text-y" text-anchor="end" dy="0.35em">
+              <text class="axis-text-y" text-anchor="end" dy="0.35em" y="0.0">
                 <tspan>0.2</tspan>
               </text>
             </g>
           </g>
           <g transform="translate(0.0 34.099999999999994 ) ">
             <g transform="translate(-3.0 0.0 ) ">
-              <text class="axis-text-y" text-anchor="end" dy="0.35em">
+              <text class="axis-text-y" text-anchor="end" dy="0.35em" y="0.0">
                 <tspan>0.4</tspan>
               </text>
             </g>
@@ -922,7 +946,7 @@ font-size: 13.0px;
     <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z" pointer-events="none">
     </path>
   </g>
-  <g id="dZ1hDZf">
+  <g id="dgo9QOZ">
   </g>
 </svg></div></div>
 </div>
@@ -970,7 +994,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="9Cf0ym"></div>
+<div id="Oz037s"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -981,7 +1005,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -994,31 +1018,43 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("9Cf0ym").appendChild(div);
+            document.getElementById("Oz037s").appendChild(div);
         };
-        var e = document.getElementById("9Cf0ym");
+        var e = document.getElementById("Oz037s");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="s8zj7K"></div>
+</div><div class="output text_html">   <div id="SYtMWY"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("s8zj7K");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("SYtMWY");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -1046,30 +1082,42 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
 "metainfo_list":[],
 "spec_id":"3"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -1091,7 +1139,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="xyWYLV"></div>
+<div id="NkeYxc"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1102,7 +1150,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1115,31 +1163,43 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("xyWYLV").appendChild(div);
+            document.getElementById("NkeYxc").appendChild(div);
         };
-        var e = document.getElementById("xyWYLV");
+        var e = document.getElementById("NkeYxc");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="a3JQIe"></div>
+</div><div class="output text_html">   <div id="kA4A33"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("a3JQIe");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("kA4A33");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -1167,30 +1227,42 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
 "metainfo_list":[],
 "spec_id":"4"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
