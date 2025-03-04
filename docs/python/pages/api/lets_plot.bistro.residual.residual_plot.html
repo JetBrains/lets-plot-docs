@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -497,16 +497,16 @@ for computing a least-squares regression. A sensible value is usually 0.25 to 0.
 </dd>
 <dt><strong>max_n</strong><span class="classifier">int</span></dt><dd><p>Maximum number of data-points for ‘loess’ method. If this quantity exceeded random sampling is applied to data.</p>
 </dd>
-<dt><strong>geom</strong><span class="classifier">{‘point’, ‘tile’, ‘density2d’, ‘density2df’, ‘none’}, default=’point’</span></dt><dd><p>The geometric object to use to display the data. No object will be used if <cite>geom=’none’</cite>.</p>
+<dt><strong>geom</strong><span class="classifier">{‘point’, ‘tile’, ‘hex’, ‘density2d’, ‘density2df’, ‘none’}, default=’point’</span></dt><dd><p>The geometric object to use to display the data. No object will be used if <cite>geom=’none’</cite>.</p>
 </dd>
 <dt><strong>bins</strong><span class="classifier">int or list of int</span></dt><dd><p>Number of bins in both directions, vertical and horizontal. Overridden by <cite>binwidth</cite>.
 If only one value given - interpret it as list of two equal values.
-Applicable simultaneously for ‘tile’ geom and ‘histogram’ marginal.</p>
+Applicable simultaneously for ‘tile’/’hex’ geom and ‘histogram’ marginal.</p>
 </dd>
 <dt><strong>binwidth</strong><span class="classifier">float or list of float</span></dt><dd><p>The width of the bins in both directions, vertical and horizontal.
 Overrides <cite>bins</cite>. The default is to use bin widths that cover the entire range of the data.
 If only one value given - interpret it as list of two equal values.
-Applicable simultaneously for ‘tile’ geom and ‘histogram’ marginal.</p>
+Applicable simultaneously for ‘tile’/’hex’ geom and ‘histogram’ marginal.</p>
 </dd>
 <dt><strong>color</strong><span class="classifier">str</span></dt><dd><p>Color of the geometry.
 For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#color-and-fill">Color and Fill</a>.</p>
@@ -569,7 +569,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="6jT0Ks"></div>
+<div id="xLuUUK"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -580,7 +580,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -593,31 +593,43 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("6jT0Ks").appendChild(div);
+            document.getElementById("xLuUUK").appendChild(div);
         };
-        var e = document.getElementById("6jT0Ks");
+        var e = document.getElementById("xLuUUK");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="vtgOHK"></div>
+</div><div class="output text_html">   <div id="Szc3tx"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("vtgOHK");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("Szc3tx");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[0.3745401188473625,0.9507143064099162,0.7319939418114051,0.5986584841970366,0.15601864044243652,0.15599452033620265,0.05808361216819946,0.8661761457749352,0.6011150117432088,0.7080725777960455,0.020584494295802447,0.9699098521619943,0.8324426408004217,0.21233911067827616,0.18182496720710062,0.18340450985343382,0.3042422429595377,0.5247564316322378,0.43194501864211576,0.2912291401980419,0.6118528947223795,0.13949386065204183,0.29214464853521815,0.3663618432936917,0.45606998421703593,0.7851759613930136,0.19967378215835974,0.5142344384136116,0.5924145688620425,0.046450412719997725,0.6075448519014384,0.17052412368729153,0.06505159298527952,0.9488855372533332,0.9656320330745594,0.8083973481164611,0.3046137691733707,0.09767211400638387,0.6842330265121569,0.4401524937396013,0.12203823484477883,0.4951769101112702,0.034388521115218396,0.9093204020787821,0.2587799816000169,0.662522284353982,0.31171107608941095,0.5200680211778108,0.5467102793432796,0.18485445552552704,0.9695846277645586,0.7751328233611146,0.9394989415641891,0.8948273504276488,0.5978999788110851,0.9218742350231168,0.0884925020519195,0.1959828624191452,0.045227288910538066,0.32533033076326434,0.388677289689482,0.2713490317738959,0.8287375091519293,0.3567533266935893,0.28093450968738076,0.5426960831582485,0.14092422497476265,0.8021969807540397,0.07455064367977082,0.9868869366005173,0.7722447692966574,0.1987156815341724,0.005522117123602399,0.8154614284548342,0.7068573438476171,0.7290071680409873,0.7712703466859457,0.07404465173409036,0.3584657285442726,0.11586905952512971,0.8631034258755935,0.6232981268275579,0.3308980248526492,0.06355835028602363,0.3109823217156622,0.32518332202674705,0.7296061783380641,0.6375574713552131,0.8872127425763265,0.4722149251619493,0.1195942459383017,0.713244787222995,0.7607850486168974,0.5612771975694962,0.770967179954561,0.49379559636439074,0.5227328293819941,0.42754101835854963,0.02541912674409519,0.10789142699330445],
 "..residual..":[0.04415442982091873,-0.07699052328249326,0.21321583584989282,-1.9274179289237867,-0.36303485157669324,0.21373851799348337,1.2895031770043033,-0.3351217740204637,-0.7472131716186614,-0.3913003870006727,0.7097701595264024,0.5595935348598795,-0.36212152195815805,0.3957991137275934,-0.03442035625435988,0.837873316350372,-0.7772668135514444,-0.3014893461193957,-0.40860755551810213,-1.5447117440577474,0.36233769944890504,0.11009465710898075,-0.07566241306052622,-0.28123992393601205,-1.4207781311597456,-0.2747385946830121,-0.4660060148787075,-0.7809421995211409,-0.10400551109235637,0.21031135542526005,1.950422600844491,0.03788408193512369,0.07236321401235188,0.1467300923204218,-1.6898956167857249,0.1300694245452415,-0.014812691926770864,2.2930529779951816,-0.09286509562421716,0.28882151725977084,-0.19369801418500932,-1.15610510920761,0.9435375782974046,0.9549180508926007,0.6949158967513772,-0.8198736036231338,1.3310145607729724,-1.3778338679186177,0.6231236856885161,2.060350597828273,-0.7598434294012415,-0.42500856750379323,0.31651166778253326,-0.30715415303887494,-1.4908611858581158,0.27731990929743416,-1.2367133880282508,0.3486039462036928,-1.113726095204128,1.4844164235268207,-0.8196460380930186,-0.41239865373702966,0.9794523788436075,-1.2819348456799147,0.14152994318657483,1.341563726236377,-1.757786206411517,0.33836639561519377,0.07906302673042259,1.0204709058769452,-1.0969893987164245,-1.4441886204521055,0.30938432968061924,0.4568158482414746,0.36039077489556204,0.46653003019625483,-0.540511422845142,0.051201288093238845,0.24278926057774194,-0.8761740841515366,2.047510201053775,0.5453125545962866,-1.2542616020142572,0.47067987890870244,-1.0467964821406468,0.7214990315705294,1.27895280860405,-0.7426466198170723,1.1561966374965673,0.4147965494271205,0.6619502348481401,2.009627682657396,-0.11069567660007484,-0.7107720934671389,-0.7501405188386195,-0.8038724476325885,-0.05185930707273971,0.32262773100807346,0.07328167571705263,0.6616926810568959]
@@ -708,30 +720,42 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -759,7 +783,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="dEnRaJ"></div>
+<div id="LpMH6c"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -770,7 +794,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -783,31 +807,43 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("dEnRaJ").appendChild(div);
+            document.getElementById("LpMH6c").appendChild(div);
         };
-        var e = document.getElementById("dEnRaJ");
+        var e = document.getElementById("LpMH6c");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="AW5TAx"></div>
+</div><div class="output text_html">   <div id="TKdu0Z"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("AW5TAx");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("TKdu0Z");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 },
 "mapping":{
@@ -863,9 +899,9 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 },
 "binwidth":[1.0,0.5],
 "data":{
-"..count..":[1.0,2.0,2.0,6.0,10.0,13.0,9.0,7.0,5.0,2.0,1.0,1.0,1.0,6.0,18.0,18.0,25.0,20.0,14.0,10.0,2.0,1.0,2.0,6.0,10.0,25.0,20.0,14.0,13.0,7.0,2.0,1.0,2.0,5.0,16.0,16.0,23.0,13.0,9.0,10.0,1.0,3.0,7.0,16.0,12.0,20.0,17.0,10.0,8.0,3.0,1.0,1.0,1.0,1.0,7.0,9.0,22.0,21.0,13.0,12.0,6.0,4.0,1.0,9.0,10.0,16.0,23.0,23.0,12.0,10.0,6.0,1.0,2.0,2.0,5.0,16.0,13.0,18.0,10.0,8.0,11.0,3.0,2.0,2.0,7.0,9.0,19.0,19.0,15.0,11.0,1.0,1.0,2.0,3.0,2.0,11.0,8.0,21.0,18.0,25.0,15.0,4.0,1.0,3.0,1.0,3.0,3.0,6.0,7.0,6.0,10.0,3.0],
-"x":[-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028],
-"..residual..":[-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,-2.9987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,3.0012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-2.9987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,-2.9987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105]
+"..count..":[NaN,1.0,2.0,2.0,6.0,10.0,13.0,9.0,7.0,5.0,2.0,1.0,NaN,1.0,1.0,6.0,18.0,18.0,25.0,20.0,14.0,10.0,2.0,1.0,2.0,6.0,10.0,25.0,20.0,14.0,13.0,7.0,2.0,1.0,2.0,5.0,16.0,16.0,23.0,13.0,9.0,10.0,1.0,3.0,7.0,16.0,12.0,20.0,17.0,10.0,8.0,3.0,1.0,1.0,1.0,1.0,7.0,9.0,22.0,21.0,13.0,12.0,6.0,4.0,1.0,9.0,10.0,16.0,23.0,23.0,12.0,10.0,6.0,1.0,2.0,2.0,5.0,16.0,13.0,18.0,10.0,8.0,11.0,3.0,2.0,2.0,7.0,9.0,19.0,19.0,15.0,11.0,1.0,1.0,2.0,3.0,2.0,11.0,8.0,21.0,18.0,25.0,15.0,4.0,1.0,3.0,1.0,3.0,3.0,6.0,7.0,6.0,10.0,3.0],
+"x":[NaN,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-4.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-3.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-2.953679769953972,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-1.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,-0.9536797699539719,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,0.046320230046028144,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,1.0463202300460281,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,2.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,3.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,4.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028,5.046320230046028],
+"..residual..":[-2.9987289656578895,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,NaN,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,-2.9987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,3.0012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-2.9987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,-2.9987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-2.4987289656578895,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105,2.0012710343421105,2.5012710343421105,-1.9987289656578895,-1.4987289656578895,-0.9987289656578895,-0.4987289656578895,0.0012710343421105108,0.5012710343421105,1.0012710343421105,1.5012710343421105]
 }
 },{
 "geom":"histogram",
@@ -906,30 +942,42 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 "metainfo_list":[],
 "spec_id":"2"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -959,7 +1007,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="uYB5m3"></div>
+<div id="C6Q06Z"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -970,7 +1018,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -983,31 +1031,43 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("uYB5m3").appendChild(div);
+            document.getElementById("C6Q06Z").appendChild(div);
         };
-        var e = document.getElementById("uYB5m3");
+        var e = document.getElementById("C6Q06Z");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="cO9mcC"></div>
+</div><div class="output text_html">   <div id="8Ftnr3"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("cO9mcC");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("8Ftnr3");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[0.3745401188473625,0.5986584841970366,0.15601864044243652,0.05808361216819946,0.8661761457749352,0.6011150117432088,0.3042422429595377,0.5247564316322378,0.43194501864211576,0.2912291401980419,0.6118528947223795,0.13949386065204183,0.29214464853521815,0.7851759613930136,0.19967378215835974,0.5924145688620425,0.046450412719997725,0.17052412368729153,0.9488855372533332,0.09767211400638387,0.4401524937396013,0.12203823484477883,0.4951769101112702,0.034388521115218396,0.662522284353982,0.31171107608941095,0.5467102793432796,0.9695846277645586,0.7751328233611146,0.8948273504276488,0.9218742350231168,0.0884925020519195,0.1959828624191452,0.32533033076326434,0.388677289689482,0.2713490317738959,0.8287375091519293,0.5426960831582485,0.8021969807540397,0.07455064367977082,0.9868869366005173,0.11586905952512971,0.713244787222995,0.7607850486168974,0.49379559636439074,0.42754101835854963,0.02541912674409519,0.10789142699330445,0.03142918568673425,0.6364104112637804,0.5085706911647028,0.41038292303562973,0.7555511385430487,0.07697990982879299,0.289751452913768,0.808120379564417,0.8714605901877177,0.8036720768991145,0.18657005888603584,0.11005192452767676,0.22793516254194168,0.4271077886262563,0.8180147659224931,0.006952130531190703,0.417411003148779,0.33761517140362796,0.9429097039125192,0.32320293202075523,0.5187906217433661,0.363629602379294,0.9717820827209607,0.25178229582536416,0.49724850589238545,0.30087830981676966,0.2848404943774676,0.036886947354532795,0.5026790232288615,0.05147875124998935,0.27864646423661144,0.9082658859666537,0.23956189066697242,0.489452760277563,0.6721355474058786,0.7616196153287176,0.23763754399239967,0.7282163486118596,0.6323058305935795,0.6335297107608947,0.5357746840747585,0.0902897700544083,0.835302495589238,0.32078006497173583,0.5908929431882418,0.6775643618422824,0.016587828927856152,0.22649577519793795,0.17436642900499144,0.690937738102466,0.3867353463005374,0.9367299887367345,0.11347352124058907,0.9246936182785628,0.5552008115994623,0.24185229090045168,0.3492095746126609,0.7259556788702394,0.7798755458576239,0.9507143064099162,0.7319939418114051,0.15599452033620265,0.7080725777960455,0.020584494295802447,0.9699098521619943,0.8324426408004217,0.21233911067827616,0.18182496720710062,0.18340450985343382,0.3663618432936917,0.45606998421703593,0.5142344384136116,0.6075448519014384,0.06505159298527952,0.9656320330745594,0.8083973481164611,0.3046137691733707,0.6842330265121569,0.9093204020787821,0.2587799816000169,0.5200680211778108,0.18485445552552704,0.9394989415641891,0.5978999788110851,0.045227288910538066,0.3567533266935893,0.28093450968738076,0.14092422497476265,0.7722447692966574,0.1987156815341724,0.005522117123602399,0.8154614284548342,0.7068573438476171,0.7290071680409873,0.7712703466859457,0.07404465173409036,0.3584657285442726,0.8631034258755935,0.6232981268275579,0.3308980248526492,0.06355835028602363,0.3109823217156622,0.32518332202674705,0.7296061783380641,0.6375574713552131,0.8872127425763265,0.4722149251619493,0.1195942459383017,0.5612771975694962,0.770967179954561,0.5227328293819941,0.3143559810763267,0.907566473926093,0.24929222914887494,0.22879816549162246,0.16122128725400442,0.9296976523425731,0.6334037565104235,0.8925589984899778,0.5393422419156507,0.8074401551640625,0.8960912999234932,0.3180034749718639,0.8607305832563434,0.5107473025775657,0.22210781047073025,0.1198653673336828,0.7030189588951778,0.9624472949421112,0.6095643339798968,0.1448948720912231,0.9856504541106007,0.2420552715115004,0.3677831327192532,0.18651851039985423,0.040775141554763916,0.512093058299281,0.6451727904094499,0.13752094414599325,0.3410663510502585,0.877339353380981,0.2579416277151556,0.659984046034179,0.8172222002012158,0.5296505783560065,0.09310276780589921,0.8972157579533268,0.9004180571633305,0.6331014572732679,0.3390297910487007,0.8971102599525771,0.8870864242651173],
 "g":["A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B"],
@@ -1249,30 +1309,42 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 "metainfo_list":[],
 "spec_id":"3"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -1304,7 +1376,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="8UlvPe"></div>
+<div id="XA9b3H"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1315,7 +1387,7 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1328,31 +1400,43 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("8UlvPe").appendChild(div);
+            document.getElementById("XA9b3H").appendChild(div);
         };
-        var e = document.getElementById("8UlvPe");
+        var e = document.getElementById("XA9b3H");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="ys2EIh"></div>
+</div><div class="output text_html">   <div id="Ce0871"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("ys2EIh");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("Ce0871");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[0.3745401188473625,0.9507143064099162,0.7319939418114051,0.5986584841970366,0.15601864044243652,0.15599452033620265,0.05808361216819946,0.8661761457749352,0.6011150117432088,0.7080725777960455,0.020584494295802447,0.9699098521619943,0.8324426408004217,0.21233911067827616,0.18182496720710062,0.18340450985343382,0.3042422429595377,0.5247564316322378,0.43194501864211576,0.2912291401980419,0.6118528947223795,0.13949386065204183,0.29214464853521815,0.3663618432936917,0.45606998421703593,0.7851759613930136,0.19967378215835974,0.5142344384136116,0.5924145688620425,0.046450412719997725,0.6075448519014384,0.17052412368729153,0.06505159298527952,0.9488855372533332,0.9656320330745594,0.8083973481164611,0.3046137691733707,0.09767211400638387,0.6842330265121569,0.4401524937396013,0.12203823484477883,0.4951769101112702,0.034388521115218396,0.9093204020787821,0.2587799816000169,0.662522284353982,0.31171107608941095,0.5200680211778108,0.5467102793432796,0.18485445552552704,0.9695846277645586,0.7751328233611146,0.9394989415641891,0.8948273504276488,0.5978999788110851,0.9218742350231168,0.0884925020519195,0.1959828624191452,0.045227288910538066,0.32533033076326434,0.388677289689482,0.2713490317738959,0.8287375091519293,0.3567533266935893,0.28093450968738076,0.5426960831582485,0.14092422497476265,0.8021969807540397,0.07455064367977082,0.9868869366005173,0.7722447692966574,0.1987156815341724,0.005522117123602399,0.8154614284548342,0.7068573438476171,0.7290071680409873,0.7712703466859457,0.07404465173409036,0.3584657285442726,0.11586905952512971,0.8631034258755935,0.6232981268275579,0.3308980248526492,0.06355835028602363,0.3109823217156622,0.32518332202674705,0.7296061783380641,0.6375574713552131,0.8872127425763265,0.4722149251619493,0.1195942459383017,0.713244787222995,0.7607850486168974,0.5612771975694962,0.770967179954561,0.49379559636439074,0.5227328293819941,0.42754101835854963,0.02541912674409519,0.10789142699330445],
 "..residual..":[0.04415442982091873,-0.07699052328249326,0.21321583584989282,-1.9274179289237867,-0.36303485157669324,0.21373851799348337,1.2895031770043033,-0.3351217740204637,-0.7472131716186614,-0.3913003870006727,0.7097701595264024,0.5595935348598795,-0.36212152195815805,0.3957991137275934,-0.03442035625435988,0.837873316350372,-0.7772668135514444,-0.3014893461193957,-0.40860755551810213,-1.5447117440577474,0.36233769944890504,0.11009465710898075,-0.07566241306052622,-0.28123992393601205,-1.4207781311597456,-0.2747385946830121,-0.4660060148787075,-0.7809421995211409,-0.10400551109235637,0.21031135542526005,1.950422600844491,0.03788408193512369,0.07236321401235188,0.1467300923204218,-1.6898956167857249,0.1300694245452415,-0.014812691926770864,2.2930529779951816,-0.09286509562421716,0.28882151725977084,-0.19369801418500932,-1.15610510920761,0.9435375782974046,0.9549180508926007,0.6949158967513772,-0.8198736036231338,1.3310145607729724,-1.3778338679186177,0.6231236856885161,2.060350597828273,-0.7598434294012415,-0.42500856750379323,0.31651166778253326,-0.30715415303887494,-1.4908611858581158,0.27731990929743416,-1.2367133880282508,0.3486039462036928,-1.113726095204128,1.4844164235268207,-0.8196460380930186,-0.41239865373702966,0.9794523788436075,-1.2819348456799147,0.14152994318657483,1.341563726236377,-1.757786206411517,0.33836639561519377,0.07906302673042259,1.0204709058769452,-1.0969893987164245,-1.4441886204521055,0.30938432968061924,0.4568158482414746,0.36039077489556204,0.46653003019625483,-0.540511422845142,0.051201288093238845,0.24278926057774194,-0.8761740841515366,2.047510201053775,0.5453125545962866,-1.2542616020142572,0.47067987890870244,-1.0467964821406468,0.7214990315705294,1.27895280860405,-0.7426466198170723,1.1561966374965673,0.4147965494271205,0.6619502348481401,2.009627682657396,-0.11069567660007484,-0.7107720934671389,-0.7501405188386195,-0.8038724476325885,-0.05185930707273971,0.32262773100807346,0.07328167571705263,0.6616926810568959]
@@ -1445,30 +1529,42 @@ to the <cite>axis_tooltip</cite>, <cite>axis_tooltip_x</cite> or <cite>axis_tool
 "metainfo_list":[],
 "spec_id":"4"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

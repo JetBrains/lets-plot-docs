@@ -6,7 +6,7 @@
 
 .. meta::
    :description: An overview of the basic building blocks and more complex charts provided by Lets-Plot.
-   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, cookbooks
+   :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, panning, zooming, interactive links, LaTeX, markdown, manual legend, multiple color scales, quantiles, cookbooks
 
 
 Charts
@@ -112,6 +112,8 @@ Examples:
 - .. extref:: linetype_custom
       :type: text
 - .. extref:: expand_limits
+      :type: text
+- .. extref:: position_nudge_unit
       :type: text
 
 
@@ -314,12 +316,17 @@ Examples:
     :class: only-dark
 
 :py:mod:`2d bins <lets_plot.geom_bin2d>`,
+:py:mod:`2d hexagonal bins <lets_plot.geom_hex>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`
 
 Examples:
 
 - .. extref:: density_2d
+      :type: text
+- .. extref:: geom_hex
+      :type: text
+- .. extref:: param_width_unit
       :type: text
 
 
@@ -529,15 +536,19 @@ Examples:
 .. |d19| image:: /_static/images/icons/charts/grouping-plots-dark.svg
     :class: only-dark
 
-:py:mod:`GGBunch <lets_plot.GGBunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
+:py:mod:`ggbunch <lets_plot.ggbunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
 Examples:
 
-- .. extref:: ggbunch
+- .. extref:: ggbunch_indonesia
+      :type: text
+- .. extref:: geopandas_kotlin_isl
       :type: text
 - .. extref:: plot_grid
       :type: text
 - .. extref:: gggrid_scale_share
+      :type: text
+- .. extref:: ggbunch
       :type: text
 - .. extref:: themes
       :type: text
@@ -679,18 +690,27 @@ In tooltips/labels/texts and wherever else there is text, you can use:
 
 - Interactive links, e.g. ``<a href="https://github.com">GitHub</a>``.
 
-- LaTeX formulas with
+- Limited LaTeX support:
 
-  - superscript, e.g. ``\( a^b \)``;
-  - subscript, e.g. ``\( x_i \)``;
+  - superscript, e.g. ``\( a^b \)``,
+  - subscript, e.g. ``\( x_i \)``,
   - Greek letters, e.g. ``\( \Omega \)``, and
   - some special symbols, e.g. ``\( a \cdot b \neq c \)``.
+
+- Limited markdown support:
+
+  - emphasis (``*``, ``**``, ``***``, ``_``, ``__``, ``___``),
+  - coloring with inline style (``<span style='color:red'>text</span>``),
+  - links with anchor tags (``<a href="https://lets-plot.org">Lets-Plot</a>``), and
+  - multiple lines using double space and a newline delimiter (``\n``).
 
 Examples:
 
 - .. extref:: lp_verse
       :type: text
 - .. extref:: latex_support
+      :type: text
+- .. extref:: markdown
       :type: text
 
 

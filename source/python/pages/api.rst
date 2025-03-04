@@ -56,7 +56,7 @@ Plotting
     :template: base.rst
 
     ggplot
-    GGBunch
+    ggbunch
     gggrid
     ggmarginal
     ggtb
@@ -87,6 +87,7 @@ Standard Geometries
     geom_dotplot
     geom_bin2d
     geom_tile
+    geom_hex
     geom_raster
     geom_errorbar
     geom_crossbar
@@ -257,6 +258,18 @@ Fill Scales
     scale_fill_viridis
     scale_fill_cmapmpl
 
+Flexible Scales
+~~~~~~~~~~~~~~~
+
+.. autosummary::
+    :toctree: api
+    :nosignatures:
+    :template: default.rst
+
+    scale_manual
+    scale_continuous
+    scale_discrete
+
 Flexible Color Scales
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -265,13 +278,10 @@ Flexible Color Scales
     :nosignatures:
     :template: default.rst
 
-    scale_manual
     scale_gradient
-    scale_continuous
     scale_gradient2
     scale_gradientn
     scale_hue
-    scale_discrete
     scale_grey
     scale_brewer
     scale_viridis
@@ -428,6 +438,7 @@ Base
     element_rect
     element_line
     element_text
+    element_markdown
     element_geom
     margin
     ggsize

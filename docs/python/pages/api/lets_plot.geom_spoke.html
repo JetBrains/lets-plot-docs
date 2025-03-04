@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -544,7 +544,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="znPVaH"></div>
+<div id="1bibJN"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -555,7 +555,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -568,31 +568,43 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("znPVaH").appendChild(div);
+            document.getElementById("1bibJN").appendChild(div);
         };
-        var e = document.getElementById("znPVaH");
+        var e = document.getElementById("1bibJN");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="FevJ1W"></div>
+</div><div class="output text_html">   <div id="s4qNc6"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("FevJ1W");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("s4qNc6");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "mapping":{
 },
 "data_meta":{
@@ -615,30 +627,42 @@ They may also be parameters to the paired geom/stat.</p>
 "metainfo_list":[],
 "spec_id":"1"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -674,7 +698,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="6s1Dms"></div>
+<div id="usKzPz"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -685,7 +709,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -698,31 +722,43 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("6s1Dms").appendChild(div);
+            document.getElementById("usKzPz").appendChild(div);
         };
-        var e = document.getElementById("6s1Dms");
+        var e = document.getElementById("usKzPz");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="kxd7tH"></div>
+</div><div class="output text_html">   <div id="JMzf95"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("kxd7tH");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("JMzf95");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.3999999999999999,-0.29999999999999993,-0.19999999999999996,-0.09999999999999998,0.0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.6000000000000001,0.7000000000000002,0.8,0.9000000000000001,1.0],
 "y":[-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.9,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.7,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.6,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.3999999999999999,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.29999999999999993,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.19999999999999996,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,-0.09999999999999998,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.10000000000000009,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.20000000000000018,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.30000000000000004,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.40000000000000013,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.6000000000000001,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.7000000000000002,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,0.9000000000000001,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],
@@ -784,30 +820,42 @@ They may also be parameters to the paired geom/stat.</p>
 "metainfo_list":[],
 "spec_id":"2"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();
@@ -837,7 +885,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="lAENyv"></div>
+<div id="S1x5iG"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -848,7 +896,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -861,31 +909,43 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("lAENyv").appendChild(div);
+            document.getElementById("S1x5iG").appendChild(div);
         };
-        var e = document.getElementById("lAENyv");
+        var e = document.getElementById("S1x5iG");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="fOBJot"></div>
+</div><div class="output text_html">   <div id="96Ckvp"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
    // ----------
 
-   var containerDiv = document.getElementById("fOBJot");
-   var observer = new ResizeObserver(function(entries) {
-       for (let entry of entries) {
-           var width = containerDiv.clientWidth
-           if (entry.contentBoxSize && width > 0) {
+   const forceImmediateRender = false;
+   const responsive = false;
 
-               // Render plot
-               if (observer) {
-                   observer.disconnect();
-                   observer = null;
-               }
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
 
-               var plotSpec={
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("96Ckvp");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 "data":{
 "x":[10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0,10.0,12.222222222222221,14.444444444444445,16.666666666666668,18.88888888888889,21.11111111111111,23.333333333333336,25.555555555555557,27.77777777777778,30.0],
 "y":[10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0,10.0,12.222222222222221,12.222222222222221,12.222222222222221,12.222222222222221,12.222222222222221,12.222222222222221,12.222222222222221,12.222222222222221,12.222222222222221,12.222222222222221,14.444444444444445,14.444444444444445,14.444444444444445,14.444444444444445,14.444444444444445,14.444444444444445,14.444444444444445,14.444444444444445,14.444444444444445,14.444444444444445,16.666666666666668,16.666666666666668,16.666666666666668,16.666666666666668,16.666666666666668,16.666666666666668,16.666666666666668,16.666666666666668,16.666666666666668,16.666666666666668,18.88888888888889,18.88888888888889,18.88888888888889,18.88888888888889,18.88888888888889,18.88888888888889,18.88888888888889,18.88888888888889,18.88888888888889,18.88888888888889,21.11111111111111,21.11111111111111,21.11111111111111,21.11111111111111,21.11111111111111,21.11111111111111,21.11111111111111,21.11111111111111,21.11111111111111,21.11111111111111,23.333333333333336,23.333333333333336,23.333333333333336,23.333333333333336,23.333333333333336,23.333333333333336,23.333333333333336,23.333333333333336,23.333333333333336,23.333333333333336,25.555555555555557,25.555555555555557,25.555555555555557,25.555555555555557,25.555555555555557,25.555555555555557,25.555555555555557,25.555555555555557,25.555555555555557,25.555555555555557,27.77777777777778,27.77777777777778,27.77777777777778,27.77777777777778,27.77777777777778,27.77777777777778,27.77777777777778,27.77777777777778,27.77777777777778,27.77777777777778,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0],
@@ -940,30 +1000,42 @@ They may also be parameters to the paired geom/stat.</p>
 "metainfo_list":[],
 "spec_id":"3"
 };
-               window.letsPlotCall(function() {
-
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-
-                   var options = {
-                       sizing: {
-                           width_mode: "min",
-                           height_mode: "scaled",
-                           width: width
-                       }
-                   };
-                   var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-                   if (toolbar) {
-                     toolbar.bind(fig);
-                   }
-               });
-
-               break;
-           }
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
        }
-   });
+   }
 
-   observer.observe(containerDiv);
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
 
    // ----------
    })();

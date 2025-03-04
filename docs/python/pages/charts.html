@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="An overview of the basic building blocks and more complex charts provided by Lets-Plot." name="description" />
-<meta content="data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, cookbooks" name="keywords" />
+<meta content="data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, panning, zooming, interactive links, LaTeX, markdown, manual legend, multiple color scales, quantiles, cookbooks" name="keywords" />
 <meta property="og:title" content="Lets-Plot Charts: From Basics to Advanced Visualizations" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/charts.html" />
@@ -53,7 +53,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=cd7592eb"></script>
+    <script src="../../_static/documentation_options.js?v=cc8a4273"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -153,7 +153,7 @@
    
 
 <a class="navbar-brand version" href="whats_new.html">
-  <p>v4.5.2</p>
+  <p>v4.6.0</p>
 </a>
 </div>
     
@@ -524,6 +524,7 @@ and each column represents a variable that describes some property of each obser
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geom_curve.ipynb">Curve geometry</a></li>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/linetype_custom.ipynb">Customizing line type</a></li>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/expand_limits.ipynb">Expanding plot limits with expand_limits()</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/position_nudge_unit.ipynb">Configuring nudge units in position adjustments</a></li>
 </ul>
 </section>
 <section id="l3-d3-discrete">
@@ -626,11 +627,14 @@ and each column represents a variable that describes some property of each obser
 <section id="l10-d10-bivariate-distribution">
 <h2><img alt="l10" class="only-light" src="../../_images/bivariate-distribution-light.svg" /> <img alt="d10" class="only-dark" src="../../_images/bivariate-distribution-dark.svg" /> Bivariate Distribution<a class="headerlink" href="#l10-d10-bivariate-distribution" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="api/lets_plot.geom_bin2d.html#lets_plot.geom_bin2d" title="lets_plot.geom_bin2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">2d</span> <span class="pre">bins</span></code></a>,
+<a class="reference internal" href="api/lets_plot.geom_hex.html#lets_plot.geom_hex" title="lets_plot.geom_hex"><code class="xref py py-mod docutils literal notranslate"><span class="pre">2d</span> <span class="pre">hexagonal</span> <span class="pre">bins</span></code></a>,
 <a class="reference internal" href="api/lets_plot.geom_density2d.html#lets_plot.geom_density2d" title="lets_plot.geom_density2d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">2d</span> <span class="pre">density</span></code></a>,
 <a class="reference internal" href="api/lets_plot.geom_density2df.html#lets_plot.geom_density2df" title="lets_plot.geom_density2df"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filled</span> <span class="pre">2d</span> <span class="pre">density</span></code></a></p>
 <p>Examples:</p>
 <ul>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/density_2d.ipynb">2d density</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geom_hex.ipynb">Hexagonal heatmap</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/param_width_unit.ipynb">Absolute unit specification for width and height aesthetics</a></li>
 </ul>
 </section>
 <section id="l11-d11-marginal-plots">
@@ -735,12 +739,14 @@ and each column represents a variable that describes some property of each obser
 </section>
 <section id="l19-d19-grouping-plots">
 <h2><img alt="l19" class="only-light" src="../../_images/grouping-plots-light.svg" /> <img alt="d19" class="only-dark" src="../../_images/grouping-plots-dark.svg" /> Grouping Plots<a class="headerlink" href="#l19-d19-grouping-plots" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="api/lets_plot.GGBunch.html#lets_plot.GGBunch" title="lets_plot.GGBunch"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GGBunch</span></code></a> and <a class="reference internal" href="api/lets_plot.gggrid.html#lets_plot.gggrid" title="lets_plot.gggrid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gggrid</span></code></a> shows a collection of plots on one figure.</p>
+<p><a class="reference internal" href="api/lets_plot.ggbunch.html#lets_plot.ggbunch" title="lets_plot.ggbunch"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ggbunch</span></code></a> and <a class="reference internal" href="api/lets_plot.gggrid.html#lets_plot.gggrid" title="lets_plot.gggrid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gggrid</span></code></a> shows a collection of plots on one figure.</p>
 <p>Examples:</p>
 <ul>
-<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/ggbunch.ipynb">The GGBunch class</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/ggbunch_indonesia.ipynb">ggbunch(): combining plots with custom layout</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geopandas_kotlin_isl.ipynb">Inset map of Kotlin island</a></li>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/plot_grid.ipynb">The gggrid() function</a></li>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/gggrid_scale_share.ipynb">Sharing X,Y-axis scale limits</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/ggbunch.ipynb">The ggbunch function</a></li>
 <li><a class="reference external extref" href="https://datalore.jetbrains.com/report/static/HZqq77cegYd.E7get_WnChZ/ZWb7Mmvd4RSzjJ29pOpFvn">Custom theme</a></li>
 </ul>
 </section>
@@ -851,12 +857,20 @@ and each column represents a variable that describes some property of each obser
 <p>In tooltips/labels/texts and wherever else there is text, you can use:</p>
 <ul class="simple">
 <li><p>Interactive links, e.g. <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;</span></code>.</p></li>
-<li><p>LaTeX formulas with</p>
+<li><p>Limited LaTeX support:</p>
 <ul>
-<li><p>superscript, e.g. <code class="docutils literal notranslate"><span class="pre">\(</span> <span class="pre">a^b</span> <span class="pre">\)</span></code>;</p></li>
-<li><p>subscript, e.g. <code class="docutils literal notranslate"><span class="pre">\(</span> <span class="pre">x_i</span> <span class="pre">\)</span></code>;</p></li>
+<li><p>superscript, e.g. <code class="docutils literal notranslate"><span class="pre">\(</span> <span class="pre">a^b</span> <span class="pre">\)</span></code>,</p></li>
+<li><p>subscript, e.g. <code class="docutils literal notranslate"><span class="pre">\(</span> <span class="pre">x_i</span> <span class="pre">\)</span></code>,</p></li>
 <li><p>Greek letters, e.g. <code class="docutils literal notranslate"><span class="pre">\(</span> <span class="pre">\Omega</span> <span class="pre">\)</span></code>, and</p></li>
 <li><p>some special symbols, e.g. <code class="docutils literal notranslate"><span class="pre">\(</span> <span class="pre">a</span> <span class="pre">\cdot</span> <span class="pre">b</span> <span class="pre">\neq</span> <span class="pre">c</span> <span class="pre">\)</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Limited markdown support:</p>
+<ul>
+<li><p>emphasis (<code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code>, <code class="docutils literal notranslate"><span class="pre">***</span></code>, <code class="docutils literal notranslate"><span class="pre">_</span></code>, <code class="docutils literal notranslate"><span class="pre">__</span></code>, <code class="docutils literal notranslate"><span class="pre">___</span></code>),</p></li>
+<li><p>coloring with inline style (<code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">style='color:red'&gt;text&lt;/span&gt;</span></code>),</p></li>
+<li><p>links with anchor tags (<code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;https://lets-plot.org&quot;&gt;Lets-Plot&lt;/a&gt;</span></code>), and</p></li>
+<li><p>multiple lines using double space and a newline delimiter (<code class="docutils literal notranslate"><span class="pre">\n</span></code>).</p></li>
 </ul>
 </li>
 </ul>
@@ -864,6 +878,7 @@ and each column represents a variable that describes some property of each obser
 <ul>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lp_verse.ipynb">The observable LP-verse</a></li>
 <li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/latex_support.ipynb">LaTeX support</a></li>
+<li><a class="reference external extref" href="https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/markdown.ipynb">Markdown support</a></li>
 </ul>
 </section>
 <section id="manual-legend">
