@@ -180,7 +180,22 @@ Learn more: :doc:`Configuring Basemap Tiles for Interactive Maps </python/pages/
     .. grid-item-card::
 
         .. extref:: the_gallery_of_basemaps
+            :image: carto_antique
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
             :image: carto_dark_matter_no_labels
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_flat_blue
+
+    .. grid-item-card::
+
+        .. extref:: the_gallery_of_basemaps
+            :image: carto_midnight_commander
 
     .. grid-item-card::
 
