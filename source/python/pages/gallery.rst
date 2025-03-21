@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: magnifier_inset
+
+    .. grid-item-card::
+
         .. extref:: ggbunch_indonesia
 
     .. grid-item-card::
