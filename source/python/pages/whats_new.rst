@@ -32,13 +32,19 @@ What is new in 4.6.0
 
 - **ggbunch() Function: Combining Plots with Custom Layout**
 
+  It replaces the deprecated ``GGBunch`` class.
+
   .. image:: /_static/images/changelog/4.6.0/ggbunch_indonesia.png
     :width: 400
     :height: 164
 
-  It replaces the deprecated ``GGBunch`` class.
-
   See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25a/ggbunch_indonesia.ipynb>`__.
+
+  .. image:: /_static/images/changelog/4.6.0/magnifier_inset.png
+    :width: 400
+    :height: 251
+
+  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25a/magnifier_inset.ipynb>`__.
 
 - **Parameters start and direction in geom_pie() Geometry**
 
@@ -55,6 +61,11 @@ What is new in 4.6.0
 
 Recent Updates in the Gallery
 -----------------------------
+
+.. image:: /_static/images/changelog/4.6.0/square-magnifier_inset.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/magnifier_inset.ipynb
 
 .. image:: /_static/images/changelog/4.6.0/square-ggbunch_indonesia.png
   :width: 128
@@ -76,14 +87,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lp_verse.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.4.0/us_unemployment.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/us_unemployment.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.3/earthquake.png
   :width: 128
@@ -105,14 +116,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/mpg_corrgram.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.3.1/gal_venn_diagram.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/venn_diagram.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.1/gal_spoke.png
   :width: 128
