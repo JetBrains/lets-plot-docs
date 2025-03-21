@@ -2,16 +2,40 @@
    &lt;head>
        &lt;meta charset=&quot;UTF-8&quot;>
        &lt;style> html, body { margin: 0; padding: 0; overflow: hidden; } &lt;/style>
-       &lt;script type=&quot;text/javascript&quot; data-lets-plot-script=&quot;library&quot; src=&quot;https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js&quot;>&lt;/script>
+       &lt;script type=&quot;text/javascript&quot; data-lets-plot-script=&quot;library&quot; src=&quot;https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.1/js-package/distr/lets-plot.min.js&quot;>&lt;/script>
    &lt;/head>
    &lt;body>
-          &lt;div id=&quot;ExM7V4&quot;>&lt;/div>
+          &lt;div id=&quot;fnjKhC&quot;>&lt;/div>
    &lt;script type=&quot;text/javascript&quot; data-lets-plot-script=&quot;plot&quot;>
    
    (function() {
    // ----------
    
-       var plotSpec={
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: &quot;FIXED&quot;,
+       height_mode: &quot;FIXED&quot;,
+       width: 500.0, 
+       height: 250.0 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById(&quot;fnjKhC&quot;);
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
 &quot;mapping&quot;:{
 },
 &quot;data&quot;:{
@@ -48,24 +72,43 @@
 },
 &quot;spec_id&quot;:&quot;3&quot;
 };
-       var containerDiv = document.getElementById(&quot;ExM7V4&quot;);
-       
-               var toolbar = null;
-               var plotContainer = containerDiv;               
-               
-       var options = {
-           sizing: {
-               width_mode: &quot;fixed&quot;,
-               height_mode: &quot;fixed&quot;,
-               width: 500.0,
-               height: 250.0
-           }
-       };
-       var fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, -1, -1, plotContainer, options);
-       if (toolbar) {
-         toolbar.bind(fig);
+           fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing);
+       } else {
+           fig.updateView({});
        }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' &amp;&amp; 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize &amp;&amp; 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive &amp;&amp; observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
        
+       observer.observe(containerDiv);
+   }
+   
    // ----------
    })();
    
