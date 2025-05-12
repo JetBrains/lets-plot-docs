@@ -20,15 +20,15 @@ Lets-Plot has limited support for the LaTeX formulas. See examples below.
 Superscript and Subscript
 -------------------------
 
-``\( 2^5 \)`` → :math:`2^5`
+``\( 2^5 \)`` → 2\ :sup:`5`
 
-``\( 2^{10} \)`` → :math:`2^{10}`
+``\( 2^{10} \)`` → 2\ :sup:`10`
 
-``\( 2^{-5} \)`` → :math:`2^{-5}`
+``\( 2^{-5} \)`` → 2\ :sup:`-5`
 
-``\( x_i \)`` → :math:`\textrm{x}_\textrm{i}`
+``\( x_i \)`` → x\ :sub:`i`
 
-``\( x_{min} \)`` → :math:`\textrm{x}_{\textrm{min}}`
+``\( x_{min} \)`` → x\ :sub:`min`
 
 
 Greek Letters
