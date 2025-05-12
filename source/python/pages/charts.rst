@@ -697,6 +697,8 @@ In tooltips/labels/texts and wherever else there is text, you can use:
   - Greek letters, e.g. ``\( \Omega \)``, and
   - some special symbols, e.g. ``\( a \cdot b \neq c \)``.
 
+  Learn more: :doc:`LaTeX Support </python/pages/latex>`.
+
 - Limited markdown support:
 
   - emphasis (``*``, ``**``, ``***``, ``_``, ``__``, ``___``),
