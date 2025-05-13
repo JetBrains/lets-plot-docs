@@ -399,7 +399,6 @@ Positions
     :template: default.rst
 
     position_dodge
-    position_dodgev
     position_jitter
     position_nudge
     position_jitterdodge
