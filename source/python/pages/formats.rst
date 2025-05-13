@@ -189,6 +189,10 @@ The list of supported directives to format date/time values:
 - ``%S`` - second as a zero-padded decimal number (00, 01, …, 59).
 
 
+.. note::
+  *Lets-Plot* assumes the UTC time zone when interpreting or displaying date/time values.
+
+
 .. _formats_examples_datetime:
 
 Examples
