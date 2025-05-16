@@ -20,82 +20,58 @@ Lets-Plot has limited support for the LaTeX formulas. See examples below.
 Superscript and Subscript
 -------------------------
 
-``\( 2^5 \)`` → 2\ :sup:`5`
+``2^5`` → 2\ :sup:`5`
 
-``\( 2^{10} \)`` → 2\ :sup:`10`
+``2^{10}`` → 2\ :sup:`10`
 
-``\( 2^{-5} \)`` → 2\ :sup:`-5`
+``2^{-5}`` → 2\ :sup:`-5`
 
-``\( x_i \)`` → x\ :sub:`i`
+``x_i`` → x\ :sub:`i`
 
-``\( x_{min} \)`` → x\ :sub:`min`
+``x_{min}`` → x\ :sub:`min`
 
 
 Greek Letters
 -------------
 
-``\( \Alpha \)`` → Α
-
-``\( \Beta \)`` → Β
-
-``\( \Gamma \)`` → Γ
-
-...
-
-``\( \Chi \)`` → Χ
-
-``\( \Psi \)`` → Ψ
-
-``\( \Omega \)`` → Ω
-
-``\( \alpha \)`` → α
-
-``\( \beta \)`` → β
-
-``\( \gamma \)`` → γ
-
-...
-
-``\( \chi \)`` → χ
-
-``\( \psi \)`` → ψ
-
-``\( \omega \)`` → ω
+.. csv-table::
+   :file: /python/data/greek_letters.csv
+   :widths: 25,25,25,25
 
 
 Some Special Symbols
 --------------------
 
-``\( \pm \)`` → ±
+``\pm`` → ±
 
-``\( \mp \)`` → ∓
+``\mp`` → ∓
 
-``\( \times \)`` → ×
+``\times`` → ×
 
-``\( \div \)`` → ÷
+``\div`` → ÷
 
-``\( \cdot \)`` → ·
+``\cdot`` → ·
 
-``\( \leq \)`` → ≤
+``\leq`` → ≤
 
-``\( \geq \)`` → ≥
+``\geq`` → ≥
 
-``\( \neq \)`` → ≠
+``\neq`` → ≠
 
-``\( \infty \)`` → ∞
+``\infty`` → ∞
 
 
 Spacing
 -------
 
-``\( A B \)`` → AB
+``A B`` → AB
 
-``\( A \quad B \)`` → A B
+``A \quad B`` → A B
 
-``\( A \qquad B \)`` → A  B
+``A \qquad B`` → A  B
 
-``\( A \, B \)`` → A B
+``A \, B`` → A B
 
-``\( A \: B \)`` → A B
+``A \: B`` → A B
 
-``\( A \  B \)`` → A B
+``A \  B`` → A B
