@@ -24,7 +24,7 @@ Superscript and Subscript
 
 ``2^{10}`` → 2\ :sup:`10`
 
-``2^{-5}`` → 2\ :sup:`-5`
+``2^{-5}`` → 2\ :sup:`−5`
 
 ``x_i`` → x\ :sub:`i`
 
@@ -36,29 +36,15 @@ Greek Letters
 
 .. csv-table::
    :file: /python/data/greek_letters.csv
-   :widths: 25,25,25,25
+   :widths: 1,1,1,1
 
 
 Some Special Symbols
 --------------------
 
-``\pm`` → ±
-
-``\mp`` → ∓
-
-``\times`` → ×
-
-``\div`` → ÷
-
-``\cdot`` → ·
-
-``\leq`` → ≤
-
-``\geq`` → ≥
-
-``\neq`` → ≠
-
-``\infty`` → ∞
+.. csv-table::
+   :file: /python/data/special_symbols.csv
+   :widths: 1,1,1
 
 
 Spacing
