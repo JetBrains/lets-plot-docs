@@ -448,8 +448,6 @@ Examples:
       :type: text
 - .. extref:: flip_coordinates
       :type: text
-- .. extref:: coord_polar
-      :type: text
 
 
 |l16| |d16| Legends and Guides
