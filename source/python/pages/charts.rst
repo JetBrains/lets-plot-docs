@@ -580,7 +580,7 @@ Examples:
       :type: text
 - .. extref:: tooltip_config
       :type: text
-- .. extref:: set_font_faces
+- .. extref:: customizing_fonts
       :type: text
 - .. extref:: axis_position
       :type: text
