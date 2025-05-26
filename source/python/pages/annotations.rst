@@ -33,7 +33,7 @@ Examples
       :type: text
 - .. extref:: factor_levels
       :type: text
-- .. extref:: geom_theme_colors
+- .. extref:: named_system_colors
       :type: text
 - .. extref:: titanic
       :type: text

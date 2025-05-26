@@ -576,7 +576,7 @@ Examples:
       :type: text
 - .. extref:: default_theme
       :type: text
-- .. extref:: geom_theme_colors
+- .. extref:: named_system_colors
       :type: text
 - .. extref:: tooltip_config
       :type: text
@@ -661,7 +661,7 @@ Color schemes (flavors)
 
 Examples:
 
-- .. extref:: geom_theme_colors
+- .. extref:: named_system_colors
       :type: text
 - .. extref:: theme_flavors
       :type: text
