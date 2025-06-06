@@ -572,8 +572,6 @@ Examples:
 
 - .. extref:: themes
       :type: text
-- .. extref:: default_theme
-      :type: text
 - .. extref:: named_system_colors
       :type: text
 - .. extref:: tooltip_config
@@ -636,8 +634,6 @@ Predefined themes
 
 Examples:
 
-- .. extref:: default_theme
-      :type: text
 - .. extref:: theme_flavors
       :type: text
 - .. extref:: annotations_page
