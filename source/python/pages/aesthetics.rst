@@ -130,14 +130,34 @@ Colors and fills of geometries can be specified in the following ways:
     <td class="light-text" style="background-color:#000000;color:white;">0,0,0</td>
     </tr>
     <tr>
+    <td class="light-text" style="background-color:#1A1A1A;color:white;">gray10</td>
+    <td class="light-text" style="background-color:#1A1A1A;color:white;">#1A1A1A</td>
+    <td class="light-text" style="background-color:#1A1A1A;color:white;">26,26,26</td>
+    </tr>
+    <tr>
+    <td class="light-text" style="background-color:#333333;color:white;">gray20</td>
+    <td class="light-text" style="background-color:#333333;color:white;">#333333</td>
+    <td class="light-text" style="background-color:#333333;color:white;">51,51,51</td>
+    </tr>
+    <tr>
     <td class="light-text" style="background-color:#2F4F4F;color:white;">dark_slate_gray</td>
     <td class="light-text" style="background-color:#2F4F4F;color:white;">#2F4F4F</td>
     <td class="light-text" style="background-color:#2F4F4F;color:white;">47,79,79</td>
     </tr>
     <tr>
+    <td class="light-text" style="background-color:#4D4D4D;color:white;">gray30</td>
+    <td class="light-text" style="background-color:#4D4D4D;color:white;">#4D4D4D</td>
+    <td class="light-text" style="background-color:#4D4D4D;color:white;">77,77,77</td>
+    </tr>
+    <tr>
     <td class="light-text" style="background-color:#555555;color:white;">dark_gray</td>
     <td class="light-text" style="background-color:#555555;color:white;">#555555</td>
     <td class="light-text" style="background-color:#555555;color:white;">85,85,85</td>
+    </tr>
+    <tr>
+    <td class="light-text" style="background-color:#666666;color:white;">gray40</td>
+    <td class="light-text" style="background-color:#666666;color:white;">#666666</td>
+    <td class="light-text" style="background-color:#666666;color:white;">102,102,102</td>
     </tr>
     <tr>
     <td class="light-text" style="background-color:#696969;color:white;">dim_gray</td>
@@ -155,14 +175,34 @@ Colors and fills of geometries can be specified in the following ways:
     <td class="light-text" style="background-color:#808080;color:white;">128,128,128</td>
     </tr>
     <tr>
+    <td class="light-text" style="background-color:#808080;color:white;">gray50</td>
+    <td class="light-text" style="background-color:#808080;color:white;">#808080</td>
+    <td class="light-text" style="background-color:#808080;color:white;">128,128,128</td>
+    </tr>
+    <tr>
     <td class="light-text" style="background-color:#778899;color:white;">light_slate_gray</td>
     <td class="light-text" style="background-color:#778899;color:white;">#778899</td>
     <td class="light-text" style="background-color:#778899;color:white;">119,136,153</td>
     </tr>
     <tr>
+    <td class="light-text" style="background-color:#999999;color:white;">gray60</td>
+    <td class="light-text" style="background-color:#999999;color:white;">#999999</td>
+    <td class="light-text" style="background-color:#999999;color:white;">153,153,153</td>
+    </tr>
+    <tr>
+    <td class="light-text" style="background-color:#B3B3B3;color:white;">gray70</td>
+    <td class="light-text" style="background-color:#B3B3B3;color:white;">#B3B3B3</td>
+    <td class="light-text" style="background-color:#B3B3B3;color:white;">179,179,179</td>
+    </tr>
+    <tr>
     <td class="dark-text" style="background-color:#C0C0C0;color:black;">silver</td>
     <td class="dark-text" style="background-color:#C0C0C0;color:black;">#C0C0C0</td>
     <td class="dark-text" style="background-color:#C0C0C0;color:black;">192,192,192</td>
+    </tr>
+    <tr>
+    <td class="dark-text" style="background-color:#CCCCCC;color:black;">gray80</td>
+    <td class="dark-text" style="background-color:#CCCCCC;color:black;">#CCCCCC</td>
+    <td class="dark-text" style="background-color:#CCCCCC;color:black;">204,204,204</td>
     </tr>
     <tr>
     <td class="dark-text" style="background-color:#D3D3D3;color:black;">light_gray</td>
@@ -173,6 +213,11 @@ Colors and fills of geometries can be specified in the following ways:
     <td class="dark-text" style="background-color:#DCDCDC;color:black;">gainsboro</td>
     <td class="dark-text" style="background-color:#DCDCDC;color:black;">#DCDCDC</td>
     <td class="dark-text" style="background-color:#DCDCDC;color:black;">220,220,220</td>
+    </tr>
+    <tr>
+    <td class="dark-text" style="background-color:#E6E6E6;color:black;">gray90</td>
+    <td class="dark-text" style="background-color:#E6E6E6;color:black;">#E6E6E6</td>
+    <td class="dark-text" style="background-color:#E6E6E6;color:black;">230,230,230</td>
     </tr>
     <tr>
     <td class="dark-text" style="background-color:#E6E6FA;color:black;">lavender</td>
@@ -725,7 +770,7 @@ Colors and fills of geometries can be specified in the following ways:
     </tr>
     </table>
     <table class="named-colors-table">
-    <thead><tr><td colspan="3">Pink colors</td></tr></thead>
+    <thead><tr><td colspan="3">Rose colors</td></tr></thead>
     <tr>
     <td class="light-text" style="background-color:#C71585;color:white;">medium_violet_red</td>
     <td class="light-text" style="background-color:#C71585;color:white;">#C71585</td>
