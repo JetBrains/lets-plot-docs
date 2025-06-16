@@ -108,13 +108,17 @@ Color and Fill
 
 Colors and fills of geometries can be specified in the following ways:
 
-- RGB/RGBA (e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``).
+- **RGB**/**RGBA** - e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``.
 
-- HEX (e.g. ``"#0000ff"``, ``"#00f"``).
+- **HEX** - e.g. ``"#0077ff"`` or shorthand ``"#07f"``.
 
-- Blank string (``""``) or aliases: ``"blank"``, ``"transparent"`` for a fully transparent color.
+- **Transparent** - an empty string (``""``) or the aliases ``"blank"`` and ``"transparent"`` for a fully transparent color.
 
-- A name, one of:
+- **Named colors** - a predefined list of color names.
+
+  .. note::
+
+    Named colors are case-insensitive and can be written in various formats: ``LightGreen``, ``lightgreen``, ``light green``, or ``light-green`` are all accepted and treated equivalently. You can also use either ``"gray"`` or ``"grey"`` spelling for grayscale colors.
 
   .. raw:: html
 
