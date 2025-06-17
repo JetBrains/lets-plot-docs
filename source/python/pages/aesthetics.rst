@@ -939,7 +939,7 @@ Colors and fills of geometries can be specified in the following ways:
 
           .. raw:: html
 
-            <table class="named-colors-table">
+            <table class="named-colors-table by-name">
             <tr>
             <td class="dark-text" style="background-color:#F0F8FF;color:black;">alice_blue</td>
             <td class="dark-text" style="background-color:#F0F8FF;color:black;">#F0F8FF</td>
