@@ -33,3 +33,11 @@ Examples
       :type: text
 - .. extref:: themes
       :type: text
+- .. extref:: tourist_cities
+      :type: text
+- .. extref:: map_airports
+      :type: text
+- .. extref:: periodic_table
+      :type: text
+- .. extref:: titanic
+      :type: text
