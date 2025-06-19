@@ -190,7 +190,8 @@ The list of supported directives to format date/time values:
 
 
 .. note::
-  *Lets-Plot* assumes the UTC time zone when interpreting or displaying date/time values.
+
+  If no timezone information is present (naive datetime), *Lets-Plot* assumes UTC timezone. For timezone-aware datetime objects, the timezone information from the data is preserved and used for rendering.
 
 
 .. _formats_examples_datetime:
