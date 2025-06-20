@@ -1,4 +1,4 @@
-.. _tables:
+.. _aesthetics:
 
 :og:description: A detailed description of the possible values for some aesthetics.
 
@@ -114,23 +114,9 @@ Colors and fills of geometries can be specified in the following ways:
 
 - **Transparent** - an empty string (``""``) or the aliases ``"blank"`` and ``"transparent"`` for a fully transparent color.
 
-- **Named colors** - a predefined list of color names.
+- **Named colors** from :doc:`a predefined list of color names </python/pages/named_colors>`.
 
-  .. note::
-
-    Named colors are case-insensitive and can be written in various formats: ``LightGreen``, ``lightgreen``, ``light green``, or ``light-green`` are all accepted and treated equivalently. You can also use either ``"gray"`` or ``"grey"`` spelling for grayscale colors.
-
-  .. tab-set::
-
-      .. tab-item:: By shade
-
-          .. include:: include/aesthetics/named-colors-table_by-shade.rst
-
-      .. tab-item:: By name
-
-          .. include:: include/aesthetics/named-colors-table_by-name.rst
-
-- A system color name, one of:
+- **System colors** depending on the current theme flavor, one of:
 
 .. grid:: 3
 
