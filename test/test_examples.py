@@ -42,6 +42,8 @@ def generate_local_notebook_links(excluded_names=[]):
         with codecs.open(page, 'r', 'utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
+                if not a.has_attr('href'):
+                    continue
                 href = a['href']
                 if href.startswith("https://nbviewer.org/github/JetBrains") and href.split(".")[-1] == "ipynb":
                     yield page, a
