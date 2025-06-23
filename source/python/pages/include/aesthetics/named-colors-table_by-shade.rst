@@ -1,105 +1,7 @@
 ﻿.. raw:: html
 
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Gray colors</td></tr></thead>
-	<tr>
-	<td class="light-text" style="background-color:#000000;">black</td>
-	<td class="light-text" style="background-color:#000000;">#000000</td>
-	<td class="light-text" style="background-color:#000000;">0, 0, 0</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#1A1A1A;">gray10</td>
-	<td class="light-text" style="background-color:#1A1A1A;">#1A1A1A</td>
-	<td class="light-text" style="background-color:#1A1A1A;">26, 26, 26</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#333333;">gray20</td>
-	<td class="light-text" style="background-color:#333333;">#333333</td>
-	<td class="light-text" style="background-color:#333333;">51, 51, 51</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#2F4F4F;">dark_slate_gray</td>
-	<td class="light-text" style="background-color:#2F4F4F;">#2F4F4F</td>
-	<td class="light-text" style="background-color:#2F4F4F;">47, 79, 79</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#4D4D4D;">gray30</td>
-	<td class="light-text" style="background-color:#4D4D4D;">#4D4D4D</td>
-	<td class="light-text" style="background-color:#4D4D4D;">77, 77, 77</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#555555;">dark_gray</td>
-	<td class="light-text" style="background-color:#555555;">#555555</td>
-	<td class="light-text" style="background-color:#555555;">85, 85, 85</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#666666;">gray40</td>
-	<td class="light-text" style="background-color:#666666;">#666666</td>
-	<td class="light-text" style="background-color:#666666;">102, 102, 102</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#696969;">dim_gray</td>
-	<td class="light-text" style="background-color:#696969;">#696969</td>
-	<td class="light-text" style="background-color:#696969;">105, 105, 105</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#708090;">slate_gray</td>
-	<td class="light-text" style="background-color:#708090;">#708090</td>
-	<td class="light-text" style="background-color:#708090;">112, 128, 144</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#808080;">gray</td>
-	<td class="light-text" style="background-color:#808080;">#808080</td>
-	<td class="light-text" style="background-color:#808080;">128, 128, 128</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#808080;">gray50</td>
-	<td class="light-text" style="background-color:#808080;">#808080</td>
-	<td class="light-text" style="background-color:#808080;">128, 128, 128</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#778899;">light_slate_gray</td>
-	<td class="light-text" style="background-color:#778899;">#778899</td>
-	<td class="light-text" style="background-color:#778899;">119, 136, 153</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#999999;">gray60</td>
-	<td class="light-text" style="background-color:#999999;">#999999</td>
-	<td class="light-text" style="background-color:#999999;">153, 153, 153</td>
-	</tr>
-	<tr>
-	<td class="light-text" style="background-color:#B3B3B3;">gray70</td>
-	<td class="light-text" style="background-color:#B3B3B3;">#B3B3B3</td>
-	<td class="light-text" style="background-color:#B3B3B3;">179, 179, 179</td>
-	</tr>
-	<tr>
-	<td class="dark-text" style="background-color:#C0C0C0;">silver</td>
-	<td class="dark-text" style="background-color:#C0C0C0;">#C0C0C0</td>
-	<td class="dark-text" style="background-color:#C0C0C0;">192, 192, 192</td>
-	</tr>
-	<tr>
-	<td class="dark-text" style="background-color:#CCCCCC;">gray80</td>
-	<td class="dark-text" style="background-color:#CCCCCC;">#CCCCCC</td>
-	<td class="dark-text" style="background-color:#CCCCCC;">204, 204, 204</td>
-	</tr>
-	<tr>
-	<td class="dark-text" style="background-color:#D3D3D3;">light_gray</td>
-	<td class="dark-text" style="background-color:#D3D3D3;">#D3D3D3</td>
-	<td class="dark-text" style="background-color:#D3D3D3;">211, 211, 211</td>
-	</tr>
-	<tr>
-	<td class="dark-text" style="background-color:#DCDCDC;">gainsboro</td>
-	<td class="dark-text" style="background-color:#DCDCDC;">#DCDCDC</td>
-	<td class="dark-text" style="background-color:#DCDCDC;">220, 220, 220</td>
-	</tr>
-	<tr>
-	<td class="dark-text" style="background-color:#E6E6E6;">gray90</td>
-	<td class="dark-text" style="background-color:#E6E6E6;">#E6E6E6</td>
-	<td class="dark-text" style="background-color:#E6E6E6;">230, 230, 230</td>
-	</tr>
-	</table>
-	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Brown colors</td></tr></thead>
+	<thead><tr><td colspan="3">Brown colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#800000;">maroon</td>
 	<td class="light-text" style="background-color:#800000;">#800000</td>
@@ -162,7 +64,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Red colors</td></tr></thead>
+	<thead><tr><td colspan="3">Red colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#FF0000;">red</td>
 	<td class="light-text" style="background-color:#FF0000;">#FF0000</td>
@@ -205,7 +107,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Orange colors</td></tr></thead>
+	<thead><tr><td colspan="3">Orange colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#B8860B;">dark_goldenrod</td>
 	<td class="light-text" style="background-color:#B8860B;">#B8860B</td>
@@ -258,7 +160,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Yellow colors</td></tr></thead>
+	<thead><tr><td colspan="3">Yellow colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#808000;">olive</td>
 	<td class="light-text" style="background-color:#808000;">#808000</td>
@@ -301,7 +203,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Green colors</td></tr></thead>
+	<thead><tr><td colspan="3">Green colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#006400;">dark_green</td>
 	<td class="light-text" style="background-color:#006400;">#006400</td>
@@ -404,7 +306,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Cyan colors</td></tr></thead>
+	<thead><tr><td colspan="3">Cyan colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#008080;">teal</td>
 	<td class="light-text" style="background-color:#008080;">#008080</td>
@@ -462,7 +364,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Blue colors</td></tr></thead>
+	<thead><tr><td colspan="3">Blue colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#000080;">navy</td>
 	<td class="light-text" style="background-color:#000080;">#000080</td>
@@ -540,7 +442,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Violet colors</td></tr></thead>
+	<thead><tr><td colspan="3">Violet colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#4B0082;">indigo</td>
 	<td class="light-text" style="background-color:#4B0082;">#4B0082</td>
@@ -598,7 +500,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Purple colors</td></tr></thead>
+	<thead><tr><td colspan="3">Purple colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#800080;">purple</td>
 	<td class="light-text" style="background-color:#800080;">#800080</td>
@@ -651,7 +553,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Rose colors</td></tr></thead>
+	<thead><tr><td colspan="3">Rose colors</td></tr></thead>
 	<tr>
 	<td class="light-text" style="background-color:#C71585;">medium_violet_red</td>
 	<td class="light-text" style="background-color:#C71585;">#C71585</td>
@@ -694,7 +596,7 @@
 	</tr>
 	</table>
 	<table class="named-colors-table by-shade" >
-	<thead><tr><td>Very light colors</td></tr></thead>
+	<thead><tr><td colspan="3">Very light colors</td></tr></thead>
 	<tr>
 	<td class="dark-text" style="background-color:#FFFFFF;">white</td>
 	<td class="dark-text" style="background-color:#FFFFFF;">#FFFFFF</td>
@@ -809,5 +711,103 @@
 	<td class="dark-text" style="background-color:#FFF0F5;">lavender_blush</td>
 	<td class="dark-text" style="background-color:#FFF0F5;">#FFF0F5</td>
 	<td class="dark-text" style="background-color:#FFF0F5;">255, 240, 245</td>
+	</tr>
+	</table>
+	<table class="named-colors-table by-shade" >
+	<thead><tr><td colspan="3">Gray colors</td></tr></thead>
+	<tr>
+	<td class="light-text" style="background-color:#000000;">black</td>
+	<td class="light-text" style="background-color:#000000;">#000000</td>
+	<td class="light-text" style="background-color:#000000;">0, 0, 0</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#1A1A1A;">gray10</td>
+	<td class="light-text" style="background-color:#1A1A1A;">#1A1A1A</td>
+	<td class="light-text" style="background-color:#1A1A1A;">26, 26, 26</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#333333;">gray20</td>
+	<td class="light-text" style="background-color:#333333;">#333333</td>
+	<td class="light-text" style="background-color:#333333;">51, 51, 51</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#2F4F4F;">dark_slate_gray</td>
+	<td class="light-text" style="background-color:#2F4F4F;">#2F4F4F</td>
+	<td class="light-text" style="background-color:#2F4F4F;">47, 79, 79</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#4D4D4D;">gray30</td>
+	<td class="light-text" style="background-color:#4D4D4D;">#4D4D4D</td>
+	<td class="light-text" style="background-color:#4D4D4D;">77, 77, 77</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#555555;">dark_gray</td>
+	<td class="light-text" style="background-color:#555555;">#555555</td>
+	<td class="light-text" style="background-color:#555555;">85, 85, 85</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#666666;">gray40</td>
+	<td class="light-text" style="background-color:#666666;">#666666</td>
+	<td class="light-text" style="background-color:#666666;">102, 102, 102</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#696969;">dim_gray</td>
+	<td class="light-text" style="background-color:#696969;">#696969</td>
+	<td class="light-text" style="background-color:#696969;">105, 105, 105</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#708090;">slate_gray</td>
+	<td class="light-text" style="background-color:#708090;">#708090</td>
+	<td class="light-text" style="background-color:#708090;">112, 128, 144</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#808080;">gray</td>
+	<td class="light-text" style="background-color:#808080;">#808080</td>
+	<td class="light-text" style="background-color:#808080;">128, 128, 128</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#808080;">gray50</td>
+	<td class="light-text" style="background-color:#808080;">#808080</td>
+	<td class="light-text" style="background-color:#808080;">128, 128, 128</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#778899;">light_slate_gray</td>
+	<td class="light-text" style="background-color:#778899;">#778899</td>
+	<td class="light-text" style="background-color:#778899;">119, 136, 153</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#999999;">gray60</td>
+	<td class="light-text" style="background-color:#999999;">#999999</td>
+	<td class="light-text" style="background-color:#999999;">153, 153, 153</td>
+	</tr>
+	<tr>
+	<td class="light-text" style="background-color:#B3B3B3;">gray70</td>
+	<td class="light-text" style="background-color:#B3B3B3;">#B3B3B3</td>
+	<td class="light-text" style="background-color:#B3B3B3;">179, 179, 179</td>
+	</tr>
+	<tr>
+	<td class="dark-text" style="background-color:#C0C0C0;">silver</td>
+	<td class="dark-text" style="background-color:#C0C0C0;">#C0C0C0</td>
+	<td class="dark-text" style="background-color:#C0C0C0;">192, 192, 192</td>
+	</tr>
+	<tr>
+	<td class="dark-text" style="background-color:#CCCCCC;">gray80</td>
+	<td class="dark-text" style="background-color:#CCCCCC;">#CCCCCC</td>
+	<td class="dark-text" style="background-color:#CCCCCC;">204, 204, 204</td>
+	</tr>
+	<tr>
+	<td class="dark-text" style="background-color:#D3D3D3;">light_gray</td>
+	<td class="dark-text" style="background-color:#D3D3D3;">#D3D3D3</td>
+	<td class="dark-text" style="background-color:#D3D3D3;">211, 211, 211</td>
+	</tr>
+	<tr>
+	<td class="dark-text" style="background-color:#DCDCDC;">gainsboro</td>
+	<td class="dark-text" style="background-color:#DCDCDC;">#DCDCDC</td>
+	<td class="dark-text" style="background-color:#DCDCDC;">220, 220, 220</td>
+	</tr>
+	<tr>
+	<td class="dark-text" style="background-color:#E6E6E6;">gray90</td>
+	<td class="dark-text" style="background-color:#E6E6E6;">#E6E6E6</td>
+	<td class="dark-text" style="background-color:#E6E6E6;">230, 230, 230</td>
 	</tr>
 	</table>
