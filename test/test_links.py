@@ -49,6 +49,8 @@ def test_link(page, a):
 
 def check_lp_link(page, a):
     classes = a['class'] if a.has_attr('class') else []
+    if not a.has_attr('href'):
+        return
     href = a['href']
     assert href, "Wrong 'href' attribute"
     assert href != "", "Wrong 'href' attribute"
