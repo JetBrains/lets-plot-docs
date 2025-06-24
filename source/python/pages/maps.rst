@@ -89,7 +89,9 @@ Combine Layers on Map ``ggplot2`` Style
 :py:mod:`segment <lets_plot.geom_segment>`,
 :py:mod:`curve <lets_plot.geom_curve>`,
 :py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`label <lets_plot.geom_label>`.
+:py:mod:`textual annotation <lets_plot.geom_text_repel>`,
+:py:mod:`label <lets_plot.geom_label>`,
+:py:mod:`label annotation <lets_plot.geom_label_repel>`.
 
 |param_geodesic|.
 

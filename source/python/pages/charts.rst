@@ -82,7 +82,9 @@ Tiles:
 
 Text:
 :py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`label <lets_plot.geom_label>`
+:py:mod:`textual annotation <lets_plot.geom_text_repel>`,
+:py:mod:`label <lets_plot.geom_label>`,
+:py:mod:`label annotation <lets_plot.geom_label_repel>`
 
 
 Examples:
@@ -199,6 +201,7 @@ Examples:
 :py:mod:`dotplot <lets_plot.geom_dotplot>`,
 :py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
 :py:mod:`violin <lets_plot.geom_violin>`,
+:py:mod:`sina <lets_plot.geom_sina>`,
 :py:mod:`ridgeline <lets_plot.geom_area_ridges>`,
 :py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
