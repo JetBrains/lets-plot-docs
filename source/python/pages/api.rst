@@ -103,6 +103,7 @@ Standard Geometries
     geom_band
     geom_boxplot
     geom_violin
+    geom_sina
     geom_area_ridges
     geom_ydotplot
     geom_ribbon
@@ -118,7 +119,9 @@ Standard Geometries
     geom_curve
     geom_spoke
     geom_text
+    geom_text_repel
     geom_label
+    geom_label_repel
     geom_qq
     geom_qq2
     geom_qq_line
