@@ -21,6 +21,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: lets_plot_in_2024
+
+    .. grid-item-card::
+
         .. extref:: theme_legend_scheme
 
     .. grid-item-card::
