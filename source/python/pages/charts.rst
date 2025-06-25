@@ -103,6 +103,8 @@ Examples:
       :type: text
 - .. extref:: text_geoms
       :type: text
+- .. extref:: ggrepel
+      :type: text
 - .. extref:: map_use_crs
       :type: text
 - .. extref:: aes_size_color_variadic_lines
@@ -146,6 +148,8 @@ Examples:
 - .. extref:: bar_geometry
       :type: text
 - .. extref:: geom_pie
+      :type: text
+- .. extref:: numeric_data_on_discrete_scale
       :type: text
 - .. extref:: annotations_page
       :type: text
@@ -214,6 +218,8 @@ Examples:
 - .. extref:: dot_plots
       :type: text
 - .. extref:: geom_violin
+      :type: text
+- .. extref:: geom_sina
       :type: text
 - .. extref:: ridgeline_plot
       :type: text
@@ -370,9 +376,10 @@ Examples:
 
 - .. extref:: scale_time
       :type: text
+- .. extref:: time_date_datetime
+      :type: text
 - .. extref:: delhi_climate
       :type: text
-      :text: Time series visualizations
 
 
 |l13| |d13| Images
