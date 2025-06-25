@@ -741,9 +741,15 @@ Examples:
 
 - .. extref:: multiple_color_scales
       :type: text
+- .. extref:: palmer_penguins
+      :type: text
 - .. extref:: mpg_corrgram
       :type: text
 - .. extref:: montenegrin_independence_referendum
+      :type: text
+- .. extref:: waterfall_plot
+      :type: text
+- .. extref:: google_play_store
       :type: text
 
 Scale Functions
