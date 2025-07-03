@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   removeEmptySecondarySidebar();
   removeCardShadows();
   addTargetToExternalReferences();
-  dynamicColorAdjustmentInNamedColorsTable();
 });
 
 function fixNavLinks() {
@@ -82,37 +81,6 @@ function addTargetToExternalReferences() {
         linkElement.classList.add("internal");
     }
   });
-}
-
-function dynamicColorAdjustmentInNamedColorsTable() {
-  const tables = document.getElementsByClassName("named-colors-table");
-  for (let i = 0; i < tables.length; i++) {
-    const table = tables[i];
-    const inputs = table.getElementsByTagName("input");
-    if (inputs.length == 0) continue;
-    inputs[0].addEventListener('input', updateColorForTable(table));
-  }
-}
-
-function updateColorForTable(table) {
-  const colorUpdater = function (event) {
-    const color = valueToColor(event.target.value);
-    table.querySelectorAll("td.comparison-color").forEach(function (td) {
-      td.style.backgroundColor = color;
-    });
-  }
-  return colorUpdater;
-}
-
-function valueToColor(value) {
-  if (value[0] == "#") return value;
-  const extendedValue = "#" + value;
-  if (isHexColor(extendedValue)) return extendedValue;
-  return value;
-}
-
-function isHexColor(color) {
-  return /^#[0-9A-Fa-f]{3}$/i.test(color) || /^#[0-9A-Fa-f]{6}$/i.test(color);
 }
 
 function isLandingPage() {
