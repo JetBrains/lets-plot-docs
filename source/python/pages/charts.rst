@@ -82,9 +82,9 @@ Tiles:
 
 Text:
 :py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`textual annotation <lets_plot.geom_text_repel>`,
+:py:mod:`text repel <lets_plot.geom_text_repel>`,
 :py:mod:`label <lets_plot.geom_label>`,
-:py:mod:`label annotation <lets_plot.geom_label_repel>`
+:py:mod:`label repel <lets_plot.geom_label_repel>`
 
 
 Examples:
