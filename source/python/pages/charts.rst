@@ -747,9 +747,9 @@ Examples:
       :type: text
 - .. extref:: montenegrin_independence_referendum
       :type: text
-- .. extref:: waterfall_plot
-      :type: text
-- .. extref:: google_play_store
+- |waterfall_plot|, section "Additional Layers with ``background_layers`` Parameter"
+
+.. |waterfall_plot| extref:: waterfall_plot
       :type: text
 
 Scale Functions
