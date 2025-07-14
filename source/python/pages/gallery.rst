@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: trading_chart
+
+    .. grid-item-card::
+
         .. extref:: magnifier_inset
 
     .. grid-item-card::
