@@ -25,6 +25,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: plot_layout_scheme
+
+    .. grid-item-card::
+
         .. extref:: theme_legend_scheme
 
     .. grid-item-card::
