@@ -40,8 +40,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=defcf438" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=75bbc594" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=3db87f0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
   <!-- So that users can add custom icons -->
@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=5f0a4c00"></script>
+    <script src="../../../_static/documentation_options.js?v=bd5f082a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.6.2</p>
+  <p>v4.7.0</p>
 </a>
 </div>
     
@@ -472,22 +472,34 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="lets_plot.layer_labels">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layer_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels" title="Link to this definition">#</a></dt>
-<dd><p>Configure annotations (for pie and bar charts).</p>
+<dd><p>Configure annotations for geometry layers.</p>
+<p>Annotations are currently supported for bar, pie, and crossbar geometry
+layers. This class provides methods to customize the appearance and
+content of text labels displayed on these geometries.</p>
+<p class="rubric">Notes</p>
+<p>By default, annotation text color is automatically selected for optimal
+contrast: white text appears on darker filled geometries, and black text
+appears on lighter filled geometries.</p>
+<p>The text color can be manually specified using:
+<code class="docutils literal notranslate"><span class="pre">theme(label_text=element_text(color=...))</span></code></p>
+<p>Alternatively, the <code class="docutils literal notranslate"><span class="pre">inherit_color()</span></code> method can be used to override both
+automatic and manual color settings, making the annotation text use the
+geometry’s <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetic instead.</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]</span> <span class="p">}</span>
+<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]}</span>
 <span class="linenos">4</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_pie</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="nb">slice</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">hole</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> \
-<span class="linenos">5</span>                        <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">tooltips</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> \
+<span class="linenos">5</span>                        <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> \
 <span class="hll"><span class="linenos">6</span>                        <span class="n">labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@value&#39;</span><span class="p">))</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="We4Z7g"></div>
+<div id="1qchdJ"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -498,7 +510,7 @@
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -511,13 +523,13 @@
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("We4Z7g").appendChild(div);
+            document.getElementById("1qchdJ").appendChild(div);
         };
-        var e = document.getElementById("We4Z7g");
+        var e = document.getElementById("1qchdJ");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="b3zOG9"></div>
+</div><div class="output text_html">   <div id="hxe5Nd"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -542,7 +554,7 @@
        };
    }
 
-   const containerDiv = document.getElementById("b3zOG9");
+   const containerDiv = document.getElementById("hxe5Nd");
    let fig = null;
 
    function renderPlot() {
@@ -646,7 +658,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="lets_plot.layer_labels.as_dict">
 <span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels.as_dict" title="Link to this definition">#</a></dt>
-<dd><p>Return the dictionary of all properties of the object.</p>
+<dd><p>Return a dictionary of all properties of the object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -669,7 +681,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="ZgfMM3"></div>
+<div id="IAXC4r"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -680,7 +692,7 @@
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -693,9 +705,9 @@
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("ZgfMM3").appendChild(div);
+            document.getElementById("IAXC4r").appendChild(div);
         };
-        var e = document.getElementById("ZgfMM3");
+        var e = document.getElementById("IAXC4r");
         e.appendChild(script);
     })()
 </script>
@@ -741,7 +753,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]</span> <span class="p">}</span>
+<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]}</span>
 <span class="linenos">4</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_pie</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;..count..&#39;</span><span class="p">),</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">),</span> \
 <span class="linenos">5</span>                        <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> \
 <span class="linenos">6</span>                        <span class="n">labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">([</span><span class="s1">&#39;..proppct..&#39;</span><span class="p">])</span> \
@@ -751,7 +763,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="9FSJNS"></div>
+<div id="p0nDXU"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -762,7 +774,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -775,13 +787,13 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("9FSJNS").appendChild(div);
+            document.getElementById("p0nDXU").appendChild(div);
         };
-        var e = document.getElementById("9FSJNS");
+        var e = document.getElementById("p0nDXU");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="yxzZmY"></div>
+</div><div class="output text_html">   <div id="kGHuEi"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -806,7 +818,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
        };
    }
 
-   const containerDiv = document.getElementById("yxzZmY");
+   const containerDiv = document.getElementById("kGHuEi");
    let fig = null;
 
    function renderPlot() {
@@ -912,7 +924,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos"> 3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]</span> <span class="p">}</span>
+<span class="linenos"> 3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]}</span>
 <span class="linenos"> 4</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_pie</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s1">&#39;..count..&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">),</span> \
 <span class="linenos"> 5</span>                        <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> \
 <span class="linenos"> 6</span>                        <span class="n">labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span> \
@@ -929,7 +941,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="UOsNpi"></div>
+<div id="oQ0fHD"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -940,7 +952,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -953,13 +965,13 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("UOsNpi").appendChild(div);
+            document.getElementById("oQ0fHD").appendChild(div);
         };
-        var e = document.getElementById("UOsNpi");
+        var e = document.getElementById("oQ0fHD");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="MFHWwF"></div>
+</div><div class="output text_html">   <div id="EK5CdY"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -984,7 +996,7 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
        };
    }
 
-   const containerDiv = document.getElementById("MFHWwF");
+   const containerDiv = document.getElementById("EK5CdY");
    let fig = null;
 
    function renderPlot() {
@@ -1099,11 +1111,15 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lets_plot.layer_labels.line">
 <span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels.line" title="Link to this definition">#</a></dt>
-<dd><p>Line to show in the annotation.</p>
+<dd><p>Add a line of text to the multiline label annotation.</p>
+<p>This method configures one line of text that will be displayed in a
+multiline label. Multiple calls to this method can be chained to build
+up a complete multiline annotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>Enriched string which becomes one line of the annotation.</p>
+<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>The text content for this line of the annotation. Can include
+variable and aesthetic references.</p>
 </dd>
 </dl>
 </dd>
@@ -1117,24 +1133,23 @@ it can be escaped by doubling: <cite>{{</cite> and <cite>}}</cite>.</p>
 <p class="rubric">Notes</p>
 <p>Variables and aesthetics can be accessed via special syntax:</p>
 <ul class="simple">
-<li><p>^color for aes,</p></li>
+<li><p>^color for aesthetics,</p></li>
 <li><p>&#64;x for variable,</p></li>
 <li><p>&#64;{x + 1} for variable with spaces in the name,</p></li>
 <li><p>&#64;{x^2 + 1} for variable with spaces and ‘^’ symbol in the name,</p></li>
 <li><p>&#64;x^2 for variable with ‘^’ symbol in its name.</p></li>
 </ul>
-<p>A ‘^’ symbol can be escaped with a backslash, a brace character
-in the literal text - by doubling:</p>
+<p>Special characters can be escaped:</p>
 <ul class="simple">
-<li><p>‘x\^2’ -&gt; “x^2”</p></li>
-<li><p>‘{{x}}’ -&gt; “{x}”</p></li>
+<li><p>‘x\^2’ -&gt; “x^2” (escape ^ with backslash)</p></li>
+<li><p>‘{{x}}’ -&gt; “{x}” (escape braces by doubling)</p></li>
 </ul>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos"> 3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]</span> <span class="p">}</span>
+<span class="linenos"> 3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]}</span>
 <span class="linenos"> 4</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_pie</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> \
 <span class="linenos"> 5</span>                        <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> \
 <span class="linenos"> 6</span>                        <span class="n">labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span>\
@@ -1148,7 +1163,7 @@ in the literal text - by doubling:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="nlccVw"></div>
+<div id="zZUCZE"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1159,7 +1174,7 @@ in the literal text - by doubling:</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1172,13 +1187,13 @@ in the literal text - by doubling:</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("nlccVw").appendChild(div);
+            document.getElementById("zZUCZE").appendChild(div);
         };
-        var e = document.getElementById("nlccVw");
+        var e = document.getElementById("zZUCZE");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="aUtoQE"></div>
+</div><div class="output text_html">   <div id="Gockcy"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1203,7 +1218,7 @@ in the literal text - by doubling:</p>
        };
    }
 
-   const containerDiv = document.getElementById("aUtoQE");
+   const containerDiv = document.getElementById("Gockcy");
    let fig = null;
 
    function renderPlot() {
@@ -1300,11 +1315,11 @@ in the literal text - by doubling:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lets_plot.layer_labels.size">
 <span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels.size" title="Link to this definition">#</a></dt>
-<dd><p>Text size in the annotation.</p>
+<dd><p>Set the text size for the annotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">float</span></dt><dd><p>Text size in the annotation.</p>
+<dt><strong>value</strong><span class="classifier">float</span></dt><dd><p>The text size value for the annotation.</p>
 </dd>
 </dl>
 </dd>
@@ -1320,9 +1335,9 @@ in the literal text - by doubling:</p>
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]</span> <span class="p">}</span>
+<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]}</span>
 <span class="linenos">4</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_pie</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="nb">slice</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">hole</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> \
-<span class="linenos">5</span>                        <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">tooltips</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> \
+<span class="linenos">5</span>                        <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> \
 <span class="linenos">6</span>                        <span class="n">labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@value&#39;</span><span class="p">)</span>
 <span class="hll"><span class="linenos">7</span>                                                 <span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
 </span></pre></div>
@@ -1330,7 +1345,7 @@ in the literal text - by doubling:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="A4nZ0x"></div>
+<div id="S36Hp2"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1341,7 +1356,7 @@ in the literal text - by doubling:</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1354,13 +1369,13 @@ in the literal text - by doubling:</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("A4nZ0x").appendChild(div);
+            document.getElementById("S36Hp2").appendChild(div);
         };
-        var e = document.getElementById("A4nZ0x");
+        var e = document.getElementById("S36Hp2");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="znpQNe"></div>
+</div><div class="output text_html">   <div id="FpxcZj"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1385,7 +1400,7 @@ in the literal text - by doubling:</p>
        };
    }
 
-   const containerDiv = document.getElementById("znpQNe");
+   const containerDiv = document.getElementById("FpxcZj");
    let fig = null;
 
    function renderPlot() {
@@ -1475,6 +1490,185 @@ in the literal text - by doubling:</p>
 </div>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="lets_plot.layer_labels.inherit_color">
+<span class="sig-name descname"><span class="pre">inherit_color</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels.inherit_color" title="Link to this definition">#</a></dt>
+<dd><p>Use the layer’s color for the annotation text.</p>
+<p>When enabled, the annotation text will inherit the color from the
+layer it’s associated with, rather than using a default or
+explicitly set color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><cite>layer_labels</cite></dt><dd><p>Annotations specification.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span> <span class="p">]}</span>
+<span class="linenos">4</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_pie</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="nb">slice</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">hole</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> \
+<span class="linenos">5</span>                        <span class="n">stroke</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">spacer_color</span><span class="o">=</span><span class="s1">&#39;pen&#39;</span><span class="p">,</span> \
+<span class="linenos">6</span>                        <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> \
+<span class="linenos">7</span>                        <span class="n">labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@value&#39;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">8</span>                                             <span class="o">.</span><span class="n">inherit_color</span><span class="p">())</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="IQR3W1"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    }; 
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("IQR3W1").appendChild(div);
+        };
+        var e = document.getElementById("IQR3W1");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="LnWEp0"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+
+   (function() {
+   // ----------
+
+   const forceImmediateRender = false;
+   const responsive = false;
+
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("LnWEp0");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"name":["a","b","c","d","b"],
+"value":[40.0,90.0,10.0,50.0,20.0]
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"name"
+},{
+"type":"int",
+"column":"value"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"pie",
+"stat":"identity",
+"mapping":{
+"slice":"value",
+"color":"name"
+},
+"tooltips":"none",
+"data_meta":{
+},
+"labels":{
+"formats":[],
+"lines":["@value"],
+"use_layer_color":true
+},
+"hole":0.4,
+"spacer_color":"pen",
+"alpha":0.0,
+"size":15.0,
+"stroke":5.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
+
+   // ----------
+   })();
+
+   </script></div></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1508,6 +1702,7 @@ in the literal text - by doubling:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets_plot.layer_labels.format"><code class="docutils literal notranslate"><span class="pre">layer_labels.format()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets_plot.layer_labels.line"><code class="docutils literal notranslate"><span class="pre">layer_labels.line()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets_plot.layer_labels.size"><code class="docutils literal notranslate"><span class="pre">layer_labels.size()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets_plot.layer_labels.inherit_color"><code class="docutils literal notranslate"><span class="pre">layer_labels.inherit_color()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -40,8 +40,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=defcf438" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=75bbc594" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=3db87f0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
   <!-- So that users can add custom icons -->
@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=5f0a4c00"></script>
+    <script src="../../../_static/documentation_options.js?v=bd5f082a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.6.2</p>
+  <p>v4.7.0</p>
 </a>
 </div>
     
@@ -500,10 +500,10 @@ Only applicable when exporting to PNG or PDF.</p>
 <dt><strong>h</strong><span class="classifier">float, default=None</span></dt><dd><p>Height of the output image in units.
 Only applicable when exporting to PNG or PDF.</p>
 </dd>
-<dt><strong>unit</strong><span class="classifier">{‘in’, ‘cm’, ‘mm’}, default=None</span></dt><dd><p>Unit of the output image. One of: ‘in’, ‘cm’, ‘mm’.
+<dt><strong>unit</strong><span class="classifier">{‘in’, ‘cm’, ‘mm’}, default=’in’</span></dt><dd><p>Unit of the output image. One of: ‘in’, ‘cm’, ‘mm’.
 Only applicable when exporting to PNG or PDF.</p>
 </dd>
-<dt><strong>dpi</strong><span class="classifier">int, default=None</span></dt><dd><p>Resolution in dots per inch.
+<dt><strong>dpi</strong><span class="classifier">int, default=300</span></dt><dd><p>Resolution in dots per inch.
 Only applicable when exporting to PNG or PDF.</p>
 </dd>
 </dl>
@@ -518,26 +518,39 @@ Only applicable when exporting to PNG or PDF.</p>
 <p class="rubric">Notes</p>
 <p>Output format is inferred from the filename extension.</p>
 <p>For PNG and PDF formats:</p>
-<ol class="arabic simple">
-<li><p>If <cite>w</cite>, <cite>h</cite>, <cite>unit</cite>, and <cite>dpi</cite> are all specified:</p>
 <ul class="simple">
-<li><p><cite>scale</cite> is ignored.</p></li>
-<li><p>The plot’s pixel size (default or set by <cite>ggsize()</cite>) is converted to the specified units using the given dpi.</p></li>
-<li><p>If the aspect ratio of <cite>w</cite> and <cite>h</cite> differs from the plot’s pixel aspect ratio:</p>
+<li><p>If <cite>w</cite>, <cite>h</cite>, <cite>unit</cite>, and <cite>dpi</cite> are all specified:</p>
 <ul>
-<li><p>The plot maintains its original (pixel) aspect ratio.</p></li>
-<li><p>It’s fitted within the specified <cite>w</cite> x <cite>h</cite> area.</p></li>
-<li><p>Any extra space is left empty.</p></li>
+<li><p>The plot’s pixel size (default or set by <cite>ggsize()</cite>) is ignored.</p></li>
+<li><p>The output size is calculated using the specified <cite>w</cite>, <cite>h</cite>, <cite>unit</cite>, and <cite>dpi</cite>.</p>
+<ul>
+<li><p>The plot is resized to fit the specified <cite>w</cite> x <cite>h</cite> area, which may affect the layout, tick labels, and other elements.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>If only <cite>dpi</cite> is specified:</p>
+<ul>
+<li><p>The plot’s pixel size (default or set by <cite>ggsize()</cite>) is converted to inches using the standard display PPI of 96.</p></li>
+<li><p>The output size is then calculated based on the specified DPI.</p>
+<ul>
+<li><p>The plot maintains its aspect ratio, preserving layout, tick labels, and other visual elements.</p></li>
+<li><p>Useful for printing - the plot will appear nearly the same size as on screen.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>If <cite>w</cite>, <cite>h</cite> are not specified:</p>
-<ul class="simple">
-<li><p>The <cite>scale</cite> parameter is used to determine the output size.</p></li>
+<ul>
+<li><p>The <cite>scale</cite> parameter is used to determine the output size.</p>
+<ul>
+<li><p>The plot maintains its aspect ratio, preserving layout, tick labels, and other visual elements.</p></li>
+<li><p>Useful for generating high-resolution images suitable for publication.</p></li>
 </ul>
 </li>
-</ol>
+</ul>
+</li>
+</ul>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
@@ -550,8 +563,8 @@ Only applicable when exporting to PNG or PDF.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos">3</span><span class="n">plot</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
-<span class="hll"><span class="linenos">4</span><span class="n">ggsave</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s1">&#39;plot.png&#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">plot</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="hll"><span class="linenos">4</span><span class="n">ggsave</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="s1">&#39;plot.png&#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </span></pre></div>
 </div>
 </dd></dl>
