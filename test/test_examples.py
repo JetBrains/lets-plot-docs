@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 
 from .parser import notebook_parser
 from .generator import generate_pages, generate_notebooks
-from .lets_plot_errors import check_lets_plot_message_errors, check_warnings
+from .lets_plot_errors import check_lets_plot_message_errors, check_warnings, check_copy_spec
 from .test_links import check_url
 
 EXCLUDED_PYTHON_NOTEBOOKS = ["nyc_metro"]
@@ -42,6 +42,8 @@ def generate_local_notebook_links(excluded_names=[]):
         with codecs.open(page, 'r', 'utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
+                if not a.has_attr('href'):
+                    continue
                 href = a['href']
                 if href.startswith("https://nbviewer.org/github/JetBrains") and href.split(".")[-1] == "ipynb":
                     yield page, a
@@ -61,6 +63,7 @@ def test_notebook_has_no_errors(notebook):
     with notebook_parser(notebook, lpk_descriptor) as (parser, parser_type):
         check_lets_plot_message_errors(parser, parser_type, notebook)
         _check_links(parser, parser_type, notebook)
+        check_copy_spec(parser, parser_type, notebook)
         check_warnings(parser, parser_type, notebook)
 
 @pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links(excluded_names=["whats_new"]))

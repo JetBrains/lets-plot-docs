@@ -29,11 +29,15 @@ See also the :doc:`formatting reference </python/pages/formats>` to learn how to
 Examples
 --------
 
-- .. extref:: tooltip_title
-      :type: text
 - .. extref:: tooltip_config
       :type: text
-- .. extref:: tooltips_disable_splitting
-      :type: text
 - .. extref:: themes
+      :type: text
+- .. extref:: tourist_cities
+      :type: text
+- .. extref:: map_airports
+      :type: text
+- .. extref:: periodic_table
+      :type: text
+- .. extref:: titanic
       :type: text

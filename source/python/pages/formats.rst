@@ -189,6 +189,11 @@ The list of supported directives to format date/time values:
 - ``%S`` - second as a zero-padded decimal number (00, 01, …, 59).
 
 
+.. note::
+
+  If no timezone information is present (naive datetime), *Lets-Plot* assumes UTC timezone. For timezone-aware datetime objects, the timezone information from the data is preserved and used for rendering.
+
+
 .. _formats_examples_datetime:
 
 Examples
@@ -280,9 +285,9 @@ To format the axis tooltips, follow the rules:
 
 - the scale's ``format`` parameter is applied to tick labels only and does not affect tooltips;
 
-- the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is also applied to the axis tooltip;
+- the :py:meth:`format() <lets_plot.layer_tooltips.format>` method of :py:meth:`layer_tooltips() <lets_plot.layer_tooltips>` is also applied to the axis tooltip;
 
-- if the tooltip :py:meth:`format() <lets_plot.layer_tooltips.format>` is not specified, the tooltip will get the value after applying the default formatting from the scale (without using the specified format for the scale).
+- if the :py:meth:`format() <lets_plot.layer_tooltips.format>` method is not specified, the tooltip will get the value after applying the default formatting from the scale (without using the specified format for the scale).
 
 
 .. _formats_annotations:

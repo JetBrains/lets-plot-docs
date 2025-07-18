@@ -13,11 +13,23 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: trading_chart
+
+    .. grid-item-card::
+
         .. extref:: magnifier_inset
 
     .. grid-item-card::
 
         .. extref:: ggbunch_indonesia
+
+    .. grid-item-card::
+
+        .. extref:: lets_plot_in_2024
+
+    .. grid-item-card::
+
+        .. extref:: plot_layout_scheme
 
     .. grid-item-card::
 

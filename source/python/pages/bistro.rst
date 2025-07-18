@@ -29,22 +29,19 @@ Correlation Plot
 
     .. grid-item-card::
 
-        .. extref:: correlation_plot
+        .. image:: /_static/images/previews/examples/generated/square-correlation_plot-0.png
 
     .. grid-item-card::
 
-        .. extref:: correlation_plot
-            :image: bistro-1
+        .. image:: /_static/images/previews/examples/generated/square-correlation_plot-1.png
 
     .. grid-item-card::
 
-        .. extref:: correlation_plot
-            :image: bistro-2
+        .. image:: /_static/images/previews/examples/generated/square-correlation_plot-2.png
 
     .. grid-item-card::
 
-        .. extref:: correlation_plot
-            :image: bistro-3
+        .. image:: /_static/images/previews/examples/generated/square-correlation_plot-3.png
 
 
 Examples:
@@ -73,23 +70,19 @@ Q-Q Plot
 
     .. grid-item-card::
 
-        .. extref:: qq_plots
-            :image: bistro-1
+        .. image:: /_static/images/previews/examples/generated/square-qq_plots-1.png
 
     .. grid-item-card::
 
-        .. extref:: qq_plots
-            :image: bistro-2
+        .. image:: /_static/images/previews/examples/generated/square-qq_plots-2.png
 
     .. grid-item-card::
 
-        .. extref:: qq_plots
-            :image: bistro-3
+        .. image:: /_static/images/previews/examples/generated/square-qq_plots-3.png
 
     .. grid-item-card::
 
-        .. extref:: qq_plots
-            :image: bistro-4
+        .. image:: /_static/images/previews/examples/generated/square-qq_plots-4.png
 
 
 Examples:
@@ -110,23 +103,19 @@ Joint Plot
 
     .. grid-item-card::
 
-        .. extref:: joint_plot
-            :image: bistro-3
+        .. image:: /_static/images/previews/examples/generated/square-joint_plot-3.png
 
     .. grid-item-card::
 
-        .. extref:: joint_plot
-            :image: bistro-0
+        .. image:: /_static/images/previews/examples/generated/square-joint_plot-0.png
 
     .. grid-item-card::
 
-        .. extref:: joint_plot
-            :image: bistro-1
+        .. image:: /_static/images/previews/examples/generated/square-joint_plot-1.png
 
     .. grid-item-card::
 
-        .. extref:: joint_plot
-            :image: bistro-2
+        .. image:: /_static/images/previews/examples/generated/square-joint_plot-2.png
 
 
 Examples:
@@ -147,22 +136,19 @@ Residual Plot
 
     .. grid-item-card::
 
-        .. extref:: residual_plot
+        .. image:: /_static/images/previews/examples/generated/square-residual_plot-0.png
 
     .. grid-item-card::
 
-        .. extref:: residual_plot
-            :image: bistro-1
+        .. image:: /_static/images/previews/examples/generated/square-residual_plot-1.png
 
     .. grid-item-card::
 
-        .. extref:: residual_plot
-            :image: bistro-2
+        .. image:: /_static/images/previews/examples/generated/square-residual_plot-2.png
 
     .. grid-item-card::
 
-        .. extref:: residual_plot
-            :image: bistro-3
+        .. image:: /_static/images/previews/examples/generated/square-residual_plot-3.png
 
 
 Examples:
@@ -183,23 +169,19 @@ Waterfall Plot
 
     .. grid-item-card::
 
-        .. extref:: waterfall_plot
-            :image: bistro-0
+        .. image:: /_static/images/previews/examples/generated/square-waterfall_plot-0.png
 
     .. grid-item-card::
 
-        .. extref:: waterfall_plot
-            :image: bistro-1
+        .. image:: /_static/images/previews/examples/generated/square-waterfall_plot-1.png
 
     .. grid-item-card::
 
-        .. extref:: waterfall_plot
-            :image: bistro-2
+        .. image:: /_static/images/previews/examples/generated/square-waterfall_plot-2.png
 
     .. grid-item-card::
 
-        .. extref:: waterfall_plot
-            :image: bistro-3
+        .. image:: /_static/images/previews/examples/generated/square-waterfall_plot-3.png
 
 
 Examples:

@@ -40,8 +40,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=defcf438" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=75bbc594" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=3db87f0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
   <!-- So that users can add custom icons -->
@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=5f0a4c00"></script>
+    <script src="../../../_static/documentation_options.js?v=bd5f082a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -63,7 +63,7 @@
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="geom_label" href="lets_plot.geom_label.html" />
+    <link rel="next" title="geom_text_repel" href="lets_plot.geom_text_repel.html" />
     <link rel="prev" title="geom_spoke" href="lets_plot.geom_spoke.html" />
   <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
 
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.6.2</p>
+  <p>v4.7.0</p>
 </a>
 </div>
     
@@ -491,7 +491,7 @@ Supported transformations: ‘identity’ (leaves the data unchanged),
 ‘density’ (computes and draws kernel density estimate).</p>
 </dd>
 <dt><strong>position</strong><span class="classifier">str or <cite>FeatureSpec</cite>, default=’identity’</span></dt><dd><p>Position adjustment.
-Either a position adjustment name: ‘dodge’, ‘dodgev’, ‘jitter’, ‘nudge’, ‘jitterdodge’, ‘fill’,
+Either a position adjustment name: ‘dodge’, ‘jitter’, ‘nudge’, ‘jitterdodge’, ‘fill’,
 ‘stack’ or ‘identity’, or the result of calling a position adjustment function (e.g., <cite>position_dodge()</cite> etc.).</p>
 </dd>
 <dt><strong>show_legend</strong><span class="classifier">bool, default=True</span></dt><dd><p>False - do not show legend for this layer.</p>
@@ -534,7 +534,10 @@ Examples:</p>
 </dd>
 <dt><strong>nudge_y</strong><span class="classifier">float</span></dt><dd><p>Vertical adjustment to nudge labels by.</p>
 </dd>
-<dt><strong>size_unit</strong><span class="classifier">{‘x’, ‘y’}</span></dt><dd><p>Relate the size of the text to the length of the unit step along one of the axes.
+<dt><strong>size_unit</strong><span class="classifier">{‘x’, ‘y’, ‘min’, ‘max’}</span></dt><dd><p>Relate the size of the text to the length of the unit step along one of the axes.
+‘x’ uses the unit step along the x-axis, ‘y’ uses the unit step along the y-axis.
+‘min’ uses the smaller of the unit steps along x and y axes.
+‘max’ uses the larger of the unit steps along x and y axes.
 If None, no fitting is performed.</p>
 </dd>
 <dt><strong>nudge_unit</strong><span class="classifier">{‘identity’, ‘size’, ‘px’}, default=’identity’</span></dt><dd><p>Units for x and y nudging.
@@ -575,8 +578,8 @@ They may also be parameters to the paired geom/stat.</p>
 <li><p>label : text to add to plot.</p></li>
 <li><p>family : font family. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#text">Text</a>.</p></li>
 <li><p>fontface : font style and weight. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#text">Text</a>.</p></li>
-<li><p>hjust : horizontal text alignment. Possible values: ‘left’, ‘middle’, ‘right’ or number between 0 (‘left’) and 1 (‘right’). There are two special alignments: ‘inward’ (aligns text towards the plot center) and ‘outward’ (away from the plot center).</p></li>
-<li><p>vjust : vertical text alignment. Possible values: ‘bottom’, ‘center’, ‘top’ or number between 0 (‘bottom’) and 1 (‘top’). There are two special alignments: ‘inward’ (aligns text towards the plot center) and ‘outward’ (away from the plot center).</p></li>
+<li><p>hjust : horizontal text alignment relative to the x-coordinate. Possible values: 0 or ‘left’ - left-aligned (text starts at x), 0.5 or ‘middle’ (default) - text is centered on x, 1 or ‘right’ - right-aligned (text ends at x). There are two special alignments: ‘inward’ (aligns text towards the plot center) and ‘outward’ (away from the plot center).</p></li>
+<li><p>vjust : vertical text alignment relative to the y-coordinate. Possible values: 0 or ‘bottom’ - bottom-aligned (bottom of text at y), 0.5 or ‘center’ (default) - middle of text at y, 1 or ‘top’ - top-aligned (top of text at y). There are two special alignments: ‘inward’ (aligns text towards the plot center) and ‘outward’ (away from the plot center).</p></li>
 <li><p>angle : text rotation angle in degrees.</p></li>
 <li><p>lineheight : line height multiplier applied to the font size in the case of multi-line text.</p></li>
 </ul>
@@ -618,7 +621,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="WriOiO"></div>
+<div id="4Tfd9f"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -629,7 +632,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -642,13 +645,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("WriOiO").appendChild(div);
+            document.getElementById("4Tfd9f").appendChild(div);
         };
-        var e = document.getElementById("WriOiO");
+        var e = document.getElementById("4Tfd9f");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="HLgk75"></div>
+</div><div class="output text_html">   <div id="ViEr6k"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -673,7 +676,7 @@ They may also be parameters to the paired geom/stat.</p>
        };
    }
 
-   const containerDiv = document.getElementById("HLgk75");
+   const containerDiv = document.getElementById("ViEr6k");
    let fig = null;
 
    function renderPlot() {
@@ -770,7 +773,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="tHsyCX"></div>
+<div id="dEt2d0"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -781,7 +784,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -794,13 +797,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("tHsyCX").appendChild(div);
+            document.getElementById("dEt2d0").appendChild(div);
         };
-        var e = document.getElementById("tHsyCX");
+        var e = document.getElementById("dEt2d0");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="ou29DD"></div>
+</div><div class="output text_html">   <div id="kFR5sp"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -825,7 +828,7 @@ They may also be parameters to the paired geom/stat.</p>
        };
    }
 
-   const containerDiv = document.getElementById("ou29DD");
+   const containerDiv = document.getElementById("kFR5sp");
    let fig = null;
 
    function renderPlot() {
@@ -954,7 +957,7 @@ They may also be parameters to the paired geom/stat.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="WtzQB8"></div>
+<div id="e7VyX7"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -965,7 +968,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -978,13 +981,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("WtzQB8").appendChild(div);
+            document.getElementById("e7VyX7").appendChild(div);
         };
-        var e = document.getElementById("WtzQB8");
+        var e = document.getElementById("e7VyX7");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="2kdRCx"></div>
+</div><div class="output text_html">   <div id="lI9yPM"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1009,7 +1012,7 @@ They may also be parameters to the paired geom/stat.</p>
        };
    }
 
-   const containerDiv = document.getElementById("2kdRCx");
+   const containerDiv = document.getElementById("lI9yPM");
    let fig = null;
 
    function renderPlot() {
@@ -1132,7 +1135,7 @@ They may also be parameters to the paired geom/stat.</p>
 </pre></div>
 </div>
 <div class="output text_html">
-<div id="uo4Gke"></div>
+<div id="VumBZS"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1143,7 +1146,7 @@ They may also be parameters to the paired geom/stat.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1156,13 +1159,13 @@ They may also be parameters to the paired geom/stat.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("uo4Gke").appendChild(div);
+            document.getElementById("VumBZS").appendChild(div);
         };
-        var e = document.getElementById("uo4Gke");
+        var e = document.getElementById("VumBZS");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="A9c4rR"></div>
+</div><div class="output text_html">   <div id="PLXCYX"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1187,7 +1190,7 @@ They may also be parameters to the paired geom/stat.</p>
        };
    }
 
-   const containerDiv = document.getElementById("A9c4rR");
+   const containerDiv = document.getElementById("PLXCYX");
    let fig = null;
 
    function renderPlot() {

@@ -1,4 +1,4 @@
-.. _tables:
+.. _aesthetics:
 
 :og:description: A detailed description of the possible values for some aesthetics.
 
@@ -13,70 +13,6 @@
 
 Aesthetics
 ==========
-
-
-Color and Fill
---------------
-
-Colors and fills of geometries can be specified in the following ways:
-
-- RGB/RGBA (e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``).
-
-- HEX (e.g. ``"#0000ff"``, ``"#00f"``).
-
-- Blank string (``""``) or aliases: ``"blank"``, ``"transparent"`` for a fully transparent color.
-
-- A name, one of:
-
-.. image:: /_static/images/pages/aesthetics/aesthetics_color.png
-    :class: only-light
-    :width: 800
-    :alt: Color names
-
-.. image:: /_static/images/pages/aesthetics/aesthetics_color_dark.png
-    :class: only-dark
-    :width: 800
-    :alt: Color names (dark)
-
-- A system color name, one of:
-
-.. grid:: 3
-
-    .. grid-item-card::
-        :shadow: none
-        :class-item: system-color-pen
-
-        .. image:: /_static/images/pages/aesthetics/aesthetics_color_pen.png
-            :class: only-light
-            :alt: System color pen
-
-        .. image:: /_static/images/pages/aesthetics/aesthetics_color_pen_dark.png
-            :class: only-dark
-            :alt: System color pen (dark)
-
-    .. grid-item-card::
-        :shadow: none
-        :class-item: system-color-brush
-
-        .. image:: /_static/images/pages/aesthetics/aesthetics_color_brush.png
-            :class: only-light
-            :alt: System color brush
-
-        .. image:: /_static/images/pages/aesthetics/aesthetics_color_brush_dark.png
-            :class: only-dark
-            :alt: System color brush (dark)
-
-    .. grid-item-card::
-        :shadow: none
-        :class-item: system-color-paper
-
-        .. image:: /_static/images/pages/aesthetics/aesthetics_color_paper.png
-            :class: only-light
-            :alt: System color paper
-
-        .. image:: /_static/images/pages/aesthetics/aesthetics_color_paper_dark.png
-            :class: only-dark
-            :alt: System color paper (dark)
 
 
 Point Shapes
@@ -165,3 +101,57 @@ Font Face
     :alt: Font faces (dark)
 
 The default font face is ``'plain'``.
+
+
+Color and Fill
+--------------
+
+Colors and fills of geometries can be specified in the following ways:
+
+- **RGB**/**RGBA** - e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``.
+
+- **HEX** - e.g. ``"#0077ff"`` or shorthand ``"#07f"``.
+
+- **Transparent** - an empty string (``""``) or the aliases ``"blank"`` and ``"transparent"`` for a fully transparent color.
+
+- **Named colors** from :doc:`a predefined list of color names </python/pages/named_colors>`.
+
+- **System colors** depending on the current theme flavor, one of:
+
+.. grid:: 3
+
+    .. grid-item-card::
+        :shadow: none
+        :class-item: system-color-pen
+
+        .. image:: /_static/images/pages/aesthetics/aesthetics_color_pen.png
+            :class: only-light
+            :alt: System color pen
+
+        .. image:: /_static/images/pages/aesthetics/aesthetics_color_pen_dark.png
+            :class: only-dark
+            :alt: System color pen (dark)
+
+    .. grid-item-card::
+        :shadow: none
+        :class-item: system-color-brush
+
+        .. image:: /_static/images/pages/aesthetics/aesthetics_color_brush.png
+            :class: only-light
+            :alt: System color brush
+
+        .. image:: /_static/images/pages/aesthetics/aesthetics_color_brush_dark.png
+            :class: only-dark
+            :alt: System color brush (dark)
+
+    .. grid-item-card::
+        :shadow: none
+        :class-item: system-color-paper
+
+        .. image:: /_static/images/pages/aesthetics/aesthetics_color_paper.png
+            :class: only-light
+            :alt: System color paper
+
+        .. image:: /_static/images/pages/aesthetics/aesthetics_color_paper_dark.png
+            :class: only-dark
+            :alt: System color paper (dark)

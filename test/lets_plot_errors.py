@@ -19,6 +19,15 @@ def check_lets_plot_message_errors(parser, parser_type, source, *, warn_only=Fal
     else:
         assert errors_count == 0, message
 
+def check_copy_spec(parser, parser_type, source):
+    message = "Extra 'Copy Spec' button in {0}".format(source)
+    if parser_type == 'driver':
+        assert len(parser.find_elements(By.XPATH, "//*[contains(@class, 'jp-OutputArea-output')]/div/button")) == 0, message
+    elif parser_type == 'soup':
+        assert len(parser.select(".jp-OutputArea-output>div>button")) == 0, message
+    else:
+        raise ValueError("Bad parser type: {0}".format(parser_type))
+
 def check_warnings(parser, parser_type, source):
     warning_messages = []
     if parser_type == 'driver':

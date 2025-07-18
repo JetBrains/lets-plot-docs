@@ -82,7 +82,9 @@ Tiles:
 
 Text:
 :py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`label <lets_plot.geom_label>`
+:py:mod:`text repel <lets_plot.geom_text_repel>`,
+:py:mod:`label <lets_plot.geom_label>`,
+:py:mod:`label repel <lets_plot.geom_label_repel>`
 
 
 Examples:
@@ -100,6 +102,8 @@ Examples:
 - .. extref:: formatting_axes_etc
       :type: text
 - .. extref:: text_geoms
+      :type: text
+- .. extref:: ggrepel
       :type: text
 - .. extref:: map_use_crs
       :type: text
@@ -144,6 +148,8 @@ Examples:
 - .. extref:: bar_geometry
       :type: text
 - .. extref:: geom_pie
+      :type: text
+- .. extref:: numeric_data_on_discrete_scale
       :type: text
 - .. extref:: annotations_page
       :type: text
@@ -199,6 +205,7 @@ Examples:
 :py:mod:`dotplot <lets_plot.geom_dotplot>`,
 :py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
 :py:mod:`violin <lets_plot.geom_violin>`,
+:py:mod:`sina <lets_plot.geom_sina>`,
 :py:mod:`ridgeline <lets_plot.geom_area_ridges>`,
 :py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
@@ -211,6 +218,8 @@ Examples:
 - .. extref:: dot_plots
       :type: text
 - .. extref:: geom_violin
+      :type: text
+- .. extref:: geom_sina
       :type: text
 - .. extref:: ridgeline_plot
       :type: text
@@ -367,9 +376,10 @@ Examples:
 
 - .. extref:: scale_time
       :type: text
+- .. extref:: time_date_datetime
+      :type: text
 - .. extref:: delhi_climate
       :type: text
-      :text: Time series visualizations
 
 
 |l13| |d13| Images
@@ -447,8 +457,6 @@ Examples:
 - .. extref:: coordinate_systems
       :type: text
 - .. extref:: flip_coordinates
-      :type: text
-- .. extref:: coord_polar
       :type: text
 
 
@@ -574,13 +582,11 @@ Examples:
 
 - .. extref:: themes
       :type: text
-- .. extref:: default_theme
-      :type: text
-- .. extref:: geom_theme_colors
+- .. extref:: named_system_colors
       :type: text
 - .. extref:: tooltip_config
       :type: text
-- .. extref:: set_font_faces
+- .. extref:: customizing_fonts
       :type: text
 - .. extref:: axis_position
       :type: text
@@ -638,8 +644,6 @@ Predefined themes
 
 Examples:
 
-- .. extref:: default_theme
-      :type: text
 - .. extref:: theme_flavors
       :type: text
 - .. extref:: annotations_page
@@ -661,7 +665,7 @@ Color schemes (flavors)
 
 Examples:
 
-- .. extref:: geom_theme_colors
+- .. extref:: named_system_colors
       :type: text
 - .. extref:: theme_flavors
       :type: text
@@ -696,6 +700,8 @@ In tooltips/labels/texts and wherever else there is text, you can use:
   - subscript, e.g. ``\( x_i \)``,
   - Greek letters, e.g. ``\( \Omega \)``, and
   - some special symbols, e.g. ``\( a \cdot b \neq c \)``.
+
+  Learn more: :doc:`LaTeX Support </python/pages/latex>`.
 
 - Limited markdown support:
 
@@ -735,9 +741,15 @@ Examples:
 
 - .. extref:: multiple_color_scales
       :type: text
+- .. extref:: palmer_penguins
+      :type: text
 - .. extref:: mpg_corrgram
       :type: text
 - .. extref:: montenegrin_independence_referendum
+      :type: text
+- |waterfall_plot|, section "Additional Layers with ``background_layers`` Parameter"
+
+.. |waterfall_plot| extref:: waterfall_plot
       :type: text
 
 Scale Functions
