@@ -670,6 +670,20 @@ Examples:
 - .. extref:: theme_flavors
       :type: text
 
+Layout blueprints
+~~~~~~~~~~~~~~~~~
+
+.. grid:: 3
+    :class-container: wide-grid
+
+    .. grid-item-card::
+
+        .. extref:: plot_layout_scheme
+
+    .. grid-item-card::
+
+        .. extref:: theme_legend_scheme
+
 
 Miscellaneous
 -------------
