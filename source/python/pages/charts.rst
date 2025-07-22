@@ -669,6 +669,8 @@ Examples:
 - .. extref:: annotations_page
       :type: text
 
+.. _charts_presentation_options_flavors:
+
 Color schemes (flavors)
 ~~~~~~~~~~~~~~~~~~~~~~~
 

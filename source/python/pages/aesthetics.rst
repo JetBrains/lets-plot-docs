@@ -124,7 +124,7 @@ Colors and fills of geometries can be specified in the following ways:
 
 - **Named colors** from :doc:`a predefined list of color names </python/pages/named_colors>`.
 
-- **System colors** depending on the current theme flavor, one of:
+- **System colors** depending on the current theme :ref:`flavor <charts_presentation_options_flavors>`, one of:
 
 .. grid:: 3
 
