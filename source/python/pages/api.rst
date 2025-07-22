@@ -442,7 +442,6 @@ Base
     element_text
     element_markdown
     element_geom
-    margin
     ggsize
 
 Predefined Themes
