@@ -15,6 +15,8 @@ Aesthetics
 ==========
 
 
+.. _aesthetics_point_shapes:
+
 Point Shapes
 ------------
 
@@ -28,6 +30,8 @@ Point Shapes
     :width: 800
     :alt: Point shapes (dark)
 
+
+.. _aesthetics_line_types:
 
 Line Types
 ----------
@@ -64,6 +68,8 @@ Ways to specify the ``linetype``:
     :width: 800
     :alt: Custom line types (dark)
 
+
+.. _aesthetics_text:
 
 Text
 ----
@@ -102,6 +108,8 @@ Font Face
 
 The default font face is ``'plain'``.
 
+
+.. _aesthetics_color_and_fill:
 
 Color and Fill
 --------------

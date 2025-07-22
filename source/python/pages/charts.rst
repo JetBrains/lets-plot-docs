@@ -36,13 +36,33 @@ You can pass tidy data to *Lets-Plot* in form of a **Pandas** Dataframe, a **Pol
     :text: example notebook
 
 
-|l2| |d2| Basic Building Blocks
--------------------------------
+|l2| |d2| Aesthetics
+--------------------
 
-.. |l2| image:: /_static/images/icons/charts/basic-building-blocks-light.svg
+.. |l2| image:: /_static/images/icons/charts/aesthetics-light.svg
     :class: only-light
 
-.. |d2| image:: /_static/images/icons/charts/basic-building-blocks-dark.svg
+.. |d2| image:: /_static/images/icons/charts/aesthetics-dark.svg
+    :class: only-dark
+
+- :ref:`Point shapes <aesthetics_point_shapes>`
+
+- :ref:`Line types <aesthetics_line_types>`
+
+- :ref:`Color and fill <aesthetics_color_and_fill>`
+
+- :ref:`Named colors reference <named_colors>`
+
+- :ref:`Text <aesthetics_text>`
+
+
+|l3| |d3| Basic Building Blocks
+-------------------------------
+
+.. |l3| image:: /_static/images/icons/charts/basic-building-blocks-light.svg
+    :class: only-light
+
+.. |d3| image:: /_static/images/icons/charts/basic-building-blocks-dark.svg
     :class: only-dark
 
 
@@ -121,13 +141,13 @@ Examples:
       :type: text
 
 
-|l3| |d3| Discrete
+|l4| |d4| Discrete
 ------------------
 
-.. |l3| image:: /_static/images/icons/charts/discrete-light.svg
+.. |l4| image:: /_static/images/icons/charts/discrete-light.svg
     :class: only-light
 
-.. |d3| image:: /_static/images/icons/charts/discrete-dark.svg
+.. |d4| image:: /_static/images/icons/charts/discrete-dark.svg
     :class: only-dark
 
 :py:mod:`bar <lets_plot.geom_bar>`,
@@ -171,13 +191,13 @@ Examples:
       :type: text
 
 
-|l4| |d4| Contours
+|l5| |d5| Contours
 ------------------
 
-.. |l4| image:: /_static/images/icons/charts/contours-light.svg
+.. |l5| image:: /_static/images/icons/charts/contours-light.svg
     :class: only-light
 
-.. |d4| image:: /_static/images/icons/charts/contours-dark.svg
+.. |d5| image:: /_static/images/icons/charts/contours-dark.svg
     :class: only-dark
 
 :py:mod:`contours <lets_plot.geom_contour>`,
@@ -191,13 +211,13 @@ Examples:
       :type: text
 
 
-|l5| |d5| Visualization of Distribution
+|l6| |d6| Visualization of Distribution
 ---------------------------------------
 
-.. |l5| image:: /_static/images/icons/charts/visualization-of-distribution-light.svg
+.. |l6| image:: /_static/images/icons/charts/visualization-of-distribution-light.svg
     :class: only-light
 
-.. |d5| image:: /_static/images/icons/charts/visualization-of-distribution-dark.svg
+.. |d6| image:: /_static/images/icons/charts/visualization-of-distribution-dark.svg
     :class: only-dark
 
 :py:mod:`histogram <lets_plot.geom_histogram>`,
@@ -234,13 +254,13 @@ Examples:
       :type: text
 
 
-|l6| |d6| Stats
+|l7| |d7| Stats
 ---------------
 
-.. |l6| image:: /_static/images/icons/charts/stats-light.svg
+.. |l7| image:: /_static/images/icons/charts/stats-light.svg
     :class: only-light
 
-.. |d6| image:: /_static/images/icons/charts/stats-dark.svg
+.. |d7| image:: /_static/images/icons/charts/stats-dark.svg
     :class: only-dark
 
 :py:mod:`stat_ecdf() <lets_plot.stat_ecdf>`,
@@ -259,13 +279,13 @@ Examples:
       :type: text
 
 
-|l7| |d7| Function
+|l8| |d8| Function
 ------------------
 
-.. |l7| image:: /_static/images/icons/charts/function-light.svg
+.. |l8| image:: /_static/images/icons/charts/function-light.svg
     :class: only-light
 
-.. |d7| image:: /_static/images/icons/charts/function-dark.svg
+.. |d8| image:: /_static/images/icons/charts/function-dark.svg
     :class: only-dark
 
 :py:mod:`function <lets_plot.geom_function>`
@@ -276,13 +296,13 @@ Examples:
       :type: text
 
 
-|l8| |d8| Visualization of Errors
+|l9| |d9| Visualization of Errors
 ---------------------------------
 
-.. |l8| image:: /_static/images/icons/charts/visualization-of-errors-light.svg
+.. |l9| image:: /_static/images/icons/charts/visualization-of-errors-light.svg
     :class: only-light
 
-.. |d8| image:: /_static/images/icons/charts/visualization-of-errors-dark.svg
+.. |d9| image:: /_static/images/icons/charts/visualization-of-errors-dark.svg
     :class: only-dark
 
 :py:mod:`crossbar <lets_plot.geom_crossbar>`,
@@ -296,13 +316,13 @@ Examples:
       :type: text
 
 
-|l9| |d9| Smoothing
--------------------
+|l10| |d10| Smoothing
+---------------------
 
-.. |l9| image:: /_static/images/icons/charts/smoothing-light.svg
+.. |l10| image:: /_static/images/icons/charts/smoothing-light.svg
     :class: only-light
 
-.. |d9| image:: /_static/images/icons/charts/smoothing-dark.svg
+.. |d10| image:: /_static/images/icons/charts/smoothing-dark.svg
     :class: only-dark
 
 :py:mod:`smoothing line <lets_plot.geom_smooth>`
@@ -315,13 +335,13 @@ Examples:
       :type: text
 
 
-|l10| |d10| Bivariate Distribution
+|l11| |d11| Bivariate Distribution
 ----------------------------------
 
-.. |l10| image:: /_static/images/icons/charts/bivariate-distribution-light.svg
+.. |l11| image:: /_static/images/icons/charts/bivariate-distribution-light.svg
     :class: only-light
 
-.. |d10| image:: /_static/images/icons/charts/bivariate-distribution-dark.svg
+.. |d11| image:: /_static/images/icons/charts/bivariate-distribution-dark.svg
     :class: only-dark
 
 :py:mod:`2d bins <lets_plot.geom_bin2d>`,
@@ -339,13 +359,13 @@ Examples:
       :type: text
 
 
-|l11| |d11| Marginal Plots
+|l12| |d12| Marginal Plots
 --------------------------
 
-.. |l11| image:: /_static/images/icons/charts/marginal-light.svg
+.. |l12| image:: /_static/images/icons/charts/marginal-light.svg
     :class: only-light
 
-.. |d11| image:: /_static/images/icons/charts/marginal-dark.svg
+.. |d12| image:: /_static/images/icons/charts/marginal-dark.svg
     :class: only-dark
 
 :py:mod:`ggmarginal <lets_plot.ggmarginal>`
@@ -358,13 +378,13 @@ Examples:
       :type: text
 
 
-|l12| |d12| Time Series
+|l13| |d13| Time Series
 -----------------------
 
-.. |l12| image:: /_static/images/icons/charts/time-series-light.svg
+.. |l13| image:: /_static/images/icons/charts/time-series-light.svg
     :class: only-light
 
-.. |d12| image:: /_static/images/icons/charts/time-series-dark.svg
+.. |d13| image:: /_static/images/icons/charts/time-series-dark.svg
     :class: only-dark
 
 :py:mod:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
@@ -382,13 +402,13 @@ Examples:
       :type: text
 
 
-|l13| |d13| Images
+|l14| |d14| Images
 ------------------
 
-.. |l13| image:: /_static/images/icons/charts/images-light.svg
+.. |l14| image:: /_static/images/icons/charts/images-light.svg
     :class: only-light
 
-.. |d13| image:: /_static/images/icons/charts/images-dark.svg
+.. |d14| image:: /_static/images/icons/charts/images-dark.svg
     :class: only-dark
 
 :py:mod:`geom_imshow() <lets_plot.geom_imshow>`,
@@ -417,13 +437,13 @@ Examples:
       :type: text
 
 
-|l14| |d14| Facets
+|l15| |d15| Facets
 ------------------
 
-.. |l14| image:: /_static/images/icons/charts/facets-light.svg
+.. |l15| image:: /_static/images/icons/charts/facets-light.svg
     :class: only-light
 
-.. |d14| image:: /_static/images/icons/charts/facets-dark.svg
+.. |d15| image:: /_static/images/icons/charts/facets-dark.svg
     :class: only-dark
 
 :py:mod:`facet_grid() <lets_plot.facet_grid>`,
@@ -437,13 +457,13 @@ Examples:
       :type: text
 
 
-|l15| |d15| Coordinate Systems
+|l16| |d16| Coordinate Systems
 ------------------------------
 
-.. |l15| image:: /_static/images/icons/charts/coordinate-systems-light.svg
+.. |l16| image:: /_static/images/icons/charts/coordinate-systems-light.svg
     :class: only-light
 
-.. |d15| image:: /_static/images/icons/charts/coordinate-systems-dark.svg
+.. |d16| image:: /_static/images/icons/charts/coordinate-systems-dark.svg
     :class: only-dark
 
 :py:mod:`coord_cartesian() <lets_plot.coord_cartesian>`,
@@ -460,13 +480,13 @@ Examples:
       :type: text
 
 
-|l16| |d16| Legends and Guides
+|l17| |d17| Legends and Guides
 ------------------------------
 
-.. |l16| image:: /_static/images/icons/charts/legend-light.svg
+.. |l17| image:: /_static/images/icons/charts/legend-light.svg
     :class: only-light
 
-.. |d16| image:: /_static/images/icons/charts/legend-dark.svg
+.. |d17| image:: /_static/images/icons/charts/legend-dark.svg
     :class: only-dark
 
 :py:mod:`guide_legend() <lets_plot.guide_legend>`,
@@ -484,13 +504,13 @@ Examples:
       :type: text
 
 
-|l17| |d17| 'bistro' Plots
+|l18| |d18| 'bistro' Plots
 --------------------------
 
-.. |l17| image:: /_static/images/icons/charts/bistro-light.svg
+.. |l18| image:: /_static/images/icons/charts/bistro-light.svg
     :class: only-light
 
-.. |d17| image:: /_static/images/icons/charts/bistro-dark.svg
+.. |d18| image:: /_static/images/icons/charts/bistro-dark.svg
     :class: only-dark
 
 :py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
@@ -506,13 +526,13 @@ With these high-level functions you can create visualizations like correlation m
 Learn more: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
-|l18| |d18| GeoPandas Shapes
+|l19| |d19| GeoPandas Shapes
 ----------------------------
 
-.. |l18| image:: /_static/images/icons/charts/geopandas-light.svg
+.. |l19| image:: /_static/images/icons/charts/geopandas-light.svg
     :class: only-light
 
-.. |d18| image:: /_static/images/icons/charts/geopandas-dark.svg
+.. |d19| image:: /_static/images/icons/charts/geopandas-dark.svg
     :class: only-dark
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`label <lets_plot.geom_label>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
@@ -535,13 +555,13 @@ Examples:
       :type: text
 
 
-|l19| |d19| Grouping Plots
+|l20| |d20| Grouping Plots
 --------------------------
 
-.. |l19| image:: /_static/images/icons/charts/grouping-plots-light.svg
+.. |l20| image:: /_static/images/icons/charts/grouping-plots-light.svg
     :class: only-light
 
-.. |d19| image:: /_static/images/icons/charts/grouping-plots-dark.svg
+.. |d20| image:: /_static/images/icons/charts/grouping-plots-dark.svg
     :class: only-dark
 
 :py:mod:`ggbunch <lets_plot.ggbunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
@@ -562,13 +582,13 @@ Examples:
       :type: text
 
 
-|l20| |d20| Presentation Options
+|l21| |d21| Presentation Options
 --------------------------------
 
-.. |l20| image:: /_static/images/icons/charts/presentation-options-light.svg
+.. |l21| image:: /_static/images/icons/charts/presentation-options-light.svg
     :class: only-light
 
-.. |d20| image:: /_static/images/icons/charts/presentation-options-dark.svg
+.. |d21| image:: /_static/images/icons/charts/presentation-options-dark.svg
     :class: only-dark
 
 :py:mod:`theme() <lets_plot.theme>`,
