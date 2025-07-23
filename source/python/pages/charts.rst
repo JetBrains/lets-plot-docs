@@ -617,7 +617,7 @@ Examples:
 - .. extref:: annotations_page
       :type: text
 
-Predefined themes
+Predefined Themes
 ~~~~~~~~~~~~~~~~~
 
 :py:mod:`minimal2 <lets_plot.theme_minimal2>`,
@@ -671,7 +671,7 @@ Examples:
 
 .. _charts_presentation_options_flavors:
 
-Color schemes (flavors)
+Color Schemes (Flavors)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 :py:mod:`darcula <lets_plot.flavor_darcula>`,
@@ -692,19 +692,32 @@ Examples:
 - .. extref:: theme_flavors
       :type: text
 
-Layout blueprints
-~~~~~~~~~~~~~~~~~
+Plot Layout Diagrams
+~~~~~~~~~~~~~~~~~~~~
 
-.. grid:: 3
-    :class-container: wide-grid
+The diagrams below illustrate the internal structure of a plot, including margins, spacings, and legend layout. Refer to these visualizations to better understand and control element positioning within the plot.
 
-    .. grid-item-card::
+.. image:: /_static/images/plot_layout_scheme.png
+    :width: 600
 
-        .. extref:: plot_layout_scheme
+|plot_layout_scheme-example|
 
-    .. grid-item-card::
+The main plot area consists of nested elements such as the panel, axes, titles, and captions, each with configurable margins and spacing parameters.
 
-        .. extref:: theme_legend_scheme
+.. |plot_layout_scheme-example| extref:: plot_layout_scheme
+    :type: text
+    :text: [image source]
+
+.. image:: /_static/images/theme_legend_scheme.png
+    :width: 600
+
+|theme_legend_scheme-example|
+
+The legend area consists of key-label pairs grouped into blocks, with configurable spacing between keys, labels, and blocks.
+
+.. |theme_legend_scheme-example| extref:: theme_legend_scheme
+    :type: text
+    :text: [image source]
 
 
 Miscellaneous

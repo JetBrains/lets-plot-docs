@@ -122,7 +122,7 @@ Colors and fills of geometries can be specified in the following ways:
 
 - **Transparent** - an empty string (``""``) or the aliases ``"blank"`` and ``"transparent"`` for a fully transparent color.
 
-- **Named colors** from :doc:`a predefined list of color names </python/pages/named_colors>`.
+- **Named colors** - see :doc:`the named colors reference </python/pages/named_colors>`.
 
 - **System colors** depending on the current theme :ref:`flavor <charts_presentation_options_flavors>`, one of:
 
