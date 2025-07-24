@@ -695,7 +695,16 @@ Examples:
 Plot Layout Diagrams
 ~~~~~~~~~~~~~~~~~~~~
 
-The diagrams below illustrate the internal structure of a plot, including margins, spacings, and legend layout. Refer to these visualizations to better understand and control element positioning within the plot.
+These diagrams illustrate layout options and their spatial relationships within plot components.
+
+Option names on the diagrams (e.g., ``axis_text_spacing_x``) correspond to :py:mod:`theme() <lets_plot.theme>` function arguments.
+
+**Simple options** accept numeric values directly, e.g. ``theme(axis_text_spacing_x=10)``.
+
+**Composite options** shown as ``axis_title_x : margin`` accept :py:mod:`element_text() <lets_plot.element_text>` or :py:mod:`element_rect() <lets_plot.element_rect>` function results, e.g. ``theme(axis_title_x=element_text(margin=[5, 5]))``.
+
+Plot Panel Layout
+^^^^^^^^^^^^^^^^^
 
 .. image:: /_static/images/plot_layout_scheme.png
     :width: 600
@@ -707,6 +716,9 @@ The main plot area consists of nested elements such as the panel, axes, titles, 
 .. |plot_layout_scheme-example| extref:: plot_layout_scheme
     :type: text
     :text: [image source]
+
+Legend Box Layout
+^^^^^^^^^^^^^^^^^
 
 .. image:: /_static/images/theme_legend_scheme.png
     :width: 600
