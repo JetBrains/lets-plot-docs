@@ -701,7 +701,7 @@ Option names on the diagrams (e.g., ``axis_text_spacing_x``) correspond to :py:m
 
 **Simple options** accept numeric values directly, e.g. ``theme(axis_text_spacing_x=10)``.
 
-**Composite options** shown as ``axis_title_x : margin`` accept :py:mod:`element_text() <lets_plot.element_text>` or :py:mod:`element_rect() <lets_plot.element_rect>` function results, e.g. ``theme(axis_title_x=element_text(margin=[5, 5]))``.
+**Composite options** shown as ``axis_title_x : dict`` accept :py:mod:`element_text() <lets_plot.element_text>` or :py:mod:`element_rect() <lets_plot.element_rect>` function results, e.g. ``theme(axis_title_x=element_text(margin=[5, 5]))``.
 
 Plot Panel Layout
 ^^^^^^^^^^^^^^^^^
