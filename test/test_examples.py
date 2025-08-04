@@ -56,10 +56,7 @@ def generate_local_notebook_refs():
 
 @pytest.mark.parametrize('notebook', notebook_paths)
 def test_notebook_has_no_errors(notebook):
-    lpk_descriptor = None
-    if "kotlin_examples" in notebook:
-        assert LPK_DESCRIPTOR != "", "LPK descriptor shouldn't be empty (use option '--lpk-descriptor')"
-        lpk_descriptor = LPK_DESCRIPTOR
+    lpk_descriptor = None if LPK_DESCRIPTOR == "" else LPK_DESCRIPTOR
     with notebook_parser(notebook, lpk_descriptor) as (parser, parser_type):
         check_lets_plot_message_errors(parser, parser_type, notebook)
         _check_links(parser, parser_type, notebook)
