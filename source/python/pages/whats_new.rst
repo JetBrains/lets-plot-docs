@@ -91,6 +91,11 @@ What is new in 4.7.0
 Recent Updates in the Gallery
 -----------------------------
 
+.. image:: /_static/images/changelog/4.7.0/square-raincloud.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/raincloud.ipynb
+
 .. image:: /_static/images/changelog/4.7.0/square-europe_capitals.png
   :width: 128
   :height: 128
@@ -111,14 +116,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/ggbunch_indonesia.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.7.0/square-lets_plot_in_2024.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lets_plot_in_2024.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.7.0/square-plot_layout_scheme.png
   :width: 128
@@ -140,14 +145,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lp_verse.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.4.0/us_unemployment.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/us_unemployment.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.3/earthquake.png
   :width: 128
@@ -169,14 +174,14 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/mpg_corrgram.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.3.1/gal_venn_diagram.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/venn_diagram.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.1/gal_spoke.png
   :width: 128
