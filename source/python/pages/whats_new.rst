@@ -3,7 +3,7 @@
 .. title:: What is New
 
 
-What is new in 4.7.0
+What Is New in 4.7.0
 ====================
 
 - **Time Series Plotting**
@@ -18,7 +18,7 @@ What is new in 4.7.0
 
   See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/time_date_datetime.ipynb>`__.
 
-- **Native support for PNG and PDF exports**
+- **Native Support for PNG and PDF Exports**
 
   Exporting to PNG and PDF formats now uses the ``ImageMagick`` library bundled with Lets-Plot Python wheels and available out-of-the-box.
 
