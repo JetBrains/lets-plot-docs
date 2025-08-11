@@ -88,8 +88,8 @@ What Is New in 4.7.0
   See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for a full list of changes.
 
 
-Recent Updates in the Gallery
------------------------------
+Recent Updates in the :doc:`Gallery </python/pages/gallery>`
+------------------------------------------------------------
 
 .. image:: /_static/images/changelog/4.7.0/square-raincloud.png
   :width: 128
