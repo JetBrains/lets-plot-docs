@@ -3,7 +3,7 @@
 .. title:: What is New
 
 
-What is new in 4.7.0
+What Is New in 4.7.0
 ====================
 
 - **Time Series Plotting**
@@ -18,7 +18,7 @@ What is new in 4.7.0
 
   See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/time_date_datetime.ipynb>`__.
 
-- **Native support for PNG and PDF exports**
+- **Native Support for PNG and PDF Exports**
 
   Exporting to PNG and PDF formats now uses the ``ImageMagick`` library bundled with Lets-Plot Python wheels and available out-of-the-box.
 
@@ -88,8 +88,18 @@ What is new in 4.7.0
   See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for a full list of changes.
 
 
-Recent Updates in the Gallery
------------------------------
+Recent Updates in the :doc:`Gallery </python/pages/gallery>`
+------------------------------------------------------------
+
+.. image:: /_static/images/changelog/4.7.0/square-raincloud.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/raincloud.ipynb
+
+.. image:: /_static/images/changelog/4.7.0/square-europe_capitals.png
+  :width: 128
+  :height: 128
+  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/europe_capitals.ipynb
 
 .. image:: /_static/images/changelog/4.7.0/square-trading_chart.png
   :width: 128
@@ -106,6 +116,10 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/ggbunch_indonesia.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.7.0/square-lets_plot_in_2024.png
   :width: 128
   :height: 128
@@ -115,10 +129,6 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/plot_layout_scheme.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.5.0/legend_theme.png
   :width: 128
@@ -135,6 +145,10 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lp_verse.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.4.0/us_unemployment.png
   :width: 128
   :height: 128
@@ -144,10 +158,6 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/earthquake.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.3/sunshine_hours.png
   :width: 128
@@ -164,6 +174,10 @@ Recent Updates in the Gallery
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/mpg_corrgram.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.3.1/gal_venn_diagram.png
   :width: 128
   :height: 128
@@ -173,10 +187,6 @@ Recent Updates in the Gallery
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geom_spoke.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.3.1/gal_indonesia_volcanoes_on_map.png
   :width: 128

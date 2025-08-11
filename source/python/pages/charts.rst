@@ -392,11 +392,24 @@ Examples:
 :py:mod:`scale_x_time() <lets_plot.scale_x_time>`,
 :py:mod:`scale_y_time() <lets_plot.scale_y_time>`
 
+*Lets-Plot* handles all temporal data types through a unified "datetime" scale (excluding duration/timedelta types, which are handled by the "time" scale). This is in contrast to R's ggplot2, which provides separate "date", "time", and "datetime" scales.
+
+**Supported temporal data types**:
+
+- Python ``time`` objects (time of day)
+- Python ``date`` objects
+- Python ``datetime`` objects (both naive and timezone-aware)
+- NumPy ``datetime64`` objects
+- Pandas ``Series`` with timezone information
+- Polars ``Series`` with timezone information
+
 Examples:
 
 - .. extref:: scale_time
       :type: text
 - .. extref:: time_date_datetime
+      :type: text
+- .. extref:: trading_chart
       :type: text
 - .. extref:: delhi_climate
       :type: text

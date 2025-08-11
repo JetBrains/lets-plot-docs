@@ -13,6 +13,14 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: raincloud
+
+    .. grid-item-card::
+
+        .. extref:: europe_capitals
+
+    .. grid-item-card::
+
         .. extref:: trading_chart
 
     .. grid-item-card::
