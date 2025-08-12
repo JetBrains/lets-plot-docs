@@ -111,14 +111,14 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/magnifier_inset.ipynb
 
+.. raw:: html
+
+    <br/>
+
 .. image:: /_static/images/changelog/4.6.0/square-ggbunch_indonesia.png
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/ggbunch_indonesia.ipynb
-
-.. raw:: html
-
-    <br/>
 
 .. image:: /_static/images/changelog/4.7.0/square-lets_plot_in_2024.png
   :width: 128
@@ -134,69 +134,6 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
   :width: 128
   :height: 128
   :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/theme_legend_scheme.ipynb
-
-.. image:: /_static/images/changelog/4.5.0/interact_pan_zoom.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/interact_pan_zoom.ipynb
-
-.. image:: /_static/images/changelog/4.5.0/lp_verse.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lp_verse.ipynb
-
-.. raw:: html
-
-    <br/>
-
-.. image:: /_static/images/changelog/4.4.0/us_unemployment.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/us_unemployment.ipynb
-
-.. image:: /_static/images/changelog/4.3.3/earthquake.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/earthquake.ipynb
-
-.. image:: /_static/images/changelog/4.3.3/sunshine_hours.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/sunshine_hours.ipynb
-
-.. image:: /_static/images/changelog/4.3.2/30_day_chart_2.png
-  :width: 128
-  :height: 128
-  :target: https://www.ddanieltan.com/posts/30-day-chart-2/index.html
-
-.. image:: /_static/images/changelog/4.3.2/mpg_corrgram.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/mpg_corrgram.ipynb
-
-.. raw:: html
-
-    <br/>
-
-.. image:: /_static/images/changelog/4.3.1/gal_venn_diagram.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/venn_diagram.ipynb
-
-.. image:: /_static/images/changelog/4.3.1/gal_spoke.png
-  :width: 128
-  :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/cookbook/geom_spoke.ipynb
-
-.. image:: /_static/images/changelog/4.3.1/gal_indonesia_volcanoes_on_map.png
-  :width: 128
-  :height: 128
-  :target: https://www.kaggle.com/code/alshan/indonesia-volcanoes-on-map
-
-.. image:: /_static/images/changelog/4.3.1/gal_japanese_volcanoes_on_map.png
-  :width: 128
-  :height: 128
-  :target: https://www.kaggle.com/code/alshan/japanese-volcanoes-on-map
 
 
 Change Log
