@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=bd5f082a"></script>
+    <script src="../../../_static/documentation_options.js?v=19278c33"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.7.0</p>
+  <p>v4.7.1</p>
 </a>
 </div>
     
@@ -495,16 +495,21 @@ Some browsers may not display some UTF-8 characters correctly when setting ifram
 Only applicable when exporting to PNG or PDF.</p>
 </dd>
 <dt><strong>w</strong><span class="classifier">float, default=None</span></dt><dd><p>Width of the output image in units.
-Only applicable when exporting to PNG or PDF.</p>
+Only applicable when exporting to SVG, PNG or PDF.</p>
 </dd>
 <dt><strong>h</strong><span class="classifier">float, default=None</span></dt><dd><p>Height of the output image in units.
-Only applicable when exporting to PNG or PDF.</p>
+Only applicable when exporting to SVG, PNG or PDF.</p>
 </dd>
-<dt><strong>unit</strong><span class="classifier">{‘in’, ‘cm’, ‘mm’}, default=’in’</span></dt><dd><p>Unit of the output image. One of: ‘in’, ‘cm’, ‘mm’.
-Only applicable when exporting to PNG or PDF.</p>
+<dt><strong>unit</strong><span class="classifier">{‘in’, ‘cm’, ‘mm’, ‘px’}, default=’in’</span></dt><dd><p>Unit of the output image. One of: ‘in’, ‘cm’, ‘mm’ or ‘px.
+Only applicable when exporting to SVG, PNG or PDF.</p>
 </dd>
 <dt><strong>dpi</strong><span class="classifier">int, default=300</span></dt><dd><p>Resolution in dots per inch.
-Only applicable when exporting to PNG or PDF.</p>
+Only applicable when exporting to PNG or PDF.
+The default value depends on the unit:</p>
+<ul class="simple">
+<li><p>for ‘px’ it is 96 (output image will have the same pixel size as <code class="docutils literal notranslate"><span class="pre">w</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> values)</p></li>
+<li><p>for physical units (‘in’, ‘cm’, ‘mm’) it is 300</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -548,6 +553,15 @@ Only applicable when exporting to PNG or PDF.</p>
 <li><p>Useful for generating high-resolution images suitable for publication.</p></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<p>For SVG format:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">w</span></code>, <code class="docutils literal notranslate"><span class="pre">h</span></code> and <code class="docutils literal notranslate"><span class="pre">unit</span></code> are specified:</p>
+<ul>
+<li><p>The plot’s pixel size (default or set by <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.ggsize.html">ggsize()</a>) is ignored.</p></li>
+<li><p>The output size is calculated using the specified <code class="docutils literal notranslate"><span class="pre">w</span></code>, <code class="docutils literal notranslate"><span class="pre">h</span></code>, and <code class="docutils literal notranslate"><span class="pre">unit</span></code>.</p></li>
 </ul>
 </li>
 </ul>
