@@ -133,6 +133,8 @@ Examples:
       :type: text
 - .. extref:: geom_curve
       :type: text
+- .. extref:: alternating_ribbon_fill
+      :type: text
 - .. extref:: linetype_custom
       :type: text
 - .. extref:: expand_limits
