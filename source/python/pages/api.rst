@@ -471,12 +471,12 @@ Flavors
     :nosignatures:
     :template: default.rst
 
-    flavor_standard
     flavor_darcula
     flavor_high_contrast_dark
     flavor_high_contrast_light
     flavor_solarized_dark
     flavor_solarized_light
+    flavor_standard
 
 Labels
 ~~~~~~
