@@ -30,6 +30,12 @@ Point Shapes
     :width: 800
     :alt: Point shapes (dark)
 
+See |point_shapes|.
+
+.. |point_shapes| extref:: aesthetics_point_shapes
+    :type: text
+    :text: example notebook
+
 
 .. _aesthetics_line_types:
 
@@ -49,6 +55,13 @@ Predefined Patterns
     :width: 800
     :alt: Predefined line types (dark)
 
+See |line_types-predefined-patterns|.
+
+.. |line_types-predefined-patterns| extref:: aesthetics_line_types
+    :ref: nbviewer-predefined-patterns
+    :type: text
+    :text: example notebook
+
 Custom Patterns
 ~~~~~~~~~~~~~~~
 
@@ -67,6 +80,13 @@ Ways to specify the ``linetype``:
     :class: only-dark
     :width: 800
     :alt: Custom line types (dark)
+
+See |line_types-custom-patterns|.
+
+.. |line_types-custom-patterns| extref:: aesthetics_line_types
+    :ref: nbviewer-custom-patterns
+    :type: text
+    :text: example notebook
 
 
 .. _aesthetics_text:
@@ -93,6 +113,13 @@ The default font family is ``'sans'``.
 
 You can also use the name of any other font installed on your system (e.g. ``"Times New Roman"``).
 
+See |text-font-family|.
+
+.. |text-font-family| extref:: aesthetics_text_style
+    :ref: nbviewer-font-family
+    :type: text
+    :text: example notebook
+
 Font Face
 ~~~~~~~~~
 
@@ -107,6 +134,13 @@ Font Face
     :alt: Font faces (dark)
 
 The default font face is ``'plain'``.
+
+See |text-font-face|.
+
+.. |text-font-face| extref:: aesthetics_text_style
+    :ref: nbviewer-font-face
+    :type: text
+    :text: example notebook
 
 
 .. _aesthetics_color_and_fill:
@@ -163,3 +197,9 @@ Colors and fills of geometries can be specified in the following ways:
         .. image:: /_static/images/pages/aesthetics/aesthetics_color_paper_dark.png
             :class: only-dark
             :alt: System color paper (dark)
+
+See |system_colors|.
+
+.. |system_colors| extref:: aesthetics_system_colors
+    :type: text
+    :text: example notebook
