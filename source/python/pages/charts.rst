@@ -378,6 +378,8 @@ Examples:
       :type: text
 - .. extref:: geom_hex
       :type: text
+- .. extref:: geom_pointdensity
+      :type: text
 - .. extref:: param_width_unit
       :type: text
 
