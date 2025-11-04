@@ -62,6 +62,18 @@ Examples:
 - :ref:`Text <aesthetics_text>`
 
 
+Examples:
+
+- .. extref:: aesthetics_point_shapes
+      :type: text
+- .. extref:: aesthetics_line_types
+      :type: text
+- .. extref:: aesthetics_system_colors
+      :type: text
+- .. extref:: aesthetics_text_style
+      :type: text
+
+
 |l3| |d3| Basic Building Blocks
 -------------------------------
 
