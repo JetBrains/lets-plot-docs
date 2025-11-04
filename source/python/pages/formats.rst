@@ -263,10 +263,6 @@ The following table demonstrates the behavior with format string ``",~g"``:
     :width: 800
     :alt: Scientific notation table (dark)
 
-.. warning::
-
-    Superscript is not fully support by CairoSVG library and export to PNG/PDF may produce unexpected results.
-
 
 .. _formats_tooltips:
 
