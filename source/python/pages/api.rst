@@ -111,6 +111,7 @@ Standard Geometries
     geom_density
     geom_density2d
     geom_density2df
+    geom_pointdensity
     geom_jitter
     geom_freqpoly
     geom_step
@@ -457,6 +458,7 @@ Predefined Themes
     theme_bw
     theme_classic
     theme_grey
+    theme_gray
     theme_light
     theme_minimal
     theme_minimal2
@@ -469,6 +471,7 @@ Flavors
     :nosignatures:
     :template: default.rst
 
+    flavor_standard
     flavor_darcula
     flavor_high_contrast_dark
     flavor_high_contrast_light
