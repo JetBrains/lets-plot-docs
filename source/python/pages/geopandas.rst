@@ -28,7 +28,7 @@ All GeoPandas shapes are "understood" by *Lets-Plot* and can be plotted using va
 
 Use:
 
-- :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_pie() <lets_plot.geom_pie>`, :py:mod:`geom_text() <lets_plot.geom_text>` with Points / Multi-Points
+- :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_pointdensity() <lets_plot.geom_pointdensity>`, :py:mod:`geom_pie() <lets_plot.geom_pie>`, :py:mod:`geom_text() <lets_plot.geom_text>` with Points / Multi-Points
 - :py:mod:`geom_path() <lets_plot.geom_path>` with Lines / Multi-Lines
 - :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>` with Polygons / Multi-Polygons
 - :py:mod:`geom_rect() <lets_plot.geom_rect>` when used with Polygon shapes will display corresponding bounding boxes

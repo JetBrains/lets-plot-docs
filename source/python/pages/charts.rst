@@ -349,7 +349,8 @@ Examples:
 :py:mod:`2d bins <lets_plot.geom_bin2d>`,
 :py:mod:`2d hexagonal bins <lets_plot.geom_hex>`,
 :py:mod:`2d density <lets_plot.geom_density2d>`,
-:py:mod:`filled 2d density <lets_plot.geom_density2df>`
+:py:mod:`filled 2d density <lets_plot.geom_density2df>`,
+:py:mod:`pointdensity <lets_plot.geom_pointdensity>`
 
 Examples:
 
@@ -550,7 +551,7 @@ Learn more: :doc:`'bistro' Plots </python/pages/bistro>`.
 .. |d19| image:: /_static/images/icons/charts/geopandas-dark.svg
     :class: only-dark
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`label <lets_plot.geom_label>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pointdensity <lets_plot.geom_pointdensity>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`label <lets_plot.geom_label>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
 Learn more: :doc:`GeoPandas Support </python/pages/geopandas>`.
 
@@ -637,7 +638,7 @@ Predefined Themes
 
 :py:mod:`minimal2 <lets_plot.theme_minimal2>`,
 :py:mod:`bw <lets_plot.theme_bw>`,
-:py:mod:`grey <lets_plot.theme_grey>`,
+:py:mod:`grey <lets_plot.theme_grey>` (or :py:mod:`gray <lets_plot.theme_gray>`),
 :py:mod:`classic <lets_plot.theme_classic>`,
 :py:mod:`light <lets_plot.theme_light>`,
 :py:mod:`minimal <lets_plot.theme_minimal>`,
@@ -693,7 +694,8 @@ Color Schemes (Flavors)
 :py:mod:`solarized light <lets_plot.flavor_solarized_light>`,
 :py:mod:`solarized dark <lets_plot.flavor_solarized_dark>`,
 :py:mod:`high contrast light <lets_plot.flavor_high_contrast_light>`,
-:py:mod:`high contrast dark <lets_plot.flavor_high_contrast_dark>`
+:py:mod:`high contrast dark <lets_plot.flavor_high_contrast_dark>`,
+:py:mod:`standard <lets_plot.flavor_standard>`
 
 .. extref:: flavors
   :image: common
