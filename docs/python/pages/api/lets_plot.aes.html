@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b334f359" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8aa78240"></script>
+    <script src="../../../_static/documentation_options.js?v=0b4ca7ae"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.7.3</p>
+  <p>v4.8.0</p>
 </a>
 </div>
     
@@ -476,8 +476,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>x, y, …</strong></dt><dd><p>List of name value pairs giving aesthetics to map to variables.
-The names for x and y aesthetics are typically omitted because they are so common; all other aesthetics must be named.</p>
+<dt><strong>x, y, …</strong></dt><dd><p>Aesthetic mappings. Name-value pairs specifying which data variables to use for each aesthetic.
+The names for x and y aesthetics are typically omitted because they are so common; all other aesthetics must be named.
+The specific list of supported aesthetics differs by geometry type.</p>
+</dd>
+<dt><strong>group</strong><span class="classifier">str or list, optional</span></dt><dd><p>Data grouping control (not a true aesthetic). Use a variable name to group by that variable,
+a list of variables to group by their interaction, or an empty list to disable all grouping.</p>
 </dd>
 </dl>
 </dd>
@@ -492,10 +496,24 @@ The names for x and y aesthetics are typically omitted because they are so commo
 <p>Generate aesthetic mappings that describe how variables in the data are projected to visual properties
 (aesthetics) of geometries. This function also standardizes aesthetic names by, for example, converting
 colour to color.</p>
-<p>Aesthetic mappings are not to be confused with aesthetic settings; the latter are used to set aesthetics to
-some constant values, e.g. make all points red in the plot. If one wants to make the color of a point
+<p>Aesthetic mappings are not to be confused with aesthetic settings; the latter is used to set aesthetics to
+some constant values, e.g., make all points red in the plot. If one wants to make the color of a point
 depend on the value of a variable, he/she should project this variable to the color aesthetic via
 aesthetic mapping.</p>
+<p><strong>Data Grouping</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">group</span></code> parameter is not a true aesthetic but controls how data is grouped for visualization:</p>
+<dl class="simple">
+<dt>Default Grouping Behavior:</dt><dd><p>Lets-Plot automatically groups data by discrete variables mapped to aesthetics like <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">shape</span></code>,
+<code class="docutils literal notranslate"><span class="pre">linetype</span></code>, etc. This creates separate visual elements (lines, paths, polygons) for each unique
+combination of these variables.</p>
+</dd>
+<dt>Explicit Group Control:</dt><dd><ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">group='variable_name'</span></code> to group only by that specific variable, overriding default grouping</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">group=['var1',</span> <span class="pre">'var2',</span> <span class="pre">...]</span></code> to group by the interaction of multiple variables</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">group=[]</span></code> to disable all the grouping completely</p></li>
+</ul>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -515,7 +533,7 @@ aesthetic mapping.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="onbzCU"></div>
+<div id="ojYuRG"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -526,7 +544,7 @@ aesthetic mapping.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -539,13 +557,13 @@ aesthetic mapping.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("onbzCU").appendChild(div);
+            document.getElementById("ojYuRG").appendChild(div);
         };
-        var e = document.getElementById("onbzCU");
+        var e = document.getElementById("ojYuRG");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="cv7JBb"></div>
+</div><div class="output text_html">   <div id="qdiNsV"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -570,7 +588,7 @@ aesthetic mapping.</p>
        };
    }
 
-   const containerDiv = document.getElementById("cv7JBb");
+   const containerDiv = document.getElementById("qdiNsV");
    let fig = null;
 
    function renderPlot() {
@@ -686,7 +704,7 @@ aesthetic mapping.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="f16iA7"></div>
+<div id="FQJh0w"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -697,7 +715,7 @@ aesthetic mapping.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -710,13 +728,13 @@ aesthetic mapping.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("f16iA7").appendChild(div);
+            document.getElementById("FQJh0w").appendChild(div);
         };
-        var e = document.getElementById("f16iA7");
+        var e = document.getElementById("FQJh0w");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="ghbpDw"></div>
+</div><div class="output text_html">   <div id="U4iFiX"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -741,7 +759,7 @@ aesthetic mapping.</p>
        };
    }
 
-   const containerDiv = document.getElementById("ghbpDw");
+   const containerDiv = document.getElementById("U4iFiX");
    let fig = null;
 
    function renderPlot() {

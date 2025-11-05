@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b334f359" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8aa78240"></script>
+    <script src="../../../_static/documentation_options.js?v=0b4ca7ae"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.7.3</p>
+  <p>v4.8.0</p>
 </a>
 </div>
     
@@ -478,7 +478,7 @@ See also the <a class="reference external" href="https://lets-plot.org/python/pa
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>exponent_format</strong><span class="classifier">{‘e’, ‘pow’, ‘pow_full’} or tuple, default=’e’</span></dt><dd><p>Controls the appearance of numbers formatted with ‘e’ or ‘g’ types.</p>
+<dt><strong>exponent_format</strong><span class="classifier">{‘e’, ‘pow’, ‘pow_full’} or tuple, default=’pow’</span></dt><dd><p>Controls the appearance of numbers formatted with ‘e’ or ‘g’ types.</p>
 <p>Value is either a string - style, or a tuple: (style, lower_exp_bound, upper_exp_bound)
 where style can be:</p>
 <ul class="simple">
@@ -550,15 +550,16 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
 Set ‘blank’ or result of <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.element_blank.html">element_blank()</a> to draw nothing and assign no space.
 Set <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.element_text.html">element_text()</a> to specify legend title parameters, inherited from <code class="docutils literal notranslate"><span class="pre">title</span></code>.</p>
 </dd>
-<dt><strong>legend_position</strong><span class="classifier">{‘none’, ‘left’, ‘right’, ‘bottom’, ‘top’} or list</span></dt><dd><p>The position of legends. To remove the plot legend, use the ‘none’ value.
-If parameter is a list, then it should be a two-element numeric vector,
-specifying the position inside the plotting area,
-each value of float type between 0 and 1.</p>
+<dt><strong>legend_position</strong><span class="classifier">{‘none’, ‘left’, ‘right’, ‘bottom’, ‘top’} or list</span></dt><dd><p>The position of legends.
+To remove the plot legend, use the ‘none’ value.
+If parameter is a list, then it should be a two-element numeric vector [x, y], where each value is between 0 and 1.
+These coordinates position the legend inside the plotting area, where [0, 0] is the bottom left corner and [1, 1] is the top right corner.
+The anchor point of the legend box can be controlled with <code class="docutils literal notranslate"><span class="pre">legend_justification</span></code>.</p>
 </dd>
-<dt><strong>legend_justification</strong><span class="classifier">str or list</span></dt><dd><p>Anchor point for positioning legend. If parameter is a list, then
-it should be a two-element numeric vector. The pair [0, 0] corresponds to the
-bottom left corner, the pair [1, 1] corresponds to the top right.
-For string parameter the only possible value is ‘center’.</p>
+<dt><strong>legend_justification</strong><span class="classifier">{‘center’, ‘left’, ‘right’, ‘top’, ‘bottom’} or list</span></dt><dd><p>Anchor point of the legend box for positioning.
+Determines which point of the legend box is placed at the coordinates specified by <code class="docutils literal notranslate"><span class="pre">legend_position</span></code>.
+If parameter is a list, then it should be a two-element numeric vector [x, y], where each value is between 0 and 1.
+The pair [0, 0] corresponds to the bottom left corner of the legend box, and [1, 1] corresponds to the top right corner.</p>
 </dd>
 <dt><strong>legend_direction</strong><span class="classifier">{‘horizontal’, ‘vertical’}</span></dt><dd><p>Layout of items in legends.</p>
 </dd>
@@ -780,7 +781,7 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="jE6Vy2"></div>
+<div id="1HCHFQ"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -791,7 +792,7 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -804,13 +805,13 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("jE6Vy2").appendChild(div);
+            document.getElementById("1HCHFQ").appendChild(div);
         };
-        var e = document.getElementById("jE6Vy2");
+        var e = document.getElementById("1HCHFQ");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="Dz5QbE"></div>
+</div><div class="output text_html">   <div id="IHtFb3"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -835,7 +836,7 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
        };
    }
 
-   const containerDiv = document.getElementById("Dz5QbE");
+   const containerDiv = document.getElementById("IHtFb3");
    let fig = null;
 
    function renderPlot() {
@@ -970,7 +971,7 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="pjaf4N"></div>
+<div id="9RC5zU"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -981,7 +982,7 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -994,13 +995,13 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("pjaf4N").appendChild(div);
+            document.getElementById("9RC5zU").appendChild(div);
         };
-        var e = document.getElementById("pjaf4N");
+        var e = document.getElementById("9RC5zU");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="GMmlGO"></div>
+</div><div class="output text_html">   <div id="E7wX9J"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1025,7 +1026,7 @@ Set <a class="reference external" href="https://lets-plot.org/python/pages/api/l
        };
    }
 
-   const containerDiv = document.getElementById("GMmlGO");
+   const containerDiv = document.getElementById("E7wX9J");
    let fig = null;
 
    function renderPlot() {
