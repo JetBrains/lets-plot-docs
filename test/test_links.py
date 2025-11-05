@@ -61,6 +61,8 @@ def check_lp_link(page, a):
             return
         if classes == ["skip-link"]: # Skip link
             return
+        if classes == ["anchor-link"]: # Skip anchor from the cookbook title
+            return
     if not classes: # Bad case for checking
         return
     if href in INTERNAL_LINKS or "internal" in classes or "nav-internal" in classes:
