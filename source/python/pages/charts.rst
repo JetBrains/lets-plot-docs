@@ -135,6 +135,8 @@ Examples:
       :type: text
 - .. extref:: line_vs_path
       :type: text
+- .. extref:: missing_values_line_path_area_ribbon
+      :type: text
 - .. extref:: geopandas_kotlin_isl
       :type: text
 - .. extref:: graph_edges
