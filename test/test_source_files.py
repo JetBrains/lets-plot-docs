@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 from datetime import datetime
 
 import pytest
@@ -17,3 +18,7 @@ def test_copyright_year(filename):
             copyright_current_year = int(years_range.split("-")[1])
             assert expected_current_year == copyright_current_year
             break
+
+def test_release_examples_presence():
+    f_dirs_count = sum(1 for entry in os.scandir("docs/releases") if entry.is_dir())
+    assert f_dirs_count > 0

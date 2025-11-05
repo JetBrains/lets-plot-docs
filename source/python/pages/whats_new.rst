@@ -3,85 +3,74 @@
 .. title:: What is New
 
 
-What Is New in 4.7.0
+What Is New in 4.8.0
 ====================
 
-- **Time Series Plotting**
+- **geom_pointdensity() Geometry**
 
-  - Support for Python ``time`` and ``date`` objects.
-
-  - Support for timezone-aware ``datetime`` objects and Pandas/Polars ``Series``.
-
-  .. image:: /_static/images/changelog/4.7.0/time_date_datetime.png
+  .. image:: /_static/images/changelog/4.8.0/geom_pointdensity.png
     :width: 400
-    :height: 237
+    :height: 246
 
-  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/time_date_datetime.ipynb>`__.
+  See `example notebook <https://lets-plot.org/releases/f-25e/geom_pointdensity.html>`__.
 
-- **Native Support for PNG and PDF Exports**
+- **Explicit group aesthetic now overrides default grouping behavior instead of combining with it**
 
-  Exporting to PNG and PDF formats now uses the ``ImageMagick`` library bundled with Lets-Plot Python wheels and available out-of-the-box.
+  .. important::
 
-  This replaces the previous dependency on the ``CairoSVG`` library and comes with improved support for LaTeX labels rasterization.
+    **BREAKING CHANGE:**
 
-- **geom_sina() Geometry**
+    Previously, setting ``group='variable'`` would group by both the
+    explicit variable AND any discrete aesthetics (color, shape, etc.).
+    Now it groups ONLY by the explicit variable, matching ``ggplot2``
+    behavior.
+    Use ``group=[var1, var2, ...]`` to group by multiple variables
+    explicitly,
+    and ``group=[]`` to disable any grouping.
 
-  .. image:: /_static/images/changelog/4.7.0/geom_sina.png
+  .. image:: /_static/images/changelog/4.8.0/group_override_defaults.png
     :width: 400
-    :height: 276
+    :height: 263
 
-  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/geom_sina.ipynb>`__.
+  See `example notebook <https://lets-plot.org/releases/f-25e/group_override_defaults.html>`__.
 
-- **geom_text_repel() and geom_label_repel() Geometries**
+- **gggrid(): support for shared legends (parameter guides)**
 
-  .. image:: /_static/images/changelog/4.7.0/geom_repel.png
-    :width: 400
-    :height: 232
+  .. image:: /_static/images/changelog/4.8.0/gggrid_legend_collect.png
+    :width: 500
+    :height: 172
 
-  See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/ggrepel.ipynb>`__.
+  See `example notebook <https://lets-plot.org/releases/f-25e/gggrid_legend_collect.html>`__.
 
-- **waterfall_plot() Chart**
+- **Better handling of missing values in geom_line(), geom_path(), geom_ribbon(), and geom_area()**
 
-  - Annotations support via ``relative_labels`` and ``absolute_labels`` parameters.
+  .. image:: /_static/images/changelog/4.8.0/missing_values_ribbon.png
+    :width: 500
+    :height: 192
 
-    .. image:: /_static/images/changelog/4.7.0/waterfall_plot_annotations.png
-      :width: 400
-      :height: 253
+  See `example notebook <https://lets-plot.org/releases/f-25e/missing_values_line_path_area_ribbon.html>`__.
 
-    See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/waterfall_plot_annotations.ipynb>`__.
+- **geom_histogram(): custom bin bounds (parameter breaks)**
 
-  - Support for combining waterfall bars with other geometry layers.
+  See `example notebook <https://lets-plot.org/releases/f-25e/geom_histogram_param_breaks.html>`__.
 
-    .. image:: /_static/images/changelog/4.7.0/waterfall_plot_layers.png
-      :width: 400
-      :height: 227
+- **Legend automatically wraps to prevent overlap — up to 15 rows for vertical legends and 5 columns for horizontal ones**
 
-    See `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/waterfall_plot_layers.ipynb>`__.
+  See `example notebook <https://lets-plot.org/releases/f-25e/legend_wrap.html>`__.
 
-- **Continuous Data on Discrete Scales**
+- **flavor_standard() resets the theme’s default color scheme**
 
-  Continuous data when used with discrete positional scales is no longer transformed to discrete data. Instead, it remains continuous, allowing for precise positioning of continuous elements relative to discrete ones.
+  Use to override other flavors or make defaults explicit.
 
-  .. image:: /_static/images/changelog/4.7.0/combo_discrete_continuous.png
-    :width: 400
-    :height: 151
+  See `example notebook <https://lets-plot.org/releases/f-25e/flavor_standard.html>`__.
 
-  See: `example notebook <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/numeric_data_on_discrete_scale.ipynb>`__.
+- **'left', 'right', 'top', and 'bottom' legend justification**
 
-.. tip::
+  See `example notebook <https://lets-plot.org/releases/f-25e/legend_justification.html>`__.
 
-   New way of handling continuous data on discrete scales could potentially break existing plots. If you want to restore a broken plot to its original form, you can use the :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function to annotate continuous data as discrete.
+- **ggtb(): Added size_zoomin and size_basis parameters to control point size scaling behavior when zooming (works with geom_point and related layers)**
 
-- **Plot Layout**
-
-  The default plot layout has been improved to better accommodate axis labels and titles.
-  Also, new ``theme()`` options ``axis_text_spacing``, ``axis_text_spacing_x``, and ``axis_text_spacing_y`` control spacing between axis ticks and labels.
-
-  .. image:: /_static/images/changelog/4.7.0/plot_layout_diagram.png
-    :width: 400
-    :height: 175
-
-  See the `plot layout diagram <https://nbviewer.org/github/JetBrains/lets-plot/blob/master/docs/f-25b/plot_layout_scheme.ipynb>`__ showing various layout options and their effects on plot appearance.
+  See: `example notebook <https://lets-plot.org/releases/f-25e/ggtb_size_zoomin.html>`__.
 
 - **And More**
 

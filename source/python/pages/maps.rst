@@ -89,7 +89,8 @@ Combine Layers on Map ``ggplot2`` Style
 :py:mod:`segment <lets_plot.geom_segment>`,
 :py:mod:`curve <lets_plot.geom_curve>`,
 :py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`label <lets_plot.geom_label>`.
+:py:mod:`label <lets_plot.geom_label>`,
+:py:mod:`pointdensity <lets_plot.geom_pointdensity>`.
 
 |param_geodesic|.
 
@@ -126,7 +127,7 @@ Combine Layers on Map ``ggplot2`` Style
 GeoPandas Shapes
 ----------------
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pointdensity <lets_plot.geom_pointdensity>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
 
 Learn more: :doc:`GeoPandas Support </python/pages/geopandas>`.
 

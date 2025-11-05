@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b334f359" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
   
@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8aa78240"></script>
+    <script src="../../../_static/documentation_options.js?v=0b4ca7ae"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -150,7 +150,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.7.3</p>
+  <p>v4.8.0</p>
 </a>
 </div>
     
@@ -471,7 +471,7 @@
 <h1>ggtb<a class="headerlink" href="#ggtb" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.ggtb">
-<span class="sig-name descname"><span class="pre">ggtb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FeatureSpec</span></span></span><a class="headerlink" href="#lets_plot.ggtb" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ggtb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_basis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_zoomin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FeatureSpec</span></span></span><a class="headerlink" href="#lets_plot.ggtb" title="Link to this definition">#</a></dt>
 <dd><p>Add a toolbar to a chart.</p>
 <p>This function adds a toolbar containing three tool-buttons (pan, rubber-band zoom,
 and center-point zoom) to a chart. Each tool uses mouse-drag for its
@@ -491,9 +491,28 @@ regardless of whether a tool is selected or not.</p>
 <li><p>The toolbar does not work with interactive maps.</p></li>
 <li><p>The toolbar cannot be used with plots using a polar coordinate system.</p></li>
 </ul>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>size_zoomin</strong><span class="classifier">int, default=0</span></dt><dd><p>Control how zooming in affects the size of geometry objects on the plot. Currently, works only with
+the geom_point layer and layers based on it (geom_jitter, geom_sina, etc.).</p>
+<p>0 - size never increases;</p>
+<p>-1 - size will be increasing without limits;</p>
+<p>n - the number of times the size of objects will increase (relative to the initial state of the plot).
+Farther zooming will no longer affect the size.</p>
+</dd>
+<dt><strong>size_basis</strong><span class="classifier">{‘x’, ‘y’, ‘min’, ‘max’}, default=’max’</span></dt><dd><p>Defines the axis along which the scaling factor for geometry objects will be calculated.</p>
+<p>‘x’ - size changes only when zooming in/out along x-axis;</p>
+<p>‘y’ - size changes only when zooming in/out along y-axis;</p>
+<p>‘min’ - size changes when zooming in/out along any axis, but the change is determined by the axis
+with the minimum zoom factor;</p>
+<p>‘max’ - size changes when zooming in/out along any axis, but the change is determined by the axis
+with the maximum zoom factor.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">FeatureSpec</span></code></dt><dd><p>Toolbar feature specification.</p>
 </dd>
 </dl>
@@ -515,7 +534,7 @@ regardless of whether a tool is selected or not.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="MOOwhi"></div>
+<div id="JnOw98"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -526,7 +545,7 @@ regardless of whether a tool is selected or not.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.3/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -539,13 +558,13 @@ regardless of whether a tool is selected or not.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("MOOwhi").appendChild(div);
+            document.getElementById("JnOw98").appendChild(div);
         };
-        var e = document.getElementById("MOOwhi");
+        var e = document.getElementById("JnOw98");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="vQBkJC"></div>
+</div><div class="output text_html">   <div id="VvDdzT"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -570,7 +589,7 @@ regardless of whether a tool is selected or not.</p>
        };
    }
 
-   const containerDiv = document.getElementById("vQBkJC");
+   const containerDiv = document.getElementById("VvDdzT");
    let fig = null;
 
    function renderPlot() {

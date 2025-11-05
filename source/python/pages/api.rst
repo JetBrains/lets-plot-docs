@@ -111,6 +111,7 @@ Standard Geometries
     geom_density
     geom_density2d
     geom_density2df
+    geom_pointdensity
     geom_jitter
     geom_freqpoly
     geom_step
@@ -457,6 +458,7 @@ Predefined Themes
     theme_bw
     theme_classic
     theme_grey
+    theme_gray
     theme_light
     theme_minimal
     theme_minimal2
@@ -474,6 +476,7 @@ Flavors
     flavor_high_contrast_light
     flavor_solarized_dark
     flavor_solarized_light
+    flavor_standard
 
 Labels
 ~~~~~~
