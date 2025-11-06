@@ -158,7 +158,7 @@ Cookbooks:
 - .. extref:: position_nudge_unit
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: covid19_and_mobility
       :type: text
@@ -235,7 +235,7 @@ Cookbooks:
 - .. extref:: contours
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: how_to_draw_curve
       :type: text
@@ -443,7 +443,7 @@ Cookbooks:
 - .. extref:: time_date_datetime
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: trading_chart
       :type: text
@@ -503,7 +503,7 @@ Cookbooks:
 - .. extref:: facets
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: covid19_and_mobility
       :type: text
@@ -600,7 +600,7 @@ Cookbooks:
 - .. extref:: projection_provided
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: geopandas_kotlin_isl
       :type: text
@@ -632,7 +632,7 @@ Cookbooks:
 - .. extref:: gggrid_legend_collect
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: ggbunch_indonesia
       :type: text
@@ -797,7 +797,7 @@ Use the :py:mod:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`
 
 This function adds a toolbar containing three tool-buttons: pan, rubber-band zoom, and center-point zoom.
 
-Demo examples:
+Demos:
 
 - .. extref:: interact_pan_zoom
       :type: text
@@ -833,7 +833,7 @@ Cookbooks:
 - .. extref:: markdown
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: lp_verse
       :type: text
@@ -865,7 +865,7 @@ Cookbooks:
 .. |waterfall_plot| extref:: waterfall_plot
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: palmer_penguins
       :type: text
@@ -885,7 +885,7 @@ Cookbooks:
 - .. extref:: scale_functions
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: palmer_penguins
       :type: text
@@ -916,7 +916,7 @@ Cookbooks:
 - .. extref:: position_stack
       :type: text
 
-Demo examples:
+Demos:
 
 - .. extref:: nobel
       :type: text
