@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: cities_density
+
+    .. grid-item-card::
+
         .. extref:: raincloud
 
     .. grid-item-card::
