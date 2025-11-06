@@ -36,7 +36,7 @@ You can pass tidy data to *Lets-Plot* in form of a **Pandas** Dataframe, a **Pol
     :text: example notebook
 
 
-Examples:
+Cookbooks:
 
 - .. extref:: stat_data_bijection
       :type: text
@@ -62,7 +62,7 @@ Examples:
 - :ref:`Text <aesthetics_text>`
 
 
-Examples:
+Cookbooks:
 
 - .. extref:: aesthetics_point_shapes
       :type: text
@@ -127,17 +127,11 @@ Text:
 :py:mod:`label repel <lets_plot.geom_label_repel>`
 
 
-Examples:
+Cookbooks:
 
-- .. extref:: covid19_and_mobility
-      :type: text
-- .. extref:: bayesian_inference
-      :type: text
 - .. extref:: line_vs_path
       :type: text
 - .. extref:: missing_values_line_path_area_ribbon
-      :type: text
-- .. extref:: geopandas_kotlin_isl
       :type: text
 - .. extref:: graph_edges
       :type: text
@@ -164,6 +158,15 @@ Examples:
 - .. extref:: position_nudge_unit
       :type: text
 
+Demo examples:
+
+- .. extref:: covid19_and_mobility
+      :type: text
+- .. extref:: bayesian_inference
+      :type: text
+- .. extref:: geopandas_kotlin_isl
+      :type: text
+
 
 |l4| |d4| Discrete
 ------------------
@@ -187,7 +190,7 @@ Examples:
     <a class="reference internal" href="as_discrete.html">Working with Categorical Variables and the <strong class="code-like">as_discrete()</strong> Function</a>.
   </p>
 
-Examples:
+Cookbooks:
 
 - .. extref:: bar_geometry
       :type: text
@@ -227,10 +230,13 @@ Examples:
 :py:mod:`contours <lets_plot.geom_contour>`,
 :py:mod:`filled contours <lets_plot.geom_contourf>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: contours
       :type: text
+
+Demo examples:
+
 - .. extref:: how_to_draw_curve
       :type: text
 
@@ -253,7 +259,7 @@ Examples:
 :py:mod:`ridgeline <lets_plot.geom_area_ridges>`,
 :py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: histogram_geometry
       :type: text
@@ -291,7 +297,7 @@ Examples:
 :py:mod:`stat_summary() <lets_plot.stat_summary>`,
 :py:mod:`stat_summary_bin() <lets_plot.stat_summary_bin>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: stats
       :type: text
@@ -314,7 +320,7 @@ Examples:
 
 :py:mod:`function <lets_plot.geom_function>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: geom_function
       :type: text
@@ -334,7 +340,7 @@ Examples:
 :py:mod:`linerange <lets_plot.geom_linerange>`,
 :py:mod:`pointrange <lets_plot.geom_pointrange>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: vertical_intervals
       :type: text
@@ -351,7 +357,7 @@ Examples:
 
 :py:mod:`smoothing line <lets_plot.geom_smooth>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: scatter_plot
       :type: text
@@ -374,7 +380,7 @@ Examples:
 :py:mod:`filled 2d density <lets_plot.geom_density2df>`,
 :py:mod:`pointdensity <lets_plot.geom_pointdensity>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: density_2d
       :type: text
@@ -399,7 +405,7 @@ Examples:
 
 See also: :ref:`Joint Plot <bistro_joint_plot>`, :ref:`Residual Plot <bistro_residual_plot>`.
 
-Examples:
+Cookbooks:
 
 - .. extref:: marginal_layers
       :type: text
@@ -430,12 +436,15 @@ Examples:
 - Pandas ``Series`` with timezone information
 - Polars ``Series`` with timezone information
 
-Examples:
+Cookbooks:
 
 - .. extref:: scale_time
       :type: text
 - .. extref:: time_date_datetime
       :type: text
+
+Demo examples:
+
 - .. extref:: trading_chart
       :type: text
 - .. extref:: delhi_climate
@@ -454,7 +463,7 @@ Examples:
 :py:mod:`geom_imshow() <lets_plot.geom_imshow>`,
 :py:mod:`matrix of images <lets_plot.bistro.im.image_matrix>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: image_101
       :type: text
@@ -489,10 +498,13 @@ Examples:
 :py:mod:`facet_grid() <lets_plot.facet_grid>`,
 :py:mod:`facet_wrap() <lets_plot.facet_wrap>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: facets
       :type: text
+
+Demo examples:
+
 - .. extref:: covid19_and_mobility
       :type: text
 
@@ -512,7 +524,7 @@ Examples:
 :py:mod:`coord_flip() <lets_plot.coord_flip>`,
 :py:mod:`coord_map() <lets_plot.coord_map>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: coordinate_systems
       :type: text
@@ -534,7 +546,7 @@ Examples:
 :py:mod:`guides() <lets_plot.guides>`,
 :py:mod:`layer_key() <lets_plot.layer_key>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: legend
       :type: text
@@ -579,19 +591,22 @@ GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mo
 
 Learn more: :doc:`GeoPandas Support </python/pages/geopandas>`.
 
-Examples:
+Cookbooks:
 
-- .. extref:: geopandas_kotlin_isl
-      :type: text
 - .. extref:: geopandas_naturalearth
-      :type: text
-- .. extref:: plotting_airbnb_prices_boston
-      :type: text
-- .. extref:: soil_pollutants_with_gaussian_processes
       :type: text
 - .. extref:: ivindo_river
       :type: text
 - .. extref:: projection_provided
+      :type: text
+
+Demo examples:
+
+- .. extref:: geopandas_kotlin_isl
+      :type: text
+- .. extref:: plotting_airbnb_prices_boston
+      :type: text
+- .. extref:: soil_pollutants_with_gaussian_processes
       :type: text
 
 
@@ -606,11 +621,9 @@ Examples:
 
 :py:mod:`ggbunch <lets_plot.ggbunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
-Examples:
+Cookbooks:
 
-- .. extref:: ggbunch_indonesia
-      :type: text
-- .. extref:: geopandas_kotlin_isl
+- .. extref:: ggbunch
       :type: text
 - .. extref:: plot_grid
       :type: text
@@ -618,7 +631,12 @@ Examples:
       :type: text
 - .. extref:: gggrid_legend_collect
       :type: text
-- .. extref:: ggbunch
+
+Demo examples:
+
+- .. extref:: ggbunch_indonesia
+      :type: text
+- .. extref:: geopandas_kotlin_isl
       :type: text
 
 
@@ -638,7 +656,7 @@ Examples:
 :py:mod:`ylab() <lets_plot.ylab>`,
 :py:mod:`labs() <lets_plot.labs>`
 
-Examples:
+Cookbooks:
 
 - .. extref:: themes
       :type: text
@@ -702,7 +720,7 @@ Predefined Themes
         .. extref:: complete_themes
             :image: minimal
 
-Examples:
+Cookbooks:
 
 - .. extref:: theme_flavors
       :type: text
@@ -726,7 +744,7 @@ Color Schemes (Flavors)
   :width: 1000
   :height: 117
 
-Examples:
+Cookbooks:
 
 - .. extref:: named_system_colors
       :type: text
@@ -779,7 +797,7 @@ Use the :py:mod:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`
 
 This function adds a toolbar containing three tool-buttons: pan, rubber-band zoom, and center-point zoom.
 
-Examples:
+Demo examples:
 
 - .. extref:: interact_pan_zoom
       :type: text
@@ -808,13 +826,16 @@ In tooltips/labels/texts and wherever else there is text, you can use:
   - links with anchor tags (``<a href="https://lets-plot.org">Lets-Plot</a>``), and
   - multiple lines using double space and a newline delimiter (``\n``).
 
-Examples:
+Cookbooks:
 
-- .. extref:: lp_verse
-      :type: text
 - .. extref:: latex_support
       :type: text
 - .. extref:: markdown
+      :type: text
+
+Demo examples:
+
+- .. extref:: lp_verse
       :type: text
 
 
@@ -825,7 +846,7 @@ In Lets-Plot, as in ggplot2, legends are automatically generated based on the ae
 Sometimes, however, this automatic generation doesn't provide the precise control needed for complex visualizations.
 Options ``manual_key`` and ``override_aes`` addresses this limitation.
 
-Examples:
+Cookbooks:
 
 - .. extref:: manual_legend
       :type: text
@@ -835,30 +856,37 @@ Multiple Color Scales
 
 Use ``color_by``/``fill_by`` parameters and ``paint_a``/``paint_b``/``paint_c`` aesthetics if you need to display two different layers with the same color aesthetic but different color scales.
 
-Examples:
+Cookbooks:
 
 - .. extref:: multiple_color_scales
-      :type: text
-- .. extref:: palmer_penguins
-      :type: text
-- .. extref:: mpg_corrgram
-      :type: text
-- .. extref:: montenegrin_independence_referendum
       :type: text
 - |waterfall_plot|, section "Additional Layers with ``background_layers`` Parameter"
 
 .. |waterfall_plot| extref:: waterfall_plot
       :type: text
 
+Demo examples:
+
+- .. extref:: palmer_penguins
+      :type: text
+- .. extref:: mpg_corrgram
+      :type: text
+- .. extref:: montenegrin_independence_referendum
+      :type: text
+
+
 Scale Functions
 ~~~~~~~~~~~~~~~
 
 To specify a scale for any group of aesthetics, use the special scale functions: :py:mod:`scale_manual() <lets_plot.scale_manual>`, :py:mod:`scale_continuous() <lets_plot.scale_continuous>`, :py:mod:`scale_gradient() <lets_plot.scale_gradient>`, etc.
 
-Examples:
+Cookbooks:
 
 - .. extref:: scale_functions
       :type: text
+
+Demo examples:
+
 - .. extref:: palmer_penguins
       :type: text
 - .. extref:: montenegrin_independence_referendum
@@ -871,7 +899,7 @@ Quantiles
 
 Density-like plots let you show the quantiles by mapping them to a particular colour palette.
 
-Examples:
+Cookbooks:
 
 - .. extref:: quantile_parameters
       :type: text
@@ -883,10 +911,13 @@ Stackable Position Adjustments
 
 To configure positioning where groups are stacked on top of each other, use the :py:mod:`position_stack() <lets_plot.position_stack>` and :py:mod:`position_fill() <lets_plot.position_fill>` functions.
 
-Examples:
+Cookbooks:
 
 - .. extref:: position_stack
       :type: text
+
+Demo examples:
+
 - .. extref:: nobel
       :type: text
 
