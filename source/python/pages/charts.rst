@@ -616,9 +616,9 @@ Examples:
       :type: text
 - .. extref:: gggrid_scale_share
       :type: text
-- .. extref:: ggbunch
+- .. extref:: gggrid_legend_collect
       :type: text
-- .. extref:: themes
+- .. extref:: ggbunch
       :type: text
 
 
