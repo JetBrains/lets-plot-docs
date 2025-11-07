@@ -80,6 +80,11 @@ What Is New in 4.8.0
 Recent Updates in the :doc:`Gallery </python/pages/gallery>`
 ------------------------------------------------------------
 
+.. image:: /_static/images/changelog/4.8.0/square-cities_density.png
+  :width: 128
+  :height: 128
+  :target: https://lets-plot.org/examples/demo/cities_density.html
+
 .. image:: /_static/images/changelog/4.7.0/square-raincloud.png
   :width: 128
   :height: 128
