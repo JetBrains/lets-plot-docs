@@ -36,12 +36,6 @@ You can pass tidy data to *Lets-Plot* in form of a **Pandas** Dataframe, a **Pol
     :text: example notebook
 
 
-Cookbooks:
-
-- .. extref:: stat_data_bijection
-      :type: text
-
-
 |l2| |d2| Aesthetics
 --------------------
 
