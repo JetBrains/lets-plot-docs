@@ -36,6 +36,7 @@ extensions = [
     "notfound.extension",
     "numpydoc",
     "sphinxext.opengraph",
+    "sphinx_copybutton",
     "sphinx_design",
     "sphinx_reredirects",
     # custom extensions
@@ -182,6 +183,11 @@ numpydoc_show_class_members = False
 ogp_site_url = "https://lets-plot.org/"
 ogp_site_name = "Lets-Plot"
 ogp_image = "_static/images/open-graph.png"
+
+# -- Copybutton extension ----------------------------------------------------
+
+# Only jupyter-execute code blocks coming from autodoc docstrings
+copybutton_selector = "dl.py .jupyter_container .cell_input div.highlight pre"
 
 # -- Sphinx redirects extension ----------------------------------------------
 
