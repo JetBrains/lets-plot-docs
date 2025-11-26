@@ -43,6 +43,7 @@ extensions = [
     "create_cname",
     "create_sitemap",
     "extref",
+    "seo_meta",
     "switch_lets_plot",
 ]
 
