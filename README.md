@@ -54,6 +54,12 @@ You can hide warnings with `-W` flag:
 pytest test -W ignore
 ```
 
+To run tests with parallel workers:
+
+```bash
+pytest test -n auto
+```
+
 For more details [read the docs](https://docs.pytest.org).
 
 ## Directory structure
