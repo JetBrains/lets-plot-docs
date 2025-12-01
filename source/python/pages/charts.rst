@@ -274,8 +274,6 @@ Cookbooks:
 - .. extref:: continuous_color_scales
       :type: text
       :text: Using scales
-- .. extref:: geom_histogram_threshold
-      :type: text
 
 
 |l7| |d7| Stats
