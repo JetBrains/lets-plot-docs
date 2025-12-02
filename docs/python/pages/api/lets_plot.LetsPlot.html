@@ -7,14 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="LetsPlot" />
+<meta content="Initialize the library and its options." name="description" />
+<meta property="og:title" content="LetsPlot | Lets-Plot Python API" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/api/lets_plot.LetsPlot.html" />
 <meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="Initialize the library and its options." />
 <meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
 <meta property="og:image:alt" content="Lets-Plot" />
 
-    <title>LetsPlot</title>
+    <title>LetsPlot | Lets-Plot Python API</title>
   
   
   
@@ -39,6 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
@@ -50,10 +53,12 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=0b4ca7ae"></script>
+    <script src="../../../_static/documentation_options.js?v=af3423b7"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=5db22178"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -150,7 +155,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.8.0</p>
+  <p>v4.8.1</p>
 </a>
 </div>
     
@@ -475,29 +480,87 @@
 <dd><p>Initialize the library and its options.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lets_plot.LetsPlot.setup_html">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isolated_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_js</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lets_plot.LetsPlot.setup_html" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isolated_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_js</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lets_plot.LetsPlot.setup_html" title="Link to this definition">#</a></dt>
 <dd><p>Configure Lets-Plot HTML output.
-Depending on the usage, LetsPlot generates different HTML to show plots.
-In most cases LetsPlot will detect type of the environment automatically.
-Auto-detection can be overwritten using this method parameters.</p>
-<dl class="field-list simple">
+This method should typically be called before rendering any plots.
+Depending on the usage, Lets-Plot generates different HTML to show plots.
+In most cases Lets-Plot will detect the type of the environment automatically.
+Use this method to adjust or override the autoconfigured output mode.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>isolated_frame</strong><span class="classifier">bool</span></dt><dd><p>True - generate HTML which can be used in iframe or in a standalone HTML document.
-False - pre-load Lets-Plot JS library. Notebook cell output will only consist
-of HTML for the plot rendering. Default: None - auto-detect.</p>
+False - preload Lets-Plot JS library. Notebook cell output will only consist
+of HTML for the plot rendering. Default: auto-detect.</p>
 </dd>
 <dt><strong>offline</strong><span class="classifier">bool</span></dt><dd><p>True - full Lets-Plot JS bundle will be added to the notebook.
-Use this option if you would like to work with notebook
-without the Internet connection. False - load Lets-Plot JS library from CDN.
-Default (None): ‘connected’ mode in production environment
-and ‘offline’ mode in dev environment.</p>
+Use this option if you would like to work with a notebook without the Internet connection.
+False - load Lets-Plot JS library from CDN.
+Default: ‘connected’ mode in the production environment, ‘offline’ mode in the dev environment.</p>
 </dd>
 <dt><strong>no_js</strong><span class="classifier">bool, default=False</span></dt><dd><p>True - do not generate HTML+JS as an output - just static SVG image.
-Note that without JS interactive maps and tooltips doesn’t work!</p>
+Note that without JS interactive maps and tooltips don’t work!</p>
 </dd>
-<dt><strong>show_status</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether to show status of loading of the Lets-Plot JS library.
+<dt><strong>show_status</strong><span class="classifier">bool, default=False</span></dt><dd><p>Whether to show the Lets-Plot JS library loading status.
 Only applicable when the Lets-Plot JS library is preloaded.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Advanced display options for developers testing in new environments
+or debugging rendering behavior. These options control the underlying
+HTML rendering:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>isolated_webview_panel<span class="classifier">bool</span></dt><dd><p>If True, generates HTML for an isolated webview panel with dynamic script loading.
+When enabled, the ‘isolated_frame’ parameter is ignored.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>width_mode<span class="classifier">str</span></dt><dd><p>Plot width sizing mode: ‘fixed’, ‘min’, ‘fit’, or ‘scaled’.
+Requires height_mode to also be specified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>height_mode<span class="classifier">str</span></dt><dd><p>Plot height sizing mode: ‘fixed’, ‘min’, ‘fit’, or ‘scaled’.
+Requires width_mode to also be specified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>width<span class="classifier">float</span></dt><dd><p>Explicit width value in px (used with certain sizing modes).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>height<span class="classifier">float</span></dt><dd><p>Explicit height value in px (used with certain sizing modes).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>force_immediate_render<span class="classifier">bool</span></dt><dd><p>Controls the timing of plot rendering.
+If True, renders plot immediately.
+If False, waits for the ResizeObserver event to ensure proper DOM layout.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>responsive<span class="classifier">bool</span></dt><dd><p>If True, the plot automatically resizes when the container is resized.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>height100pct<span class="classifier">bool</span></dt><dd><p>If True, sets the plot container div height to 100%.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Sizing modes:</p>
+<ul class="simple">
+<li><p>‘fixed’: Uses specified width/height or default size (not responsive)</p></li>
+<li><p>‘min’: Uses smallest of: default size, specified size, and container size</p></li>
+<li><p>‘fit’: Uses container size or specified size if provided</p></li>
+<li><p>‘scaled’: Adjusts to preserve the aspect ratio</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -513,18 +576,18 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="jGwzc5"></div>
+<div id="Vh8aTQ"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
-    }; 
+    };
     window.letsPlotCall = function(f) {
         window.letsPlotCallQueue.push(f);
     };
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.1/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -537,13 +600,13 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("jGwzc5").appendChild(div);
+            document.getElementById("Vh8aTQ").appendChild(div);
         };
-        var e = document.getElementById("jGwzc5");
+        var e = document.getElementById("Vh8aTQ");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="4piX2P"></div>
+</div><div class="output text_html">   <div id="7Wok9T" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -568,7 +631,7 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
        };
    }
 
-   const containerDiv = document.getElementById("4piX2P");
+   const containerDiv = document.getElementById("7Wok9T");
    let fig = null;
 
    function renderPlot() {
@@ -660,7 +723,7 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div style="color:darkblue;">Lets-Plot v4.8.0: static SVG output configured.</div></div><div class="output text_html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
+<div class="output text_html"><div style="color:darkblue;">Lets-Plot v4.8.1: static SVG output configured.</div></div><div class="output text_html"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
   <style type="text/css">
   .plt-container {
    font-family: sans-serif;
@@ -672,7 +735,7 @@ Only applicable when the Lets-Plot JS library is preloaded.</p>
 text {
    text-rendering: optimizeLegibility;
 }
-#pWwPVeE .plot-title {
+#pvRSwbd .plot-title {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -680,7 +743,7 @@ font-family: sans-serif;
 font-size: 16.0px;
 
 }
-#pWwPVeE .plot-subtitle {
+#pvRSwbd .plot-subtitle {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -688,7 +751,7 @@ font-family: sans-serif;
 font-size: 15.0px;
 
 }
-#pWwPVeE .plot-caption {
+#pvRSwbd .plot-caption {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -696,13 +759,13 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#pWwPVeE .hyperlink-element {
+#pvRSwbd .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
 font-style: normal;
 
 }
-#pWwPVeE .legend-title {
+#pvRSwbd .legend-title {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -710,7 +773,7 @@ font-family: sans-serif;
 font-size: 15.0px;
 
 }
-#pWwPVeE .legend-item {
+#pvRSwbd .legend-item {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -718,7 +781,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#pWwPVeE .axis-title-x {
+#pvRSwbd .axis-title-x {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -726,7 +789,7 @@ font-family: sans-serif;
 font-size: 15.0px;
 
 }
-#pWwPVeE .axis-text-x {
+#pvRSwbd .axis-text-x {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -734,7 +797,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#dfuKNpO .axis-tooltip-text-x {
+#do5Nw1A .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
 font-style: normal;
@@ -742,7 +805,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#pWwPVeE .axis-title-y {
+#pvRSwbd .axis-title-y {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -750,7 +813,7 @@ font-family: sans-serif;
 font-size: 15.0px;
 
 }
-#pWwPVeE .axis-text-y {
+#pvRSwbd .axis-text-y {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -758,7 +821,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#dfuKNpO .axis-tooltip-text-y {
+#do5Nw1A .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
 font-style: normal;
@@ -766,7 +829,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#pWwPVeE .facet-strip-text-x {
+#pvRSwbd .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -774,7 +837,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#pWwPVeE .facet-strip-text-y {
+#pvRSwbd .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -782,7 +845,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#dfuKNpO .tooltip-text {
+#do5Nw1A .tooltip-text {
 fill: #474747;
 font-weight: normal;
 font-style: normal;
@@ -790,7 +853,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#dfuKNpO .tooltip-title {
+#do5Nw1A .tooltip-title {
 fill: #474747;
 font-weight: bold;
 font-style: normal;
@@ -798,7 +861,7 @@ font-family: sans-serif;
 font-size: 13.0px;
 
 }
-#dfuKNpO .tooltip-label {
+#do5Nw1A .tooltip-label {
 fill: #474747;
 font-weight: bold;
 font-style: normal;
@@ -808,7 +871,7 @@ font-size: 13.0px;
 }
 
   </style>
-  <g id="pWwPVeE">
+  <g id="pvRSwbd">
     <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z">
     </path>
     <g transform="translate(21.0 6.0 ) ">
@@ -842,7 +905,7 @@ font-size: 13.0px;
           </g>
         </g>
       </g>
-      <g clip-path="url(#crFMhkw)" clip-bounds-jfx="[rect (31.015306675749617, 0.0), (541.9846933242504, 354.0)]">
+      <g clip-path="url(#cRUA7gS)" clip-bounds-jfx="[rect (31.015306675749617, 0.0), (541.9846933242504, 354.0)]">
         <g transform="translate(31.015306675749617 0.0 ) ">
           <g>
             <g>
@@ -855,7 +918,7 @@ font-size: 13.0px;
           </g>
         </g>
         <defs>
-          <clipPath id="crFMhkw">
+          <clipPath id="cRUA7gS">
             <rect x="31.015306675749617" y="0.0" width="541.9846933242504" height="354.0">
             </rect>
           </clipPath>
@@ -963,7 +1026,7 @@ font-size: 13.0px;
     <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z" pointer-events="none">
     </path>
   </g>
-  <g id="dfuKNpO">
+  <g id="do5Nw1A">
   </g>
 </svg></div></div>
 </div>
@@ -1011,18 +1074,18 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="3j3luy"></div>
+<div id="zXV014"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
-    }; 
+    };
     window.letsPlotCall = function(f) {
         window.letsPlotCallQueue.push(f);
     };
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.1/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1035,13 +1098,13 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("3j3luy").appendChild(div);
+            document.getElementById("zXV014").appendChild(div);
         };
-        var e = document.getElementById("3j3luy");
+        var e = document.getElementById("zXV014");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="TcxKpK"></div>
+</div><div class="output text_html">   <div id="z6Y5xB" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1066,7 +1129,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
        };
    }
 
-   const containerDiv = document.getElementById("TcxKpK");
+   const containerDiv = document.getElementById("z6Y5xB");
    let fig = null;
 
    function renderPlot() {
@@ -1156,18 +1219,18 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="yZ8D3B"></div>
+<div id="QgPEUS"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
-    }; 
+    };
     window.letsPlotCall = function(f) {
         window.letsPlotCallQueue.push(f);
     };
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.0/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.1/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1180,13 +1243,13 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("yZ8D3B").appendChild(div);
+            document.getElementById("QgPEUS").appendChild(div);
         };
-        var e = document.getElementById("yZ8D3B");
+        var e = document.getElementById("QgPEUS");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="XRt6Ho"></div>
+</div><div class="output text_html">   <div id="pZ5orJ" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1211,7 +1274,7 @@ For more info see <a class="reference external" href="https://lets-plot.org/pyth
        };
    }
 
-   const containerDiv = document.getElementById("XRt6Ho");
+   const containerDiv = document.getElementById("pZ5orJ");
    let fig = null;
 
    function renderPlot() {
