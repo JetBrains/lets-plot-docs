@@ -97,6 +97,7 @@ transformations = [
     Transformation(re.compile(r"^python\/pages\/include"), _set_to_remove()),
     Transformation(re.compile(r"^kotlin\/api-reference\/navigation\.html$"), _set_to_remove()),
     Transformation(re.compile(r"^kotlin\/-lets--plot--kotlin\/.*"), _set_to_remove()),
+    Transformation(re.compile(r"^(?!.*index\.html$)kotlin\/api-reference\/-lets--plot--kotlin.*$"), _set_to_remove()),
     Transformation(re.compile(r"^python\/pages\/api\.html$"), _set_changefreq('monthly')),
     Transformation(re.compile(r"^python\/pages\/whats_new\.html$"), _set_changefreq('monthly')),
     Transformation(re.compile(r"^kotlin\/api-reference\/index\.html$"), _set_changefreq('monthly')),
