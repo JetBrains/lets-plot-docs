@@ -65,6 +65,10 @@ version = lets_plot.__version__
 # The full version, including alpha/beta/rc tags.
 release = lets_plot.__version__
 
+# The suffix to append to source links.
+# Default is '.txt'.
+html_sourcelink_suffix = ""
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -151,7 +155,7 @@ html_theme_options = {
     "show_prev_next": False,
     "navbar_start": ["navbar-logo", "navbar-version"],
     "navbar_end": ["theme-switcher", "navbar-icon-links"],
-    "article_header_start": [],
+    "article_header_start": ["download-notebook"],
     "footer_start": ["copyright"],
     "footer_center": ["sphinx-and-theme-version"],
     "footer_end": ["terms"],
