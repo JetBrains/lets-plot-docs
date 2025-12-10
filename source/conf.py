@@ -33,6 +33,7 @@ extensions = [
     "sphinx.ext.githubpages",
     # installed extensions
     "jupyter_sphinx",
+    "myst_nb",
     "notfound.extension",
     "numpydoc",
     "sphinxext.opengraph",
@@ -159,6 +160,25 @@ html_theme_options = {
         "index": [],
     },
 }
+
+# -- MyST-NB extension -------------------------------------------------------
+
+nb_execution_mode = "auto"
+nb_execution_raise_on_error = True
+nb_execution_excludepatterns = [
+    "examples/cookbook/*.ipynb",
+    "examples/cookbook/**/*.ipynb",
+    "examples/demo/*.ipynb",
+    "examples/demo/**/*.ipynb",
+    "examples/issue/*.ipynb",
+    "examples/issue/**/*.ipynb",
+    "examples/service/*.ipynb",
+    "examples/service/**/*.ipynb",
+    "examples/test/*.ipynb",
+    "examples/test/**/*.ipynb",
+    "kotlin_examples/*.ipynb",
+    "kotlin_examples/**/*.ipynb",
+]
 
 # -- Not found (404) extension -----------------------------------------------
 
