@@ -168,19 +168,13 @@ html_theme_options = {
 # -- MyST-NB extension -------------------------------------------------------
 
 nb_execution_mode = "auto"
+nb_execution_timeout = 5 * 60
 nb_execution_raise_on_error = True
 nb_execution_excludepatterns = [
-    "examples/cookbook/*.ipynb",
-    "examples/cookbook/**/*.ipynb",
-    "examples/demo/*.ipynb",
-    "examples/demo/**/*.ipynb",
+    "examples/demo/nyc_metro.ipynb",
     "examples/issue/*.ipynb",
-    "examples/issue/**/*.ipynb",
     "examples/service/*.ipynb",
-    "examples/service/**/*.ipynb",
     "examples/test/*.ipynb",
-    "examples/test/**/*.ipynb",
-    "kotlin_examples/*.ipynb",
     "kotlin_examples/**/*.ipynb",
 ]
 
