@@ -58,8 +58,8 @@ Predefined Patterns
 See |line_types-predefined-patterns|.
 
 .. |line_types-predefined-patterns| extref:: aesthetics_line_types
-    :ref: nbviewer-predefined-patterns
     :type: text
+    :target-id: predefined-patterns
     :text: example notebook
 
 Custom Patterns
@@ -84,8 +84,8 @@ Ways to specify the ``linetype``:
 See |line_types-custom-patterns|.
 
 .. |line_types-custom-patterns| extref:: aesthetics_line_types
-    :ref: nbviewer-custom-patterns
     :type: text
+    :target-id: custom-patterns
     :text: example notebook
 
 
@@ -116,8 +116,8 @@ You can also use the name of any other font installed on your system (e.g. ``"Ti
 See |text-font-family|.
 
 .. |text-font-family| extref:: aesthetics_text_style
-    :ref: nbviewer-font-family
     :type: text
+    :target-id: font-family
     :text: example notebook
 
 Font Face
@@ -138,8 +138,8 @@ The default font face is ``'plain'``.
 See |text-font-face|.
 
 .. |text-font-face| extref:: aesthetics_text_style
-    :ref: nbviewer-font-face
     :type: text
+    :target-id: font-face
     :text: example notebook
 
 

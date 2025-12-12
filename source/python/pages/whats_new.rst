@@ -88,22 +88,22 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
 .. image:: /_static/images/changelog/4.7.0/square-raincloud.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/raincloud.ipynb
+  :target: https://lets-plot.org/examples/demo/raincloud.ipynb
 
 .. image:: /_static/images/changelog/4.7.0/square-europe_capitals.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/europe_capitals.ipynb
+  :target: https://lets-plot.org/examples/demo/europe_capitals.ipynb
 
 .. image:: /_static/images/changelog/4.7.0/square-trading_chart.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/trading_chart.ipynb
+  :target: https://lets-plot.org/examples/demo/trading_chart.ipynb
 
 .. image:: /_static/images/changelog/4.6.0/square-magnifier_inset.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/magnifier_inset.ipynb
+  :target: https://lets-plot.org/examples/demo/magnifier_inset.ipynb
 
 .. raw:: html
 
@@ -112,22 +112,22 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
 .. image:: /_static/images/changelog/4.6.0/square-ggbunch_indonesia.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/ggbunch_indonesia.ipynb
+  :target: https://lets-plot.org/examples/demo/ggbunch_indonesia.ipynb
 
 .. image:: /_static/images/changelog/4.7.0/square-lets_plot_in_2024.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/lets_plot_in_2024.ipynb
+  :target: https://lets-plot.org/examples/demo/lets_plot_in_2024.ipynb
 
 .. image:: /_static/images/changelog/4.7.0/square-plot_layout_scheme.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/plot_layout_scheme.ipynb
+  :target: https://lets-plot.org/examples/demo/plot_layout_scheme.ipynb
 
 .. image:: /_static/images/changelog/4.5.0/legend_theme.png
   :width: 128
   :height: 128
-  :target: https://nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source/examples/demo/theme_legend_scheme.ipynb
+  :target: https://lets-plot.org/examples/demo/theme_legend_scheme.ipynb
 
 
 Change Log

@@ -239,6 +239,7 @@ extref_logo_images = {
     'dataspell': "_static/images/logo/dataspell.png",
     'deepnote': "_static/images/logo/deepnote.svg",
     'kaggle': "_static/images/logo/kaggle.svg",
+    'myst_nb': "_static/images/logo/lets-plot.svg",
     'nbviewer': "_static/images/logo/jupyter.svg",
     'nextjournal': "_static/images/logo/nextjournal.svg",
     'pycharm': "_static/images/logo/pycharm.svg",
