@@ -44,6 +44,7 @@ extensions = [
     "create_cname",
     "create_sitemap",
     "extref",
+    "orphan_notebooks",
     "seo_meta",
     "switch_lets_plot",
 ]
@@ -53,7 +54,9 @@ extensions = [
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = [
+    "kotlin_examples/**",
+]
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -98,6 +101,11 @@ html_sidebars = {
     # Default to no sidebar
     '**': [],
 }
+
+# A list of warning codes to suppress arbitrary warning messages.
+suppress_warnings = [
+    "myst.header",
+]
 
 
 # ----------------------------------------------------------------------------
@@ -175,7 +183,6 @@ nb_execution_excludepatterns = [
     "examples/issue/*.ipynb",
     "examples/service/*.ipynb",
     "examples/test/*.ipynb",
-    "kotlin_examples/**/*.ipynb",
 ]
 
 # -- Not found (404) extension -----------------------------------------------
