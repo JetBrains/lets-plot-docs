@@ -92,6 +92,8 @@ Directive Options
     Explicit text for the reference.
 - ``title`` :
     Explicit title for the reference.
+- ``target-id`` :
+    Name of a section inside the notebook.
 - ``width`` :
     Width of the image if the ``:type:`` value is image or logo.
 - ``height`` :
@@ -199,6 +201,7 @@ class ExtRefDirective(Directive):
         'image': directives.unchanged,
         'title': directives.unchanged,
         'text': directives.unchanged,
+        'target-id': directives.unchanged,
         'width': directives.unchanged,
         'height': directives.unchanged,
     }
@@ -229,8 +232,8 @@ class ExtRefDirective(Directive):
     def _ref(self):
         ref = self._conf()['ref'][self._ref_type()]
         if self._ref_type() == "myst_nb":
-            return self._env().app.builder.get_relative_uri(self._env().docname, ref)
-        return ref
+            ref = self._env().app.builder.get_relative_uri(self._env().docname, ref)
+        return ref + self._target_id_option()
 
     def _ref_type(self):
         if 'ref' in self.options.keys():
@@ -312,6 +315,11 @@ class ExtRefDirective(Directive):
             self._alt(), self._title(), os.path.relpath(image_path, doc_dir),
             self._width_tag_option(), self._height_tag_option()
         )
+
+    def _target_id_option(self):
+        if 'target-id' in self.options.keys():
+            return "#" + self.options['target-id']
+        return ""
 
     def _width_tag_option(self):
         if 'width' in self.options.keys():
