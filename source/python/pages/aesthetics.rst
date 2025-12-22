@@ -34,7 +34,7 @@ See |point_shapes|.
 
 .. |point_shapes| extref:: aesthetics_point_shapes
     :type: text
-    :text: example notebook
+    :text: example
 
 
 .. _aesthetics_line_types:
@@ -60,7 +60,7 @@ See |line_types-predefined-patterns|.
 .. |line_types-predefined-patterns| extref:: aesthetics_line_types
     :type: text
     :target-id: predefined-patterns
-    :text: example notebook
+    :text: example
 
 Custom Patterns
 ~~~~~~~~~~~~~~~
@@ -86,7 +86,7 @@ See |line_types-custom-patterns|.
 .. |line_types-custom-patterns| extref:: aesthetics_line_types
     :type: text
     :target-id: custom-patterns
-    :text: example notebook
+    :text: example
 
 
 .. _aesthetics_text:
@@ -118,7 +118,7 @@ See |text-font-family|.
 .. |text-font-family| extref:: aesthetics_text_style
     :type: text
     :target-id: font-family
-    :text: example notebook
+    :text: example
 
 Font Face
 ~~~~~~~~~
@@ -140,7 +140,7 @@ See |text-font-face|.
 .. |text-font-face| extref:: aesthetics_text_style
     :type: text
     :target-id: font-face
-    :text: example notebook
+    :text: example
 
 
 .. _aesthetics_color_and_fill:
@@ -202,4 +202,4 @@ See |system_colors|.
 
 .. |system_colors| extref:: aesthetics_system_colors
     :type: text
-    :text: example notebook
+    :text: example

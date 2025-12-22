@@ -136,11 +136,11 @@ Examples
 Reference
 ---------
 
-The |geocoding_reference| notebook contains a demonstration code covering use-cases presented in this section.
+The "|geocoding_reference|" example contains a demonstration code covering use-cases presented in this section.
 
 .. |geocoding_reference| extref:: geocoding_reference
     :type: text
-    :text: geocoding_reference.ipynb
+    :text: geocoding_reference
 
 
 .. _geocoding_levels:
