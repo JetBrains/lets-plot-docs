@@ -14,7 +14,7 @@ from .generator import generate_pages, generate_notebooks
 from .lets_plot_errors import check_lets_plot_message_errors, check_warnings, check_copy_spec
 from .test_links import check_url
 
-EXCLUDED_PYTHON_NOTEBOOKS = ["nyc_metro"]
+EXCLUDED_PYTHON_NOTEBOOKS = []
 
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
@@ -57,7 +57,7 @@ def generate_local_notebook_refs():
 @pytest.mark.parametrize('notebook', notebook_paths)
 def test_notebook_has_no_errors(notebook):
     lpk_descriptor = None if LPK_DESCRIPTOR == "" else LPK_DESCRIPTOR
-    with notebook_parser(notebook, lpk_descriptor) as (parser, parser_type):
+    with notebook_parser(notebook, _to_html(notebook), lpk_descriptor) as (parser, parser_type):
         check_lets_plot_message_errors(parser, parser_type, notebook)
         check_copy_spec(parser, parser_type, notebook)
         check_warnings(parser, parser_type, notebook)
@@ -79,3 +79,11 @@ def test_notebook_ref_has_origin(page, nb_ref):
         if nb_name.replace(".ipynb", "") in EXCLUDED_PYTHON_NOTEBOOKS:
             return
         assert paths_contains_name(python_notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
+
+def _to_html(path):
+    html_path = None
+    if path.startswith("source/examples/") and path.endswith(".ipynb"):
+        html_path = "docs/{0}.html".format(path[7:-6])
+    if not os.path.isfile(html_path):
+        html_path = None
+    return html_path
