@@ -53,9 +53,7 @@ class notebook_parser(page_parser):
     def __enter__(self):
         if self.prepare_page:
             self._update_descriptors(revert=False)
-            subprocess.check_output("jupyter nbconvert --to notebook --inplace --execute {0}".format(self.notebook), \
-                                    shell=True, timeout=TIMEOUT)
-            subprocess.check_output("jupyter nbconvert --to html {0}".format(self.notebook), \
+            subprocess.check_output("jupyter nbconvert --to html --execute {0}".format(self.notebook),
                                     shell=True, timeout=TIMEOUT)
         return super().__enter__()
 
