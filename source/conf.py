@@ -43,6 +43,7 @@ extensions = [
     # custom extensions
     "create_cname",
     "create_sitemap",
+    "execute_notebooks",
     "extref",
     "orphan_notebooks",
     "seo_meta",
@@ -178,9 +179,7 @@ html_theme_options = {
 
 # -- MyST-NB extension -------------------------------------------------------
 
-nb_execution_mode = "auto"
-nb_execution_timeout = 5 * 60
-nb_execution_raise_on_error = True
+nb_execution_mode = "off"
 nb_execution_excludepatterns = [
     "examples/cookbook/lets_plot_cheatbook.ipynb",
     "examples/demo/nyc_metro.ipynb",
@@ -230,6 +229,15 @@ redirect_html_template_file = "_templates/redirect.html.template"
 # -- CNAME generator (extension) ---------------------------------------------
 
 cname_url = "lets-plot.org"
+
+# -- Execute notebooks (extension) -------------------------------------------
+
+execute_notebooks = True
+execute_notebooks_fail_on_error = True
+execute_notebooks_exclude = [
+    "examples/demo/nyc_metro.ipynb",
+    "kotlin_examples/**",
+]
 
 # -- Examples references manager (extension) ---------------------------------
 
