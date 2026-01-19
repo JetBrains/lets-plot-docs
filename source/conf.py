@@ -55,6 +55,9 @@ extensions = [
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
+    "examples/issue/**",
+    "examples/service/**",
+    "examples/test/**",
     "kotlin_examples/**",
 ]
 
@@ -181,9 +184,6 @@ nb_execution_raise_on_error = True
 nb_execution_excludepatterns = [
     "examples/cookbook/lets_plot_cheatbook.ipynb",
     "examples/demo/nyc_metro.ipynb",
-    "examples/issue/*.ipynb",
-    "examples/service/*.ipynb",
-    "examples/test/*.ipynb",
 ]
 
 # -- Not found (404) extension -----------------------------------------------
