@@ -87,6 +87,9 @@ def check_version(notebook):
         for line in file:
             if "%use lets-plot" in line:
                 return
+            if "from lets_plot import" in line:
+                break
+        for line in file:
             if "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot" in line:
                 match = re.search(r'lets-plot@v([0-9.]+)', line)
                 version = match.group(1)
