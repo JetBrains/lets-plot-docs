@@ -1,0 +1,1036 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Wind Rose" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/demo/wind_rose.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="The notebook is inspired by this plot." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="The notebook is inspired by this plot." />
+
+    <title>Wind Rose</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/demo/wind_rose';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/demo/wind_rose.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="wind-rose">
+<h1>Wind Rose<a class="headerlink" href="#wind-rose" title="Link to this heading">#</a></h1>
+<p>The notebook is inspired by <a class="reference external" href="https://mesonet.cdn.columbiascanner.org/onsite/windrose/IA_ASOS/PEA/PEA_yearly.png">this plot</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="7JB2TF"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("7JB2TF").appendChild(div);
+                };
+                var e = document.getElementById("7JB2TF");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/pea_wind.csv&quot;</span><span class="p">)</span>
+<span class="n">records_count</span> <span class="o">=</span> <span class="n">wind_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_float</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="n">wind_df</span> <span class="o">=</span> <span class="n">wind_df</span><span class="p">[</span><span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;sped&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">is_float</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+<span class="n">wind_df</span> <span class="o">=</span> <span class="n">wind_df</span><span class="p">[</span><span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;drct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">is_float</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+
+<span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;sped&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;sped&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;drct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;drct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">wind_df</span> <span class="o">=</span> <span class="n">wind_df</span><span class="p">[</span><span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;sped&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">2.0</span><span class="p">)]</span>
+
+<span class="n">wind_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>valid</th>
+      <th>drct</th>
+      <th>sped</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>PEA</td>
+      <td>2002-05-17 00:14</td>
+      <td>330.0</td>
+      <td>8.05</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PEA</td>
+      <td>2002-05-17 00:20</td>
+      <td>330.0</td>
+      <td>8.05</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PEA</td>
+      <td>2002-05-17 00:34</td>
+      <td>340.0</td>
+      <td>10.35</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>PEA</td>
+      <td>2002-05-17 00:40</td>
+      <td>340.0</td>
+      <td>10.35</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PEA</td>
+      <td>2002-05-17 00:54</td>
+      <td>340.0</td>
+      <td>14.95</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute calm</span>
+<span class="n">calm</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">wind_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">records_count</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Define the speed bins</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)]</span>
+<span class="n">bin_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;speed_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">wind_df</span><span class="p">[</span><span class="s1">&#39;sped&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">bin_ids</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Group by &#39;drct&#39; and &#39;speed_group&#39;, and count the occurrences</span>
+<span class="n">grouped_counts</span> <span class="o">=</span> <span class="n">wind_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;drct&#39;</span><span class="p">,</span> <span class="s1">&#39;speed_group&#39;</span><span class="p">],</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate the total number of observations in the dataset</span>
+<span class="n">total_observations</span> <span class="o">=</span> <span class="n">wind_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate the percentage of each speed group within each direction relative to the total number of observations</span>
+<span class="n">grouped_counts</span><span class="p">[</span><span class="s1">&#39;percentage_of_total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">grouped_counts</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total_observations</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">grouped_counts</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_bar</span><span class="p">(</span>
+        <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;drct&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_of_total&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;speed_group&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span> 
+        <span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span>
+        <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span>
+        <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^y&#39;</span><span class="p">,</span> <span class="s1">&#39;{.2g}%&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^x&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">°&#39;</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_rect</span><span class="p">(</span>
+        <span class="c1"># Visually align the width of the rectangle with the bars - widen it by 5 (half a bar width)</span>
+        <span class="n">xmin</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span> 
+        <span class="n">ymin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Calm</span><span class="se">\n</span><span class="si">{</span><span class="n">calm</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_fill_manual</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Wind Speed (mph):&#39;</span><span class="p">,</span> 
+        <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#002bff&#39;</span><span class="p">,</span> <span class="s1">&#39;#03d3f8&#39;</span><span class="p">,</span> <span class="s1">&#39;#7afe81&#39;</span><span class="p">,</span> <span class="s1">&#39;#fde609&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff4404&#39;</span><span class="p">,</span> <span class="s1">&#39;#780200&#39;</span><span class="p">],</span> 
+        <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;2 - 4.9&#39;</span><span class="p">,</span> 
+            <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;5 - 6.9&#39;</span><span class="p">,</span> 
+            <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;7 - 9.9&#39;</span><span class="p">,</span> 
+            <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;10 - 14.9&#39;</span><span class="p">,</span> 
+            <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;15 - 19.9&#39;</span><span class="p">,</span> 
+            <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;20+&#39;</span>
+        <span class="p">},</span>
+    <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_y_continuous</span><span class="p">(</span>
+        <span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="c1"># To not add automatically generated ticks for values outside of the data range</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span>
+    <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_x_continuous</span><span class="p">(</span>
+        <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
+            <span class="mi">45</span><span class="p">:</span>  <span class="s1">&#39;NE&#39;</span><span class="p">,</span> 
+            <span class="mi">90</span><span class="p">:</span>  <span class="s1">&#39;E&#39;</span><span class="p">,</span> 
+            <span class="mi">135</span><span class="p">:</span> <span class="s1">&#39;SE&#39;</span><span class="p">,</span> 
+            <span class="mi">180</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> 
+            <span class="mi">225</span><span class="p">:</span> <span class="s1">&#39;SW&#39;</span><span class="p">,</span>
+            <span class="mi">270</span><span class="p">:</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span>
+            <span class="mi">315</span><span class="p">:</span> <span class="s1">&#39;NW&#39;</span><span class="p">,</span>
+            <span class="mi">360</span><span class="p">:</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> 
+        <span class="p">},</span>
+    <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">labs</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Wind rose for [PEA] PELLA&quot;</span><span class="p">,</span>
+        <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;Observations from 2002 to 2024&quot;</span><span class="p">,</span>
+        <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;Data is provided by the Iowa Environmental Mesonet of Iowa State University&quot;</span>
+    <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme_minimal2</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span>
+        <span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">),</span>
+        <span class="n">plot_subtitle</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span>
+        <span class="n">panel_grid_minor_x</span><span class="o">=</span><span class="n">element_line</span><span class="p">(),</span>
+        <span class="n">panel_grid</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A0A0A0&#39;</span><span class="p">),</span>
+        <span class="n">axis_ticks_y</span><span class="o">=</span><span class="n">element_line</span><span class="p">(),</span>
+        <span class="n">axis_text_x</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span>
+        <span class="n">axis_title</span><span class="o">=</span><span class="n">element_blank</span><span class="p">()</span>
+    <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">coord_polar</span><span class="p">(</span>
+        <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="c1"># -1 is to make inner circle</span>
+        <span class="n">start</span><span class="o">=</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">36</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1"># Divide by 2 (i.e. rotate by half a bar width) to make the N-S axis perpendicular</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="DQiIpq" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("DQiIpq");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"drct":[10.0,10.0,10.0,10.0,10.0,10.0,20.0,20.0,20.0,20.0,20.0,20.0,30.0,30.0,30.0,30.0,30.0,30.0,40.0,40.0,40.0,40.0,40.0,40.0,50.0,50.0,50.0,50.0,50.0,50.0,60.0,60.0,60.0,60.0,60.0,60.0,70.0,70.0,70.0,70.0,70.0,70.0,80.0,80.0,80.0,80.0,80.0,80.0,90.0,90.0,90.0,90.0,90.0,90.0,100.0,100.0,100.0,100.0,100.0,100.0,110.0,110.0,110.0,110.0,110.0,110.0,120.0,120.0,120.0,120.0,120.0,120.0,130.0,130.0,130.0,130.0,130.0,130.0,140.0,140.0,140.0,140.0,140.0,140.0,150.0,150.0,150.0,150.0,150.0,150.0,160.0,160.0,160.0,160.0,160.0,160.0,170.0,170.0,170.0,170.0,170.0,170.0,180.0,180.0,180.0,180.0,180.0,180.0,190.0,190.0,190.0,190.0,190.0,190.0,200.0,200.0,200.0,200.0,200.0,200.0,210.0,210.0,210.0,210.0,210.0,210.0,220.0,220.0,220.0,220.0,220.0,220.0,230.0,230.0,230.0,230.0,230.0,230.0,240.0,240.0,240.0,240.0,240.0,240.0,250.0,250.0,250.0,250.0,250.0,250.0,260.0,260.0,260.0,260.0,260.0,260.0,270.0,270.0,270.0,270.0,270.0,270.0,280.0,280.0,280.0,280.0,280.0,280.0,290.0,290.0,290.0,290.0,290.0,290.0,300.0,300.0,300.0,300.0,300.0,300.0,310.0,310.0,310.0,310.0,310.0,310.0,320.0,320.0,320.0,320.0,320.0,320.0,330.0,330.0,330.0,330.0,330.0,330.0,340.0,340.0,340.0,340.0,340.0,340.0,350.0,350.0,350.0,350.0,350.0,350.0,360.0,360.0,360.0,360.0,360.0,360.0],
+"speed_group":[0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0,0.0,1.0,2.0,3.0,4.0,5.0],
+"percentage_of_total":[0.5965102522656505,0.4400585524047074,0.3258223632344609,0.3340620171283077,0.062153438631362974,0.010477584581064462,0.5673154292096747,0.37149649407813023,0.2370172046007786,0.23467754979141467,0.0353999945068974,0.008341378015993066,0.5413757780623794,0.35735684109980054,0.22867582658478552,0.22094479330167002,0.03438275328543484,0.00722241267238424,0.4857326832483767,0.30822409010315843,0.1560448033723581,0.1170844645903417,0.009155170993163122,0.0015258618321938536,0.4170689007996533,0.2196223797137687,0.09389136474099513,0.0434362001564517,0.0012206894657550828,2.034482442925138E-4,0.46986372019356065,0.26458444170241424,0.11108274138371253,0.07853102229691034,0.007832757405261782,5.086206107312845E-4,0.5644671537895796,0.4002844206455209,0.2020241065824662,0.15278963146367788,0.022175858627884005,0.004170689007996533,0.6440154173079524,0.5069930247769444,0.3290775351431411,0.2933723682698049,0.036010339239774945,0.008341378015993066,0.6419809348650274,0.534153365389995,0.36529132262720854,0.3211430536157331,0.03621378748406746,0.0032551719086802208,0.794668842206559,0.6189912832599733,0.42866545072432666,0.37261545942173907,0.04302930366786667,0.0068155161837992135,1.2473411857574022,1.0193774280276406,0.6783981705933874,0.6424895554757586,0.10396205283347455,0.028177581834513164,1.32485496683285,1.2287256714046373,0.8278309060262387,0.9216205466450876,0.17669480016804825,0.04770861328659449,1.1301549970449143,1.1293412040677442,0.8770653811450271,0.9836722611543043,0.17883100673311964,0.03570516687333618,1.0685101790242826,1.1418532710917337,0.8434964208367624,0.8846946903059963,0.1482120459670963,0.018005169619887473,0.9714653664967534,1.1221187913953599,0.8957826196199383,0.9759412278711888,0.1539085968072867,0.020853445039982668,0.8215240104531708,1.0114429465002324,0.8482774545776364,0.9810274339785017,0.19297065971144936,0.04770861328659449,0.7422809193012366,0.851329178242024,0.674329205707537,0.9866222606965458,0.26682237238963186,0.09592584718392026,0.6292654195967452,0.6701585166995405,0.5507343972998349,0.9384050267992199,0.26855168246611827,0.09256895115309378,0.6545947260111632,0.6408619695214186,0.5761654278363991,0.9266050286302542,0.2540051329992035,0.08321033191563815,0.610548181121834,0.5902033566925826,0.5068913006547981,0.7640498814405356,0.19775169345232343,0.05411723298180867,0.5885757707382424,0.5414775021845255,0.4777982017209687,0.6552050707440408,0.16509825024337496,0.0434362001564517,0.5325257794356549,0.5162499198922538,0.3989620070576196,0.5517516385212975,0.13142756581296391,0.03489137389616612,0.5002792327152915,0.45185855057367313,0.3564413240004842,0.45440165362732965,0.08738102092363469,0.026956892368758083,0.5413757780623794,0.5176740576023015,0.3922482149959667,0.4445344137791427,0.07466550565535257,0.02237930687217652,0.5599912924151443,0.5789119791343481,0.4089309710279528,0.3961137316375244,0.0781241258083253,0.03316206381967975,0.5374085372986752,0.6445240379186837,0.5168602646251313,0.580844737455127,0.13569997894310673,0.06886723069301592,0.49651544019588,0.5751481866149366,0.5099430243191858,0.7366860925831925,0.21067065696489806,0.10986205191795746,0.4378206217174897,0.5476826736354472,0.4687447548499518,0.7909050496871475,0.31788788170705284,0.16957411161781027,0.4875637174470093,0.5890843913489737,0.5524637073763212,1.027922254287926,0.47037234080429197,0.26377064872524414,0.5098413001970397,0.6265188682987963,0.677482653494071,1.403691161496199,0.6302826608182077,0.39641890400396324,0.5548033621856852,0.7358722996060224,0.7975171176266541,1.663799741824178,0.7029136840306353,0.4067947644628814,0.5127912997392811,0.7268188527350056,0.8001619448024568,1.6351135393789333,0.7783929826631578,0.44667062034421406,0.5039413011125567,0.6574430014312584,0.6443205896743912,1.1178463782652173,0.49427750950866234,0.26844995834397195,0.604241285548766,0.7059654076950229,0.6235688687565548,1.0018808790184843,0.30344305636228436,0.1284775662707225,0.6898929963959143,0.6288585231081602,0.5067895765326519,0.7156291992989174,0.17109997345000413,0.053913784737516166,0.7376016096825089,0.5689430151640149,0.4003861447676672,0.47179647851433953,0.08514309023641703,0.015360342444084794]
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"drct"
+},{
+"type":"int",
+"factor_levels":[0.0,1.0,2.0,3.0,4.0,5.0],
+"column":"speed_group"
+},{
+"type":"int",
+"column":"count"
+},{
+"type":"float",
+"column":"percentage_of_total"
+}]
+},
+"ggtitle":{
+"text":"Wind rose for [PEA] PELLA",
+"subtitle":"Observations from 2002 to 2024"
+},
+"caption":{
+"text":"Data is provided by the Iowa Environmental Mesonet of Iowa State University"
+},
+"ggsize":{
+"width":800.0,
+"height":800.0
+},
+"theme":{
+"name":"minimal2",
+"axis_title":{
+"blank":true
+},
+"axis_text_x":{
+"size":18.0,
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+},
+"panel_grid":{
+"color":"#A0A0A0",
+"blank":false
+},
+"panel_grid_minor_x":{
+"blank":false
+},
+"plot_title":{
+"face":"bold",
+"size":24.0,
+"blank":false
+},
+"plot_subtitle":{
+"size":18.0,
+"blank":false
+}
+},
+"coord":{
+"name":"polar",
+"ylim":[-1.0,null],
+"start":0.08722222222222223
+},
+"kind":"plot",
+"scales":[{
+"name":"Wind Speed (mph):",
+"aesthetic":"fill",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0],
+"labels":["2 - 4.9","5 - 6.9","7 - 9.9","10 - 14.9","15 - 19.9","20+"],
+"values":["#002bff","#03d3f8","#7afe81","#fde609","#ff4404","#780200"]
+},{
+"aesthetic":"y",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0],
+"format":"{}%"
+},{
+"aesthetic":"x",
+"breaks":[45.0,90.0,135.0,180.0,225.0,270.0,315.0,360.0],
+"labels":["NE","E","SE","S","SW","W","NW","N"]
+}],
+"layers":[{
+"geom":"bar",
+"stat":"identity",
+"mapping":{
+"x":"drct",
+"y":"percentage_of_total",
+"fill":"speed_group"
+},
+"tooltips":{
+"formats":[{
+"field":"^y",
+"format":"{.2g}%"
+},{
+"field":"^x",
+"format":"{}°"
+}]
+},
+"data_meta":{
+"mapping_annotations":[{
+"parameters":{
+"label":"speed_group",
+"order":1.0
+},
+"aes":"fill",
+"annotation":"as_discrete"
+}],
+"series_annotations":[{
+"column":"speed_group",
+"factor_levels":[0.0,1.0,2.0,3.0,4.0,5.0]
+}]
+},
+"size":0.0,
+"width":0.8,
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":5.0,
+"xmax":365.0,
+"ymin":-1.0,
+"ymax":0.0,
+"fill":"white",
+"size":0.0,
+"data":{
+}
+},{
+"geom":"hline",
+"mapping":{
+},
+"data_meta":{
+},
+"yintercept":0.0,
+"size":2.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":180.0,
+"y":-1.0,
+"label":"Calm\n14.3%",
+"hjust":"middle",
+"vjust":"center",
+"size":"10",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1205 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Continuous Color Scales" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/continuous_color_scales.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+
+    <title>Continuous Color Scales</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/continuous_color_scales';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/cookbook/continuous_color_scales.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="continuous-color-scales">
+<h1>Continuous Color Scales<a class="headerlink" href="#continuous-color-scales" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="DqrM9O"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("DqrM9O").appendChild(div);
+                };
+                var e = document.getElementById("DqrM9O");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/economics.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;psavert&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;psavert&#39;</span><span class="p">))</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Default&quot;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_gradient</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s1">&#39;#253494&#39;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s1">&#39;#ffffcc&#39;</span><span class="p">)</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Gradient color scale&quot;</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_continuous</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s1">&#39;#7a0177&#39;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s1">&#39;#feebe2&#39;</span><span class="p">)</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Continuous color scale&quot;</span><span class="p">)</span>
+<span class="n">p4</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_gradient2</span><span class="p">(</span><span class="n">midpoint</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="s1">&#39;#d7191c&#39;</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="s1">&#39;#ffffbf&#39;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s1">&#39;#1a9641&#39;</span><span class="p">)</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Diverging continuous color scale&quot;</span><span class="p">)</span>
+<span class="n">p5</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_gradientn</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#e41a1c&#39;</span><span class="p">,</span> <span class="s1">&#39;#377eb8&#39;</span><span class="p">,</span> <span class="s1">&#39;#e41a1c&#39;</span><span class="p">])</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Customized gradient color scale&quot;</span><span class="p">)</span>
+<span class="n">p6</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_grey</span><span class="p">()</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Grey color scale&quot;</span><span class="p">)</span>
+<span class="n">p7</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_brewer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;seq&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;BuPu&#39;</span><span class="p">)</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Brewer color scale&quot;</span><span class="p">)</span>
+<span class="n">p8</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_viridis</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Viridis color scale&quot;</span><span class="p">)</span>
+<span class="n">p9</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">scale_fill_cmapmpl</span><span class="p">(</span><span class="s1">&#39;hsv&#39;</span><span class="p">)</span> <span class="o">+</span> \
+         <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Matplotlib colormap color scale&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p5</span><span class="p">,</span> <span class="n">p6</span><span class="p">,</span> <span class="n">p7</span><span class="p">,</span> <span class="n">p8</span><span class="p">,</span> <span class="n">p9</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="gcQ9kX" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("gcQ9kX");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":3.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Default"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Gradient color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"low":"#253494",
+"high":"#ffffcc",
+"scale_mapper_kind":"color_gradient"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Continuous color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"scale_mapper_kind":"color_gradient",
+"low":"#7a0177",
+"high":"#feebe2"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Diverging continuous color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"low":"#d7191c",
+"mid":"#ffffbf",
+"high":"#1a9641",
+"midpoint":10.0,
+"scale_mapper_kind":"color_gradient2"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Customized gradient color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"colors":["#e41a1c","#377eb8","#e41a1c"],
+"scale_mapper_kind":"color_gradientn"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Grey color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"scale_mapper_kind":"color_grey"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Brewer color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"type":"seq",
+"palette":"BuPu",
+"scale_mapper_kind":"color_brewer"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"7"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Viridis color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"option":"magma",
+"scale_mapper_kind":"color_cmap"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"8"
+},{
+"data":{
+},
+"mapping":{
+"x":"psavert"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"date"
+},{
+"type":"float",
+"column":"pce"
+},{
+"type":"float",
+"column":"pop"
+},{
+"type":"float",
+"column":"psavert"
+},{
+"type":"float",
+"column":"uempmed"
+},{
+"type":"int",
+"column":"unemploy"
+}]
+},
+"ggtitle":{
+"text":"Matplotlib colormap color scale"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"colors":["#ff0000","#ff0600","#ff0c00","#ff1200","#ff1800","#ff1e00","#ff2300","#ff2900","#ff2f00","#ff3500","#ff3b00","#ff4100","#ff4700","#ff4d00","#ff5300","#ff5900","#ff5f00","#ff6400","#ff6a00","#ff7000","#ff7600","#ff7c00","#ff8200","#ff8800","#ff8e00","#ff9400","#ff9a00","#ff9f00","#ffa500","#ffab00","#ffb100","#ffb700","#ffbd00","#ffc300","#ffc900","#ffcf00","#ffd500","#ffdb00","#ffe000","#ffe600","#ffec00","#fef100","#fcf500","#faf900","#f8fd00","#f4ff00","#eeff00","#e8ff00","#e2ff00","#ddff00","#d7ff00","#d1ff00","#cbff00","#c5ff00","#bfff00","#b9ff00","#b3ff00","#adff00","#a7ff00","#a2ff00","#9cff00","#96ff00","#90ff00","#8aff00","#84ff00","#7eff00","#78ff00","#72ff00","#6cff00","#66ff00","#61ff00","#5bff00","#55ff00","#4fff00","#49ff00","#43ff00","#3dff00","#37ff00","#31ff00","#2bff00","#25ff00","#20ff00","#1aff00","#14ff00","#0eff00","#08ff00","#06ff04","#04ff08","#02ff0c","#00ff10","#00ff16","#00ff1b","#00ff21","#00ff27","#00ff2d","#00ff33","#00ff39","#00ff3f","#00ff45","#00ff4b","#00ff51","#00ff57","#00ff5c","#00ff62","#00ff68","#00ff6e","#00ff74","#00ff7a","#00ff80","#00ff86","#00ff8c","#00ff92","#00ff97","#00ff9d","#00ffa3","#00ffa9","#00ffaf","#00ffb5","#00ffbb","#00ffc1","#00ffc7","#00ffcd","#00ffd3","#00ffd8","#00ffde","#00ffe4","#00ffea","#00fff0","#00fff6","#00fffc","#00fcff","#00f6ff","#00f0ff","#00eaff","#00e5ff","#00dfff","#00d9ff","#00d3ff","#00cdff","#00c7ff","#00c1ff","#00bbff","#00b5ff","#00afff","#00aaff","#00a4ff","#009eff","#0098ff","#0092ff","#008cff","#0086ff","#0080ff","#007aff","#0074ff","#006eff","#0069ff","#0063ff","#005dff","#0057ff","#0051ff","#004bff","#0045ff","#003fff","#0039ff","#0033ff","#002dff","#0028ff","#0022ff","#001cff","#0016ff","#0010ff","#020cff","#0408ff","#0604ff","#0800ff","#0e00ff","#1300ff","#1900ff","#1f00ff","#2500ff","#2b00ff","#3100ff","#3700ff","#3d00ff","#4300ff","#4900ff","#4f00ff","#5400ff","#5a00ff","#6000ff","#6600ff","#6c00ff","#7200ff","#7800ff","#7e00ff","#8400ff","#8a00ff","#9000ff","#9500ff","#9b00ff","#a100ff","#a700ff","#ad00ff","#b300ff","#b900ff","#bf00ff","#c500ff","#cb00ff","#d000ff","#d600ff","#dc00ff","#e200ff","#e800ff","#ee00ff","#f400ff","#f800fd","#fa00f9","#fc00f5","#fe00f1","#ff00ed","#ff00e7","#ff00e1","#ff00db","#ff00d5","#ff00cf","#ff00c9","#ff00c3","#ff00bd","#ff00b7","#ff00b1","#ff00ac","#ff00a6","#ff00a0","#ff009a","#ff0094","#ff008e","#ff0088","#ff0082","#ff007c","#ff0076","#ff0071","#ff006b","#ff0065","#ff005f","#ff0059","#ff0053","#ff004d","#ff0047","#ff0041","#ff003b","#ff0035","#ff0030","#ff002a","#ff0024","#ff001e","#ff0018"],
+"scale_mapper_kind":"color_gradientn"
+}],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+"fill":"psavert"
+},
+"data_meta":{
+},
+"data":{
+"..count..":[1.0,3.0,9.0,18.0,17.0,28.0,23.0,25.0,37.0,56.0,33.0,23.0,37.0,30.0,26.0,17.0,30.0,32.0,37.0,20.0,26.0,25.0,11.0,7.0,2.0,0.0,0.0,0.0,0.0,1.0],
+"psavert":[2.111077777777778,2.6379,3.1647222222222227,3.691544444444445,4.218366666666667,4.745188888888889,5.272011111111112,5.798833333333334,6.3256555555555565,6.8524777777777786,7.379300000000001,7.906122222222224,8.432944444444445,8.959766666666667,9.48658888888889,10.013411111111113,10.540233333333335,11.067055555555557,11.593877777777779,12.120700000000001,12.647522222222223,13.174344444444447,13.70116666666667,14.227988888888891,14.754811111111113,15.281633333333335,15.808455555555557,16.33527777777778,16.862100000000005,17.388922222222227]
+}
+}],
+"metainfo_list":[],
+"spec_id":"9"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

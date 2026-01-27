@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Bitcoin Daily Trend Visualization (2024)" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/demo/trading_chart.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="This notebook was inspired by a Stack Overflow question." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="This notebook was inspired by a Stack Overflow question." />
+
+    <title>Bitcoin Daily Trend Visualization (2024)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/demo/trading_chart';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/demo/trading_chart.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="bitcoin-daily-trend-visualization-2024">
+<h1>Bitcoin Daily Trend Visualization (2024)<a class="headerlink" href="#bitcoin-daily-trend-visualization-2024" title="Link to this heading">#</a></h1>
+<p>This notebook was inspired by a <a class="reference external" href="https://stackoverflow.com/questions/78801684/how-to-use-2-colors-on-same-line-lets-plot-in-kotlin">Stack Overflow question</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="3AA3cN"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("3AA3cN").appendChild(div);
+                };
+                var e = document.getElementById("3AA3cN");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2024</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/refs/heads/master/data/Bitstamp_BTCUSD_d.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">trend</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(366, 10)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unix</th>
+      <th>date</th>
+      <th>symbol</th>
+      <th>open</th>
+      <th>high</th>
+      <th>low</th>
+      <th>close</th>
+      <th>Volume BTC</th>
+      <th>Volume USD</th>
+      <th>trend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1704067200</td>
+      <td>2024-01-01</td>
+      <td>BTC/USD</td>
+      <td>42258.0</td>
+      <td>44192.0</td>
+      <td>42188.0</td>
+      <td>44187.0</td>
+      <td>1633.498618</td>
+      <td>7.217940e+07</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1704153600</td>
+      <td>2024-01-02</td>
+      <td>BTC/USD</td>
+      <td>44187.0</td>
+      <td>45922.0</td>
+      <td>44167.0</td>
+      <td>44970.0</td>
+      <td>3948.659076</td>
+      <td>1.775712e+08</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1704240000</td>
+      <td>2024-01-03</td>
+      <td>BTC/USD</td>
+      <td>44972.0</td>
+      <td>45510.0</td>
+      <td>41454.0</td>
+      <td>42865.0</td>
+      <td>3980.828056</td>
+      <td>1.706382e+08</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1704326400</td>
+      <td>2024-01-04</td>
+      <td>BTC/USD</td>
+      <td>42863.0</td>
+      <td>44795.0</td>
+      <td>42656.0</td>
+      <td>44186.0</td>
+      <td>2918.119349</td>
+      <td>1.289400e+08</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1704412800</td>
+      <td>2024-01-05</td>
+      <td>BTC/USD</td>
+      <td>44195.0</td>
+      <td>44366.0</td>
+      <td>42500.0</td>
+      <td>44184.0</td>
+      <td>3155.466383</td>
+      <td>1.394211e+08</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pen&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;trend&quot;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mf">.6</span><span class="p">,</span>
+              <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;^x&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;^x&quot;</span><span class="p">,</span> <span class="s2">&quot;%A, %b </span><span class="si">%e</span><span class="s2">&quot;</span><span class="p">)</span>
+                                       <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;Close price|^y&quot;</span><span class="p">)</span>
+                                       <span class="o">.</span><span class="n">anchor</span><span class="p">(</span><span class="s1">&#39;top_left&#39;</span><span class="p">)</span>
+                                       <span class="o">.</span><span class="n">min_width</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">scale_x_datetime</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> \
+    <span class="n">scale_y_continuous</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;$.4~s&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_color_manual</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Trend&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">},</span>
+                       <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Downtrend&quot;</span><span class="p">,</span> <span class="s2">&quot;Uptrend&quot;</span><span class="p">])</span> <span class="o">+</span> \
+    <span class="n">ylab</span><span class="p">(</span><span class="s2">&quot;Close Price&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Bitcoin Daily Close Price with Up/Down Trend Coloring (</span><span class="si">{0}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">ggsize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme_light</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">flavor_darcula</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">),</span>
+          <span class="n">legend_position</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+          <span class="n">axis_title_x</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggtb</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="ahVOH3" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("ahVOH3");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"date":[1.7040672E12,1.7041536E12,1.70424E12,1.7043264E12,1.7044128E12,1.7044992E12,1.7045856E12,1.704672E12,1.7047584E12,1.7048448E12,1.7049312E12,1.7050176E12,1.705104E12,1.7051904E12,1.7052768E12,1.7053632E12,1.7054496E12,1.705536E12,1.7056224E12,1.7057088E12,1.7057952E12,1.7058816E12,1.705968E12,1.7060544E12,1.7061408E12,1.7062272E12,1.7063136E12,1.7064E12,1.7064864E12,1.7065728E12,1.7066592E12,1.7067456E12,1.706832E12,1.7069184E12,1.7070048E12,1.7070912E12,1.7071776E12,1.707264E12,1.7073504E12,1.7074368E12,1.7075232E12,1.7076096E12,1.707696E12,1.7077824E12,1.7078688E12,1.7079552E12,1.7080416E12,1.708128E12,1.7082144E12,1.7083008E12,1.7083872E12,1.7084736E12,1.70856E12,1.7086464E12,1.7087328E12,1.7088192E12,1.7089056E12,1.708992E12,1.7090784E12,1.7091648E12,1.7092512E12,1.7093376E12,1.709424E12,1.7095104E12,1.7095968E12,1.7096832E12,1.7097696E12,1.709856E12,1.7099424E12,1.7100288E12,1.7101152E12,1.7102016E12,1.710288E12,1.7103744E12,1.7104608E12,1.7105472E12,1.7106336E12,1.71072E12,1.7108064E12,1.7108928E12,1.7109792E12,1.7110656E12,1.711152E12,1.7112384E12,1.7113248E12,1.7114112E12,1.7114976E12,1.711584E12,1.7116704E12,1.7117568E12,1.7118432E12,1.7119296E12,1.712016E12,1.7121024E12,1.7121888E12,1.7122752E12,1.7123616E12,1.712448E12,1.7125344E12,1.7126208E12,1.7127072E12,1.7127936E12,1.71288E12,1.7129664E12,1.7130528E12,1.7131392E12,1.7132256E12,1.713312E12,1.7133984E12,1.7134848E12,1.7135712E12,1.7136576E12,1.713744E12,1.7138304E12,1.7139168E12,1.7140032E12,1.7140896E12,1.714176E12,1.7142624E12,1.7143488E12,1.7144352E12,1.7145216E12,1.714608E12,1.7146944E12,1.7147808E12,1.7148672E12,1.7149536E12,1.71504E12,1.7151264E12,1.7152128E12,1.7152992E12,1.7153856E12,1.715472E12,1.7155584E12,1.7156448E12,1.7157312E12,1.7158176E12,1.715904E12,1.7159904E12,1.7160768E12,1.7161632E12,1.7162496E12,1.716336E12,1.7164224E12,1.7165088E12,1.7165952E12,1.7166816E12,1.716768E12,1.7168544E12,1.7169408E12,1.7170272E12,1.7171136E12,1.7172E12,1.7172864E12,1.7173728E12,1.7174592E12,1.7175456E12,1.717632E12,1.7177184E12,1.7178048E12,1.7178912E12,1.7179776E12,1.718064E12,1.7181504E12,1.7182368E12,1.7183232E12,1.7184096E12,1.718496E12,1.7185824E12,1.7186688E12,1.7187552E12,1.7188416E12,1.718928E12,1.7190144E12,1.7191008E12,1.7191872E12,1.7192736E12,1.71936E12,1.7194464E12,1.7195328E12,1.7196192E12,1.7197056E12,1.719792E12,1.7198784E12,1.7199648E12,1.7200512E12,1.7201376E12,1.720224E12,1.7203104E12,1.7203968E12,1.7204832E12,1.7205696E12,1.720656E12,1.7207424E12,1.7208288E12,1.7209152E12,1.7210016E12,1.721088E12,1.7211744E12,1.7212608E12,1.7213472E12,1.7214336E12,1.72152E12,1.7216064E12,1.7216928E12,1.7217792E12,1.7218656E12,1.721952E12,1.7220384E12,1.7221248E12,1.7222112E12,1.7222976E12,1.722384E12,1.7224704E12,1.7225568E12,1.7226432E12,1.7227296E12,1.722816E12,1.7229024E12,1.7229888E12,1.7230752E12,1.7231616E12,1.723248E12,1.7233344E12,1.7234208E12,1.7235072E12,1.7235936E12,1.72368E12,1.7237664E12,1.7238528E12,1.7239392E12,1.7240256E12,1.724112E12,1.7241984E12,1.7242848E12,1.7243712E12,1.7244576E12,1.724544E12,1.7246304E12,1.7247168E12,1.7248032E12,1.7248896E12,1.724976E12,1.7250624E12,1.7251488E12,1.7252352E12,1.7253216E12,1.725408E12,1.7254944E12,1.7255808E12,1.7256672E12,1.7257536E12,1.72584E12,1.7259264E12,1.7260128E12,1.7260992E12,1.7261856E12,1.726272E12,1.7263584E12,1.7264448E12,1.7265312E12,1.7266176E12,1.726704E12,1.7267904E12,1.7268768E12,1.7269632E12,1.7270496E12,1.727136E12,1.7272224E12,1.7273088E12,1.7273952E12,1.7274816E12,1.727568E12,1.7276544E12,1.7277408E12,1.7278272E12,1.7279136E12,1.728E12,1.7280864E12,1.7281728E12,1.7282592E12,1.7283456E12,1.728432E12,1.7285184E12,1.7286048E12,1.7286912E12,1.7287776E12,1.728864E12,1.7289504E12,1.7290368E12,1.7291232E12,1.7292096E12,1.729296E12,1.7293824E12,1.7294688E12,1.7295552E12,1.7296416E12,1.729728E12,1.7298144E12,1.7299008E12,1.7299872E12,1.7300736E12,1.73016E12,1.7302464E12,1.7303328E12,1.7304192E12,1.7305056E12,1.730592E12,1.7306784E12,1.7307648E12,1.7308512E12,1.7309376E12,1.731024E12,1.7311104E12,1.7311968E12,1.7312832E12,1.7313696E12,1.731456E12,1.7315424E12,1.7316288E12,1.7317152E12,1.7318016E12,1.731888E12,1.7319744E12,1.7320608E12,1.7321472E12,1.7322336E12,1.73232E12,1.7324064E12,1.7324928E12,1.7325792E12,1.7326656E12,1.732752E12,1.7328384E12,1.7329248E12,1.7330112E12,1.7330976E12,1.733184E12,1.7332704E12,1.7333568E12,1.7334432E12,1.7335296E12,1.733616E12,1.7337024E12,1.7337888E12,1.7338752E12,1.7339616E12,1.734048E12,1.7341344E12,1.7342208E12,1.7343072E12,1.7343936E12,1.73448E12,1.7345664E12,1.7346528E12,1.7347392E12,1.7348256E12,1.734912E12,1.7349984E12,1.7350848E12,1.7351712E12,1.7352576E12,1.735344E12,1.7354304E12,1.7355168E12,1.7356032E12],
+"close":[44187.0,44970.0,42865.0,44186.0,44184.0,43999.0,43944.0,46995.0,46124.0,46681.0,46360.0,42778.0,42843.0,41715.0,42493.0,43131.0,42738.0,41283.0,41628.0,41673.0,41560.0,39528.0,39868.0,40074.0,39916.0,41818.0,42124.0,42026.0,43305.0,42946.0,42558.0,43071.0,43183.0,42994.0,42570.0,42659.0,43092.0,44346.0,45300.0,47161.0,47770.0,48313.0,49937.0,49720.0,51844.0,51942.0,52161.0,51664.0,52130.0,51789.0,52275.0,51843.0,51253.0,50743.0,51562.0,51722.0,54524.0,57068.0,62512.0,61161.0,62444.0,62042.0,63142.0,68359.0,63796.0,66120.0,66941.0,68285.0,68463.0,69026.0,72118.0,71473.0,73121.0,71371.0,69516.0,65248.0,68352.0,67613.0,61897.0,67872.0,65485.0,63807.0,64001.0,67188.0,69898.0,69997.0,69421.0,70803.0,69903.0,69613.0,71285.0,69699.0,65469.0,65988.0,68538.0,67857.0,68917.0,69358.0,71613.0,69135.0,70630.0,70015.0,67150.0,64054.0,65749.0,63438.0,63830.0,61278.0,63515.0,63821.0,64990.0,64950.0,66855.0,66421.0,64259.0,64493.0,63745.0,63429.0,63098.0,63832.0,60632.0,58256.0,59099.0,62915.0,63899.0,64021.0,63164.0,62320.0,61181.0,63075.0,60793.0,60816.0,61462.0,62934.0,61543.0,66242.0,65252.0,67053.0,66930.0,66275.0,71401.0,70136.0,69118.0,67945.0,68548.0,69275.0,68489.0,69392.0,68327.0,67564.0,68338.0,67477.0,67723.0,67752.0,68801.0,70564.0,71119.0,70775.0,69326.0,69306.0,69640.0,69501.0,67306.0,68243.0,66733.0,65996.0,66182.0,66622.0,66475.0,65145.0,64946.0,64845.0,64102.0,64233.0,63154.0,60252.0,61789.0,60807.0,61622.0,60315.0,60879.0,62676.0,62829.0,62033.0,60142.0,57045.0,56632.0,58251.0,55829.0,56710.0,58033.0,57733.0,57348.0,57889.0,59226.0,60823.0,64769.0,65081.0,64091.0,63964.0,66705.0,67155.0,68158.0,67562.0,65944.0,65376.0,65796.0,67921.0,67892.0,68264.0,66780.0,66171.0,64612.0,65293.0,61421.0,60672.0,58142.0,54014.0,56053.0,55136.0,61699.0,60860.0,60952.0,58725.0,59362.0,60620.0,58697.0,57557.0,58883.0,59487.0,58430.0,59497.0,59012.0,61159.0,60383.0,64085.0,64174.0,64262.0,62852.0,59427.0,59033.0,59365.0,59113.0,58967.0,57310.0,59133.0,57493.0,57956.0,56158.0,53955.0,54147.0,54866.0,57059.0,57659.0,57342.0,58139.0,60545.0,60012.0,59130.0,58212.0,60316.0,61757.0,62940.0,63211.0,63364.0,63563.0,63325.0,64260.0,63147.0,65175.0,65781.0,65876.0,65601.0,63302.0,60807.0,60634.0,60745.0,62081.0,62063.0,62814.0,62212.0,62133.0,60582.0,60278.0,62452.0,63194.0,62849.0,66070.0,67061.0,67622.0,67392.0,68420.0,68359.0,69011.0,67340.0,67382.0,66601.0,68155.0,66578.0,67003.0,67938.0,69918.0,72729.0,72331.0,70231.0,69490.0,69330.0,68738.0,67818.0,69386.0,75637.0,75921.0,76561.0,76722.0,80425.0,88770.0,88031.0,90521.0,87333.0,91070.0,90608.0,89861.0,90512.0,92424.0,94373.0,98451.0,99013.0,97775.0,98007.0,93035.0,91928.0,95978.0,95661.0,97512.0,96441.0,97291.0,95859.0,95926.0,98773.0,97057.0,99898.0,99929.0,101204.0,97468.0,96648.0,101201.0,100068.0,101435.0,101382.0,104427.0,106073.0,106187.0,100153.0,97375.0,97760.0,97211.0,95098.0,94750.0,98596.0,99374.0,95687.0,94168.0,95139.0,93557.0,92628.0,93381.0],
+"trend":[0.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,0.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0]
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"unix"
+},{
+"type":"datetime",
+"column":"date"
+},{
+"type":"str",
+"column":"symbol"
+},{
+"type":"float",
+"column":"open"
+},{
+"type":"float",
+"column":"high"
+},{
+"type":"float",
+"column":"low"
+},{
+"type":"float",
+"column":"close"
+},{
+"type":"float",
+"column":"Volume BTC"
+},{
+"type":"float",
+"column":"Volume USD"
+},{
+"type":"int",
+"column":"trend"
+}]
+},
+"guides":{
+"y":{
+"title":"Close Price"
+}
+},
+"ggtitle":{
+"text":"Bitcoin Daily Close Price with Up/Down Trend Coloring (2024)"
+},
+"ggsize":{
+"width":1000.0,
+"height":500.0
+},
+"theme":{
+"name":"light",
+"flavor":"darcula",
+"axis_title_x":"blank",
+"legend_position":"bottom",
+"plot_title":{
+"face":"bold",
+"size":18.0,
+"blank":false
+}
+},
+"ggtoolbar":{
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"expand":[0.0],
+"datetime":true
+},{
+"aesthetic":"y",
+"format":"$.4~s"
+},{
+"name":"Trend",
+"aesthetic":"color",
+"breaks":[0.0,1.0],
+"labels":["Downtrend","Uptrend"],
+"values":["red","green"]
+}],
+"layers":[{
+"geom":"line",
+"mapping":{
+"x":"date",
+"y":"close"
+},
+"tooltips":"none",
+"data_meta":{
+},
+"color":"pen",
+"size":1.2,
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+"x":"date",
+"y":"close",
+"color":"trend"
+},
+"tooltips":{
+"formats":[{
+"field":"^x",
+"format":"%A, %b %e"
+}],
+"lines":["Close price|^y"],
+"tooltip_anchor":"top_left",
+"tooltip_min_width":200.0,
+"title":"^x"
+},
+"data_meta":{
+},
+"size":0.6,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

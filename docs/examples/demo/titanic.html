@@ -1,0 +1,2736 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Visualization of the Titanic’s Voyage" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/demo/titanic.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="1. Data Preparation: The Titanic dataset is available at kaggle: “Titanic: cleaned data” dataset(train_clean.csv). In this Titanic dataset the column Embarked contains a single-letter codes of the ..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="1. Data Preparation: The Titanic dataset is available at kaggle: “Titanic: cleaned data” dataset(train_clean.csv). In this Titanic dataset the column Embarked contains a single-letter codes of the ..." />
+
+    <title>Visualization of the Titanic’s Voyage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/demo/titanic';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/demo/titanic.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="visualization-of-the-titanic-s-voyage">
+<h1>Visualization of the Titanic’s Voyage<a class="headerlink" href="#visualization-of-the-titanic-s-voyage" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="C0oxSi"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("C0oxSi").appendChild(div);
+                };
+                var e = document.getElementById("C0oxSi");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<section id="data-preparation">
+<h2>1. Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
+<p>The Titanic dataset is available at <a class="reference external" href="https://www.kaggle.com">kaggle</a> : <a class="reference external" href="https://www.kaggle.com/jamesleslie/titanic-cleaned-data?select=train_clean.csv">“Titanic: cleaned data” dataset</a> (train_clean.csv).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/titanic.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>Fare</th>
+      <th>Name</th>
+      <th>Parch</th>
+      <th>PassengerId</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>SibSp</th>
+      <th>Survived</th>
+      <th>Ticket</th>
+      <th>Title</th>
+      <th>Family_Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>7.2500</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>male</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>A/5 21171</td>
+      <td>Mr</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>38.0</td>
+      <td>C85</td>
+      <td>C</td>
+      <td>71.2833</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>female</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>PC 17599</td>
+      <td>Mrs</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>7.9250</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>female</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>STON/O2. 3101282</td>
+      <td>Miss</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In this Titanic dataset the column <code class="docutils literal notranslate"><span class="pre">Embarked</span></code>contains a single-letter codes of the Titanic’s ports of embarkation:</p>
+<ul class="simple">
+<li><p>S: Southampton (UK)</p></li>
+<li><p>C: Cherbourg (France)</p></li>
+<li><p>Q: Cobh (Ireland)</p></li>
+</ul>
+<p>Let’s add new colum “Port” to the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_port_name</span> <span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Embarked&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;S&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Southampton&#39;</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Embarked&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Cherbourg&#39;</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Embarked&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Q&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Cobh&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;Other&#39;</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Port&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">to_port_name</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>Fare</th>
+      <th>Name</th>
+      <th>Parch</th>
+      <th>PassengerId</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>SibSp</th>
+      <th>Survived</th>
+      <th>Ticket</th>
+      <th>Title</th>
+      <th>Family_Size</th>
+      <th>Port</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>7.2500</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>male</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>A/5 21171</td>
+      <td>Mr</td>
+      <td>1</td>
+      <td>Southampton</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>38.0</td>
+      <td>C85</td>
+      <td>C</td>
+      <td>71.2833</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>female</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>PC 17599</td>
+      <td>Mrs</td>
+      <td>1</td>
+      <td>Cherbourg</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>7.9250</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>female</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>STON/O2. 3101282</td>
+      <td>Miss</td>
+      <td>0</td>
+      <td>Southampton</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="travellers-survival-rates-by-the-port-of-embarkation">
+<h3>1.1 Travellers Survival Rates by the Port of Embarkation<a class="headerlink" href="#travellers-survival-rates-by-the-port-of-embarkation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_surv</span><span class="o">=</span><span class="s2">&quot;#E1A439&quot;</span>
+<span class="n">c_lost</span><span class="o">=</span><span class="s2">&quot;#6B9993&quot;</span>
+
+<span class="n">bars</span> <span class="o">=</span> <span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">geom_bar</span><span class="p">(</span>
+            <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;Port&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;Survived&#39;</span><span class="p">)),</span> 
+            <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+                <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@{..count..} (@{..prop..})&#39;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;@{..prop..}&#39;</span><span class="p">,</span> <span class="s1">&#39;.0%&#39;</span><span class="p">),</span>
+            <span class="n">position</span><span class="o">=</span><span class="s1">&#39;dodge&#39;</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="n">c_lost</span><span class="p">,</span> <span class="n">c_surv</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span> <span class="o">+</span>
+        <span class="n">scale_x_discrete</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Cobh&#39;</span><span class="p">,</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">,</span> <span class="s1">&#39;Southampton&#39;</span><span class="p">])</span> <span class="o">+</span>
+        <span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Travellers count&quot;</span><span class="p">)</span> <span class="o">+</span> 
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Survival by the Port of Embarkation&quot;</span><span class="p">)</span>
+<span class="p">)</span>        
+
+<span class="n">bars</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="P1BbxH" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("P1BbxH");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"Age"
+},{
+"type":"str",
+"column":"Cabin"
+},{
+"type":"str",
+"column":"Embarked"
+},{
+"type":"float",
+"column":"Fare"
+},{
+"type":"str",
+"column":"Name"
+},{
+"type":"int",
+"column":"Parch"
+},{
+"type":"int",
+"column":"PassengerId"
+},{
+"type":"int",
+"column":"Pclass"
+},{
+"type":"str",
+"column":"Sex"
+},{
+"type":"int",
+"column":"SibSp"
+},{
+"type":"float",
+"column":"Survived"
+},{
+"type":"str",
+"column":"Ticket"
+},{
+"type":"str",
+"column":"Title"
+},{
+"type":"int",
+"column":"Family_Size"
+},{
+"type":"str",
+"column":"Port"
+}]
+},
+"guides":{
+"x":{
+"title":""
+},
+"y":{
+"title":"Travellers count"
+}
+},
+"ggtitle":{
+"text":"Survival by the Port of Embarkation"
+},
+"ggsize":{
+"width":800.0,
+"height":300.0
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"labels":["no","yes"],
+"values":["#6B9993","#E1A439"]
+},{
+"aesthetic":"x",
+"limits":["Cobh","Cherbourg","Southampton"],
+"discrete":true,
+"reverse":false
+}],
+"layers":[{
+"geom":"bar",
+"mapping":{
+"x":"Port",
+"fill":"Survived"
+},
+"position":"dodge",
+"tooltips":{
+"formats":[{
+"field":"@{..prop..}",
+"format":".0%"
+}],
+"lines":["@{..count..} (@{..prop..})"]
+},
+"data_meta":{
+"mapping_annotations":[{
+"parameters":{
+"label":"Survived"
+},
+"aes":"fill",
+"annotation":"as_discrete"
+}]
+},
+"data":{
+"..count..":[427.0,47.0,75.0,94.0,218.0,30.0],
+"Port":["Southampton","Cobh","Cherbourg","Cherbourg","Southampton","Cobh"],
+"Survived":[0.0,0.0,0.0,1.0,1.0,1.0],
+"..prop..":[0.662015503875969,0.6103896103896104,0.4437869822485207,0.5562130177514792,0.33798449612403103,0.38961038961038963]
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+<section id="ports-of-embarkation-on-map">
+<h2>2. Ports of Embarkation on Map<a class="headerlink" href="#ports-of-embarkation-on-map" title="Link to this heading">#</a></h2>
+<p>Titanic’s ports of of embarkation were:</p>
+<ul class="simple">
+<li><p>Southampton (UK)</p></li>
+<li><p>Cherbourg (France)</p></li>
+<li><p>Cobh (Ireland)</p></li>
+</ul>
+<p>Let’s find geographical coordinates of these cities using <code class="docutils literal notranslate"><span class="pre">Lets-Plot</span></code> geocoding module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot.geo_data</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Southampton&#39;</span><span class="p">,</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobh&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
+</pre></div>
+</div>
+</div>
+</div>
+<section id="spatial-dataframe-pandas-geodataframe">
+<h3>2.1 Spatial DataFrame (Pandas GeoDataFrame)<a class="headerlink" href="#spatial-dataframe-pandas-geodataframe" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ports_gcoder</span> <span class="o">=</span> <span class="p">(</span><span class="n">geocode_cities</span><span class="p">(</span><span class="n">ports</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ports</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;England&#39;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ports</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;France&#39;</span><span class="p">))</span>
+<span class="n">ports_gdf</span> <span class="o">=</span> <span class="n">ports_gcoder</span><span class="o">.</span><span class="n">get_centroids</span><span class="p">()</span>
+<span class="n">ports_gdf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>found name</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Southampton</td>
+      <td>Southampton</td>
+      <td>POINT (-1.40254 50.91837)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cherbourg</td>
+      <td>Cherbourg</td>
+      <td>POINT (-1.60901 49.62728)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cobh</td>
+      <td>Cobh</td>
+      <td>POINT (-8.29428 51.85315)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="markers-on-map">
+<h3>2.2 Markers on Map<a class="headerlink" href="#markers-on-map" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Lets-Plot</span></code> API makes it easy to create an interactive basemap layer using either its own vector tiles service or
+by configuring a 3-rd party Z-X-Y raster tile providers.</p>
+<p>In this notebook we will use beautifull <em>CARTO Antique</em> raster tiles by <a class="reference external" href="https://carto.com/attribution/">CARTO</a> as our basemap.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">tilesets</span>
+
+<span class="n">LetsPlot</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">tilesets</span><span class="o">.</span><span class="n">CARTO_ANTIQUE_HIRES</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basemap</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span>
+
+
+<span class="n">port_markers</span> <span class="o">=</span> <span class="n">geom_point</span><span class="p">(</span>
+                   <span class="nb">map</span><span class="o">=</span><span class="n">ports_gdf</span><span class="p">,</span> 
+                   <span class="n">size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> 
+                   <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> 
+                   <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> 
+                   <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+
+<span class="n">basemap</span> <span class="o">+</span> <span class="n">port_markers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Ks9yUS" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Ks9yUS");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"ggsize":{
+"width":800.0,
+"height":350.0
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"tiles":{
+"kind":"raster_zxy",
+"url":"https://cartocdn_[abc].global.ssl.fastly.net/base-antique/{z}/{x}/{y}@2x.png",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a> <a href=\"https://carto.com/attributions#basemaps\">© CARTO</a>, <a href=\"https://carto.com/attributions\">© CARTO</a>",
+"min_zoom":1.0,
+"max_zoom":20.0
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+"x":"lon",
+"y":"lat"
+},
+"data_meta":{
+},
+"map":{
+"city":["Southampton","Cherbourg","Cobh"],
+"found name":["Southampton","Cherbourg","Cobh"],
+"geometry":["{\"type\": \"Point\", \"coordinates\": [-1.40253666522018, 50.9183686226606]}","{\"type\": \"Point\", \"coordinates\": [-1.60901494773099, 49.6272752434015]}","{\"type\": \"Point\", \"coordinates\": [-8.29427875578403, 51.8531472980976]}"]
+},
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"yellow",
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+"lon":[-1.40253666522018,-1.60901494773099,-8.29427875578403],
+"lat":[50.9183686226606,49.6272752434015,51.8531472980976],
+"__geo_id__":[0,1,2]
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+<section id="the-titanic-s-site-marker">
+<h2>3. The “Titanic’s site” Marker<a class="headerlink" href="#the-titanic-s-site-marker" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">LineString</span>
+<span class="n">titanic_site</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">38.056641</span><span class="p">,</span> <span class="mf">46.920255</span><span class="p">)</span>
+
+<span class="n">titanic_site_marker</span> <span class="o">=</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">titanic_site</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">titanic_site</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">basemap</span> <span class="o">+</span> <span class="n">port_markers</span> <span class="o">+</span> <span class="n">titanic_site_marker</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Dp2lCT" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Dp2lCT");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"ggsize":{
+"width":800.0,
+"height":350.0
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"tiles":{
+"kind":"raster_zxy",
+"url":"https://cartocdn_[abc].global.ssl.fastly.net/base-antique/{z}/{x}/{y}@2x.png",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a> <a href=\"https://carto.com/attributions#basemaps\">© CARTO</a>, <a href=\"https://carto.com/attributions\">© CARTO</a>",
+"min_zoom":1.0,
+"max_zoom":20.0
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+"x":"lon",
+"y":"lat"
+},
+"data_meta":{
+},
+"map":{
+"city":["Southampton","Cherbourg","Cobh"],
+"found name":["Southampton","Cherbourg","Cobh"],
+"geometry":["{\"type\": \"Point\", \"coordinates\": [-1.40253666522018, 50.9183686226606]}","{\"type\": \"Point\", \"coordinates\": [-1.60901494773099, 49.6272752434015]}","{\"type\": \"Point\", \"coordinates\": [-8.29427875578403, 51.8531472980976]}"]
+},
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"yellow",
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+"lon":[-1.40253666522018,-1.60901494773099,-8.29427875578403],
+"lat":[50.9183686226606,49.6272752434015,51.8531472980976],
+"__geo_id__":[0,1,2]
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-38.056641,
+"y":46.920255,
+"size":10.0,
+"shape":9.0,
+"color":"red",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="the-new-york-city-marker">
+<h2>4. The New York City Marker<a class="headerlink" href="#the-new-york-city-marker" title="Link to this heading">#</a></h2>
+<p>New York City was the Titanic’s destination.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NYC</span> <span class="o">=</span> <span class="n">geocode_cities</span><span class="p">([</span><span class="s1">&#39;New York&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_centroids</span><span class="p">()</span><span class="o">.</span><span class="n">geometry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">NYC_marker</span> <span class="o">=</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">NYC</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">NYC</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">basemap</span> <span class="o">+</span> 
+ <span class="n">port_markers</span> <span class="o">+</span>
+ <span class="n">titanic_site_marker</span> <span class="o">+</span>
+ <span class="n">NYC_marker</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Yfanel" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Yfanel");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"ggsize":{
+"width":800.0,
+"height":350.0
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"tiles":{
+"kind":"raster_zxy",
+"url":"https://cartocdn_[abc].global.ssl.fastly.net/base-antique/{z}/{x}/{y}@2x.png",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a> <a href=\"https://carto.com/attributions#basemaps\">© CARTO</a>, <a href=\"https://carto.com/attributions\">© CARTO</a>",
+"min_zoom":1.0,
+"max_zoom":20.0
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+"x":"lon",
+"y":"lat"
+},
+"data_meta":{
+},
+"map":{
+"city":["Southampton","Cherbourg","Cobh"],
+"found name":["Southampton","Cherbourg","Cobh"],
+"geometry":["{\"type\": \"Point\", \"coordinates\": [-1.40253666522018, 50.9183686226606]}","{\"type\": \"Point\", \"coordinates\": [-1.60901494773099, 49.6272752434015]}","{\"type\": \"Point\", \"coordinates\": [-8.29427875578403, 51.8531472980976]}"]
+},
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"yellow",
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+"lon":[-1.40253666522018,-1.60901494773099,-8.29427875578403],
+"lat":[50.9183686226606,49.6272752434015,51.8531472980976],
+"__geo_id__":[0,1,2]
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-38.056641,
+"y":46.920255,
+"size":10.0,
+"shape":9.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-73.8673749469137,
+"y":40.6847005337477,
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="connecting-markers-on-map">
+<h2>5. Connecting Markers on Map<a class="headerlink" href="#connecting-markers-on-map" title="Link to this heading">#</a></h2>
+<p>To connect markers on the map we will create a <code class="docutils literal notranslate"><span class="pre">LineString</span></code> object (from <code class="docutils literal notranslate"><span class="pre">Shaply</span></code> package).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoSeries</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoDataFrame</span>
+
+<span class="c1"># Points of embarkation (GeoSeries).</span>
+<span class="n">port_points</span> <span class="o">=</span> <span class="n">ports_gdf</span><span class="o">.</span><span class="n">geometry</span>
+<span class="n">path_points</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">port_points</span><span class="p">,</span> <span class="n">GeoSeries</span><span class="p">([</span><span class="n">titanic_site</span><span class="p">,</span> <span class="n">NYC</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">ports_gdf</span><span class="o">.</span><span class="n">crs</span><span class="p">)],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create a new GeoDataFrame containing a `LineString` geometry.</span>
+<span class="n">path_gdf</span> <span class="o">=</span> <span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="nb">dict</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="p">[</span> <span class="n">LineString</span><span class="p">(</span><span class="n">path_points</span><span class="p">)</span> <span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add &quot;path&quot; to the map.</span>
+<span class="n">titanic_path</span> <span class="o">=</span> <span class="n">geom_path</span><span class="p">(</span>
+    <span class="nb">map</span><span class="o">=</span><span class="n">path_gdf</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dark-blue&#39;</span><span class="p">,</span> 
+    <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">basemap</span> <span class="o">+</span>
+ <span class="n">titanic_path</span> <span class="o">+</span>
+ <span class="n">port_markers</span> <span class="o">+</span>
+ <span class="n">titanic_site_marker</span> <span class="o">+</span>
+ <span class="n">NYC_marker</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="9OLyCC" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("9OLyCC");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"ggsize":{
+"width":800.0,
+"height":350.0
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"tiles":{
+"kind":"raster_zxy",
+"url":"https://cartocdn_[abc].global.ssl.fastly.net/base-antique/{z}/{x}/{y}@2x.png",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a> <a href=\"https://carto.com/attributions#basemaps\">© CARTO</a>, <a href=\"https://carto.com/attributions\">© CARTO</a>",
+"min_zoom":1.0,
+"max_zoom":20.0
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"data":{
+}
+},{
+"geom":"path",
+"mapping":{
+},
+"data_meta":{
+},
+"map":{
+"geometry":["{\"type\": \"LineString\", \"coordinates\": [[-1.40253666522018, 50.9183686226606], [-1.60901494773099, 49.6272752434015], [-8.29427875578403, 51.8531472980976], [-38.056641, 46.920255], [-73.8673749469137, 40.6847005337477]]}"]
+},
+"color":"dark-blue",
+"linetype":"dotted",
+"size":1.2,
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+"x":"lon",
+"y":"lat"
+},
+"data_meta":{
+},
+"map":{
+"city":["Southampton","Cherbourg","Cobh"],
+"found name":["Southampton","Cherbourg","Cobh"],
+"geometry":["{\"type\": \"Point\", \"coordinates\": [-1.40253666522018, 50.9183686226606]}","{\"type\": \"Point\", \"coordinates\": [-1.60901494773099, 49.6272752434015]}","{\"type\": \"Point\", \"coordinates\": [-8.29427875578403, 51.8531472980976]}"]
+},
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"yellow",
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+"lon":[-1.40253666522018,-1.60901494773099,-8.29427875578403],
+"lat":[50.9183686226606,49.6272752434015,51.8531472980976],
+"__geo_id__":[0,1,2]
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-38.056641,
+"y":46.920255,
+"size":10.0,
+"shape":9.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-73.8673749469137,
+"y":40.6847005337477,
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="pie-chart-markers-on-map">
+<h2>6. Pie-chart Markers on Map<a class="headerlink" href="#pie-chart-markers-on-map" title="Link to this heading">#</a></h2>
+<section id="travellers-survival-rates-now-with-pie">
+<h3>6.1 Travellers Survival Rates, Now with Pie<a class="headerlink" href="#travellers-survival-rates-now-with-pie" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pies</span> <span class="o">=</span> <span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">geom_pie</span><span class="p">(</span>
+            <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Port&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;..sum..&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;Survived&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;..sum..&quot;</span><span class="p">),</span> 
+            <span class="n">labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span>
+                             <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@{..count..}&#39;</span><span class="p">)</span>
+                             <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;(@{..prop..})&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;@{..prop..}&#39;</span><span class="p">,</span> <span class="s1">&#39;.0%&#39;</span><span class="p">),</span>
+            <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;@Port (@{..sum..})&quot;</span><span class="p">),</span>
+            <span class="n">stroke</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> 
+            <span class="n">hole</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="n">c_lost</span><span class="p">,</span> <span class="n">c_surv</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span> <span class="o">+</span>
+        <span class="n">scale_x_discrete</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Cobh&#39;</span><span class="p">,</span> <span class="s1">&#39;Cherbourg&#39;</span><span class="p">,</span> <span class="s1">&#39;Southampton&#39;</span><span class="p">],</span> <span class="n">expand</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span> <span class="o">+</span>
+        <span class="n">scale_size</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">guide</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Travellers count&quot;</span><span class="p">)</span> <span class="o">+</span> 
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Survival by the Port of Embarkation&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">pies</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="PW5uiJ" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("PW5uiJ");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"Age"
+},{
+"type":"str",
+"column":"Cabin"
+},{
+"type":"str",
+"column":"Embarked"
+},{
+"type":"float",
+"column":"Fare"
+},{
+"type":"str",
+"column":"Name"
+},{
+"type":"int",
+"column":"Parch"
+},{
+"type":"int",
+"column":"PassengerId"
+},{
+"type":"int",
+"column":"Pclass"
+},{
+"type":"str",
+"column":"Sex"
+},{
+"type":"int",
+"column":"SibSp"
+},{
+"type":"float",
+"column":"Survived"
+},{
+"type":"str",
+"column":"Ticket"
+},{
+"type":"str",
+"column":"Title"
+},{
+"type":"int",
+"column":"Family_Size"
+},{
+"type":"str",
+"column":"Port"
+}]
+},
+"guides":{
+"x":{
+"title":""
+},
+"y":{
+"title":"Travellers count"
+}
+},
+"ggtitle":{
+"text":"Survival by the Port of Embarkation"
+},
+"ggsize":{
+"width":800.0,
+"height":300.0
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"labels":["no","yes"],
+"values":["#6B9993","#E1A439"]
+},{
+"aesthetic":"x",
+"limits":["Cobh","Cherbourg","Southampton"],
+"expand":[0.0,0.3],
+"discrete":true,
+"reverse":false
+},{
+"aesthetic":"size",
+"guide":"none",
+"range":[3.0,10.0]
+},{
+"aesthetic":"y",
+"limits":[0.0,800.0]
+}],
+"layers":[{
+"geom":"pie",
+"mapping":{
+"x":"Port",
+"y":"..sum..",
+"fill":"Survived",
+"size":"..sum.."
+},
+"tooltips":{
+"formats":[],
+"title":"@Port (@{..sum..})"
+},
+"data_meta":{
+"mapping_annotations":[{
+"parameters":{
+"label":"Survived"
+},
+"aes":"fill",
+"annotation":"as_discrete"
+}]
+},
+"labels":{
+"formats":[{
+"field":"@{..prop..}",
+"format":".0%"
+}],
+"lines":["@{..count..}","(@{..prop..})"]
+},
+"hole":0.5,
+"stroke":1.5,
+"data":{
+"..count..":[427.0,47.0,75.0,94.0,218.0,30.0],
+"Port":["Southampton","Cobh","Cherbourg","Cherbourg","Southampton","Cobh"],
+"Survived":[0.0,0.0,0.0,1.0,1.0,1.0],
+"..sum..":[645.0,77.0,169.0,169.0,645.0,77.0],
+"..prop..":[0.662015503875969,0.6103896103896104,0.4437869822485207,0.5562130177514792,0.33798449612403103,0.38961038961038963]
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="spatial-pies">
+<h3>6.2 Spatial Pies<a class="headerlink" href="#spatial-pies" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spatial_pies</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">geom_pie</span><span class="p">(</span>
+            <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Port&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s1">&#39;Survived&#39;</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;..sum..&quot;</span><span class="p">),</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+            <span class="nb">map</span><span class="o">=</span><span class="n">ports_gdf</span><span class="p">,</span> 
+            <span class="n">map_join</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Port&#39;</span><span class="p">,</span><span class="s1">&#39;city&#39;</span><span class="p">],</span>
+            <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+                     <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;@Port (@{..sum..})&quot;</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@{..count..} (@{..prop..})&#39;</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;@{..prop..}&#39;</span><span class="p">,</span> <span class="s1">&#39;.0%&#39;</span><span class="p">),</span>
+            <span class="n">stroke</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> 
+            <span class="n">hole</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="n">c_lost</span><span class="p">,</span> <span class="n">c_surv</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lost&#39;</span><span class="p">,</span> <span class="s1">&#39;survived&#39;</span><span class="p">])</span> <span class="o">+</span>
+        <span class="n">scale_size</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">guide</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span> <span class="o">+</span>
+        <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+              <span class="n">legend_justification</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+              <span class="n">legend_direction</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+              <span class="n">legend_title</span><span class="o">=</span><span class="n">element_blank</span><span class="p">())</span>
+<span class="p">)</span>                
+
+<span class="p">(</span><span class="n">basemap</span> <span class="o">+</span> 
+ <span class="n">titanic_path</span> <span class="o">+</span>
+ <span class="n">spatial_pies</span> <span class="o">+</span>
+ <span class="n">titanic_site_marker</span> <span class="o">+</span>
+ <span class="n">NYC_marker</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Zu3yMU" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Zu3yMU");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"ggsize":{
+"width":800.0,
+"height":350.0
+},
+"theme":{
+"legend_title":{
+"blank":true
+},
+"legend_position":[0.5,1.0],
+"legend_justification":[0.5,1.0],
+"legend_direction":"horizontal"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"labels":["lost","survived"],
+"values":["#6B9993","#E1A439"]
+},{
+"aesthetic":"size",
+"guide":"none",
+"range":[3.0,10.0]
+}],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"tiles":{
+"kind":"raster_zxy",
+"url":"https://cartocdn_[abc].global.ssl.fastly.net/base-antique/{z}/{x}/{y}@2x.png",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a> <a href=\"https://carto.com/attributions#basemaps\">© CARTO</a>, <a href=\"https://carto.com/attributions\">© CARTO</a>",
+"min_zoom":1.0,
+"max_zoom":20.0
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"data":{
+}
+},{
+"geom":"path",
+"mapping":{
+},
+"data_meta":{
+},
+"map":{
+"geometry":["{\"type\": \"LineString\", \"coordinates\": [[-1.40253666522018, 50.9183686226606], [-1.60901494773099, 49.6272752434015], [-8.29427875578403, 51.8531472980976], [-38.056641, 46.920255], [-73.8673749469137, 40.6847005337477]]}"]
+},
+"color":"dark-blue",
+"linetype":"dotted",
+"size":1.2,
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+}
+},{
+"geom":"pie",
+"data":{
+"..count..":[427.0,47.0,75.0,94.0,218.0,30.0],
+"lon":[-1.40253666522018,-8.29427875578403,-1.60901494773099,-1.60901494773099,-1.40253666522018,-8.29427875578403],
+"lat":[50.9183686226606,51.8531472980976,49.6272752434015,49.6272752434015,50.9183686226606,51.8531472980976],
+"Survived":[0.0,0.0,0.0,1.0,1.0,1.0],
+"Port":["Southampton","Southampton","Southampton","Cherbourg","Cherbourg","Cherbourg"],
+"..sum..":[645.0,77.0,169.0,169.0,645.0,77.0],
+"..prop..":[0.662015503875969,0.6103896103896104,0.4437869822485207,0.5562130177514792,0.33798449612403103,0.38961038961038963]
+},
+"mapping":{
+"x":"lon",
+"fill":"Survived",
+"size":"..sum..",
+"y":"lat"
+},
+"tooltips":{
+"formats":[{
+"field":"@{..prop..}",
+"format":".0%"
+}],
+"lines":["@{..count..} (@{..prop..})"],
+"title":"@Port (@{..sum..})"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"Survived"
+},{
+"type":"float",
+"column":"Age"
+},{
+"type":"str",
+"column":"Cabin"
+},{
+"type":"str",
+"column":"Embarked"
+},{
+"type":"float",
+"column":"Fare"
+},{
+"type":"str",
+"column":"Name"
+},{
+"type":"int",
+"column":"Parch"
+},{
+"type":"int",
+"column":"PassengerId"
+},{
+"type":"int",
+"column":"Pclass"
+},{
+"type":"str",
+"column":"Sex"
+},{
+"type":"int",
+"column":"SibSp"
+},{
+"type":"str",
+"column":"Ticket"
+},{
+"type":"str",
+"column":"Title"
+},{
+"type":"int",
+"column":"Family_Size"
+},{
+"type":"str",
+"column":"Port"
+}],
+"mapping_annotations":[{
+"parameters":{
+"label":"Survived"
+},
+"aes":"fill",
+"annotation":"as_discrete"
+}]
+},
+"map":{
+"city":["Southampton","Cherbourg","Cobh"],
+"found name":["Southampton","Cherbourg","Cobh"],
+"geometry":["{\"type\": \"Point\", \"coordinates\": [-1.40253666522018, 50.9183686226606]}","{\"type\": \"Point\", \"coordinates\": [-1.60901494773099, 49.6272752434015]}","{\"type\": \"Point\", \"coordinates\": [-8.29427875578403, 51.8531472980976]}"]
+},
+"map_join":[["Port"],["city"]],
+"hole":0.5,
+"stroke":1.5,
+"color":"white",
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-38.056641,
+"y":46.920255,
+"size":10.0,
+"shape":9.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-73.8673749469137,
+"y":40.6847005337477,
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"7"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="adjusting-the-map-zoom-level-and-position">
+<h3>6.3 Adjusting the Map Zoom Level and Position<a class="headerlink" href="#adjusting-the-map-zoom-level-and-position" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Titanic Survival Rate by Port of Embarkation&quot;</span><span class="p">)</span> <span class="o">+</span>
+     <span class="n">geom_livemap</span><span class="p">(</span><span class="n">zoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">8.29</span><span class="p">,</span> <span class="mf">51.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.61</span><span class="p">,</span> <span class="mf">49.63</span><span class="p">])</span> <span class="o">+</span> 
+     <span class="n">titanic_path</span> <span class="o">+</span>
+     <span class="n">port_markers</span> <span class="o">+</span>
+     <span class="n">spatial_pies</span> <span class="o">+</span>
+     <span class="n">titanic_site_marker</span> <span class="o">+</span>
+     <span class="n">NYC_marker</span> <span class="o">+</span>
+     <span class="n">theme</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s2">&quot;Garamond&quot;</span><span class="p">),</span>
+           <span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="l4KiLQ" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("l4KiLQ");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"ggsize":{
+"width":900.0,
+"height":600.0
+},
+"ggtitle":{
+"text":"Titanic Survival Rate by Port of Embarkation"
+},
+"theme":{
+"legend_title":{
+"blank":true
+},
+"legend_position":[0.5,1.0],
+"legend_justification":[0.5,1.0],
+"legend_direction":"horizontal",
+"text":{
+"family":"Garamond",
+"blank":false
+},
+"plot_title":{
+"size":30.0,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"fill",
+"labels":["lost","survived"],
+"values":["#6B9993","#E1A439"]
+},{
+"aesthetic":"size",
+"guide":"none",
+"range":[3.0,10.0]
+}],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"location":{
+"type":"coordinates",
+"data":[-8.29,51.85,-1.61,49.63]
+},
+"zoom":6.0,
+"tiles":{
+"kind":"raster_zxy",
+"url":"https://cartocdn_[abc].global.ssl.fastly.net/base-antique/{z}/{x}/{y}@2x.png",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a> <a href=\"https://carto.com/attributions#basemaps\">© CARTO</a>, <a href=\"https://carto.com/attributions\">© CARTO</a>",
+"min_zoom":1.0,
+"max_zoom":20.0
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"data":{
+}
+},{
+"geom":"path",
+"mapping":{
+},
+"data_meta":{
+},
+"map":{
+"geometry":["{\"type\": \"LineString\", \"coordinates\": [[-1.40253666522018, 50.9183686226606], [-1.60901494773099, 49.6272752434015], [-8.29427875578403, 51.8531472980976], [-38.056641, 46.920255], [-73.8673749469137, 40.6847005337477]]}"]
+},
+"color":"dark-blue",
+"linetype":"dotted",
+"size":1.2,
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+"x":"lon",
+"y":"lat"
+},
+"data_meta":{
+},
+"map":{
+"city":["Southampton","Cherbourg","Cobh"],
+"found name":["Southampton","Cherbourg","Cobh"],
+"geometry":["{\"type\": \"Point\", \"coordinates\": [-1.40253666522018, 50.9183686226606]}","{\"type\": \"Point\", \"coordinates\": [-1.60901494773099, 49.6272752434015]}","{\"type\": \"Point\", \"coordinates\": [-8.29427875578403, 51.8531472980976]}"]
+},
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"yellow",
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"data":{
+"lon":[-1.40253666522018,-1.60901494773099,-8.29427875578403],
+"lat":[50.9183686226606,49.6272752434015,51.8531472980976],
+"__geo_id__":[0,1,2]
+}
+},{
+"geom":"pie",
+"data":{
+"..count..":[427.0,47.0,75.0,94.0,218.0,30.0],
+"lon":[-1.40253666522018,-8.29427875578403,-1.60901494773099,-1.60901494773099,-1.40253666522018,-8.29427875578403],
+"lat":[50.9183686226606,51.8531472980976,49.6272752434015,49.6272752434015,50.9183686226606,51.8531472980976],
+"Survived":[0.0,0.0,0.0,1.0,1.0,1.0],
+"Port":["Southampton","Southampton","Southampton","Cherbourg","Cherbourg","Cherbourg"],
+"..sum..":[645.0,77.0,169.0,169.0,645.0,77.0],
+"..prop..":[0.662015503875969,0.6103896103896104,0.4437869822485207,0.5562130177514792,0.33798449612403103,0.38961038961038963]
+},
+"mapping":{
+"x":"lon",
+"fill":"Survived",
+"size":"..sum..",
+"y":"lat"
+},
+"tooltips":{
+"formats":[{
+"field":"@{..prop..}",
+"format":".0%"
+}],
+"lines":["@{..count..} (@{..prop..})"],
+"title":"@Port (@{..sum..})"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"Survived"
+},{
+"type":"float",
+"column":"Age"
+},{
+"type":"str",
+"column":"Cabin"
+},{
+"type":"str",
+"column":"Embarked"
+},{
+"type":"float",
+"column":"Fare"
+},{
+"type":"str",
+"column":"Name"
+},{
+"type":"int",
+"column":"Parch"
+},{
+"type":"int",
+"column":"PassengerId"
+},{
+"type":"int",
+"column":"Pclass"
+},{
+"type":"str",
+"column":"Sex"
+},{
+"type":"int",
+"column":"SibSp"
+},{
+"type":"str",
+"column":"Ticket"
+},{
+"type":"str",
+"column":"Title"
+},{
+"type":"int",
+"column":"Family_Size"
+},{
+"type":"str",
+"column":"Port"
+}],
+"mapping_annotations":[{
+"parameters":{
+"label":"Survived"
+},
+"aes":"fill",
+"annotation":"as_discrete"
+}]
+},
+"map":{
+"city":["Southampton","Cherbourg","Cobh"],
+"found name":["Southampton","Cherbourg","Cobh"],
+"geometry":["{\"type\": \"Point\", \"coordinates\": [-1.40253666522018, 50.9183686226606]}","{\"type\": \"Point\", \"coordinates\": [-1.60901494773099, 49.6272752434015]}","{\"type\": \"Point\", \"coordinates\": [-8.29427875578403, 51.8531472980976]}"]
+},
+"map_join":[["Port"],["city"]],
+"hole":0.5,
+"stroke":1.5,
+"color":"white",
+"map_data_meta":{
+"geodataframe":{
+"geometry":"geometry"
+}
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-38.056641,
+"y":46.920255,
+"size":10.0,
+"shape":9.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-73.8673749469137,
+"y":40.6847005337477,
+"size":7.0,
+"shape":21.0,
+"color":"black",
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"8"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">1. Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#travellers-survival-rates-by-the-port-of-embarkation">1.1 Travellers Survival Rates by the Port of Embarkation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ports-of-embarkation-on-map">2. Ports of Embarkation on Map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-dataframe-pandas-geodataframe">2.1 Spatial DataFrame (Pandas GeoDataFrame)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markers-on-map">2.2 Markers on Map</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-titanic-s-site-marker">3. The “Titanic’s site” Marker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-new-york-city-marker">4. The New York City Marker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-markers-on-map">5. Connecting Markers on Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pie-chart-markers-on-map">6. Pie-chart Markers on Map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#travellers-survival-rates-now-with-pie">6.1 Travellers Survival Rates, Now with Pie</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-pies">6.2 Spatial Pies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-the-map-zoom-level-and-position">6.3 Adjusting the Map Zoom Level and Position</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

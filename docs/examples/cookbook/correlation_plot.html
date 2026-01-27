@@ -1,0 +1,2848 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Correlation Plot" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/correlation_plot.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="The corr_plot builder takes a dataframe (can be Pandas Dataframe or just Python dict) as the input and builds a correlation plot. It allows to combine ‘tile’, ‘point’ or ‘label’ layers in a matrix ..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="The corr_plot builder takes a dataframe (can be Pandas Dataframe or just Python dict) as the input and builds a correlation plot. It allows to combine ‘tile’, ‘point’ or ‘label’ layers in a matrix ..." />
+
+    <title>Correlation Plot</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/correlation_plot';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/cookbook/correlation_plot.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="correlation-plot">
+<h1>Correlation Plot<a class="headerlink" href="#correlation-plot" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">corr_plot</span></code> builder takes a dataframe (can be Pandas <code class="docutils literal notranslate"><span class="pre">Dataframe</span></code> or just Python <code class="docutils literal notranslate"><span class="pre">dict</span></code>) as the input and
+builds a correlation plot.</p>
+<p>It allows to combine ‘tile’, ‘point’ or ‘label’ layers in a matrix of ‘full’, ‘lower’ or ‘upper’ type.</p>
+<p>A call to the terminal <code class="docutils literal notranslate"><span class="pre">build()</span></code> method will create a resulting ‘plot’ object.
+This ‘plot’ object can be further refined using regular Lets-Plot (ggplot) API, like <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">ggtitle()</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">ggsize()</span></code> and so on.</p>
+<p>The Ames Housing dataset for this demo was downloaded from <a class="reference external" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data?select=train.csv">House Prices - Advanced Regression Techniques</a> (train.csv), (c) Kaggle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot.bistro.corr</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="rLlwuj"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("rLlwuj").appendChild(div);
+                };
+                var e = document.getElementById("rLlwuj");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mpg_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">mpg_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(234, 5)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>displ</th>
+      <th>year</th>
+      <th>cyl</th>
+      <th>cty</th>
+      <th>hwy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>18</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>21</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>20</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>21</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.8</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>16</td>
+      <td>26</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="combining-tile-point-and-label-layers">
+<h2>Combining ‘tile’, ‘point’ and ‘label’ layers.<a class="headerlink" href="#combining-tile-point-and-label-layers" title="Link to this heading">#</a></h2>
+<p>When combining layers, <code class="docutils literal notranslate"><span class="pre">corr_plot</span></code> chooses an acceptable plot configuration by default.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">corr_plot</span><span class="p">(</span><span class="n">mpg_df</span><span class="p">)</span><span class="o">.</span><span class="n">tiles</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Tiles&quot;</span><span class="p">),</span>
+    <span class="n">corr_plot</span><span class="p">(</span><span class="n">mpg_df</span><span class="p">)</span><span class="o">.</span><span class="n">points</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Points&quot;</span><span class="p">),</span> 
+    <span class="n">corr_plot</span><span class="p">(</span><span class="n">mpg_df</span><span class="p">)</span><span class="o">.</span><span class="n">tiles</span><span class="p">()</span><span class="o">.</span><span class="n">labels</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Tiles and labels&quot;</span><span class="p">),</span>
+    <span class="n">corr_plot</span><span class="p">(</span><span class="n">mpg_df</span><span class="p">)</span><span class="o">.</span><span class="n">points</span><span class="p">()</span><span class="o">.</span><span class="n">labels</span><span class="p">()</span><span class="o">.</span><span class="n">tiles</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Tiles, points and labels&quot;</span><span class="p">)</span>
+<span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="wVCZDk" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("wVCZDk");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":2.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"ggtitle":{
+"text":"Tiles"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+},{
+"aesthetic":"fill",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["displ","displ","displ","displ","displ","year","year","year","year","year","cyl","cyl","cyl","cyl","cyl","cty","cty","cty","cty","cty","hwy","hwy","hwy","hwy","hwy"],
+"y":["displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy"],
+"corr":[1.0,0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.14784281645020939,1.0,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,0.9302271024198506,0.12224534743553041,1.0,-0.8057714082675277,-0.7619123538971949,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,1.0,0.955915913649572,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572,1.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"1"
+},{
+"data":{
+},
+"ggtitle":{
+"text":"Points"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+},{
+"aesthetic":"fill",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+}],
+"layers":[{
+"geom":"point",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"size_unit":"x",
+"data":{
+"x":["displ","displ","displ","displ","displ","year","year","year","year","year","cyl","cyl","cyl","cyl","cyl","cty","cty","cty","cty","cty","hwy","hwy","hwy","hwy","hwy"],
+"y":["displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy"],
+"corr":[1.0,0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.14784281645020939,1.0,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,0.9302271024198506,0.12224534743553041,1.0,-0.8057714082675277,-0.7619123538971949,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,1.0,0.955915913649572,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572,1.0],
+"corr_abs":[1.0,0.14784281645020939,0.9302271024198506,0.7985239689348548,0.7660200208864677,0.14784281645020939,1.0,0.12224534743553041,0.03723229085997207,0.0021576430766243365,0.9302271024198506,0.12224534743553041,1.0,0.8057714082675277,0.7619123538971949,0.7985239689348548,0.03723229085997207,0.8057714082675277,1.0,0.955915913649572,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572,1.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"corr_abs",
+"color":"corr"
+}
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"2"
+},{
+"data":{
+},
+"ggtitle":{
+"text":"Tiles and labels"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+},{
+"aesthetic":"fill",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["displ","displ","displ","displ","year","year","year","cyl","cyl","cty"],
+"y":["year","cyl","cty","hwy","cyl","cty","hwy","cty","hwy","hwy"],
+"corr":[0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,-0.8057714082675277,-0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+},{
+"geom":"text",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"na_text":"",
+"label_format":".2f",
+"size_unit":"x",
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"corr",
+"size":"corr_abs",
+"color":"corr"
+},
+"size":1.0
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"3"
+},{
+"data":{
+},
+"ggtitle":{
+"text":"Tiles, points and labels"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+},{
+"aesthetic":"fill",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["displ","displ","displ","displ","year","year","year","cyl","cyl","cty"],
+"y":["year","cyl","cty","hwy","cyl","cty","hwy","cty","hwy","hwy"],
+"corr":[0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,-0.8057714082675277,-0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+},{
+"geom":"point",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"size_unit":"x",
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572],
+"corr_abs":[0.14784281645020939,0.9302271024198506,0.12224534743553041,0.7985239689348548,0.03723229085997207,0.8057714082675277,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"corr_abs",
+"color":"corr"
+}
+},{
+"geom":"text",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"na_text":"",
+"label_format":".2f",
+"size_unit":"x",
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572],
+"corr_abs":[0.14784281645020939,0.9302271024198506,0.12224534743553041,0.7985239689348548,0.03723229085997207,0.8057714082675277,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"corr",
+"size":"corr_abs",
+"color":"corr"
+},
+"color":"white"
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"4"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>The default plot configuration adapts to the changing options - compare ‘Tiles and labels’ plot above and below.</p>
+<p>You can also override the default plot configuration using the parameter ‘type’ - compare ‘Tiles, points and labels’ plot above and below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">corr_plot</span><span class="p">(</span><span class="n">mpg_df</span><span class="p">)</span><span class="o">.</span><span class="n">tiles</span><span class="p">()</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Tiles and labels&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">corr_plot</span><span class="p">(</span><span class="n">mpg_df</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">tiles</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">points</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Tiles, points and labels&quot;</span><span class="p">))</span>
+<span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="YFdfrC" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("YFdfrC");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"ggtitle":{
+"text":"Tiles and labels"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+},{
+"aesthetic":"fill",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["displ","displ","displ","displ","displ","year","year","year","year","year","cyl","cyl","cyl","cyl","cyl","cty","cty","cty","cty","cty","hwy","hwy","hwy","hwy","hwy"],
+"y":["displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy"],
+"corr":[1.0,0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.14784281645020939,1.0,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,0.9302271024198506,0.12224534743553041,1.0,-0.8057714082675277,-0.7619123538971949,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,1.0,0.955915913649572,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572,1.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+},{
+"geom":"text",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"na_text":"",
+"label_format":".2f",
+"size_unit":"x",
+"data":{
+"x":["displ","displ","displ","displ","displ","year","year","year","year","year","cyl","cyl","cyl","cyl","cyl","cty","cty","cty","cty","cty","hwy","hwy","hwy","hwy","hwy"],
+"y":["displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy"],
+"corr":[1.0,0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.14784281645020939,1.0,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,0.9302271024198506,0.12224534743553041,1.0,-0.8057714082675277,-0.7619123538971949,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,1.0,0.955915913649572,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572,1.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"corr",
+"size":"corr_abs",
+"color":"corr"
+},
+"size":1.0,
+"color":"white"
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"5"
+},{
+"data":{
+},
+"ggtitle":{
+"text":"Tiles, points and labels"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+},{
+"aesthetic":"fill",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#B3412C",
+"mid":"#EDEDED",
+"high":"#326C81"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+},{
+"geom":"point",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"size_unit":"x",
+"data":{
+"x":["displ","displ","displ","displ","year","year","year","cyl","cyl","cty"],
+"y":["year","cyl","cty","hwy","cyl","cty","hwy","cty","hwy","hwy"],
+"corr":[0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,-0.8057714082675277,-0.7619123538971949,0.955915913649572],
+"corr_abs":[0.14784281645020939,0.9302271024198506,0.7985239689348548,0.7660200208864677,0.12224534743553041,0.03723229085997207,0.0021576430766243365,0.8057714082675277,0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"corr_abs",
+"color":"corr"
+}
+},{
+"geom":"text",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"na_text":"",
+"label_format":".2f",
+"size_unit":"x",
+"data":{
+"x":["displ","displ","displ","displ","displ","year","year","year","year","year","cyl","cyl","cyl","cyl","cyl","cty","cty","cty","cty","cty","hwy","hwy","hwy","hwy","hwy"],
+"y":["displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy","displ","year","cyl","cty","hwy"],
+"corr":[1.0,0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.14784281645020939,1.0,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,0.9302271024198506,0.12224534743553041,1.0,-0.8057714082675277,-0.7619123538971949,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,1.0,0.955915913649572,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572,1.0],
+"corr_abs":[1.0,0.14784281645020939,0.9302271024198506,0.7985239689348548,0.7660200208864677,0.14784281645020939,1.0,0.12224534743553041,0.03723229085997207,0.0021576430766243365,0.9302271024198506,0.12224534743553041,1.0,0.8057714082675277,0.7619123538971949,0.7985239689348548,0.03723229085997207,0.8057714082675277,1.0,0.955915913649572,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572,1.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"corr",
+"size":"corr_abs",
+"color":"corr"
+},
+"color":"white"
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"6"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="customizing-colors">
+<h2>Customizing colors.<a class="headerlink" href="#customizing-colors" title="Link to this heading">#</a></h2>
+<p>Instead of the default blue-grey-red gradient you can define your own lower-middle-upper colors, or
+choose one of the available ‘Brewer’ diverging palettes.</p>
+<p>Let’s create a gradient resembling one of Seaborn gradients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bld</span> <span class="o">=</span> <span class="n">corr_plot</span><span class="p">(</span><span class="n">mpg_df</span><span class="p">)</span><span class="o">.</span><span class="n">points</span><span class="p">()</span><span class="o">.</span><span class="n">labels</span><span class="p">()</span><span class="o">.</span><span class="n">tiles</span><span class="p">()</span>
+
+<span class="c1"># Configure gradient resembling one of Seaborn gradients.</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="p">(</span><span class="n">bld</span>
+            <span class="o">.</span><span class="n">palette_gradient</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s1">&#39;#417555&#39;</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="s1">&#39;#EDEDED&#39;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s1">&#39;#963CA7&#39;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">build</span><span class="p">())</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Custom gradient&quot;</span><span class="p">)</span>
+
+<span class="c1"># Configure Brewer &#39;BrBG&#39; palette.</span>
+<span class="n">brewer</span> <span class="o">=</span> <span class="p">(</span><span class="n">bld</span>
+            <span class="o">.</span><span class="n">palette_BrBG</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">build</span><span class="p">())</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Brewer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">gradient</span><span class="p">,</span>
+    <span class="n">brewer</span>
+<span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="6dJG5n" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("6dJG5n");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"ggtitle":{
+"text":"Custom gradient"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#417555",
+"mid":"#EDEDED",
+"high":"#963CA7"
+},{
+"aesthetic":"fill",
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)",
+"scale_mapper_kind":"color_gradient2",
+"low":"#417555",
+"mid":"#EDEDED",
+"high":"#963CA7"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["displ","displ","displ","displ","year","year","year","cyl","cyl","cty"],
+"y":["year","cyl","cty","hwy","cyl","cty","hwy","cty","hwy","hwy"],
+"corr":[0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,-0.8057714082675277,-0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+},{
+"geom":"point",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"size_unit":"x",
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572],
+"corr_abs":[0.14784281645020939,0.9302271024198506,0.12224534743553041,0.7985239689348548,0.03723229085997207,0.8057714082675277,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"corr_abs",
+"color":"corr"
+}
+},{
+"geom":"text",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"na_text":"",
+"label_format":".2f",
+"size_unit":"x",
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572],
+"corr_abs":[0.14784281645020939,0.9302271024198506,0.12224534743553041,0.7985239689348548,0.03723229085997207,0.8057714082675277,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"corr",
+"size":"corr_abs",
+"color":"corr"
+},
+"color":"white"
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"7"
+},{
+"data":{
+},
+"ggtitle":{
+"text":"Brewer"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["displ","year","cyl","cty","hwy"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["displ","year","cyl","cty","hwy"],
+"limits":["hwy","cty","cyl","year","displ"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+},{
+"aesthetic":"fill",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["displ","displ","displ","displ","year","year","year","cyl","cyl","cty"],
+"y":["year","cyl","cty","hwy","cyl","cty","hwy","cty","hwy","hwy"],
+"corr":[0.14784281645020939,0.9302271024198506,-0.7985239689348548,-0.7660200208864677,0.12224534743553041,-0.03723229085997207,0.0021576430766243365,-0.8057714082675277,-0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+},{
+"geom":"point",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"size_unit":"x",
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572],
+"corr_abs":[0.14784281645020939,0.9302271024198506,0.12224534743553041,0.7985239689348548,0.03723229085997207,0.8057714082675277,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"corr_abs",
+"color":"corr"
+}
+},{
+"geom":"text",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"na_text":"",
+"label_format":".2f",
+"size_unit":"x",
+"data":{
+"x":["year","cyl","cyl","cty","cty","cty","hwy","hwy","hwy","hwy"],
+"y":["displ","displ","year","displ","year","cyl","displ","year","cyl","cty"],
+"corr":[0.14784281645020939,0.9302271024198506,0.12224534743553041,-0.7985239689348548,-0.03723229085997207,-0.8057714082675277,-0.7660200208864677,0.0021576430766243365,-0.7619123538971949,0.955915913649572],
+"corr_abs":[0.14784281645020939,0.9302271024198506,0.12224534743553041,0.7985239689348548,0.03723229085997207,0.8057714082675277,0.7660200208864677,0.0021576430766243365,0.7619123538971949,0.955915913649572]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"corr",
+"size":"corr_abs",
+"color":"corr"
+},
+"color":"white"
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,4.6],
+"ylim":[-0.6,4.6]
+},
+"ggsize":{
+"width":298,
+"height":220
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"8"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="correlation-plot-with-large-number-of-variables-in-dataset">
+<h2>Correlation plot with large number of variables in dataset.<a class="headerlink" href="#correlation-plot-with-large-number-of-variables-in-dataset" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data?select=train.csv">Kaggle House Prices</a> dataset contains 81 variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/Ames_house_prices_train.csv&quot;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">housing_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">housing_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1460, 38)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>MSSubClass</th>
+      <th>LotFrontage</th>
+      <th>LotArea</th>
+      <th>OverallQual</th>
+      <th>OverallCond</th>
+      <th>YearBuilt</th>
+      <th>YearRemodAdd</th>
+      <th>MasVnrArea</th>
+      <th>BsmtFinSF1</th>
+      <th>...</th>
+      <th>WoodDeckSF</th>
+      <th>OpenPorchSF</th>
+      <th>EnclosedPorch</th>
+      <th>3SsnPorch</th>
+      <th>ScreenPorch</th>
+      <th>PoolArea</th>
+      <th>MiscVal</th>
+      <th>MoSold</th>
+      <th>YrSold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>60</td>
+      <td>65.0</td>
+      <td>8450</td>
+      <td>7</td>
+      <td>5</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>196.0</td>
+      <td>706</td>
+      <td>...</td>
+      <td>0</td>
+      <td>61</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2008</td>
+      <td>208500</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>20</td>
+      <td>80.0</td>
+      <td>9600</td>
+      <td>6</td>
+      <td>8</td>
+      <td>1976</td>
+      <td>1976</td>
+      <td>0.0</td>
+      <td>978</td>
+      <td>...</td>
+      <td>298</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2007</td>
+      <td>181500</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>60</td>
+      <td>68.0</td>
+      <td>11250</td>
+      <td>7</td>
+      <td>5</td>
+      <td>2001</td>
+      <td>2002</td>
+      <td>162.0</td>
+      <td>486</td>
+      <td>...</td>
+      <td>0</td>
+      <td>42</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>2008</td>
+      <td>223500</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>70</td>
+      <td>60.0</td>
+      <td>9550</td>
+      <td>7</td>
+      <td>5</td>
+      <td>1915</td>
+      <td>1970</td>
+      <td>0.0</td>
+      <td>216</td>
+      <td>...</td>
+      <td>0</td>
+      <td>35</td>
+      <td>272</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2006</td>
+      <td>140000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>60</td>
+      <td>84.0</td>
+      <td>14260</td>
+      <td>8</td>
+      <td>5</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>350.0</td>
+      <td>655</td>
+      <td>...</td>
+      <td>192</td>
+      <td>84</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>250000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 38 columns</p>
+</div></div></div>
+</div>
+<p>Correlation plot that shows all the correlations in this dataset is too large and barely useful.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_plot</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span><span class="o">.</span><span class="n">tiles</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">palette_BrBG</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Wq3jTi" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Wq3jTi");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["Id","MSSubClass","LotFrontage","LotArea","OverallQual","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold"],
+"limits":["Id","MSSubClass","LotFrontage","LotArea","OverallQual","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["MSSubClass","LotFrontage","LotArea","OverallQual","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice"],
+"limits":["SalePrice","YrSold","MoSold","MiscVal","PoolArea","ScreenPorch","3SsnPorch","EnclosedPorch","OpenPorchSF","WoodDeckSF","GarageArea","GarageCars","GarageYrBlt","Fireplaces","TotRmsAbvGrd","KitchenAbvGr","BedroomAbvGr","HalfBath","FullBath","BsmtHalfBath","BsmtFullBath","GrLivArea","LowQualFinSF","2ndFlrSF","1stFlrSF","TotalBsmtSF","BsmtUnfSF","BsmtFinSF2","BsmtFinSF1","MasVnrArea","YearRemodAdd","YearBuilt","OverallCond","OverallQual","LotArea","LotFrontage","MSSubClass"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+},{
+"aesthetic":"fill",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","Id","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","MSSubClass","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotFrontage","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","LotArea","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","OverallCond","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","MasVnrArea","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF1","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtFinSF2","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","BsmtUnfSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","1stFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","LowQualFinSF","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtFullBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","BsmtHalfBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","FullBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","HalfBath","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","KitchenAbvGr","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","Fireplaces","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageArea","GarageArea","GarageArea","GarageArea","GarageArea","GarageArea","GarageArea","GarageArea","GarageArea","GarageArea","WoodDeckSF","WoodDeckSF","WoodDeckSF","WoodDeckSF","WoodDeckSF","WoodDeckSF","WoodDeckSF","WoodDeckSF","WoodDeckSF","OpenPorchSF","OpenPorchSF","OpenPorchSF","OpenPorchSF","OpenPorchSF","OpenPorchSF","OpenPorchSF","OpenPorchSF","EnclosedPorch","EnclosedPorch","EnclosedPorch","EnclosedPorch","EnclosedPorch","EnclosedPorch","EnclosedPorch","3SsnPorch","3SsnPorch","3SsnPorch","3SsnPorch","3SsnPorch","3SsnPorch","ScreenPorch","ScreenPorch","ScreenPorch","ScreenPorch","ScreenPorch","PoolArea","PoolArea","PoolArea","PoolArea","MiscVal","MiscVal","MiscVal","MoSold","MoSold","YrSold"],
+"y":["MSSubClass","LotFrontage","LotArea","OverallQual","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","LotFrontage","LotArea","OverallQual","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","LotArea","OverallQual","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","OverallQual","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","OverallCond","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","YearBuilt","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","YearRemodAdd","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","MasVnrArea","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","2ndFlrSF","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","LowQualFinSF","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","GrLivArea","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","TotRmsAbvGrd","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","Fireplaces","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","GarageYrBlt","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","GarageCars","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","3SsnPorch","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","ScreenPorch","PoolArea","MiscVal","MoSold","YrSold","SalePrice","PoolArea","MiscVal","MoSold","YrSold","SalePrice","MiscVal","MoSold","YrSold","SalePrice","MoSold","YrSold","SalePrice","YrSold","SalePrice","SalePrice"],
+"corr":[0.01115647820138266,-0.010600688552398043,-0.03322551858568492,-0.028364753937534147,0.012608924775955575,-0.012712715387864951,-0.021997641857531825,-0.050297795171704615,-0.0050240490416607175,-0.005967671960281643,-0.007939703357717539,-0.0154145661079109,0.010496040954084946,0.005589848886159626,-0.044229958086591345,0.008272757661808138,0.002288555600834358,-0.02015474521553416,0.0055874529073555,0.0067838112842973225,0.03771855422321228,0.0029512363577296613,0.02723872440945831,-0.019771632442393293,7.239023604314056E-5,0.016569677112146127,0.017633778453767103,-0.029643197156402474,-4.769113247911827E-4,0.002889217865750164,-0.046634788867427585,0.0013302086301727988,0.057043904789252316,-0.006242404848302426,0.021172176550393457,7.117940172075226E-4,-0.021916719443430967,-0.3863468853449291,-0.13978108172014597,0.032627707521842034,-0.059315817084104695,0.027850136946705798,0.04058104478406425,0.022936285894197328,-0.06983574916710049,-0.06564857918852389,-0.14075948083501172,-0.23851840931511895,-0.25175835187837925,0.30788572075985926,0.046473755899517154,0.0748531796577994,0.003491025779044692,-0.0023325345518022773,0.13160822241028108,0.17735438864391687,-0.02343802846062706,0.2817210402648814,0.04038006478367613,-0.04556934027456939,0.08507186950664718,-0.040109793135783604,-0.09867154319256435,-0.012579358249219592,-0.006100121231942238,-0.012036621902094771,-0.04382454917560846,-0.026030176699806666,0.008282707579624416,-0.007683291329865976,-0.013584643238322348,-0.02140703785109821,-0.08428413512659509,0.4260950187718081,0.2516457754806124,-0.059213450005246894,0.12334946703331619,0.08886557249206646,0.19345806055826867,0.233633167019755,0.0498996766909894,0.13264374162493364,0.3920745763791721,0.45718100199465517,0.08017727062420475,0.038468534328959476,0.40279741408531955,0.10094856694926875,-0.007234304524918128,0.19876867789737823,0.05353185497960593,0.263169915881059,-0.0060688301613090875,0.3520959476602243,0.26663948256030306,0.0702497819166165,0.2856909246851005,0.3449967241064819,0.0885209332894081,0.15197222768060642,0.01070033663888244,0.07002922773085365,0.04138279067500582,0.2061667752760768,0.003367556596191435,0.011199954759134238,0.007449589209750463,0.35179909657067737,0.10580574175496422,-0.005636270274099278,0.014227651757025093,0.013788427078155424,0.10415982154021264,0.21410313070557713,0.11116974549624871,-0.00261835995009543,0.2608331345451572,0.29947457850776266,0.05098594829349377,0.004778969866349555,0.26311616716714803,0.15815453106001476,0.04804557088829686,0.1260306265196436,0.014259468566431947,0.11968990815131542,-0.017783870504841995,0.190014777625409,0.2713640096245418,-0.02494741866564254,0.15487073975354076,0.1804027551511169,0.17169768725711246,0.08477380884021642,-0.018339733672212328,0.020422829586133416,0.04316037769525204,0.07767239188017444,0.03806769201918336,0.0012049882225877268,-0.01426140729855021,0.2638433538714051,-0.09193234263907182,0.5723227689623621,0.5506839241941717,0.4118756672776833,0.23966596617889105,-0.05911869267068986,0.30815892690564284,0.5378084986123907,0.4762238290781779,0.29549287919970985,-0.030429283979605037,0.5930074300286512,0.11109778614230235,-0.04015015766998829,0.5505997093682543,0.2734580986427702,0.1016763562417855,-0.18388223454922156,0.42745234327798975,0.39676503795208906,0.5477658448351629,0.6006707165907149,0.5620217566126083,0.23892339224918593,0.3088188233594523,-0.11393685859568162,0.03037056713526452,0.06488636049351544,0.06516584360589199,-0.031406210500746504,0.07081517178517327,-0.027346708327825386,0.7909816005838053,-0.37598319560698945,0.07374149814528905,-0.1281011991656896,-0.04623085591822496,0.040229169899767575,-0.13684056989352233,-0.1710975146249218,-0.1442027840490591,0.028942115965816882,0.025494319914213383,-0.07968586538833815,-0.05494151543295185,0.11782091508139253,-0.1941494887493024,-0.06076932676159483,0.012980060094550628,-0.08700085543638039,-0.057583166112865375,-0.02381997776166212,-0.32429673252939795,-0.18575751057836357,-0.15152137057022985,-0.0033336992893856225,-0.03258881352158505,0.07035618448230374,0.025503660024132138,0.05481052878611526,-0.0019849422681841354,0.0687768060572499,-0.003510838599939743,0.043949745692488544,-0.07785589404867797,0.5928549763436519,0.3157070624361963,0.24950319668479728,-0.049106831196239174,0.14904039195440058,0.3914520020660952,0.2819858586998021,0.010307659584364078,-0.18378434437372046,0.19900971367645826,0.1875985499971434,-0.03816180567123349,0.4682707871726737,0.2426559102410641,-0.07065121690473103,-0.17480024561497706,0.09558912829795185,0.14771639941245646,0.8256674841743408,0.5378500917111052,0.4789538198934904,0.22488014230399744,0.188685840001731,-0.3872677829280785,0.03135451306436603,-0.05036443453861205,0.004949727615942999,-0.03438313873672287,0.012398470595440986,-0.01361768000183213,0.5228973328794967,0.17961837073552223,0.12845054712828866,-0.06775851356598699,0.18113308705016903,0.2910655826041661,0.24037926760355463,0.14002377880486447,-0.06241910007833181,0.2873885196503327,0.11946987911123993,-0.012337032127797673,0.4390464838723479,0.1833306117185349,-0.040580928067749454,-0.14959752104274646,0.1917398162928069,0.11258131843947561,0.6422767797035356,0.42062215494321714,0.3715998094973092,0.20572592049010355,0.22629763268298944,-0.1939191470992078,0.045285809814976964,-0.038740010742610125,0.005829372037106204,-0.010286248783081431,0.02149000222687611,0.03574324712127364,0.5071009671113866,0.2647362647138685,-0.0723188482033582,0.11444206231380821,0.3639362217744723,0.3445007468899248,0.1745614734574279,-0.06907085606589286,0.39085663973843854,0.08530982868972814,0.026672828155103145,0.27683284723698837,0.20144394692967832,0.10282115127801787,-0.03761025181986861,0.2806816946085068,0.24906961283714313,0.2526907749903342,0.3642036400698656,0.37306648160023664,0.15971813436595433,0.1257027966825031,-0.11020383387243517,0.018795515294914033,0.06146554318732188,0.01172306121326672,-0.02981539358527878,-0.005964715509114298,-0.008201030967080006,0.47749304709571444,-0.0501174000471511,-0.49525146925701125,0.5223960519923867,0.4458626560920054,-0.13707898608005356,-0.06450259692146844,0.20817113014532704,0.6492117535742649,0.06741847791011696,0.058543136861595194,0.004262424384486936,-0.10735467682307034,-0.08100685077857439,0.044315623912920654,0.2600109202350403,0.1534840980267781,0.22405352239399068,0.2969703853445138,0.20430614523740265,0.11176061335675101,-0.10230330550073197,0.026450506189898953,0.06202062266534991,0.1404912862549568,0.003571473474954695,-0.015726948262154667,0.014358922393909302,0.3864198062421535,-0.20929449241994497,0.10480953760636813,0.0971174484566702,-0.09926031602264425,0.01480699794683367,-0.009639891551805443,0.15867806078170135,0.07094813365590413,-0.07644386196518269,-0.032147837468965886,-0.015728113626581035,-0.04075123644840764,-0.03522654794752336,0.04692070882601213,-0.08801081541220088,-0.038263512869251545,-0.018226591907316552,0.06789832641361218,0.003092562209894399,0.036543339448210164,-0.029993397993921023,0.08887125137339073,0.041709054681333575,0.004939781228437705,-0.015210737972006668,0.03170563698487945,-0.011378121450215146,0.4153596051815893,0.3179874383527259,0.004469092144542392,0.028166688132741206,0.240257268349935,-0.42290047738321335,-0.09580428815248283,0.2888860554869108,-0.04111753014455172,0.16664331698696289,0.030085868314000126,0.25064706137624926,0.0515748822895418,0.19070827345893257,0.2141751897502169,0.18330269774258412,-0.005316424333062066,0.12900541461542128,-0.002537854589751547,0.02076400569654798,-0.012579273444256824,-0.035092240793657914,-0.023836645134507763,0.03488844300908206,-0.04125819493876721,0.21447910554696928,0.8195299750050339,-0.17451195013496046,-0.0332453873474563,0.45486820254790317,0.30735055373550346,-3.1458181983374725E-4,0.3237224136066502,-0.04880373863521248,0.05044995551267818,-0.06890064264201659,0.28557256372579454,0.33951932389865597,0.3224451736794739,0.43458483429168865,0.4866654637737961,0.23201860912901803,0.2472637462881078,-0.09547773670640776,0.03738372726300508,0.08448898591431157,0.12605313210083768,-0.018478922431472124,0.013196178616778433,-0.014968648018762356,0.6135805515591943,-0.20264618100232087,-0.014240672666431285,0.5660239689357486,0.24467110424771052,0.001955653582048656,0.3806374949735071,-0.11991590879396136,0.12740074939236454,0.06810058817691335,0.40951597886683183,0.41053108465984556,0.23344909271486267,0.4393168079906709,0.4897816541041918,0.23545862278369778,0.2116712254979847,-0.0652917009103091,0.05610437448487508,0.08875807262015682,0.13152497564028254,-0.021095719463122223,0.03137156035207926,-0.01360377050464661,0.6058521846919153,0.06335295010932271,0.6875010641666033,-0.16949395173099896,-0.023854783937045255,0.4213779828759713,0.6097073002717436,0.5029006133459056,0.05930575264821624,0.6164226354915431,0.19456089224132392,0.0708323397173792,0.18392558307638002,0.13834695857186657,0.09216541758603868,0.2080260631813579,0.06198869077325203,-0.02435764842204794,0.040606447641001006,0.08148687804909954,0.016196874604388505,0.035164427361791005,-0.02869991393529755,0.31933380283206736,0.13468281300660076,-0.047143421898259166,-0.005841504819311643,-7.095096206731084E-4,-0.02708004931716945,0.10560656854090526,0.007521744344233734,0.13118477598954745,-0.02127214341393874,-0.03636323404234127,-0.09447952015593257,-0.06760141323952208,-0.025443647988791077,0.018251039053999052,0.06108123777122687,-0.004295610410300094,0.02679941302177244,0.06215737226918922,-0.003792870779996453,-0.02217396057953783,-0.028920879782296086,-0.02560613000067955,0.03483604954490554,-0.0189184831706347,0.6300116462511148,0.4157716361052652,0.5212695109189948,0.10006316473775474,0.8254893743088425,0.46167913376144704,0.23119674063336224,0.4672474187951873,0.4689974773229655,0.24743282051884846,0.33022396171200064,0.009113210326003087,0.020643189710186576,0.10151039568208567,0.1702053360005616,-0.0024156395502935623,0.05023968081827284,-0.03652581962473121,0.7086244776126515,-0.14787096054760138,-0.06451204863131507,-0.030904959142533293,-0.15067280920795623,-0.041502546431482885,-0.0532752361233972,0.1379277084271981,0.12455252442364974,0.13188122440619438,0.179189480420231,0.17531519007972224,0.06734146137698176,-0.049910649083753186,-1.0609153998400853E-4,0.023147725763573802,0.06761555618047507,-0.02304702486861695,-0.025360894315259907,0.06704913767140361,0.22712223313149427,-0.054535811983635524,-0.012339900052275487,0.046518848389950684,-0.03794435022720086,-0.023836341262220544,0.028975586646259963,-0.07746361238070294,-0.02089105899687853,-0.02453557957887923,0.04016122325953452,-0.02532375788905772,-0.008555333868578032,0.035113630886772336,0.03212140720908338,0.02002462983851695,-0.007366524543625446,0.03287270523409066,-0.04652388177400862,-0.01684415429735895,0.13638058874914522,0.36325198302327694,0.1331152141960393,0.5547842535334836,0.2436705030799116,0.4845573867195222,0.469672043267628,0.4056562084540099,0.18770321383582822,0.25997742546824865,-0.11509296346134239,0.03535301658385297,-0.00810609332811188,0.04960382558403366,-0.014289844970848111,0.055872128991723384,-0.019668840691520386,0.5606637627484453,0.22665148415094508,-0.06826254889694101,0.3434148575409178,0.20364850809521917,0.19678517580586272,0.21917815216716094,0.1635493640166073,0.10808030267536337,0.19974014751279254,-0.09531652573608992,-0.0049724884173161,0.0724258451703809,0.0223814980554099,0.0012901448492839542,-0.009049888212650292,-0.010268668868105917,0.28410767559478256,0.1985967577071338,0.676619935742649,0.10756968099132388,-0.06451843698438452,0.08610643768835287,0.06525252989881626,0.04685377306989394,0.09380957160591452,0.04157043451959824,-0.02447779636611455,0.044299691127134826,0.07070258356547471,0.007766971998717607,0.04654385993628238,-0.03601389283370446,0.16821315430073963,0.2560454085359489,-0.12393623529689729,-0.12441140157001684,-0.05063389240221729,-0.06443304718314395,-0.09013027267903444,-0.07009060989258609,0.03731238503296963,-0.024600358690531954,-0.05161336606147979,-0.014525116015980777,0.062340724004379115,0.026588907230915452,0.031687206500669154,-0.13590737084214105,0.3261144801772001,0.1481117155859651,0.3622885708147746,0.33782212063683786,0.16598388371493233,0.2341915878315988,0.004151299023856323,-0.006683241010939702,0.059382599559410935,0.0837573495149245,0.024762884163584138,0.036907077159844405,-0.03451635430218269,0.5337231555820284,0.04682164840190421,0.3007887663013562,0.2691412380738719,0.20001879575902368,0.16940532713120185,-0.02482186853706847,0.011257238992774959,0.18453026951684842,0.09507352203619863,0.0014086054430451757,0.04635710249771968,-0.024095564980725313,0.46692883675152763,0.5889200070047002,0.5645670607230577,0.22457699198793213,0.22842457877198022,-0.2970026030557314,0.023543689573665077,-0.07541751376190593,-0.01450067856370222,-0.032417457821261826,0.0053370257603695135,-0.0010142778712734348,0.4863616774878596,0.882475414281462,0.2263421384698597,0.21356944558969115,-0.15143416002683724,0.035765285146453774,0.05049379192719834,0.020933531041465454,-0.04308012810223063,0.040521730128251755,-0.039116904112831495,0.6404091972583519,0.2246663071787637,0.2414346721380881,-0.1217767195610043,0.03508670020815975,0.05141176244520852,0.061047271702060014,-0.02739991441262488,0.02797379982354057,-0.027377940418545084,0.6234314389183622,0.058660608565887375,-0.1259888880376007,-0.03277063359357436,-0.07418135123983237,0.07337820695645396,-0.009551228238372468,0.021011044294297315,0.022270451009253036,0.32441344456812926,-0.09307931750864903,-0.005842499340135753,0.07430394385024312,0.060762111489925795,-0.018583738987649336,0.07125488475868938,-0.057619360142091326,0.31585622711605504,-0.03730528278804611,-0.08286424483260343,0.05420256229213969,0.018360600139447715,-0.028887265707142493,-0.009915936955524396,-0.1285779579259566,-0.03143584703909575,-0.00799154887286895,3.5396527793940183E-4,0.02947379524994019,0.01864492540475066,0.04458366533574838,0.05130739451790554,0.03194576077490817,0.023216991793307076,0.01069410600377114,0.11144657114291112,0.02966865085402175,-0.033736640262791315,-0.0596889316752469,0.09240354949187318,-0.006494550221282175,0.004906262452651876,-0.021189579640303213,-0.1457214126753949,0.046432245223819446,-0.028922585168736813]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,36.6],
+"ylim":[-0.6,36.6]
+},
+"ggsize":{
+"width":844,
+"height":737
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"9"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<section id="the-threshold-parameter">
+<h3>The <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter.<a class="headerlink" href="#the-threshold-parameter" title="Link to this heading">#</a></h3>
+<p>The ‘threshold’ parameter let us specify a level of significance, below which variables are not shown.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">corr_plot</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span><span class="o">.</span><span class="n">tiles</span><span class="p">(</span><span class="n">diag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">palette_BrBG</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> 
+ <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Threshold: 0.5&quot;</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">550</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="vDZSiJ" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("vDZSiJ");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"ggtitle":{
+"text":"Threshold: 0.5"
+},
+"ggsize":{
+"width":550.0,
+"height":400.0
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["OverallQual","YearBuilt","YearRemodAdd","BsmtFinSF1","TotalBsmtSF","1stFlrSF","2ndFlrSF","GrLivArea","BsmtFullBath","FullBath","HalfBath","BedroomAbvGr","TotRmsAbvGrd","GarageYrBlt","GarageCars","GarageArea","SalePrice"],
+"limits":["OverallQual","YearBuilt","YearRemodAdd","BsmtFinSF1","TotalBsmtSF","1stFlrSF","2ndFlrSF","GrLivArea","BsmtFullBath","FullBath","HalfBath","BedroomAbvGr","TotRmsAbvGrd","GarageYrBlt","GarageCars","GarageArea","SalePrice"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["OverallQual","YearBuilt","YearRemodAdd","BsmtFinSF1","TotalBsmtSF","1stFlrSF","2ndFlrSF","GrLivArea","BsmtFullBath","FullBath","HalfBath","BedroomAbvGr","TotRmsAbvGrd","GarageYrBlt","GarageCars","GarageArea","SalePrice"],
+"limits":["SalePrice","GarageArea","GarageCars","GarageYrBlt","TotRmsAbvGrd","BedroomAbvGr","HalfBath","FullBath","BsmtFullBath","GrLivArea","2ndFlrSF","1stFlrSF","TotalBsmtSF","BsmtFinSF1","YearRemodAdd","YearBuilt","OverallQual"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+},{
+"aesthetic":"fill",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","OverallQual","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearBuilt","YearRemodAdd","YearRemodAdd","YearRemodAdd","YearRemodAdd","BsmtFinSF1","BsmtFinSF1","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","TotalBsmtSF","1stFlrSF","1stFlrSF","1stFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","2ndFlrSF","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","GrLivArea","BsmtFullBath","FullBath","FullBath","FullBath","FullBath","HalfBath","BedroomAbvGr","BedroomAbvGr","BedroomAbvGr","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","TotRmsAbvGrd","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageYrBlt","GarageCars","GarageCars","GarageCars","GarageCars","GarageCars","GarageArea","GarageArea","GarageArea","GarageArea","SalePrice","SalePrice","SalePrice","SalePrice","SalePrice","SalePrice","SalePrice","SalePrice","SalePrice","SalePrice"],
+"y":["YearBuilt","YearRemodAdd","TotalBsmtSF","GrLivArea","FullBath","GarageYrBlt","GarageCars","GarageArea","SalePrice","OverallQual","YearRemodAdd","GarageYrBlt","GarageCars","SalePrice","OverallQual","YearBuilt","GarageYrBlt","SalePrice","TotalBsmtSF","BsmtFullBath","OverallQual","BsmtFinSF1","1stFlrSF","SalePrice","TotalBsmtSF","GrLivArea","SalePrice","GrLivArea","HalfBath","BedroomAbvGr","TotRmsAbvGrd","OverallQual","1stFlrSF","2ndFlrSF","FullBath","BedroomAbvGr","TotRmsAbvGrd","SalePrice","BsmtFinSF1","OverallQual","GrLivArea","TotRmsAbvGrd","SalePrice","2ndFlrSF","2ndFlrSF","GrLivArea","TotRmsAbvGrd","2ndFlrSF","GrLivArea","FullBath","BedroomAbvGr","SalePrice","OverallQual","YearBuilt","YearRemodAdd","GarageCars","GarageArea","OverallQual","YearBuilt","GarageYrBlt","GarageArea","SalePrice","OverallQual","GarageYrBlt","GarageCars","SalePrice","OverallQual","YearBuilt","YearRemodAdd","TotalBsmtSF","1stFlrSF","GrLivArea","FullBath","TotRmsAbvGrd","GarageCars","GarageArea"],
+"corr":[0.5723227689623621,0.5506839241941717,0.5378084986123907,0.5930074300286512,0.5505997093682543,0.5477658448351629,0.6006707165907149,0.5620217566126083,0.7909816005838053,0.5723227689623621,0.5928549763436519,0.8256674841743408,0.5378500917111052,0.5228973328794967,0.5506839241941717,0.5928549763436519,0.6422767797035356,0.5071009671113866,0.5223960519923867,0.6492117535742649,0.5378084986123907,0.5223960519923867,0.8195299750050339,0.6135805515591943,0.8195299750050339,0.5660239689357486,0.6058521846919153,0.6875010641666033,0.6097073002717436,0.5029006133459056,0.6164226354915431,0.5930074300286512,0.5660239689357486,0.6875010641666033,0.6300116462511148,0.5212695109189948,0.8254893743088425,0.7086244776126515,0.6492117535742649,0.5505997093682543,0.6300116462511148,0.5547842535334836,0.5606637627484453,0.6097073002717436,0.5029006133459056,0.5212695109189948,0.676619935742649,0.6164226354915431,0.8254893743088425,0.5547842535334836,0.676619935742649,0.5337231555820284,0.5477658448351629,0.8256674841743408,0.6422767797035356,0.5889200070047002,0.5645670607230577,0.6006707165907149,0.5378500917111052,0.5889200070047002,0.882475414281462,0.6404091972583519,0.5620217566126083,0.5645670607230577,0.882475414281462,0.6234314389183622,0.7909816005838053,0.5228973328794967,0.5071009671113866,0.6135805515591943,0.6058521846919153,0.7086244776126515,0.5606637627484453,0.5337231555820284,0.6404091972583519,0.6234314389183622]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,16.6],
+"ylim":[-0.6,16.6]
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"10"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>Let’s further increase our threshold in order to see only highly correlated variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">corr_plot</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">tiles</span><span class="p">(</span><span class="n">diag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">palette_BrBG</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> 
+ <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Threshold: 0.8&quot;</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">550</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="6qQzqx" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("6qQzqx");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"ggtitle":{
+"text":"Threshold: 0.8"
+},
+"ggsize":{
+"width":550.0,
+"height":400.0
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"scale_mapper_kind":"identity",
+"na_value":0,
+"guide":"none"
+},{
+"aesthetic":"x",
+"discrete":true,
+"breaks":["YearBuilt","TotalBsmtSF","1stFlrSF","GrLivArea","TotRmsAbvGrd","GarageYrBlt","GarageCars","GarageArea"],
+"limits":["YearBuilt","TotalBsmtSF","1stFlrSF","GrLivArea","TotRmsAbvGrd","GarageYrBlt","GarageCars","GarageArea"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"y",
+"discrete":true,
+"breaks":["YearBuilt","TotalBsmtSF","1stFlrSF","GrLivArea","TotRmsAbvGrd","GarageYrBlt","GarageCars","GarageArea"],
+"limits":["GarageArea","GarageCars","GarageYrBlt","TotRmsAbvGrd","GrLivArea","1stFlrSF","TotalBsmtSF","YearBuilt"],
+"expand":[0.0,0.0]
+},{
+"aesthetic":"color",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+},{
+"aesthetic":"fill",
+"scale_mapper_kind":"color_brewer",
+"palette":"BrBG",
+"labels":["-1","-0.5","0","0.5","1"],
+"name":"",
+"breaks":[-1.0,-0.5,0.0,0.5,1.0],
+"limits":[-1.0,1.0],
+"na_value":"rgba(0,0,0,0)"
+}],
+"layers":[{
+"geom":"tile",
+"show_legend":true,
+"tooltips":{
+"lines":["@corr"],
+"formats":[{
+"field":"@corr",
+"format":".2f"
+}]
+},
+"sampling":{
+"name":"none"
+},
+"data":{
+"x":["YearBuilt","TotalBsmtSF","1stFlrSF","GrLivArea","TotRmsAbvGrd","GarageYrBlt","GarageCars","GarageArea"],
+"y":["GarageYrBlt","1stFlrSF","TotalBsmtSF","TotRmsAbvGrd","GrLivArea","YearBuilt","GarageArea","GarageCars"],
+"corr":[0.8256674841743408,0.8195299750050339,0.8195299750050339,0.8254893743088425,0.8254893743088425,0.8256674841743408,0.882475414281462,0.882475414281462]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"corr"
+},
+"size":0.0,
+"width":1.002,
+"height":1.002
+}],
+"metainfo_list":[],
+"coord":{
+"name":"fixed",
+"xlim":[-0.6,7.6],
+"ylim":[-0.6,7.6]
+},
+"theme":{
+"axis_title":{
+"blank":true
+},
+"axis_line":{
+"blank":true
+},
+"panel_grid":{
+"blank":true
+},
+"axis_ticks_x":{
+"blank":false
+},
+"axis_ticks_y":{
+"blank":false
+}
+},
+"spec_id":"11"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-tile-point-and-label-layers">Combining ‘tile’, ‘point’ and ‘label’ layers.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-colors">Customizing colors.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-plot-with-large-number-of-variables-in-dataset">Correlation plot with large number of variables in dataset.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-threshold-parameter">The <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

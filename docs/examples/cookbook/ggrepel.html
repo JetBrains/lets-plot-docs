@@ -1,0 +1,6639 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Dynamic Text Positioning with Repel Geometries" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/ggrepel.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="geom_text_repel(), geom_label_repel(). These functions use a force-based layout algorithm to automatically reposition text labels and resolve overlaps. Labels repel each other and their associated ..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="geom_text_repel(), geom_label_repel(). These functions use a force-based layout algorithm to automatically reposition text labels and resolve overlaps. Labels repel each other and their associated ..." />
+
+    <title>Dynamic Text Positioning with Repel Geometries</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/ggrepel';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/cookbook/ggrepel.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dynamic-text-positioning-with-repel-geometries">
+<h1>Dynamic Text Positioning with Repel Geometries<a class="headerlink" href="#dynamic-text-positioning-with-repel-geometries" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_label_repel()</span></code></p></li>
+</ul>
+<p>These functions use a force-based layout algorithm to automatically reposition text labels and resolve overlaps.</p>
+<p>Labels repel each other and their associated data points while staying within the plot boundaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="ppeK9F"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("ppeK9F").appendChild(div);
+                };
+                var e = document.getElementById("ppeK9F");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/refs/heads/master/data/mtcars.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(32, 12)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>model</th>
+      <th>mpg</th>
+      <th>cyl</th>
+      <th>disp</th>
+      <th>hp</th>
+      <th>drat</th>
+      <th>wt</th>
+      <th>qsec</th>
+      <th>vs</th>
+      <th>am</th>
+      <th>gear</th>
+      <th>carb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mazda RX4</td>
+      <td>21.0</td>
+      <td>6</td>
+      <td>160.0</td>
+      <td>110</td>
+      <td>3.90</td>
+      <td>2.620</td>
+      <td>16.46</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mazda RX4 Wag</td>
+      <td>21.0</td>
+      <td>6</td>
+      <td>160.0</td>
+      <td>110</td>
+      <td>3.90</td>
+      <td>2.875</td>
+      <td>17.02</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Datsun 710</td>
+      <td>22.8</td>
+      <td>4</td>
+      <td>108.0</td>
+      <td>93</td>
+      <td>3.85</td>
+      <td>2.320</td>
+      <td>18.61</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Hornet 4 Drive</td>
+      <td>21.4</td>
+      <td>6</td>
+      <td>258.0</td>
+      <td>110</td>
+      <td>3.08</td>
+      <td>3.215</td>
+      <td>19.44</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Hornet Sportabout</td>
+      <td>18.7</td>
+      <td>8</td>
+      <td>360.0</td>
+      <td>175</td>
+      <td>3.15</td>
+      <td>3.440</td>
+      <td>17.02</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="mf">2.0</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;wt&quot;</span><span class="p">])</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;wt&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">3.65</span><span class="p">)]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="mf">2.0</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;wt&quot;</span><span class="p">])</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;wt&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;am&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">21</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plot2</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="comparison-of-geom-text-and-geom-text-repel">
+<h2>Comparison of <code class="docutils literal notranslate"><span class="pre">geom_text()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code><a class="headerlink" href="#comparison-of-geom-text-and-geom-text-repel" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;geom_text()&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;geom_text_repel()&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="yudK9K" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("yudK9K");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"geom_text()"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"geom_text_repel()"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="geom-label-repel">
+<h2><code class="docutils literal notranslate"><span class="pre">geom_label_repel()</span></code><a class="headerlink" href="#geom-label-repel" title="Link to this heading">#</a></h2>
+<p>All of the parameters discussed below apply equally to both <code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_label_repel()</span></code>. For simplicity, we will use <code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code> in the examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_label</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;geom_label()&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_label_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;geom_label_repel()&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="WRGrTA" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("WRGrTA");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"geom_label()"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"label",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"geom_label_repel()"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"label_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"seed":42.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="seed-parameter">
+<h2><code class="docutils literal notranslate"><span class="pre">seed</span></code> parameter<a class="headerlink" href="#seed-parameter" title="Link to this heading">#</a></h2>
+<p>Controls the randomization to produce the same label layout each time the plot is generated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;seed=1&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;seed=10&quot;</span><span class="p">),</span>
+<span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="jJrxgE" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("jJrxgE");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"seed=1"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"seed":1.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"seed=10"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"seed":10.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>In some cases, it may be necessary to find a seed value that produces a more optimal label arrangement. A simple approach is to re-render the plot multiple times until you’re satisfied with the result, then use the corresponding seed to reproduce it.</p>
+</section>
+<section id="max-iter-parameter">
+<h2><code class="docutils literal notranslate"><span class="pre">max_iter</span></code> parameter<a class="headerlink" href="#max-iter-parameter" title="Link to this heading">#</a></h2>
+<p>Controls the maximum number of iterations used by the layout algorithm, helping to reduce notebook rendering time. More iterations generally lead to better label placement, but at the cost of increased computation time. For plots with a small number of labels, 200–300 iterations are often sufficient.
+The default value is 2000.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="mi">530</span>
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_iter=2&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_iter=20&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_iter=200&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="nOUFk4" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("nOUFk4");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"max_iter=2"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_iter":2.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"7"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"max_iter=20"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_iter":20.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"8"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"max_iter=200"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_iter":200.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"9"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="max-time-parameter">
+<h2><code class="docutils literal notranslate"><span class="pre">max_time</span></code> parameter<a class="headerlink" href="#max-time-parameter" title="Link to this heading">#</a></h2>
+<p>Another way to limit plot rendering time is by using the <code class="docutils literal notranslate"><span class="pre">max_time</span></code> parameter. This primarily serves as a safeguard against excessive computation when a large number of text labels are involved. Time is specified in seconds. The default value is <code class="docutils literal notranslate"><span class="pre">5</span></code> seconds, but you can disable the time limit by setting it to <code class="docutils literal notranslate"><span class="pre">-1</span></code> if needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_time=0.001&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_time=0.01&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_time=-1&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="XciSZW" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("XciSZW");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"max_time=0.001"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":0.001,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"10"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"max_time=0.01"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":0.01,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"11"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"max_time=-1"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"12"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="direction-parameter">
+<h2><code class="docutils literal notranslate"><span class="pre">direction</span></code> parameter<a class="headerlink" href="#direction-parameter" title="Link to this heading">#</a></h2>
+<p>Restricts the movement of a text label relative to its anchor point to a specific direction. The default value is <code class="docutils literal notranslate"><span class="pre">both</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;direction = &#39;x&#39;&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;direction = &#39;y&#39;&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;direction = &#39;both&#39;&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="ZbxwcF" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("ZbxwcF");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"direction = 'x'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"seed":530.0,
+"direction":"x",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"13"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"direction = 'y'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"seed":530.0,
+"direction":"y",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"14"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"direction = 'both'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"seed":530.0,
+"direction":"both",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"15"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>As we can see, this option is of limited use for randomly scattered points, but in certain cases it can be extremely helpful:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotX</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text_repel</span><span class="p">(</span>
+        <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">nudge_y</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">angle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+        <span class="n">hjust</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span>
+    <span class="p">)</span>
+
+<span class="n">plotY</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">xlim</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text_repel</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">nudge_x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">hjust</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span>
+    <span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plotX</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;direction = x&quot;</span><span class="p">),</span>
+    <span class="n">plotY</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;direction = y&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="w2pF7e" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("w2pF7e");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"direction = x"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"limits":[2.0,3.0]
+},{
+"aesthetic":"y",
+"limits":[1.0,1.3]
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"y":1.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"nudge_y":0.05,
+"seed":530.0,
+"direction":"x",
+"y":1.0,
+"angle":90.0,
+"hjust":0.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"16"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4]
+},
+"mapping":{
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"direction = y"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"limits":[0.9,1.3]
+},{
+"aesthetic":"y",
+"limits":[19.0,35.0]
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"nudge_x":0.05,
+"seed":530.0,
+"direction":"y",
+"x":1.0,
+"hjust":0.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"17"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="point-padding-and-box-padding-parameters">
+<h2><code class="docutils literal notranslate"><span class="pre">point_padding</span></code> and <code class="docutils literal notranslate"><span class="pre">box_padding</span></code> parameters<a class="headerlink" href="#point-padding-and-box-padding-parameters" title="Link to this heading">#</a></h2>
+<p>These parameters control the amount of spacing around text labels.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">point_padding</span></code> adds space between the label and all nearby points, but does not affect spacing between labels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">box_padding</span></code> adds space between labels, but does not affect spacing between the label and the data point.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_padding</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;point_padding&quot;</span><span class="p">),</span>
+    <span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">box_padding</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;box_padding&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="4xRikU" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("4xRikU");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"point_padding"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"point_padding":10.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"18"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"box_padding"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"box_padding":10.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"19"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="max-overlaps-parameter">
+<h2><code class="docutils literal notranslate"><span class="pre">max_overlaps</span></code> parameter<a class="headerlink" href="#max-overlaps-parameter" title="Link to this heading">#</a></h2>
+<p>Specifies the maximum allowed number of overlaps with other labels. Labels that exceed this threshold will be omitted from the plot. The default value is <code class="docutils literal notranslate"><span class="pre">10</span></code>. You can disable overlap filtering entirely by setting this parameter to <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_overlaps</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_overlaps=5&quot;</span><span class="p">),</span>
+    <span class="n">plot</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_overlaps</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;max_overlaps=-1&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="j6wnFa" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("j6wnFa");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Fiat 128","Toyota Corona","Dodge Challenger","AMC Javelin","Porsche 914-2","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,32.4,21.5,15.5,15.2,26.0,15.8,19.7,15.0,21.4],
+"wt":[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,2.2,2.465,3.52,3.435,2.14,3.17,2.77,3.57,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+}]
+},
+"ggtitle":{
+"text":"max_overlaps=5"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"max_overlaps":5.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"20"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Fiat 128","Toyota Corona","Dodge Challenger","AMC Javelin","Porsche 914-2","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,32.4,21.5,15.5,15.2,26.0,15.8,19.7,15.0,21.4],
+"wt":[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,2.2,2.465,3.52,3.435,2.14,3.17,2.77,3.57,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+}]
+},
+"ggtitle":{
+"text":"max_overlaps=-1"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"max_overlaps":-1.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"21"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="min-segment-length-parameter">
+<h2><code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code> parameter<a class="headerlink" href="#min-segment-length-parameter" title="Link to this heading">#</a></h2>
+<p>Sets the minimum length for the line connecting a label to its associated point. Lines shorter than this length will not be drawn. To display all lines, use the default value of <code class="docutils literal notranslate"><span class="pre">0</span></code>. To hide all lines, set the value to something very large.
+<code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code> uses the same units as <code class="docutils literal notranslate"><span class="pre">point_size</span></code>, so be careful when using <code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code> together with <code class="docutils literal notranslate"><span class="pre">size_unit</span></code> (see below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_segment_length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;min_segment_length=0&quot;</span><span class="p">),</span>
+    <span class="n">plot</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_segment_length</span><span class="o">=</span><span class="mi">9999</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;min_segment_length=9999&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="HKCWT4" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("HKCWT4");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Fiat 128","Toyota Corona","Dodge Challenger","AMC Javelin","Porsche 914-2","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,32.4,21.5,15.5,15.2,26.0,15.8,19.7,15.0,21.4],
+"wt":[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,2.2,2.465,3.52,3.435,2.14,3.17,2.77,3.57,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+}]
+},
+"ggtitle":{
+"text":"min_segment_length=0"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"min_segment_length":0.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"22"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Fiat 128","Toyota Corona","Dodge Challenger","AMC Javelin","Porsche 914-2","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,32.4,21.5,15.5,15.2,26.0,15.8,19.7,15.0,21.4],
+"wt":[2.62,2.875,2.32,3.215,3.44,3.46,3.57,3.19,3.15,3.44,3.44,2.2,2.465,3.52,3.435,2.14,3.17,2.77,3.57,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+}]
+},
+"ggtitle":{
+"text":"min_segment_length=9999"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"min_segment_length":9999.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"23"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="point-settings">
+<h2>Point settings<a class="headerlink" href="#point-settings" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code> does not draw points itself, but for it to work correctly, the values of parameters and aesthetics that control point size must match those used in the associated <code class="docutils literal notranslate"><span class="pre">geom_point()</span></code> layer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_size</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">guide</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_stroke</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">guide</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_shape_identity</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s2">&quot;gear&quot;</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;vs&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;shape&quot;</span><span class="p">),</span> <span class="n">size_unit</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">point_size</span><span class="o">=</span><span class="s2">&quot;gear&quot;</span><span class="p">,</span> <span class="n">point_stroke</span><span class="o">=</span><span class="s2">&quot;vs&quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;shape&quot;</span><span class="p">),</span> <span class="n">size_unit</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="QJAaWo" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("QJAaWo");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78],
+"vs":[0.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0],
+"gear":[4.0,4.0,4.0,4.0,3.0,5.0,5.0,4.0],
+"shape":[21.0,21.0,21.0,21.0,16.0,21.0,21.0,21.0]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"size",
+"guide":"none",
+"range":[0.5,1.0]
+},{
+"aesthetic":"stroke",
+"guide":"none",
+"range":[1.0,4.0]
+},{
+"aesthetic":"shape",
+"guide":"none",
+"scale_mapper_kind":"identity"
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+"size":"gear",
+"stroke":"vs",
+"shape":"shape"
+},
+"data_meta":{
+},
+"size_unit":"y",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+"point_size":"gear",
+"point_stroke":"vs",
+"shape":"shape"
+},
+"data_meta":{
+},
+"size_unit":"y",
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"24"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<section id="point-size-aesthetic">
+<h3><code class="docutils literal notranslate"><span class="pre">point_size</span></code> aesthetic<a class="headerlink" href="#point-size-aesthetic" title="Link to this heading">#</a></h3>
+<p>Allows you to pass to <code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code> the data used to determine point sizes in a <code class="docutils literal notranslate"><span class="pre">geom_point()</span></code> layer. This helps accurately detect overlaps between labels and points when point sizes vary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot31</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s2">&quot;gear&quot;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot31</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;without point_size&quot;</span><span class="p">),</span>
+    <span class="n">plot31</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">point_size</span><span class="o">=</span><span class="s2">&quot;gear&quot;</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;with point_size&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="aq4CF8" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("aq4CF8");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78],
+"gear":[4.0,4.0,4.0,4.0,3.0,5.0,5.0,4.0]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"without point_size"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"size":"gear"
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"25"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78],
+"gear":[4.0,4.0,4.0,4.0,3.0,5.0,5.0,4.0]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"with point_size"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"size":"gear"
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+"point_size":"gear"
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"26"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>You can also provide a constant value instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot32</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot32</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;without point_size&quot;</span><span class="p">),</span>
+    <span class="n">plot32</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;with point_size&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="LbtiAm" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("LbtiAm");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"without point_size"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"size":10.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"27"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"with point_size"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"size":10.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"point_size":10.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"28"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">point_size=0</span></code> to prevent label repulsion away from data points.</p>
+<p>Labels will still move away from each other and away from the edges of the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot33</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot33</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;without point_size&quot;</span><span class="p">),</span>
+    <span class="n">plot33</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;with point_size=0&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="ycvGT1" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("ycvGT1");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"without point_size"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"29"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"ggtitle":{
+"text":"with point_size=0"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"point_size":0.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"30"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="point-stroke-and-shape-aesthetics">
+<h3><code class="docutils literal notranslate"><span class="pre">point_stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">shape</span></code> aesthetics<a class="headerlink" href="#point-stroke-and-shape-aesthetics" title="Link to this heading">#</a></h3>
+<p>Allow you to pass to <code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code> the data used to determine point stroke width and shape in a <code class="docutils literal notranslate"><span class="pre">geom_point()</span></code> layer. This ensures accurate collision detection between labels and points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot34</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;gear&quot;</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot34</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;without point_stroke&quot;</span><span class="p">),</span>
+    <span class="n">plot34</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">point_stroke</span><span class="o">=</span><span class="s2">&quot;gear&quot;</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;with point_stroke&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="QUIiwE" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("QUIiwE");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78],
+"gear":[4.0,4.0,4.0,4.0,3.0,5.0,5.0,4.0]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"without point_stroke"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"stroke":"gear"
+},
+"data_meta":{
+},
+"shape":21.0,
+"size":10.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"point_size":10.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"31"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78],
+"gear":[4.0,4.0,4.0,4.0,3.0,5.0,5.0,4.0]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"with point_stroke"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"stroke":"gear"
+},
+"data_meta":{
+},
+"shape":21.0,
+"size":10.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+"point_stroke":"gear"
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"shape":21.0,
+"point_size":10.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"32"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="size-unit-parameter">
+<h3><code class="docutils literal notranslate"><span class="pre">size_unit</span></code> parameter<a class="headerlink" href="#size-unit-parameter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">size_unit</span></code> parameter can be used in <code class="docutils literal notranslate"><span class="pre">geom_point()</span></code> to define the unit of measurement for the <code class="docutils literal notranslate"><span class="pre">size</span></code> aesthetic. In this case, it is recommended to also use <code class="docutils literal notranslate"><span class="pre">size_unit</span></code> in <code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code> to ensure that point sizes are calculated correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot4</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_unit</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot4</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;without size_unit&quot;</span><span class="p">),</span>
+    <span class="n">plot4</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_unit</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;with size_unit&quot;</span><span class="p">),</span>
+<span class="p">])</span> <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="8aZ2or" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("8aZ2or");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"ggtoolbar":{
+},
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"without size_unit"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"size_unit":"y",
+"size":1.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"point_size":1.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"33"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"with size_unit"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"size_unit":"y",
+"size":1.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"size_unit":"y",
+"max_time":-1.0,
+"seed":530.0,
+"point_size":1.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"34"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="size-unit-applies-to-all-size-related-parameters-point-size-min-segment-length-point-padding-and-box-padding">
+<h3><code class="docutils literal notranslate"><span class="pre">size_unit</span></code> applies to all size-related parameters: <code class="docutils literal notranslate"><span class="pre">point_size</span></code>, <code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code>, <code class="docutils literal notranslate"><span class="pre">point_padding</span></code>, and <code class="docutils literal notranslate"><span class="pre">box_padding</span></code><a class="headerlink" href="#size-unit-applies-to-all-size-related-parameters-point-size-min-segment-length-point-padding-and-box-padding" title="Link to this heading">#</a></h3>
+<p>As an example, consider how it affects <code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code>.
+As mentioned earlier, <code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code> uses the same units as <code class="docutils literal notranslate"><span class="pre">point_size</span></code>. Therefore, in the following example, with the same <code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code> value, some lines are not drawn in the second case because their length is less than one unit along the y-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot5</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot5</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_segment_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;without size_unit&quot;</span><span class="p">),</span>
+    <span class="n">plot5</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_unit</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_segment_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_unit</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;with size_unit&quot;</span><span class="p">),</span>
+<span class="p">])</span> <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="JDM4Ge" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("JDM4Ge");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"ggtoolbar":{
+},
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"without size_unit"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"size":10.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"min_segment_length":1.0,
+"point_size":10.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"35"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"with size_unit"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"size_unit":"y",
+"size":1.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"size_unit":"y",
+"max_time":-1.0,
+"seed":530.0,
+"min_segment_length":1.0,
+"point_size":1.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"36"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+<section id="segment-color-aesthetic">
+<h2><code class="docutils literal notranslate"><span class="pre">segment_color</span></code> aesthetic<a class="headerlink" href="#segment-color-aesthetic" title="Link to this heading">#</a></h2>
+<p>Allows you to specify the color of the line connecting the label to the point. By default, the line color matches the text color and follows the <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetic. In the example below, the <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetic is defined globally for all layers, so the colors of the points, text, and lines are the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;wt&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="rvwGSw" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("rvwGSw");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model",
+"color":"wt"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"37"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">color</span></code> and <code class="docutils literal notranslate"><span class="pre">segment_color</span></code> aesthetics together, you can assign different colors to the points, labels, and connecting lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot6</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">plot6</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;wt&quot;</span><span class="p">))</span> <span class="o">+</span> \
+        <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">segment_color</span><span class="o">=</span><span class="s2">&quot;wt&quot;</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Same color for points and lines&quot;</span><span class="p">),</span>
+    <span class="n">plot6</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;wt&quot;</span><span class="p">),</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Same color for text and line&quot;</span><span class="p">),</span>
+    <span class="n">plot6</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">segment_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Different colors&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="TCqU9x" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("TCqU9x");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"Same color for points and lines"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"wt"
+},
+"data_meta":{
+},
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+"segment_color":"wt"
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"38"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"Same color for text and line"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+"color":"wt"
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"39"
+},{
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"theme":{
+"legend_position":"none"
+},
+"ggtitle":{
+"text":"Different colors"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"color":"green",
+"segment_color":"blue",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"40"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="segment-alpha-aesthetic">
+<h2><code class="docutils literal notranslate"><span class="pre">segment_alpha</span></code> aesthetic<a class="headerlink" href="#segment-alpha-aesthetic" title="Link to this heading">#</a></h2>
+<p>Specifies the transparency level of the connecting lines between labels and points. By default, the segment transparency inherits from the text and is governed by the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> aesthetic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">point_padding</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">segment_alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="RhGd99" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("RhGd99");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"point_padding":20.0,
+"color":"red",
+"segment_alpha":0.1,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"41"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="segment-size-aesthetic">
+<h2><code class="docutils literal notranslate"><span class="pre">segment_size</span></code> aesthetic<a class="headerlink" href="#segment-size-aesthetic" title="Link to this heading">#</a></h2>
+<p>Specifies the width of the line connecting the label to the point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot2</span> <span class="o">+</span> <span class="n">geom_text_repel</span><span class="p">(</span><span class="n">segment_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Vj1YlV" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Vj1YlV");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"wt":[2.62,2.875,2.32,2.2,2.465,2.14,2.77,2.78]
+},
+"mapping":{
+"x":"wt",
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"max_time":-1.0,
+"seed":530.0,
+"segment_size":2.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"42"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="linetype-aesthetic">
+<h2><code class="docutils literal notranslate"><span class="pre">linetype</span></code> aesthetic<a class="headerlink" href="#linetype-aesthetic" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">xlim</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text_repel</span><span class="p">(</span>
+        <span class="n">aes</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="s2">&quot;disp&quot;</span><span class="p">),</span>
+        <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">nudge_x</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">hjust</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="RXSy7F" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("RXSy7F");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4],
+"disp":[160.0,160.0,108.0,78.7,120.1,120.3,145.0,121.0]
+},
+"mapping":{
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"limits":[0.9,1.3]
+},{
+"aesthetic":"y",
+"limits":[19.0,35.0]
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+"linetype":"disp"
+},
+"data_meta":{
+},
+"nudge_x":0.2,
+"seed":530.0,
+"direction":"y",
+"x":1.0,
+"hjust":0.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"43"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="arrow-parameter">
+<h2><code class="docutils literal notranslate"><span class="pre">arrow</span></code> parameter<a class="headerlink" href="#arrow-parameter" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">xlim</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text_repel</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">nudge_x</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+        <span class="n">hjust</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">arrow</span><span class="o">=</span><span class="n">arrow</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ends</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">),</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="LTrnI9" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("LTrnI9");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"model":["Mazda RX4","Mazda RX4 Wag","Datsun 710","Fiat 128","Toyota Corona","Porsche 914-2","Ferrari Dino","Volvo 142E"],
+"mpg":[21.0,21.0,22.8,32.4,21.5,26.0,19.7,21.4]
+},
+"mapping":{
+"y":"mpg",
+"label":"model"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"mpg"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"float",
+"column":"disp"
+},{
+"type":"int",
+"column":"hp"
+},{
+"type":"float",
+"column":"drat"
+},{
+"type":"float",
+"column":"wt"
+},{
+"type":"float",
+"column":"qsec"
+},{
+"type":"int",
+"column":"vs"
+},{
+"type":"int",
+"column":"am"
+},{
+"type":"int",
+"column":"gear"
+},{
+"type":"int",
+"column":"carb"
+},{
+"type":"int",
+"column":"shape"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"limits":[0.9,1.3]
+},{
+"aesthetic":"y",
+"limits":[19.0,35.0]
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1.0,
+"color":"red",
+"data":{
+}
+},{
+"geom":"text_repel",
+"mapping":{
+},
+"data_meta":{
+},
+"nudge_x":0.2,
+"seed":530.0,
+"direction":"y",
+"arrow":{
+"name":"arrow",
+"angle":10.0,
+"ends":"both",
+"type":"closed"
+},
+"x":1.0,
+"hjust":0.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"44"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-geom-text-and-geom-text-repel">Comparison of <code class="docutils literal notranslate"><span class="pre">geom_text()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_text_repel()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geom-label-repel"><code class="docutils literal notranslate"><span class="pre">geom_label_repel()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seed-parameter"><code class="docutils literal notranslate"><span class="pre">seed</span></code> parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-iter-parameter"><code class="docutils literal notranslate"><span class="pre">max_iter</span></code> parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-time-parameter"><code class="docutils literal notranslate"><span class="pre">max_time</span></code> parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direction-parameter"><code class="docutils literal notranslate"><span class="pre">direction</span></code> parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-padding-and-box-padding-parameters"><code class="docutils literal notranslate"><span class="pre">point_padding</span></code> and <code class="docutils literal notranslate"><span class="pre">box_padding</span></code> parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-overlaps-parameter"><code class="docutils literal notranslate"><span class="pre">max_overlaps</span></code> parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-segment-length-parameter"><code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code> parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-settings">Point settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-size-aesthetic"><code class="docutils literal notranslate"><span class="pre">point_size</span></code> aesthetic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-stroke-and-shape-aesthetics"><code class="docutils literal notranslate"><span class="pre">point_stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">shape</span></code> aesthetics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-unit-parameter"><code class="docutils literal notranslate"><span class="pre">size_unit</span></code> parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-unit-applies-to-all-size-related-parameters-point-size-min-segment-length-point-padding-and-box-padding"><code class="docutils literal notranslate"><span class="pre">size_unit</span></code> applies to all size-related parameters: <code class="docutils literal notranslate"><span class="pre">point_size</span></code>, <code class="docutils literal notranslate"><span class="pre">min_segment_length</span></code>, <code class="docutils literal notranslate"><span class="pre">point_padding</span></code>, and <code class="docutils literal notranslate"><span class="pre">box_padding</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-color-aesthetic"><code class="docutils literal notranslate"><span class="pre">segment_color</span></code> aesthetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-alpha-aesthetic"><code class="docutils literal notranslate"><span class="pre">segment_alpha</span></code> aesthetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-size-aesthetic"><code class="docutils literal notranslate"><span class="pre">segment_size</span></code> aesthetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linetype-aesthetic"><code class="docutils literal notranslate"><span class="pre">linetype</span></code> aesthetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrow-parameter"><code class="docutils literal notranslate"><span class="pre">arrow</span></code> parameter</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

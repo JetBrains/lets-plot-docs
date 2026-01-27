@@ -1,0 +1,1364 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Alternating Ribbon Fill with Disjoint Groups" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/alternating_ribbon_fill.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="This notebook demonstrates a subtle issue that arises when using geom_ribbon() to visualize piecewise geometry with repeated fill categories. The setup involves two sine waves with a phase shift, p..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="This notebook demonstrates a subtle issue that arises when using geom_ribbon() to visualize piecewise geometry with repeated fill categories. The setup involves two sine waves with a phase shift, p..." />
+
+    <title>Alternating Ribbon Fill with Disjoint Groups</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/alternating_ribbon_fill';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/cookbook/alternating_ribbon_fill.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="alternating-ribbon-fill-with-disjoint-groups">
+<h1>Alternating Ribbon Fill with Disjoint Groups<a class="headerlink" href="#alternating-ribbon-fill-with-disjoint-groups" title="Link to this heading">#</a></h1>
+<p>This notebook demonstrates a subtle issue that arises when using <code class="docutils literal notranslate"><span class="pre">geom_ribbon()</span></code> to visualize piecewise geometry with repeated fill categories.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="xBLIKz"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("xBLIKz").appendChild(div);
+                };
+                var e = document.getElementById("xBLIKz");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<p>The setup involves two sine waves with a phase shift, producing alternating intersection regions. We want to highlight the area between the curves using alternating colors (e.g., red, blue, red, blue…).</p>
+<p>However, if only two fill categories are used (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;b&quot;</span></code>), Lets-Plot will treat each category as a single continuous area. As a result, visually disconnected regions with the same category will be merged — which creates unwanted bridging between non-adjacent segments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">20.0</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="mf">6.0</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">20.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)],</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)],</span>
+        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;a&quot;</span> <span class="k">if</span> <span class="n">first</span> <span class="o">&gt;</span> <span class="n">second</span> <span class="k">else</span> <span class="s2">&quot;b&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)],</span>
+    <span class="p">})</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>min</th>
+      <th>max</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>14.829420</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.996668</td>
+      <td>16.388900</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3.973387</td>
+      <td>17.438758</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>5.910404</td>
+      <td>17.949900</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>7.788367</td>
+      <td>17.908159</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>9.588511</td>
+      <td>17.314693</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>11.292849</td>
+      <td>16.185949</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>12.884354</td>
+      <td>14.553207</td>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>12.461718</td>
+      <td>14.347122</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>9.969443</td>
+      <td>15.666538</td>
+      <td>a</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_ribbon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="0pLRif" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("0pLRif");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0],
+"min":[0.0,1.996668332936563,3.9733866159012243,5.910404133226791,7.788366846173011,9.58851077208406,11.292849467900707,12.88435374475382,12.461717634766496,9.96944288207913,7.145452532716231,4.068009347357131,0.8224001611973444,-2.5014277159033815,-5.811359257509707,-9.015664553792398,-12.025540971766896,-14.757574190337039,-17.136049906158565,-19.09505214477679,-20.580290025415245,-21.55060235330194,-21.979098341958565,-21.853902852003053,-21.17848549326277,-19.971564469614595,-18.2665878313516,-16.110806511407837,-13.563964834886178,-10.696644792501543,-7.588309963978517,-4.325103301204593,-1.1674828685516017,-3.1549138828649643,-5.1108220405366245,-7.015664553792397,-8.85040886589705,-10.596722818169868,-12.237157818854378,-13.755323183679476,-15.136049906158565,-16.365542221288205,-17.431515448271764,-18.323318734989098,-19.03204147779032,-19.55060235330194,-19.87382007266929,-19.998465151282016,-19.923292176716814,-19.649052252486648,-19.17848549326277,-18.51629364655465,-17.66909311440306,-16.645348844478026,-15.455289751119743,-15.513629161156578,-17.772325644464484,-19.5939151994334,-20.92791513676216,-21.73735559999749],
+"max":[14.829419696157931,16.3888995850751,17.438758027266253,17.94989973208109,17.9081591550353,17.314693075149993,16.185948536513635,14.553207042519208,14.347121817990455,15.666538192549668,16.82941969615793,17.82414720122871,18.640781719344524,19.27116370834386,19.708994599769202,19.94989973208109,19.9914720608301,19.833296209049372,19.476952617563903,18.926001753748288,18.185948536513635,17.264187332977475,16.169928076391802,14.914104243534405,13.50926361102302,11.96944288207913,10.310027436429284,8.547597604676596,6.699763003118102,4.784986584279649,2.8224001611973444,0.8316132486658099,-0.9974598023565455,2.302399761756311,5.4830246114243995,8.45626838259359,11.139731974375781,13.459047119569663,15.34993739237612,16.759999535494778,17.650155739727463,17.995736628284423,17.787164932467636,17.030220911660013,15.745882161893906,13.969742252469805,11.751024302261207,9.151216832994617,6.2423697048351325,3.1050973599303537,-0.17365528890501403,-3.503022409236186,-6.790735462606318,-9.945680292079246,-12.880422217787395,-14.110806511407839,-12.625332757446433,-11.013710851952752,-9.292043588275147,-7.4775332966047205],
+"label":["b","b","b","b","b","b","b","b","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","a","a","a","a","a"]
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"min"
+},{
+"type":"float",
+"column":"max"
+},{
+"type":"str",
+"column":"label"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"ribbon",
+"mapping":{
+"x":"x",
+"ymin":"min",
+"ymax":"max",
+"fill":"label",
+"color":"label"
+},
+"data_meta":{
+},
+"alpha":0.2,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>To fix this, we generate unique group labels for each individual segment (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;a1&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;a2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;a3&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;a4&quot;</span></code>, …). During plotting, we assign the same color to all even segments and another to odd segments using <code class="docutils literal notranslate"><span class="pre">scale_manual()</span></code>. This ensures proper coloring while keeping the regions visually separated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;a&quot;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ne</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">())</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">corrected_df</span> <span class="o">=</span> <span class="n">update_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">corrected_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>min</th>
+      <th>max</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>14.829420</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.996668</td>
+      <td>16.388900</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3.973387</td>
+      <td>17.438758</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>5.910404</td>
+      <td>17.949900</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>7.788367</td>
+      <td>17.908159</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>9.588511</td>
+      <td>17.314693</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>11.292849</td>
+      <td>16.185949</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>12.884354</td>
+      <td>14.553207</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>12.461718</td>
+      <td>14.347122</td>
+      <td>a2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>9.969443</td>
+      <td>15.666538</td>
+      <td>a2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">corrected_df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_ribbon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_manual</span><span class="p">([</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#e41a1c&quot;</span><span class="p">,</span> <span class="s2">&quot;#377eb8&quot;</span><span class="p">],</span> <span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="LCBaJu" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("LCBaJu");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0],
+"min":[0.0,1.996668332936563,3.9733866159012243,5.910404133226791,7.788366846173011,9.58851077208406,11.292849467900707,12.88435374475382,12.461717634766496,9.96944288207913,7.145452532716231,4.068009347357131,0.8224001611973444,-2.5014277159033815,-5.811359257509707,-9.015664553792398,-12.025540971766896,-14.757574190337039,-17.136049906158565,-19.09505214477679,-20.580290025415245,-21.55060235330194,-21.979098341958565,-21.853902852003053,-21.17848549326277,-19.971564469614595,-18.2665878313516,-16.110806511407837,-13.563964834886178,-10.696644792501543,-7.588309963978517,-4.325103301204593,-1.1674828685516017,-3.1549138828649643,-5.1108220405366245,-7.015664553792397,-8.85040886589705,-10.596722818169868,-12.237157818854378,-13.755323183679476,-15.136049906158565,-16.365542221288205,-17.431515448271764,-18.323318734989098,-19.03204147779032,-19.55060235330194,-19.87382007266929,-19.998465151282016,-19.923292176716814,-19.649052252486648,-19.17848549326277,-18.51629364655465,-17.66909311440306,-16.645348844478026,-15.455289751119743,-15.513629161156578,-17.772325644464484,-19.5939151994334,-20.92791513676216,-21.73735559999749],
+"max":[14.829419696157931,16.3888995850751,17.438758027266253,17.94989973208109,17.9081591550353,17.314693075149993,16.185948536513635,14.553207042519208,14.347121817990455,15.666538192549668,16.82941969615793,17.82414720122871,18.640781719344524,19.27116370834386,19.708994599769202,19.94989973208109,19.9914720608301,19.833296209049372,19.476952617563903,18.926001753748288,18.185948536513635,17.264187332977475,16.169928076391802,14.914104243534405,13.50926361102302,11.96944288207913,10.310027436429284,8.547597604676596,6.699763003118102,4.784986584279649,2.8224001611973444,0.8316132486658099,-0.9974598023565455,2.302399761756311,5.4830246114243995,8.45626838259359,11.139731974375781,13.459047119569663,15.34993739237612,16.759999535494778,17.650155739727463,17.995736628284423,17.787164932467636,17.030220911660013,15.745882161893906,13.969742252469805,11.751024302261207,9.151216832994617,6.2423697048351325,3.1050973599303537,-0.17365528890501403,-3.503022409236186,-6.790735462606318,-9.945680292079246,-12.880422217787395,-14.110806511407839,-12.625332757446433,-11.013710851952752,-9.292043588275147,-7.4775332966047205],
+"label":["a1","a1","a1","a1","a1","a1","a1","a1","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a4","a4","a4","a4","a4"]
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"min"
+},{
+"type":"float",
+"column":"max"
+},{
+"type":"str",
+"column":"label"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"color",
+"breaks":[1.0,2.0],
+"labels":["b","a"],
+"values":["#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"breaks":[1.0,2.0],
+"labels":["b","a"],
+"values":["#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"ribbon",
+"mapping":{
+"x":"x",
+"ymin":"min",
+"ymax":"max",
+"fill":"label",
+"color":"label"
+},
+"data_meta":{
+},
+"alpha":0.2,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>Additionally, we modify the dataset to eliminate visible gaps between categories by inserting extra points at the segment boundaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_continuous_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">target_col</span><span class="p">):</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">out_rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">boundary</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">boundary</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">out_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boundary</span><span class="p">)</span>
+        <span class="n">out_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">out_rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">continuous_df</span> <span class="o">=</span> <span class="n">get_continuous_df</span><span class="p">(</span><span class="n">corrected_df</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">)</span>
+<span class="n">continuous_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>min</th>
+      <th>max</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>14.829420</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.996668</td>
+      <td>16.388900</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3.973387</td>
+      <td>17.438758</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>5.910404</td>
+      <td>17.949900</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>7.788367</td>
+      <td>17.908159</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>9.588511</td>
+      <td>17.314693</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>11.292849</td>
+      <td>16.185949</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>12.884354</td>
+      <td>14.553207</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>12.461718</td>
+      <td>14.347122</td>
+      <td>a1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>8</td>
+      <td>12.461718</td>
+      <td>14.347122</td>
+      <td>a2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">continuous_df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_ribbon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_manual</span><span class="p">([</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#e41a1c&quot;</span><span class="p">,</span> <span class="s2">&quot;#377eb8&quot;</span><span class="p">],</span> <span class="n">breaks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="y5dEJd" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("y5dEJd");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,55.0,56.0,57.0,58.0,59.0],
+"min":[0.0,1.996668332936563,3.9733866159012243,5.910404133226791,7.788366846173011,9.58851077208406,11.292849467900707,12.88435374475382,12.461717634766496,12.461717634766496,9.96944288207913,7.145452532716231,4.068009347357131,0.8224001611973444,-2.5014277159033815,-5.811359257509707,-9.015664553792398,-12.025540971766896,-14.757574190337039,-17.136049906158565,-19.09505214477679,-20.580290025415245,-21.55060235330194,-21.979098341958565,-21.853902852003053,-21.17848549326277,-19.971564469614595,-18.2665878313516,-16.110806511407837,-13.563964834886178,-10.696644792501543,-7.588309963978517,-4.325103301204593,-1.1674828685516017,-1.1674828685516017,-3.1549138828649643,-5.1108220405366245,-7.015664553792397,-8.85040886589705,-10.596722818169868,-12.237157818854378,-13.755323183679476,-15.136049906158565,-16.365542221288205,-17.431515448271764,-18.323318734989098,-19.03204147779032,-19.55060235330194,-19.87382007266929,-19.998465151282016,-19.923292176716814,-19.649052252486648,-19.17848549326277,-18.51629364655465,-17.66909311440306,-16.645348844478026,-15.455289751119743,-15.513629161156578,-15.513629161156578,-17.772325644464484,-19.5939151994334,-20.92791513676216,-21.73735559999749],
+"max":[14.829419696157931,16.3888995850751,17.438758027266253,17.94989973208109,17.9081591550353,17.314693075149993,16.185948536513635,14.553207042519208,14.347121817990455,14.347121817990455,15.666538192549668,16.82941969615793,17.82414720122871,18.640781719344524,19.27116370834386,19.708994599769202,19.94989973208109,19.9914720608301,19.833296209049372,19.476952617563903,18.926001753748288,18.185948536513635,17.264187332977475,16.169928076391802,14.914104243534405,13.50926361102302,11.96944288207913,10.310027436429284,8.547597604676596,6.699763003118102,4.784986584279649,2.8224001611973444,0.8316132486658099,-0.9974598023565455,-0.9974598023565455,2.302399761756311,5.4830246114243995,8.45626838259359,11.139731974375781,13.459047119569663,15.34993739237612,16.759999535494778,17.650155739727463,17.995736628284423,17.787164932467636,17.030220911660013,15.745882161893906,13.969742252469805,11.751024302261207,9.151216832994617,6.2423697048351325,3.1050973599303537,-0.17365528890501403,-3.503022409236186,-6.790735462606318,-9.945680292079246,-12.880422217787395,-14.110806511407839,-14.110806511407839,-12.625332757446433,-11.013710851952752,-9.292043588275147,-7.4775332966047205],
+"label":["a1","a1","a1","a1","a1","a1","a1","a1","a1","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a2","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a3","a4","a4","a4","a4","a4"]
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"min"
+},{
+"type":"float",
+"column":"max"
+},{
+"type":"str",
+"column":"label"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"color",
+"breaks":[1.0,2.0],
+"labels":["b","a"],
+"values":["#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"breaks":[1.0,2.0],
+"labels":["b","a"],
+"values":["#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"ribbon",
+"mapping":{
+"x":"x",
+"ymin":"min",
+"ymax":"max",
+"fill":"label",
+"color":"label"
+},
+"data_meta":{
+},
+"alpha":0.2,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

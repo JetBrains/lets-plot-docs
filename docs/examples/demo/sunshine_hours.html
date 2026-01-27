@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Sunshine Hours" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/demo/sunshine_hours.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+
+    <title>Sunshine Hours</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/demo/sunshine_hours';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/demo/sunshine_hours.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="sunshine-hours">
+<h1>Sunshine Hours<a class="headerlink" href="#sunshine-hours" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="bf4l4q"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("bf4l4q").appendChild(div);
+                };
+                var e = document.getElementById("bf4l4q");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">target_cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Barcelona&quot;</span><span class="p">,</span> <span class="s2">&quot;New York City&quot;</span><span class="p">,</span> <span class="s2">&quot;Lyon&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span> <span class="s2">&quot;Amsterdam&quot;</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">]</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;JAN&quot;</span><span class="p">:</span> <span class="o">-</span><span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;FEB&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">30</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;MAR&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">60</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;APR&quot;</span><span class="p">:</span> <span class="mi">90</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;MAY&quot;</span><span class="p">:</span> <span class="mi">60</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;JUN&quot;</span><span class="p">:</span> <span class="mi">30</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span>
+    <span class="s2">&quot;JUL&quot;</span><span class="p">:</span> <span class="o">-</span><span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;AUG&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">30</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;SEP&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">60</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;OCT&quot;</span><span class="p">:</span> <span class="mi">90</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;NOV&quot;</span><span class="p">:</span> <span class="mi">60</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="s2">&quot;DEC&quot;</span><span class="p">:</span> <span class="mi">30</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="n">cities</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+    <span class="n">raw_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/sunshine_hours.csv&quot;</span><span class="p">)</span>
+    <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">raw_df</span><span class="p">[</span><span class="n">raw_df</span><span class="p">[</span><span class="s2">&quot;City&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">cities</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;City&quot;</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="n">filtered_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> \
+                 <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Sunshine hours&quot;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Angle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">angles</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;City&quot;</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="p">[</span><span class="n">target_cities</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">target_cities</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(72, 5)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Month</th>
+      <th>Sunshine hours</th>
+      <th>Angle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Spain</td>
+      <td>Barcelona</td>
+      <td>AUG</td>
+      <td>264.0</td>
+      <td>-45</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Spain</td>
+      <td>Barcelona</td>
+      <td>MAY</td>
+      <td>258.0</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Spain</td>
+      <td>Barcelona</td>
+      <td>MAR</td>
+      <td>206.0</td>
+      <td>-75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">font_family</span> <span class="o">=</span> <span class="s2">&quot;ParaType&quot;</span>
+<span class="n">font_face</span> <span class="o">=</span> <span class="s1">&#39;bold&#39;</span>
+<span class="n">background_color</span> <span class="o">=</span> <span class="s2">&quot;#fcf3e4&quot;</span>
+<span class="n">grid_color</span> <span class="o">=</span> <span class="s2">&quot;#ccc2a2&quot;</span>
+
+<span class="n">y_breaks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+<span class="n">y_breaks_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;JAN&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_breaks</span><span class="p">),</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y_breaks</span><span class="p">,</span>
+    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">y_breaks</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">as_discrete</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">angles</span><span class="o">.</span><span class="n">keys</span><span class="p">())),</span> <span class="s2">&quot;Sunshine hours&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">y_breaks_data</span><span class="p">,</span> \
+              <span class="n">angle</span><span class="o">=-</span><span class="n">shift</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span> <span class="n">fontface</span><span class="o">=</span><span class="n">font_face</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;#fbc117&quot;</span><span class="p">,</span> \
+             <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;@City&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;@Month: @{Sunshine hours}&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_label</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="s2">&quot;Angle&quot;</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="mi">330</span><span class="p">,</span> \
+               <span class="n">family</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span> <span class="n">fontface</span><span class="o">=</span><span class="n">font_face</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> \
+               <span class="n">label_padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label_r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">background_color</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">facet_wrap</span><span class="p">(</span><span class="n">facets</span><span class="o">=</span><span class="s2">&quot;City&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">coord_polar</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">pi</span><span class="o">*</span><span class="n">shift</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Comparing Sunshine Hours&quot;</span><span class="p">,</span> \
+         <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;Sunshine duration is expressed in (average) hours per month</span><span class="se">\n</span><span class="s2">&quot;</span>
+                 <span class="s2">&quot;Data source: &quot;</span>
+                   <span class="s2">&quot;&lt;a href=</span><span class="se">\&quot;</span><span class="s2">https://www.kaggle.com/datasets/bilalwaseer/sunshine-hours-for-cities-around-the-world</span><span class="se">\&quot;</span><span class="s2">&gt;&quot;</span>
+                     <span class="s2">&quot;sunshine hours for cities around the world&quot;</span>
+                   <span class="s2">&quot;&lt;/a&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                 <span class="s2">&quot;Original plot: &quot;</span>
+                    <span class="s2">&quot;&lt;a href=</span><span class="se">\&quot;</span><span class="s2">https://www.linkedin.com/feed/update/urn:li:activity:7186216546602524672/</span><span class="se">\&quot;</span><span class="s2">&gt;&quot;</span>
+                      <span class="s2">&quot;Giulia Mezzadri, PhD&#39;s Post&quot;</span>
+                    <span class="s2">&quot;&lt;/a&gt;&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggsize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">850</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">,</span> \
+          <span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="n">font_face</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]),</span> \
+          <span class="n">plot_caption</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="n">font_face</span><span class="p">),</span> \
+          <span class="n">strip_text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="n">font_face</span><span class="p">),</span> \
+          <span class="n">plot_background</span><span class="o">=</span><span class="n">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">background_color</span><span class="p">),</span> \
+          <span class="n">panel_grid</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">grid_color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="icheBm" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("icheBm");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"City":["Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","Barcelona","New York City","New York City","New York City","New York City","New York City","New York City","New York City","New York City","New York City","New York City","New York City","New York City","Lyon","Lyon","Lyon","Lyon","Lyon","Lyon","Lyon","Lyon","Lyon","Lyon","Lyon","Lyon","Paris","Paris","Paris","Paris","Paris","Paris","Paris","Paris","Paris","Paris","Paris","Paris","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Amsterdam","Berlin","Berlin","Berlin","Berlin","Berlin","Berlin","Berlin","Berlin","Berlin","Berlin","Berlin","Berlin"],
+"Month":["AUG","MAY","MAR","JUN","DEC","JUL","FEB","APR","OCT","JAN","NOV","SEP","AUG","APR","SEP","JUL","OCT","MAY","NOV","JUN","DEC","JAN","FEB","MAR","JAN","SEP","OCT","AUG","MAR","NOV","FEB","JUL","APR","JUN","DEC","MAY","JAN","SEP","APR","OCT","AUG","MAY","FEB","DEC","JUL","MAR","NOV","JUN","JAN","OCT","NOV","DEC","APR","FEB","MAY","AUG","MAR","JUL","SEP","JUN","MAY","DEC","JUN","JAN","SEP","JUL","AUG","OCT","APR","FEB","MAR","NOV"],
+"Sunshine hours":[264.0,258.0,206.0,287.0,137.0,293.0,171.0,239.0,196.0,158.0,153.0,229.0,268.2,225.6,219.3,268.2,211.2,256.6,151.0,257.3,139.0,162.7,163.1,212.5,74.0,195.0,130.0,253.0,170.0,76.0,101.0,283.0,191.0,254.0,54.0,221.0,63.0,168.0,166.0,118.0,212.0,194.0,79.0,51.0,212.0,129.0,68.0,202.0,63.0,109.0,62.0,51.0,183.0,88.0,222.0,197.0,126.0,217.0,139.0,206.0,220.0,37.0,222.0,47.0,156.0,217.0,211.0,112.0,159.0,74.0,121.0,51.0],
+"Angle":[-45.0,45.0,-75.0,15.0,15.0,-15.0,-45.0,75.0,75.0,-15.0,45.0,-75.0,-45.0,75.0,-75.0,-15.0,75.0,45.0,45.0,15.0,15.0,-15.0,-45.0,-75.0,-15.0,-75.0,75.0,-45.0,-75.0,45.0,-45.0,-15.0,75.0,15.0,15.0,45.0,-15.0,-75.0,75.0,75.0,-45.0,45.0,-45.0,15.0,-15.0,-75.0,45.0,15.0,-15.0,75.0,45.0,15.0,75.0,-45.0,45.0,-45.0,-75.0,-15.0,-75.0,15.0,45.0,15.0,15.0,-15.0,-75.0,-15.0,-45.0,75.0,75.0,-45.0,-75.0,45.0]
+},
+"mapping":{
+"x":"Month",
+"y":"Sunshine hours"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"factor_levels":["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
+"column":"Month"
+},{
+"type":"str",
+"column":"Country"
+},{
+"type":"str",
+"column":"City"
+},{
+"type":"float",
+"column":"Sunshine hours"
+},{
+"type":"int",
+"column":"Angle"
+}]
+},
+"facet":{
+"name":"wrap",
+"facets":"City",
+"dir":"h"
+},
+"coord":{
+"name":"polar",
+"start":0.2617993877991494
+},
+"ggtitle":{
+"text":"Comparing Sunshine Hours"
+},
+"caption":{
+"text":"Sunshine duration is expressed in (average) hours per month\nData source: <a href=\"https://www.kaggle.com/datasets/bilalwaseer/sunshine-hours-for-cities-around-the-world\">sunshine hours for cities around the world</a>\nOriginal plot: <a href=\"https://www.linkedin.com/feed/update/urn:li:activity:7186216546602524672/\">Giulia Mezzadri, PhD's Post</a>"
+},
+"ggsize":{
+"width":1000.0,
+"height":850.0
+},
+"theme":{
+"axis":"blank",
+"panel_grid":{
+"color":"#ccc2a2",
+"size":2.0,
+"blank":false
+},
+"plot_background":{
+"fill":"#fcf3e4",
+"blank":false
+},
+"plot_title":{
+"family":"ParaType",
+"face":"bold",
+"size":32.0,
+"margin":[20.0,20.0,30.0],
+"blank":false
+},
+"plot_caption":{
+"family":"ParaType",
+"face":"bold",
+"blank":false
+},
+"strip_text":{
+"family":"ParaType",
+"face":"bold",
+"size":20.0,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"text",
+"data":{
+"x":["JAN","JAN"],
+"y":[100.0,200.0],
+"text":["100","200"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"text"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"str",
+"column":"text"
+}]
+},
+"angle":-15.0,
+"family":"ParaType",
+"fontface":"bold",
+"size":6.0,
+"vjust":0.0
+},{
+"geom":"bar",
+"stat":"identity",
+"mapping":{
+},
+"tooltips":{
+"formats":[],
+"lines":["@Month: @{Sunshine hours}"],
+"title":"@City"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"Month",
+"factor_levels":["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+}]
+},
+"color":"black",
+"fill":"#fbc117",
+"data":{
+}
+},{
+"geom":"label",
+"mapping":{
+"x":"Month",
+"label":"Month",
+"angle":"Angle"
+},
+"data_meta":{
+"series_annotations":[{
+"column":"Month",
+"factor_levels":["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+}]
+},
+"label_padding":0.0,
+"label_r":0.0,
+"label_size":0.0,
+"y":330.0,
+"family":"ParaType",
+"fontface":"bold",
+"size":8.0,
+"fill":"#fcf3e4",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

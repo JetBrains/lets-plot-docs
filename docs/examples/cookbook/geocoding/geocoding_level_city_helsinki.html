@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Example of Geocoding of Cities: Helsinki" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/geocoding/geocoding_level_city_helsinki.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+
+    <title>Example of Geocoding of Cities: Helsinki</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/geocoding/geocoding_level_city_helsinki';</script>
+    <script src="../../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/cookbook/geocoding/geocoding_level_city_helsinki.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="example-of-geocoding-of-cities-helsinki">
+<h1>Example of Geocoding of Cities: Helsinki<a class="headerlink" href="#example-of-geocoding-of-cities-helsinki" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot.geo_data</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="c0kswE"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("c0kswE").appendChild(div);
+                };
+                var e = document.getElementById("c0kswE");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">city</span> <span class="o">=</span> <span class="s1">&#39;Helsinki&#39;</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">geocode_cities</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="n">city</span><span class="p">)</span><span class="o">.</span><span class="n">get_boundaries</span><span class="p">()</span>
+
+<span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">geom_map</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gdf</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;deepskyblue&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="n">city</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme_void</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Odkl9f" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Odkl9f");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"ggsize":{
+"width":800.0,
+"height":600.0
+},
+"ggtitle":{
+"text":"Helsinki"
+},
+"theme":{
+"name":"classic",
+"line":"blank",
+"axis":"blank"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"map",
+"data":{
+"geometry":["{\"type\": \"MultiPolygon\", \"coordinates\": [[[[24.84631598, 60.209110461], [24.845943153, 60.212905787], [24.846087992, 60.214968407], [24.848090261, 60.218170965], [24.847610146, 60.220052535], [24.84785825, 60.221184427], [24.851369262, 60.224557306], [24.850242734, 60.224503662], [24.849078655, 60.224243487], [24.847097844, 60.22344553], [24.843168408, 60.221188451], [24.841910452, 60.22078746], [24.839969873, 60.228718754], [24.838116467, 60.228610125], [24.835961312, 60.236267833], [24.836936295, 60.236342935], [24.831402898, 60.253637823], [24.833684117, 60.254249367], [24.834731519, 60.258082244], [24.835466444, 60.25835583], [24.836851805, 60.258611981], [24.838640839, 60.258679036], [24.857815951, 60.253189894], [24.862491041, 60.252725872], [24.864308238, 60.253498348], [24.865525961, 60.252906921], [24.867065549, 60.252763422], [24.867874235, 60.251962783], [24.868763387, 60.252849253], [24.872432649, 60.253734382], [24.877243191, 60.259883348], [24.891470969, 60.26600281], [24.892456681, 60.266721642], [24.892833531, 60.268117732], [24.89778623, 60.268259889], [24.904029071, 60.26946286], [24.907357693, 60.270377494], [24.909873605, 60.270417727], [24.910442233, 60.27061621], [24.911102057, 60.271141923], [24.912323803, 60.271559007], [24.920530021, 60.272693582], [24.921298474, 60.273205884], [24.923123717, 60.273750372], [24.924578816, 60.274398126], [24.928350002, 60.274655618], [24.930537343, 60.274545648], [24.931964278, 60.274644889], [24.9401021, 60.27632127], [24.94534716, 60.27793462], [24.947462082, 60.278090188], [24.949413389, 60.277716019], [24.95152697, 60.277879634], [24.952504635, 60.277773687], [24.95288685, 60.277593979], [24.953053147, 60.276919403], [24.953546673, 60.276533165], [24.955456406, 60.276226052], [24.956455529, 60.275807627], [24.956763983, 60.275139757], [24.955856055, 60.273086525], [24.955894947, 60.27237574], [24.957285672, 60.270848221], [24.959812313, 60.269202686], [24.960048348, 60.268211609], [24.960473478, 60.267807937], [24.965871423, 60.265890157], [24.968850017, 60.265200829], [24.970691353, 60.264310335], [24.97320056, 60.264020657], [24.975631982, 60.264561122], [24.97581169, 60.264854824], [24.975524694, 60.265499895], [24.97575134, 60.266098028], [24.976364225, 60.266555345], [24.978027195, 60.267258084], [24.977830052, 60.267778432], [24.975862652, 60.268792308], [24.975555539, 60.269505775], [24.977163523, 60.271316267], [24.977167547, 60.272702969], [24.977463931, 60.273440577], [24.979480952, 60.274732061], [24.980323166, 60.275047221], [24.980768412, 60.275535383], [24.980804622, 60.276947566], [24.981990159, 60.277638235], [24.982080013, 60.278264531], [24.982565492, 60.278768787], [24.983722866, 60.279275724], [24.989756495, 60.27936692], [24.991120398, 60.279781321], [24.993356019, 60.280809948], [24.995634556, 60.28101782], [24.999596179, 60.284264635], [25.000011921, 60.285711687], [25.000703931, 60.286138158], [25.00155285, 60.286205213], [25.004063398, 60.286013435], [25.005466193, 60.28570364], [25.00597313, 60.285717051], [25.007597208, 60.286332618], [25.008739829, 60.287334424], [25.010799766, 60.287359905], [25.011644661, 60.286937457], [25.012081861, 60.286928069], [25.013622791, 60.287496697], [25.014611185, 60.288129699], [25.015933514, 60.288514596], [25.018351525, 60.288455587], [25.019928664, 60.288849872], [25.020986795, 60.288904857], [25.022480786, 60.288511914], [25.023898333, 60.287644219], [25.026706606, 60.287019264], [25.027272552, 60.28604294], [25.028730333, 60.28541262], [25.029942691, 60.285097461], [25.031368285, 60.284970056], [25.032666475, 60.284561019], [25.033858716, 60.284583818], [25.034380406, 60.284814488], [25.034584254, 60.285148423], [25.034474283, 60.285949062], [25.035462677, 60.286894541], [25.037105531, 60.286962938], [25.037938356, 60.287453782], [25.040865988, 60.284318279], [25.040646046, 60.283718805], [25.041556656, 60.282867203], [25.04225269, 60.282739798], [25.043407381, 60.281487206], [25.042263418, 60.281094263], [25.042488724, 60.280683885], [25.042660385, 60.280733505], [25.043731928, 60.279459456], [25.044179857, 60.27959759], [25.045047551, 60.278920332], [25.045157522, 60.278126398], [25.045734197, 60.278000334], [25.046042651, 60.278454968], [25.047077984, 60.277285525], [25.050653368, 60.277903774], [25.053390563, 60.275598415], [25.056672245, 60.275425412], [25.061555207, 60.27595649], [25.062377304, 60.275017716], [25.068484694, 60.274614044], [25.076555461, 60.275118299], [25.088211, 60.270924664], [25.089210123, 60.267243332], [25.086478293, 60.260293726], [25.08753106, 60.258880202], [25.082440227, 60.249280573], [25.091376007, 60.244766414], [25.129600167, 60.237802057], [25.129606873, 60.237543224], [25.135087967, 60.236800252], [25.135845691, 60.236810981], [25.138049126, 60.239738612], [25.14186725, 60.243166476], [25.141680837, 60.243465543], [25.143176168, 60.244309098], [25.145187825, 60.244873703], [25.148348808, 60.245116443], [25.150108337, 60.245010495], [25.150758773, 60.245112419], [25.151964426, 60.245722622], [25.152282268, 60.245478541], [25.15528366, 60.246334166], [25.157440156, 60.247659177], [25.158322603, 60.248037369], [25.159875602, 60.248395444], [25.159584582, 60.248800458], [25.159850121, 60.249316783], [25.159117877, 60.250333341], [25.158614963, 60.250546576], [25.157386512, 60.250659229], [25.157102197, 60.25319794], [25.15768826, 60.253466161], [25.156879574, 60.254071], [25.156066865, 60.254244002], [25.155740976, 60.254514905], [25.155038238, 60.254462602], [25.154584944, 60.254701319], [25.154418647, 60.254990998], [25.154705644, 60.255319568], [25.153981447, 60.256228837], [25.15280664, 60.256388429], [25.15279457, 60.256573501], [25.152288973, 60.25664458], [25.151961744, 60.257132742], [25.150530785, 60.257375482], [25.150786936, 60.257571283], [25.150471777, 60.257781837], [25.149095803, 60.257779155], [25.148887932, 60.257957522], [25.148304552, 60.257598105], [25.147714466, 60.257654432], [25.146818608, 60.257875714], [25.144592375, 60.258864108], [25.1440157, 60.259872619], [25.144318789, 60.260339324], [25.14238894, 60.262869989], [25.14174521, 60.264431035], [25.141931623, 60.265163278], [25.143114477, 60.26539663], [25.142371505, 60.266512429], [25.142429173, 60.267008638], [25.14190346, 60.267874992], [25.142013431, 60.268679655], [25.142524391, 60.269360936], [25.172385424, 60.276015498], [25.173782855, 60.277839401], [25.174828917, 60.277915844], [25.178762376, 60.277399519], [25.187657923, 60.279475549], [25.190239549, 60.285262417], [25.196281224, 60.281534145], [25.196734518, 60.282737116], [25.204841495, 60.28597052], [25.201531649, 60.287583869], [25.220641047, 60.291011733], [25.222560167, 60.291621936], [25.224732757, 60.293284906], [25.22548914, 60.293486072], [25.225192755, 60.29376368], [25.229060501, 60.295630498], [25.227038115, 60.296199127], [25.229527205, 60.297432943], [25.232858509, 60.296565249], [25.232816935, 60.296413704], [25.238188058, 60.294913007], [25.243391544, 60.295756562], [25.252893269, 60.297035976], [25.254511982, 60.294809742], [25.245541334, 60.293115927], [25.251568258, 60.289714885], [25.251330882, 60.28922404], [25.25392592, 60.289230746], [25.243881047, 60.284437637], [25.247354507, 60.282564114], [25.24700582, 60.281279335], [25.247075558, 60.278102258], [25.244829208, 60.278544822], [25.244159997, 60.277902433], [25.246112645, 60.27718226], [25.246685296, 60.277313688], [25.252265632, 60.275335558], [25.250912458, 60.27307982], [25.243001282, 60.27189026], [25.243238658, 60.271406121], [25.234854072, 60.27155096], [25.231854022, 60.266763216], [25.232076645, 60.265275931], [25.231867433, 60.264868235], [25.232555419, 60.262133722], [25.231585801, 60.262104218], [25.230702013, 60.261742119], [25.230610818, 60.26100183], [25.228204876, 60.260968302], [25.227345228, 60.260688011], [25.228853971, 60.259507839], [25.229098052, 60.259582941], [25.230015367, 60.258869473], [25.229162425, 60.257144812], [25.211553723, 60.256517175], [25.208217055, 60.254024061], [25.202994794, 60.255075487], [25.204345286, 60.253271701], [25.191061646, 60.247934104], [25.206214786, 60.24813527], [25.208316296, 60.247098596], [25.199953169, 60.246590317], [25.212040544, 60.246295274], [25.216731727, 60.244078428], [25.216254294, 60.239487826], [25.204413682, 60.241467296], [25.202312171, 60.240084617], [25.21486491, 60.238357274], [25.211187601, 60.237826197], [25.209369063, 60.232611981], [25.18617332, 60.236998735], [25.184930116, 60.232776937], [25.192723274, 60.229189482], [25.189586431, 60.226617243], [25.182112455, 60.230604347], [25.16475454, 60.231913266], [25.197928101, 60.221252824], [25.200102031, 60.218416387], [25.195109099, 60.219081575], [25.203448087, 60.214165085], [25.200140923, 60.214642518], [25.197979063, 60.211869113], [25.189260542, 60.216982746], [25.190539956, 60.214596921], [25.185923874, 60.215581292], [25.196171254, 60.208171688], [25.192367882, 60.207882009], [25.184302479, 60.212597333], [25.190588236, 60.207879327], [25.184031576, 60.209795765], [25.175169557, 60.207333497], [25.18810451, 60.199365994], [25.184146911, 60.199286868], [25.177800804, 60.191269744], [25.176953226, 60.197016378], [25.171509683, 60.192411024], [25.166687071, 60.196343144], [25.160216242, 60.196652939], [25.161482245, 60.202069661], [25.148527175, 60.198845645], [25.151017606, 60.200712463], [25.141285211, 60.198352118], [25.133690536, 60.199108502], [25.134174675, 60.196416904], [25.139922649, 60.197357019], [25.135582834, 60.194959123], [25.139466673, 60.192664493], [25.15271008, 60.194705655], [25.145376921, 60.19128852], [25.150549561, 60.188567418], [25.154757947, 60.184328186], [25.153711885, 60.182913321], [25.132543892, 60.188024271], [25.135282427, 60.191584904], [25.130209029, 60.192640353], [25.13050139, 60.198218008], [25.117917806, 60.193361868], [25.106851012, 60.194507171], [25.10718897, 60.192189742], [25.096635818, 60.189921934], [25.091850758, 60.186125266], [25.088642836, 60.18674888], [25.09771809, 60.194670786], [25.105048567, 60.195366819], [25.101349801, 60.197980632], [25.114480555, 60.206004462], [25.124164671, 60.2191607], [25.108292699, 60.207176588], [25.095757395, 60.20421677], [25.097377449, 60.200216254], [25.081312358, 60.19987159], [25.078801811, 60.197703024], [25.068095773, 60.198577424], [25.061603487, 60.193245192], [25.048952848, 60.191603679], [25.044786036, 60.186089057], [25.028373599, 60.184396582], [25.030999482, 60.18751331], [25.024685562, 60.18542521], [25.028632432, 60.187304097], [25.023351163, 60.190652836], [25.01846686, 60.189656395], [24.998411983, 60.195863028], [25.004045963, 60.198034277], [25.009796619, 60.196770956], [25.013036728, 60.1990334], [25.023691803, 60.194167872], [25.025443286, 60.201360216], [25.01744628, 60.204703591], [25.025301129, 60.207316063], [25.00157699, 60.219178135], [25.000746846, 60.217175865], [24.995694906, 60.221593464], [24.989300519, 60.2119013], [24.981107712, 60.215272837], [24.982849807, 60.205615542], [24.977563173, 60.201746455], [24.986706823, 60.192680586], [24.983651787, 60.192094524], [24.98367995, 60.183266031], [24.974437058, 60.183416235], [24.966719002, 60.179151522], [24.965533465, 60.183083641], [24.963497669, 60.177515374], [24.951025397, 60.176241324], [24.944681972, 60.17743759], [24.946438819, 60.179930704], [24.939596504, 60.179506914], [24.944377542, 60.176069663], [24.951057583, 60.175625757], [24.957785904, 60.176585988], [24.962296039, 60.173887686], [24.970291704, 60.173728094], [24.969721735, 60.172289089], [24.962019771, 60.173552409], [24.957450628, 60.167117789], [24.952695072, 60.166999772], [24.962961227, 60.155454201], [24.956625849, 60.153034848], [24.951154143, 60.154767556], [24.942769557, 60.152979863], [24.934293777, 60.154135895], [24.928057641, 60.146450024], [24.922475964, 60.146742385], [24.924812168, 60.14472134], [24.919347167, 60.147709322], [24.925623536, 60.153209192], [24.926201552, 60.15917979], [24.931112677, 60.158318801], [24.929186851, 60.160908474], [24.922278821, 60.161330922], [24.923810363, 60.155125631], [24.911351502, 60.147703957], [24.914928228, 60.152234209], [24.906326383, 60.149417889], [24.902183712, 60.154987497], [24.908881187, 60.156874431], [24.903366566, 60.157472564], [24.921175092, 60.161580368], [24.903540909, 60.159551276], [24.906327724, 60.160460545], [24.89756763, 60.165615752], [24.916168749, 60.168798193], [24.90278855, 60.171563551], [24.898961037, 60.170458481], [24.907169938, 60.174172], [24.907261133, 60.176864938], [24.914071262, 60.175566749], [24.908564687, 60.183972793], [24.902540445, 60.18683337], [24.896215796, 60.183141308], [24.893878251, 60.186699259], [24.884249121, 60.187805671], [24.881627262, 60.190585781], [24.886845499, 60.193127174], [24.888224155, 60.194387813], [24.888240248, 60.195581396], [24.887825847, 60.195664545], [24.87850517, 60.191719014], [24.875448793, 60.187722522], [24.872089326, 60.187018442], [24.871231019, 60.193750788], [24.851924479, 60.203518054], [24.846590906, 60.202273509], [24.846464843, 60.202512225], [24.846873879, 60.203310183], [24.846684784, 60.205230645], [24.851216376, 60.204354903], [24.853505641, 60.204424641], [24.855290651, 60.2055163], [24.85215649, 60.20484843], [24.849971831, 60.209263347], [24.84631598, 60.209110461]]], [[[24.843769222, 60.17901607], [24.843631089, 60.181218164], [24.848099649, 60.183164107], [24.859382361, 60.179966913], [24.853732288, 60.176093803], [24.856954962, 60.173522905], [24.850659817, 60.175247566], [24.843769222, 60.17901607]]], [[[24.84427616, 60.164831205], [24.844407588, 60.165570154], [24.853254855, 60.164113714], [24.852137715, 60.160793139], [24.847713411, 60.160622819], [24.844080359, 60.162183865], [24.843967706, 60.163180306], [24.847121984, 60.161855294], [24.84830752, 60.16418077], [24.84427616, 60.164831205]]], [[[25.047473609, 60.095384782], [25.04372254, 60.094660586], [25.042036772, 60.09821049], [25.043218285, 60.104588783], [25.062641501, 60.105569131], [25.061360747, 60.103790826], [25.066988021, 60.103670127], [25.074816048, 60.107374258], [25.062567741, 60.099884188], [25.047473609, 60.095384782]]], [[[25.017723888, 60.104757763], [25.019601434, 60.106186039], [25.017431527, 60.098823375], [25.013732761, 60.098010665], [25.012793988, 60.10292179], [25.017723888, 60.104757763]]], [[[24.91723761, 60.102251238], [24.917032421, 60.098966873], [24.909708649, 60.095981574], [24.9097462, 60.096713817], [24.91723761, 60.102251238]]], [[[24.835470468, 60.099853343], [24.829363078, 60.099499291], [24.828514159, 60.100478298], [24.830583483, 60.102408147], [24.835470468, 60.099853343]]], [[[25.011650026, 60.13408638], [25.004019141, 60.133826206], [25.004740655, 60.131817231], [24.99573648, 60.129810939], [24.994084239, 60.139677446], [25.010186881, 60.139407884], [25.010479242, 60.13417087], [25.025901943, 60.137369404], [25.019728839, 60.131089011], [25.011650026, 60.13408638]]], [[[24.888464212, 60.136122177], [24.896521568, 60.129021028], [24.890493304, 60.129928956], [24.883431047, 60.126112172], [24.880673736, 60.128363887], [24.888464212, 60.136122177]]], [[[24.916133881, 60.139928232], [24.917171896, 60.135349701], [24.910970628, 60.135234366], [24.910348356, 60.137917916], [24.916133881, 60.139928232]]], [[[24.957759082, 60.166235342], [24.959165901, 60.168681517], [24.964364022, 60.169191137], [24.97656405, 60.168936327], [24.980917275, 60.166913941], [24.969626516, 60.162602289], [24.957759082, 60.166235342]]], [[[25.060801506, 60.144131254], [25.057495683, 60.139984559], [25.063463598, 60.139402519], [25.064411759, 60.136327366], [25.049190223, 60.137299667], [25.043416768, 60.134762297], [25.036864132, 60.135309468], [25.031163096, 60.132121662], [25.028682053, 60.134881655], [25.034603029, 60.136236171], [25.027652085, 60.138508002], [25.033055395, 60.142647993], [25.025309175, 60.144328397], [25.04215613, 60.151346398], [25.041230768, 60.155102832], [25.04290849, 60.153152866], [25.048812032, 60.157412214], [25.056397319, 60.156175716], [25.06180197, 60.151661557], [25.065994263, 60.15312202], [25.072289407, 60.150057596], [25.078179538, 60.150337887], [25.08498162, 60.14614157], [25.076340884, 60.144336443], [25.070528537, 60.145987343], [25.064257532, 60.142045837], [25.060801506, 60.144131254]]], [[[24.989992529, 60.139377038], [24.990618825, 60.137389521], [24.985529333, 60.137449871], [24.977769703, 60.145044547], [24.985782802, 60.145075392], [24.98170048, 60.147211772], [24.990259409, 60.148597133], [24.994003773, 60.14315493], [24.990347922, 60.142685543], [24.986749738, 60.144568454], [24.989992529, 60.139377038]]], [[[24.977797866, 60.146462094], [24.974176884, 60.145507228], [24.971111119, 60.147899759], [24.976482242, 60.149207336], [24.977797866, 60.146462094]]], [[[25.101636797, 60.147665065], [25.095925033, 60.147738826], [25.096326023, 60.145872008], [25.091349185, 60.147777718], [25.097420365, 60.149750483], [25.101636797, 60.147665065]]], [[[24.954862297, 60.150721443], [24.959194064, 60.150745583], [24.960642457, 60.147915852], [24.955931157, 60.149183196], [24.954862297, 60.150721443]]], [[[25.012033582, 60.149757189], [25.009818077, 60.151729954], [25.011955798, 60.155910177], [25.017607212, 60.15335269], [25.012033582, 60.149757189]]], [[[25.112729073, 60.153356714], [25.108408034, 60.156482829], [25.108766109, 60.15391059], [25.103208572, 60.155570877], [25.098648816, 60.153450591], [25.093209296, 60.156048311], [25.100347996, 60.159887893], [25.106817484, 60.157168133], [25.105080754, 60.160759612], [25.108479112, 60.16203232], [25.12688309, 60.161136462], [25.120276809, 60.155706329], [25.123546422, 60.154500676], [25.12681067, 60.156250817], [25.127215683, 60.155928952], [25.137025863, 60.159928127], [25.147820413, 60.158750637], [25.14073804, 60.155688895], [25.127237141, 60.155912859], [25.130080283, 60.153651757], [25.116524398, 60.152047795], [25.112729073, 60.153356714]]], [[[25.209670812, 60.200843891], [25.206059217, 60.200378528], [25.201307684, 60.205295018], [25.211180896, 60.204494378], [25.217858255, 60.19976162], [25.211301595, 60.202058932], [25.209670812, 60.200843891]]], [[[25.002527833, 60.207636587], [25.001383871, 60.206245861], [24.996594787, 60.205889127], [24.998158514, 60.208442591], [25.002527833, 60.207636587]]], [[[25.118946433, 60.16936548], [25.114881545, 60.169966295], [25.113253444, 60.171733871], [25.121536106, 60.17059125], [25.121296048, 60.168578252], [25.118946433, 60.16936548]]], [[[24.890286773, 60.14906652], [24.889636338, 60.144752186], [24.879211932, 60.145768743], [24.875145704, 60.143730264], [24.871792942, 60.144789737], [24.876590073, 60.146731656], [24.873476028, 60.153962893], [24.864984155, 60.153592748], [24.864557683, 60.151965988], [24.861701131, 60.154241843], [24.860030115, 60.151532811], [24.855431467, 60.151987446], [24.852802902, 60.155106855], [24.857994318, 60.158507897], [24.85266611, 60.161191447], [24.856202602, 60.169978365], [24.861288071, 60.170703903], [24.86160323, 60.165242925], [24.870179594, 60.162733718], [24.881251752, 60.165973827], [24.892656505, 60.16350083], [24.89476338, 60.158192737], [24.889069051, 60.155723763], [24.886976928, 60.157959385], [24.885898679, 60.155144406], [24.890359193, 60.151805055], [24.893003851, 60.154111755], [24.895122796, 60.153307093], [24.891826361, 60.151429546], [24.895341396, 60.150036138], [24.891875982, 60.149278414], [24.89082858, 60.151255202], [24.890286773, 60.14906652]]], [[[25.013527572, 60.160111858], [25.010912418, 60.164243802], [25.015308559, 60.16836904], [25.009920001, 60.169373527], [25.015025586, 60.175045059], [25.019252747, 60.173580573], [25.021609068, 60.179014729], [25.028455406, 60.178240912], [25.031600296, 60.181071984], [25.045380145, 60.179824756], [25.043156594, 60.184971916], [25.057035685, 60.187478441], [25.068087727, 60.178535955], [25.060585588, 60.172207281], [25.068539679, 60.168736502], [25.063517243, 60.166113302], [25.060513169, 60.168725774], [25.057401806, 60.165488347], [25.068927258, 60.16442351], [25.07738024, 60.167732015], [25.075317621, 60.170811191], [25.085256547, 60.172377602], [25.084091127, 60.16271226], [25.092223585, 60.16877003], [25.098078847, 60.161455645], [25.081552416, 60.15732236], [25.083155036, 60.156016124], [25.081003904, 60.154369248], [25.078306943, 60.16180165], [25.07463634, 60.162300541], [25.078333765, 60.160064919], [25.07642135, 60.157386733], [25.049536228, 60.159553958], [25.048964918, 60.157644225], [25.049049407, 60.159718914], [25.042923242, 60.159329994], [25.0286901, 60.168157145], [25.03392309, 60.164585783], [25.034192652, 60.15970148], [25.023343116, 60.164147242], [25.018013567, 60.162898674], [25.020412803, 60.160019322], [25.013527572, 60.160111858]]], [[[25.08296594, 60.175565408], [25.081104487, 60.177724586], [25.088581145, 60.177277998], [25.087523013, 60.174982027], [25.08296594, 60.175565408]]], [[[24.858505279, 60.173543022], [24.861101657, 60.174822436], [24.862830341, 60.171812997], [24.859422594, 60.171421394], [24.858505279, 60.173543022]]], [[[24.986335337, 60.171692297], [24.978783578, 60.173616782], [24.983462691, 60.176949428], [24.99391526, 60.175467507], [24.984409511, 60.170011893], [24.986335337, 60.171692297]]], [[[24.985286593, 60.181534665], [24.988833815, 60.182796644], [25.001362413, 60.180585163], [24.989794046, 60.177661554], [24.980914593, 60.179434495], [24.985286593, 60.181534665]]], [[[24.972855896, 60.179791229], [24.975331575, 60.179177003], [24.976130873, 60.182641076], [24.979873896, 60.182139503], [24.975873381, 60.175287799], [24.969981909, 60.177933799], [24.972855896, 60.179791229]]], [[[25.051376224, 60.188685435], [25.048789233, 60.191092718], [25.061665177, 60.193018545], [25.06585747, 60.195773174], [25.073149055, 60.193392713], [25.067454726, 60.186519551], [25.058862269, 60.186974186], [25.059928447, 60.189318437], [25.051376224, 60.188685435]]], [[[24.886431098, 60.185103345], [24.890854061, 60.1813107], [24.887096286, 60.179492162], [24.888241589, 60.175491647], [24.881743938, 60.176238642], [24.87874791, 60.180935191], [24.881621897, 60.185466784], [24.886431098, 60.185103345]]], [[[24.871247113, 60.187143165], [24.858379215, 60.181835072], [24.851121157, 60.18332504], [24.868552834, 60.189368058], [24.871247113, 60.187143165]]], [[[25.07463634, 60.187726545], [25.084148794, 60.189518261], [25.0866808, 60.185700136], [25.077274293, 60.17795928], [25.066348314, 60.181126969], [25.066678226, 60.185397047], [25.072196871, 60.184222239], [25.07463634, 60.187726545]]], [[[25.019504875, 60.186376053], [25.015634447, 60.178623126], [25.009957552, 60.179368781], [25.010448396, 60.182092564], [25.007109046, 60.180701839], [24.987086356, 60.185490924], [25.002741069, 60.188729692], [24.99900341, 60.190655518], [25.001084805, 60.191525895], [25.002212673, 60.18952899], [25.016764998, 60.190009106], [25.019504875, 60.186376053]]], [[[25.222916901, 60.247496904], [25.209654719, 60.246886701], [25.209424049, 60.250503661], [25.200401098, 60.250914039], [25.207897872, 60.253499689], [25.209591687, 60.251639577], [25.217445195, 60.255283358], [25.231518745, 60.255692395], [25.238456279, 60.248529555], [25.231659561, 60.245462448], [25.23131758, 60.24774769], [25.222916901, 60.247496904]]]]}"]
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"city"
+},{
+"type":"str",
+"column":"found name"
+},{
+"type":"unknown(pandas:unknown-array)",
+"column":"geometry"
+}],
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"color":"white",
+"fill":"deepskyblue"
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

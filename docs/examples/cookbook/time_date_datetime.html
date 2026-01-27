@@ -1,0 +1,1562 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Plotting Time Series" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/time_date_datetime.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="Lets-Plot handles all temporal data types through a unified “datetime” scale (excluding duration/timedelta types, which are handled by the “time” scale). This is in contrast to R’s ggplot2, which p..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="Lets-Plot handles all temporal data types through a unified “datetime” scale (excluding duration/timedelta types, which are handled by the “time” scale). This is in contrast to R’s ggplot2, which p..." />
+
+    <title>Plotting Time Series</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/time_date_datetime';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external"
+     href="https://github.com/JetBrains/lets-plot-docs/raw/master/source/examples/cookbook/time_date_datetime.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="plotting-time-series">
+<h1>Plotting Time Series<a class="headerlink" href="#plotting-time-series" title="Link to this heading">#</a></h1>
+<p>Lets-Plot handles all temporal data types through a unified “datetime” scale (excluding duration/timedelta types, which are handled by the “time” scale). This is in contrast to R’s ggplot2, which provides separate “date”, “time”, and “datetime” scales.</p>
+<p><strong>Supported temporal data types:</strong></p>
+<ul class="simple">
+<li><p>Python <code class="docutils literal notranslate"><span class="pre">time</span></code> objects (time of day)</p></li>
+<li><p>Python <code class="docutils literal notranslate"><span class="pre">date</span></code> objects</p></li>
+<li><p>Python <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects (both naive and timezone-aware)</p></li>
+<li><p>NumPy <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> objects</p></li>
+<li><p>Pandas Series with timezone information</p></li>
+<li><p>Polars Series with timezone information</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="5YfeSr"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("5YfeSr").appendChild(div);
+                };
+                var e = document.getElementById("5YfeSr");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">squiggle</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">squiggle</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="local-time">
+<h2>Local Time<a class="headerlink" href="#local-time" title="Link to this heading">#</a></h2>
+<p>Python <code class="docutils literal notranslate"><span class="pre">time</span></code> objects represent time-of-day values (local/clock time) independent of any specific date.</p>
+<p>The datetime scale renders these with default tooltips and scale breaks optimized for hours or smaller time units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create time objects at regular intervals: every 12 minutes starting from 8:00 AM</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 8:00 AM</span>
+<span class="n">interval_minutes</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">xs_time</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">total_minutes</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">interval_minutes</span>
+    <span class="n">hours</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">total_minutes</span> <span class="o">//</span> <span class="mi">60</span>
+    <span class="n">minutes</span> <span class="o">=</span> <span class="n">total_minutes</span> <span class="o">%</span> <span class="mi">60</span>
+    <span class="n">xs_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">xs</span><span class="o">=</span><span class="n">xs_time</span><span class="p">,</span> <span class="n">ys</span><span class="o">=</span><span class="n">ys</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;xs&#39;</span><span class="p">,</span> <span class="s1">&#39;ys&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_band</span><span class="p">(</span>
+     <span class="n">xmin</span><span class="o">=</span><span class="n">time</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>        <span class="c1"># &lt;-- Use a compatible datatype (&#39;time&#39; here) for a constant value.</span>
+     <span class="n">xmax</span><span class="o">=</span><span class="n">time</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lunch Time&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;^xmin - ^xmax&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;in any time zone&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_line</span><span class="p">(</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;Time:|@xs&quot;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^x&#39;</span><span class="p">,</span> <span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">),</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1380A1&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">axis_title</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Jxu02m" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Jxu02m");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"xs":[2.88E7,2.952E7,3.024E7,3.096E7,3.168E7,3.24E7,3.312E7,3.384E7,3.456E7,3.528E7,3.6E7,3.672E7,3.744E7,3.816E7,3.888E7,3.96E7,4.032E7,4.104E7,4.176E7,4.248E7,4.32E7,4.392E7,4.464E7,4.536E7,4.608E7,4.68E7,4.752E7,4.824E7,4.896E7,4.968E7,5.04E7,5.112E7,5.184E7,5.256E7,5.328E7,5.4E7,5.472E7,5.544E7,5.616E7,5.688E7,5.76E7,5.832E7,5.904E7,5.976E7,6.048E7,6.12E7,6.192E7,6.264E7,6.336E7,6.408E7],
+"ys":[0.05555244654696321,-0.31308975753180435,-0.10643462133932577,0.30009232333113145,0.172963120353367,-0.22071111372232088,-0.13299780037832024,0.08650221374128016,0.07517308831149005,-0.03457732712883878,-0.053011702893076613,0.016132532963930874,0.050251358411493245,-0.006087168607620953,-0.06373424084254278,-0.007203131933992198,0.09508414134219141,0.030997473081211188,-0.08736932916274698,-0.03395485486461525,0.042462211485356505,0.024980718500348657,-0.021846761376655595,-0.021667111013930086,0.014102019771655467,0.02429063240307002,-0.010820138233714487,-0.03549936052176264,0.0074705086233501,0.05839869912786761,0.002691520004471486,-0.05504258459420735,-0.010168953244153327,0.02907608751881987,0.010370233132486369,-0.01702935417966255,-0.010922022515953079,0.012888239469640033,0.014111413375350355,-0.01242410772629781,-0.02311035299814162,0.013738836902986275,0.04060069855806345,-0.009436090766507284,-0.03824280857630372,2.1411196390683422E-4,0.02149175308850683,0.0033093617243690693,-0.013872589878800518,-0.005185628120854145]
+},
+"mapping":{
+"x":"xs",
+"y":"ys"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"time",
+"column":"xs"
+},{
+"type":"float",
+"column":"ys"
+}]
+},
+"ggtoolbar":{
+},
+"ggsize":{
+"width":800.0,
+"height":400.0
+},
+"theme":{
+"axis_title":"blank"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"band",
+"mapping":{
+},
+"tooltips":{
+"formats":[],
+"lines":["^xmin - ^xmax","in any time zone"],
+"title":"Lunch Time"
+},
+"data_meta":{
+},
+"xmin":4.5E7,
+"xmax":4.86E7,
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^x",
+"format":"%H:%M:%S"
+}],
+"lines":["Time:|@xs"]
+},
+"data_meta":{
+},
+"color":"#1380A1",
+"size":2.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="date">
+<h2>Date<a class="headerlink" href="#date" title="Link to this heading">#</a></h2>
+<p>Python <code class="docutils literal notranslate"><span class="pre">date</span></code> objects represent calendar dates without time information.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Date</span></code> objects are inherently timezone-agnostic since they contain no time component - a date like “2024-01-15” represents the same calendar day regardless of timezone.</p>
+<p>The datetime scale renders these with default tooltips and scale breaks optimized for days or larger time units (weeks, months, years) depending on the data range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This covers March 15 - May 3, 2025</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">xs_date</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">xs_date</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start_date</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">xs</span><span class="o">=</span><span class="n">xs_date</span><span class="p">,</span> <span class="n">ys</span><span class="o">=</span><span class="n">ys</span><span class="p">),</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;xs&#39;</span><span class="p">,</span> <span class="s1">&#39;ys&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_vline</span><span class="p">(</span>
+     <span class="n">xintercept</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;April Fools&#39; Day&quot;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^xintercept&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%a</span><span class="s1">, %b </span><span class="si">%e</span><span class="s1">, %Y&#39;</span><span class="p">),</span>
+     <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_line</span><span class="p">(</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;Date:|@xs&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^x&#39;</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">, %Y&#39;</span><span class="p">),</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1380A1&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">axis_title</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="h9tsaZ" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("h9tsaZ");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"xs":[1.7419968E12,1.7420832E12,1.7421696E12,1.742256E12,1.7423424E12,1.7424288E12,1.7425152E12,1.7426016E12,1.742688E12,1.7427744E12,1.7428608E12,1.7429472E12,1.7430336E12,1.74312E12,1.7432064E12,1.7432928E12,1.7433792E12,1.7434656E12,1.743552E12,1.7436384E12,1.7437248E12,1.7438112E12,1.7438976E12,1.743984E12,1.7440704E12,1.7441568E12,1.7442432E12,1.7443296E12,1.744416E12,1.7445024E12,1.7445888E12,1.7446752E12,1.7447616E12,1.744848E12,1.7449344E12,1.7450208E12,1.7451072E12,1.7451936E12,1.74528E12,1.7453664E12,1.7454528E12,1.7455392E12,1.7456256E12,1.745712E12,1.7457984E12,1.7458848E12,1.7459712E12,1.7460576E12,1.746144E12,1.7462304E12],
+"ys":[0.05555244654696321,-0.31308975753180435,-0.10643462133932577,0.30009232333113145,0.172963120353367,-0.22071111372232088,-0.13299780037832024,0.08650221374128016,0.07517308831149005,-0.03457732712883878,-0.053011702893076613,0.016132532963930874,0.050251358411493245,-0.006087168607620953,-0.06373424084254278,-0.007203131933992198,0.09508414134219141,0.030997473081211188,-0.08736932916274698,-0.03395485486461525,0.042462211485356505,0.024980718500348657,-0.021846761376655595,-0.021667111013930086,0.014102019771655467,0.02429063240307002,-0.010820138233714487,-0.03549936052176264,0.0074705086233501,0.05839869912786761,0.002691520004471486,-0.05504258459420735,-0.010168953244153327,0.02907608751881987,0.010370233132486369,-0.01702935417966255,-0.010922022515953079,0.012888239469640033,0.014111413375350355,-0.01242410772629781,-0.02311035299814162,0.013738836902986275,0.04060069855806345,-0.009436090766507284,-0.03824280857630372,2.1411196390683422E-4,0.02149175308850683,0.0033093617243690693,-0.013872589878800518,-0.005185628120854145]
+},
+"mapping":{
+"x":"xs",
+"y":"ys"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"date",
+"column":"xs"
+},{
+"type":"float",
+"column":"ys"
+}]
+},
+"ggtoolbar":{
+},
+"ggsize":{
+"width":800.0,
+"height":400.0
+},
+"theme":{
+"axis_title":"blank"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"vline",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^xintercept",
+"format":"%a, %b %e, %Y"
+}],
+"title":"April Fools' Day"
+},
+"data_meta":{
+},
+"xintercept":1.7434656E12,
+"linetype":"dotted",
+"size":1.5,
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^x",
+"format":"%b %d, %Y"
+}],
+"lines":["Date:|@xs"]
+},
+"data_meta":{
+},
+"color":"#1380A1",
+"size":2.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="date-time">
+<h2>Date-Time<a class="headerlink" href="#date-time" title="Link to this heading">#</a></h2>
+<p>Python <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects represent both date and time information, either timezone-naive or timezone-aware.</p>
+<p>The datetime scale automatically adapts tooltips and scale breaks based on the data’s temporal resolution.</p>
+<p><strong>Timezone handling:</strong> If no timezone information is present (naive datetime), Lets-Plot assumes UTC timezone. For timezone-aware datetime objects, the timezone information from the data is preserved and used for rendering.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Berlin DST transition: March 30, 2025 at 2:00 AM</span>
+<span class="c1"># Cover ±3 days: March 27 - April 2, 2025 (6 days total)</span>
+
+<span class="c1"># Generate equally spaced UNIX timestamps (in seconds)</span>
+<span class="n">start_timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+<span class="n">end_timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+<span class="n">unix_timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start_timestamp</span><span class="p">,</span> <span class="n">end_timestamp</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Convert to pandas datetime series with Berlin timezone</span>
+<span class="n">xs_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">unix_timestamps</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;xs&#39;</span><span class="p">:</span> <span class="n">xs_datetime</span><span class="p">,</span>
+    <span class="s1">&#39;ys&#39;</span><span class="p">:</span> <span class="n">ys</span>
+<span class="p">})</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;xs&#39;</span><span class="p">,</span> <span class="s1">&#39;ys&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_vline</span><span class="p">(</span>
+     <span class="n">xintercept</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2025-03-30 01:59:59&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">),</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Berlin &quot;spring forward&quot; transition&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;^xintercept&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^xintercept&#39;</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">, %Y %H:%M:%S&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;2:00 AM → 3:00 AM&#39;</span><span class="p">),</span>
+     <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_line</span><span class="p">(</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@xs&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^x&#39;</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">, %Y %H:%M&#39;</span><span class="p">),</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1380A1&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">axis_title</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">)</span>
+
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="MvNsZc" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("MvNsZc");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"xs":[1.7430336E12,1.743045941632653E12,1.743058283265306E12,1.743070624897959E12,1.743082966530612E12,1.743095308163265E12,1.743107649795918E12,1.743119991428571E12,1.7431323330612239E12,1.743144674693877E12,1.743157016326531E12,1.7431693579591838E12,1.743181699591837E12,1.74319404122449E12,1.7432063828571428E12,1.743218724489796E12,1.743231066122449E12,1.7432434077551018E12,1.743255749387755E12,1.743268091020408E12,1.743280432653061E12,1.7432927742857139E12,1.743305115918367E12,1.74331745755102E12,1.7433297991836729E12,1.7433421408163271E12,1.74335448244898E12,1.743366824081633E12,1.7433791657142861E12,1.743391507346939E12,1.743403848979592E12,1.743416190612245E12,1.7434285322448982E12,1.743440873877551E12,1.743453215510204E12,1.7434655571428572E12,1.74347789877551E12,1.743490240408163E12,1.7435025820408162E12,1.743514923673469E12,1.743527265306123E12,1.7435396069387761E12,1.743551948571429E12,1.743564290204082E12,1.743576631836735E12,1.743588973469388E12,1.743601315102041E12,1.743613656734694E12,1.743625998367347E12,1.74363834E12],
+"ys":[0.05555244654696321,-0.31308975753180435,-0.10643462133932577,0.30009232333113145,0.172963120353367,-0.22071111372232088,-0.13299780037832024,0.08650221374128016,0.07517308831149005,-0.03457732712883878,-0.053011702893076613,0.016132532963930874,0.050251358411493245,-0.006087168607620953,-0.06373424084254278,-0.007203131933992198,0.09508414134219141,0.030997473081211188,-0.08736932916274698,-0.03395485486461525,0.042462211485356505,0.024980718500348657,-0.021846761376655595,-0.021667111013930086,0.014102019771655467,0.02429063240307002,-0.010820138233714487,-0.03549936052176264,0.0074705086233501,0.05839869912786761,0.002691520004471486,-0.05504258459420735,-0.010168953244153327,0.02907608751881987,0.010370233132486369,-0.01702935417966255,-0.010922022515953079,0.012888239469640033,0.014111413375350355,-0.01242410772629781,-0.02311035299814162,0.013738836902986275,0.04060069855806345,-0.009436090766507284,-0.03824280857630372,2.1411196390683422E-4,0.02149175308850683,0.0033093617243690693,-0.013872589878800518,-0.005185628120854145]
+},
+"mapping":{
+"x":"xs",
+"y":"ys"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"datetime",
+"time_zone":"Europe/Berlin",
+"column":"xs"
+},{
+"type":"float",
+"column":"ys"
+}]
+},
+"ggtoolbar":{
+},
+"ggsize":{
+"width":800.0,
+"height":400.0
+},
+"theme":{
+"axis_title":"blank"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"vline",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^xintercept",
+"format":"%b %d, %Y %H:%M:%S"
+}],
+"lines":["^xintercept","2:00 AM → 3:00 AM"],
+"title":"Berlin \"spring forward\" transition"
+},
+"data_meta":{
+},
+"xintercept":1.743296399E12,
+"linetype":"dotted",
+"size":1.5,
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^x",
+"format":"%b %d, %Y %H:%M"
+}],
+"lines":["@xs"]
+},
+"data_meta":{
+},
+"color":"#1380A1",
+"size":2.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="zoomed-in-view-berlin-start-of-dst-transition-details">
+<h2>Zoomed-in View: Berlin Start of DST Transition Details<a class="headerlink" href="#zoomed-in-view-berlin-start-of-dst-transition-details" title="Link to this heading">#</a></h2>
+<p>This plot zooms into the DST transition period: ±8 hours around March 30, 2025 at 2:00 AM.</p>
+<p>Notice that the time 2025-03-30 02:00:00 through 2025-03-30 02:59:59 does not exist in Europe/Berlin timezone - clocks spring forward directly from 01:59:59 to 03:00:00, creating a gap in the timeline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">coord_cartesian</span><span class="p">(</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2025-03-29 21:00:00&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">),</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2025-03-30 08:00:00&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="rpUCEL" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("rpUCEL");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"xs":[1.7430336E12,1.743045941632653E12,1.743058283265306E12,1.743070624897959E12,1.743082966530612E12,1.743095308163265E12,1.743107649795918E12,1.743119991428571E12,1.7431323330612239E12,1.743144674693877E12,1.743157016326531E12,1.7431693579591838E12,1.743181699591837E12,1.74319404122449E12,1.7432063828571428E12,1.743218724489796E12,1.743231066122449E12,1.7432434077551018E12,1.743255749387755E12,1.743268091020408E12,1.743280432653061E12,1.7432927742857139E12,1.743305115918367E12,1.74331745755102E12,1.7433297991836729E12,1.7433421408163271E12,1.74335448244898E12,1.743366824081633E12,1.7433791657142861E12,1.743391507346939E12,1.743403848979592E12,1.743416190612245E12,1.7434285322448982E12,1.743440873877551E12,1.743453215510204E12,1.7434655571428572E12,1.74347789877551E12,1.743490240408163E12,1.7435025820408162E12,1.743514923673469E12,1.743527265306123E12,1.7435396069387761E12,1.743551948571429E12,1.743564290204082E12,1.743576631836735E12,1.743588973469388E12,1.743601315102041E12,1.743613656734694E12,1.743625998367347E12,1.74363834E12],
+"ys":[0.05555244654696321,-0.31308975753180435,-0.10643462133932577,0.30009232333113145,0.172963120353367,-0.22071111372232088,-0.13299780037832024,0.08650221374128016,0.07517308831149005,-0.03457732712883878,-0.053011702893076613,0.016132532963930874,0.050251358411493245,-0.006087168607620953,-0.06373424084254278,-0.007203131933992198,0.09508414134219141,0.030997473081211188,-0.08736932916274698,-0.03395485486461525,0.042462211485356505,0.024980718500348657,-0.021846761376655595,-0.021667111013930086,0.014102019771655467,0.02429063240307002,-0.010820138233714487,-0.03549936052176264,0.0074705086233501,0.05839869912786761,0.002691520004471486,-0.05504258459420735,-0.010168953244153327,0.02907608751881987,0.010370233132486369,-0.01702935417966255,-0.010922022515953079,0.012888239469640033,0.014111413375350355,-0.01242410772629781,-0.02311035299814162,0.013738836902986275,0.04060069855806345,-0.009436090766507284,-0.03824280857630372,2.1411196390683422E-4,0.02149175308850683,0.0033093617243690693,-0.013872589878800518,-0.005185628120854145]
+},
+"mapping":{
+"x":"xs",
+"y":"ys"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"datetime",
+"time_zone":"Europe/Berlin",
+"column":"xs"
+},{
+"type":"float",
+"column":"ys"
+}]
+},
+"ggtoolbar":{
+},
+"ggsize":{
+"width":800.0,
+"height":400.0
+},
+"theme":{
+"axis_title":"blank"
+},
+"coord":{
+"name":"cartesian",
+"xlim":[1.7432784E12,1.7433144E12],
+"flip":false
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"vline",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^xintercept",
+"format":"%b %d, %Y %H:%M:%S"
+}],
+"lines":["^xintercept","2:00 AM → 3:00 AM"],
+"title":"Berlin \"spring forward\" transition"
+},
+"data_meta":{
+},
+"xintercept":1.743296399E12,
+"linetype":"dotted",
+"size":1.5,
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^x",
+"format":"%b %d, %Y %H:%M"
+}],
+"lines":["@xs"]
+},
+"data_meta":{
+},
+"color":"#1380A1",
+"size":2.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="berlin-end-of-dst-transition-details">
+<h2>Berlin End of DST Transition Details<a class="headerlink" href="#berlin-end-of-dst-transition-details" title="Link to this heading">#</a></h2>
+<p>The mirroring phenomenon can be observed during Berlin’s end of DST transition: around October 26, 2025 at 2:00 AM.</p>
+<p>Notice that the time 2025-10-26 02:00:00 through 2025-10-26 02:59:59 appears twice in Europe/Berlin timezone - clocks fall back from 02:59:59 to 02:00:00, creating a duplication in the timeline where the same hour occurs twice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Berlin DST transition back: October 26, 2025 at 3:00 AM → 2:00 AM</span>
+
+<span class="c1"># Generate equally spaced UNIX timestamps (in seconds)</span>
+<span class="n">start_timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+<span class="n">end_timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+<span class="n">unix_timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start_timestamp</span><span class="p">,</span> <span class="n">end_timestamp</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Convert to pandas datetime series with Berlin timezone</span>
+<span class="n">xs_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">unix_timestamps</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;xs&#39;</span><span class="p">:</span> <span class="n">xs_datetime</span><span class="p">,</span>
+    <span class="s1">&#39;ys&#39;</span><span class="p">:</span> <span class="n">ys</span>
+<span class="p">})</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span>
+        <span class="n">mapping</span><span class="o">=</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;xs&#39;</span><span class="p">,</span> <span class="s1">&#39;ys&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">geom_vline</span><span class="p">(</span>
+     <span class="n">xintercept</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2025-10-26 00:59:59&#39;</span><span class="p">,</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">),</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Berlin &quot;fall back&quot; transition&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;^xintercept&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^xintercept&#39;</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">, %Y %H:%M:%S&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;3:00 AM → 2:00 AM&#39;</span><span class="p">),</span>
+     <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_line</span><span class="p">(</span>
+     <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;@xs&#39;</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;^x&#39;</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">, %Y %H:%M&#39;</span><span class="p">),</span>
+     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1380A1&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span> <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">axis_title</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">coord_cartesian</span><span class="p">(</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2025-10-25 22:00:00&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">),</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2025-10-26 08:00:00&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;Europe/Berlin&#39;</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="SEZTkO" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("SEZTkO");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"xs":[1.7611776E12,1.761189941632653E12,1.761202283265306E12,1.761214624897959E12,1.761226966530612E12,1.761239308163265E12,1.761251649795918E12,1.761263991428571E12,1.7612763330612239E12,1.761288674693877E12,1.761301016326531E12,1.7613133579591838E12,1.761325699591837E12,1.76133804122449E12,1.7613503828571428E12,1.761362724489796E12,1.761375066122449E12,1.7613874077551018E12,1.761399749387755E12,1.761412091020408E12,1.761424432653061E12,1.7614367742857139E12,1.761449115918367E12,1.76146145755102E12,1.7614737991836729E12,1.7614861408163271E12,1.76149848244898E12,1.761510824081633E12,1.7615231657142861E12,1.761535507346939E12,1.761547848979592E12,1.761560190612245E12,1.7615725322448982E12,1.761584873877551E12,1.761597215510204E12,1.7616095571428572E12,1.76162189877551E12,1.761634240408163E12,1.7616465820408162E12,1.761658923673469E12,1.761671265306123E12,1.7616836069387761E12,1.761695948571429E12,1.761708290204082E12,1.761720631836735E12,1.761732973469388E12,1.761745315102041E12,1.761757656734694E12,1.761769998367347E12,1.76178234E12],
+"ys":[0.05555244654696321,-0.31308975753180435,-0.10643462133932577,0.30009232333113145,0.172963120353367,-0.22071111372232088,-0.13299780037832024,0.08650221374128016,0.07517308831149005,-0.03457732712883878,-0.053011702893076613,0.016132532963930874,0.050251358411493245,-0.006087168607620953,-0.06373424084254278,-0.007203131933992198,0.09508414134219141,0.030997473081211188,-0.08736932916274698,-0.03395485486461525,0.042462211485356505,0.024980718500348657,-0.021846761376655595,-0.021667111013930086,0.014102019771655467,0.02429063240307002,-0.010820138233714487,-0.03549936052176264,0.0074705086233501,0.05839869912786761,0.002691520004471486,-0.05504258459420735,-0.010168953244153327,0.02907608751881987,0.010370233132486369,-0.01702935417966255,-0.010922022515953079,0.012888239469640033,0.014111413375350355,-0.01242410772629781,-0.02311035299814162,0.013738836902986275,0.04060069855806345,-0.009436090766507284,-0.03824280857630372,2.1411196390683422E-4,0.02149175308850683,0.0033093617243690693,-0.013872589878800518,-0.005185628120854145]
+},
+"mapping":{
+"x":"xs",
+"y":"ys"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"datetime",
+"time_zone":"Europe/Berlin",
+"column":"xs"
+},{
+"type":"float",
+"column":"ys"
+}]
+},
+"ggtoolbar":{
+},
+"ggsize":{
+"width":800.0,
+"height":400.0
+},
+"theme":{
+"axis_title":"blank"
+},
+"coord":{
+"name":"cartesian",
+"xlim":[1.7614224E12,1.761462E12],
+"flip":false
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"vline",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^xintercept",
+"format":"%b %d, %Y %H:%M:%S"
+}],
+"lines":["^xintercept","3:00 AM → 2:00 AM"],
+"title":"Berlin \"fall back\" transition"
+},
+"data_meta":{
+},
+"xintercept":1.761440399E12,
+"linetype":"dotted",
+"size":1.5,
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+},
+"tooltips":{
+"formats":[{
+"field":"^x",
+"format":"%b %d, %Y %H:%M"
+}],
+"lines":["@xs"]
+},
+"data_meta":{
+},
+"color":"#1380A1",
+"size":2.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-time">Local Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date">Date</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-time">Date-Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zoomed-in-view-berlin-start-of-dst-transition-details">Zoomed-in View: Berlin Start of DST Transition Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berlin-end-of-dst-transition-details">Berlin End of DST Transition Details</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
