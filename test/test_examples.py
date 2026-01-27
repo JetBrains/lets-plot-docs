@@ -100,6 +100,6 @@ def _to_html(path):
     html_path = None
     if path.startswith("source/examples/") and path.endswith(".ipynb"):
         html_path = "docs/{0}.html".format(path[7:-6])
-    if not os.path.isfile(html_path):
-        html_path = None
+        if not os.path.isfile(html_path):
+            html_path = None
     return html_path
