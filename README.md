@@ -95,6 +95,6 @@ Please make sure you read it.
 ## License
 
 Code and documentation released under the [MIT license](https://github.com/JetBrains/lets-plot-docs/blob/master/LICENSE).
-Copyright © 2019-2025, JetBrains s.r.o.
+Copyright © 2019-2026, JetBrains s.r.o.
 
 Some datasets in the `data/` directory are licensed under terms different from MIT. Please refer to [`data/datasets.txt`](data/datasets.txt) for per-dataset licensing details.
