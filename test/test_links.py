@@ -96,7 +96,7 @@ def check_url(href, source):
 
 def _get_response(href, first_query=True):
     try:
-        response = requests.get(href)
+        response = requests.get(href, stream=True, headers={"Accept-Encoding": "identity"})
         if response.status_code == 404 and first_query:
             for replace_from, replace_to in REPLACES.items():
                 href = href.replace(replace_from, replace_to)
