@@ -41,6 +41,7 @@ extensions = [
     "sphinx_design",
     "sphinx_reredirects",
     # custom extensions
+    "copy_notebooks",
     "create_cname",
     "create_sitemap",
     "execute_notebooks",

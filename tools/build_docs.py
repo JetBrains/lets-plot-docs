@@ -20,8 +20,8 @@ KEEP_IN_DOCS = {"kotlin"}
 
 
 PROFILES = {
-    "dev": {"execute_notebooks": 0, "clean": 1},
-    "prod": {"execute_notebooks": 1, "clean": 1},
+    "dev": {"execute_notebooks": 0, "copy_notebooks_mode": "missing", "clean": 1},
+    "prod": {"execute_notebooks": 1, "copy_notebooks_mode": "all", "clean": 1},
 }
 
 
@@ -76,6 +76,8 @@ def main() -> int:
     # Single toggles, 0/1, default comes from profile
     p.add_argument("-e", "--execute-notebooks", type=int, choices=(0, 1), default=None,
                    help="Override execute_notebooks (0/1). Default depends on --type")
+    p.add_argument("--copy-notebooks-mode", choices=("off", "missing", "all"), default=None,
+                   help="Override copy_notebooks_mode (off/missing/all). Default depends on --type")
 
     p.add_argument("-c", "--clean", type=int, choices=(0, 1), default=None,
                    help="Clean generated dirs before build (0/1). Default depends on --type")
@@ -91,6 +93,7 @@ def main() -> int:
     prof = PROFILES[args.type]
     execute_notebooks = prof["execute_notebooks"] if args.execute_notebooks is None else args.execute_notebooks
     clean = prof["clean"] if args.clean is None else args.clean
+    copy_notebooks_mode = prof["copy_notebooks_mode"] if args.copy_notebooks_mode is None else args.copy_notebooks_mode
 
     # ---- profile restrictions ----
     if args.type == "prod" and clean == 0:
@@ -131,6 +134,7 @@ def main() -> int:
 
     cmd.append("--fail-on-warning")
     cmd += ["-D", f"execute_notebooks={execute_notebooks}"]
+    cmd += ["-D", f"copy_notebooks_mode={copy_notebooks_mode}"]
 
     if args.version:
         cmd += ["-D", f"version={args.version}", "-D", f"release={args.version}"]
