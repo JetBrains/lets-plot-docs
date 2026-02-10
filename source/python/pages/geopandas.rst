@@ -151,44 +151,44 @@ Examples
 - The world map with *Lets-Plot* and *GeoPandas*: |geopandas_naturalearth|
 
 .. |geopandas_naturalearth| extref:: geopandas_naturalearth
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: link
 
 - Plotting Airbnb prices Boston: |plotting_airbnb_prices_boston|
 
 .. |plotting_airbnb_prices_boston| extref:: plotting_airbnb_prices_boston
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Datalore link
 
 - Spatial prediction of soil pollutants with multi-output Gaussian processes: |soil_pollutants_with_gaussian_processes| 
 
 .. |soil_pollutants_with_gaussian_processes| extref:: soil_pollutants_with_gaussian_processes
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Nextjournal link
 
 - Using geom_imshow() to draw DEM on map: |ivindo_river|
 
 .. |ivindo_river| extref:: ivindo_river
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: link
 
 - ``use_crs`` parameter: |map_use_crs|
 
 .. |map_use_crs| extref:: map_use_crs
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: link
 
 - Using exotic map projections: |projection_provided|
 
 .. |projection_provided| extref:: projection_provided
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: link
 
 - An **inset map** of Kotlin island: |geopandas_kotlin_isl|
 
 .. |geopandas_kotlin_isl| extref:: geopandas_kotlin_isl
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: link
 
 .. image:: /_static/images/kotlin_island.png
     :width: 480px

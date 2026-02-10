@@ -86,35 +86,35 @@ Examples
 -  Various geocoding cases with maps: |geocoding_examples|
 
 .. |geocoding_examples| extref:: geocoding_examples
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: link
 
 -  Mapping US Household Income: |mapping_us_household_income|
 
 .. |mapping_us_household_income| extref:: mapping_us_household_income
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Kaggle link
 
 -  Geocoding the US counties: |map_us_household_income|
 
 .. |map_us_household_income| extref:: map_us_household_income
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Datalore link
 
--  Visualization of the Titanic's voyage: |titanic-datalore| |titanic-kaggle| |titanic-colab|
+-  Visualization of the Titanic's voyage: |titanic-datalore|, |titanic-kaggle|, |titanic-colab|
 
 .. |titanic-datalore| extref:: titanic
     :ref: datalore
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Datalore link
 .. |titanic-kaggle| extref:: titanic
     :ref: kaggle
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Kaggle link
 .. |titanic-colab| extref:: titanic
     :ref: colab
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Colab link
 
 .. image:: /_static/images/map_titanic.png
     :width: 547px
@@ -123,8 +123,8 @@ Examples
 -  Visualization of Airport Data on Map: |map_airports|
 
 .. |map_airports| extref:: map_airports
-    :type: logo
-    :height: 2rem
+    :type: text
+    :text: Kaggle link
 
 .. image:: /_static/images/map_airports.png
     :width: 547px
@@ -136,11 +136,11 @@ Examples
 Reference
 ---------
 
-The |geocoding_reference| notebook contains a demonstration code covering use-cases presented in this section.
+The "|geocoding_reference|" example contains a demonstration code covering use-cases presented in this section.
 
 .. |geocoding_reference| extref:: geocoding_reference
     :type: text
-    :text: geocoding_reference.ipynb
+    :text: geocoding_reference
 
 
 .. _geocoding_levels:

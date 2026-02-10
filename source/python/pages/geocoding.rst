@@ -220,7 +220,7 @@ Guides to Geocoding
 
 Documentation: :doc:`The Geocoding Reference Guide </python/pages/advanced_geocoding>`.
 
-An example notebook covering various geocoding use-cases: |geocoding_reference|.
+An example covering various geocoding use-cases: |geocoding_reference|.
 
 .. |geocoding_reference| extref:: geocoding_reference
     :type: text

@@ -5,7 +5,7 @@
 
 import os
 import sys; sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
-from utils.sitemap import generate_sitemap
+from tools.sitemap import generate_sitemap
 
 def build_finished_handler(app, exception):
     generate_sitemap(html_dir="docs", sitemap_filename="docs/sitemap.xml")

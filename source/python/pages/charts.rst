@@ -33,7 +33,7 @@ You can pass tidy data to *Lets-Plot* in form of a **Pandas** Dataframe, a **Pol
 
 .. |allowed_data_types| extref:: allowed_data_types
     :type: text
-    :text: example notebook
+    :text: example
 
 
 |l2| |d2| Aesthetics

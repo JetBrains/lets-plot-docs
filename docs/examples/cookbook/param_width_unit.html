@@ -1,0 +1,2009 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Absolute Unit Specification for width and height Aesthetics" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/param_width_unit.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="Previously, the width and height aesthetics were limited to relative sizing based on data resolution, which sometimes made it difficult to maintain consistent visual dimensions across different dat..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="Previously, the width and height aesthetics were limited to relative sizing based on data resolution, which sometimes made it difficult to maintain consistent visual dimensions across different dat..." />
+
+    <title>Absolute Unit Specification for width and height Aesthetics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/param_width_unit';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/cookbook/param_width_unit.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="absolute-unit-specification-for-width-and-height-aesthetics">
+<h1>Absolute Unit Specification for <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> Aesthetics<a class="headerlink" href="#absolute-unit-specification-for-width-and-height-aesthetics" title="Link to this heading">#</a></h1>
+<p>Previously, the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> aesthetics were limited to relative sizing based on data resolution, which sometimes made it difficult to maintain consistent visual dimensions across different data scales.</p>
+<p>Now multiple geometries also support absolute unit specification for their <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> aesthetics via the new <code class="docutils literal notranslate"><span class="pre">width_unit</span></code> and <code class="docutils literal notranslate"><span class="pre">height_unit</span></code> parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_errorbar()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_crossbar()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_boxplot()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_tile()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geom_hex()</span></code></p></li>
+</ul>
+<p>Available Units:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'res'</span></code> (default): Value 1 corresponds to the resolution along the axis - the minimum distance between data points</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'identity'</span></code>: Value 1 corresponds to the distance from 0 to 1 on the axis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'size'</span></code>: Value 1 corresponds to the diameter of a point of size 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'px'</span></code>: Value 1 corresponds to 1 pixel</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="jsGDgh"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("jsGDgh").appendChild(div);
+                };
+                var e = document.getElementById("jsGDgh");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/refs/heads/master/data/mpg.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;trans_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;trans&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(234, 13)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>displ</th>
+      <th>year</th>
+      <th>cyl</th>
+      <th>trans</th>
+      <th>drv</th>
+      <th>cty</th>
+      <th>hwy</th>
+      <th>fl</th>
+      <th>class</th>
+      <th>trans_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>18</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+      <td>auto</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>manual(m5)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+      <td>manual</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>manual(m6)</td>
+      <td>f</td>
+      <td>20</td>
+      <td>31</td>
+      <td>p</td>
+      <td>compact</td>
+      <td>manual</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>auto(av)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>30</td>
+      <td>p</td>
+      <td>compact</td>
+      <td>auto</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.8</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>16</td>
+      <td>26</td>
+      <td>p</td>
+      <td>compact</td>
+      <td>auto</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="uniform-width">
+<h2>1. Uniform Width<a class="headerlink" href="#uniform-width" title="Link to this heading">#</a></h2>
+<p>Suppose we have the following plot, but we are not satisfied that different facets have different whisker widths:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_errorbar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">as_discrete</span><span class="p">(</span><span class="s2">&quot;trans&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;trans_type&quot;</span><span class="p">),</span>
+                  <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">facet_grid</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="s2">&quot;free_x&quot;</span><span class="p">,</span> <span class="n">x_format</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="HHcGPj" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("HHcGPj");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+},{
+"type":"str",
+"column":"trans_type"
+}]
+},
+"facet":{
+"name":"grid",
+"x":"year",
+"scales":"free_x",
+"x_order":1.0,
+"y_order":1.0,
+"x_format":"d"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"errorbar",
+"stat":"summary",
+"mapping":{
+"x":"trans",
+"y":"hwy",
+"color":"trans_type"
+},
+"data_meta":{
+"mapping_annotations":[{
+"parameters":{
+"label":"trans",
+"order":1.0
+},
+"aes":"x",
+"annotation":"as_discrete"
+}],
+"series_annotations":[{
+"column":"trans_type",
+"factor_levels":["auto","manual"]
+}]
+},
+"size":1.0,
+"width":0.5,
+"data":{
+"..ymin..":[17.0,15.0,24.0,16.0,26.0,25.0,18.0,14.0,18.0,12.0,18.0,25.0,12.0,22.0],
+"..ymax..":[29.0,41.0,30.0,44.0,26.0,31.0,29.0,35.0,23.0,36.0,31.0,27.0,32.0,37.0],
+"trans":["auto(l5)","auto(l4)","auto(l3)","manual(m5)","manual(m6)","auto(av)","auto(s6)","auto(l4)","auto(l6)","auto(l5)","auto(s5)","auto(s4)","manual(m6)","manual(m5)"],
+"trans_type":["auto","auto","auto","manual","manual","auto","auto","auto","auto","auto","auto","auto","manual","manual"],
+"year":[1999.0,1999.0,1999.0,1999.0,1999.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0]
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>We can make the widths uniform by setting the absolute unit of measurement for them.
+For example, in pixels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_errorbar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">as_discrete</span><span class="p">(</span><span class="s2">&quot;trans&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;trans_type&quot;</span><span class="p">),</span>
+                  <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+                  <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>                <span class="c1"># &lt;-- set width - 10 px</span>
+                  <span class="n">width_unit</span><span class="o">=</span><span class="s2">&quot;px&quot;</span>
+                 <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">facet_grid</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="s2">&quot;free_x&quot;</span><span class="p">,</span> <span class="n">x_format</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="75IDod" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("75IDod");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+},{
+"type":"str",
+"column":"trans_type"
+}]
+},
+"facet":{
+"name":"grid",
+"x":"year",
+"scales":"free_x",
+"x_order":1.0,
+"y_order":1.0,
+"x_format":"d"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"errorbar",
+"stat":"summary",
+"mapping":{
+"x":"trans",
+"y":"hwy",
+"color":"trans_type"
+},
+"data_meta":{
+"mapping_annotations":[{
+"parameters":{
+"label":"trans",
+"order":1.0
+},
+"aes":"x",
+"annotation":"as_discrete"
+}],
+"series_annotations":[{
+"column":"trans_type",
+"factor_levels":["auto","manual"]
+}]
+},
+"width_unit":"px",
+"size":1.0,
+"width":10.0,
+"data":{
+"..ymin..":[17.0,15.0,24.0,16.0,26.0,25.0,18.0,14.0,18.0,12.0,18.0,25.0,12.0,22.0],
+"..ymax..":[29.0,41.0,30.0,44.0,26.0,31.0,29.0,35.0,23.0,36.0,31.0,27.0,32.0,37.0],
+"trans":["auto(l5)","auto(l4)","auto(l3)","manual(m5)","manual(m6)","auto(av)","auto(s6)","auto(l4)","auto(l6)","auto(l5)","auto(s5)","auto(s4)","manual(m6)","manual(m5)"],
+"trans_type":["auto","auto","auto","manual","manual","auto","auto","auto","auto","auto","auto","auto","manual","manual"],
+"year":[1999.0,1999.0,1999.0,1999.0,1999.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0,2008.0]
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="matching-2d-grid">
+<h2>2. Matching 2D Grid<a class="headerlink" href="#matching-2d-grid" title="Link to this heading">#</a></h2>
+<p>When using <code class="docutils literal notranslate"><span class="pre">geom_hex()</span></code> with the <code class="docutils literal notranslate"><span class="pre">'identity'</span></code> statistic, you must prepare the data yourself to fit into a hexagonal grid.</p>
+<p>Let’s assume you have prepared the following dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_full_dataset</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+            <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="p">)[:</span><span class="n">m</span><span class="p">],</span> <span class="n">n</span><span class="p">),</span>
+            <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">n</span><span class="p">),</span>
+            <span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">m</span><span class="o">*</span><span class="n">n</span><span class="p">),</span>
+        <span class="p">})</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_random_sample</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">reg</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+        <span class="n">get_random_sample</span><span class="p">(</span><span class="n">generate_full_dataset</span><span class="p">(),</span> <span class="n">size</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">g</span><span class="o">=</span><span class="s2">&quot;group </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">size</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
+    <span class="p">])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>v</th>
+      <th>g</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.374540</td>
+      <td>group 0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+      <td>4</td>
+      <td>0.708073</td>
+      <td>group 0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>4</td>
+      <td>0.156019</td>
+      <td>group 0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>5.0</td>
+      <td>0</td>
+      <td>0.785176</td>
+      <td>group 0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>4.0</td>
+      <td>2</td>
+      <td>0.292145</td>
+      <td>group 0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The Lets-Plot tries to choose the sizes of the hexagons by itself, but in some situations the result may be unsatisfactory, as in the plot below. Namely in the facet with ‘group 0’, the hexagons are too large to fit into the grid:</p>
+<section id="the-problem-data-resolution-varies-across-the-plot-facets">
+<h3>- The Problem: data resolution varies across the plot facets.<a class="headerlink" href="#the-problem-data-resolution-varies-across-the-plot-facets" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_hex</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">facet_wrap</span><span class="p">(</span><span class="n">facets</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="oQM3KT" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("oQM3KT");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[0.0,1.0,0.0,5.0,4.0,2.0,1.0,3.0,0.5,2.0,4.0,3.0,3.0,1.0,2.0,5.0,0.5,2.5,0.5,4.0,0.5,2.5,3.5,2.0],
+"y":[0.0,4.0,4.0,0.0,2.0,2.0,2.0,2.0,3.0,4.0,4.0,4.0,2.0,0.0,2.0,0.0,1.0,3.0,1.0,0.0,3.0,1.0,1.0,4.0],
+"v":[0.3745401188473625,0.7080725777960455,0.15601864044243652,0.7851759613930136,0.29214464853521815,0.8324426408004217,0.8661761457749352,0.5247564316322378,0.9093204020787821,0.5978999788110851,0.28093450968738076,0.32533033076326434,0.1959828624191452,0.662522284353982,0.9394989415641891,0.5426960831582485,0.4951769101112702,0.47537022318211175,0.38292687475378984,0.942853570557981,0.8489138242660839,0.2017192023353962,0.1393314544058757,0.5632755719763837],
+"g":["group 0","group 0","group 0","group 0","group 0","group 0","group 0","group 0","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 2","group 2","group 2","group 2","group 2","group 2","group 2"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"v"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"v"
+},{
+"type":"str",
+"column":"g"
+}]
+},
+"facet":{
+"name":"wrap",
+"facets":"g",
+"nrow":1.0,
+"order":1.0,
+"dir":"h"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"hex",
+"stat":"identity",
+"mapping":{
+},
+"data_meta":{
+},
+"size":0.5,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>Since the data resolution varies across facets, simply resizing the <code class="docutils literal notranslate"><span class="pre">hexagons</span></code> isn’t sufficient.</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> use the <code class="docutils literal notranslate"><span class="pre">'res'</span></code> unit, which is relative to the resolution (minimum distance between hexagon centers) in each individual facet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_hex</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
+             <span class="n">width</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">facet_wrap</span><span class="p">(</span><span class="n">facets</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="vOOwBk" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("vOOwBk");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[0.0,1.0,0.0,5.0,4.0,2.0,1.0,3.0,0.5,2.0,4.0,3.0,3.0,1.0,2.0,5.0,0.5,2.5,0.5,4.0,0.5,2.5,3.5,2.0],
+"y":[0.0,4.0,4.0,0.0,2.0,2.0,2.0,2.0,3.0,4.0,4.0,4.0,2.0,0.0,2.0,0.0,1.0,3.0,1.0,0.0,3.0,1.0,1.0,4.0],
+"v":[0.3745401188473625,0.7080725777960455,0.15601864044243652,0.7851759613930136,0.29214464853521815,0.8324426408004217,0.8661761457749352,0.5247564316322378,0.9093204020787821,0.5978999788110851,0.28093450968738076,0.32533033076326434,0.1959828624191452,0.662522284353982,0.9394989415641891,0.5426960831582485,0.4951769101112702,0.47537022318211175,0.38292687475378984,0.942853570557981,0.8489138242660839,0.2017192023353962,0.1393314544058757,0.5632755719763837],
+"g":["group 0","group 0","group 0","group 0","group 0","group 0","group 0","group 0","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 2","group 2","group 2","group 2","group 2","group 2","group 2"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"v"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"v"
+},{
+"type":"str",
+"column":"g"
+}]
+},
+"facet":{
+"name":"wrap",
+"facets":"g",
+"nrow":1.0,
+"order":1.0,
+"dir":"h"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"hex",
+"stat":"identity",
+"mapping":{
+},
+"data_meta":{
+},
+"size":0.5,
+"width":0.5,
+"height":0.5,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="the-solution-switch-to-identity-units-to-express-hexagon-width-height-in-consistent-x-y-axis-units">
+<h3>- The Solution: switch to <code class="docutils literal notranslate"><span class="pre">'identity'</span></code> units to express hexagon <code class="docutils literal notranslate"><span class="pre">width</span></code>/<code class="docutils literal notranslate"><span class="pre">height</span></code> in consistent X/Y-axis units.<a class="headerlink" href="#the-solution-switch-to-identity-units-to-express-hexagon-width-height-in-consistent-x-y-axis-units" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_hex</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
+             <span class="n">width_unit</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>           <span class="c1"># &lt;-- Set width in data units </span>
+             <span class="n">height_unit</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">2</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># &lt;-- Set height in data units</span>
+            <span class="p">)</span> <span class="o">+</span> \
+    <span class="n">facet_wrap</span><span class="p">(</span><span class="n">facets</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="gxD5Fo" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("gxD5Fo");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[0.0,1.0,0.0,5.0,4.0,2.0,1.0,3.0,0.5,2.0,4.0,3.0,3.0,1.0,2.0,5.0,0.5,2.5,0.5,4.0,0.5,2.5,3.5,2.0],
+"y":[0.0,4.0,4.0,0.0,2.0,2.0,2.0,2.0,3.0,4.0,4.0,4.0,2.0,0.0,2.0,0.0,1.0,3.0,1.0,0.0,3.0,1.0,1.0,4.0],
+"v":[0.3745401188473625,0.7080725777960455,0.15601864044243652,0.7851759613930136,0.29214464853521815,0.8324426408004217,0.8661761457749352,0.5247564316322378,0.9093204020787821,0.5978999788110851,0.28093450968738076,0.32533033076326434,0.1959828624191452,0.662522284353982,0.9394989415641891,0.5426960831582485,0.4951769101112702,0.47537022318211175,0.38292687475378984,0.942853570557981,0.8489138242660839,0.2017192023353962,0.1393314544058757,0.5632755719763837],
+"g":["group 0","group 0","group 0","group 0","group 0","group 0","group 0","group 0","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 1","group 2","group 2","group 2","group 2","group 2","group 2","group 2"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"v"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"v"
+},{
+"type":"str",
+"column":"g"
+}]
+},
+"facet":{
+"name":"wrap",
+"facets":"g",
+"nrow":1.0,
+"order":1.0,
+"dir":"h"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"hex",
+"stat":"identity",
+"mapping":{
+},
+"data_meta":{
+},
+"width_unit":"identity",
+"height_unit":"identity",
+"size":0.5,
+"width":1.0,
+"height":1.1547005383792517,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+<section id="unit-comparison-pixel-size-identity-and-resolution">
+<h2>3. Unit Comparison: Pixel, Size, Identity and Resolution<a class="headerlink" href="#unit-comparison-pixel-size-identity-and-resolution" title="Link to this heading">#</a></h2>
+<p>Note that when using <code class="docutils literal notranslate"><span class="pre">'px'</span></code> or <code class="docutils literal notranslate"><span class="pre">'size'</span></code> units the axis scales do not automatically expand  <br/>
+to accommodate the dimensions of geometry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_plot</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width_unit</span><span class="p">,</span> <span class="n">height_unit</span><span class="p">):</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">],</span>
+        <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">],</span>
+        <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">))</span> <span class="o">+</span> \
+        <span class="n">geom_tile</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">width_unit</span><span class="o">=</span><span class="n">width_unit</span><span class="p">,</span>
+                  <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">height_unit</span><span class="o">=</span><span class="n">height_unit</span><span class="p">,</span>
+                  <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_point</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">coord_fixed</span><span class="p">()</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;width=</span><span class="si">{w}</span><span class="s2">, width_unit=&#39;</span><span class="si">{wu}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">height=</span><span class="si">{h}</span><span class="s2">, height_unit=&#39;</span><span class="si">{hu}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">w</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">wu</span><span class="o">=</span><span class="n">width_unit</span><span class="p">,</span>
+            <span class="n">h</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">hu</span><span class="o">=</span><span class="n">height_unit</span>
+        <span class="p">))</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">get_plot</span><span class="p">(</span><span class="mf">.9</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="s1">&#39;res&#39;</span><span class="p">,</span> <span class="s1">&#39;res&#39;</span><span class="p">),</span>
+    <span class="n">get_plot</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;identity&#39;</span><span class="p">),</span>
+    <span class="n">get_plot</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">),</span>
+    <span class="n">get_plot</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span> <span class="s1">&#39;px&#39;</span><span class="p">),</span>
+<span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="nMJML8" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("nMJML8");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":2.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"x":[-7.0,-7.0,7.0,7.0],
+"y":[-5.0,5.0,-5.0,5.0],
+"c":["a","b","c","d"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"c"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"str",
+"column":"c"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"flip":false
+},
+"ggtitle":{
+"text":"width=0.9, width_unit='res'\nheight=0.9, height_unit='res'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"tile",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"width_unit":"res",
+"height_unit":"res",
+"width":0.9,
+"height":0.9,
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"shape":21.0,
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+},{
+"data":{
+"x":[-7.0,-7.0,7.0,7.0],
+"y":[-5.0,5.0,-5.0,5.0],
+"c":["a","b","c","d"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"c"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"str",
+"column":"c"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"flip":false
+},
+"ggtitle":{
+"text":"width=12, width_unit='identity'\nheight=8, height_unit='identity'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"tile",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"width_unit":"identity",
+"height_unit":"identity",
+"width":12.0,
+"height":8.0,
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"shape":21.0,
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"7"
+},{
+"data":{
+"x":[-7.0,-7.0,7.0,7.0],
+"y":[-5.0,5.0,-5.0,5.0],
+"c":["a","b","c","d"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"c"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"str",
+"column":"c"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"flip":false
+},
+"ggtitle":{
+"text":"width=100, width_unit='size'\nheight=70, height_unit='size'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"tile",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"width_unit":"size",
+"height_unit":"size",
+"width":100.0,
+"height":70.0,
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"shape":21.0,
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"8"
+},{
+"data":{
+"x":[-7.0,-7.0,7.0,7.0],
+"y":[-5.0,5.0,-5.0,5.0],
+"c":["a","b","c","d"]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"fill":"c"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"str",
+"column":"c"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"flip":false
+},
+"ggtitle":{
+"text":"width=200, width_unit='px'\nheight=150, height_unit='px'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"tile",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"width_unit":"px",
+"height_unit":"px",
+"width":200.0,
+"height":150.0,
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"shape":21.0,
+"fill":"white",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"9"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-width">1. Uniform Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-2d-grid">2. Matching 2D Grid</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-data-resolution-varies-across-the-plot-facets">- The Problem: data resolution varies across the plot facets.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution-switch-to-identity-units-to-express-hexagon-width-height-in-consistent-x-y-axis-units">- The Solution: switch to <code class="docutils literal notranslate"><span class="pre">'identity'</span></code> units to express hexagon <code class="docutils literal notranslate"><span class="pre">width</span></code>/<code class="docutils literal notranslate"><span class="pre">height</span></code> in consistent X/Y-axis units.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-comparison-pixel-size-identity-and-resolution">3. Unit Comparison: Pixel, Size, Identity and Resolution</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

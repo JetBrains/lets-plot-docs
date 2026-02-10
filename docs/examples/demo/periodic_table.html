@@ -1,0 +1,2419 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Mendeleev’s Periodic Table of Elements" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/demo/periodic_table.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="The notebook is inspired by this and this examples. The data is available under the Creative Commons Attribution-ShareAlike 4.0 International Public License (CC BY-SA 4.0). For more details, see he..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="The notebook is inspired by this and this examples. The data is available under the Creative Commons Attribution-ShareAlike 4.0 International Public License (CC BY-SA 4.0). For more details, see he..." />
+
+    <title>Mendeleev’s Periodic Table of Elements</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/demo/periodic_table';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/demo/periodic_table.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mendeleev-s-periodic-table-of-elements">
+<h1>Mendeleev’s Periodic Table of Elements<a class="headerlink" href="#mendeleev-s-periodic-table-of-elements" title="Link to this heading">#</a></h1>
+<p>The notebook is inspired by <a class="reference external" href="https://plotnine.org/reference/geom_tile#periodic-table-of-elements">this</a> and <a class="reference external" href="https://docs.bokeh.org/en/latest/docs/examples/topics/categorical/periodic.html">this</a> examples.</p>
+<p>The data is available under the Creative Commons Attribution-ShareAlike 4.0 International Public License (CC BY-SA 4.0). For more details, see <a class="reference external" href="https://github.com/dataexplorer/datasets/blob/master/License.md">here</a> or visit <a class="reference external" href="https://www.data-explorer.com/data/">Data Explorer</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="6j8JPT"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("6j8JPT").appendChild(div);
+                };
+                var e = document.getElementById("6j8JPT");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_elements_df</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/chemical_elements.csv&quot;</span><span class="p">,</span> <span class="n">encoding_errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+    <span class="c1"># Fixes and updates in data</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Francium&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Alkali Metal&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Radium&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Alkaline Earth Metal&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Astatine&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Halogen&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Radon&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Noble Gas&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">113</span><span class="p">,</span> <span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Nihonium&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">113</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Nh&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">113</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Metal&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">114</span><span class="p">,</span> <span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Flerovium&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">114</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Fl&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">114</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Metal&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">115</span><span class="p">,</span> <span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Moscovium&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">115</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Mc&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">115</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Metal&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">116</span><span class="p">,</span> <span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Livermorium&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">116</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Lv&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">116</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Metal&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">117</span><span class="p">,</span> <span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Tennessine&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">117</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Ts&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">117</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Halogen&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">118</span><span class="p">,</span> <span class="s2">&quot;Element&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Oganesson&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">118</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Og&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">118</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Noble Gas&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Transactinide&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Transition Metal&quot;</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">prepare_top_df</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">X</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">],</span>
+        <span class="n">Y</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Period&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">prepare_bottom_df</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+    <span class="n">nrows</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">hshift</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">vshift</span> <span class="o">=</span> <span class="mf">2.5</span>
+    <span class="k">return</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">)</span> <span class="o">//</span> <span class="n">nrows</span><span class="p">),</span> <span class="n">nrows</span><span class="p">)</span> <span class="o">+</span> <span class="n">hshift</span><span class="p">,</span>
+        <span class="n">Y</span><span class="o">=</span><span class="n">filtered_df</span><span class="p">[</span><span class="s2">&quot;Period&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">vshift</span>
+    <span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_extra_top_df</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="s2">&quot;Type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Lanthanide&quot;</span><span class="p">,</span> <span class="s2">&quot;Actinide&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Range&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;57-71&quot;</span><span class="p">,</span> <span class="s2">&quot;89-103&quot;</span><span class="p">],</span>
+    <span class="p">})</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_table_key_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">atomic_number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">atomic_number</span><span class="p">]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">Y</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_group_df</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+        <span class="s2">&quot;Group&quot;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">Y</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Period&quot;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_period_df</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_value</span> <span class="o">-</span> <span class="n">min_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="s2">&quot;Period&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_annotations_df</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mf">.8</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mf">.4</span><span class="p">],</span>
+        <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="mf">.9</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;Label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">,</span> <span class="s2">&quot;Symbol&quot;</span><span class="p">,</span> <span class="s2">&quot;Atomic Mass&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+<span class="n">elements_df</span> <span class="o">=</span> <span class="n">get_elements_df</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">elements_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">elements_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(118, 23)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atomic Number</th>
+      <th>Element</th>
+      <th>Symbol</th>
+      <th>Atomic Weight</th>
+      <th>Period</th>
+      <th>Group</th>
+      <th>Phase</th>
+      <th>Most Stable Crystal</th>
+      <th>Type</th>
+      <th>Ionic Radius</th>
+      <th>...</th>
+      <th>Density</th>
+      <th>Melting Point (K)</th>
+      <th>Boiling Point (K)</th>
+      <th>Isotopes</th>
+      <th>Discoverer</th>
+      <th>Year of Discovery</th>
+      <th>Specific Heat Capacity</th>
+      <th>Electron Configuration</th>
+      <th>Display Row</th>
+      <th>Display Column</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Hydrogen</td>
+      <td>H</td>
+      <td>1.007940</td>
+      <td>1</td>
+      <td>1</td>
+      <td>gas</td>
+      <td>NaN</td>
+      <td>Nonmetal</td>
+      <td>0.012</td>
+      <td>...</td>
+      <td>0.000090</td>
+      <td>14.175</td>
+      <td>20.28</td>
+      <td>3.0</td>
+      <td>Cavendish</td>
+      <td>1766.0</td>
+      <td>14.304</td>
+      <td>1s1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Helium</td>
+      <td>He</td>
+      <td>4.002602</td>
+      <td>1</td>
+      <td>18</td>
+      <td>gas</td>
+      <td>NaN</td>
+      <td>Noble Gas</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.000179</td>
+      <td>NaN</td>
+      <td>4.22</td>
+      <td>5.0</td>
+      <td>Janssen</td>
+      <td>1868.0</td>
+      <td>5.193</td>
+      <td>1s2</td>
+      <td>1</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Lithium</td>
+      <td>Li</td>
+      <td>6.941000</td>
+      <td>2</td>
+      <td>1</td>
+      <td>solid</td>
+      <td>bcc</td>
+      <td>Alkali Metal</td>
+      <td>0.760</td>
+      <td>...</td>
+      <td>0.534000</td>
+      <td>453.850</td>
+      <td>1615.00</td>
+      <td>5.0</td>
+      <td>Arfvedson</td>
+      <td>1817.0</td>
+      <td>3.582</td>
+      <td>[He] 2s1</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Beryllium</td>
+      <td>Be</td>
+      <td>9.012182</td>
+      <td>2</td>
+      <td>2</td>
+      <td>solid</td>
+      <td>hex</td>
+      <td>Alkaline Earth Metal</td>
+      <td>0.350</td>
+      <td>...</td>
+      <td>1.850000</td>
+      <td>1560.150</td>
+      <td>2742.00</td>
+      <td>6.0</td>
+      <td>Vaulquelin</td>
+      <td>1798.0</td>
+      <td>1.825</td>
+      <td>[He] 2s2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Boron</td>
+      <td>B</td>
+      <td>10.811000</td>
+      <td>2</td>
+      <td>13</td>
+      <td>solid</td>
+      <td>rho</td>
+      <td>Metalloid</td>
+      <td>0.230</td>
+      <td>...</td>
+      <td>2.340000</td>
+      <td>2573.150</td>
+      <td>4200.00</td>
+      <td>6.0</td>
+      <td>Gay-Lussac</td>
+      <td>1808.0</td>
+      <td>1.026</td>
+      <td>[He] 2s2 2p1</td>
+      <td>2</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 23 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tile_side</span> <span class="o">=</span> <span class="mf">.95</span>
+<span class="n">tile_ratio</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">table_key_size_ratio</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">table_key_x</span><span class="p">,</span> <span class="n">table_key_y</span> <span class="o">=</span> <span class="mf">10.25</span><span class="p">,</span> <span class="mf">1.25</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bottom_filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Actinide&quot;</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Lanthanide&quot;</span><span class="p">)</span>
+
+<span class="n">top_df</span> <span class="o">=</span> <span class="n">prepare_top_df</span><span class="p">(</span><span class="n">elements_df</span><span class="p">[</span><span class="o">~</span><span class="n">bottom_filter</span><span class="p">(</span><span class="n">elements_df</span><span class="p">)])</span>
+<span class="n">bottom_df</span> <span class="o">=</span> <span class="n">prepare_bottom_df</span><span class="p">(</span><span class="n">elements_df</span><span class="p">[</span><span class="n">bottom_filter</span><span class="p">(</span><span class="n">elements_df</span><span class="p">)])</span>
+<span class="n">extra_top_df</span> <span class="o">=</span> <span class="n">get_extra_top_df</span><span class="p">()</span>
+<span class="n">table_key_df</span> <span class="o">=</span> <span class="n">get_table_key_df</span><span class="p">(</span><span class="n">elements_df</span><span class="p">,</span> <span class="n">table_key_x</span><span class="p">,</span> <span class="n">table_key_y</span><span class="p">,</span> <span class="n">atomic_number</span><span class="o">=</span><span class="mi">78</span><span class="p">)</span>
+<span class="n">group_df</span> <span class="o">=</span> <span class="n">get_group_df</span><span class="p">(</span><span class="n">top_df</span><span class="p">)</span>
+<span class="n">period_df</span> <span class="o">=</span> <span class="n">get_period_df</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">annotations_df</span> <span class="o">=</span> <span class="n">get_annotations_df</span><span class="p">(</span><span class="n">table_key_x</span><span class="p">,</span> <span class="n">table_key_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">inner_text</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;Range&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Range&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">nudge_y</span><span class="o">=</span><span class="mf">.05</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">fontface</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span> <span class="o">+</span> \
+            <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Type&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">nudge_y</span><span class="o">=-</span><span class="mf">.2</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">ratio</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Atomic Number&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">nudge_x</span><span class="o">=-</span><span class="mf">.37</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">nudge_y</span><span class="o">=</span><span class="mf">.37</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">ratio</span><span class="p">)</span> <span class="o">+</span> \
+            <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Symbol&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">nudge_y</span><span class="o">=</span><span class="mf">.05</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">7</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">fontface</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span> <span class="o">+</span> \
+            <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Atomic Weight&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">nudge_y</span><span class="o">=-</span><span class="mf">.2</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">ratio</span><span class="p">,</span> <span class="n">label_format</span><span class="o">=</span><span class="s2">&quot;.3~f&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">table_key_annotations</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">table_key_arrow</span> <span class="o">=</span> <span class="n">arrow</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;closed&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">geom_curve</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="mf">.7</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">-</span><span class="mf">.9</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="n">x</span><span class="o">-</span><span class="mf">.3</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y</span><span class="o">-</span><span class="mf">.6</span><span class="p">,</span> <span class="n">curvature</span><span class="o">=</span><span class="mf">.4</span><span class="p">,</span> <span class="n">ncp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="n">table_key_arrow</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_segment</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="mf">.9</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+</span><span class="mf">.1</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="mf">.3</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y</span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span> <span class="n">curvature</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="n">table_key_arrow</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_curve</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="mf">.3</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">y</span><span class="o">+</span><span class="mf">.5</span><span class="p">,</span> <span class="n">curvature</span><span class="o">=-</span><span class="mf">.4</span><span class="p">,</span> <span class="n">ncp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="n">table_key_arrow</span><span class="p">)</span>
+
+<span class="n">element_tooltips</span> <span class="o">=</span> <span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;@Element</span><span class="se">\n</span><span class="s2">(@Type)&quot;</span><span class="p">)</span>\
+                                   <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;@|@{Atomic Number}&quot;</span><span class="p">)</span>\
+                                   <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;Atomic Mass|@{Atomic Weight}&quot;</span><span class="p">)</span>\
+                                   <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;@|@{Electron Configuration}&quot;</span><span class="p">)</span>
+<span class="n">table_theme</span> <span class="o">=</span> <span class="n">theme</span><span class="p">(</span><span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">hjust</span><span class="o">=</span><span class="mf">.5</span><span class="p">),</span> \
+                    <span class="n">plot_caption</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">),</span> \
+                    <span class="n">plot_background</span><span class="o">=</span><span class="n">element_rect</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> \
+                    <span class="n">legend_position</span><span class="o">=</span><span class="p">[</span><span class="mf">.36</span><span class="p">,</span> <span class="mf">.85</span><span class="p">],</span> \
+                    <span class="n">legend_background</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">)</span>
+
+<span class="n">ggplot</span><span class="p">(</span><span class="n">mapping</span><span class="o">=</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;Type&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_tile</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="n">element_tooltips</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_tile</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">extra_top_df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_tile</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">bottom_df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="n">element_tooltips</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_tile</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">table_key_df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">table_key_size_ratio</span><span class="o">*</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">table_key_size_ratio</span><span class="o">*</span><span class="n">tile_side</span><span class="p">,</span> <span class="n">tooltips</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">inner_text</span><span class="p">(</span><span class="n">top_df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">inner_text</span><span class="p">(</span><span class="n">extra_top_df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">inner_text</span><span class="p">(</span><span class="n">bottom_df</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">inner_text</span><span class="p">(</span><span class="n">table_key_df</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="n">table_key_size_ratio</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Group&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">group_df</span><span class="p">,</span> \
+              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">nudge_y</span><span class="o">=</span><span class="mf">.525</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Period&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Period&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">period_df</span><span class="p">,</span> \
+              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">nudge_x</span><span class="o">=</span><span class="mf">.375</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Label&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">annotations_df</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">table_key_annotations</span><span class="p">(</span><span class="n">table_key_x</span><span class="p">,</span> <span class="n">table_key_y</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_y_reverse</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;qual&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">,</span> <span class="n">guide</span><span class="o">=</span><span class="n">guide_legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">coord_fixed</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="n">tile_ratio</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Periodic Table of Chemical Elements&quot;</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;© 1869, Dmitri Mendeleev&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggsize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme_void</span><span class="p">()</span> <span class="o">+</span> <span class="n">table_theme</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="VZ0Nz9" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("VZ0Nz9");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+"x":"X",
+"y":"Y",
+"fill":"Type"
+},
+"data_meta":{
+},
+"coord":{
+"name":"fixed",
+"ratio":1.2,
+"flip":false
+},
+"ggtitle":{
+"text":"Periodic Table of Chemical Elements"
+},
+"caption":{
+"text":"© 1869, Dmitri Mendeleev"
+},
+"ggsize":{
+"width":1000.0,
+"height":700.0
+},
+"theme":{
+"name":"classic",
+"line":"blank",
+"axis":"blank",
+"legend_background":"blank",
+"legend_position":[0.36,0.85],
+"plot_background":{
+"color":"black",
+"size":3.0,
+"blank":false
+},
+"plot_title":{
+"face":"bold",
+"size":26.0,
+"hjust":0.5,
+"margin":[30.0,0.0,5.0,0.0],
+"blank":false
+},
+"plot_caption":{
+"size":18.0,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"y",
+"trans":"reverse"
+},{
+"name":"",
+"aesthetic":"fill",
+"guide":{
+"name":"legend",
+"ncol":2.0
+},
+"type":"qual",
+"palette":"Set2",
+"scale_mapper_kind":"color_brewer"
+}],
+"layers":[{
+"geom":"tile",
+"data":{
+"Atomic Number":[1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,104.0,105.0,106.0,107.0,108.0,109.0,110.0,111.0,112.0,113.0,114.0,115.0,116.0,117.0,118.0],
+"Element":["Hydrogen","Helium","Lithium","Beryllium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon","Sodium","Magnesium","Aluminum","Silicon","Phosphorus","Sulfur","Chlorine","Argon","Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium","Manganese","Iron","Cobalt","Nickel","Copper","Zinc","Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton","Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum","Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium","Indium","Tin","Antimony","Tellurium","Iodine","Xenon","Cesium","Barium","Hafnium","Tantalum","Wolfram","Rhenium","Osmium","Iridium","Platinum","Gold","Mercury","Thallium","Lead","Bismuth","Polonium","Astatine","Radon","Francium","Radium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium","Meitnerium","Darmstadtium ","Roentgenium ","Copernicium ","Nihonium","Flerovium","Moscovium","Livermorium","Tennessine","Oganesson"],
+"Atomic Weight":[1.00794,4.002602,6.941,9.012182,10.811,12.0107,14.0067,15.9994,18.9984032,20.1797,22.98976928,24.305,26.9815386,28.0855,30.973762,32.065,35.453,39.948,39.0983,40.078,44.955912,47.867,50.9415,51.9961,54.938045,55.845,58.933195,58.6934,63.546,65.38,69.723,72.64,74.9216,78.96,79.904,83.798,85.4678,87.62,88.90585,91.224,92.90638,95.96,98.0,101.07,102.9055,106.42,107.8682,112.411,114.818,118.71,121.76,127.6,126.90447,131.293,132.9054519,137.327,178.49,180.94788,183.84,186.207,190.23,192.217,195.084,196.966569,200.59,204.3833,207.2,208.9804,210.0,210.0,222.0,223.0,226.0,261.0,262.0,266.0,264.0,267.0,268.0,271.0,272.0,285.0,284.0,289.0,288.0,292.0,295.0,294.0],
+"Type":["Nonmetal","Noble Gas","Alkali Metal","Alkaline Earth Metal","Metalloid","Nonmetal","Nonmetal","Nonmetal","Halogen","Noble Gas","Alkali Metal","Alkaline Earth Metal","Metal","Metalloid","Nonmetal","Nonmetal","Halogen","Noble Gas","Alkali Metal","Alkaline Earth Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Metal","Metalloid","Metalloid","Nonmetal","Halogen","Noble Gas","Alkali Metal","Alkaline Earth Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Metal","Metal","Metalloid","Metalloid","Halogen","Noble Gas","Alkali Metal","Alkaline Earth Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Metal","Metal","Metal","Metalloid","Halogen","Noble Gas","Alkali Metal","Alkaline Earth Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Transition Metal","Metal","Metal","Metal","Metal","Halogen","Noble Gas"],
+"Electron Configuration":["1s1","1s2","[He] 2s1","[He] 2s2","[He] 2s2 2p1","[He] 2s2 2p2","[He] 2s2 2p3","[He] 2s2 2p4","[He] 2s2 2p5","[He] 2s2 2p6","[Ne] 3s1","[Ne] 3s2","[Ne] 3s2 3p1","[Ne] 3s2 3p2","[Ne] 3s2 3p3","[Ne] 3s2 3p4","[Ne] 3s2 3p5","[Ne] 3s2 3p6","[Ar] 4s1","[Ar] 4s2","[Ar] 3d1 4s2","[Ar] 3d2 4s2","[Ar] 3d3 4s2","[Ar] 3d5 4s1","[Ar] 3d5 4s2","[Ar] 3d6 4s2","[Ar] 3d7 4s2","[Ar] 3d8 4s2","[Ar] 3d10 4s1","[Ar] 3d10 4s2","[Ar] 3d10 4s2 4p1","[Ar] 3d10 4s2 4p2","[Ar] 3d10 4s2 4p3","[Ar] 3d10 4s2 4p4","[Ar] 3d10 4s2 4p5","[Ar] 3d10 4s2 4p6","[Kr] 5s1","[Kr] 5s2","[Kr] 4d1 5s2","[Kr] 4d2 5s2","[Kr] 4d4 5s1","[Kr] 4d5 5s1","[Kr] 4d5 5s2","[Kr] 4d7 5s1","[Kr] 4d8 5s1","[Kr] 4d10","[Kr] 4d10 5s1","[Kr] 4d10 5s2","[Kr] 4d10 5s2 5p1","[Kr] 4d10 5s2 5p2","[Kr] 4d10 5s2 5p3","[Kr] 4d10 5s2 5p4","[Kr] 4d10 5s2 5p5","[Kr] 4d10 5s2 5p6","[Xe] 6s1","[Xe] 6s2","[Xe] 4f14 5d2 6s2","[Xe] 4f14 5d3 6s2","[Xe] 4f14 5d4 6s2","[Xe] 4f14 5d5 6s2","[Xe] 4f14 5d6 6s2","[Xe] 4f14 5d7 6s2","[Xe] 4f14 5d9 6s1","[Xe] 4f14 5d10 6s1","[Xe] 4f14 5d10 6s2","[Xe] 4f14 5d10 6s2 6p1","[Xe] 4f14 5d10 6s2 6p2","[Xe] 4f14 5d10 6s2 6p3","[Xe] 4f14 5d10 6s2 6p4","[Xe] 4f14 5d10 6s2 6p5","[Xe] 4f14 5d10 6s2 6p6","[Rn] 7s1","[Rn] 7s2",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+"X":[1.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0],
+"Y":[1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0]
+},
+"mapping":{
+},
+"tooltips":{
+"formats":[],
+"lines":["@|@{Atomic Number}","Atomic Mass|@{Atomic Weight}","@|@{Electron Configuration}"],
+"title":"@Element\n(@Type)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Y"
+}]
+},
+"color":"black",
+"size":0.25,
+"width":0.95,
+"height":0.95
+},{
+"geom":"tile",
+"data":{
+"X":[3.0,3.0],
+"Y":[6.0,7.0],
+"Type":["Lanthanide","Actinide"]
+},
+"mapping":{
+},
+"tooltips":"none",
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Y"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"str",
+"column":"Range"
+}]
+},
+"color":"black",
+"size":0.25,
+"width":0.95,
+"height":0.95
+},{
+"geom":"tile",
+"data":{
+"Atomic Number":[57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0,100.0,101.0,102.0,103.0],
+"Element":["Lanthanum","Cerium","Praseodymium","Neodymium","Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium","Holmium","Erbium","Thulium","Ytterbium","Lutetium","Actinium","Thorium","Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium","Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium","Lawrencium"],
+"Atomic Weight":[138.90547,140.116,140.90765,144.242,145.0,150.36,151.964,157.25,158.92535,162.5,164.93032,167.259,168.93421,173.054,174.9668,227.0,232.03806,231.03588,238.02891,237.0,244.0,243.0,247.0,247.0,251.0,252.0,257.0,258.0,259.0,262.0],
+"Type":["Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Lanthanide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide","Actinide"],
+"Electron Configuration":["[Xe] 5d1 6s2","[Xe] 4f1 5d1 6s2","[Xe] 4f3 6s2","[Xe] 4f4 6s2","[Xe] 4f5 6s2","[Xe] 4f6 6s2","[Xe] 4f7 6s2","[Xe] 4f7 5d1 6s2","[Xe] 4f9 6s2","[Xe] 4f10 6s2","[Xe] 4f11 6s2","[Xe] 4f12 6s2","[Xe] 4f13 6s2","[Xe] 4f14 6s2","[Xe] 4f14 5d1 6s2","[Rn] 6d1 7s2","[Rn] 6d2 7s2","[Rn] 5f2 6d1 7s2","[Rn] 5f3 6d1 7s2","[Rn] 5f4 6d1 7s2","[Rn] 5f6 7s2","[Rn] 5f7 7s2",null,null,null,null,null,null,null,null],
+"X":[3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0],
+"Y":[8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5]
+},
+"mapping":{
+},
+"tooltips":{
+"formats":[],
+"lines":["@|@{Atomic Number}","Atomic Mass|@{Atomic Weight}","@|@{Electron Configuration}"],
+"title":"@Element\n(@Type)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"color":"black",
+"size":0.25,
+"width":0.95,
+"height":0.95
+},{
+"geom":"tile",
+"data":{
+"Type":["Transition Metal"],
+"X":[10.25],
+"Y":[1.25]
+},
+"mapping":{
+},
+"tooltips":"none",
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"float",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"color":"black",
+"size":0.25,
+"width":1.4249999999999998,
+"height":1.4249999999999998
+},{
+"geom":"text",
+"data":{
+"Atomic Number":[1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,104.0,105.0,106.0,107.0,108.0,109.0,110.0,111.0,112.0,113.0,114.0,115.0,116.0,117.0,118.0],
+"X":[1.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0],
+"Y":[1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0]
+},
+"mapping":{
+"label":"Atomic Number"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Y"
+}]
+},
+"nudge_x":-0.37,
+"nudge_y":0.37,
+"hjust":"left",
+"vjust":"top",
+"size":5.0
+},{
+"geom":"text",
+"data":{
+"Symbol":["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Rf","Db","Sg","Bh","Hs","Mt","Ds ","Rg ","Cn ","Nh","Fl","Mc","Lv","Ts","Og"],
+"X":[1.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0],
+"Y":[1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0]
+},
+"mapping":{
+"label":"Symbol"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Y"
+}]
+},
+"nudge_y":0.05,
+"size":7.0,
+"fontface":"bold"
+},{
+"geom":"text",
+"data":{
+"Atomic Weight":[1.00794,4.002602,6.941,9.012182,10.811,12.0107,14.0067,15.9994,18.9984032,20.1797,22.98976928,24.305,26.9815386,28.0855,30.973762,32.065,35.453,39.948,39.0983,40.078,44.955912,47.867,50.9415,51.9961,54.938045,55.845,58.933195,58.6934,63.546,65.38,69.723,72.64,74.9216,78.96,79.904,83.798,85.4678,87.62,88.90585,91.224,92.90638,95.96,98.0,101.07,102.9055,106.42,107.8682,112.411,114.818,118.71,121.76,127.6,126.90447,131.293,132.9054519,137.327,178.49,180.94788,183.84,186.207,190.23,192.217,195.084,196.966569,200.59,204.3833,207.2,208.9804,210.0,210.0,222.0,223.0,226.0,261.0,262.0,266.0,264.0,267.0,268.0,271.0,272.0,285.0,284.0,289.0,288.0,292.0,295.0,294.0],
+"X":[1.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,1.0,2.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0],
+"Y":[1.0,1.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0,7.0]
+},
+"mapping":{
+"label":"Atomic Weight"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Y"
+}]
+},
+"label_format":".3~f",
+"nudge_y":-0.2,
+"size":4.0
+},{
+"geom":"text",
+"data":{
+"X":[3.0,3.0],
+"Y":[6.0,7.0],
+"Range":["57-71","89-103"]
+},
+"mapping":{
+"label":"Range"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Y"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"str",
+"column":"Range"
+}]
+},
+"nudge_y":0.05,
+"size":5.0,
+"fontface":"bold"
+},{
+"geom":"text",
+"data":{
+"X":[3.0,3.0],
+"Y":[6.0,7.0],
+"Type":["Lanthanide","Actinide"]
+},
+"mapping":{
+"label":"Type"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Y"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"str",
+"column":"Range"
+}]
+},
+"nudge_y":-0.2,
+"size":4.0
+},{
+"geom":"text",
+"data":{
+"Atomic Number":[57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0,100.0,101.0,102.0,103.0],
+"X":[3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0],
+"Y":[8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5]
+},
+"mapping":{
+"label":"Atomic Number"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"nudge_x":-0.37,
+"nudge_y":0.37,
+"hjust":"left",
+"vjust":"top",
+"size":5.0
+},{
+"geom":"text",
+"data":{
+"Symbol":["La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr"],
+"X":[3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0],
+"Y":[8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5]
+},
+"mapping":{
+"label":"Symbol"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"nudge_y":0.05,
+"size":7.0,
+"fontface":"bold"
+},{
+"geom":"text",
+"data":{
+"Atomic Weight":[138.90547,140.116,140.90765,144.242,145.0,150.36,151.964,157.25,158.92535,162.5,164.93032,167.259,168.93421,173.054,174.9668,227.0,232.03806,231.03588,238.02891,237.0,244.0,243.0,247.0,247.0,251.0,252.0,257.0,258.0,259.0,262.0],
+"X":[3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0],
+"Y":[8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,8.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5,9.5]
+},
+"mapping":{
+"label":"Atomic Weight"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"int",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"label_format":".3~f",
+"nudge_y":-0.2,
+"size":4.0
+},{
+"geom":"text",
+"data":{
+"Atomic Number":[78.0],
+"X":[10.25],
+"Y":[1.25]
+},
+"mapping":{
+"label":"Atomic Number"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"float",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"nudge_x":-0.5549999999999999,
+"nudge_y":0.5549999999999999,
+"hjust":"left",
+"vjust":"top",
+"size":7.5
+},{
+"geom":"text",
+"data":{
+"Symbol":["Pt"],
+"X":[10.25],
+"Y":[1.25]
+},
+"mapping":{
+"label":"Symbol"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"float",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"nudge_y":0.07500000000000001,
+"size":10.5,
+"fontface":"bold"
+},{
+"geom":"text",
+"data":{
+"Atomic Weight":[195.084],
+"X":[10.25],
+"Y":[1.25]
+},
+"mapping":{
+"label":"Atomic Weight"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Atomic Number"
+},{
+"type":"str",
+"column":"Element"
+},{
+"type":"str",
+"column":"Symbol"
+},{
+"type":"float",
+"column":"Atomic Weight"
+},{
+"type":"int",
+"column":"Period"
+},{
+"type":"int",
+"column":"Group"
+},{
+"type":"str",
+"column":"Phase"
+},{
+"type":"str",
+"column":"Most Stable Crystal"
+},{
+"type":"str",
+"column":"Type"
+},{
+"type":"float",
+"column":"Ionic Radius"
+},{
+"type":"float",
+"column":"Atomic Radius"
+},{
+"type":"float",
+"column":"Electronegativity"
+},{
+"type":"float",
+"column":"First Ionization Potential"
+},{
+"type":"float",
+"column":"Density"
+},{
+"type":"float",
+"column":"Melting Point (K)"
+},{
+"type":"float",
+"column":"Boiling Point (K)"
+},{
+"type":"float",
+"column":"Isotopes"
+},{
+"type":"str",
+"column":"Discoverer"
+},{
+"type":"float",
+"column":"Year of Discovery"
+},{
+"type":"float",
+"column":"Specific Heat Capacity"
+},{
+"type":"str",
+"column":"Electron Configuration"
+},{
+"type":"int",
+"column":"Display Row"
+},{
+"type":"int",
+"column":"Display Column"
+},{
+"type":"float",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+}]
+},
+"label_format":".3~f",
+"nudge_y":-0.30000000000000004,
+"size":6.0
+},{
+"geom":"text",
+"data":{
+"Group":[1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0],
+"Y":[1.0,2.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,2.0,2.0,2.0,2.0,2.0,1.0]
+},
+"mapping":{
+"x":"Group",
+"y":"Y",
+"label":"Group"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Group"
+},{
+"type":"int",
+"column":"Y"
+}]
+},
+"nudge_y":0.525,
+"color":"gray",
+"vjust":"bottom",
+"size":6.0
+},{
+"geom":"text",
+"data":{
+"X":[0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+"Period":[1.0,2.0,3.0,4.0,5.0,6.0,7.0]
+},
+"mapping":{
+"x":"X",
+"y":"Period",
+"label":"Period"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"X"
+},{
+"type":"int",
+"column":"Period"
+}]
+},
+"nudge_x":0.375,
+"color":"gray",
+"vjust":"right",
+"size":6.0
+},{
+"geom":"text",
+"data":{
+"X":[11.05,11.25,10.65],
+"Y":[0.35,1.35,2.25],
+"Label":["Atomic Number","Symbol","Atomic Mass"]
+},
+"mapping":{
+"label":"Label"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"X"
+},{
+"type":"float",
+"column":"Y"
+},{
+"type":"str",
+"column":"Label"
+}]
+},
+"hjust":0.0
+},{
+"geom":"curve",
+"mapping":{
+},
+"data_meta":{
+},
+"arrow":{
+"name":"arrow",
+"angle":30.0,
+"length":4.0,
+"type":"closed"
+},
+"curvature":0.4,
+"ncp":1.0,
+"x":10.95,
+"y":0.35,
+"xend":9.95,
+"yend":0.65,
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"arrow":{
+"name":"arrow",
+"angle":30.0,
+"length":4.0,
+"type":"closed"
+},
+"x":11.15,
+"y":1.35,
+"xend":10.55,
+"yend":1.15,
+"curvature":0.3,
+"data":{
+}
+},{
+"geom":"curve",
+"mapping":{
+},
+"data_meta":{
+},
+"arrow":{
+"name":"arrow",
+"angle":30.0,
+"length":4.0,
+"type":"closed"
+},
+"curvature":-0.4,
+"ncp":1.0,
+"x":10.55,
+"y":2.25,
+"xend":10.25,
+"yend":1.75,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

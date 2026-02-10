@@ -8,13 +8,14 @@ import re
 import pytest
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
+import lets_plot as lp
 
 from .parser import notebook_parser
 from .generator import generate_pages, generate_notebooks
 from .lets_plot_errors import check_lets_plot_message_errors, check_warnings, check_copy_spec
 from .test_links import check_url
 
-EXCLUDED_PYTHON_NOTEBOOKS = ["nyc_metro"]
+EXCLUDED_PYTHON_NOTEBOOKS = []
 
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
@@ -56,10 +57,10 @@ def generate_local_notebook_refs():
 
 @pytest.mark.parametrize('notebook', notebook_paths)
 def test_notebook_has_no_errors(notebook):
+    check_version(notebook)
     lpk_descriptor = None if LPK_DESCRIPTOR == "" else LPK_DESCRIPTOR
-    with notebook_parser(notebook, lpk_descriptor) as (parser, parser_type):
+    with notebook_parser(notebook, _to_html(notebook), lpk_descriptor) as (parser, parser_type):
         check_lets_plot_message_errors(parser, parser_type, notebook)
-        _check_links(parser, parser_type, notebook)
         check_copy_spec(parser, parser_type, notebook)
         check_warnings(parser, parser_type, notebook)
 
@@ -81,22 +82,24 @@ def test_notebook_ref_has_origin(page, nb_ref):
             return
         assert paths_contains_name(python_notebook_paths, nb_name), "Notebook {1} from page {0} isn't presented in files".format(page, nb_name)
 
-def _check_links(parser, parser_type, source):
-    if parser_type == 'driver':
-        for a in parser.find_elements(By.CSS_SELECTOR, 'a'):
-            href = a.get_attribute('href')
-            if isinstance(href, dict):
-                href = href['animVal']
-            _check_href(href, source)
-    elif parser_type == 'soup':
-        for a in parser.find_all('a'):
-            _check_href(a['href'], source)
-    else:
-        raise ValueError("Bad parser type: {0}".format(parser_type))
+def check_version(notebook):
+    with open(notebook) as file:
+        for line in file:
+            if "%use lets-plot" in line:
+                return
+            if "from lets_plot import" in line:
+                break
+        for line in file:
+            if "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot" in line:
+                match = re.search(r'lets-plot@v([0-9.]+)', line)
+                version = match.group(1)
+                assert lp.__version__ == version, "Version of Lets-Plot from the notebook {0} is too old: {1} instead of {2}".format(notebook, version, lp.__version__)
+                return
 
-def _check_href(href, source):
-    if href is None or href == "":
-        return
-    if href.startswith("#") or href.startswith("file:"):
-        return
-    check_url(href, source)
+def _to_html(path):
+    html_path = None
+    if path.startswith("source/examples/") and path.endswith(".ipynb"):
+        html_path = "docs/{0}.html".format(path[7:-6])
+        if not os.path.isfile(html_path):
+            html_path = None
+    return html_path

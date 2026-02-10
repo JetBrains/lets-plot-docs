@@ -34,7 +34,7 @@ See |point_shapes|.
 
 .. |point_shapes| extref:: aesthetics_point_shapes
     :type: text
-    :text: example notebook
+    :text: example
 
 
 .. _aesthetics_line_types:
@@ -58,9 +58,9 @@ Predefined Patterns
 See |line_types-predefined-patterns|.
 
 .. |line_types-predefined-patterns| extref:: aesthetics_line_types
-    :ref: nbviewer-predefined-patterns
     :type: text
-    :text: example notebook
+    :target-id: predefined-patterns
+    :text: example
 
 Custom Patterns
 ~~~~~~~~~~~~~~~
@@ -84,9 +84,9 @@ Ways to specify the ``linetype``:
 See |line_types-custom-patterns|.
 
 .. |line_types-custom-patterns| extref:: aesthetics_line_types
-    :ref: nbviewer-custom-patterns
     :type: text
-    :text: example notebook
+    :target-id: custom-patterns
+    :text: example
 
 
 .. _aesthetics_text:
@@ -116,9 +116,9 @@ You can also use the name of any other font installed on your system (e.g. ``"Ti
 See |text-font-family|.
 
 .. |text-font-family| extref:: aesthetics_text_style
-    :ref: nbviewer-font-family
     :type: text
-    :text: example notebook
+    :target-id: font-family
+    :text: example
 
 Font Face
 ~~~~~~~~~
@@ -138,9 +138,9 @@ The default font face is ``'plain'``.
 See |text-font-face|.
 
 .. |text-font-face| extref:: aesthetics_text_style
-    :ref: nbviewer-font-face
     :type: text
-    :text: example notebook
+    :target-id: font-face
+    :text: example
 
 
 .. _aesthetics_color_and_fill:
@@ -202,4 +202,4 @@ See |system_colors|.
 
 .. |system_colors| extref:: aesthetics_system_colors
     :type: text
-    :text: example notebook
+    :text: example

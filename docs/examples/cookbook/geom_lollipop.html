@@ -1,0 +1,2334 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Lollipop Plot" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/geom_lollipop.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="A lollipop plot displays each element of a dataset as a segment and a circle. It is usually combined with the count stat, and is especially useful when you have several bars of the same height. 1. ..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="A lollipop plot displays each element of a dataset as a segment and a circle. It is usually combined with the count stat, and is especially useful when you have several bars of the same height. 1. ..." />
+
+    <title>Lollipop Plot</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/geom_lollipop';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/cookbook/geom_lollipop.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="lollipop-plot">
+<h1>Lollipop Plot<a class="headerlink" href="#lollipop-plot" title="Link to this heading">#</a></h1>
+<p>A lollipop plot displays each element of a dataset as a segment and a circle. It is usually combined with the <code class="docutils literal notranslate"><span class="pre">count</span></code> stat, and is especially useful when you have several bars of the same height.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="sbgEPP"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("sbgEPP").appendChild(div);
+                };
+                var e = document.getElementById("sbgEPP");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_lollipop_data</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span> <span class="o">-</span> <span class="mi">15</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)],</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">),</span>
+        <span class="s2">&quot;sugar&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span> <span class="o">+</span> <span class="mi">150</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+    <span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">get_lollipop_data</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="AWqoMX" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("AWqoMX");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"ggsize":{
+"width":600.0,
+"height":200.0
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<section id="parameters-size-stroke-and-linewidth">
+<h2>1. Parameters <code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth</span></code><a class="headerlink" href="#parameters-size-stroke-and-linewidth" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;sugar&quot;</span><span class="p">))</span> <span class="o">+</span> \
+        <span class="n">geom_lollipop</span><span class="p">()</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;variable &#39;size&#39;&quot;</span><span class="p">),</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;sugar&quot;</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;sugar&quot;</span><span class="p">))</span> <span class="o">+</span> \
+        <span class="n">geom_lollipop</span><span class="p">()</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;variable &#39;size&#39; and &#39;stroke&#39;&quot;</span><span class="p">),</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;sugar&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s2">&quot;sugar&quot;</span><span class="p">))</span> <span class="o">+</span> \
+        <span class="n">geom_lollipop</span><span class="p">()</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;variable &#39;size&#39; and &#39;linewidth&#39;&quot;</span><span class="p">)</span>
+<span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="7TRUZh" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("7TRUZh");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"ggsize":{
+"width":800.0,
+"height":800.0
+},
+"kind":"subplots",
+"layout":{
+"ncol":1.0,
+"nrow":3.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991],
+"sugar":[150.0,151.0,152.0,153.0,154.0,155.0,156.0,157.0,158.0,159.0,160.0,161.0,162.0,163.0,164.0,165.0,166.0,167.0,168.0,169.0,170.0,171.0,172.0,173.0,174.0,175.0,176.0,177.0,178.0,179.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"sugar"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"ggtitle":{
+"text":"variable 'size'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+},{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991],
+"sugar":[150.0,151.0,152.0,153.0,154.0,155.0,156.0,157.0,158.0,159.0,160.0,161.0,162.0,163.0,164.0,165.0,166.0,167.0,168.0,169.0,170.0,171.0,172.0,173.0,174.0,175.0,176.0,177.0,178.0,179.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"sugar",
+"stroke":"sugar"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"ggtitle":{
+"text":"variable 'size' and 'stroke'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+},{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991],
+"sugar":[150.0,151.0,152.0,153.0,154.0,155.0,156.0,157.0,158.0,159.0,160.0,161.0,162.0,163.0,164.0,165.0,166.0,167.0,168.0,169.0,170.0,171.0,172.0,173.0,174.0,175.0,176.0,177.0,178.0,179.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"size":"sugar",
+"linewidth":"sugar"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"ggtitle":{
+"text":"variable 'size' and 'linewidth'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="parameter-fatten">
+<h2>2. Parameter <code class="docutils literal notranslate"><span class="pre">fatten</span></code><a class="headerlink" href="#parameter-fatten" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">()</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;fatten=2.5 (default)&quot;</span><span class="p">),</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">fatten</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;fatten=5&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="sA1naG" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("sA1naG");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"ggtitle":{
+"text":"fatten=2.5 (default)"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+},{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"ggtitle":{
+"text":"fatten=5"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"fatten":5.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="horizontal-sticks">
+<h2>3. Horizontal Sticks<a class="headerlink" href="#horizontal-sticks" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="te3LJl" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("te3LJl");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991]
+},
+"mapping":{
+"x":"y",
+"y":"x"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"dir":"h",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"7"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="sloped-baseline">
+<h2>4. Sloped Baseline<a class="headerlink" href="#sloped-baseline" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">abline_plot</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_abline</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">coord_fixed</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">abline_plot</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;dir=&#39;v&#39; (default)&quot;</span><span class="p">),</span>
+    <span class="n">abline_plot</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;dir=&#39;h&#39;&quot;</span><span class="p">),</span>
+    <span class="n">abline_plot</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;dir=&#39;s&#39;&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="gwP5Ke" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("gwP5Ke");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"ylim":[-12.0,12.0],
+"flip":false
+},
+"ggtitle":{
+"text":"dir='v' (default)"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"abline",
+"mapping":{
+},
+"data_meta":{
+},
+"slope":0.5,
+"intercept":1.0,
+"color":"black",
+"linetype":"dotted",
+"size":1.5,
+"data":{
+}
+},{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"slope":0.5,
+"intercept":1.0,
+"shape":21.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"8"
+},{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"ylim":[-12.0,12.0],
+"flip":false
+},
+"ggtitle":{
+"text":"dir='h'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"abline",
+"mapping":{
+},
+"data_meta":{
+},
+"slope":0.5,
+"intercept":1.0,
+"color":"black",
+"linetype":"dotted",
+"size":1.5,
+"data":{
+}
+},{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"dir":"h",
+"slope":0.5,
+"intercept":1.0,
+"shape":21.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"9"
+},{
+"data":{
+"x":[-15.0,-14.0,-13.0,-12.0,-11.0,-10.0,-9.0,-8.0,-7.0,-6.0,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0],
+"y":[2.49816047538945,4.802857225639665,3.9279757672456204,3.3946339367881464,1.624074561769746,1.6239780813448106,1.2323344486727978,4.46470458309974,3.404460046972835,3.832290311184182,1.0823379771832098,4.879639408647977,4.329770563201687,1.8493564427131046,1.7272998688284025,1.7336180394137353,2.216968971838151,3.0990257265289514,2.727780074568463,2.1649165607921677,3.447411578889518,1.5579754426081673,2.1685785941408726,2.465447373174767,2.8242799368681437,4.140703845572054,1.798695128633439,3.0569377536544464,3.36965827544817,1.185801650879991]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"int",
+"column":"sugar"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"ylim":[-12.0,12.0],
+"flip":false
+},
+"ggtitle":{
+"text":"dir='s'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"abline",
+"mapping":{
+},
+"data_meta":{
+},
+"slope":0.5,
+"intercept":1.0,
+"color":"black",
+"linetype":"dotted",
+"size":1.5,
+"data":{
+}
+},{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"dir":"s",
+"slope":0.5,
+"intercept":1.0,
+"shape":21.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"10"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="parameter-stat">
+<h2>5. Parameter <code class="docutils literal notranslate"><span class="pre">stat</span></code><a class="headerlink" href="#parameter-stat" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/mpg.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(234, 12)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>displ</th>
+      <th>year</th>
+      <th>cyl</th>
+      <th>trans</th>
+      <th>drv</th>
+      <th>cty</th>
+      <th>hwy</th>
+      <th>fl</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>18</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>manual(m5)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>manual(m6)</td>
+      <td>f</td>
+      <td>20</td>
+      <td>31</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>auto(av)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>30</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.8</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>16</td>
+      <td>26</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;stat=&#39;count&#39;&quot;</span><span class="p">),</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;stat=&#39;bin&#39;&quot;</span><span class="p">),</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;stat=&#39;density&#39;&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="0HwOXw" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("0HwOXw");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"mapping":{
+"x":"class"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"ggtitle":{
+"text":"stat='count'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"stat":"count",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+"..count..":[47.0,41.0,62.0,5.0,11.0,33.0,35.0],
+"class":["compact","midsize","suv","2seater","minivan","pickup","subcompact"]
+}
+}],
+"metainfo_list":[],
+"spec_id":"11"
+},{
+"data":{
+},
+"mapping":{
+"x":"hwy"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"ggtitle":{
+"text":"stat='bin'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"stat":"bin",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+"..count..":[5.0,0.0,2.0,10.0,7.0,31.0,23.0,11.0,2.0,7.0,7.0,13.0,15.0,32.0,14.0,29.0,4.0,7.0,4.0,2.0,1.0,2.0,2.0,1.0,0.0,0.0,1.0,0.0,0.0,2.0],
+"hwy":[11.811555555555556,12.928,14.044444444444444,15.160888888888888,16.27733333333333,17.39377777777778,18.51022222222222,19.626666666666665,20.743111111111112,21.859555555555552,22.976,24.092444444444446,25.208888888888886,26.325333333333333,27.441777777777776,28.55822222222222,29.674666666666667,30.791111111111107,31.907555555555554,33.024,34.14044444444444,35.25688888888889,36.373333333333335,37.489777777777775,38.60622222222222,39.72266666666666,40.83911111111111,41.955555555555556,43.071999999999996,44.18844444444444]
+}
+}],
+"metainfo_list":[],
+"spec_id":"12"
+},{
+"data":{
+},
+"mapping":{
+"x":"hwy"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"ggtitle":{
+"text":"stat='density'"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"lollipop",
+"stat":"density",
+"mapping":{
+},
+"data_meta":{
+},
+"n":30.0,
+"data":{
+"..density..":[0.009329787573445901,0.015942646047671205,0.026976923010417896,0.04170560119548454,0.054695748060277875,0.05937475132811441,0.05937475132811441,0.05441352871691398,0.044783132603310266,0.03728781666722159,0.036836353291363054,0.044730761346244624,0.044730761346244624,0.05779048283974624,0.0690277842079404,0.07193668615051252,0.07193668615051252,0.0659962783184005,0.05544982245581327,0.043539705313257474,0.03171503227047856,0.021532315226313208,0.014183334526420193,0.009723937126770476,0.0072131179937258115,0.005368034189768139,0.003572903327211723,0.0021344450506854454,0.001467552545046875,0.001474099395236774,0.0017924430938290846,0.0021211603215793833,0.002134285708001272],
+"..quantile..":[0.25,0.25,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],
+"hwy":[12.0,13.10344827586207,14.206896551724139,15.310344827586206,16.413793103448278,17.517241379310345,17.517241379310345,18.620689655172413,19.724137931034484,20.82758620689655,21.93103448275862,23.03448275862069,23.03448275862069,24.137931034482758,25.241379310344826,26.344827586206897,26.344827586206897,27.448275862068964,28.551724137931036,29.655172413793103,30.75862068965517,31.862068965517242,32.96551724137931,34.06896551724138,35.172413793103445,36.275862068965516,37.37931034482759,38.48275862068965,39.58620689655172,40.689655172413794,41.79310344827586,42.89655172413793,44.0]
+}
+}],
+"metainfo_list":[],
+"spec_id":"13"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="lollipops-in-marginal-layer">
+<h2>6. Lollipops in Marginal Layer<a class="headerlink" href="#lollipops-in-marginal-layer" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="s2">&quot;cty&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_bin2d</span><span class="p">(</span><span class="n">binwidth</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">+</span> \
+    <span class="n">ggmarginal</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> \
+               <span class="n">layer</span><span class="o">=</span><span class="n">geom_lollipop</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;..count..&quot;</span><span class="p">),</span> \
+                                   <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="71wW35" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("71wW35");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+"x":"hwy",
+"y":"cty"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"bin2d",
+"mapping":{
+},
+"data_meta":{
+},
+"binwidth":[1.0,1.0],
+"data":{
+"..count..":[5.0,NaN,NaN,2.0,10.0,3.0,2.0,2.0,5.0,1.0,12.0,10.0,3.0,5.0,3.0,1.0,1.0,4.0,4.0,5.0,4.0,3.0,4.0,2.0,3.0,2.0,2.0,2.0,4.0,1.0,2.0,2.0,7.0,2.0,3.0,2.0,3.0,2.0,4.0,1.0,5.0,3.0,14.0,8.0,1.0,1.0,1.0,3.0,4.0,4.0,2.0,1.0,3.0,3.0,3.0,1.0,1.0,14.0,2.0,1.0,2.0,1.0,1.0,1.0,4.0,1.0,1.0,1.0,2.0,1.0,1.0,1.0,1.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0],
+"hwy":[12.0,NaN,13.0,14.0,15.0,16.0,16.0,16.0,17.0,17.0,17.0,17.0,17.0,18.0,18.0,18.0,18.0,19.0,19.0,19.0,20.0,20.0,20.0,21.0,22.0,22.0,22.0,23.0,23.0,23.0,24.0,24.0,24.0,24.0,25.0,25.0,25.0,25.0,25.0,25.0,26.0,26.0,26.0,26.0,26.0,26.0,27.0,27.0,27.0,27.0,27.0,28.0,28.0,28.0,29.0,29.0,29.0,29.0,29.0,29.0,30.0,30.0,30.0,31.0,31.0,31.0,31.0,32.0,32.0,32.0,33.0,33.0,34.0,35.0,36.0,36.0,37.0,41.0,44.0,44.0],
+"cty":[9.0,10.0,NaN,11.0,11.0,11.0,12.0,13.0,11.0,12.0,13.0,14.0,15.0,12.0,13.0,14.0,15.0,13.0,14.0,15.0,14.0,15.0,16.0,15.0,15.0,16.0,17.0,15.0,16.0,18.0,15.0,16.0,17.0,18.0,15.0,16.0,17.0,18.0,19.0,20.0,16.0,17.0,18.0,19.0,20.0,21.0,17.0,18.0,19.0,20.0,21.0,18.0,19.0,20.0,18.0,19.0,20.0,21.0,22.0,23.0,21.0,22.0,24.0,20.0,21.0,22.0,23.0,23.0,24.0,25.0,24.0,28.0,26.0,26.0,24.0,25.0,28.0,29.0,33.0,35.0]
+}
+},{
+"geom":"lollipop",
+"stat":"count",
+"mapping":{
+"color":"..count.."
+},
+"data_meta":{
+},
+"orientation":"y",
+"size":1.0,
+"marginal":true,
+"margin_side":"r",
+"margin_size":0.2,
+"data":{
+"..count..":[26.0,23.0,11.0,19.0,20.0,24.0,16.0,19.0,20.0,21.0,8.0,4.0,5.0,2.0,5.0,2.0,3.0,3.0,1.0,1.0,1.0],
+"cty":[18.0,21.0,20.0,16.0,19.0,15.0,17.0,14.0,11.0,13.0,12.0,22.0,9.0,28.0,24.0,25.0,23.0,26.0,33.0,35.0,29.0],
+"hwy":[26.0,23.0,11.0,19.0,20.0,24.0,16.0,19.0,20.0,21.0,8.0,4.0,5.0,2.0,5.0,2.0,3.0,3.0,1.0,1.0,1.0]
+}
+}],
+"metainfo_list":[],
+"spec_id":"14"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="lollipops-and-a-regression-line">
+<h2>7. Lollipops and a Regression Line<a class="headerlink" href="#lollipops-and-a-regression-line" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;hwy&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cty&quot;</span><span class="p">])</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span>
+
+<span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="s2">&quot;cty&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_smooth</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mf">.99</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_lollipop</span><span class="p">(</span><span class="n">slope</span><span class="o">=</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="o">=</span><span class="n">intercept</span><span class="p">,</span> \
+                  <span class="n">size</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;magenta&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">coord_fixed</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="culaLY" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("culaLY");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"cty":[18.0,21.0,20.0,21.0,16.0,18.0,18.0,18.0,16.0,20.0,19.0,15.0,17.0,17.0,15.0,15.0,17.0,16.0,14.0,11.0,14.0,13.0,12.0,16.0,15.0,16.0,15.0,15.0,14.0,11.0,11.0,14.0,19.0,22.0,18.0,18.0,17.0,18.0,17.0,16.0,16.0,17.0,17.0,11.0,15.0,15.0,16.0,16.0,15.0,14.0,13.0,14.0,14.0,14.0,9.0,11.0,11.0,13.0,13.0,9.0,13.0,11.0,13.0,11.0,12.0,9.0,13.0,13.0,12.0,9.0,11.0,11.0,13.0,11.0,11.0,11.0,12.0,14.0,15.0,14.0,13.0,13.0,13.0,14.0,14.0,13.0,13.0,13.0,11.0,13.0,18.0,18.0,17.0,16.0,15.0,15.0,15.0,15.0,14.0,28.0,24.0,25.0,23.0,24.0,26.0,25.0,24.0,21.0,18.0,18.0,21.0,21.0,18.0,18.0,19.0,19.0,19.0,20.0,20.0,17.0,16.0,17.0,17.0,15.0,15.0,14.0,9.0,14.0,13.0,11.0,11.0,12.0,12.0,11.0,11.0,11.0,12.0,14.0,13.0,13.0,13.0,21.0,19.0,23.0,23.0,19.0,19.0,18.0,19.0,19.0,14.0,15.0,14.0,12.0,18.0,16.0,17.0,18.0,16.0,18.0,18.0,20.0,19.0,20.0,18.0,21.0,19.0,19.0,19.0,20.0,20.0,19.0,20.0,15.0,16.0,15.0,15.0,16.0,14.0,21.0,21.0,21.0,21.0,18.0,18.0,19.0,21.0,21.0,21.0,22.0,18.0,18.0,18.0,24.0,24.0,26.0,28.0,26.0,11.0,13.0,15.0,16.0,17.0,15.0,15.0,15.0,16.0,21.0,19.0,21.0,22.0,17.0,33.0,21.0,19.0,22.0,21.0,21.0,21.0,16.0,17.0,35.0,29.0,21.0,19.0,20.0,20.0,21.0,18.0,19.0,21.0,16.0,18.0,17.0],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"hwy",
+"y":"cty"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"coord":{
+"name":"fixed",
+"ratio":1.0,
+"flip":false
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"smooth",
+"mapping":{
+},
+"data_meta":{
+},
+"level":0.99,
+"seed":42.0,
+"data":{
+"..ymin..":[8.581502998336708,8.871064227329702,9.160520076289885,9.44986105153872,9.739076586323371,10.028154903224916,10.317082858971531,10.605845770138352,10.89442721850741,11.18280883541748,11.47097006537566,11.758887910690223,12.046536661122435,12.333887615791602,12.620908809080928,12.907564758350635,13.193816259053513,13.479620262326062,13.764929880818972,14.049694579225994,14.33386061440108,14.617371792541588,14.900170602842076,15.182199762968356,15.463404167577137,15.74373316682064,16.023143024319698,16.30159932925723,16.579079087729344,16.855572217029707,17.131082225635765,17.405625974873654,17.679232559081594,17.951941472033795,18.223800314909997,18.494862328523215,18.765184003889612,19.034822959638703,19.303836196081452,19.572278763659973,19.840202829223568,20.107657090107576,20.37468647079613,20.641332035018298,20.90763105225044,21.173617167553694,21.439320634576973,21.704768581720526,21.969985290090126,22.234992468758552,22.499809518084184,22.764453775658055,23.02894074214063,23.293284286073376,23.557496827934713,23.821589504436307,24.085572314463167,24.349454248252393,24.613243401456174,24.876947075695867,25.140571867123665,25.404123744389743,25.66760811728276,25.931029897180153,26.194393550317976,26.45770314477211,26.720962391934446,26.98417468317056,27.247343122258837,27.510470554134287,27.77355959039326,28.036612631956327,28.299631889235407,28.56261940010655,28.82557704595109,29.088506565994212,29.351409570140884,29.614287550483677,29.877141891635333,30.13997388001954],
+"..ymax..":[9.504158865829377,9.768091600706407,10.03212971561625,10.296282704237436,10.56056113332281,10.82497678029129,11.0895427884147,11.354273841117905,11.619186356618869,11.884298703578823,12.149631437490669,12.415207556046127,12.68105276948394,12.947195778684796,13.213668549265497,13.480506563865813,13.747749027032956,14.015438987630436,14.283623333007547,14.552352598470547,14.821680527165489,15.091663312895003,15.362358466464537,15.633823270208282,15.90611282946953,16.17927779409605,16.453361900467012,16.728399559399506,17.004413764797416,17.28141459936708,17.559398554631045,17.838348769263174,18.11823614892526,18.399021199843084,18.680656320836913,18.963088271093707,19.246260559597342,19.530115567718276,19.814596295145552,20.09964769143705,20.38521758974348,20.671257292729496,20.957721875910966,21.244570275558825,21.5317652221967,21.81927307076348,22.10706356761022,22.39510958433669,22.683386839837116,22.971873625038715,23.260550539583107,23.549400245879255,23.838407243266705,24.127557663203984,24.41683908521268,24.706240372581096,24.995751526424268,25.28536355650506,25.575068367171305,25.864858656801637,26.154727829243864,26.44466991584782,26.73467950682482,27.02475169079745,27.314882001529647,27.605066370945536,27.895301087653227,28.185582760287144,28.475908285068893,28.76627481706346,29.056679744674508,29.347120666981464,29.63759537357241,29.928101826571293,30.218638144596785,30.50920258842368,30.799793548147033,31.090409531674258,31.381049154392628,31.671711129878446],
+"hwy":[12.0,12.405063291139241,12.810126582278482,13.215189873417721,13.620253164556962,14.025316455696203,14.430379746835444,14.835443037974684,15.240506329113924,15.645569620253164,16.050632911392405,16.455696202531644,16.860759493670887,17.265822784810126,17.67088607594937,18.075949367088608,18.481012658227847,18.88607594936709,19.29113924050633,19.696202531645568,20.10126582278481,20.50632911392405,20.91139240506329,21.31645569620253,21.721518987341774,22.126582278481013,22.531645569620252,22.936708860759495,23.341772151898734,23.746835443037973,24.151898734177216,24.556962025316455,24.962025316455694,25.367088607594937,25.77215189873418,26.177215189873415,26.582278481012658,26.9873417721519,27.39240506329114,27.79746835443038,28.20253164556962,28.60759493670886,29.0126582278481,29.417721518987342,29.82278481012658,30.227848101265824,30.632911392405063,31.037974683544302,31.443037974683545,31.848101265822784,32.25316455696203,32.65822784810126,33.063291139240505,33.46835443037975,33.87341772151899,34.278481012658226,34.68354430379747,35.088607594936704,35.49367088607595,35.89873417721519,36.30379746835443,36.708860759493675,37.11392405063291,37.51898734177215,37.92405063291139,38.32911392405063,38.734177215189874,39.139240506329116,39.54430379746836,39.949367088607595,40.35443037974683,40.75949367088607,41.164556962025316,41.56962025316456,41.9746835443038,42.379746835443036,42.78481012658228,43.189873417721515,43.59493670886076,44.0],
+"cty":[9.042830932083042,9.319577914018055,9.596324895953067,9.873071877888078,10.14981885982309,10.426565841758103,10.703312823693116,10.980059805628128,11.25680678756314,11.533553769498152,11.810300751433164,12.087047733368175,12.363794715303188,12.640541697238199,12.917288679173213,13.194035661108224,13.470782643043234,13.747529624978249,14.02427660691326,14.30102358884827,14.577770570783285,14.854517552718296,15.131264534653306,15.408011516588319,15.684758498523333,15.961505480458344,16.238252462393355,16.514999444328367,16.79174642626338,17.068493408198393,17.345240390133405,17.621987372068414,17.898734354003427,18.17548133593844,18.452228317873455,18.72897529980846,19.005722281743477,19.28246926367849,19.559216245613502,19.83596322754851,20.112710209483524,20.389457191418536,20.66620417335355,20.94295115528856,21.21969813722357,21.496445119158587,21.773192101093596,22.049939083028608,22.32668606496362,22.603433046898633,22.880180028833646,23.156927010768655,23.433673992703667,23.71042097463868,23.987167956573696,24.2639149385087,24.540661920443718,24.817408902378727,25.09415588431374,25.370902866248752,25.647649848183764,25.92439683011878,26.20114381205379,26.477890793988802,26.75463777592381,27.031384757858824,27.308131739793836,27.584878721728852,27.861625703663865,28.138372685598874,28.415119667533883,28.691866649468896,28.968613631403908,29.24536061333892,29.522107595273937,29.798854577208946,30.07560155914396,30.352348541078968,30.62909552301398,30.905842504948993]
+}
+},{
+"geom":"lollipop",
+"mapping":{
+},
+"data_meta":{
+},
+"slope":0.6832191116520595,
+"intercept":0.8442015922583472,
+"size":1.2,
+"shape":21.0,
+"color":"black",
+"fill":"magenta",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"15"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-size-stroke-and-linewidth">1. Parameters <code class="docutils literal notranslate"><span class="pre">size</span></code>, <code class="docutils literal notranslate"><span class="pre">stroke</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-fatten">2. Parameter <code class="docutils literal notranslate"><span class="pre">fatten</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-sticks">3. Horizontal Sticks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sloped-baseline">4. Sloped Baseline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-stat">5. Parameter <code class="docutils literal notranslate"><span class="pre">stat</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lollipops-in-marginal-layer">6. Lollipops in Marginal Layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lollipops-and-a-regression-line">7. Lollipops and a Regression Line</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

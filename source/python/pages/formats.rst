@@ -296,8 +296,8 @@ In the same way you can use formatting for annotation pies and bar charts using 
 
 .. _formats_demo_notebooks:
 
-Demo Notebooks
---------------
+Demo
+----
 
 - .. extref:: formatting
       :type: text

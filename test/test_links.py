@@ -24,11 +24,8 @@ NO_WARNING_STATUS_CODES = [
     403, # access to the requested resource is forbidden
     429, # too many requests in a given amount of time
 ]
-PREPUBLISH_BRANCH = os.getenv("prepublish_branch")
-REPLACE_LP_TO_FORK = PREPUBLISH_BRANCH != ""
 REPLACES = {
     "lets-plot.org": "asmirnov-horis.github.io/lets-plot-docs",
-    "nbviewer.org/github/JetBrains/lets-plot-docs/blob/master/source": "nbviewer.org/github/ASmirnov-HORIS/lets-plot-docs/blob/{0}/source".format(PREPUBLISH_BRANCH),
 }
 
 checked_external_links = set()
@@ -99,8 +96,8 @@ def check_url(href, source):
 
 def _get_response(href, first_query=True):
     try:
-        response = requests.get(href)
-        if response.status_code == 404 and REPLACE_LP_TO_FORK and first_query:
+        response = requests.get(href, stream=True, headers={"Accept-Encoding": "identity"})
+        if response.status_code == 404 and first_query:
             for replace_from, replace_to in REPLACES.items():
                 href = href.replace(replace_from, replace_to)
             response = _get_response(href, False)

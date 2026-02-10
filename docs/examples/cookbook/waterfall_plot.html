@@ -1,0 +1,5628 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Waterfall Plot" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/waterfall_plot.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="A waterfall plot shows the cumulative effect of sequentially introduced positive or negative values. To use it, you need to import the ‘bistro’ module. Default View: Improved View: Additional Param..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="A waterfall plot shows the cumulative effect of sequentially introduced positive or negative values. To use it, you need to import the ‘bistro’ module. Default View: Improved View: Additional Param..." />
+
+    <title>Waterfall Plot</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/waterfall_plot';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/cookbook/waterfall_plot.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="waterfall-plot">
+<h1>Waterfall Plot<a class="headerlink" href="#waterfall-plot" title="Link to this heading">#</a></h1>
+<p>A waterfall plot shows the cumulative effect of sequentially introduced positive or negative values.</p>
+<p>To use it, you need to import the ‘bistro’ module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot.bistro</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="uor6GG"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("uor6GG").appendChild(div);
+                };
+                var e = document.getElementById("uor6GG");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Accounts&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Product revenue&quot;</span><span class="p">,</span> <span class="s2">&quot;Services revenue&quot;</span><span class="p">,</span> <span class="s2">&quot;Fixed costs&quot;</span><span class="p">,</span> <span class="s2">&quot;Variable costs&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">830_000</span><span class="p">,</span> <span class="mi">290_000</span><span class="p">,</span> <span class="o">-</span><span class="mi">360_000</span><span class="p">,</span> <span class="o">-</span><span class="mi">150_000</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="default-view">
+<h2>Default View<a class="headerlink" href="#default-view" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="cVe62a" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("cVe62a");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="improved-view">
+<h2>Improved View<a class="headerlink" href="#improved-view" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> \
+               <span class="n">size</span><span class="o">=</span><span class="mf">.75</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">total_title</span><span class="o">=</span><span class="s2">&quot;Profit&quot;</span><span class="p">,</span> \
+               <span class="n">hline</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> \
+               <span class="n">connector</span><span class="o">=</span><span class="n">element_line</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">),</span> \
+               <span class="n">label</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;Courier&quot;</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">),</span> \
+               <span class="n">label_format</span><span class="o">=</span><span class="s2">&quot;$~s&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;$~s&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Company Profit (in USD)&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">ggsize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">theme_minimal</span><span class="p">()</span> <span class="o">+</span> \
+    <span class="n">theme</span><span class="p">(</span><span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="mf">.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="ZKxSkR" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("ZKxSkR");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Company Profit (in USD)"
+},
+"ggsize":{
+"width":1000.0,
+"height":500.0
+},
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false,
+"family":"Courier",
+"face":"bold",
+"size":20.0
+},
+"name":"minimal",
+"plot_title":{
+"face":"bold",
+"size":20.0,
+"hjust":0.5,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Profit"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Profit"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Profit"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"name":"Values",
+"aesthetic":"y",
+"format":"$~s"
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.19999999999999996,0.19999999999999996,0.19999999999999996,0.19999999999999996,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.4
+},
+"linetype":3
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Profit"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.75,
+"linetype":1,
+"width":0.8,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"formats":[{
+"field":"@..label..",
+"format":"$~s"
+}],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Profit"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.75,
+"linetype":1,
+"width":0.8,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"formats":[{
+"field":"@..label..",
+"format":"$~s"
+}],
+"use_layer_color":false
+}
+},{
+"geom":"hline",
+"yintercept":0.0,
+"size":1.0,
+"linetype":1,
+"tooltips":"none",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="additional-parameters">
+<h2>Additional Parameters<a class="headerlink" href="#additional-parameters" title="Link to this heading">#</a></h2>
+<section id="measure-and-group">
+<h3><code class="docutils literal notranslate"><span class="pre">measure</span></code> and <code class="docutils literal notranslate"><span class="pre">group</span></code><a class="headerlink" href="#measure-and-group" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Company&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Badgersoft&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;AIlien Co.&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s2">&quot;Accounts&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;initial&quot;</span><span class="p">,</span> <span class="s2">&quot;revenue&quot;</span><span class="p">,</span> <span class="s2">&quot;costs&quot;</span><span class="p">,</span> <span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;revenue&quot;</span><span class="p">,</span> <span class="s2">&quot;costs&quot;</span><span class="p">,</span> <span class="s2">&quot;Q2&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> \
+               <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="s2">&quot;Measure&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;absolute&#39;</span><span class="p">,</span> <span class="s1">&#39;relative&#39;</span><span class="p">,</span> <span class="s1">&#39;relative&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;relative&#39;</span><span class="p">,</span> <span class="s1">&#39;relative&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">company_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Company&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Badgersoft&quot;</span><span class="p">]</span>
+
+<span class="n">waterfall_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;Measure&quot;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;Company&quot;</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">facet_grid</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Company&quot;</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="s1">&#39;free_x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Xsjqoi" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Xsjqoi");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"facet":{
+"name":"grid",
+"x":"Company",
+"scales":"free_x",
+"x_order":1.0,
+"y_order":1.0
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2","initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"Company":["Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co."],
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0,150.0,200.0,100.0,100.0,200.0,100.0,100.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+},
+"data_meta":{
+"series_annotations":[]
+}
+},{
+"geom":"crossbar",
+"data":{
+"Company":["Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co."],
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null,null,150.0,100.0,null,100.0,100.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null,null,200.0,200.0,null,200.0,200.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total","Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0,150.0,50.0,-100.0,100.0,100.0,-100.0,0.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0,150.0,50.0,-100.0,100.0,100.0,-100.0,100.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+},
+"data_meta":{
+"series_annotations":[{
+"column":"..flow_type..",
+"factor_levels":["Increase","Decrease","Absolute","Total"]
+}]
+}
+},{
+"geom":"crossbar",
+"data":{
+"Company":["Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","Badgersoft","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co.","AIlien Co."],
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0,0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0,150.0,null,null,100.0,null,null,100.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total","Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0,150.0,200.0,100.0,100.0,200.0,100.0,100.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0,150.0,50.0,-100.0,100.0,100.0,-100.0,100.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+},
+"data_meta":{
+"series_annotations":[{
+"column":"..flow_type..",
+"factor_levels":["Increase","Decrease","Absolute","Total"]
+}]
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"3"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="calc-total">
+<h3><code class="docutils literal notranslate"><span class="pre">calc_total</span></code><a class="headerlink" href="#calc-total" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">calc_total=False</span></code> disables the calculation of the total.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">measure</span></code> serie is specified however, the <code class="docutils literal notranslate"><span class="pre">calc_total</span></code> setting has no effect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">calc_total</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">company_df</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;Measure&quot;</span><span class="p">,</span> <span class="n">calc_total</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="qw7WcD" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("qw7WcD");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease"],
+"values":["#4daf4a","#e41a1c"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease"],
+"values":["#4daf4a","#e41a1c"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..ymin..":[null,null,null,null],
+"..ymax..":[null,null,null,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"4"
+},{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"5"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="labels">
+<h3>Labels<a class="headerlink" href="#labels" title="Link to this heading">#</a></h3>
+<p>There are several parameters that allow you to control the text labels on the waterfalls:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">relative_labels</span></code>: content and formatting of annotation labels on relative change bars (result of the call to the <code class="docutils literal notranslate"><span class="pre">layer_labels()</span></code> function);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">absolute_labels</span></code>: content and formatting of annotation labels on absolute value bars (result of the call to the <code class="docutils literal notranslate"><span class="pre">layer_labels()</span></code> function);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: style settings for all text labels (result of the call to the <code class="docutils literal notranslate"><span class="pre">element_text()</span></code> function).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">relative_labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;@{..flow_type..}d:</span><span class="se">\n</span><span class="s2">@..label..&quot;</span><span class="p">),</span>
+                                           <span class="n">absolute_labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="s2">@..label..&quot;</span><span class="p">),</span>
+                                           <span class="n">label</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">face</span><span class="o">=</span><span class="s2">&quot;bold_italic&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="09HCzB" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("09HCzB");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@{..flow_type..}d:\n@..label.."],
+"formats":[],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["Result:\n@..label.."],
+"formats":[],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false,
+"face":"bold_italic"
+}
+},
+"spec_id":"6"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p><strong>Hiding Labels</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">relative_labels</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Hide relative labels only&quot;</span><span class="p">),</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">absolute_labels</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Hide absolute labels only&quot;</span><span class="p">),</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;blank&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Hide all labels&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="8LPLeJ" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("8LPLeJ");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Hide relative labels only"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":"none"
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"7"
+},{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Hide absolute labels only"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":"none"
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"8"
+},{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Hide all labels"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":"none"
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":"none"
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":true
+}
+},
+"spec_id":"9"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="tooltips">
+<h3>Tooltips<a class="headerlink" href="#tooltips" title="Link to this heading">#</a></h3>
+<p>Tooltips for relative and absolute measures should be specified independently.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_tooltips</span> <span class="o">=</span> <span class="n">layer_tooltips</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Account: @..xlabel..&quot;</span><span class="p">)</span>\
+                                    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;@..initial..&quot;</span><span class="p">,</span> <span class="s2">&quot; $,.3~s&quot;</span><span class="p">)</span>\
+                                    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;@..value..&quot;</span><span class="p">,</span> <span class="s2">&quot; $,.3~s&quot;</span><span class="p">)</span>\
+                                    <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;@{..flow_type..}d from @..initial.. to @..value..&quot;</span><span class="p">)</span>\
+                                    <span class="o">.</span><span class="n">disable_splitting</span><span class="p">()</span>
+<span class="n">absolute_tooltips</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+
+<span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span>
+                   <span class="n">relative_tooltips</span><span class="o">=</span><span class="s1">&#39;detailed&#39;</span><span class="p">,</span> <span class="n">absolute_tooltips</span><span class="o">=</span><span class="s1">&#39;detailed&#39;</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;&#39;detailed&#39; tooltips&quot;</span><span class="p">),</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span>
+                   <span class="n">relative_tooltips</span><span class="o">=</span><span class="n">relative_tooltips</span><span class="p">,</span> <span class="n">absolute_tooltips</span><span class="o">=</span><span class="n">absolute_tooltips</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Custom tooltips&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="7RkHUi" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("7RkHUi");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"'detailed' tooltips"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..xlabel..":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..initial..":[0.0,830000.0,1120000.0,760000.0,0.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"title":"@..xlabel..",
+"disable_splitting":true,
+"lines":["Initial|@..initial..","Difference|@..dy..","Cumulative sum|@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..xlabel..":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"title":"@..xlabel..",
+"disable_splitting":true,
+"lines":["Value|@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"10"
+},{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Custom tooltips"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..xlabel..":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..initial..":[0.0,830000.0,1120000.0,760000.0,0.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"title":"Account: @..xlabel..",
+"disable_splitting":true,
+"lines":["@{..flow_type..}d from @..initial.. to @..value.."],
+"formats":[{
+"field":"@..initial..",
+"format":" $,.3~s"
+},{
+"field":"@..value..",
+"format":" $,.3~s"
+}]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":"none",
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"11"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="sorted-value">
+<h3><code class="docutils literal notranslate"><span class="pre">sorted_value</span></code><a class="headerlink" href="#sorted-value" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">sorted_value</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="GGBV9n" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("GGBV9n");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Fixed costs","Services revenue","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,470000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,470000.0,470000.0,610000.0,null],
+"..ymax..":[830000.0,830000.0,760000.0,760000.0,null],
+"..flow_type..":["Increase","Decrease","Increase","Decrease","Total"],
+"..dy..":[830000.0,-360000.0,290000.0,-150000.0,610000.0],
+"..label..":[830000.0,-360000.0,290000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Decrease","Increase","Decrease","Total"],
+"..value..":[830000.0,470000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,-360000.0,290000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"12"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="threshold-max-values">
+<h3><code class="docutils literal notranslate"><span class="pre">threshold</span></code>/<code class="docutils literal notranslate"><span class="pre">max_values</span></code><a class="headerlink" href="#threshold-max-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Default&quot;</span><span class="p">),</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">300_000</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Specified threshold&quot;</span><span class="p">),</span>
+    <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">max_values</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Specified max_values&quot;</span><span class="p">),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="7D7Ps8" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("7D7Ps8");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"name":"grid"
+},
+"figures":[{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Default"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[0.0,830000.0,760000.0,610000.0,null],
+"..ymax..":[830000.0,1120000.0,1120000.0,760000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,0.0],
+"..ymax..":[null,null,null,null,610000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[830000.0,1120000.0,760000.0,610000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"13"
+},{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Specified threshold"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0],
+"labels":["Product revenue","Fixed costs","Other","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..value..":[830000.0,470000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..ymin..":[0.0,470000.0,470000.0,null],
+"..ymax..":[830000.0,830000.0,610000.0,null],
+"..flow_type..":["Increase","Decrease","Increase","Total"],
+"..dy..":[830000.0,-360000.0,140000.0,610000.0],
+"..label..":[830000.0,-360000.0,140000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..ymin..":[null,null,null,0.0],
+"..ymax..":[null,null,null,610000.0],
+"..flow_type..":["Increase","Decrease","Increase","Total"],
+"..value..":[830000.0,470000.0,610000.0,610000.0],
+"..label..":[830000.0,-360000.0,140000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"14"
+},{
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"ggtitle":{
+"text":"Specified max_values"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0],
+"labels":["Product revenue","Fixed costs","Other","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..value..":[830000.0,470000.0,610000.0,610000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..ymin..":[0.0,470000.0,470000.0,null],
+"..ymax..":[830000.0,830000.0,610000.0,null],
+"..flow_type..":["Increase","Decrease","Increase","Total"],
+"..dy..":[830000.0,-360000.0,140000.0,610000.0],
+"..label..":[830000.0,-360000.0,140000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0],
+"..ymin..":[null,null,null,0.0],
+"..ymax..":[null,null,null,610000.0],
+"..flow_type..":["Increase","Decrease","Increase","Total"],
+"..value..":[830000.0,470000.0,610000.0,610000.0],
+"..label..":[830000.0,-360000.0,140000.0,610000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"15"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="base">
+<h3><code class="docutils literal notranslate"><span class="pre">base</span></code><a class="headerlink" href="#base" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">400_000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="z91ukT" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("z91ukT");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"..ymin.."
+},{
+"type":"int",
+"column":"..ymiddle.."
+},{
+"type":"int",
+"column":"..ymax.."
+},{
+"type":"int",
+"column":"..initial.."
+},{
+"type":"int",
+"column":"..value.."
+},{
+"type":"int",
+"column":"..dy.."
+},{
+"type":"int",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"int",
+"column":"Values"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0],
+"labels":["Product revenue","Services revenue","Fixed costs","Variable costs","Total"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..value..":[1230000.0,1520000.0,1160000.0,1010000.0,1010000.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[400000.0,1230000.0,1160000.0,1010000.0,null],
+"..ymax..":[1230000.0,1520000.0,1520000.0,1160000.0,null],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..dy..":[830000.0,290000.0,-360000.0,-150000.0,610000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,1010000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0],
+"..ymin..":[null,null,null,null,400000.0],
+"..ymax..":[null,null,null,null,1010000.0],
+"..flow_type..":["Increase","Increase","Decrease","Decrease","Total"],
+"..value..":[1230000.0,1520000.0,1160000.0,1010000.0,1010000.0],
+"..label..":[830000.0,290000.0,-360000.0,-150000.0,1010000.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"16"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="combining-waterfall-plot-with-other-geometry-layers">
+<h3>Combining <code class="docutils literal notranslate"><span class="pre">waterfall_plot()</span></code> with Other Geometry Layers<a class="headerlink" href="#combining-waterfall-plot-with-other-geometry-layers" title="Link to this heading">#</a></h3>
+<p>Waterfall plots can be enhanced by adding background and foreground layers. Foreground layers can be added using the regular <code class="docutils literal notranslate"><span class="pre">+</span></code> operator. Background layers can be added using the <code class="docutils literal notranslate"><span class="pre">background_layers</span></code> parameter.</p>
+<p>Limitations:</p>
+<ul class="simple">
+<li><p>layers must provide their own data;</p></li>
+<li><p>data coordinates must be numeric.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># background layer and its data</span>
+<span class="n">quarter_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;period_start&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">],</span>
+    <span class="s2">&quot;period_end&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">],</span>
+    <span class="s2">&quot;ai_introduced&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">quarter_layer</span> <span class="o">=</span> <span class="n">geom_band</span><span class="p">(</span>
+    <span class="n">aes</span><span class="p">(</span>
+        <span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;period_start&quot;</span><span class="p">,</span>
+        <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;period_end&quot;</span><span class="p">,</span>
+        <span class="n">paint_a</span><span class="o">=</span><span class="s2">&quot;ai_introduced&quot;</span>
+    <span class="p">),</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">quarter_data</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="c1"># we use &quot;paint_a&quot; to color the bands based on a separate category (e.g., quarters),</span>
+    <span class="c1"># so they have their own color palette independent from the waterfalls</span>
+    <span class="n">fill_by</span><span class="o">=</span><span class="s2">&quot;paint_a&quot;</span><span class="p">,</span> <span class="n">color_by</span><span class="o">=</span><span class="s2">&quot;paint_a&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># foreground layers and their data</span>
+<span class="n">quarter_label_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;Q2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">quarter_ai_status_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Before AI</span><span class="se">\n</span><span class="s2">introduction&quot;</span><span class="p">,</span> <span class="s2">&quot;After AI</span><span class="se">\n</span><span class="s2">introduction&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">],</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">text_layers</span> <span class="o">=</span> <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">quarter_label_data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">quarter_ai_status_data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># whole plot</span>
+<span class="p">(</span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">company_df</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;Measure&quot;</span><span class="p">,</span>
+                <span class="n">background_layers</span><span class="o">=</span><span class="n">quarter_layer</span><span class="p">)</span>  <span class="c1"># background layer</span>
+  <span class="o">+</span> <span class="n">text_layers</span>                                   <span class="c1"># foreground layers</span>
+  <span class="o">+</span> <span class="n">scale_hue</span><span class="p">(</span><span class="s2">&quot;paint_a&quot;</span><span class="p">,</span> <span class="n">guide</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>            <span class="c1"># color for the background layer (bands)</span>
+  <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s2">&quot;Waterfall with additional layers&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="aP0QiY" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("aP0QiY");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"ggtitle":{
+"text":"Waterfall with additional layers"
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"paint_a",
+"guide":"none",
+"scale_mapper_kind":"color_hue"
+}],
+"layers":[{
+"geom":"band",
+"data":{
+"period_start":[0.5,3.5],
+"period_end":[3.5,6.5],
+"ai_introduced":[false,true]
+},
+"mapping":{
+"xmin":"period_start",
+"xmax":"period_end",
+"paint_a":"ai_introduced"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"period_start"
+},{
+"type":"float",
+"column":"period_end"
+},{
+"type":"bool",
+"column":"ai_introduced"
+}]
+},
+"color_by":"paint_a",
+"fill_by":"paint_a",
+"alpha":0.2
+},{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"text",
+"data":{
+"name":["Q1","Q2"],
+"x":[2.0,5.0],
+"y":[600.0,600.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"name"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"name"
+},{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+}]
+},
+"size":8.0
+},{
+"geom":"text",
+"data":{
+"text":["Before AI\nintroduction","After AI\nintroduction"],
+"x":[1.5,4.5],
+"y":[100.0,100.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"label":"text"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"text"
+},{
+"type":"float",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+}]
+},
+"size":12.0
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"17"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+<section id="customize-colors">
+<h2>Customize Colors<a class="headerlink" href="#customize-colors" title="Link to this heading">#</a></h2>
+<p>Let’s look at the names of the flow types using the <code class="docutils literal notranslate"><span class="pre">show_legend</span></code> parameter:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wp</span> <span class="o">=</span> <span class="n">waterfall_plot</span><span class="p">(</span><span class="n">company_df</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;Measure&quot;</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">wp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="3lNlkr" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("3lNlkr");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":true,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":true,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"18"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>Use these names to customize the colors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wp</span> <span class="o">+</span> <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;Increase&quot;</span><span class="p">:</span> <span class="s2">&quot;#66c2a5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Decrease&quot;</span><span class="p">:</span> <span class="s2">&quot;#fc8d62&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Absolute&quot;</span><span class="p">:</span> <span class="s2">&quot;#e78ac3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="s2">&quot;#8da0cb&quot;</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="WSFAib" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("WSFAib");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#66c2a5","#fc8d62","#e78ac3","#8da0cb"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":true,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":true,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"19"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>If desired, you can also change the names of the flow types in the legend:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wp</span> <span class="o">+</span> <span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;Increase&quot;</span><span class="p">:</span> <span class="s2">&quot;#66c2a5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Decrease&quot;</span><span class="p">:</span> <span class="s2">&quot;#fc8d62&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Absolute&quot;</span><span class="p">:</span> <span class="s2">&quot;#e78ac3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="s2">&quot;#8da0cb&quot;</span><span class="p">,</span>
+    <span class="p">},</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;inc&quot;</span><span class="p">,</span> <span class="s2">&quot;dec&quot;</span><span class="p">,</span> <span class="s2">&quot;abs&quot;</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="ATdNgP" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("ATdNgP");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"labels":["inc","dec","abs","total"],
+"values":["#66c2a5","#fc8d62","#e78ac3","#8da0cb"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":true,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"fill":"..flow_type.."
+},
+"color":"black",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":true,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"20"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>You can use a constant color for boxes and <code class="docutils literal notranslate"><span class="pre">'flow_type'</span></code> color for their borders:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">company_df</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;Measure&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">.75</span><span class="p">,</span>
+               <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;gray90&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;flow_type&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="dGmmkC" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("dGmmkC");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"color":"..flow_type.."
+},
+"fill":"gray90",
+"size":0.75,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"color":"..flow_type.."
+},
+"fill":"gray90",
+"size":0.75,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"21"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>To paint the text labels, combine <code class="docutils literal notranslate"><span class="pre">color=&quot;flow_type&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">label=element_text(color='inherit')</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">company_df</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;Measure&quot;</span><span class="p">,</span>
+               <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;gray90&quot;</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="s2">&quot;flow_type&quot;</span><span class="p">,</span>                   <span class="c1">#  Needed for mapping color to flow type</span>
+               <span class="n">label</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;inherit&#39;</span><span class="p">))</span> <span class="c1">#  Needed to inherit the text label color from the color of boxes border</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="qZcEdM" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("qZcEdM");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"color":"..flow_type.."
+},
+"fill":"gray90",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":true
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"color":"..flow_type.."
+},
+"fill":"gray90",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":true
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false
+}
+},
+"spec_id":"22"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+<p>The same can be done, for example, only for the relative text labels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waterfall_plot</span><span class="p">(</span><span class="n">company_df</span><span class="p">,</span> <span class="s2">&quot;Accounts&quot;</span><span class="p">,</span> <span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;Measure&quot;</span><span class="p">,</span>
+               <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;gray90&quot;</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="s2">&quot;flow_type&quot;</span><span class="p">,</span>                                                 <span class="c1">#  Map color to flow type</span>
+               <span class="n">label</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;indigo&quot;</span><span class="p">),</span>                                <span class="c1">#  Choose some default color for absolute labels</span>
+               <span class="n">relative_labels</span><span class="o">=</span><span class="n">layer_labels</span><span class="p">()</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s2">&quot;@..label..&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">inherit_color</span><span class="p">())</span> <span class="c1">#  Inherit color for the relative text labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="HAirNM" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("HAirNM");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"..ymin.."
+},{
+"type":"float",
+"column":"..ymiddle.."
+},{
+"type":"float",
+"column":"..ymax.."
+},{
+"type":"float",
+"column":"..initial.."
+},{
+"type":"float",
+"column":"..value.."
+},{
+"type":"float",
+"column":"..dy.."
+},{
+"type":"float",
+"column":"..label.."
+},{
+"type":"str",
+"column":"Company"
+},{
+"type":"str",
+"column":"Accounts"
+},{
+"type":"float",
+"column":"Values"
+},{
+"type":"str",
+"column":"Measure"
+}]
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"x",
+"name":"Accounts",
+"breaks":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"labels":["initial","revenue","costs","Q1","revenue","costs","Q2"]
+},{
+"aesthetic":"y",
+"name":"Values"
+},{
+"aesthetic":"color",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+},{
+"aesthetic":"fill",
+"name":"Flow type",
+"breaks":["Increase","Decrease","Absolute","Total"],
+"values":["#4daf4a","#e41a1c","#377eb8","#377eb8"]
+}],
+"layers":[{
+"geom":"spoke",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..radius..":[0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.09999999999999998,0.0]
+},
+"mapping":{
+"x":"..x..",
+"y":"..value..",
+"radius":"..radius.."
+},
+"angle":0.0,
+"position":{
+"name":"nudge",
+"x":0.45
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[null,200.0,300.0,null,300.0,450.0,null],
+"..ymax..":[null,400.0,400.0,null,550.0,550.0,null],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..dy..":[200.0,200.0,-100.0,300.0,250.0,-100.0,150.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"color":"..flow_type.."
+},
+"fill":"gray90",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"lines":["@..dy.."]
+},
+"labels":{
+"lines":["@..label.."],
+"formats":[],
+"use_layer_color":true
+}
+},{
+"geom":"crossbar",
+"data":{
+"..x..":[0.0,1.0,2.0,3.0,4.0,5.0,6.0],
+"..ymin..":[0.0,null,null,0.0,null,null,0.0],
+"..ymax..":[200.0,null,null,300.0,null,null,450.0],
+"..flow_type..":["Absolute","Increase","Decrease","Total","Increase","Decrease","Total"],
+"..value..":[200.0,400.0,300.0,300.0,550.0,450.0,450.0],
+"..label..":[200.0,200.0,-100.0,300.0,250.0,-100.0,450.0]
+},
+"mapping":{
+"x":"..x..",
+"ymin":"..ymin..",
+"ymax":"..ymax..",
+"color":"..flow_type.."
+},
+"fill":"gray90",
+"size":0.0,
+"linetype":1,
+"width":0.9,
+"show_legend":false,
+"tooltips":{
+"disable_splitting":true,
+"lines":["@..value.."]
+},
+"labels":{
+"lines":["@..label.."],
+"use_layer_color":false
+}
+}],
+"metainfo_list":[],
+"theme":{
+"axis_tooltip":{
+"blank":true
+},
+"label_text":{
+"blank":false,
+"color":"#4b0082"
+}
+},
+"spec_id":"23"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-view">Default View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improved-view">Improved View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-parameters">Additional Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-and-group"><code class="docutils literal notranslate"><span class="pre">measure</span></code> and <code class="docutils literal notranslate"><span class="pre">group</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calc-total"><code class="docutils literal notranslate"><span class="pre">calc_total</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#labels">Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tooltips">Tooltips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorted-value"><code class="docutils literal notranslate"><span class="pre">sorted_value</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-max-values"><code class="docutils literal notranslate"><span class="pre">threshold</span></code>/<code class="docutils literal notranslate"><span class="pre">max_values</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base"><code class="docutils literal notranslate"><span class="pre">base</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-waterfall-plot-with-other-geometry-layers">Combining <code class="docutils literal notranslate"><span class="pre">waterfall_plot()</span></code> with Other Geometry Layers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-colors">Customize Colors</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

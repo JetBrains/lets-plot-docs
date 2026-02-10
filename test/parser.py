@@ -44,23 +44,24 @@ class page_parser():
 class notebook_parser(page_parser):
     import re
 
-    def __init__(self, notebook, lpk_descriptor):
+    def __init__(self, notebook, page, lpk_descriptor):
         self.notebook = notebook
         self.lpk_descriptor = lpk_descriptor
-        self.page = notebook.replace(".ipynb", ".html")
+        self.page = page or notebook.replace(".ipynb", ".html")
+        self.prepare_page = page is None
 
     def __enter__(self):
-        self._update_descriptors(revert=False)
-        subprocess.check_output("jupyter nbconvert --to notebook --inplace --execute {0}".format(self.notebook), \
-                                shell=True, timeout=TIMEOUT)
-        subprocess.check_output("jupyter nbconvert --to html {0}".format(self.notebook), \
-                                shell=True, timeout=TIMEOUT)
+        if self.prepare_page:
+            self._update_descriptors(revert=False)
+            subprocess.check_output("jupyter nbconvert --to html --execute {0}".format(self.notebook),
+                                    shell=True, timeout=TIMEOUT)
         return super().__enter__()
 
     def __exit__(self, type, value, traceback):
         super().__exit__(type, value, traceback)
-        os.remove(self.page)
-        self._update_descriptors(revert=True)
+        if self.prepare_page:
+            os.remove(self.page)
+            self._update_descriptors(revert=True)
 
     def _update_descriptors(self, *, revert):
         if self.lpk_descriptor is None:

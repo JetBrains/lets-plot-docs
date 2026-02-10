@@ -1,0 +1,1806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Plot Layout Scheme and Theme Parameters" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/demo/plot_layout_scheme.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="This demo illustrates the overall plot structure and the effect of various layout-related theme parameters. Understanding how they interact can help fine-tune the appearance and readability of your..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="This demo illustrates the overall plot structure and the effect of various layout-related theme parameters. Understanding how they interact can help fine-tune the appearance and readability of your..." />
+
+    <title>Plot Layout Scheme and Theme Parameters</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/demo/plot_layout_scheme';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/demo/plot_layout_scheme.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="plot-layout-scheme-and-theme-parameters">
+<h1>Plot Layout Scheme and Theme Parameters<a class="headerlink" href="#plot-layout-scheme-and-theme-parameters" title="Link to this heading">#</a></h1>
+<p>This demo illustrates the overall plot structure and the effect of various layout-related theme parameters. Understanding how they interact can help fine-tune the appearance and readability of your plots.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_margin</span></code>
+adds outer space around the entire plot, including titles, captions, legends, and the plotting panel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_title:</span> <span class="pre">margin</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_subtitle:</span> <span class="pre">margin</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_caption:</span> <span class="pre">margin</span></code>, <code class="docutils literal notranslate"><span class="pre">axis_title_x:</span> <span class="pre">margin</span></code>, <code class="docutils literal notranslate"><span class="pre">axis_title_y:</span> <span class="pre">margin</span></code>
+control the spacing around the corresponding textual elements. These are passed via the <code class="docutils literal notranslate"><span class="pre">margin</span></code> argument to <code class="docutils literal notranslate"><span class="pre">element_text()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axis_text_spacing_x</span></code>, <code class="docutils literal notranslate"><span class="pre">axis_text_spacing_y</span></code>
+define the spacing between axis ticks and their associated labels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">panel_inset</span></code>
+adds internal padding between the plotting panel and the axes, shrinking the effective plotting area.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_inset</span></code>
+adds padding inside the plot area (including the plot panel, axes, and axis labels) and other textual elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">legend_box_spacing</span></code>
+controls the spacing between the legend section and the plot area.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="6cG6re"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("6cG6re").appendChild(div);
+                };
+                var e = document.getElementById("6cG6re");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">210</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">97</span><span class="p">))</span>
+
+<span class="c1"># Base rate increases with x (e.g., linear growth for lambda)</span>
+<span class="n">lambdas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span> <span class="o">+</span> <span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="mi">210</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">90</span> <span class="k">for</span> <span class="n">lam</span> <span class="ow">in</span> <span class="n">lambdas</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SCALE_FACTOR</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">PAD</span> <span class="o">=</span> <span class="mi">11</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span>
+                 <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                 <span class="n">pad</span><span class="o">=</span><span class="n">PAD</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">xmin_s</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">xmax_s</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span> <span class="o">-</span> <span class="n">pad</span>
+    <span class="n">ymin_s</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span> <span class="o">+</span> <span class="n">pad</span>
+    <span class="n">ymax_s</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span> <span class="o">-</span> <span class="n">pad</span>
+
+    <span class="n">is_horizontal</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">rect_layer</span> <span class="o">=</span> <span class="n">geom_rect</span><span class="p">(</span>
+        <span class="n">xmin</span><span class="o">=</span><span class="n">xmin_s</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax_s</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ymin_s</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymax_s</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">pad</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Inner text: centered</span>
+    <span class="n">x_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmin_s</span> <span class="o">+</span> <span class="n">xmax_s</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">y_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">ymin_s</span> <span class="o">+</span> <span class="n">ymax_s</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">inner_layer</span> <span class="o">=</span> <span class="n">geom_text</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x_center</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_center</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">inner_text</span><span class="p">,</span>
+        <span class="n">angle</span><span class="o">=</span><span class="mi">0</span> <span class="k">if</span> <span class="n">is_horizontal</span> <span class="k">else</span> <span class="mi">90</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Border text: near top-right (horizontal) or top-left (vertical)</span>
+    <span class="k">if</span> <span class="n">is_horizontal</span><span class="p">:</span>
+        <span class="n">x_border</span> <span class="o">=</span> <span class="n">xmax_s</span>
+        <span class="n">y_border</span> <span class="o">=</span> <span class="n">ymin_s</span> <span class="o">+</span> <span class="n">pad</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">vjust</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># vertical</span>
+        <span class="n">x_border</span> <span class="o">=</span> <span class="n">xmin_s</span> <span class="o">-</span> <span class="n">pad</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">5</span>
+        <span class="n">y_border</span> <span class="o">=</span> <span class="n">ymin_s</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+        <span class="n">vjust</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">border_layer</span> <span class="o">=</span> <span class="n">geom_text</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x_border</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_border</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">border_text</span><span class="p">,</span>
+        <span class="n">angle</span><span class="o">=</span><span class="n">angle</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="n">vjust</span><span class="p">,</span>
+        <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Courier&#39;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rect_layer</span> <span class="o">+</span> <span class="n">inner_layer</span> <span class="o">+</span> <span class="n">border_layer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">annotation_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">hjust</span><span class="p">):</span>
+    <span class="n">x_s</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span>
+    <span class="n">y_s</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span>
+    <span class="n">xend_s</span> <span class="o">=</span> <span class="n">xend</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span>
+    <span class="n">yend_s</span> <span class="o">=</span> <span class="n">yend</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span>
+    <span class="n">with_arrow</span> <span class="o">=</span> <span class="n">arrow</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ends</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">label_x</span> <span class="o">=</span> <span class="n">x_s</span> <span class="o">-</span> <span class="mi">16</span>
+    <span class="n">label_y</span> <span class="o">=</span> <span class="n">y_s</span> <span class="o">+</span> <span class="mi">8</span>
+    <span class="k">if</span> <span class="n">hjust</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">label_x</span> <span class="o">=</span> <span class="n">x_s</span> <span class="o">+</span> <span class="mi">24</span>
+        <span class="n">label_y</span> <span class="o">=</span> <span class="n">y_s</span> <span class="o">-</span> <span class="mi">10</span>
+
+    <span class="k">return</span> <span class="n">geom_segment</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_s</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_s</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="n">xend_s</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="n">yend_s</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="n">with_arrow</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">geom_text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">label_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">label_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="n">hjust</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Courier&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">x_ticks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">y_base</span><span class="o">=</span><span class="mi">608</span><span class="p">,</span> <span class="n">tick_length</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">ticks</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;xend&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y_base</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;yend&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y_base</span> <span class="o">+</span> <span class="n">tick_length</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]),</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">geom_segment</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s1">&#39;xend&#39;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;yend&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">ticks</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray50&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">y_ticks</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">208</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">574</span><span class="p">,</span> <span class="n">n_ticks</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">x_base</span><span class="o">=</span><span class="mi">168</span><span class="p">,</span> <span class="n">tick_length</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">y_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">n_ticks</span><span class="p">)</span>
+
+    <span class="n">ticks</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y_ticks</span><span class="p">,</span>
+        <span class="s1">&#39;yend&#39;</span><span class="p">:</span> <span class="n">y_ticks</span><span class="p">,</span>
+        <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">x_base</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_ticks</span><span class="p">,</span>
+        <span class="s1">&#39;xend&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">x_base</span> <span class="o">+</span> <span class="n">tick_length</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_ticks</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">geom_segment</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="s1">&#39;xend&#39;</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="s1">&#39;yend&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">ticks</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray50&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">COORDS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;PLOT_XMIN&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;PLOT_XMAX&#39;</span><span class="p">:</span> <span class="mi">620</span><span class="p">,</span> <span class="s1">&#39;PLOT_YMIN&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;PLOT_YMAX&#39;</span><span class="p">:</span> <span class="mi">420</span><span class="p">,</span>
+    <span class="s1">&#39;PANEL_XMIN&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">,</span> <span class="s1">&#39;PANEL_XMAX&#39;</span><span class="p">:</span> <span class="mi">506</span><span class="p">,</span> <span class="s1">&#39;PANEL_YMIN&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;PANEL_YMAX&#39;</span><span class="p">:</span> <span class="mi">304</span><span class="p">,</span>
+    <span class="s1">&#39;TITLE_YMIN&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;TITLE_YMAX&#39;</span><span class="p">:</span> <span class="mf">44.5</span><span class="p">,</span>
+    <span class="s1">&#39;SUBTITLE_YMIN&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;SUBTITLE_YMAX&#39;</span><span class="p">:</span> <span class="mf">78.5</span><span class="p">,</span>
+    <span class="s1">&#39;X_TITLE_YMIN&#39;</span><span class="p">:</span> <span class="mf">346.5</span><span class="p">,</span> <span class="s1">&#39;X_TITLE_YMAX&#39;</span><span class="p">:</span> <span class="mi">378</span><span class="p">,</span>
+    <span class="s1">&#39;Y_TITLE_XMIN&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;Y_TITLE_XMAX&#39;</span><span class="p">:</span> <span class="mf">44.5</span><span class="p">,</span>
+    <span class="s1">&#39;X_TEXT_XMIN&#39;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span> <span class="s1">&#39;X_TEXT_XMAX&#39;</span><span class="p">:</span> <span class="mi">498</span><span class="p">,</span> <span class="s1">&#39;X_TEXT_YMIN&#39;</span><span class="p">:</span> <span class="mi">320</span><span class="p">,</span> <span class="s1">&#39;X_TEXT_YMAX&#39;</span><span class="p">:</span> <span class="mi">334</span><span class="p">,</span>
+    <span class="s1">&#39;Y_TEXT_XMIN&#39;</span><span class="p">:</span> <span class="mi">56</span><span class="p">,</span> <span class="s1">&#39;Y_TEXT_XMAX&#39;</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span> <span class="s1">&#39;Y_TEXT_YMIN&#39;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span> <span class="s1">&#39;Y_TEXT_YMAX&#39;</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span>
+    <span class="s1">&#39;PLOT_INSET_XMIN&#39;</span><span class="p">:</span> <span class="mf">44.5</span><span class="p">,</span> <span class="s1">&#39;PLOT_INSET_XMAX&#39;</span><span class="p">:</span> <span class="mi">517</span><span class="p">,</span> <span class="s1">&#39;PLOT_INSET_YMIN&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;PLOT_INSET_YMAX&#39;</span><span class="p">:</span> <span class="mi">346</span><span class="p">,</span>
+    <span class="s1">&#39;CAPTION_YMIN&#39;</span><span class="p">:</span> <span class="mi">378</span><span class="p">,</span> <span class="s1">&#39;CAPTION_YMAX&#39;</span><span class="p">:</span> <span class="mi">410</span><span class="p">,</span>
+    <span class="s1">&#39;LEGEND_XMIN&#39;</span><span class="p">:</span> <span class="mi">532</span><span class="p">,</span> <span class="s1">&#39;LEGEND_XMAX&#39;</span><span class="p">:</span> <span class="mi">610</span><span class="p">,</span> <span class="s1">&#39;LEGEND_YMIN&#39;</span><span class="p">:</span> <span class="mi">137</span><span class="p">,</span> <span class="s1">&#39;LEGEND_YMAX&#39;</span><span class="p">:</span> <span class="mi">254</span><span class="p">,</span>
+    <span class="s1">&#39;LEGEND_SPACING_XMIN&#39;</span><span class="p">:</span> <span class="mi">518</span><span class="p">,</span> <span class="s1">&#39;LEGEND_SPACING_XMAX&#39;</span><span class="p">:</span> <span class="mi">532</span><span class="p">,</span>
+    <span class="s1">&#39;FRAME_XMIN&#39;</span><span class="p">:</span> <span class="mf">86.5</span><span class="p">,</span> <span class="s1">&#39;FRAME_XMAX&#39;</span><span class="p">:</span> <span class="mf">509.5</span><span class="p">,</span> <span class="s1">&#39;FRAME_YMIN&#39;</span><span class="p">:</span> <span class="mi">86</span><span class="p">,</span> <span class="s1">&#39;FRAME_YMAX&#39;</span><span class="p">:</span> <span class="mf">305.5</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">plotting_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_XMAX&#39;</span><span class="p">],</span>
+                             <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_YMAX&#39;</span><span class="p">],</span>
+                             <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                             <span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">plot_margin</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_XMAX&#39;</span><span class="p">],</span>
+                           <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_YMAX&#39;</span><span class="p">],</span>
+                           <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;plot_margin&#39;</span><span class="p">,</span>
+                           <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lemon_chiffon&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">title_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMAX&#39;</span><span class="p">],</span>
+                          <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;TITLE_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;TITLE_YMAX&#39;</span><span class="p">],</span>
+                          <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;TITLE&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;plot_title: margin&#39;</span><span class="p">,</span>
+                          <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;light_blue&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">subtitle_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMAX&#39;</span><span class="p">],</span>
+                             <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;SUBTITLE_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;SUBTITLE_YMAX&#39;</span><span class="p">],</span>
+                             <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;SUBTITLE&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;plot_subtitle: margin&#39;</span><span class="p">,</span>
+                             <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;light_green&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">y_title_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TITLE_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TITLE_XMAX&#39;</span><span class="p">],</span>
+                            <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_YMAX&#39;</span><span class="p">],</span>
+                            <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;Y-AXIS TITLE&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;axis_title_y: margin&#39;</span><span class="p">,</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;peach_puff&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;peach_puff&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">x_title_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMAX&#39;</span><span class="p">],</span>
+                            <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TITLE_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TITLE_YMAX&#39;</span><span class="p">],</span>
+                            <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;X-AXIS TITLE&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;axis_title_x: margin&#39;</span><span class="p">,</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;peach_puff&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;peach_puff&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">panel_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMAX&#39;</span><span class="p">],</span>
+                          <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_YMAX&#39;</span><span class="p">],</span>
+                          <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;PLOT</span><span class="se">\n</span><span class="s1">PANEL&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;panel_inset&#39;</span><span class="p">,</span>
+                          <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">y_text_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_XMAX&#39;</span><span class="p">],</span>
+                           <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_YMAX&#39;</span><span class="p">],</span>
+                           <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;y-axis labels&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                           <span class="n">pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_pink&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">y_text_area2</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_XMAX&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_XMAX&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">PAD</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;Y_TEXT_YMAX&#39;</span><span class="p">],</span>
+                            <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;axis_text_spacing_y&#39;</span><span class="p">,</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_pink&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">x_text_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_XMAX&#39;</span><span class="p">],</span>
+                           <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_YMAX&#39;</span><span class="p">],</span>
+                           <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;x-axis labels&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                           <span class="n">pad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_pink&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">x_text_area2</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_XMAX&#39;</span><span class="p">],</span>
+                            <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_YMIN&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">PAD</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;X_TEXT_YMAX&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">PAD</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span>
+                            <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;axis_text_spacing_x&#39;</span><span class="p">,</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;light_pink&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">caption_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PANEL_XMAX&#39;</span><span class="p">],</span>
+                            <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;CAPTION_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;CAPTION_YMAX&#39;</span><span class="p">],</span>
+                            <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;CAPTION&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;plot_caption: margin&#39;</span><span class="p">,</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;sky_blue&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;sky_blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">legend_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_XMAX&#39;</span><span class="p">],</span>
+                           <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_YMAX&#39;</span><span class="p">],</span>
+                           <span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;LEGEND&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                           <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">legend_spacing</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_SPACING_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_SPACING_XMAX&#39;</span><span class="p">],</span>
+                              <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;LEGEND_YMAX&#39;</span><span class="p">],</span>
+                              <span class="n">pad</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;legend_box_spacing&#39;</span><span class="p">,</span>
+                              <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray93&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray93&#39;</span><span class="p">)</span>
+
+<span class="n">plot_inset_area</span> <span class="o">=</span> <span class="n">labeled_rect</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_INSET_XMIN&#39;</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_INSET_XMAX&#39;</span><span class="p">],</span>
+                               <span class="n">ymin</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_INSET_YMIN&#39;</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_INSET_YMAX&#39;</span><span class="p">],</span>
+                               <span class="n">inner_text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">border_text</span><span class="o">=</span><span class="s1">&#39;plot_inset&#39;</span><span class="p">,</span>
+                               <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;plum&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="n">plot_margin</span> <span class="o">+</span> \
+<span class="n">plotting_area</span> <span class="o">+</span> \
+<span class="n">plot_inset_area</span> <span class="o">+</span> \
+<span class="n">title_area</span> <span class="o">+</span> \
+<span class="n">subtitle_area</span> <span class="o">+</span> \
+<span class="n">y_title_area</span> <span class="o">+</span> \
+<span class="n">y_text_area</span> <span class="o">+</span> <span class="n">y_text_area2</span> <span class="o">+</span> \
+<span class="n">x_title_area</span> <span class="o">+</span> \
+<span class="n">x_text_area</span> <span class="o">+</span> <span class="n">x_text_area2</span> <span class="o">+</span> \
+<span class="n">panel_area</span> <span class="o">+</span> \
+<span class="n">caption_area</span> <span class="o">+</span> \
+<span class="n">legend_spacing</span> <span class="o">+</span> \
+<span class="n">legend_area</span> <span class="o">+</span> \
+<span class="n">annotation_arrow</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">529</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">322</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="mi">306</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;axis tick area&#39;</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> \
+<span class="n">annotation_arrow</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">74</span><span class="p">,</span> <span class="n">xend</span><span class="o">=</span><span class="mi">86</span><span class="p">,</span> <span class="n">yend</span><span class="o">=</span><span class="mi">97</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;axis tick area&#39;</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> \
+<span class="n">theme_void</span><span class="p">()</span> <span class="o">+</span> \
+<span class="n">scale_y_reverse</span><span class="p">()</span> <span class="o">+</span> \
+<span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> \
+<span class="n">x_ticks</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> \
+<span class="n">y_ticks</span><span class="p">()</span> <span class="o">+</span> \
+<span class="n">ggsize</span><span class="p">(</span><span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_XMAX&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span><span class="p">,</span> <span class="n">COORDS</span><span class="p">[</span><span class="s1">&#39;PLOT_YMAX&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">SCALE_FACTOR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Ox76vF" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Ox76vF");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":[210.0,307.0,404.0,501.0,598.0,695.0,792.0,889.0,986.0],
+"y":[240.0,210.0,270.0,330.0,240.0,360.0,570.0,480.0,480.0]
+},
+"mapping":{
+"x":"x",
+"y":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"y"
+}]
+},
+"theme":{
+"name":"classic",
+"line":"blank",
+"axis":"blank"
+},
+"ggsize":{
+"width":1240.0,
+"height":840.0
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"y",
+"trans":"reverse"
+}],
+"layers":[{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":11.0,
+"xmax":1229.0,
+"ymin":11.0,
+"ymax":829.0,
+"size":8.0,
+"fill":"white",
+"color":"lemon_chiffon",
+"alpha":0.9,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":620.0,
+"y":420.0,
+"label":"",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1229.0,
+"y":15.5,
+"label":"plot_margin",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":1.0,
+"xmax":1239.0,
+"ymin":1.0,
+"ymax":839.0,
+"size":-2.0,
+"fill":"white",
+"color":"gold",
+"alpha":0.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":620.0,
+"y":420.0,
+"label":"",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1239.0,
+"y":0.5,
+"label":"",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":100.0,
+"xmax":1023.0,
+"ymin":169.0,
+"ymax":681.0,
+"size":8.0,
+"fill":"white",
+"color":"plum",
+"alpha":0.5,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":561.5,
+"y":425.0,
+"label":"",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1023.0,
+"y":173.5,
+"label":"plot_inset",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":187.0,
+"xmax":1001.0,
+"ymin":33.0,
+"ymax":78.0,
+"size":8.0,
+"fill":"light_blue",
+"color":"light_blue",
+"alpha":0.3,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":594.0,
+"y":55.5,
+"label":"TITLE",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1001.0,
+"y":37.5,
+"label":"plot_title: margin",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":187.0,
+"xmax":1001.0,
+"ymin":99.0,
+"ymax":146.0,
+"size":8.0,
+"fill":"light_green",
+"color":"light_green",
+"alpha":0.3,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":594.0,
+"y":122.5,
+"label":"SUBTITLE",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1001.0,
+"y":103.5,
+"label":"plot_subtitle: margin",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":33.0,
+"xmax":78.0,
+"ymin":191.0,
+"ymax":597.0,
+"size":8.0,
+"fill":"peach_puff",
+"color":"peach_puff",
+"alpha":0.2,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":55.5,
+"y":394.0,
+"label":"Y-AXIS TITLE",
+"angle":90.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":22.5,
+"y":191.0,
+"label":"axis_title_y: margin",
+"angle":90.0,
+"hjust":1.0,
+"vjust":1.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":112.0,
+"xmax":144.0,
+"ymin":196.0,
+"ymax":588.0,
+"size":-3.0,
+"fill":"pink",
+"color":"light_pink",
+"alpha":0.3,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":128.0,
+"y":392.0,
+"label":"y-axis labels",
+"angle":90.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":107.0,
+"y":196.0,
+"label":"",
+"angle":90.0,
+"hjust":1.0,
+"vjust":1.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":155.0,
+"xmax":157.0,
+"ymin":207.0,
+"ymax":577.0,
+"size":8.0,
+"fill":"pink",
+"color":"light_pink",
+"alpha":0.3,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":156.0,
+"y":392.0,
+"label":"",
+"angle":90.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":144.5,
+"y":207.0,
+"label":"axis_text_spacing_y",
+"angle":90.0,
+"hjust":1.0,
+"vjust":1.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":187.0,
+"xmax":1001.0,
+"ymin":704.0,
+"ymax":745.0,
+"size":8.0,
+"fill":"peach_puff",
+"color":"peach_puff",
+"alpha":0.2,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":594.0,
+"y":724.5,
+"label":"X-AXIS TITLE",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1001.0,
+"y":708.5,
+"label":"axis_title_x: margin",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":196.0,
+"xmax":996.0,
+"ymin":640.0,
+"ymax":668.0,
+"size":-3.0,
+"fill":"pink",
+"color":"light_pink",
+"alpha":0.3,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":596.0,
+"y":654.0,
+"label":"x-axis labels",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":996.0,
+"y":639.0,
+"label":"",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":207.0,
+"xmax":985.0,
+"ymin":627.0,
+"ymax":627.0,
+"size":8.0,
+"fill":"pink",
+"color":"light_pink",
+"alpha":0.3,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":596.0,
+"y":627.0,
+"label":"",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":985.0,
+"y":631.5,
+"label":"axis_text_spacing_x",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":187.0,
+"xmax":1001.0,
+"ymin":191.0,
+"ymax":597.0,
+"size":8.0,
+"fill":"gray",
+"color":"light_gray",
+"alpha":0.5,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":594.0,
+"y":394.0,
+"label":"PLOT\nPANEL",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1001.0,
+"y":195.5,
+"label":"panel_inset",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":187.0,
+"xmax":1001.0,
+"ymin":767.0,
+"ymax":809.0,
+"size":8.0,
+"fill":"sky_blue",
+"color":"sky_blue",
+"alpha":0.3,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":594.0,
+"y":788.0,
+"label":"CAPTION",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1001.0,
+"y":771.5,
+"label":"plot_caption: margin",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":1047.0,
+"xmax":1053.0,
+"ymin":285.0,
+"ymax":497.0,
+"size":8.0,
+"fill":"gray93",
+"color":"gray93",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1050.0,
+"y":391.0,
+"label":"",
+"angle":90.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1036.5,
+"y":285.0,
+"label":"legend_box_spacing",
+"angle":90.0,
+"hjust":1.0,
+"vjust":1.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"rect",
+"mapping":{
+},
+"data_meta":{
+},
+"xmin":1065.0,
+"xmax":1219.0,
+"ymin":275.0,
+"ymax":507.0,
+"size":-2.0,
+"fill":"chocolate",
+"color":"chocolate",
+"alpha":0.1,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1142.0,
+"y":391.0,
+"label":"LEGEND",
+"angle":0.0,
+"color":"darkgray",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1219.0,
+"y":274.5,
+"label":"",
+"angle":0.0,
+"hjust":1.0,
+"vjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"arrow":{
+"name":"arrow",
+"angle":20.0,
+"length":8.0,
+"ends":"last",
+"type":"open"
+},
+"x":1058.0,
+"y":644.0,
+"xend":1000.0,
+"yend":612.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1042.0,
+"y":652.0,
+"label":"axis tick area",
+"hjust":0.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"arrow":{
+"name":"arrow",
+"angle":20.0,
+"length":8.0,
+"ends":"last",
+"type":"open"
+},
+"x":150.0,
+"y":148.0,
+"xend":172.0,
+"yend":194.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":174.0,
+"y":138.0,
+"label":"axis tick area",
+"hjust":1.0,
+"family":"Courier",
+"color":"black",
+"data":{
+}
+},{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"dodgerblue",
+"alpha":1.0,
+"data":{
+}
+},{
+"geom":"line",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"dodgerblue",
+"alpha":1.0,
+"data":{
+}
+},{
+"geom":"segment",
+"data":{
+"x":[210.0,307.0,404.0,501.0,598.0,695.0,792.0,889.0,986.0],
+"xend":[210.0,307.0,404.0,501.0,598.0,695.0,792.0,889.0,986.0],
+"y":[608.0,608.0,608.0,608.0,608.0,608.0,608.0,608.0,608.0],
+"yend":[616.0,616.0,616.0,616.0,616.0,616.0,616.0,616.0,616.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"xend":"xend",
+"yend":"yend"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"xend"
+},{
+"type":"int",
+"column":"y"
+},{
+"type":"int",
+"column":"yend"
+}]
+},
+"color":"gray50",
+"size":1.0
+},{
+"geom":"segment",
+"data":{
+"y":[208.0,281.2,354.4,427.6,500.8,574.0],
+"yend":[208.0,281.2,354.4,427.6,500.8,574.0],
+"x":[168.0,168.0,168.0,168.0,168.0,168.0],
+"xend":[176.0,176.0,176.0,176.0,176.0,176.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"xend":"xend",
+"yend":"yend"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"y"
+},{
+"type":"float",
+"column":"yend"
+},{
+"type":"int",
+"column":"x"
+},{
+"type":"int",
+"column":"xend"
+}]
+},
+"color":"gray50",
+"size":1.0
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

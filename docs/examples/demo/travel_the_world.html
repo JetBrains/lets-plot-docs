@@ -1,0 +1,1088 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Tourist Cities" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/demo/travel_the_world.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+
+    <title>Tourist Cities</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/demo/travel_the_world';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.8.2</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/demo/travel_the_world.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tourist-cities">
+<h1>Tourist Cities<a class="headerlink" href="#tourist-cities" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot.geo_data</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The geodata is provided by © OpenStreetMap contributors and is made available here under the Open Database License (ODbL).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="3V1Mgs"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("3V1Mgs").appendChild(div);
+                };
+                var e = document.getElementById("3V1Mgs");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cities</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/master/data/cities.csv&quot;</span><span class="p">)</span>
+<span class="n">cities</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>name</th>
+      <th>link</th>
+      <th>coutry_id</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Algiers</td>
+      <td>/wiki/Algiers</td>
+      <td>1</td>
+      <td>36.776389</td>
+      <td>3.058611</td>
+      <td>— with nearly 3 million inhabitants, Algiers ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Annaba</td>
+      <td>/wiki/Annaba</td>
+      <td>1</td>
+      <td>36.900000</td>
+      <td>7.766667</td>
+      <td>— a town with 200,000 inhabitants in the east...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Batna</td>
+      <td>/wiki/Batna</td>
+      <td>1</td>
+      <td>35.550000</td>
+      <td>6.166667</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Bechar</td>
+      <td>/wiki/Bechar</td>
+      <td>1</td>
+      <td>31.633333</td>
+      <td>-2.200000</td>
+      <td>— small city in the Sahara, not far from the ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Constantine</td>
+      <td>/wiki/Constantine</td>
+      <td>1</td>
+      <td>36.365000</td>
+      <td>6.614722</td>
+      <td>- Algeria's 3rd largest city with a canyon go...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">czech_cities</span> <span class="o">=</span> <span class="n">cities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cities</span><span class="p">[</span><span class="s1">&#39;coutry_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">144</span><span class="p">]</span>
+<span class="n">czech_cities</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>name</th>
+      <th>link</th>
+      <th>coutry_id</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1044</th>
+      <td>0</td>
+      <td>Prague</td>
+      <td>/wiki/Prague</td>
+      <td>144</td>
+      <td>50.083333</td>
+      <td>14.416667</td>
+      <td>() — the capital and largest city of the Czec...</td>
+    </tr>
+    <tr>
+      <th>1045</th>
+      <td>1</td>
+      <td>Brno</td>
+      <td>/wiki/Brno</td>
+      <td>144</td>
+      <td>49.200000</td>
+      <td>16.616667</td>
+      <td>— the largest city in Moravia and its former ...</td>
+    </tr>
+    <tr>
+      <th>1046</th>
+      <td>2</td>
+      <td>České Budějovice</td>
+      <td>/wiki/%C4%8Cesk%C3%A9_Bud%C4%9Bjovice</td>
+      <td>144</td>
+      <td>48.974722</td>
+      <td>14.474722</td>
+      <td>– attractive large city in South Bohemia</td>
+    </tr>
+    <tr>
+      <th>1047</th>
+      <td>3</td>
+      <td>Český Krumlov</td>
+      <td>/wiki/%C4%8Cesk%C3%BD_Krumlov</td>
+      <td>144</td>
+      <td>48.816667</td>
+      <td>14.316667</td>
+      <td>— beautiful old town in South Bohemia with th...</td>
+    </tr>
+    <tr>
+      <th>1048</th>
+      <td>4</td>
+      <td>Karlovy Vary</td>
+      <td>/wiki/Karlovy_Vary</td>
+      <td>144</td>
+      <td>50.233333</td>
+      <td>12.866667</td>
+      <td>() — historic (and biggest Czech) spa resort,...</td>
+    </tr>
+    <tr>
+      <th>1049</th>
+      <td>5</td>
+      <td>Kutná Hora</td>
+      <td>/wiki/Kutn%C3%A1_Hora</td>
+      <td>144</td>
+      <td>49.950000</td>
+      <td>15.266667</td>
+      <td>— historical town with famous Saint Barbara c...</td>
+    </tr>
+    <tr>
+      <th>1050</th>
+      <td>6</td>
+      <td>Olomouc</td>
+      <td>/wiki/Olomouc</td>
+      <td>144</td>
+      <td>49.600000</td>
+      <td>17.250000</td>
+      <td>( or ) — riverside university town with a tho...</td>
+    </tr>
+    <tr>
+      <th>1051</th>
+      <td>7</td>
+      <td>Ostrava</td>
+      <td>/wiki/Ostrava</td>
+      <td>144</td>
+      <td>49.835556</td>
+      <td>18.292500</td>
+      <td>— a vibrant local subculture and long history...</td>
+    </tr>
+    <tr>
+      <th>1052</th>
+      <td>8</td>
+      <td>Pilsen</td>
+      <td>/wiki/Pilsen</td>
+      <td>144</td>
+      <td>49.747500</td>
+      <td>13.377500</td>
+      <td>() — home of the original Pilsner Urquell bee...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_gcoder</span> <span class="o">=</span> <span class="n">geocode_countries</span><span class="p">([</span><span class="s1">&#39;Czech&#39;</span><span class="p">])</span>
+<span class="n">country_gcoder</span><span class="o">.</span><span class="n">get_geocodes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>country</th>
+      <th>found name</th>
+      <th>centroid</th>
+      <th>position</th>
+      <th>limit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>51684</td>
+      <td>Czech</td>
+      <td>Czech Republic</td>
+      <td>[15.5282667270321, 49.8037022352219]</td>
+      <td>[12.0905895531178, 48.5518079996109, 18.859253...</td>
+      <td>[12.0905895531178, 48.5518079996109, 18.859253...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Automatic word wrap:</span>
+<span class="c1"># the value string is limited by the number of characters in it,</span>
+<span class="c1"># and description will be split into multiple lines.</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">()</span>
+ <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">15.78</span><span class="p">,</span><span class="mf">49.35</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_polygon</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">),</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">country_gcoder</span><span class="o">.</span><span class="n">inc_res</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">get_boundaries</span><span class="p">(),</span> 
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+ <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">),</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">czech_cities</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+                <span class="n">tooltips</span><span class="o">=</span><span class="n">layer_tooltips</span><span class="p">()</span>
+                    <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;@name&#39;</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;Longitude|@longitude&#39;</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;Latitude|@latitude&#39;</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;Description|@text&#39;</span><span class="p">))</span>
+ <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="Ntrp7E" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Ntrp7E");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"theme":{
+"legend_position":"none"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"location":{
+"type":"coordinates",
+"data":[15.78,49.35]
+},
+"zoom":6.0,
+"tiles":{
+"kind":"vector_lets_plot",
+"url":"wss://tiles.datalore.jetbrains.com",
+"theme":"color",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a>."
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"data":{
+}
+},{
+"geom":"polygon",
+"data":{
+"country":["Czech"],
+"geometry":["{\"type\": \"MultiPolygon\", \"coordinates\": [[[[16.940195113, 48.616540432], [16.918757558, 48.622427881], [16.923283786, 48.669719249], [16.902025938, 48.71797353], [16.800339371, 48.705900908], [16.724748015, 48.738031089], [16.682589054, 48.727787733], [16.663746536, 48.781008124], [16.593587995, 48.782667071], [16.5407525, 48.814282268], [16.518639028, 48.798243999], [16.460414976, 48.809025139], [16.435002387, 48.765628338], [16.378001422, 48.728466332], [16.342822909, 48.745617718], [16.329887956, 48.7312451], [16.102691442, 48.745417893], [15.994365066, 48.779335767], [15.949629843, 48.805249929], [15.958381891, 48.823059797], [15.893241763, 48.83463487], [15.897656679, 48.848355711], [15.842746496, 48.859604895], [15.841543525, 48.877125084], [15.779533535, 48.874882758], [15.753663629, 48.852173835], [15.68968758, 48.855675459], [15.612435937, 48.898254186], [15.513390005, 48.914122134], [15.468489826, 48.9518179], [15.278873742, 48.994659483], [15.26161775, 48.953648508], [15.16024366, 48.94169122], [15.169785619, 48.962254375], [15.156271309, 48.993291557], [15.06484285, 48.999586701], [15.06542623, 49.014220834], [15.020972639, 49.020525366], [14.990439713, 49.009654373], [14.997822493, 48.991962522], [14.976194501, 48.971006423], [14.992918074, 48.90371114], [14.972938299, 48.87465477], [14.984524101, 48.842390478], [14.968283325, 48.836842328], [14.953256249, 48.789784312], [14.979500324, 48.772261441], [14.955792278, 48.758084625], [14.881292582, 48.780109584], [14.808661044, 48.778802007], [14.808132648, 48.733883053], [14.726967663, 48.687069118], [14.712340236, 48.650097549], [14.72113654, 48.602378368], [14.701261371, 48.582611829], [14.663458318, 48.581958711], [14.610473961, 48.628106117], [14.562056065, 48.603329211], [14.503290206, 48.617366552], [14.469871223, 48.648493588], [14.443759918, 48.643429577], [14.456048459, 48.625139594], [14.43141371, 48.589130938], [14.386242628, 48.592672795], [14.388081282, 48.571880311], [14.357671738, 48.574647009], [14.333234131, 48.551808], [14.271544665, 48.58137399], [14.066963196, 48.594858795], [14.068994969, 48.606974334], [14.042148739, 48.612865806], [14.048134089, 48.627367169], [14.010557681, 48.639654368], [14.053523988, 48.652925938], [14.059466422, 48.67382437], [13.839552104, 48.771617711], [13.80338788, 48.780823052], [13.815228492, 48.797087967], [13.792915195, 48.830049634], [13.764428794, 48.834471256], [13.737937957, 48.886011243], [13.675937355, 48.878733069], [13.655474782, 48.893573731], [13.628603071, 48.949242979], [13.610246032, 48.938622773], [13.583902717, 48.969208002], [13.529276848, 48.974048048], [13.507073522, 48.969111443], [13.508276492, 48.942136467], [13.495774716, 48.941487372], [13.402724862, 48.987225741], [13.397372514, 49.050664008], [13.289182931, 49.11863789], [13.236056417, 49.113720059], [13.182777017, 49.134488404], [13.170896173, 49.173623174], [13.109886646, 49.203131497], [13.114175498, 49.218257815], [13.080816865, 49.247406721], [13.033984154, 49.263926446], [13.029114604, 49.304325879], [12.945284843, 49.343795925], [12.880011946, 49.350403547], [12.886846215, 49.33235094], [12.78578192, 49.345458895], [12.757668346, 49.394799471], [12.655552626, 49.434796572], [12.633648366, 49.476149529], [12.644196153, 49.522963464], [12.588551044, 49.538485408], [12.560743243, 49.619604796], [12.528103441, 49.618098736], [12.521986663, 49.686441422], [12.442451119, 49.703818113], [12.400555015, 49.753801078], [12.472650111, 49.786106944], [12.473057806, 49.833669215], [12.49797821, 49.837524891], [12.497862875, 49.856934696], [12.550029159, 49.901538491], [12.547674179, 49.920493662], [12.474929988, 49.93852213], [12.499558032, 49.97204572], [12.489958405, 49.981599748], [12.46073842, 49.994874001], [12.431480885, 49.984391928], [12.431651205, 50.00251025], [12.325872928, 50.032831281], [12.31727913, 50.053368956], [12.261623293, 50.058120489], [12.275411189, 50.076473504], [12.200802863, 50.108696222], [12.195160836, 50.143166631], [12.215969414, 50.168203712], [12.15107739, 50.235716254], [12.092429549, 50.249607414], [12.140060216, 50.277833641], [12.100804746, 50.318031907], [12.184606344, 50.322222859], [12.200947702, 50.308949947], [12.201324552, 50.272839367], [12.253843546, 50.270977914], [12.265940309, 50.250181407], [12.239476293, 50.246156752], [12.29390502, 50.221036524], [12.274653465, 50.196550637], [12.289362699, 50.176894069], [12.335355878, 50.171970874], [12.323473692, 50.182018429], [12.338314354, 50.192288607], [12.323366404, 50.2071172], [12.331293672, 50.242449939], [12.359228879, 50.242129415], [12.352585047, 50.262657702], [12.399628311, 50.293664038], [12.398381084, 50.321428925], [12.489548028, 50.349795967], [12.486384362, 50.370786935], [12.512031645, 50.397258997], [12.67327264, 50.416804254], [12.707118094, 50.397120863], [12.734656334, 50.432399958], [12.794855833, 50.449430645], [12.810498476, 50.430897921], [12.819035947, 50.46029225], [12.948093116, 50.404251516], [13.01986903, 50.446556658], [13.03164795, 50.509744138], [13.085297495, 50.500220954], [13.132567406, 50.518620908], [13.195292205, 50.503241122], [13.248353004, 50.592073202], [13.323153108, 50.581089556], [13.324790597, 50.608445406], [13.377297521, 50.627253056], [13.371051997, 50.65081358], [13.464859575, 50.601778775], [13.524275869, 50.638985038], [13.512787968, 50.653766692], [13.544373661, 50.677548498], [13.525244147, 50.704386681], [13.551918715, 50.713740885], [13.602735847, 50.710153431], [13.664672077, 50.732084513], [13.70669961, 50.716687292], [13.758307993, 50.735824853], [13.854941279, 50.726953447], [13.861992806, 50.742797256], [13.898796737, 50.745134801], [13.887341022, 50.77007398], [13.90077889, 50.793379694], [13.938985616, 50.789927691], [13.990738839, 50.820004642], [14.029925913, 50.804256052], [14.078459144, 50.812478364], [14.223499596, 50.859085768], [14.233366102, 50.887598991], [14.26743418, 50.895313025], [14.304751754, 50.883927047], [14.38813895, 50.899273306], [14.396982193, 50.936378986], [14.311442524, 50.954009145], [14.302571118, 50.96525833], [14.32818085, 50.973097086], [14.323477596, 50.985390991], [14.258678108, 50.98753944], [14.286374599, 51.027489603], [14.273854047, 51.039799601], [14.302093685, 51.055096239], [14.408567995, 51.018784493], [14.453828931, 51.035943925], [14.492716938, 51.023412645], [14.500164092, 51.046552062], [14.498599023, 51.022090316], [14.5347552, 51.003742665], [14.56455186, 51.010167897], [14.60065037, 50.979413688], [14.564360082, 50.918574482], [14.652282894, 50.925914347], [14.618917555, 50.857758075], [14.708603919, 50.840779692], [14.722344875, 50.822061896], [14.79289636, 50.819959044], [14.823359549, 50.870568305], [15.001926273, 50.868777931], [15.006817281, 50.907224715], [14.989454001, 50.921641588], [15.021711588, 50.967071503], [15.0059174, 50.986559093], [14.968243092, 50.990012437], [14.985415936, 51.010841131], [15.061001927, 51.022897661], [15.128999949, 50.990127772], [15.171845555, 51.020030379], [15.179851949, 50.983015895], [15.236563236, 50.998669267], [15.248450786, 50.979673862], [15.27407527, 50.979546458], [15.292241871, 50.952639878], [15.267848521, 50.932497829], [15.277069956, 50.891020149], [15.367523432, 50.837695152], [15.374761373, 50.777620375], [15.439525992, 50.809055865], [15.524309278, 50.777000785], [15.603658408, 50.776308775], [15.705708414, 50.737254471], [15.816193968, 50.755320489], [15.860962719, 50.674449205], [15.990905017, 50.683411807], [16.021766514, 50.630173981], [15.986439139, 50.613482594], [16.024832278, 50.598623157], [16.056080014, 50.609703362], [16.067590714, 50.639757514], [16.103678495, 50.663360953], [16.184168905, 50.627204776], [16.217355877, 50.633345693], [16.234813035, 50.671569854], [16.343080401, 50.661508888], [16.444906443, 50.579570085], [16.404645145, 50.569271743], [16.410932243, 50.547898561], [16.387393177, 50.541982949], [16.401781887, 50.529887527], [16.360355169, 50.501225442], [16.311528236, 50.506132543], [16.294096559, 50.479195118], [16.258706152, 50.480175465], [16.220376045, 50.457886308], [16.231882721, 50.44347614], [16.212958395, 50.451703817], [16.19571045, 50.432131737], [16.214468479, 50.409103632], [16.252921969, 50.405642241], [16.278632283, 50.367443562], [16.304684579, 50.382594019], [16.360659599, 50.379548371], [16.383229047, 50.328814387], [16.431298256, 50.324699879], [16.557293683, 50.220450461], [16.557830125, 50.17058149], [16.580079049, 50.142416954], [16.689307988, 50.098467618], [16.781719476, 50.144368261], [16.809904128, 50.189339519], [16.846910566, 50.207279474], [16.875391603, 50.19764632], [16.898642331, 50.222657919], [16.955953091, 50.22252515], [16.975919455, 50.244815648], [16.998541206, 50.215881318], [17.028312385, 50.229989737], [17.001550645, 50.256396085], [17.020044476, 50.278261453], [17.002636939, 50.30211702], [16.946138889, 50.31538859], [16.910969764, 50.389035344], [16.860321611, 50.407749116], [16.898498833, 50.447715372], [16.974009722, 50.417755097], [16.99829042, 50.427750349], [17.110747397, 50.404962301], [17.143329531, 50.380420089], [17.203264832, 50.3863585], [17.201141864, 50.364015698], [17.28205204, 50.319005549], [17.348662019, 50.328350365], [17.337734699, 50.283472985], [17.350831926, 50.26372388], [17.386202216, 50.282878876], [17.420671284, 50.277423263], [17.438231707, 50.251661986], [17.495589405, 50.2750884], [17.59188205, 50.278953463], [17.612093836, 50.266007781], [17.685994059, 50.299053937], [17.686920762, 50.327976197], [17.713032067, 50.322559476], [17.752046138, 50.299520642], [17.724946439, 50.256750137], [17.764970362, 50.236390829], [17.758456618, 50.20657137], [17.592684031, 50.159976035], [17.650342137, 50.11080578], [17.676657289, 50.10302335], [17.696835548, 50.116993636], [17.730876803, 50.097161382], [17.777344733, 50.020300001], [17.827688456, 50.011305213], [17.82637015, 49.994007647], [17.868496925, 49.972489625], [17.918567061, 49.977966696], [18.004633784, 50.018360764], [18.045461029, 50.005126745], [18.044378757, 50.036606491], [18.00407052, 50.038993657], [18.033602983, 50.066020936], [18.089358062, 50.044119358], [18.116971403, 49.994153827], [18.153835684, 49.982370883], [18.173128814, 50.000290722], [18.206569254, 49.997937083], [18.21428597, 49.972006828], [18.27630803, 49.964636117], [18.279207498, 49.9400644], [18.317946643, 49.915677756], [18.35002318, 49.929598421], [18.332957625, 49.949386418], [18.430752307, 49.938161373], [18.523664027, 49.899494648], [18.547075689, 49.9091506], [18.539380431, 49.925685078], [18.572908044, 49.921621531], [18.569586128, 49.873443693], [18.605727553, 49.861599058], [18.568922281, 49.829200655], [18.629212976, 49.747092873], [18.625216484, 49.722383022], [18.709557205, 49.704492688], [18.74097392, 49.67654407], [18.806949556, 49.676782787], [18.837210238, 49.563062489], [18.859253973, 49.550586194], [18.837233037, 49.523635358], [18.850906938, 49.517148435], [18.754481524, 49.488381743], [18.677825332, 49.507627934], [18.552906811, 49.503127187], [18.534502834, 49.489839524], [18.54795143, 49.467861503], [18.475691378, 49.408545792], [18.403660655, 49.396691769], [18.415566981, 49.367549568], [18.378918618, 49.330545813], [18.184025288, 49.286996126], [18.184264004, 49.269832671], [18.146971911, 49.247929752], [18.15491125, 49.216150939], [18.130843788, 49.188791066], [18.136713803, 49.161019474], [18.106749505, 49.134186655], [18.122208416, 49.118004888], [18.095472157, 49.059244394], [18.057123274, 49.028504938], [17.924313694, 49.019960761], [17.885310352, 48.927676678], [17.781318426, 48.92527476], [17.703335881, 48.860021979], [17.632981539, 48.854889572], [17.528482676, 48.812160641], [17.519061416, 48.829298615], [17.509805113, 48.819599748], [17.453180999, 48.846724927], [17.396854609, 48.813323379], [17.361320704, 48.813516498], [17.321665585, 48.845297992], [17.192279845, 48.874699026], [17.110856026, 48.831193596], [17.088659406, 48.785514235], [17.043287158, 48.76425907], [16.940195113, 48.616540432]]]]}"]
+},
+"mapping":{
+"fill":"country"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"country"
+},{
+"type":"str",
+"column":"found name"
+},{
+"type":"unknown(pandas:unknown-array)",
+"column":"geometry"
+}],
+"geodataframe":{
+"geometry":"geometry"
+}
+},
+"alpha":0.2
+},{
+"geom":"point",
+"data":{
+"name":["Prague","Brno","České Budějovice","Český Krumlov","Karlovy Vary","Kutná Hora","Olomouc","Ostrava","Pilsen"],
+"latitude":[50.083333,49.2,48.974722,48.816667,50.233333,49.95,49.6,49.835556,49.7475],
+"longitude":[14.416667,16.616667,14.474722,14.316667,12.866667,15.266667,17.25,18.2925,13.3775],
+"text":[" () — the capital and largest city of the Czech Republic with a large and beautiful historic centre"," — the largest city in Moravia and its former capital, it offers several excellent museums, annual Moto GP Grand Prix, annual international fireworks festival Ignis Brunensis, a large historical centre, the second-largest ossuary in Europe (after the Catacombs of Paris), one of the biggest exhibition centres in the Europe, the oldest theatre building in Central Europe, and many other things."," – attractive large city in South Bohemia"," — beautiful old town in South Bohemia with the country's second biggest chateau"," () — historic (and biggest Czech) spa resort, especially popular with German and Russian tourist groups"," — historical town with famous Saint Barbara cathedral, old silver mines and the Chapel of All Saints, which is decorated with thousands of human bones"," ( or ) — riverside university town with a thousand-year history and the second-largest historical centre in the Czech Republic"," — a vibrant local subculture and long history of coal mining and heavy industry"," () — home of the original Pilsner Urquell beer, and the largest city in West Bohemia"]
+},
+"mapping":{
+"x":"longitude",
+"y":"latitude",
+"color":"name"
+},
+"tooltips":{
+"formats":[],
+"lines":["Longitude|@longitude","Latitude|@latitude","Description|@text"],
+"title":"@name"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"name"
+},{
+"type":"str",
+"column":"link"
+},{
+"type":"int",
+"column":"coutry_id"
+},{
+"type":"float",
+"column":"latitude"
+},{
+"type":"float",
+"column":"longitude"
+},{
+"type":"str",
+"column":"text"
+}]
+},
+"size":4.0
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -33,6 +33,7 @@ extensions = [
     "sphinx.ext.githubpages",
     # installed extensions
     "jupyter_sphinx",
+    "myst_nb",
     "notfound.extension",
     "numpydoc",
     "sphinxext.opengraph",
@@ -40,9 +41,12 @@ extensions = [
     "sphinx_design",
     "sphinx_reredirects",
     # custom extensions
+    "copy_notebooks",
     "create_cname",
     "create_sitemap",
+    "execute_notebooks",
     "extref",
+    "orphan_notebooks",
     "seo_meta",
     "switch_lets_plot",
 ]
@@ -52,7 +56,12 @@ extensions = [
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = [
+    "examples/issue/**",
+    "examples/service/**",
+    "examples/test/**",
+    "kotlin_examples/**",
+]
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -63,6 +72,10 @@ import lets_plot
 version = lets_plot.__version__
 # The full version, including alpha/beta/rc tags.
 release = lets_plot.__version__
+
+# The suffix to append to source links.
+# Default is '.txt'.
+html_sourcelink_suffix = ""
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -93,6 +106,11 @@ html_sidebars = {
     # Default to no sidebar
     '**': [],
 }
+
+# A list of warning codes to suppress arbitrary warning messages.
+suppress_warnings = [
+    "myst.header",
+]
 
 
 # ----------------------------------------------------------------------------
@@ -150,7 +168,7 @@ html_theme_options = {
     "show_prev_next": False,
     "navbar_start": ["navbar-logo", "navbar-version"],
     "navbar_end": ["theme-switcher", "navbar-icon-links"],
-    "article_header_start": [],
+    "article_header_start": ["download-notebook"],
     "footer_start": ["copyright"],
     "footer_center": ["sphinx-and-theme-version"],
     "footer_end": ["terms"],
@@ -159,6 +177,14 @@ html_theme_options = {
         "index": [],
     },
 }
+
+# -- MyST-NB extension -------------------------------------------------------
+
+nb_execution_mode = "off"
+nb_execution_excludepatterns = [
+    "examples/cookbook/lets_plot_cheatbook.ipynb",
+    "examples/demo/nyc_metro.ipynb",
+]
 
 # -- Not found (404) extension -----------------------------------------------
 
@@ -204,6 +230,15 @@ redirect_html_template_file = "_templates/redirect.html.template"
 # -- CNAME generator (extension) ---------------------------------------------
 
 cname_url = "lets-plot.org"
+
+# -- Execute notebooks (extension) -------------------------------------------
+
+execute_notebooks = True
+execute_notebooks_fail_on_error = True
+execute_notebooks_exclude = [
+    "examples/demo/nyc_metro.ipynb",
+    "kotlin_examples/**",
+]
 
 # -- Examples references manager (extension) ---------------------------------
 
