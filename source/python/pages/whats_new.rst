@@ -130,7 +130,7 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
   :target: https://lets-plot.org/examples/demo/theme_legend_scheme.html
 
 
-Change Log
-----------
+Changelog
+---------
 
 See `CHANGELOG.md <https://github.com/JetBrains/lets-plot/blob/master/CHANGELOG.md>`__ for other changes and fixes.
