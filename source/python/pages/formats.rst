@@ -154,8 +154,8 @@ The number format can be used in a template to create a string with variable sub
 The string template contains "replacement fields" surrounded by curly braces ``{}``. 
 Anything that is not contained in braces is considered literal text, which is copied unchanged to the result string. 
 If you need to include a brace character in the literal text, it can be escaped by doubling: {{ and }}.
-This approach is used in functions :py:mod:`layer_tooltips() <lets_plot.layer_tooltips>` and
-:py:mod:`layer_labels() <lets_plot.layer_labels>` to customize the content of tooltips and annotations.
+This approach is used in functions :py:mod:`layer_tooltips() <lets_plot.layer_tooltips>`,
+:py:mod:`layer_labels() <lets_plot.layer_labels>` and :py:mod:`smooth_labels() <lets_plot.smooth_labels>` to customize the content of tooltips and annotations.
 
 See: :doc:`Tooltip Customization in Lets-Plot </python/pages/tooltips>` and :doc:`Annotating Charts in Lets-Plot </python/pages/annotations>`.
 
@@ -291,7 +291,7 @@ To format the axis tooltips, follow the rules:
 Annotating Charts
 -----------------
 
-In the same way you can use formatting for annotation pies and bar charts using the :py:meth:`format() <lets_plot.layer_labels.format>` method, see: :doc:`Annotating Charts</python/pages/annotations>`.
+Use formatting in annotation labels and templates (e.g., via :py:meth:`format() <lets_plot.layer_labels.format>`); see: :doc:`Annotating Charts</python/pages/annotations>`.
 
 
 .. _formats_demo_notebooks:
