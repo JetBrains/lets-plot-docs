@@ -21,9 +21,9 @@ Lets-Plot provides several ways to annotate charts:
   ``labels`` parameter. Pass the result of the :py:meth:`layer_labels() <lets_plot.layer_labels>`
   call to configure the label content and layout.
 
-  |learn_more|.
+  |learn_more-annotations|.
 
-.. |learn_more| extref:: annotations_page
+.. |learn_more-annotations| extref:: annotations_page
     :type: text
     :text: Learn more (reference notebook)
 
@@ -33,11 +33,23 @@ Lets-Plot provides several ways to annotate charts:
   and a fitted model equation). ``smooth_labels`` extends ``layer_labels``, so formatting and text
   template helpers work the same way.
 
+  |learn_more-smooth_annotations|.
+
+.. |learn_more-smooth_annotations| extref:: smooth_summary
+    :type: text
+    :text: Learn more (reference notebook)
+
 - **Bracket annotations.**
   Use :py:mod:`geom_bracket() <lets_plot.geom_bracket>` to add labeled brackets highlighting
   relationships between categories or marking an interval.
   Use :py:mod:`geom_bracket_dodge() <lets_plot.geom_bracket_dodge>` to draw brackets that connect
   *dodged* groups within each category (e.g., comparisons inside grouped boxplots/bars).
+
+  |learn_more-brackets|.
+
+.. |learn_more-brackets| extref:: geom_bracket
+    :type: text
+    :text: Learn more (reference notebook)
 
 See also the :doc:`formatting reference </python/pages/formats>` to learn how to format numeric and date-time values in annotations.
 

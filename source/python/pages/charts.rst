@@ -205,6 +205,10 @@ Cookbooks:
 - .. extref:: discrete_color_scales
       :type: text
       :text: Using scales
+- .. extref:: scale_color_palette
+      :type: text
+- .. extref:: scale_brewer_overflow
+      :type: text
 - .. extref:: colors_viridis
       :type: text
       :text: Viridis colors
@@ -434,6 +438,8 @@ Cookbooks:
       :type: text
 - .. extref:: time_date_datetime
       :type: text
+- .. extref:: scale_break_width_datetime
+      :type: text
 
 Demos:
 
@@ -470,6 +476,8 @@ Cookbooks:
 - .. extref:: image_fisher_boat
       :type: text
       :text: "Fisher boat": 'geom_imshow()' and 'geom_raster()'
+- .. extref:: image_custom_cmap
+      :type: text
 - .. extref:: ivindo_river
       :type: text
 - .. extref:: map_use_crs
@@ -621,6 +629,8 @@ Cookbooks:
       :type: text
 - .. extref:: gggrid_scale_share
       :type: text
+- .. extref:: gggrid_scale_share_zoom
+      :type: text
 - .. extref:: gggrid_legend_collect
       :type: text
 
@@ -651,6 +661,8 @@ Demos:
 Cookbooks:
 
 - .. extref:: themes
+      :type: text
+- .. extref:: plot_tags
       :type: text
 - .. extref:: named_system_colors
       :type: text
