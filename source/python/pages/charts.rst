@@ -151,6 +151,8 @@ Cookbooks:
       :type: text
 - .. extref:: position_nudge_unit
       :type: text
+- .. extref:: scale_break_width_log10
+      :type: text
 
 Demos:
 
