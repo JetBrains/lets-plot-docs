@@ -423,6 +423,8 @@ Cookbooks:
 
 *Lets-Plot* handles all temporal data types through a unified "datetime" scale (excluding duration/timedelta types, which are handled by the "time" scale). This is in contrast to R's ggplot2, which provides separate "date", "time", and "datetime" scales.
 
+Use ``break_width`` in datetime and duration scales to control the axis break interval using human-readable strings like ``"3 months"`` or ``"2 hours"``.
+
 **Supported temporal data types**:
 
 - Python ``time`` objects (time of day)
@@ -439,6 +441,8 @@ Cookbooks:
 - .. extref:: time_date_datetime
       :type: text
 - .. extref:: scale_break_width_datetime
+      :type: text
+- .. extref:: scale_break_width_duration
       :type: text
 
 Demos:
