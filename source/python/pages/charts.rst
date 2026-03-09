@@ -642,6 +642,18 @@ Demos:
       :type: text
 
 
+Plot Tags
+~~~~~~~~~
+
+Plot tags are short labels attached to subplots and composite figures (panel labels, figure numbering).
+Specify them via ``labs(tag=...)`` and tune placement/style with ``plot_tag*`` in :py:mod:`theme() <lets_plot.theme>`.
+
+Cookbooks:
+
+- .. extref:: plot_tags
+      :type: text
+
+
 |l21| |d21| Presentation Options
 --------------------------------
 
@@ -661,8 +673,6 @@ Demos:
 Cookbooks:
 
 - .. extref:: themes
-      :type: text
-- .. extref:: plot_tags
       :type: text
 - .. extref:: named_system_colors
       :type: text
