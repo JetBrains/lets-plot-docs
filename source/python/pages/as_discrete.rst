@@ -21,13 +21,13 @@ In data analysis and visualization, discrete data commonly appears as categorica
 
 When visualizing Pandas series in *Lets-Plot*, ordinal data can be represented using `Pandas Categorical <https://pandas.pydata.org/docs/user_guide/categorical.html>`__ type with the ordered parameter set to ``True`` and a specified category order. *Lets-Plot* will respect this ordering in the resulting visualizations.
 
-Alternatively, *Lets-Plot* provides the :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function, which offers similar capabilities for any data type, not limited to Pandas DataFrames. This function allows for flexible manipulation of discrete data, including:
+Alternatively, *Lets-Plot* provides the :py:func:`as_discrete() <lets_plot.mapping.as_discrete>` function, which offers similar capabilities for any data type, not limited to Pandas DataFrames. This function allows for flexible manipulation of discrete data, including:
 
 1. Annotation of numeric data as discrete: This allows continuous variables to be treated as categorical for visualization purposes.
 2. Specification of discrete variable ordering: The order can be based on the variable’s own values or the values of another variable.
 3. Custom ordering through explicit "factor levels": This feature allows for manual specification of category order.
 
-The :py:mod:`as_discrete() <lets_plot.mapping.as_discrete>` function thus allows for precise control over how categories are represented and ordered in plots, regardless of the original data format.
+The :py:func:`as_discrete() <lets_plot.mapping.as_discrete>` function thus allows for precise control over how categories are represented and ordered in plots, regardless of the original data format.
 
 .. jupyter-execute::
     :hide-code:

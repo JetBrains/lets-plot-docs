@@ -27,7 +27,7 @@ Lets-Plot provides several ways to annotate charts:
     :type: text
     :text: Learn more (reference notebook)
 
-- **Annotations for** :py:mod:`geom_smooth() <lets_plot.geom_smooth>`.
+- **Annotations for** :py:func:`geom_smooth() <lets_plot.geom_smooth>`.
   Use the ``labels`` parameter together with :py:meth:`smooth_labels() <lets_plot.smooth_labels>`
   to display statistics computed by the ``smooth`` stat (for example, :math:`R^2`, adjusted :math:`R^2`,
   and a fitted model equation). ``smooth_labels`` extends ``layer_labels``, so formatting and text
@@ -40,9 +40,9 @@ Lets-Plot provides several ways to annotate charts:
     :text: Learn more (reference notebook)
 
 - **Bracket annotations.**
-  Use :py:mod:`geom_bracket() <lets_plot.geom_bracket>` to add labeled brackets highlighting
+  Use :py:func:`geom_bracket() <lets_plot.geom_bracket>` to add labeled brackets highlighting
   relationships between categories or marking an interval.
-  Use :py:mod:`geom_bracket_dodge() <lets_plot.geom_bracket_dodge>` to draw brackets that connect
+  Use :py:func:`geom_bracket_dodge() <lets_plot.geom_bracket_dodge>` to draw brackets that connect
   *dodged* groups within each category (e.g., comparisons inside grouped boxplots/bars).
 
   |learn_more-brackets|.

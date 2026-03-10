@@ -81,44 +81,44 @@ Cookbooks:
 
 
 Points:
-:py:mod:`points <lets_plot.geom_point>`,
-:py:mod:`jittered points <lets_plot.geom_jitter>`
+:py:func:`points <lets_plot.geom_point>`,
+:py:func:`jittered points <lets_plot.geom_jitter>`
 
 
 Lines:
-:py:mod:`line <lets_plot.geom_line>`,
-:py:mod:`path <lets_plot.geom_path>`,
-:py:mod:`diagonal line <lets_plot.geom_abline>`,
-:py:mod:`horizontal line <lets_plot.geom_hline>`,
-:py:mod:`vertical line <lets_plot.geom_vline>`,
-:py:mod:`segment <lets_plot.geom_segment>`,
-:py:mod:`curve <lets_plot.geom_curve>`,
-:py:mod:`spoke <lets_plot.geom_spoke>`,
-:py:mod:`step-function <lets_plot.geom_step>`
+:py:func:`line <lets_plot.geom_line>`,
+:py:func:`path <lets_plot.geom_path>`,
+:py:func:`diagonal line <lets_plot.geom_abline>`,
+:py:func:`horizontal line <lets_plot.geom_hline>`,
+:py:func:`vertical line <lets_plot.geom_vline>`,
+:py:func:`segment <lets_plot.geom_segment>`,
+:py:func:`curve <lets_plot.geom_curve>`,
+:py:func:`spoke <lets_plot.geom_spoke>`,
+:py:func:`step-function <lets_plot.geom_step>`
 
 
 Areas:
-:py:mod:`area <lets_plot.geom_area>`,
-:py:mod:`band <lets_plot.geom_band>`,
-:py:mod:`ribbon <lets_plot.geom_ribbon>`
+:py:func:`area <lets_plot.geom_area>`,
+:py:func:`band <lets_plot.geom_band>`,
+:py:func:`ribbon <lets_plot.geom_ribbon>`
 
 
 Polygons:
-:py:mod:`polygon <lets_plot.geom_polygon>`,
-:py:mod:`map <lets_plot.geom_map>`
+:py:func:`polygon <lets_plot.geom_polygon>`,
+:py:func:`map <lets_plot.geom_map>`
 
 
 Tiles:
-:py:mod:`tiles <lets_plot.geom_tile>`,
-:py:mod:`rectangles <lets_plot.geom_rect>`,
-:py:mod:`raster plot <lets_plot.geom_raster>`
+:py:func:`tiles <lets_plot.geom_tile>`,
+:py:func:`rectangles <lets_plot.geom_rect>`,
+:py:func:`raster plot <lets_plot.geom_raster>`
 
 
 Text:
-:py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`text repel <lets_plot.geom_text_repel>`,
-:py:mod:`label <lets_plot.geom_label>`,
-:py:mod:`label repel <lets_plot.geom_label_repel>`
+:py:func:`text <lets_plot.geom_text>`,
+:py:func:`text repel <lets_plot.geom_text_repel>`,
+:py:func:`label <lets_plot.geom_label>`,
+:py:func:`label repel <lets_plot.geom_label_repel>`
 
 
 Cookbooks:
@@ -173,11 +173,11 @@ Demos:
 .. |d4| image:: /_static/images/icons/charts/discrete-dark.svg
     :class: only-dark
 
-:py:mod:`bar <lets_plot.geom_bar>`,
-:py:mod:`pie <lets_plot.geom_pie>`,
-:py:mod:`lollipop <lets_plot.geom_lollipop>`,
-:py:mod:`boxplot <lets_plot.geom_boxplot>`,
-:py:mod:`count <lets_plot.geom_count>`/:py:mod:`sum <lets_plot.stat_sum>`
+:py:func:`bar <lets_plot.geom_bar>`,
+:py:func:`pie <lets_plot.geom_pie>`,
+:py:func:`lollipop <lets_plot.geom_lollipop>`,
+:py:func:`boxplot <lets_plot.geom_boxplot>`,
+:py:func:`count <lets_plot.geom_count>`/:py:func:`sum <lets_plot.stat_sum>`
 
 .. raw:: html
 
@@ -227,8 +227,8 @@ Cookbooks:
 .. |d5| image:: /_static/images/icons/charts/contours-dark.svg
     :class: only-dark
 
-:py:mod:`contours <lets_plot.geom_contour>`,
-:py:mod:`filled contours <lets_plot.geom_contourf>`
+:py:func:`contours <lets_plot.geom_contour>`,
+:py:func:`filled contours <lets_plot.geom_contourf>`
 
 Cookbooks:
 
@@ -250,14 +250,14 @@ Demos:
 .. |d6| image:: /_static/images/icons/charts/visualization-of-distribution-dark.svg
     :class: only-dark
 
-:py:mod:`histogram <lets_plot.geom_histogram>`,
-:py:mod:`density <lets_plot.geom_density>`,
-:py:mod:`dotplot <lets_plot.geom_dotplot>`,
-:py:mod:`ydotplot <lets_plot.geom_ydotplot>`,
-:py:mod:`violin <lets_plot.geom_violin>`,
-:py:mod:`sina <lets_plot.geom_sina>`,
-:py:mod:`ridgeline <lets_plot.geom_area_ridges>`,
-:py:mod:`frequency polygon <lets_plot.geom_freqpoly>`
+:py:func:`histogram <lets_plot.geom_histogram>`,
+:py:func:`density <lets_plot.geom_density>`,
+:py:func:`dotplot <lets_plot.geom_dotplot>`,
+:py:func:`ydotplot <lets_plot.geom_ydotplot>`,
+:py:func:`violin <lets_plot.geom_violin>`,
+:py:func:`sina <lets_plot.geom_sina>`,
+:py:func:`ridgeline <lets_plot.geom_area_ridges>`,
+:py:func:`frequency polygon <lets_plot.geom_freqpoly>`
 
 Cookbooks:
 
@@ -291,9 +291,9 @@ Cookbooks:
 .. |d7| image:: /_static/images/icons/charts/stats-dark.svg
     :class: only-dark
 
-:py:mod:`stat_ecdf() <lets_plot.stat_ecdf>`,
-:py:mod:`stat_summary() <lets_plot.stat_summary>`,
-:py:mod:`stat_summary_bin() <lets_plot.stat_summary_bin>`
+:py:func:`stat_ecdf() <lets_plot.stat_ecdf>`,
+:py:func:`stat_summary() <lets_plot.stat_summary>`,
+:py:func:`stat_summary_bin() <lets_plot.stat_summary_bin>`
 
 Cookbooks:
 
@@ -316,7 +316,7 @@ Cookbooks:
 .. |d8| image:: /_static/images/icons/charts/function-dark.svg
     :class: only-dark
 
-:py:mod:`function <lets_plot.geom_function>`
+:py:func:`function <lets_plot.geom_function>`
 
 Cookbooks:
 
@@ -333,10 +333,10 @@ Cookbooks:
 .. |d9| image:: /_static/images/icons/charts/visualization-of-errors-dark.svg
     :class: only-dark
 
-:py:mod:`crossbar <lets_plot.geom_crossbar>`,
-:py:mod:`errorbar <lets_plot.geom_errorbar>`,
-:py:mod:`linerange <lets_plot.geom_linerange>`,
-:py:mod:`pointrange <lets_plot.geom_pointrange>`
+:py:func:`crossbar <lets_plot.geom_crossbar>`,
+:py:func:`errorbar <lets_plot.geom_errorbar>`,
+:py:func:`linerange <lets_plot.geom_linerange>`,
+:py:func:`pointrange <lets_plot.geom_pointrange>`
 
 Cookbooks:
 
@@ -353,7 +353,7 @@ Cookbooks:
 .. |d10| image:: /_static/images/icons/charts/smoothing-dark.svg
     :class: only-dark
 
-:py:mod:`smoothing line <lets_plot.geom_smooth>`
+:py:func:`smoothing line <lets_plot.geom_smooth>`
 
 Cookbooks:
 
@@ -372,11 +372,11 @@ Cookbooks:
 .. |d11| image:: /_static/images/icons/charts/bivariate-distribution-dark.svg
     :class: only-dark
 
-:py:mod:`2d bins <lets_plot.geom_bin2d>`,
-:py:mod:`2d hexagonal bins <lets_plot.geom_hex>`,
-:py:mod:`2d density <lets_plot.geom_density2d>`,
-:py:mod:`filled 2d density <lets_plot.geom_density2df>`,
-:py:mod:`pointdensity <lets_plot.geom_pointdensity>`
+:py:func:`2d bins <lets_plot.geom_bin2d>`,
+:py:func:`2d hexagonal bins <lets_plot.geom_hex>`,
+:py:func:`2d density <lets_plot.geom_density2d>`,
+:py:func:`filled 2d density <lets_plot.geom_density2df>`,
+:py:func:`pointdensity <lets_plot.geom_pointdensity>`
 
 Cookbooks:
 
@@ -399,7 +399,7 @@ Cookbooks:
 .. |d12| image:: /_static/images/icons/charts/marginal-dark.svg
     :class: only-dark
 
-:py:mod:`ggmarginal <lets_plot.ggmarginal>`
+:py:func:`ggmarginal <lets_plot.ggmarginal>`
 
 See also: :ref:`Joint Plot <bistro_joint_plot>`, :ref:`Residual Plot <bistro_residual_plot>`.
 
@@ -418,10 +418,10 @@ Cookbooks:
 .. |d13| image:: /_static/images/icons/charts/time-series-dark.svg
     :class: only-dark
 
-:py:mod:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
-:py:mod:`scale_y_datetime() <lets_plot.scale_y_datetime>`,
-:py:mod:`scale_x_time() <lets_plot.scale_x_time>`,
-:py:mod:`scale_y_time() <lets_plot.scale_y_time>`
+:py:func:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
+:py:func:`scale_y_datetime() <lets_plot.scale_y_datetime>`,
+:py:func:`scale_x_time() <lets_plot.scale_x_time>`,
+:py:func:`scale_y_time() <lets_plot.scale_y_time>`
 
 *Lets-Plot* handles all temporal data types through a unified "datetime" scale (excluding duration/timedelta types, which are handled by the "time" scale). This is in contrast to R's ggplot2, which provides separate "date", "time", and "datetime" scales.
 
@@ -464,8 +464,8 @@ Demos:
 .. |d14| image:: /_static/images/icons/charts/images-dark.svg
     :class: only-dark
 
-:py:mod:`geom_imshow() <lets_plot.geom_imshow>`,
-:py:mod:`matrix of images <lets_plot.bistro.im.image_matrix>`
+:py:func:`geom_imshow() <lets_plot.geom_imshow>`,
+:py:func:`matrix of images <lets_plot.bistro.im.image_matrix>`
 
 Cookbooks:
 
@@ -501,8 +501,8 @@ Cookbooks:
 .. |d15| image:: /_static/images/icons/charts/facets-dark.svg
     :class: only-dark
 
-:py:mod:`facet_grid() <lets_plot.facet_grid>`,
-:py:mod:`facet_wrap() <lets_plot.facet_wrap>`
+:py:func:`facet_grid() <lets_plot.facet_grid>`,
+:py:func:`facet_wrap() <lets_plot.facet_wrap>`
 
 Cookbooks:
 
@@ -524,11 +524,11 @@ Demos:
 .. |d16| image:: /_static/images/icons/charts/coordinate-systems-dark.svg
     :class: only-dark
 
-:py:mod:`coord_cartesian() <lets_plot.coord_cartesian>`,
-:py:mod:`coord_fixed() <lets_plot.coord_fixed>`,
-:py:mod:`coord_polar() <lets_plot.coord_polar>`,
-:py:mod:`coord_flip() <lets_plot.coord_flip>`,
-:py:mod:`coord_map() <lets_plot.coord_map>`
+:py:func:`coord_cartesian() <lets_plot.coord_cartesian>`,
+:py:func:`coord_fixed() <lets_plot.coord_fixed>`,
+:py:func:`coord_polar() <lets_plot.coord_polar>`,
+:py:func:`coord_flip() <lets_plot.coord_flip>`,
+:py:func:`coord_map() <lets_plot.coord_map>`
 
 Cookbooks:
 
@@ -547,10 +547,10 @@ Cookbooks:
 .. |d17| image:: /_static/images/icons/charts/legend-dark.svg
     :class: only-dark
 
-:py:mod:`guide_legend() <lets_plot.guide_legend>`,
-:py:mod:`guide_colorbar() <lets_plot.guide_colorbar>`,
-:py:mod:`guides() <lets_plot.guides>`,
-:py:mod:`layer_key() <lets_plot.layer_key>`
+:py:func:`guide_legend() <lets_plot.guide_legend>`,
+:py:func:`guide_colorbar() <lets_plot.guide_colorbar>`,
+:py:func:`guides() <lets_plot.guides>`,
+:py:func:`layer_key() <lets_plot.layer_key>`
 
 Cookbooks:
 
@@ -571,11 +571,11 @@ Cookbooks:
 .. |d18| image:: /_static/images/icons/charts/bistro-dark.svg
     :class: only-dark
 
-:py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
-:py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`,
-:py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`,
-:py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`,
-:py:mod:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
+:py:func:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
+:py:func:`qq_plot() <lets_plot.bistro.qq.qq_plot>`,
+:py:func:`joint_plot() <lets_plot.bistro.joint.joint_plot>`,
+:py:func:`residual_plot() <lets_plot.bistro.residual.residual_plot>`,
+:py:func:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
 
 "Bistro" plots is a collection of "compound plots" allowing users to generate intricate charts without the need for extensive coding.
 
@@ -593,7 +593,7 @@ Learn more: :doc:`'bistro' Plots </python/pages/bistro>`.
 .. |d19| image:: /_static/images/icons/charts/geopandas-dark.svg
     :class: only-dark
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pointdensity <lets_plot.geom_pointdensity>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`label <lets_plot.geom_label>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:func:`polygon <lets_plot.geom_polygon>`, :py:func:`map <lets_plot.geom_map>`, :py:func:`point <lets_plot.geom_point>`, :py:func:`pointdensity <lets_plot.geom_pointdensity>`, :py:func:`pie <lets_plot.geom_pie>`, :py:func:`text <lets_plot.geom_text>`, :py:func:`label <lets_plot.geom_label>`, :py:func:`path <lets_plot.geom_path>`, :py:func:`rect <lets_plot.geom_rect>`.
 
 Learn more: :doc:`GeoPandas Support </python/pages/geopandas>`.
 
@@ -625,7 +625,7 @@ Demos:
 .. |d20| image:: /_static/images/icons/charts/grouping-plots-dark.svg
     :class: only-dark
 
-:py:mod:`ggbunch <lets_plot.ggbunch>` and :py:mod:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
+:py:func:`ggbunch <lets_plot.ggbunch>` and :py:func:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
 Cookbooks:
 
@@ -652,7 +652,7 @@ Plot Tags
 ~~~~~~~~~
 
 Plot tags are short labels attached to subplots and composite figures (panel labels, figure numbering).
-Specify them via ``labs(tag=...)`` and tune placement/style with ``plot_tag*`` in :py:mod:`theme() <lets_plot.theme>`.
+Specify them via ``labs(tag=...)`` and tune placement/style with ``plot_tag*`` in :py:func:`theme() <lets_plot.theme>`.
 
 Cookbooks:
 
@@ -669,12 +669,12 @@ Cookbooks:
 .. |d21| image:: /_static/images/icons/charts/presentation-options-dark.svg
     :class: only-dark
 
-:py:mod:`theme() <lets_plot.theme>`,
-:py:mod:`ggtitle() <lets_plot.ggtitle>`,
-:py:mod:`ggsize() <lets_plot.ggsize>`,
-:py:mod:`xlab() <lets_plot.xlab>`,
-:py:mod:`ylab() <lets_plot.ylab>`,
-:py:mod:`labs() <lets_plot.labs>`
+:py:func:`theme() <lets_plot.theme>`,
+:py:func:`ggtitle() <lets_plot.ggtitle>`,
+:py:func:`ggsize() <lets_plot.ggsize>`,
+:py:func:`xlab() <lets_plot.xlab>`,
+:py:func:`ylab() <lets_plot.ylab>`,
+:py:func:`labs() <lets_plot.labs>`
 
 Cookbooks:
 
@@ -698,14 +698,14 @@ Cookbooks:
 Predefined Themes
 ~~~~~~~~~~~~~~~~~
 
-:py:mod:`minimal2 <lets_plot.theme_minimal2>`,
-:py:mod:`bw <lets_plot.theme_bw>`,
-:py:mod:`grey <lets_plot.theme_grey>` (or :py:mod:`gray <lets_plot.theme_gray>`),
-:py:mod:`classic <lets_plot.theme_classic>`,
-:py:mod:`light <lets_plot.theme_light>`,
-:py:mod:`minimal <lets_plot.theme_minimal>`,
-:py:mod:`void <lets_plot.theme_void>`,
-:py:mod:`none <lets_plot.theme_none>`
+:py:func:`minimal2 <lets_plot.theme_minimal2>`,
+:py:func:`bw <lets_plot.theme_bw>`,
+:py:func:`grey <lets_plot.theme_grey>` (or :py:func:`gray <lets_plot.theme_gray>`),
+:py:func:`classic <lets_plot.theme_classic>`,
+:py:func:`light <lets_plot.theme_light>`,
+:py:func:`minimal <lets_plot.theme_minimal>`,
+:py:func:`void <lets_plot.theme_void>`,
+:py:func:`none <lets_plot.theme_none>`
 
 .. grid:: 3
     :class-container: wide-grid
@@ -752,12 +752,12 @@ Cookbooks:
 Color Schemes (Flavors)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-:py:mod:`darcula <lets_plot.flavor_darcula>`,
-:py:mod:`solarized light <lets_plot.flavor_solarized_light>`,
-:py:mod:`solarized dark <lets_plot.flavor_solarized_dark>`,
-:py:mod:`high contrast light <lets_plot.flavor_high_contrast_light>`,
-:py:mod:`high contrast dark <lets_plot.flavor_high_contrast_dark>`,
-:py:mod:`standard <lets_plot.flavor_standard>`
+:py:func:`darcula <lets_plot.flavor_darcula>`,
+:py:func:`solarized light <lets_plot.flavor_solarized_light>`,
+:py:func:`solarized dark <lets_plot.flavor_solarized_dark>`,
+:py:func:`high contrast light <lets_plot.flavor_high_contrast_light>`,
+:py:func:`high contrast dark <lets_plot.flavor_high_contrast_dark>`,
+:py:func:`standard <lets_plot.flavor_standard>`
 
 .. extref:: flavors
   :image: common
@@ -776,11 +776,11 @@ Plot Layout Diagrams
 
 These diagrams illustrate layout options and their spatial relationships within plot components.
 
-Option names on the diagrams (e.g., ``axis_text_spacing_x``) correspond to :py:mod:`theme() <lets_plot.theme>` function arguments.
+Option names on the diagrams (e.g., ``axis_text_spacing_x``) correspond to :py:func:`theme() <lets_plot.theme>` function arguments.
 
 **Simple options** accept numeric values directly, e.g. ``theme(axis_text_spacing_x=10)``.
 
-**Composite options** shown as ``axis_title_x: margin`` accept :py:mod:`element_text() <lets_plot.element_text>` or :py:mod:`element_rect() <lets_plot.element_rect>` function results, e.g. ``theme(axis_title_x=element_text(margin=[5, 5]))``.
+**Composite options** shown as ``axis_title_x: margin`` accept :py:func:`element_text() <lets_plot.element_text>` or :py:func:`element_rect() <lets_plot.element_rect>` function results, e.g. ``theme(axis_title_x=element_text(margin=[5, 5]))``.
 
 Plot Panel Layout
 ^^^^^^^^^^^^^^^^^
@@ -813,7 +813,7 @@ Miscellaneous
 Panning and Zooming
 ~~~~~~~~~~~~~~~~~~~
 
-Use the :py:mod:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`` interactivity on a chart.
+Use the :py:func:`ggtb() <lets_plot.ggtb>` function to enable ``Pan`` and ``Zoom`` interactivity on a chart.
 
 This function adds a toolbar containing three tool-buttons: pan, rubber-band zoom, and center-point zoom.
 
@@ -898,7 +898,7 @@ Demos:
 Scale Functions
 ~~~~~~~~~~~~~~~
 
-To specify a scale for any group of aesthetics, use the special scale functions: :py:mod:`scale_manual() <lets_plot.scale_manual>`, :py:mod:`scale_continuous() <lets_plot.scale_continuous>`, :py:mod:`scale_gradient() <lets_plot.scale_gradient>`, etc.
+To specify a scale for any group of aesthetics, use the special scale functions: :py:func:`scale_manual() <lets_plot.scale_manual>`, :py:func:`scale_continuous() <lets_plot.scale_continuous>`, :py:func:`scale_gradient() <lets_plot.scale_gradient>`, etc.
 
 Cookbooks:
 
@@ -929,7 +929,7 @@ Cookbooks:
 Stackable Position Adjustments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To configure positioning where groups are stacked on top of each other, use the :py:mod:`position_stack() <lets_plot.position_stack>` and :py:mod:`position_fill() <lets_plot.position_fill>` functions.
+To configure positioning where groups are stacked on top of each other, use the :py:func:`position_stack() <lets_plot.position_stack>` and :py:func:`position_fill() <lets_plot.position_fill>` functions.
 
 Cookbooks:
 

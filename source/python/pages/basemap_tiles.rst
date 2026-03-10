@@ -20,7 +20,7 @@ Configuring Basemap Tiles for Interactive Maps
 Configuring Globally
 --------------------
 
-You can configure global *Lets-Plot* options using the :py:mod:`LestPlot.set(dictionary) <lets_plot.LetsPlot>` method.
+You can configure global *Lets-Plot* options using the :py:func:`LestPlot.set(dictionary) <lets_plot.LetsPlot>` method.
 
 Where the ``dictionary`` can contain all sorts of *Lets-Plot* options, including basemap tiles configuration options.
 
@@ -38,7 +38,7 @@ Where the ``dictionary`` can contain all sorts of *Lets-Plot* options, including
 Configuring for a Single Plot
 -----------------------------
 
-Use ``tiles`` parameter in the :py:mod:`geom_livemap() <lets_plot.geom_livemap>` function:
+Use ``tiles`` parameter in the :py:func:`geom_livemap() <lets_plot.geom_livemap>` function:
 
 .. code-block:: python
 
@@ -66,7 +66,7 @@ Vector Tiles
 
 By default *Lets-Plot* uses its "color" tiles.
 
-Configure *Lets-Plot* vector tiles (globally or on the per-plot basis) with the help of the :py:mod:`LetsPlot.maptiles_lets_plot(...) <lets_plot.maptiles_lets_plot>` function:
+Configure *Lets-Plot* vector tiles (globally or on the per-plot basis) with the help of the :py:func:`LetsPlot.maptiles_lets_plot(...) <lets_plot.maptiles_lets_plot>` function:
 
 .. code-block:: python
 
@@ -86,7 +86,7 @@ or with the help of a constant defined in the ``tilesets`` module:
 Blank Tiles
 -----------
 
-:py:mod:`Blank tiles <lets_plot.maptiles_solid>` show no other graphics but a solid background color which you can choose (a HEX value is expected):
+:py:func:`Blank tiles <lets_plot.maptiles_solid>` show no other graphics but a solid background color which you can choose (a HEX value is expected):
 
 .. code-block:: python
 
@@ -200,7 +200,7 @@ Configuring Raster Tiles Manually
 
 In addition to pre-configured tilesets you can configure and use almost any other raster tilesets provided in ``ZXY`` format.
 
-You can do it with the help of the :py:mod:`LetsPlot.maptiles_zxy() <lets_plot.maptiles_zxy>` function.
+You can do it with the help of the :py:func:`LetsPlot.maptiles_zxy() <lets_plot.maptiles_zxy>` function.
 
 The following code will configure 'NASA, CityLights 2012' tiles:
 

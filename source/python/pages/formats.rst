@@ -154,8 +154,8 @@ The number format can be used in a template to create a string with variable sub
 The string template contains "replacement fields" surrounded by curly braces ``{}``. 
 Anything that is not contained in braces is considered literal text, which is copied unchanged to the result string. 
 If you need to include a brace character in the literal text, it can be escaped by doubling: {{ and }}.
-This approach is used in functions :py:mod:`layer_tooltips() <lets_plot.layer_tooltips>`,
-:py:mod:`layer_labels() <lets_plot.layer_labels>` and :py:mod:`smooth_labels() <lets_plot.smooth_labels>` to customize the content of tooltips and annotations.
+This approach is used in functions :py:func:`layer_tooltips() <lets_plot.layer_tooltips>`,
+:py:func:`layer_labels() <lets_plot.layer_labels>` and :py:func:`smooth_labels() <lets_plot.smooth_labels>` to customize the content of tooltips and annotations.
 
 See: :doc:`Tooltip Customization in Lets-Plot </python/pages/tooltips>` and :doc:`Annotating Charts in Lets-Plot </python/pages/annotations>`.
 
@@ -239,7 +239,7 @@ Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35
 Scientific Notation
 -------------------
 
-The ``exponent_format`` parameter of the :py:mod:`theme() <lets_plot.theme>` function controls the appearance of numbers formatted with ``e`` or ``g`` types. Scientific notation can be displayed using regular e-notation or with superscript powers of 10. For ``g`` type formatting, you can also specify when scientific notation should be applied based on exponent bounds.
+The ``exponent_format`` parameter of the :py:func:`theme() <lets_plot.theme>` function controls the appearance of numbers formatted with ``e`` or ``g`` types. Scientific notation can be displayed using regular e-notation or with superscript powers of 10. For ``g`` type formatting, you can also specify when scientific notation should be applied based on exponent bounds.
 
 The value is either a string - ``style``, or a tuple: (``style``, ``lower exp.bound``, ``upper exp.bound``). Where the ``style`` can be:
 

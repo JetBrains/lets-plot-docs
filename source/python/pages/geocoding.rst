@@ -25,7 +25,7 @@ Administrative Levels
 Country
 ~~~~~~~
 
-:py:mod:`geocode_countries() <lets_plot.geo_data.geocode_countries>`
+:py:func:`geocode_countries() <lets_plot.geo_data.geocode_countries>`
 
 .. grid:: 3
     :class-container: preview-gallery wide-grid
@@ -52,7 +52,7 @@ Country
 State
 ~~~~~
 
-:py:mod:`geocode_states() <lets_plot.geo_data.geocode_states>`
+:py:func:`geocode_states() <lets_plot.geo_data.geocode_states>`
 
 .. grid:: 3
     :class-container: preview-gallery wide-grid
@@ -79,7 +79,7 @@ State
 County
 ~~~~~~
 
-:py:mod:`geocode_counties() <lets_plot.geo_data.geocode_counties>`
+:py:func:`geocode_counties() <lets_plot.geo_data.geocode_counties>`
 
 .. grid:: 3
     :class-container: preview-gallery wide-grid
@@ -106,7 +106,7 @@ County
 City
 ~~~~
 
-:py:mod:`geocode_cities() <lets_plot.geo_data.geocode_cities>`
+:py:func:`geocode_cities() <lets_plot.geo_data.geocode_cities>`
 
 .. grid:: 3
     :class-container: preview-gallery wide-grid
@@ -136,8 +136,8 @@ Geometries
 Polygons
 ~~~~~~~~
 
-:py:mod:`geom_map() <lets_plot.geom_map>`,
-:py:mod:`geom_polygon() <lets_plot.geom_polygon>`
+:py:func:`geom_map() <lets_plot.geom_map>`,
+:py:func:`geom_polygon() <lets_plot.geom_polygon>`
 
 .. grid:: 3
     :class-container: preview-gallery wide-grid
@@ -164,7 +164,7 @@ Polygons
 Points
 ~~~~~~
 
-:py:mod:`geom_point() <lets_plot.geom_point>`
+:py:func:`geom_point() <lets_plot.geom_point>`
 
 .. grid:: 3
     :class-container: preview-gallery wide-grid
@@ -191,7 +191,7 @@ Points
 Rectangles
 ~~~~~~~~~~
 
-:py:mod:`geom_rect() <lets_plot.geom_rect>`
+:py:func:`geom_rect() <lets_plot.geom_rect>`
 
 .. grid:: 3
     :class-container: preview-gallery wide-grid
