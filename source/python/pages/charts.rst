@@ -151,8 +151,6 @@ Cookbooks:
       :type: text
 - .. extref:: position_nudge_unit
       :type: text
-- .. extref:: scale_break_width_log10
-      :type: text
 
 Demos:
 
@@ -538,13 +536,54 @@ Cookbooks:
       :type: text
 
 
-|l17| |d17| Legends and Guides
-------------------------------
+|l17| |d17| Positional Scales
+-----------------------------
 
-.. |l17| image:: /_static/images/icons/charts/legend-light.svg
+.. |l17| image:: /_static/images/icons/charts/positional-scales-light.png
     :class: only-light
 
-.. |d17| image:: /_static/images/icons/charts/legend-dark.svg
+.. |d17| image:: /_static/images/icons/charts/positional-scales-dark.png
+    :class: only-dark
+
+:py:func:`scale_x_discrete() <lets_plot.scale_x_discrete>`,
+:py:func:`scale_y_discrete() <lets_plot.scale_y_discrete>`,
+:py:func:`scale_x_discrete_reversed() <lets_plot.scale_x_discrete_reversed>`,
+:py:func:`scale_y_discrete_reversed() <lets_plot.scale_y_discrete_reversed>`,
+:py:func:`scale_x_continuous() <lets_plot.scale_x_continuous>`,
+:py:func:`scale_y_continuous() <lets_plot.scale_y_continuous>`,
+:py:func:`scale_x_log10() <lets_plot.scale_x_log10>`,
+:py:func:`scale_y_log10() <lets_plot.scale_y_log10>`,
+:py:func:`scale_x_log2() <lets_plot.scale_x_log2>`,
+:py:func:`scale_y_log2() <lets_plot.scale_y_log2>`,
+:py:func:`scale_x_reverse() <lets_plot.scale_x_reverse>`,
+:py:func:`scale_y_reverse() <lets_plot.scale_y_reverse>`
+
+Cookbooks:
+
+- .. extref:: axis_position
+      :type: text
+- .. extref:: scale_break_width_log10
+      :type: text
+- .. extref:: formatting_axes_etc
+      :type: text
+- .. extref:: zooming
+      :type: text
+
+Demos:
+
+- .. extref:: nobel
+      :type: text
+- .. extref:: google_play_store
+      :type: text
+
+
+|l18| |d18| Legends and Guides
+------------------------------
+
+.. |l18| image:: /_static/images/icons/charts/legend-light.svg
+    :class: only-light
+
+.. |d18| image:: /_static/images/icons/charts/legend-dark.svg
     :class: only-dark
 
 :py:func:`guide_legend() <lets_plot.guide_legend>`,
@@ -562,13 +601,13 @@ Cookbooks:
       :type: text
 
 
-|l18| |d18| 'bistro' Plots
+|l19| |d19| 'bistro' Plots
 --------------------------
 
-.. |l18| image:: /_static/images/icons/charts/bistro-light.svg
+.. |l19| image:: /_static/images/icons/charts/bistro-light.svg
     :class: only-light
 
-.. |d18| image:: /_static/images/icons/charts/bistro-dark.svg
+.. |d19| image:: /_static/images/icons/charts/bistro-dark.svg
     :class: only-dark
 
 :py:func:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
@@ -584,13 +623,13 @@ With these high-level functions you can create visualizations like correlation m
 Learn more: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
-|l19| |d19| GeoPandas Shapes
+|l20| |d20| GeoPandas Shapes
 ----------------------------
 
-.. |l19| image:: /_static/images/icons/charts/geopandas-light.svg
+.. |l20| image:: /_static/images/icons/charts/geopandas-light.svg
     :class: only-light
 
-.. |d19| image:: /_static/images/icons/charts/geopandas-dark.svg
+.. |d20| image:: /_static/images/icons/charts/geopandas-dark.svg
     :class: only-dark
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:func:`polygon <lets_plot.geom_polygon>`, :py:func:`map <lets_plot.geom_map>`, :py:func:`point <lets_plot.geom_point>`, :py:func:`pointdensity <lets_plot.geom_pointdensity>`, :py:func:`pie <lets_plot.geom_pie>`, :py:func:`text <lets_plot.geom_text>`, :py:func:`label <lets_plot.geom_label>`, :py:func:`path <lets_plot.geom_path>`, :py:func:`rect <lets_plot.geom_rect>`.
@@ -616,13 +655,13 @@ Demos:
       :type: text
 
 
-|l20| |d20| Grouping Plots
+|l21| |d21| Grouping Plots
 --------------------------
 
-.. |l20| image:: /_static/images/icons/charts/grouping-plots-light.svg
+.. |l21| image:: /_static/images/icons/charts/grouping-plots-light.svg
     :class: only-light
 
-.. |d20| image:: /_static/images/icons/charts/grouping-plots-dark.svg
+.. |d21| image:: /_static/images/icons/charts/grouping-plots-dark.svg
     :class: only-dark
 
 :py:func:`ggbunch <lets_plot.ggbunch>` and :py:func:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
@@ -660,13 +699,13 @@ Cookbooks:
       :type: text
 
 
-|l21| |d21| Presentation Options
+|l22| |d22| Presentation Options
 --------------------------------
 
-.. |l21| image:: /_static/images/icons/charts/presentation-options-light.svg
+.. |l22| image:: /_static/images/icons/charts/presentation-options-light.svg
     :class: only-light
 
-.. |d21| image:: /_static/images/icons/charts/presentation-options-dark.svg
+.. |d22| image:: /_static/images/icons/charts/presentation-options-dark.svg
     :class: only-dark
 
 :py:func:`theme() <lets_plot.theme>`,
