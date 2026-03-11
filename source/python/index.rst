@@ -31,7 +31,7 @@ Get Started
       <img alt="MIT License" src="https://img.shields.io/pypi/l/lets-plot?color=yellow&amp;style=flat-square">
     </a>
 
-**Python versions:** 3.9-3.13
+**Python versions:** 3.9-3.14
 
 **OS:** Linux, macOS, Windows
 
