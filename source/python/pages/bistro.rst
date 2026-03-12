@@ -22,7 +22,7 @@ These plots build upon lets-plot's core functionality, combining multiple geoms,
 Correlation Plot
 ----------------
 
-:py:mod:`corr_plot() <lets_plot.bistro.corr.corr_plot>`
+:py:func:`corr_plot() <lets_plot.bistro.corr.corr_plot>`
 
 .. grid:: 4
     :class-container: preview-gallery wide-grid
@@ -59,11 +59,11 @@ Examples:
 Q-Q Plot
 --------
 
-:py:mod:`geom_qq() <lets_plot.geom_qq>`,
-:py:mod:`geom_qq_line() <lets_plot.geom_qq_line>`,
-:py:mod:`geom_qq2() <lets_plot.geom_qq2>`,
-:py:mod:`geom_qq2_line() <lets_plot.geom_qq2_line>`,
-:py:mod:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
+:py:func:`geom_qq() <lets_plot.geom_qq>`,
+:py:func:`geom_qq_line() <lets_plot.geom_qq_line>`,
+:py:func:`geom_qq2() <lets_plot.geom_qq2>`,
+:py:func:`geom_qq2_line() <lets_plot.geom_qq2_line>`,
+:py:func:`qq_plot() <lets_plot.bistro.qq.qq_plot>`
 
 .. grid:: 4
     :class-container: preview-gallery wide-grid
@@ -96,7 +96,7 @@ Examples:
 Joint Plot
 ----------
 
-:py:mod:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
+:py:func:`joint_plot() <lets_plot.bistro.joint.joint_plot>`
 
 .. grid:: 4
     :class-container: preview-gallery wide-grid
@@ -129,7 +129,7 @@ Examples:
 Residual Plot
 -------------
 
-:py:mod:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
+:py:func:`residual_plot() <lets_plot.bistro.residual.residual_plot>`
 
 .. grid:: 4
     :class-container: preview-gallery wide-grid
@@ -162,7 +162,7 @@ Examples:
 Waterfall Plot
 --------------
 
-:py:mod:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
+:py:func:`waterfall_plot() <lets_plot.bistro.waterfall.waterfall_plot>`
 
 .. grid:: 4
     :class-container: preview-gallery wide-grid

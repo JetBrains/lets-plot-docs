@@ -28,10 +28,10 @@ All GeoPandas shapes are "understood" by *Lets-Plot* and can be plotted using va
 
 Use:
 
-- :py:mod:`geom_point() <lets_plot.geom_point>`, :py:mod:`geom_pointdensity() <lets_plot.geom_pointdensity>`, :py:mod:`geom_pie() <lets_plot.geom_pie>`, :py:mod:`geom_text() <lets_plot.geom_text>` with Points / Multi-Points
-- :py:mod:`geom_path() <lets_plot.geom_path>` with Lines / Multi-Lines
-- :py:mod:`geom_polygon() <lets_plot.geom_polygon>`, :py:mod:`geom_map() <lets_plot.geom_map>` with Polygons / Multi-Polygons
-- :py:mod:`geom_rect() <lets_plot.geom_rect>` when used with Polygon shapes will display corresponding bounding boxes
+- :py:func:`geom_point() <lets_plot.geom_point>`, :py:func:`geom_pointdensity() <lets_plot.geom_pointdensity>`, :py:func:`geom_pie() <lets_plot.geom_pie>`, :py:func:`geom_text() <lets_plot.geom_text>` with Points / Multi-Points
+- :py:func:`geom_path() <lets_plot.geom_path>` with Lines / Multi-Lines
+- :py:func:`geom_polygon() <lets_plot.geom_polygon>`, :py:func:`geom_map() <lets_plot.geom_map>` with Polygons / Multi-Polygons
+- :py:func:`geom_rect() <lets_plot.geom_rect>` when used with Polygon shapes will display corresponding bounding boxes
 
 
 Plot Preliminaries
@@ -137,7 +137,7 @@ Interactive Maps
 
 Apart from the ``use_crs`` parameter, ``GeoDataFrames`` are fully supported on *Lets-Plot* interactive maps.
 
-When used in combination with :py:mod:`geom_livemap() <lets_plot.geom_livemap>`,
+When used in combination with :py:func:`geom_livemap() <lets_plot.geom_livemap>`,
 the value of the ``use_crs`` parameter is ignored and all coordinates are reprojected using the Mercator projection.
 
 .. jupyter-execute::

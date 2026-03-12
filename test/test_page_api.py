@@ -26,8 +26,8 @@ def test_api_example(page):
 
 def test_api_list():
     API_EXPECTED_EXTRA = {
-        "FeatureSpec", "PlotSpec", "LayerSpec", "NamesGeocoder",
-        "as_discrete",
+        "PlotSpec", "NamesGeocoder",
+        "palette",
         "LETS_PLOT_COLOR", "LETS_PLOT_LIGHT", "LETS_PLOT_DARK", "LETS_PLOT_BW",
         "SOLID", "OSM", "OPEN_TOPO_MAP",
         "CARTO_POSITRON", "CARTO_POSITRON_HIRES", "CARTO_POSITRON_NO_LABELS", "CARTO_POSITRON_NO_LABELS_HIRES", "CARTO_DARK_MATTER_NO_LABELS", "CARTO_DARK_MATTER_NO_LABELS_HIRES", "CARTO_VOYAGER", "CARTO_VOYAGER_HIRES", "CARTO_MIDNIGHT_COMMANDER", "CARTO_MIDNIGHT_COMMANDER_HIRES", "CARTO_ANTIQUE", "CARTO_ANTIQUE_HIRES", "CARTO_FLAT_BLUE", "CARTO_FLAT_BLUE_HIRES",

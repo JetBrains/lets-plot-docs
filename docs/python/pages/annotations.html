@@ -42,7 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
@@ -55,7 +55,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../_static/documentation_options.js?v=d607d3c8"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -64,6 +64,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python/pages/annotations';</script>
     <script src="../../_static/js/custom.js?v=a8badf0c"></script>
     <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
@@ -156,7 +157,7 @@
    
 
 <a class="navbar-brand version" href="whats_new.html">
-  <p>v4.8.2</p>
+  <p>v4.9.0</p>
 </a>
 </div>
     
@@ -477,9 +478,33 @@
                   
   <section id="annotating-charts">
 <h1>Annotating Charts<a class="headerlink" href="#annotating-charts" title="Link to this heading">#</a></h1>
-<p>You can customize the content of annotations for pie, bar and crossbar charts by using the <code class="docutils literal notranslate"><span class="pre">labels</span></code> parameter of the corresponding functions.
-The parameter takes as value the result of the <a class="reference internal" href="api/lets_plot.layer_labels.html#lets_plot.layer_labels" title="lets_plot.layer_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layer_labels()</span></code></a> function call.</p>
+<p>Lets-Plot provides several ways to annotate charts:</p>
+<ul>
+<li><p><strong>Label annotations for geometry layers.</strong>
+Some geoms (such as pie, bar, and crossbar) support built-in text labels via the
+<code class="docutils literal notranslate"><span class="pre">labels</span></code> parameter. Pass the result of the <a class="reference internal" href="api/lets_plot.layer_labels.html#lets_plot.layer_labels" title="lets_plot.layer_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layer_labels()</span></code></a>
+call to configure the label content and layout.</p>
 <p><a class="reference external extref" href="https://datalore.jetbrains.com/report/static/HZqq77cegYd.E7get_WnChZ/5n70Ra4matSQVR2O4Dm4PH">Learn more (reference notebook)</a>.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Annotations for</strong> <a class="reference internal" href="api/lets_plot.geom_smooth.html#lets_plot.geom_smooth" title="lets_plot.geom_smooth"><code class="xref py py-func docutils literal notranslate"><span class="pre">geom_smooth()</span></code></a>.
+Use the <code class="docutils literal notranslate"><span class="pre">labels</span></code> parameter together with <a class="reference internal" href="api/lets_plot.smooth_labels.html#lets_plot.smooth_labels" title="lets_plot.smooth_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">smooth_labels()</span></code></a>
+to display statistics computed by the <code class="docutils literal notranslate"><span class="pre">smooth</span></code> stat (for example, <span class="math notranslate nohighlight">\(R^2\)</span>, adjusted <span class="math notranslate nohighlight">\(R^2\)</span>,
+and a fitted model equation). <code class="docutils literal notranslate"><span class="pre">smooth_labels</span></code> extends <code class="docutils literal notranslate"><span class="pre">layer_labels</span></code>, so formatting and text
+template helpers work the same way.</p>
+<p><a class="reference internal extref" href="../../examples/cookbook/smooth_summary.html">Learn more (reference notebook)</a>.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Bracket annotations.</strong>
+Use <a class="reference internal" href="api/lets_plot.geom_bracket.html#lets_plot.geom_bracket" title="lets_plot.geom_bracket"><code class="xref py py-func docutils literal notranslate"><span class="pre">geom_bracket()</span></code></a> to add labeled brackets highlighting
+relationships between categories or marking an interval.
+Use <a class="reference internal" href="api/lets_plot.geom_bracket_dodge.html#lets_plot.geom_bracket_dodge" title="lets_plot.geom_bracket_dodge"><code class="xref py py-func docutils literal notranslate"><span class="pre">geom_bracket_dodge()</span></code></a> to draw brackets that connect
+<em>dodged</em> groups within each category (e.g., comparisons inside grouped boxplots/bars).</p>
+<p><a class="reference internal extref" href="../../examples/cookbook/geom_bracket.html">Learn more (reference notebook)</a>.</p>
+</li>
+</ul>
 <p>See also the <a class="reference internal" href="formats.html"><span class="doc">formatting reference</span></a> to learn how to format numeric and date-time values in annotations.</p>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
@@ -487,7 +512,7 @@ The parameter takes as value the result of the <a class="reference internal" hre
 <li><a class="reference external extref" href="https://datalore.jetbrains.com/report/static/HZqq77cegYd.E7get_WnChZ/efcMD1oRLoiLnDQumCP7ot">Pie chart</a></li>
 <li><a class="reference internal extref" href="../../examples/cookbook/factor_levels.html">Factor levels</a></li>
 <li><a class="reference internal extref" href="../../examples/cookbook/named_system_colors.html">Named system colors</a></li>
-<li><a class="reference external extref" href="https://www.kaggle.com/alshan/visualization-of-the-titanic-s-voyage">Visualization of the Titanic's voyage</a></li>
+<li><a class="reference external extref" href="https://www.kaggle.com/code/alshan/visualizing-titanic-s-voyage">Visualization of the Titanic's voyage</a></li>
 </ul>
 </section>
 </section>

@@ -1,0 +1,2042 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Interactive Pan/Zoom with Shared Axes in gggrid" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/gggrid_scale_share_zoom.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="When subplots in a gggrid share axes via sharex or sharey, interactive pan and zoom propagate across sibling plots. Zooming or panning one subplot automatically updates all plots sharing that axis...." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="When subplots in a gggrid share axes via sharex or sharey, interactive pan and zoom propagate across sibling plots. Zooming or panning one subplot automatically updates all plots sharing that axis...." />
+
+    <title>Interactive Pan/Zoom with Shared Axes in gggrid</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=d607d3c8"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/gggrid_scale_share_zoom';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.9.0</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/cookbook/gggrid_scale_share_zoom.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="interactive-pan-zoom-with-shared-axes-in-gggrid">
+<h1>Interactive Pan/Zoom with Shared Axes in <code class="docutils literal notranslate"><span class="pre">gggrid</span></code><a class="headerlink" href="#interactive-pan-zoom-with-shared-axes-in-gggrid" title="Link to this heading">#</a></h1>
+<p>When subplots in a <code class="docutils literal notranslate"><span class="pre">gggrid</span></code> share axes via <code class="docutils literal notranslate"><span class="pre">sharex</span></code> or <code class="docutils literal notranslate"><span class="pre">sharey</span></code>, interactive pan and zoom propagate across sibling plots. Zooming or panning one subplot automatically updates all plots sharing that axis.</p>
+<p><strong>Tip:</strong> double-click a subplot to reset it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="Sxau4f"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("Sxau4f").appendChild(div);
+                };
+                var e = document.getElementById("Sxau4f");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/refs/heads/master/data/mpg2.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>miles per gallon</th>
+      <th>number of cylinders</th>
+      <th>engine displacement (cu. inches)</th>
+      <th>engine horsepower</th>
+      <th>vehicle weight (lbs.)</th>
+      <th>time to accelerate (sec.)</th>
+      <th>model year</th>
+      <th>origin of car</th>
+      <th>vehicle name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>307.0</td>
+      <td>130</td>
+      <td>3504</td>
+      <td>12.0</td>
+      <td>70</td>
+      <td>US</td>
+      <td>chevrolet chevelle malibu</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15.0</td>
+      <td>8</td>
+      <td>350.0</td>
+      <td>165</td>
+      <td>3693</td>
+      <td>11.5</td>
+      <td>70</td>
+      <td>US</td>
+      <td>buick skylark 320</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18.0</td>
+      <td>8</td>
+      <td>318.0</td>
+      <td>150</td>
+      <td>3436</td>
+      <td>11.0</td>
+      <td>70</td>
+      <td>US</td>
+      <td>plymouth satellite</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16.0</td>
+      <td>8</td>
+      <td>304.0</td>
+      <td>150</td>
+      <td>3433</td>
+      <td>12.0</td>
+      <td>70</td>
+      <td>US</td>
+      <td>amc rebel sst</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.0</td>
+      <td>8</td>
+      <td>302.0</td>
+      <td>140</td>
+      <td>3449</td>
+      <td>10.5</td>
+      <td>70</td>
+      <td>US</td>
+      <td>ford torino</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpg</span><span class="o">=</span><span class="s1">&#39;miles per gallon&#39;</span>
+<span class="n">weight</span><span class="o">=</span><span class="s1">&#39;vehicle weight (lbs.)&#39;</span>
+<span class="n">origin</span><span class="o">=</span><span class="s1">&#39;origin of car&#39;</span>
+<span class="n">hp</span><span class="o">=</span><span class="s1">&#39;engine horsepower&#39;</span>
+<span class="n">accel</span><span class="o">=</span><span class="s1">&#39;time to accelerate (sec.)&#39;</span>
+<span class="n">displ</span><span class="o">=</span><span class="s1">&#39;engine displacement (cu. inches)&#39;</span>
+<span class="n">origin</span><span class="o">=</span><span class="s1">&#39;origin of car&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="shared-x-axis-all">
+<h2>Shared X-axis (all)<a class="headerlink" href="#shared-x-axis-all" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">weight</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Weight vs MPG&#39;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">hp</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;HP vs MPG&#39;</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">accel</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Accel vs MPG&#39;</span><span class="p">)</span>
+<span class="n">p4</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">displ</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Displ vs MPG&#39;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">guides</span><span class="o">=</span><span class="s1">&#39;collect&#39;</span><span class="p">,</span> 
+       
+       <span class="n">sharex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span>
+       
+      <span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="cFZD20" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("cFZD20");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"ggsize":{
+"width":800.0,
+"height":600.0
+},
+"ggtoolbar":{
+},
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":2.0,
+"sharex":"all",
+"guides":"collect",
+"name":"grid"
+},
+"figures":[{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"vehicle weight (lbs.)":[3504.0,3693.0,3436.0,3433.0,3449.0,4341.0,4354.0,4312.0,4425.0,3850.0,3563.0,3609.0,3761.0,3086.0,2372.0,2833.0,2774.0,2587.0,2130.0,1835.0,2672.0,2430.0,2375.0,2234.0,2648.0,4615.0,4376.0,4382.0,4732.0,2130.0,2264.0,2228.0,2634.0,3439.0,3329.0,3302.0,3288.0,4209.0,4464.0,4154.0,4096.0,4955.0,4746.0,5140.0,2962.0,2408.0,3282.0,3139.0,2220.0,2123.0,2074.0,2065.0,1773.0,1613.0,1834.0,1955.0,2278.0,2126.0,2254.0,2408.0,2226.0,4274.0,4385.0,4135.0,4129.0,3672.0,4633.0,4502.0,4456.0,4422.0,2330.0,3892.0,4098.0,4294.0,4077.0,2933.0,2511.0,2979.0,2189.0,2395.0,2288.0,2506.0,2164.0,2100.0,4100.0,3672.0,3988.0,4042.0,3777.0,4952.0,4464.0,4363.0,4237.0,4735.0,4951.0,3821.0,3121.0,3278.0,2945.0,3021.0,2904.0,1950.0,4997.0,4906.0,4654.0,4499.0,2789.0,2279.0,2401.0,2379.0,2124.0,2310.0,2472.0,2265.0,4082.0,4278.0,1867.0,2158.0,2582.0,2868.0,3399.0,2660.0,2807.0,3664.0,3102.0,2901.0,3336.0,1950.0,2451.0,1836.0,2542.0,3781.0,3632.0,3613.0,4141.0,4699.0,4457.0,4638.0,4257.0,2219.0,1963.0,2300.0,1649.0,2003.0,2125.0,2108.0,2246.0,2489.0,2391.0,2000.0,3264.0,3459.0,3432.0,3158.0,4668.0,4440.0,4498.0,4657.0,3907.0,3897.0,3730.0,3785.0,3039.0,3221.0,3169.0,2171.0,2639.0,2914.0,2592.0,2702.0,2223.0,2545.0,2984.0,1937.0,3211.0,2694.0,2957.0,2945.0,2671.0,1795.0,2464.0,2220.0,2572.0,2255.0,2202.0,4215.0,4190.0,3962.0,4215.0,3233.0,3353.0,3012.0,3085.0,2035.0,2164.0,1937.0,1795.0,3651.0,3574.0,3645.0,3193.0,1825.0,1990.0,2155.0,2565.0,3150.0,3940.0,3270.0,2930.0,3820.0,4380.0,4055.0,3870.0,3755.0,2045.0,2155.0,1825.0,2300.0,1945.0,3880.0,4060.0,4140.0,4295.0,3520.0,3425.0,3630.0,3525.0,4220.0,4165.0,4325.0,4335.0,1940.0,2740.0,2265.0,2755.0,2051.0,2075.0,1985.0,2190.0,2815.0,2600.0,2720.0,1985.0,1800.0,1985.0,2070.0,1800.0,3365.0,3735.0,3570.0,3535.0,3155.0,2965.0,2720.0,3430.0,3210.0,3380.0,3070.0,3620.0,3410.0,3425.0,3445.0,3205.0,4080.0,2155.0,2560.0,2300.0,2230.0,2515.0,2745.0,2855.0,2405.0,2830.0,3140.0,2795.0,3410.0,1990.0,2135.0,3245.0,2990.0,2890.0,3265.0,3360.0,3840.0,3725.0,3955.0,3830.0,4360.0,4054.0,3605.0,3940.0,1925.0,1975.0,1915.0,2670.0,3530.0,3900.0,3190.0,3420.0,2200.0,2150.0,2020.0,2130.0,2670.0,2595.0,2700.0,2556.0,2144.0,1968.0,2120.0,2019.0,2678.0,2870.0,3003.0,3381.0,2188.0,2711.0,2542.0,2434.0,2265.0,2110.0,2800.0,2110.0,2085.0,2335.0,2950.0,3250.0,1850.0,2145.0,1845.0,2910.0,2420.0,2500.0,2290.0,2490.0,2635.0,2620.0,2725.0,2385.0,1755.0,1875.0,1760.0,2065.0,1975.0,2050.0,1985.0,2215.0,2045.0,2380.0,2190.0,2210.0,2350.0,2615.0,2635.0,3230.0,3160.0,2900.0,2930.0,3415.0,3725.0,3060.0,3465.0,2605.0,2640.0,2395.0,2575.0,2525.0,2735.0,2865.0,1980.0,2025.0,1970.0,2125.0,2125.0,2160.0,2205.0,2245.0,1965.0,1965.0,1995.0,2945.0,3015.0,2585.0,2835.0,2665.0,2370.0,2950.0,2790.0,2130.0,2295.0,2625.0,2720.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"vehicle weight (lbs.)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Weight vs MPG"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+},{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"engine horsepower":[130.0,165.0,150.0,150.0,140.0,198.0,220.0,215.0,225.0,190.0,170.0,160.0,150.0,225.0,95.0,95.0,97.0,85.0,88.0,46.0,87.0,90.0,95.0,113.0,90.0,215.0,200.0,210.0,193.0,88.0,90.0,95.0,100.0,105.0,100.0,88.0,100.0,165.0,175.0,153.0,150.0,180.0,170.0,175.0,110.0,72.0,100.0,88.0,86.0,90.0,70.0,76.0,65.0,69.0,60.0,70.0,95.0,80.0,54.0,90.0,86.0,165.0,175.0,150.0,153.0,150.0,208.0,155.0,160.0,190.0,97.0,150.0,130.0,140.0,150.0,112.0,76.0,87.0,69.0,86.0,92.0,97.0,80.0,88.0,175.0,150.0,145.0,137.0,150.0,198.0,150.0,158.0,150.0,215.0,225.0,175.0,105.0,100.0,100.0,88.0,95.0,46.0,150.0,167.0,170.0,180.0,100.0,88.0,72.0,94.0,90.0,85.0,107.0,90.0,145.0,230.0,49.0,75.0,91.0,112.0,150.0,110.0,122.0,180.0,95.0,100.0,100.0,67.0,80.0,65.0,75.0,100.0,110.0,105.0,140.0,150.0,150.0,140.0,150.0,83.0,67.0,78.0,52.0,61.0,75.0,75.0,75.0,97.0,93.0,67.0,95.0,105.0,72.0,72.0,170.0,145.0,150.0,148.0,110.0,105.0,110.0,95.0,110.0,110.0,129.0,75.0,83.0,100.0,78.0,96.0,71.0,97.0,97.0,70.0,90.0,95.0,88.0,98.0,115.0,53.0,86.0,81.0,92.0,79.0,83.0,140.0,150.0,120.0,152.0,100.0,105.0,81.0,90.0,52.0,60.0,70.0,53.0,100.0,78.0,110.0,95.0,71.0,70.0,75.0,72.0,102.0,150.0,88.0,108.0,120.0,180.0,145.0,130.0,150.0,68.0,80.0,58.0,96.0,70.0,145.0,110.0,145.0,130.0,110.0,105.0,100.0,98.0,180.0,170.0,190.0,149.0,78.0,88.0,75.0,89.0,63.0,83.0,67.0,78.0,97.0,110.0,110.0,48.0,66.0,52.0,70.0,60.0,110.0,140.0,139.0,105.0,95.0,85.0,88.0,100.0,90.0,105.0,85.0,110.0,120.0,145.0,165.0,139.0,140.0,68.0,95.0,97.0,75.0,95.0,105.0,85.0,97.0,103.0,125.0,115.0,133.0,71.0,68.0,115.0,85.0,88.0,90.0,110.0,130.0,129.0,138.0,135.0,155.0,142.0,125.0,150.0,71.0,65.0,80.0,80.0,77.0,125.0,71.0,90.0,70.0,70.0,65.0,69.0,90.0,115.0,115.0,90.0,76.0,60.0,70.0,65.0,90.0,88.0,90.0,90.0,78.0,90.0,75.0,92.0,75.0,65.0,105.0,65.0,48.0,48.0,67.0,67.0,67.0,67.0,62.0,132.0,100.0,88.0,72.0,84.0,84.0,92.0,110.0,84.0,58.0,64.0,60.0,67.0,65.0,62.0,68.0,63.0,65.0,65.0,74.0,75.0,75.0,100.0,74.0,80.0,76.0,116.0,120.0,110.0,105.0,88.0,85.0,88.0,88.0,88.0,85.0,84.0,90.0,92.0,74.0,68.0,68.0,63.0,70.0,88.0,75.0,70.0,67.0,67.0,67.0,110.0,85.0,92.0,112.0,96.0,84.0,90.0,86.0,52.0,84.0,79.0,82.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"engine horsepower"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"HP vs MPG"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+},{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"time to accelerate (sec.)":[12.0,11.5,11.0,12.0,10.5,10.0,9.0,8.5,10.0,8.5,10.0,8.0,9.5,10.0,15.0,15.5,15.5,16.0,14.5,20.5,17.5,14.5,17.5,12.5,15.0,14.0,15.0,13.5,18.5,14.5,15.5,14.0,13.0,15.5,15.5,15.5,15.5,12.0,11.5,13.5,13.0,11.5,12.0,12.0,13.5,19.0,15.0,14.5,14.0,14.0,19.5,14.5,19.0,18.0,19.0,20.5,15.5,17.0,23.5,19.5,16.5,12.0,12.0,13.5,13.0,11.5,11.0,13.5,13.5,12.5,13.5,12.5,14.0,16.0,14.0,14.5,18.0,19.5,18.0,16.0,17.0,14.5,15.0,16.5,13.0,11.5,13.0,14.5,12.5,11.5,12.0,13.0,14.5,11.0,11.0,11.0,16.5,18.0,16.0,16.5,16.0,21.0,14.0,12.5,13.0,12.5,15.0,19.0,19.5,16.5,13.5,18.5,14.0,15.5,13.0,9.5,19.5,15.5,14.0,15.5,11.0,14.0,13.5,11.0,16.5,16.0,17.0,19.0,16.5,21.0,17.0,17.0,18.0,16.5,14.0,14.5,13.5,16.0,15.5,16.5,15.5,14.5,16.5,19.0,14.5,15.5,14.0,15.0,15.5,16.0,16.0,16.0,21.0,19.5,11.5,14.0,14.5,13.5,21.0,18.5,19.0,19.0,15.0,13.5,12.0,16.0,17.0,16.0,18.5,13.5,16.5,17.0,14.5,14.0,17.0,15.0,17.0,14.5,13.5,17.5,15.5,16.9,14.9,17.7,15.3,13.0,13.0,13.9,12.8,15.4,14.5,17.6,17.6,22.2,22.1,14.2,17.4,17.7,21.0,16.2,17.8,12.2,17.0,16.4,13.6,15.7,13.2,21.9,15.5,16.7,12.1,12.0,15.0,14.0,18.5,14.8,18.6,15.5,16.8,12.5,19.0,13.7,14.9,16.4,16.9,17.7,19.0,11.1,11.4,12.2,14.5,14.5,16.0,18.2,15.8,17.0,15.9,16.4,14.1,14.5,12.8,13.5,21.5,14.4,19.4,18.6,16.4,15.5,13.2,12.8,19.2,18.2,15.8,15.4,17.2,17.2,15.8,16.7,18.7,15.1,13.2,13.4,11.2,13.7,16.5,14.2,14.7,14.5,14.8,16.7,17.6,14.9,15.9,13.6,15.7,15.8,14.9,16.6,15.4,18.2,17.3,18.2,16.6,15.4,13.4,13.2,15.2,14.9,14.3,15.0,13.0,14.0,15.2,14.4,15.0,20.1,17.4,24.8,22.2,13.2,14.9,19.2,14.7,16.0,11.3,12.9,13.2,14.7,18.8,15.5,16.4,16.5,18.1,20.1,18.7,15.8,15.5,17.5,15.0,15.2,17.9,14.4,19.2,21.7,23.7,19.9,21.8,13.8,18.0,15.3,11.4,12.5,15.1,17.0,15.7,16.4,14.4,12.6,12.9,16.9,16.4,16.1,17.8,19.4,17.3,16.0,14.9,16.2,20.7,14.2,14.4,16.8,14.8,18.3,20.4,19.6,12.6,13.8,15.8,19.0,17.1,16.6,19.6,18.6,18.0,16.2,16.0,18.0,16.4,15.3,18.2,17.6,14.7,17.3,14.5,14.5,16.9,15.0,15.7,16.2,16.4,17.0,14.5,14.7,13.9,13.0,17.3,15.6,24.6,11.6,18.6,19.4],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"time to accelerate (sec.)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Accel vs MPG"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+},{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"engine displacement (cu. inches)":[307.0,350.0,318.0,304.0,302.0,429.0,454.0,440.0,455.0,390.0,383.0,340.0,400.0,455.0,113.0,198.0,199.0,200.0,97.0,97.0,110.0,107.0,104.0,121.0,199.0,360.0,307.0,318.0,304.0,97.0,140.0,113.0,232.0,225.0,250.0,250.0,232.0,350.0,400.0,351.0,318.0,383.0,400.0,400.0,258.0,140.0,250.0,250.0,122.0,116.0,79.0,88.0,71.0,72.0,97.0,91.0,113.0,97.5,97.0,140.0,122.0,350.0,400.0,318.0,351.0,304.0,429.0,350.0,350.0,400.0,70.0,304.0,307.0,302.0,318.0,121.0,121.0,120.0,96.0,122.0,97.0,120.0,98.0,97.0,350.0,304.0,350.0,302.0,318.0,429.0,400.0,351.0,318.0,440.0,455.0,360.0,225.0,250.0,232.0,250.0,198.0,97.0,400.0,400.0,360.0,350.0,232.0,97.0,140.0,108.0,70.0,122.0,155.0,98.0,350.0,400.0,68.0,116.0,114.0,121.0,318.0,121.0,156.0,350.0,198.0,232.0,250.0,79.0,122.0,71.0,140.0,250.0,258.0,225.0,302.0,350.0,318.0,302.0,304.0,98.0,79.0,97.0,76.0,83.0,90.0,90.0,116.0,120.0,108.0,79.0,225.0,250.0,250.0,250.0,400.0,350.0,318.0,351.0,231.0,250.0,258.0,225.0,231.0,262.0,302.0,97.0,140.0,232.0,140.0,134.0,90.0,119.0,171.0,90.0,232.0,115.0,120.0,121.0,121.0,91.0,107.0,116.0,140.0,98.0,101.0,305.0,318.0,304.0,351.0,225.0,250.0,200.0,232.0,85.0,98.0,90.0,91.0,225.0,250.0,250.0,258.0,97.0,85.0,97.0,140.0,130.0,318.0,120.0,156.0,168.0,350.0,350.0,302.0,318.0,98.0,111.0,79.0,122.0,85.0,305.0,260.0,318.0,302.0,250.0,231.0,225.0,250.0,400.0,350.0,400.0,351.0,97.0,151.0,97.0,140.0,98.0,98.0,97.0,97.0,146.0,121.0,80.0,90.0,98.0,78.0,85.0,91.0,260.0,318.0,302.0,231.0,200.0,200.0,140.0,225.0,232.0,231.0,200.0,225.0,258.0,305.0,231.0,302.0,318.0,98.0,134.0,119.0,105.0,134.0,156.0,151.0,119.0,131.0,163.0,121.0,163.0,89.0,98.0,231.0,200.0,140.0,232.0,225.0,305.0,302.0,351.0,318.0,350.0,351.0,267.0,360.0,89.0,86.0,98.0,121.0,183.0,350.0,141.0,260.0,105.0,105.0,85.0,91.0,151.0,173.0,173.0,151.0,98.0,89.0,98.0,86.0,151.0,140.0,151.0,225.0,97.0,134.0,120.0,119.0,108.0,86.0,156.0,85.0,90.0,90.0,121.0,146.0,91.0,97.0,89.0,168.0,70.0,122.0,107.0,135.0,151.0,156.0,173.0,135.0,79.0,86.0,81.0,97.0,85.0,89.0,91.0,105.0,98.0,98.0,105.0,107.0,108.0,119.0,120.0,141.0,145.0,168.0,146.0,231.0,350.0,200.0,225.0,112.0,112.0,112.0,112.0,135.0,151.0,140.0,105.0,91.0,91.0,105.0,98.0,120.0,107.0,108.0,91.0,91.0,91.0,181.0,262.0,156.0,232.0,144.0,135.0,151.0,140.0,97.0,135.0,120.0,119.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"engine displacement (cu. inches)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Displ vs MPG"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="shared-y-axis-all">
+<h2>Shared Y-axis (all)<a class="headerlink" href="#shared-y-axis-all" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">displ</span><span class="p">,</span> <span class="n">mpg</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;MPG vs Displ&#39;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">mpg</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;MPG vs HP&#39;</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">mpg</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;MPG vs Weight&#39;</span><span class="p">)</span>
+<span class="n">p4</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">accel</span><span class="p">,</span> <span class="n">mpg</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;MPG vs Accel&#39;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">guides</span><span class="o">=</span><span class="s1">&#39;collect&#39;</span><span class="p">,</span> 
+       
+       <span class="n">sharey</span><span class="o">=</span><span class="s1">&#39;all&#39;</span>
+       
+      <span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="4HGajd" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("4HGajd");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"ggsize":{
+"width":800.0,
+"height":600.0
+},
+"ggtoolbar":{
+},
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":2.0,
+"sharey":"all",
+"guides":"collect",
+"name":"grid"
+},
+"figures":[{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"engine displacement (cu. inches)":[307.0,350.0,318.0,304.0,302.0,429.0,454.0,440.0,455.0,390.0,383.0,340.0,400.0,455.0,113.0,198.0,199.0,200.0,97.0,97.0,110.0,107.0,104.0,121.0,199.0,360.0,307.0,318.0,304.0,97.0,140.0,113.0,232.0,225.0,250.0,250.0,232.0,350.0,400.0,351.0,318.0,383.0,400.0,400.0,258.0,140.0,250.0,250.0,122.0,116.0,79.0,88.0,71.0,72.0,97.0,91.0,113.0,97.5,97.0,140.0,122.0,350.0,400.0,318.0,351.0,304.0,429.0,350.0,350.0,400.0,70.0,304.0,307.0,302.0,318.0,121.0,121.0,120.0,96.0,122.0,97.0,120.0,98.0,97.0,350.0,304.0,350.0,302.0,318.0,429.0,400.0,351.0,318.0,440.0,455.0,360.0,225.0,250.0,232.0,250.0,198.0,97.0,400.0,400.0,360.0,350.0,232.0,97.0,140.0,108.0,70.0,122.0,155.0,98.0,350.0,400.0,68.0,116.0,114.0,121.0,318.0,121.0,156.0,350.0,198.0,232.0,250.0,79.0,122.0,71.0,140.0,250.0,258.0,225.0,302.0,350.0,318.0,302.0,304.0,98.0,79.0,97.0,76.0,83.0,90.0,90.0,116.0,120.0,108.0,79.0,225.0,250.0,250.0,250.0,400.0,350.0,318.0,351.0,231.0,250.0,258.0,225.0,231.0,262.0,302.0,97.0,140.0,232.0,140.0,134.0,90.0,119.0,171.0,90.0,232.0,115.0,120.0,121.0,121.0,91.0,107.0,116.0,140.0,98.0,101.0,305.0,318.0,304.0,351.0,225.0,250.0,200.0,232.0,85.0,98.0,90.0,91.0,225.0,250.0,250.0,258.0,97.0,85.0,97.0,140.0,130.0,318.0,120.0,156.0,168.0,350.0,350.0,302.0,318.0,98.0,111.0,79.0,122.0,85.0,305.0,260.0,318.0,302.0,250.0,231.0,225.0,250.0,400.0,350.0,400.0,351.0,97.0,151.0,97.0,140.0,98.0,98.0,97.0,97.0,146.0,121.0,80.0,90.0,98.0,78.0,85.0,91.0,260.0,318.0,302.0,231.0,200.0,200.0,140.0,225.0,232.0,231.0,200.0,225.0,258.0,305.0,231.0,302.0,318.0,98.0,134.0,119.0,105.0,134.0,156.0,151.0,119.0,131.0,163.0,121.0,163.0,89.0,98.0,231.0,200.0,140.0,232.0,225.0,305.0,302.0,351.0,318.0,350.0,351.0,267.0,360.0,89.0,86.0,98.0,121.0,183.0,350.0,141.0,260.0,105.0,105.0,85.0,91.0,151.0,173.0,173.0,151.0,98.0,89.0,98.0,86.0,151.0,140.0,151.0,225.0,97.0,134.0,120.0,119.0,108.0,86.0,156.0,85.0,90.0,90.0,121.0,146.0,91.0,97.0,89.0,168.0,70.0,122.0,107.0,135.0,151.0,156.0,173.0,135.0,79.0,86.0,81.0,97.0,85.0,89.0,91.0,105.0,98.0,98.0,105.0,107.0,108.0,119.0,120.0,141.0,145.0,168.0,146.0,231.0,350.0,200.0,225.0,112.0,112.0,112.0,112.0,135.0,151.0,140.0,105.0,91.0,91.0,105.0,98.0,120.0,107.0,108.0,91.0,91.0,91.0,181.0,262.0,156.0,232.0,144.0,135.0,151.0,140.0,97.0,135.0,120.0,119.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"engine displacement (cu. inches)",
+"y":"miles per gallon"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"MPG vs Displ"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+},{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"engine horsepower":[130.0,165.0,150.0,150.0,140.0,198.0,220.0,215.0,225.0,190.0,170.0,160.0,150.0,225.0,95.0,95.0,97.0,85.0,88.0,46.0,87.0,90.0,95.0,113.0,90.0,215.0,200.0,210.0,193.0,88.0,90.0,95.0,100.0,105.0,100.0,88.0,100.0,165.0,175.0,153.0,150.0,180.0,170.0,175.0,110.0,72.0,100.0,88.0,86.0,90.0,70.0,76.0,65.0,69.0,60.0,70.0,95.0,80.0,54.0,90.0,86.0,165.0,175.0,150.0,153.0,150.0,208.0,155.0,160.0,190.0,97.0,150.0,130.0,140.0,150.0,112.0,76.0,87.0,69.0,86.0,92.0,97.0,80.0,88.0,175.0,150.0,145.0,137.0,150.0,198.0,150.0,158.0,150.0,215.0,225.0,175.0,105.0,100.0,100.0,88.0,95.0,46.0,150.0,167.0,170.0,180.0,100.0,88.0,72.0,94.0,90.0,85.0,107.0,90.0,145.0,230.0,49.0,75.0,91.0,112.0,150.0,110.0,122.0,180.0,95.0,100.0,100.0,67.0,80.0,65.0,75.0,100.0,110.0,105.0,140.0,150.0,150.0,140.0,150.0,83.0,67.0,78.0,52.0,61.0,75.0,75.0,75.0,97.0,93.0,67.0,95.0,105.0,72.0,72.0,170.0,145.0,150.0,148.0,110.0,105.0,110.0,95.0,110.0,110.0,129.0,75.0,83.0,100.0,78.0,96.0,71.0,97.0,97.0,70.0,90.0,95.0,88.0,98.0,115.0,53.0,86.0,81.0,92.0,79.0,83.0,140.0,150.0,120.0,152.0,100.0,105.0,81.0,90.0,52.0,60.0,70.0,53.0,100.0,78.0,110.0,95.0,71.0,70.0,75.0,72.0,102.0,150.0,88.0,108.0,120.0,180.0,145.0,130.0,150.0,68.0,80.0,58.0,96.0,70.0,145.0,110.0,145.0,130.0,110.0,105.0,100.0,98.0,180.0,170.0,190.0,149.0,78.0,88.0,75.0,89.0,63.0,83.0,67.0,78.0,97.0,110.0,110.0,48.0,66.0,52.0,70.0,60.0,110.0,140.0,139.0,105.0,95.0,85.0,88.0,100.0,90.0,105.0,85.0,110.0,120.0,145.0,165.0,139.0,140.0,68.0,95.0,97.0,75.0,95.0,105.0,85.0,97.0,103.0,125.0,115.0,133.0,71.0,68.0,115.0,85.0,88.0,90.0,110.0,130.0,129.0,138.0,135.0,155.0,142.0,125.0,150.0,71.0,65.0,80.0,80.0,77.0,125.0,71.0,90.0,70.0,70.0,65.0,69.0,90.0,115.0,115.0,90.0,76.0,60.0,70.0,65.0,90.0,88.0,90.0,90.0,78.0,90.0,75.0,92.0,75.0,65.0,105.0,65.0,48.0,48.0,67.0,67.0,67.0,67.0,62.0,132.0,100.0,88.0,72.0,84.0,84.0,92.0,110.0,84.0,58.0,64.0,60.0,67.0,65.0,62.0,68.0,63.0,65.0,65.0,74.0,75.0,75.0,100.0,74.0,80.0,76.0,116.0,120.0,110.0,105.0,88.0,85.0,88.0,88.0,88.0,85.0,84.0,90.0,92.0,74.0,68.0,68.0,63.0,70.0,88.0,75.0,70.0,67.0,67.0,67.0,110.0,85.0,92.0,112.0,96.0,84.0,90.0,86.0,52.0,84.0,79.0,82.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"engine horsepower",
+"y":"miles per gallon"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"MPG vs HP"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+},{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"vehicle weight (lbs.)":[3504.0,3693.0,3436.0,3433.0,3449.0,4341.0,4354.0,4312.0,4425.0,3850.0,3563.0,3609.0,3761.0,3086.0,2372.0,2833.0,2774.0,2587.0,2130.0,1835.0,2672.0,2430.0,2375.0,2234.0,2648.0,4615.0,4376.0,4382.0,4732.0,2130.0,2264.0,2228.0,2634.0,3439.0,3329.0,3302.0,3288.0,4209.0,4464.0,4154.0,4096.0,4955.0,4746.0,5140.0,2962.0,2408.0,3282.0,3139.0,2220.0,2123.0,2074.0,2065.0,1773.0,1613.0,1834.0,1955.0,2278.0,2126.0,2254.0,2408.0,2226.0,4274.0,4385.0,4135.0,4129.0,3672.0,4633.0,4502.0,4456.0,4422.0,2330.0,3892.0,4098.0,4294.0,4077.0,2933.0,2511.0,2979.0,2189.0,2395.0,2288.0,2506.0,2164.0,2100.0,4100.0,3672.0,3988.0,4042.0,3777.0,4952.0,4464.0,4363.0,4237.0,4735.0,4951.0,3821.0,3121.0,3278.0,2945.0,3021.0,2904.0,1950.0,4997.0,4906.0,4654.0,4499.0,2789.0,2279.0,2401.0,2379.0,2124.0,2310.0,2472.0,2265.0,4082.0,4278.0,1867.0,2158.0,2582.0,2868.0,3399.0,2660.0,2807.0,3664.0,3102.0,2901.0,3336.0,1950.0,2451.0,1836.0,2542.0,3781.0,3632.0,3613.0,4141.0,4699.0,4457.0,4638.0,4257.0,2219.0,1963.0,2300.0,1649.0,2003.0,2125.0,2108.0,2246.0,2489.0,2391.0,2000.0,3264.0,3459.0,3432.0,3158.0,4668.0,4440.0,4498.0,4657.0,3907.0,3897.0,3730.0,3785.0,3039.0,3221.0,3169.0,2171.0,2639.0,2914.0,2592.0,2702.0,2223.0,2545.0,2984.0,1937.0,3211.0,2694.0,2957.0,2945.0,2671.0,1795.0,2464.0,2220.0,2572.0,2255.0,2202.0,4215.0,4190.0,3962.0,4215.0,3233.0,3353.0,3012.0,3085.0,2035.0,2164.0,1937.0,1795.0,3651.0,3574.0,3645.0,3193.0,1825.0,1990.0,2155.0,2565.0,3150.0,3940.0,3270.0,2930.0,3820.0,4380.0,4055.0,3870.0,3755.0,2045.0,2155.0,1825.0,2300.0,1945.0,3880.0,4060.0,4140.0,4295.0,3520.0,3425.0,3630.0,3525.0,4220.0,4165.0,4325.0,4335.0,1940.0,2740.0,2265.0,2755.0,2051.0,2075.0,1985.0,2190.0,2815.0,2600.0,2720.0,1985.0,1800.0,1985.0,2070.0,1800.0,3365.0,3735.0,3570.0,3535.0,3155.0,2965.0,2720.0,3430.0,3210.0,3380.0,3070.0,3620.0,3410.0,3425.0,3445.0,3205.0,4080.0,2155.0,2560.0,2300.0,2230.0,2515.0,2745.0,2855.0,2405.0,2830.0,3140.0,2795.0,3410.0,1990.0,2135.0,3245.0,2990.0,2890.0,3265.0,3360.0,3840.0,3725.0,3955.0,3830.0,4360.0,4054.0,3605.0,3940.0,1925.0,1975.0,1915.0,2670.0,3530.0,3900.0,3190.0,3420.0,2200.0,2150.0,2020.0,2130.0,2670.0,2595.0,2700.0,2556.0,2144.0,1968.0,2120.0,2019.0,2678.0,2870.0,3003.0,3381.0,2188.0,2711.0,2542.0,2434.0,2265.0,2110.0,2800.0,2110.0,2085.0,2335.0,2950.0,3250.0,1850.0,2145.0,1845.0,2910.0,2420.0,2500.0,2290.0,2490.0,2635.0,2620.0,2725.0,2385.0,1755.0,1875.0,1760.0,2065.0,1975.0,2050.0,1985.0,2215.0,2045.0,2380.0,2190.0,2210.0,2350.0,2615.0,2635.0,3230.0,3160.0,2900.0,2930.0,3415.0,3725.0,3060.0,3465.0,2605.0,2640.0,2395.0,2575.0,2525.0,2735.0,2865.0,1980.0,2025.0,1970.0,2125.0,2125.0,2160.0,2205.0,2245.0,1965.0,1965.0,1995.0,2945.0,3015.0,2585.0,2835.0,2665.0,2370.0,2950.0,2790.0,2130.0,2295.0,2625.0,2720.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"vehicle weight (lbs.)",
+"y":"miles per gallon"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"MPG vs Weight"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"7"
+},{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"time to accelerate (sec.)":[12.0,11.5,11.0,12.0,10.5,10.0,9.0,8.5,10.0,8.5,10.0,8.0,9.5,10.0,15.0,15.5,15.5,16.0,14.5,20.5,17.5,14.5,17.5,12.5,15.0,14.0,15.0,13.5,18.5,14.5,15.5,14.0,13.0,15.5,15.5,15.5,15.5,12.0,11.5,13.5,13.0,11.5,12.0,12.0,13.5,19.0,15.0,14.5,14.0,14.0,19.5,14.5,19.0,18.0,19.0,20.5,15.5,17.0,23.5,19.5,16.5,12.0,12.0,13.5,13.0,11.5,11.0,13.5,13.5,12.5,13.5,12.5,14.0,16.0,14.0,14.5,18.0,19.5,18.0,16.0,17.0,14.5,15.0,16.5,13.0,11.5,13.0,14.5,12.5,11.5,12.0,13.0,14.5,11.0,11.0,11.0,16.5,18.0,16.0,16.5,16.0,21.0,14.0,12.5,13.0,12.5,15.0,19.0,19.5,16.5,13.5,18.5,14.0,15.5,13.0,9.5,19.5,15.5,14.0,15.5,11.0,14.0,13.5,11.0,16.5,16.0,17.0,19.0,16.5,21.0,17.0,17.0,18.0,16.5,14.0,14.5,13.5,16.0,15.5,16.5,15.5,14.5,16.5,19.0,14.5,15.5,14.0,15.0,15.5,16.0,16.0,16.0,21.0,19.5,11.5,14.0,14.5,13.5,21.0,18.5,19.0,19.0,15.0,13.5,12.0,16.0,17.0,16.0,18.5,13.5,16.5,17.0,14.5,14.0,17.0,15.0,17.0,14.5,13.5,17.5,15.5,16.9,14.9,17.7,15.3,13.0,13.0,13.9,12.8,15.4,14.5,17.6,17.6,22.2,22.1,14.2,17.4,17.7,21.0,16.2,17.8,12.2,17.0,16.4,13.6,15.7,13.2,21.9,15.5,16.7,12.1,12.0,15.0,14.0,18.5,14.8,18.6,15.5,16.8,12.5,19.0,13.7,14.9,16.4,16.9,17.7,19.0,11.1,11.4,12.2,14.5,14.5,16.0,18.2,15.8,17.0,15.9,16.4,14.1,14.5,12.8,13.5,21.5,14.4,19.4,18.6,16.4,15.5,13.2,12.8,19.2,18.2,15.8,15.4,17.2,17.2,15.8,16.7,18.7,15.1,13.2,13.4,11.2,13.7,16.5,14.2,14.7,14.5,14.8,16.7,17.6,14.9,15.9,13.6,15.7,15.8,14.9,16.6,15.4,18.2,17.3,18.2,16.6,15.4,13.4,13.2,15.2,14.9,14.3,15.0,13.0,14.0,15.2,14.4,15.0,20.1,17.4,24.8,22.2,13.2,14.9,19.2,14.7,16.0,11.3,12.9,13.2,14.7,18.8,15.5,16.4,16.5,18.1,20.1,18.7,15.8,15.5,17.5,15.0,15.2,17.9,14.4,19.2,21.7,23.7,19.9,21.8,13.8,18.0,15.3,11.4,12.5,15.1,17.0,15.7,16.4,14.4,12.6,12.9,16.9,16.4,16.1,17.8,19.4,17.3,16.0,14.9,16.2,20.7,14.2,14.4,16.8,14.8,18.3,20.4,19.6,12.6,13.8,15.8,19.0,17.1,16.6,19.6,18.6,18.0,16.2,16.0,18.0,16.4,15.3,18.2,17.6,14.7,17.3,14.5,14.5,16.9,15.0,15.7,16.2,16.4,17.0,14.5,14.7,13.9,13.0,17.3,15.6,24.6,11.6,18.6,19.4],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"time to accelerate (sec.)",
+"y":"miles per gallon"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"MPG vs Accel"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"8"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="shared-x-by-column-y-by-row">
+<h2>Shared X by Column, Y by Row<a class="headerlink" href="#shared-x-by-column-y-by-row" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">weight</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Weight vs MPG&#39;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">weight</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Weight vs HP&#39;</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">accel</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Accel vs MPG&#39;</span><span class="p">)</span>
+<span class="n">p4</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">accel</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">origin</span><span class="p">))</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Accel vs HP&#39;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">guides</span><span class="o">=</span><span class="s1">&#39;collect&#39;</span><span class="p">,</span> 
+       
+       <span class="n">sharex</span><span class="o">=</span><span class="s1">&#39;col&#39;</span><span class="p">,</span> 
+       <span class="n">sharey</span><span class="o">=</span><span class="s1">&#39;row&#39;</span>
+       
+      <span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="0F3Qmn" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("0F3Qmn");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"ggsize":{
+"width":800.0,
+"height":600.0
+},
+"ggtoolbar":{
+},
+"kind":"subplots",
+"layout":{
+"ncol":2.0,
+"nrow":2.0,
+"sharex":"col",
+"sharey":"row",
+"guides":"collect",
+"name":"grid"
+},
+"figures":[{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"vehicle weight (lbs.)":[3504.0,3693.0,3436.0,3433.0,3449.0,4341.0,4354.0,4312.0,4425.0,3850.0,3563.0,3609.0,3761.0,3086.0,2372.0,2833.0,2774.0,2587.0,2130.0,1835.0,2672.0,2430.0,2375.0,2234.0,2648.0,4615.0,4376.0,4382.0,4732.0,2130.0,2264.0,2228.0,2634.0,3439.0,3329.0,3302.0,3288.0,4209.0,4464.0,4154.0,4096.0,4955.0,4746.0,5140.0,2962.0,2408.0,3282.0,3139.0,2220.0,2123.0,2074.0,2065.0,1773.0,1613.0,1834.0,1955.0,2278.0,2126.0,2254.0,2408.0,2226.0,4274.0,4385.0,4135.0,4129.0,3672.0,4633.0,4502.0,4456.0,4422.0,2330.0,3892.0,4098.0,4294.0,4077.0,2933.0,2511.0,2979.0,2189.0,2395.0,2288.0,2506.0,2164.0,2100.0,4100.0,3672.0,3988.0,4042.0,3777.0,4952.0,4464.0,4363.0,4237.0,4735.0,4951.0,3821.0,3121.0,3278.0,2945.0,3021.0,2904.0,1950.0,4997.0,4906.0,4654.0,4499.0,2789.0,2279.0,2401.0,2379.0,2124.0,2310.0,2472.0,2265.0,4082.0,4278.0,1867.0,2158.0,2582.0,2868.0,3399.0,2660.0,2807.0,3664.0,3102.0,2901.0,3336.0,1950.0,2451.0,1836.0,2542.0,3781.0,3632.0,3613.0,4141.0,4699.0,4457.0,4638.0,4257.0,2219.0,1963.0,2300.0,1649.0,2003.0,2125.0,2108.0,2246.0,2489.0,2391.0,2000.0,3264.0,3459.0,3432.0,3158.0,4668.0,4440.0,4498.0,4657.0,3907.0,3897.0,3730.0,3785.0,3039.0,3221.0,3169.0,2171.0,2639.0,2914.0,2592.0,2702.0,2223.0,2545.0,2984.0,1937.0,3211.0,2694.0,2957.0,2945.0,2671.0,1795.0,2464.0,2220.0,2572.0,2255.0,2202.0,4215.0,4190.0,3962.0,4215.0,3233.0,3353.0,3012.0,3085.0,2035.0,2164.0,1937.0,1795.0,3651.0,3574.0,3645.0,3193.0,1825.0,1990.0,2155.0,2565.0,3150.0,3940.0,3270.0,2930.0,3820.0,4380.0,4055.0,3870.0,3755.0,2045.0,2155.0,1825.0,2300.0,1945.0,3880.0,4060.0,4140.0,4295.0,3520.0,3425.0,3630.0,3525.0,4220.0,4165.0,4325.0,4335.0,1940.0,2740.0,2265.0,2755.0,2051.0,2075.0,1985.0,2190.0,2815.0,2600.0,2720.0,1985.0,1800.0,1985.0,2070.0,1800.0,3365.0,3735.0,3570.0,3535.0,3155.0,2965.0,2720.0,3430.0,3210.0,3380.0,3070.0,3620.0,3410.0,3425.0,3445.0,3205.0,4080.0,2155.0,2560.0,2300.0,2230.0,2515.0,2745.0,2855.0,2405.0,2830.0,3140.0,2795.0,3410.0,1990.0,2135.0,3245.0,2990.0,2890.0,3265.0,3360.0,3840.0,3725.0,3955.0,3830.0,4360.0,4054.0,3605.0,3940.0,1925.0,1975.0,1915.0,2670.0,3530.0,3900.0,3190.0,3420.0,2200.0,2150.0,2020.0,2130.0,2670.0,2595.0,2700.0,2556.0,2144.0,1968.0,2120.0,2019.0,2678.0,2870.0,3003.0,3381.0,2188.0,2711.0,2542.0,2434.0,2265.0,2110.0,2800.0,2110.0,2085.0,2335.0,2950.0,3250.0,1850.0,2145.0,1845.0,2910.0,2420.0,2500.0,2290.0,2490.0,2635.0,2620.0,2725.0,2385.0,1755.0,1875.0,1760.0,2065.0,1975.0,2050.0,1985.0,2215.0,2045.0,2380.0,2190.0,2210.0,2350.0,2615.0,2635.0,3230.0,3160.0,2900.0,2930.0,3415.0,3725.0,3060.0,3465.0,2605.0,2640.0,2395.0,2575.0,2525.0,2735.0,2865.0,1980.0,2025.0,1970.0,2125.0,2125.0,2160.0,2205.0,2245.0,1965.0,1965.0,1995.0,2945.0,3015.0,2585.0,2835.0,2665.0,2370.0,2950.0,2790.0,2130.0,2295.0,2625.0,2720.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"vehicle weight (lbs.)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Weight vs MPG"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"9"
+},{
+"data":{
+"engine horsepower":[130.0,165.0,150.0,150.0,140.0,198.0,220.0,215.0,225.0,190.0,170.0,160.0,150.0,225.0,95.0,95.0,97.0,85.0,88.0,46.0,87.0,90.0,95.0,113.0,90.0,215.0,200.0,210.0,193.0,88.0,90.0,95.0,100.0,105.0,100.0,88.0,100.0,165.0,175.0,153.0,150.0,180.0,170.0,175.0,110.0,72.0,100.0,88.0,86.0,90.0,70.0,76.0,65.0,69.0,60.0,70.0,95.0,80.0,54.0,90.0,86.0,165.0,175.0,150.0,153.0,150.0,208.0,155.0,160.0,190.0,97.0,150.0,130.0,140.0,150.0,112.0,76.0,87.0,69.0,86.0,92.0,97.0,80.0,88.0,175.0,150.0,145.0,137.0,150.0,198.0,150.0,158.0,150.0,215.0,225.0,175.0,105.0,100.0,100.0,88.0,95.0,46.0,150.0,167.0,170.0,180.0,100.0,88.0,72.0,94.0,90.0,85.0,107.0,90.0,145.0,230.0,49.0,75.0,91.0,112.0,150.0,110.0,122.0,180.0,95.0,100.0,100.0,67.0,80.0,65.0,75.0,100.0,110.0,105.0,140.0,150.0,150.0,140.0,150.0,83.0,67.0,78.0,52.0,61.0,75.0,75.0,75.0,97.0,93.0,67.0,95.0,105.0,72.0,72.0,170.0,145.0,150.0,148.0,110.0,105.0,110.0,95.0,110.0,110.0,129.0,75.0,83.0,100.0,78.0,96.0,71.0,97.0,97.0,70.0,90.0,95.0,88.0,98.0,115.0,53.0,86.0,81.0,92.0,79.0,83.0,140.0,150.0,120.0,152.0,100.0,105.0,81.0,90.0,52.0,60.0,70.0,53.0,100.0,78.0,110.0,95.0,71.0,70.0,75.0,72.0,102.0,150.0,88.0,108.0,120.0,180.0,145.0,130.0,150.0,68.0,80.0,58.0,96.0,70.0,145.0,110.0,145.0,130.0,110.0,105.0,100.0,98.0,180.0,170.0,190.0,149.0,78.0,88.0,75.0,89.0,63.0,83.0,67.0,78.0,97.0,110.0,110.0,48.0,66.0,52.0,70.0,60.0,110.0,140.0,139.0,105.0,95.0,85.0,88.0,100.0,90.0,105.0,85.0,110.0,120.0,145.0,165.0,139.0,140.0,68.0,95.0,97.0,75.0,95.0,105.0,85.0,97.0,103.0,125.0,115.0,133.0,71.0,68.0,115.0,85.0,88.0,90.0,110.0,130.0,129.0,138.0,135.0,155.0,142.0,125.0,150.0,71.0,65.0,80.0,80.0,77.0,125.0,71.0,90.0,70.0,70.0,65.0,69.0,90.0,115.0,115.0,90.0,76.0,60.0,70.0,65.0,90.0,88.0,90.0,90.0,78.0,90.0,75.0,92.0,75.0,65.0,105.0,65.0,48.0,48.0,67.0,67.0,67.0,67.0,62.0,132.0,100.0,88.0,72.0,84.0,84.0,92.0,110.0,84.0,58.0,64.0,60.0,67.0,65.0,62.0,68.0,63.0,65.0,65.0,74.0,75.0,75.0,100.0,74.0,80.0,76.0,116.0,120.0,110.0,105.0,88.0,85.0,88.0,88.0,88.0,85.0,84.0,90.0,92.0,74.0,68.0,68.0,63.0,70.0,88.0,75.0,70.0,67.0,67.0,67.0,110.0,85.0,92.0,112.0,96.0,84.0,90.0,86.0,52.0,84.0,79.0,82.0],
+"vehicle weight (lbs.)":[3504.0,3693.0,3436.0,3433.0,3449.0,4341.0,4354.0,4312.0,4425.0,3850.0,3563.0,3609.0,3761.0,3086.0,2372.0,2833.0,2774.0,2587.0,2130.0,1835.0,2672.0,2430.0,2375.0,2234.0,2648.0,4615.0,4376.0,4382.0,4732.0,2130.0,2264.0,2228.0,2634.0,3439.0,3329.0,3302.0,3288.0,4209.0,4464.0,4154.0,4096.0,4955.0,4746.0,5140.0,2962.0,2408.0,3282.0,3139.0,2220.0,2123.0,2074.0,2065.0,1773.0,1613.0,1834.0,1955.0,2278.0,2126.0,2254.0,2408.0,2226.0,4274.0,4385.0,4135.0,4129.0,3672.0,4633.0,4502.0,4456.0,4422.0,2330.0,3892.0,4098.0,4294.0,4077.0,2933.0,2511.0,2979.0,2189.0,2395.0,2288.0,2506.0,2164.0,2100.0,4100.0,3672.0,3988.0,4042.0,3777.0,4952.0,4464.0,4363.0,4237.0,4735.0,4951.0,3821.0,3121.0,3278.0,2945.0,3021.0,2904.0,1950.0,4997.0,4906.0,4654.0,4499.0,2789.0,2279.0,2401.0,2379.0,2124.0,2310.0,2472.0,2265.0,4082.0,4278.0,1867.0,2158.0,2582.0,2868.0,3399.0,2660.0,2807.0,3664.0,3102.0,2901.0,3336.0,1950.0,2451.0,1836.0,2542.0,3781.0,3632.0,3613.0,4141.0,4699.0,4457.0,4638.0,4257.0,2219.0,1963.0,2300.0,1649.0,2003.0,2125.0,2108.0,2246.0,2489.0,2391.0,2000.0,3264.0,3459.0,3432.0,3158.0,4668.0,4440.0,4498.0,4657.0,3907.0,3897.0,3730.0,3785.0,3039.0,3221.0,3169.0,2171.0,2639.0,2914.0,2592.0,2702.0,2223.0,2545.0,2984.0,1937.0,3211.0,2694.0,2957.0,2945.0,2671.0,1795.0,2464.0,2220.0,2572.0,2255.0,2202.0,4215.0,4190.0,3962.0,4215.0,3233.0,3353.0,3012.0,3085.0,2035.0,2164.0,1937.0,1795.0,3651.0,3574.0,3645.0,3193.0,1825.0,1990.0,2155.0,2565.0,3150.0,3940.0,3270.0,2930.0,3820.0,4380.0,4055.0,3870.0,3755.0,2045.0,2155.0,1825.0,2300.0,1945.0,3880.0,4060.0,4140.0,4295.0,3520.0,3425.0,3630.0,3525.0,4220.0,4165.0,4325.0,4335.0,1940.0,2740.0,2265.0,2755.0,2051.0,2075.0,1985.0,2190.0,2815.0,2600.0,2720.0,1985.0,1800.0,1985.0,2070.0,1800.0,3365.0,3735.0,3570.0,3535.0,3155.0,2965.0,2720.0,3430.0,3210.0,3380.0,3070.0,3620.0,3410.0,3425.0,3445.0,3205.0,4080.0,2155.0,2560.0,2300.0,2230.0,2515.0,2745.0,2855.0,2405.0,2830.0,3140.0,2795.0,3410.0,1990.0,2135.0,3245.0,2990.0,2890.0,3265.0,3360.0,3840.0,3725.0,3955.0,3830.0,4360.0,4054.0,3605.0,3940.0,1925.0,1975.0,1915.0,2670.0,3530.0,3900.0,3190.0,3420.0,2200.0,2150.0,2020.0,2130.0,2670.0,2595.0,2700.0,2556.0,2144.0,1968.0,2120.0,2019.0,2678.0,2870.0,3003.0,3381.0,2188.0,2711.0,2542.0,2434.0,2265.0,2110.0,2800.0,2110.0,2085.0,2335.0,2950.0,3250.0,1850.0,2145.0,1845.0,2910.0,2420.0,2500.0,2290.0,2490.0,2635.0,2620.0,2725.0,2385.0,1755.0,1875.0,1760.0,2065.0,1975.0,2050.0,1985.0,2215.0,2045.0,2380.0,2190.0,2210.0,2350.0,2615.0,2635.0,3230.0,3160.0,2900.0,2930.0,3415.0,3725.0,3060.0,3465.0,2605.0,2640.0,2395.0,2575.0,2525.0,2735.0,2865.0,1980.0,2025.0,1970.0,2125.0,2125.0,2160.0,2205.0,2245.0,1965.0,1965.0,1995.0,2945.0,3015.0,2585.0,2835.0,2665.0,2370.0,2950.0,2790.0,2130.0,2295.0,2625.0,2720.0],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"engine horsepower",
+"y":"vehicle weight (lbs.)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Weight vs HP"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"10"
+},{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,24.0,22.0,18.0,21.0,27.0,26.0,25.0,24.0,25.0,26.0,21.0,10.0,10.0,11.0,9.0,27.0,28.0,25.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,28.0,30.0,30.0,31.0,35.0,27.0,26.0,24.0,25.0,23.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,19.0,15.0,13.0,13.0,14.0,18.0,22.0,21.0,26.0,22.0,28.0,23.0,28.0,27.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,26.0,11.0,12.0,13.0,12.0,18.0,20.0,21.0,22.0,18.0,19.0,21.0,26.0,15.0,16.0,29.0,24.0,20.0,19.0,15.0,24.0,20.0,11.0,20.0,19.0,15.0,31.0,26.0,32.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,29.0,26.0,26.0,31.0,32.0,28.0,24.0,26.0,24.0,26.0,31.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,29.0,23.0,20.0,23.0,24.0,25.0,24.0,18.0,29.0,19.0,23.0,23.0,22.0,25.0,33.0,28.0,25.0,25.0,26.0,27.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,29.0,33.0,20.0,18.0,18.5,17.5,29.5,32.0,28.0,26.5,20.0,13.0,19.0,19.0,16.5,16.5,13.0,13.0,13.0,31.5,30.0,36.0,25.5,33.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,29.0,24.5,26.0,25.5,30.5,33.5,30.0,30.5,22.0,21.5,21.5,43.1,36.1,32.8,39.4,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,27.5,27.2,30.9,21.1,23.2,23.8,23.9,20.3,17.0,21.6,16.2,31.5,29.5,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,31.9,34.1,35.7,27.4,25.4,23.0,27.2,23.9,34.2,34.5,31.8,37.3,28.4,28.8,26.8,33.5,41.5,38.1,32.1,37.2,28.0,26.4,24.3,19.1,34.3,29.8,31.3,37.0,32.2,46.6,27.9,40.8,44.3,43.4,36.4,30.0,44.6,33.8,29.8,32.7,23.7,35.0,32.4,27.2,26.6,25.8,23.5,30.0,39.1,39.0,35.1,32.3,37.0,37.7,34.1,34.7,34.4,29.9,33.0,33.7,32.4,32.9,31.6,28.1,30.7,25.4,24.2,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,36.0,37.0,31.0,38.0,36.0,36.0,36.0,34.0,38.0,32.0,38.0,25.0,38.0,26.0,22.0,32.0,36.0,27.0,27.0,44.0,32.0,28.0,31.0],
+"time to accelerate (sec.)":[12.0,11.5,11.0,12.0,10.5,10.0,9.0,8.5,10.0,8.5,10.0,8.0,9.5,10.0,15.0,15.5,15.5,16.0,14.5,20.5,17.5,14.5,17.5,12.5,15.0,14.0,15.0,13.5,18.5,14.5,15.5,14.0,13.0,15.5,15.5,15.5,15.5,12.0,11.5,13.5,13.0,11.5,12.0,12.0,13.5,19.0,15.0,14.5,14.0,14.0,19.5,14.5,19.0,18.0,19.0,20.5,15.5,17.0,23.5,19.5,16.5,12.0,12.0,13.5,13.0,11.5,11.0,13.5,13.5,12.5,13.5,12.5,14.0,16.0,14.0,14.5,18.0,19.5,18.0,16.0,17.0,14.5,15.0,16.5,13.0,11.5,13.0,14.5,12.5,11.5,12.0,13.0,14.5,11.0,11.0,11.0,16.5,18.0,16.0,16.5,16.0,21.0,14.0,12.5,13.0,12.5,15.0,19.0,19.5,16.5,13.5,18.5,14.0,15.5,13.0,9.5,19.5,15.5,14.0,15.5,11.0,14.0,13.5,11.0,16.5,16.0,17.0,19.0,16.5,21.0,17.0,17.0,18.0,16.5,14.0,14.5,13.5,16.0,15.5,16.5,15.5,14.5,16.5,19.0,14.5,15.5,14.0,15.0,15.5,16.0,16.0,16.0,21.0,19.5,11.5,14.0,14.5,13.5,21.0,18.5,19.0,19.0,15.0,13.5,12.0,16.0,17.0,16.0,18.5,13.5,16.5,17.0,14.5,14.0,17.0,15.0,17.0,14.5,13.5,17.5,15.5,16.9,14.9,17.7,15.3,13.0,13.0,13.9,12.8,15.4,14.5,17.6,17.6,22.2,22.1,14.2,17.4,17.7,21.0,16.2,17.8,12.2,17.0,16.4,13.6,15.7,13.2,21.9,15.5,16.7,12.1,12.0,15.0,14.0,18.5,14.8,18.6,15.5,16.8,12.5,19.0,13.7,14.9,16.4,16.9,17.7,19.0,11.1,11.4,12.2,14.5,14.5,16.0,18.2,15.8,17.0,15.9,16.4,14.1,14.5,12.8,13.5,21.5,14.4,19.4,18.6,16.4,15.5,13.2,12.8,19.2,18.2,15.8,15.4,17.2,17.2,15.8,16.7,18.7,15.1,13.2,13.4,11.2,13.7,16.5,14.2,14.7,14.5,14.8,16.7,17.6,14.9,15.9,13.6,15.7,15.8,14.9,16.6,15.4,18.2,17.3,18.2,16.6,15.4,13.4,13.2,15.2,14.9,14.3,15.0,13.0,14.0,15.2,14.4,15.0,20.1,17.4,24.8,22.2,13.2,14.9,19.2,14.7,16.0,11.3,12.9,13.2,14.7,18.8,15.5,16.4,16.5,18.1,20.1,18.7,15.8,15.5,17.5,15.0,15.2,17.9,14.4,19.2,21.7,23.7,19.9,21.8,13.8,18.0,15.3,11.4,12.5,15.1,17.0,15.7,16.4,14.4,12.6,12.9,16.9,16.4,16.1,17.8,19.4,17.3,16.0,14.9,16.2,20.7,14.2,14.4,16.8,14.8,18.3,20.4,19.6,12.6,13.8,15.8,19.0,17.1,16.6,19.6,18.6,18.0,16.2,16.0,18.0,16.4,15.3,18.2,17.6,14.7,17.3,14.5,14.5,16.9,15.0,15.7,16.2,16.4,17.0,14.5,14.7,13.9,13.0,17.3,15.6,24.6,11.6,18.6,19.4],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"time to accelerate (sec.)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Accel vs MPG"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"11"
+},{
+"data":{
+"engine horsepower":[130.0,165.0,150.0,150.0,140.0,198.0,220.0,215.0,225.0,190.0,170.0,160.0,150.0,225.0,95.0,95.0,97.0,85.0,88.0,46.0,87.0,90.0,95.0,113.0,90.0,215.0,200.0,210.0,193.0,88.0,90.0,95.0,100.0,105.0,100.0,88.0,100.0,165.0,175.0,153.0,150.0,180.0,170.0,175.0,110.0,72.0,100.0,88.0,86.0,90.0,70.0,76.0,65.0,69.0,60.0,70.0,95.0,80.0,54.0,90.0,86.0,165.0,175.0,150.0,153.0,150.0,208.0,155.0,160.0,190.0,97.0,150.0,130.0,140.0,150.0,112.0,76.0,87.0,69.0,86.0,92.0,97.0,80.0,88.0,175.0,150.0,145.0,137.0,150.0,198.0,150.0,158.0,150.0,215.0,225.0,175.0,105.0,100.0,100.0,88.0,95.0,46.0,150.0,167.0,170.0,180.0,100.0,88.0,72.0,94.0,90.0,85.0,107.0,90.0,145.0,230.0,49.0,75.0,91.0,112.0,150.0,110.0,122.0,180.0,95.0,100.0,100.0,67.0,80.0,65.0,75.0,100.0,110.0,105.0,140.0,150.0,150.0,140.0,150.0,83.0,67.0,78.0,52.0,61.0,75.0,75.0,75.0,97.0,93.0,67.0,95.0,105.0,72.0,72.0,170.0,145.0,150.0,148.0,110.0,105.0,110.0,95.0,110.0,110.0,129.0,75.0,83.0,100.0,78.0,96.0,71.0,97.0,97.0,70.0,90.0,95.0,88.0,98.0,115.0,53.0,86.0,81.0,92.0,79.0,83.0,140.0,150.0,120.0,152.0,100.0,105.0,81.0,90.0,52.0,60.0,70.0,53.0,100.0,78.0,110.0,95.0,71.0,70.0,75.0,72.0,102.0,150.0,88.0,108.0,120.0,180.0,145.0,130.0,150.0,68.0,80.0,58.0,96.0,70.0,145.0,110.0,145.0,130.0,110.0,105.0,100.0,98.0,180.0,170.0,190.0,149.0,78.0,88.0,75.0,89.0,63.0,83.0,67.0,78.0,97.0,110.0,110.0,48.0,66.0,52.0,70.0,60.0,110.0,140.0,139.0,105.0,95.0,85.0,88.0,100.0,90.0,105.0,85.0,110.0,120.0,145.0,165.0,139.0,140.0,68.0,95.0,97.0,75.0,95.0,105.0,85.0,97.0,103.0,125.0,115.0,133.0,71.0,68.0,115.0,85.0,88.0,90.0,110.0,130.0,129.0,138.0,135.0,155.0,142.0,125.0,150.0,71.0,65.0,80.0,80.0,77.0,125.0,71.0,90.0,70.0,70.0,65.0,69.0,90.0,115.0,115.0,90.0,76.0,60.0,70.0,65.0,90.0,88.0,90.0,90.0,78.0,90.0,75.0,92.0,75.0,65.0,105.0,65.0,48.0,48.0,67.0,67.0,67.0,67.0,62.0,132.0,100.0,88.0,72.0,84.0,84.0,92.0,110.0,84.0,58.0,64.0,60.0,67.0,65.0,62.0,68.0,63.0,65.0,65.0,74.0,75.0,75.0,100.0,74.0,80.0,76.0,116.0,120.0,110.0,105.0,88.0,85.0,88.0,88.0,88.0,85.0,84.0,90.0,92.0,74.0,68.0,68.0,63.0,70.0,88.0,75.0,70.0,67.0,67.0,67.0,110.0,85.0,92.0,112.0,96.0,84.0,90.0,86.0,52.0,84.0,79.0,82.0],
+"time to accelerate (sec.)":[12.0,11.5,11.0,12.0,10.5,10.0,9.0,8.5,10.0,8.5,10.0,8.0,9.5,10.0,15.0,15.5,15.5,16.0,14.5,20.5,17.5,14.5,17.5,12.5,15.0,14.0,15.0,13.5,18.5,14.5,15.5,14.0,13.0,15.5,15.5,15.5,15.5,12.0,11.5,13.5,13.0,11.5,12.0,12.0,13.5,19.0,15.0,14.5,14.0,14.0,19.5,14.5,19.0,18.0,19.0,20.5,15.5,17.0,23.5,19.5,16.5,12.0,12.0,13.5,13.0,11.5,11.0,13.5,13.5,12.5,13.5,12.5,14.0,16.0,14.0,14.5,18.0,19.5,18.0,16.0,17.0,14.5,15.0,16.5,13.0,11.5,13.0,14.5,12.5,11.5,12.0,13.0,14.5,11.0,11.0,11.0,16.5,18.0,16.0,16.5,16.0,21.0,14.0,12.5,13.0,12.5,15.0,19.0,19.5,16.5,13.5,18.5,14.0,15.5,13.0,9.5,19.5,15.5,14.0,15.5,11.0,14.0,13.5,11.0,16.5,16.0,17.0,19.0,16.5,21.0,17.0,17.0,18.0,16.5,14.0,14.5,13.5,16.0,15.5,16.5,15.5,14.5,16.5,19.0,14.5,15.5,14.0,15.0,15.5,16.0,16.0,16.0,21.0,19.5,11.5,14.0,14.5,13.5,21.0,18.5,19.0,19.0,15.0,13.5,12.0,16.0,17.0,16.0,18.5,13.5,16.5,17.0,14.5,14.0,17.0,15.0,17.0,14.5,13.5,17.5,15.5,16.9,14.9,17.7,15.3,13.0,13.0,13.9,12.8,15.4,14.5,17.6,17.6,22.2,22.1,14.2,17.4,17.7,21.0,16.2,17.8,12.2,17.0,16.4,13.6,15.7,13.2,21.9,15.5,16.7,12.1,12.0,15.0,14.0,18.5,14.8,18.6,15.5,16.8,12.5,19.0,13.7,14.9,16.4,16.9,17.7,19.0,11.1,11.4,12.2,14.5,14.5,16.0,18.2,15.8,17.0,15.9,16.4,14.1,14.5,12.8,13.5,21.5,14.4,19.4,18.6,16.4,15.5,13.2,12.8,19.2,18.2,15.8,15.4,17.2,17.2,15.8,16.7,18.7,15.1,13.2,13.4,11.2,13.7,16.5,14.2,14.7,14.5,14.8,16.7,17.6,14.9,15.9,13.6,15.7,15.8,14.9,16.6,15.4,18.2,17.3,18.2,16.6,15.4,13.4,13.2,15.2,14.9,14.3,15.0,13.0,14.0,15.2,14.4,15.0,20.1,17.4,24.8,22.2,13.2,14.9,19.2,14.7,16.0,11.3,12.9,13.2,14.7,18.8,15.5,16.4,16.5,18.1,20.1,18.7,15.8,15.5,17.5,15.0,15.2,17.9,14.4,19.2,21.7,23.7,19.9,21.8,13.8,18.0,15.3,11.4,12.5,15.1,17.0,15.7,16.4,14.4,12.6,12.9,16.9,16.4,16.1,17.8,19.4,17.3,16.0,14.9,16.2,20.7,14.2,14.4,16.8,14.8,18.3,20.4,19.6,12.6,13.8,15.8,19.0,17.1,16.6,19.6,18.6,18.0,16.2,16.0,18.0,16.4,15.3,18.2,17.6,14.7,17.3,14.5,14.5,16.9,15.0,15.7,16.2,16.4,17.0,14.5,14.7,13.9,13.0,17.3,15.6,24.6,11.6,18.6,19.4],
+"origin of car":["US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Europe","Europe","Europe","Europe","US","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","Europe","US","Asia","US","Europe","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","US","Europe","Europe","Europe","Europe","US","Asia","Asia","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","US","US","US","US","Asia","US","Asia","Asia","US","US","Europe","US","US","Europe","Europe","Europe","Europe","US","Europe","Asia","US","US","US","US","Asia","US","Asia","US","US","US","US","US","US","US","US","US","Europe","Europe","Europe","Asia","Asia","US","Europe","Europe","Asia","Asia","Europe","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","US","US","US","Asia","Europe","Asia","US","Europe","US","Europe","Europe","Europe","Europe","Asia","Europe","Europe","US","US","Europe","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","US","US","Europe","Asia","Asia","US","Europe","US","Europe","Asia","Europe","US","US","US","US","Asia","US","Europe","US","Asia","US","US","US","US","US","US","US","US","US","US","US","US","Europe","US","Asia","US","US","US","Asia","Europe","Asia","Europe","Asia","Europe","US","Asia","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","US","Asia","Asia","US","Asia","US","US","Asia","Europe","Europe","Europe","Europe","Europe","Asia","US","US","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","US","US","Europe","US","Europe","US","US","US","Asia","Europe","US","US","US","US","Europe","Asia","US","Asia","US","US","US","US","Europe","Asia","Asia","Asia","Asia","Asia","US","Asia","Europe","Europe","Europe","Europe","Asia","Asia","Europe","Asia","Asia","Europe","Asia","US","US","US","US","US","Asia","US","Asia","Asia","Asia","Asia","Asia","US","US","US","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Asia","US","US","US","US","US","US","US","US","US","US","US","Europe","Asia","Asia","US","US","Asia","Asia","Asia","Asia","Asia","Asia","US","US","US","US","Asia","US","US","US","Europe","US","US","US"]
+},
+"mapping":{
+"x":"engine horsepower",
+"y":"time to accelerate (sec.)"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Accel vs HP"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+"color":"origin of car"
+},
+"data_meta":{
+},
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"12"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="shared-both-x-and-y-all">
+<h2>Shared both X and Y (all)<a class="headerlink" href="#shared-both-x-and-y-all" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">origin</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;US&#39;</span><span class="p">],</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">hp</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;US&#39;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">origin</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Europe&#39;</span><span class="p">],</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">hp</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Europe&#39;</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">origin</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Asia&#39;</span><span class="p">],</span> <span class="n">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">hp</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtitle</span><span class="p">(</span><span class="s1">&#39;Asia&#39;</span><span class="p">)</span>
+
+<span class="n">gggrid</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+       
+       <span class="n">sharex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> 
+       <span class="n">sharey</span><span class="o">=</span><span class="s1">&#39;all&#39;</span>
+       
+      <span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggtb</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="v2sPJ8" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("v2sPJ8");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"ggsize":{
+"width":900.0,
+"height":350.0
+},
+"ggtoolbar":{
+},
+"kind":"subplots",
+"layout":{
+"ncol":3.0,
+"nrow":1.0,
+"sharex":"all",
+"sharey":"all",
+"name":"grid"
+},
+"figures":[{
+"data":{
+"miles per gallon":[18.0,15.0,18.0,16.0,17.0,15.0,14.0,14.0,14.0,15.0,15.0,14.0,15.0,14.0,22.0,18.0,21.0,21.0,10.0,10.0,11.0,9.0,28.0,19.0,16.0,17.0,19.0,18.0,14.0,14.0,14.0,14.0,12.0,13.0,13.0,18.0,22.0,19.0,18.0,23.0,26.0,25.0,20.0,21.0,13.0,14.0,15.0,14.0,17.0,11.0,13.0,12.0,13.0,15.0,13.0,13.0,14.0,22.0,28.0,13.0,14.0,13.0,14.0,15.0,12.0,13.0,13.0,14.0,13.0,12.0,13.0,18.0,16.0,18.0,18.0,23.0,11.0,12.0,13.0,12.0,18.0,21.0,19.0,21.0,15.0,16.0,15.0,11.0,20.0,19.0,15.0,26.0,25.0,16.0,16.0,18.0,16.0,13.0,14.0,14.0,14.0,28.0,19.0,18.0,15.0,15.0,16.0,15.0,16.0,14.0,17.0,16.0,15.0,18.0,21.0,20.0,13.0,23.0,20.0,23.0,18.0,19.0,25.0,26.0,17.5,16.0,15.5,14.5,22.0,22.0,24.0,22.5,29.0,24.5,20.0,18.0,18.5,17.5,26.5,13.0,16.5,13.0,13.0,13.0,30.0,25.5,17.5,17.0,15.5,15.0,17.5,20.5,19.0,18.5,16.0,15.5,15.5,16.0,24.5,25.5,30.5,33.5,36.1,19.9,19.4,20.2,19.2,20.5,20.2,25.1,20.5,19.4,20.6,20.8,18.6,18.1,19.2,17.7,18.1,17.5,30.0,30.9,23.2,23.8,21.5,19.8,22.3,20.2,20.6,17.0,17.6,16.5,18.2,16.9,15.5,19.2,18.5,35.7,27.4,23.0,23.9,34.2,34.5,28.4,28.8,26.8,33.5,32.1,28.0,26.4,24.3,19.1,27.9,27.2,26.6,25.8,23.5,30.0,39.0,34.7,34.4,29.9,22.4,26.6,20.2,17.6,28.0,27.0,34.0,31.0,29.0,27.0,24.0,38.0,36.0,25.0,38.0,26.0,22.0,36.0,27.0,27.0,32.0,28.0,31.0],
+"engine horsepower":[130.0,165.0,150.0,150.0,140.0,198.0,220.0,215.0,225.0,190.0,170.0,160.0,150.0,225.0,95.0,97.0,85.0,90.0,215.0,200.0,210.0,193.0,90.0,100.0,105.0,100.0,88.0,100.0,165.0,175.0,153.0,150.0,180.0,170.0,175.0,110.0,72.0,100.0,88.0,86.0,70.0,80.0,90.0,86.0,165.0,175.0,150.0,153.0,150.0,208.0,155.0,160.0,190.0,150.0,130.0,140.0,150.0,86.0,80.0,175.0,150.0,145.0,137.0,150.0,198.0,150.0,158.0,150.0,215.0,225.0,175.0,105.0,100.0,100.0,88.0,95.0,150.0,167.0,170.0,180.0,100.0,72.0,85.0,107.0,145.0,230.0,150.0,180.0,95.0,100.0,100.0,80.0,75.0,100.0,110.0,105.0,140.0,150.0,150.0,140.0,150.0,75.0,95.0,105.0,72.0,72.0,170.0,145.0,150.0,148.0,110.0,105.0,110.0,95.0,110.0,110.0,129.0,83.0,100.0,78.0,97.0,90.0,92.0,79.0,140.0,150.0,120.0,152.0,100.0,105.0,81.0,90.0,52.0,60.0,100.0,78.0,110.0,95.0,72.0,150.0,180.0,145.0,130.0,150.0,80.0,96.0,145.0,110.0,145.0,130.0,110.0,105.0,100.0,98.0,180.0,170.0,190.0,149.0,88.0,89.0,63.0,83.0,66.0,110.0,140.0,139.0,105.0,95.0,85.0,88.0,100.0,90.0,105.0,85.0,110.0,120.0,145.0,165.0,139.0,140.0,68.0,75.0,105.0,85.0,115.0,85.0,88.0,90.0,110.0,130.0,129.0,138.0,135.0,155.0,142.0,125.0,150.0,80.0,80.0,125.0,90.0,70.0,70.0,90.0,115.0,115.0,90.0,70.0,90.0,88.0,90.0,90.0,105.0,84.0,84.0,92.0,110.0,84.0,64.0,63.0,65.0,65.0,110.0,105.0,88.0,85.0,88.0,88.0,88.0,85.0,84.0,90.0,92.0,63.0,70.0,110.0,85.0,92.0,112.0,84.0,90.0,86.0,84.0,79.0,82.0]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"engine horsepower"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"US"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"red",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"13"
+},{
+"data":{
+"miles per gallon":[26.0,25.0,24.0,25.0,26.0,28.0,30.0,30.0,27.0,23.0,18.0,22.0,21.0,26.0,26.0,26.0,29.0,24.0,20.0,19.0,24.0,29.0,26.0,26.0,24.0,26.0,31.0,25.0,29.0,23.0,23.0,22.0,25.0,28.0,25.0,27.0,29.0,29.5,20.0,19.0,16.5,36.0,29.0,30.5,21.5,43.1,20.3,17.0,21.6,16.2,31.5,31.9,25.4,27.2,37.3,41.5,34.3,44.3,43.4,36.4,30.0,29.8,35.0,33.0,28.1,30.7,36.0,44.0],
+"engine horsepower":[46.0,87.0,90.0,95.0,113.0,90.0,70.0,76.0,60.0,54.0,112.0,76.0,87.0,69.0,46.0,90.0,49.0,75.0,91.0,112.0,110.0,83.0,67.0,78.0,75.0,75.0,67.0,71.0,70.0,95.0,88.0,98.0,115.0,86.0,81.0,83.0,70.0,71.0,102.0,88.0,120.0,58.0,78.0,78.0,110.0,48.0,103.0,125.0,115.0,133.0,71.0,71.0,77.0,71.0,69.0,76.0,78.0,48.0,48.0,67.0,67.0,62.0,88.0,74.0,80.0,76.0,74.0,52.0]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"engine horsepower"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Europe"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"blue",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"14"
+},{
+"data":{
+"miles per gallon":[24.0,27.0,27.0,25.0,31.0,35.0,24.0,19.0,28.0,23.0,27.0,20.0,22.0,18.0,20.0,31.0,32.0,31.0,32.0,24.0,26.0,29.0,24.0,24.0,33.0,33.0,32.0,28.0,19.0,31.5,33.5,26.0,30.0,22.0,21.5,32.8,39.4,36.1,27.5,27.2,21.1,23.9,29.5,34.1,31.8,38.1,37.2,29.8,31.3,37.0,32.2,46.6,40.8,44.6,33.8,32.7,23.7,32.4,39.1,35.1,32.3,37.0,37.7,34.1,33.7,32.4,32.9,31.6,25.4,24.2,37.0,31.0,36.0,36.0,34.0,38.0,32.0,38.0,32.0],
+"engine horsepower":[95.0,88.0,88.0,95.0,65.0,69.0,95.0,97.0,92.0,97.0,88.0,88.0,94.0,90.0,122.0,67.0,65.0,52.0,61.0,97.0,93.0,75.0,96.0,97.0,53.0,53.0,70.0,75.0,108.0,68.0,70.0,75.0,67.0,97.0,110.0,52.0,70.0,60.0,95.0,97.0,95.0,97.0,68.0,65.0,65.0,60.0,65.0,90.0,75.0,92.0,75.0,65.0,65.0,67.0,67.0,132.0,100.0,72.0,58.0,60.0,67.0,65.0,62.0,68.0,75.0,75.0,100.0,74.0,116.0,120.0,68.0,68.0,88.0,75.0,70.0,67.0,67.0,67.0,96.0]
+},
+"mapping":{
+"x":"miles per gallon",
+"y":"engine horsepower"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"miles per gallon"
+},{
+"type":"int",
+"column":"number of cylinders"
+},{
+"type":"float",
+"column":"engine displacement (cu. inches)"
+},{
+"type":"int",
+"column":"engine horsepower"
+},{
+"type":"int",
+"column":"vehicle weight (lbs.)"
+},{
+"type":"float",
+"column":"time to accelerate (sec.)"
+},{
+"type":"int",
+"column":"model year"
+},{
+"type":"str",
+"column":"origin of car"
+},{
+"type":"str",
+"column":"vehicle name"
+}]
+},
+"ggtitle":{
+"text":"Asia"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"color":"green",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"15"
+}]
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-x-axis-all">Shared X-axis (all)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-y-axis-all">Shared Y-axis (all)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-x-by-column-y-by-row">Shared X by Column, Y by Row</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-both-x-and-y-all">Shared both X and Y (all)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

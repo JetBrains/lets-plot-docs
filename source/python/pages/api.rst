@@ -123,6 +123,8 @@ Standard Geometries
     geom_text_repel
     geom_label
     geom_label_repel
+    geom_bracket
+    geom_bracket_dodge
     geom_qq
     geom_qq2
     geom_qq_line
@@ -184,6 +186,7 @@ Extras
     :template: base.rst
 
     layer_labels
+    smooth_labels
 
 
 Facets
@@ -261,6 +264,16 @@ Fill Scales
     scale_fill_brewer
     scale_fill_viridis
     scale_fill_cmapmpl
+
+Color Scales Methods
+~~~~~~~~~~~~~~~~~~~~
+
+.. autosummary::
+    :toctree: api
+    :nosignatures:
+    :template: method.rst
+
+    ~plot.core.ColorScaleFeatureSpec.palette
 
 Flexible Scales
 ~~~~~~~~~~~~~~~

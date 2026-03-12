@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
@@ -54,7 +54,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../../_static/documentation_options.js?v=d607d3c8"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -69,7 +69,7 @@
     <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="facet_grid" href="lets_plot.facet_grid.html" />
+    <link rel="next" title="smooth_labels" href="lets_plot.smooth_labels.html" />
     <link rel="prev" title="as_discrete" href="lets_plot.mapping.as_discrete.html" />
   <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
   
@@ -157,7 +157,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.8.2</p>
+  <p>v4.9.0</p>
 </a>
 </div>
     
@@ -478,7 +478,7 @@
 <h1>layer_labels<a class="headerlink" href="#layer-labels" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="lets_plot.layer_labels">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layer_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">layer_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels" title="Link to this definition">#</a></dt>
 <dd><p>Configure annotations for geometry layers.</p>
 <p>Annotations are currently supported for bar, pie, and crossbar geometry
 layers. This class provides methods to customize the appearance and
@@ -487,11 +487,11 @@ content of text labels displayed on these geometries.</p>
 <p>By default, annotation text color is automatically selected for optimal
 contrast: white text appears on darker filled geometries, and black text
 appears on lighter filled geometries.</p>
-<p>The text color can be manually specified using:
-<code class="docutils literal notranslate"><span class="pre">theme(label_text=element_text(color=...))</span></code></p>
-<p>Alternatively, the <code class="docutils literal notranslate"><span class="pre">inherit_color()</span></code> method can be used to override both
-automatic and manual color settings, making the annotation text use the
-geometry’s <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetic instead.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">theme(label_text=element_text(...))</span></code> to customize the appearance of annotation text.
+See also <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.element_text.html">element_text()</a>.</p>
+<p>Alternatively, the <code class="docutils literal notranslate"><span class="pre">inherit_color()</span></code> method can be used to make annotation text
+use the geometry’s <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetic, overriding both the automatically selected text color
+and any color specified via <code class="docutils literal notranslate"><span class="pre">theme(label_text=element_text(...))</span></code>.</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -506,7 +506,7 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="HzYZrP"></div>
+<div id="q6azPl"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -517,7 +517,7 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -530,13 +530,13 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("HzYZrP").appendChild(div);
+            document.getElementById("q6azPl").appendChild(div);
         };
-        var e = document.getElementById("HzYZrP");
+        var e = document.getElementById("q6azPl");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="GNuQ2X" ></div>
+</div><div class="output text_html">   <div id="7jtf1t" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -561,7 +561,7 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
        };
    }
 
-   const containerDiv = document.getElementById("GNuQ2X");
+   const containerDiv = document.getElementById("7jtf1t");
    let fig = null;
 
    function renderPlot() {
@@ -650,7 +650,7 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="lets_plot.layer_labels.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels.__init__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.layer_labels.__init__" title="Link to this definition">#</a></dt>
 <dd><p>Initialize self.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -688,7 +688,7 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="GkV6lu"></div>
+<div id="PQ2LYw"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -699,7 +699,7 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -712,9 +712,9 @@ geometry’s <code class="docutils literal notranslate"><span class="pre">color<
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("GkV6lu").appendChild(div);
+            document.getElementById("PQ2LYw").appendChild(div);
         };
-        var e = document.getElementById("GkV6lu");
+        var e = document.getElementById("PQ2LYw");
         e.appendChild(script);
     })()
 </script>
@@ -770,7 +770,7 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="lzslBQ"></div>
+<div id="8y9szv"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -781,7 +781,7 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -794,13 +794,13 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("lzslBQ").appendChild(div);
+            document.getElementById("8y9szv").appendChild(div);
         };
-        var e = document.getElementById("lzslBQ");
+        var e = document.getElementById("8y9szv");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="KCNzHl" ></div>
+</div><div class="output text_html">   <div id="rgu2QB" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -825,7 +825,7 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
        };
    }
 
-   const containerDiv = document.getElementById("KCNzHl");
+   const containerDiv = document.getElementById("rgu2QB");
    let fig = null;
 
    function renderPlot() {
@@ -948,7 +948,7 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="gXOXao"></div>
+<div id="63wDRN"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -959,7 +959,7 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -972,13 +972,13 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("gXOXao").appendChild(div);
+            document.getElementById("63wDRN").appendChild(div);
         };
-        var e = document.getElementById("gXOXao");
+        var e = document.getElementById("63wDRN");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="eYEsuA" ></div>
+</div><div class="output text_html">   <div id="eRXMJl" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1003,7 +1003,7 @@ it can be escaped by doubling: <code class="docutils literal notranslate"><span 
        };
    }
 
-   const containerDiv = document.getElementById("eYEsuA");
+   const containerDiv = document.getElementById("eRXMJl");
    let fig = null;
 
    function renderPlot() {
@@ -1170,7 +1170,7 @@ variable and aesthetic references.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="iiyfFh"></div>
+<div id="T5ySXM"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1181,7 +1181,7 @@ variable and aesthetic references.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1194,13 +1194,13 @@ variable and aesthetic references.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("iiyfFh").appendChild(div);
+            document.getElementById("T5ySXM").appendChild(div);
         };
-        var e = document.getElementById("iiyfFh");
+        var e = document.getElementById("T5ySXM");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="S9c2Qk" ></div>
+</div><div class="output text_html">   <div id="WH9dMW" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1225,7 +1225,7 @@ variable and aesthetic references.</p>
        };
    }
 
-   const containerDiv = document.getElementById("S9c2Qk");
+   const containerDiv = document.getElementById("WH9dMW");
    let fig = null;
 
    function renderPlot() {
@@ -1352,7 +1352,7 @@ variable and aesthetic references.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="N54Iq9"></div>
+<div id="Akoucu"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1363,7 +1363,7 @@ variable and aesthetic references.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1376,13 +1376,13 @@ variable and aesthetic references.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("N54Iq9").appendChild(div);
+            document.getElementById("Akoucu").appendChild(div);
         };
-        var e = document.getElementById("N54Iq9");
+        var e = document.getElementById("Akoucu");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="M9I6yF" ></div>
+</div><div class="output text_html">   <div id="q4SIwH" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1407,7 +1407,7 @@ variable and aesthetic references.</p>
        };
    }
 
-   const containerDiv = document.getElementById("M9I6yF");
+   const containerDiv = document.getElementById("q4SIwH");
    let fig = null;
 
    function renderPlot() {
@@ -1528,7 +1528,7 @@ explicitly set color.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="wHxA5c"></div>
+<div id="PlpFhB"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -1539,7 +1539,7 @@ explicitly set color.</p>
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -1552,13 +1552,13 @@ explicitly set color.</p>
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("wHxA5c").appendChild(div);
+            document.getElementById("PlpFhB").appendChild(div);
         };
-        var e = document.getElementById("wHxA5c");
+        var e = document.getElementById("PlpFhB");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="3hFJxj" ></div>
+</div><div class="output text_html">   <div id="8u2h75" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -1583,7 +1583,7 @@ explicitly set color.</p>
        };
    }
 
-   const containerDiv = document.getElementById("3hFJxj");
+   const containerDiv = document.getElementById("8u2h75");
    let fig = null;
 
    function renderPlot() {

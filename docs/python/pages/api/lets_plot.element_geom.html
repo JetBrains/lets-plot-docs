@@ -7,12 +7,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content="Theme element that specifies custom values for named geom colors used in plot elements." name="description" />
+<meta content="Theme element that specifies custom values for named geom colors used by plot elements." name="description" />
 <meta property="og:title" content="element_geom() | Lets-Plot Python API" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/python/pages/api/lets_plot.element_geom.html" />
 <meta property="og:site_name" content="Lets-Plot" />
-<meta property="og:description" content="Theme element that specifies custom values for named geom colors used in plot elements." />
+<meta property="og:description" content="Theme element that specifies custom values for named geom colors used by plot elements." />
 <meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
 <meta property="og:image:alt" content="Lets-Plot" />
 
@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
@@ -54,7 +54,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8655e45f"></script>
+    <script src="../../../_static/documentation_options.js?v=d607d3c8"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -157,7 +157,7 @@
    
 
 <a class="navbar-brand version" href="../whats_new.html">
-  <p>v4.8.2</p>
+  <p>v4.9.0</p>
 </a>
 </div>
     
@@ -479,15 +479,22 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="lets_plot.element_geom">
 <span class="sig-name descname"><span class="pre">element_geom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brush</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#lets_plot.element_geom" title="Link to this definition">#</a></dt>
-<dd><p>Theme element that specifies custom values for named geom colors used in plot elements.</p>
+<dd><p>Theme element that specifies custom values for named geom colors used by plot elements.</p>
+<p>It allows you to specify custom color values for special named geom colors (“pen”, “brush”, “paper”)
+that can be referenced in geom parameters such as <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">fill</span></code>, etc.</p>
+<p>These names act as indirections: instead of hardcoding a concrete color in a geom (e.g., <code class="docutils literal notranslate"><span class="pre">color=&quot;red&quot;</span></code>),
+you can use a semantic name (e.g., <code class="docutils literal notranslate"><span class="pre">color=&quot;pen&quot;</span></code>) and control its actual value centrally via the theme.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>pen</strong><span class="classifier">str</span></dt><dd><p>Color to use by name “pen”.</p>
+<dt><strong>pen</strong><span class="classifier">str</span></dt><dd><p>Color assigned to the named color “pen”.
+Typically used for stroke/outline rendering (e.g., <code class="docutils literal notranslate"><span class="pre">color='pen'</span></code>).</p>
 </dd>
-<dt><strong>brush</strong><span class="classifier">str</span></dt><dd><p>Color to use by name “brush”.</p>
+<dt><strong>brush</strong><span class="classifier">str</span></dt><dd><p>Color assigned to the named color “brush”.
+Typically used for interior fills or secondary stroke styling (e.g., <code class="docutils literal notranslate"><span class="pre">fill='brush'</span></code>), depending on the geom.</p>
 </dd>
-<dt><strong>paper</strong><span class="classifier">str</span></dt><dd><p>Color to use by name “paper”.</p>
+<dt><strong>paper</strong><span class="classifier">str</span></dt><dd><p>Color assigned to the named color “paper”.
+Commonly used for background-like fills or lighter interior areas (e.g., <code class="docutils literal notranslate"><span class="pre">fill='paper'</span></code>).</p>
 </dd>
 </dl>
 </dd>
@@ -501,19 +508,23 @@
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="linenos">2</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="linenos">3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
-<span class="linenos">4</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="linenos">5</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)}</span>
-<span class="linenos">6</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_histogram</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;pen&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="p">)</span> <span class="o">+</span> \
-<span class="hll"><span class="linenos">7</span>    <span class="n">theme</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="n">element_geom</span><span class="p">(</span><span class="n">pen</span><span class="o">=</span><span class="s1">&#39;dark_blue&#39;</span><span class="p">,</span> <span class="n">paper</span><span class="o">=</span><span class="s1">&#39;light_blue&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)}</span>
+<span class="linenos"> 6</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="linenos"> 7</span>    <span class="n">geom_histogram</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;pen&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;paper&#39;</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos"> 8</span>    <span class="n">theme</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="n">element_geom</span><span class="p">(</span>
+</span><span class="hll"><span class="linenos"> 9</span>        <span class="n">pen</span><span class="o">=</span><span class="s1">&#39;dark_blue&#39;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">10</span>        <span class="n">paper</span><span class="o">=</span><span class="s1">&#39;light_blue&#39;</span>
+</span><span class="hll"><span class="linenos">11</span>    <span class="p">))</span>
 </span></pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="rnXcl8"></div>
+<div id="GfBeAu"></div>
 <script type="text/javascript" data-lets-plot-script="library">
     if(!window.letsPlotCallQueue) {
         window.letsPlotCallQueue = [];
@@ -524,7 +535,7 @@
     (function() {
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.8.2/js-package/distr/lets-plot.min.js";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
         script.onload = function() {
             window.letsPlotCall = function(f) {f();};
             window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -537,13 +548,13 @@
             var div = document.createElement("div");
             div.style.color = 'darkred';
             div.textContent = 'Error loading Lets-Plot JS';
-            document.getElementById("rnXcl8").appendChild(div);
+            document.getElementById("GfBeAu").appendChild(div);
         };
-        var e = document.getElementById("rnXcl8");
+        var e = document.getElementById("GfBeAu");
         e.appendChild(script);
     })()
 </script>
-</div><div class="output text_html">   <div id="Dv8rht" ></div>
+</div><div class="output text_html">   <div id="UIev34" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
 
    (function() {
@@ -568,7 +579,7 @@
        };
    }
 
-   const containerDiv = document.getElementById("Dv8rht");
+   const containerDiv = document.getElementById("UIev34");
    let fig = null;
 
    function renderPlot() {

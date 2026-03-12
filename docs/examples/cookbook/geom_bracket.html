@@ -1,0 +1,2994 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Statistical Annotations: geom_bracket() and geom_bracket_dodge()" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/examples/cookbook/geom_bracket.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="geom_bracket() is a general-purpose layer for annotating ranges. It is particularly effective for adding significance bars (p-values) to categorical plots. geom_bracket_dodge() is a specialized lay..." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+<meta name="description" content="geom_bracket() is a general-purpose layer for annotating ranges. It is particularly effective for adding significance bars (p-values) to categorical plots. geom_bracket_dodge() is a specialized lay..." />
+
+    <title>Statistical Annotations: geom_bracket() and geom_bracket_dodge()</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=d607d3c8"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/cookbook/geom_bracket';</script>
+    <script src="../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+    <link rel="stylesheet" href="../../_static/css/notebook-page.css">
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../python/index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../../python/pages/whats_new.html">
+  <p>v4.9.0</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../python/pages/whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+  <a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference internal"
+     href="../../download/examples/cookbook/geom_bracket.ipynb"
+     download>
+    Download notebook (.ipynb)
+  </a>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="statistical-annotations-geom-bracket-and-geom-bracket-dodge">
+<h1>Statistical Annotations: <code class="docutils literal notranslate"><span class="pre">geom_bracket()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_bracket_dodge()</span></code><a class="headerlink" href="#statistical-annotations-geom-bracket-and-geom-bracket-dodge" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">geom_bracket()</span></code> is a general-purpose layer for annotating ranges. It is particularly effective for adding significance bars (p-values) to categorical plots.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_bracket_dodge()</span></code> is a specialized layer designed for annotating ranges between dodged positions (usually dodged groups within a category).</p>
+<blockquote>
+<div><p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">geom_bracket</span></code> does not compute statistics internally. It is a visualization tool that renders the results of your analysis. In this demo, we use <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> to calculate p-values before passing them to the plot.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">mannwhitneyu</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <div id="wm6vNI"></div>
+        <script type="text/javascript" data-lets-plot-script="library">
+            if(!window.letsPlotCallQueue) {
+                window.letsPlotCallQueue = [];
+            };
+            window.letsPlotCall = function(f) {
+                window.letsPlotCallQueue.push(f);
+            };
+            (function() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
+                script.onload = function() {
+                    window.letsPlotCall = function(f) {f();};
+                    window.letsPlotCallQueue.forEach(function(f) {f();});
+                    window.letsPlotCallQueue = [];
+                    
+                };
+                script.onerror = function(event) {
+                    window.letsPlotCall = function(f) {};    // noop
+                    window.letsPlotCallQueue = [];
+                    var div = document.createElement("div");
+                    div.style.color = 'darkred';
+                    div.textContent = 'Error loading Lets-Plot JS';
+                    document.getElementById("wm6vNI").appendChild(div);
+                };
+                var e = document.getElementById("wm6vNI");
+                e.appendChild(script);
+            })()
+        </script>
+        </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the examples below, we will use the Mann–Whitney U test to calculate p-values</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_p_value</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cat_col</span><span class="p">,</span> <span class="n">val_col</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">cat_col</span><span class="p">]</span> <span class="o">==</span> <span class="n">g1</span><span class="p">,</span> <span class="n">val_col</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">cat_col</span><span class="p">]</span> <span class="o">==</span> <span class="n">g2</span><span class="p">,</span> <span class="n">val_col</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s2">&quot;two-sided&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pvalue</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_p_values_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cat_col</span><span class="p">,</span> <span class="n">val_col</span><span class="p">,</span> <span class="n">base_dy</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">combinations</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cat_col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">base_dy</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">step</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">get_p_value</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cat_col</span><span class="p">,</span> <span class="n">val_col</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
+                     <span class="s2">&quot;xmin&quot;</span><span class="p">:</span> <span class="n">xmin</span><span class="p">,</span>
+                     <span class="s2">&quot;xmax&quot;</span><span class="p">:</span> <span class="n">xmax</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/JetBrains/lets-plot-docs/refs/heads/master/data/mpg.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(234, 12)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>displ</th>
+      <th>year</th>
+      <th>cyl</th>
+      <th>trans</th>
+      <th>drv</th>
+      <th>cty</th>
+      <th>hwy</th>
+      <th>fl</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>18</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>1.8</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>manual(m5)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>29</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>manual(m6)</td>
+      <td>f</td>
+      <td>20</td>
+      <td>31</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.0</td>
+      <td>2008</td>
+      <td>4</td>
+      <td>auto(av)</td>
+      <td>f</td>
+      <td>21</td>
+      <td>30</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>audi</td>
+      <td>a4</td>
+      <td>2.8</td>
+      <td>1999</td>
+      <td>6</td>
+      <td>auto(l5)</td>
+      <td>f</td>
+      <td>16</td>
+      <td>26</td>
+      <td>p</td>
+      <td>compact</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="adding-significance-bars-p-values-to-categorical-plots">
+<h1>Adding Significance Bars (p-values) to Categorical Plots<a class="headerlink" href="#adding-significance-bars-p-values-to-categorical-plots" title="Link to this heading">#</a></h1>
+<section id="compute-significance-data">
+<h2>Compute Significance Data<a class="headerlink" href="#compute-significance-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_values_df</span> <span class="o">=</span> <span class="n">get_p_values_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cat_col</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">,</span> <span class="n">val_col</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">base_dy</span><span class="o">=</span><span class="mi">47</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_values_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">p_values_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 4)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>p</th>
+      <th>xmin</th>
+      <th>xmax</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>47</td>
+      <td>9.041090e-28</td>
+      <td>f</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>51</td>
+      <td>5.955333e-11</td>
+      <td>f</td>
+      <td>r</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>55</td>
+      <td>4.104577e-02</td>
+      <td>4</td>
+      <td>r</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;drv&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">))</span> <span class="o">+</span> \
+    <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span> <span class="o">+</span> \
+    <span class="n">geom_jitter</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">),</span> <span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="basic-p-value-annotations">
+<h2>Basic p-value Annotations<a class="headerlink" href="#basic-p-value-annotations" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;p&quot;</span><span class="p">),</span> 
+                 <span class="n">data</span><span class="o">=</span><span class="n">p_values_df</span>  <span class="c1"># &lt;-- Pass p-values data to the brackets layer</span>
+                <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="sqpOfL" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("sqpOfL");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"drv":["f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","4","4","4","4","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f"],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"drv",
+"y":"hwy",
+"fill":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[28.0,18.0,21.0],
+"..lower..":[26.0,17.0,17.0],
+"..upper..":[29.0,22.0,24.0],
+"..ymin..":[22.0,12.0,15.0],
+"..ymax..":[33.0,28.0,26.0],
+"drv":["f","4","r"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,18.0,21.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,17.0,17.0],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,22.0,24.0],
+"..ymin..":[22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,12.0,15.0],
+"..ymax..":[33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,28.0,26.0],
+"drv":["f","f","f","f","f","f","f","f","f","f","f","4","r"],
+"hwy":[17.0,21.0,34.0,36.0,36.0,35.0,37.0,35.0,44.0,44.0,41.0,NaN,NaN]
+}
+},{
+"geom":"jitter",
+"mapping":{
+"color":"drv"
+},
+"show_legend":false,
+"data_meta":{
+},
+"height":0.0,
+"seed":42.0,
+"shape":1.0,
+"alpha":0.25,
+"data":{
+}
+},{
+"geom":"bracket",
+"data":{
+"y":[47.0,51.0,55.0],
+"p":[9.04109024599281E-28,5.955333260422109E-11,0.041045768902582824],
+"xmin":["f","f","4"],
+"xmax":["4","r","r"]
+},
+"mapping":{
+"y":"y",
+"xmin":"xmin",
+"xmax":"xmax",
+"label":"p"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"p"
+},{
+"type":"str",
+"column":"xmin"
+},{
+"type":"str",
+"column":"xmax"
+}]
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="format-labels-with-label-format">
+<h2>Format Labels with <code class="docutils literal notranslate"><span class="pre">label_format</span></code><a class="headerlink" href="#format-labels-with-label-format" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;p&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">p_values_df</span><span class="p">,</span> <span class="n">label_format</span><span class="o">=</span><span class="s2">&quot;.2~g&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="FoGYIy" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("FoGYIy");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"drv":["f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","4","4","4","4","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f"],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"drv",
+"y":"hwy",
+"fill":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[28.0,18.0,21.0],
+"..lower..":[26.0,17.0,17.0],
+"..upper..":[29.0,22.0,24.0],
+"..ymin..":[22.0,12.0,15.0],
+"..ymax..":[33.0,28.0,26.0],
+"drv":["f","4","r"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,18.0,21.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,17.0,17.0],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,22.0,24.0],
+"..ymin..":[22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,12.0,15.0],
+"..ymax..":[33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,28.0,26.0],
+"drv":["f","f","f","f","f","f","f","f","f","f","f","4","r"],
+"hwy":[17.0,21.0,34.0,36.0,36.0,35.0,37.0,35.0,44.0,44.0,41.0,NaN,NaN]
+}
+},{
+"geom":"jitter",
+"mapping":{
+"color":"drv"
+},
+"show_legend":false,
+"data_meta":{
+},
+"height":0.0,
+"seed":42.0,
+"shape":1.0,
+"alpha":0.25,
+"data":{
+}
+},{
+"geom":"bracket",
+"data":{
+"y":[47.0,51.0,55.0],
+"p":[9.04109024599281E-28,5.955333260422109E-11,0.041045768902582824],
+"xmin":["f","f","4"],
+"xmax":["4","r","r"]
+},
+"mapping":{
+"y":"y",
+"xmin":"xmin",
+"xmax":"xmax",
+"label":"p"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"p"
+},{
+"type":"str",
+"column":"xmin"
+},{
+"type":"str",
+"column":"xmax"
+}]
+},
+"label_format":".2~g"
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="format-labels-with-label-pvalue-from-mizani">
+<h2>Format Labels with <code class="docutils literal notranslate"><span class="pre">label_pvalue()</span></code> from <code class="docutils literal notranslate"><span class="pre">mizani</span></code><a class="headerlink" href="#format-labels-with-label-pvalue-from-mizani" title="Link to this heading">#</a></h2>
+<p>Mizani is a scales package for graphics: https://pypi.org/project/mizani/</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mizani.labels</span><span class="w"> </span><span class="kn">import</span> <span class="n">label_pvalue</span>
+
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">label_pvalue</span><span class="p">(</span><span class="n">add_p</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">p_values_df</span> <span class="o">=</span> <span class="n">p_values_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">formatter</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]))</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">p_values_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="m2EgaW" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("m2EgaW");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"drv":["f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","4","4","4","4","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f"],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"drv",
+"y":"hwy",
+"fill":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[28.0,18.0,21.0],
+"..lower..":[26.0,17.0,17.0],
+"..upper..":[29.0,22.0,24.0],
+"..ymin..":[22.0,12.0,15.0],
+"..ymax..":[33.0,28.0,26.0],
+"drv":["f","4","r"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,18.0,21.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,17.0,17.0],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,22.0,24.0],
+"..ymin..":[22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,12.0,15.0],
+"..ymax..":[33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,28.0,26.0],
+"drv":["f","f","f","f","f","f","f","f","f","f","f","4","r"],
+"hwy":[17.0,21.0,34.0,36.0,36.0,35.0,37.0,35.0,44.0,44.0,41.0,NaN,NaN]
+}
+},{
+"geom":"jitter",
+"mapping":{
+"color":"drv"
+},
+"show_legend":false,
+"data_meta":{
+},
+"height":0.0,
+"seed":42.0,
+"shape":1.0,
+"alpha":0.25,
+"data":{
+}
+},{
+"geom":"bracket",
+"data":{
+"y":[47.0,51.0,55.0],
+"xmin":["f","f","4"],
+"xmax":["4","r","r"],
+"label":["p<0.001","p<0.001","p=0.041"]
+},
+"mapping":{
+"y":"y",
+"xmin":"xmin",
+"xmax":"xmax",
+"label":"label"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"p"
+},{
+"type":"str",
+"column":"xmin"
+},{
+"type":"str",
+"column":"xmax"
+},{
+"type":"str",
+"column":"label"
+}]
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="apply-custom-formatting-logic-significance-stars">
+<h2>Apply Custom Formatting Logic (Significance Stars)<a class="headerlink" href="#apply-custom-formatting-logic-significance-stars" title="Link to this heading">#</a></h2>
+<p>Map p-values to custom strings (like *** or ns) using your own function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stars_formatter</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mf">0.001</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;***&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mf">0.01</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;**&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;*&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;ns&quot;</span>
+
+<span class="n">p_values_df</span> <span class="o">=</span> <span class="n">p_values_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">star</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">stars_formatter</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;star&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">p_values_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="fDHm6R" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("fDHm6R");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"drv":["f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","4","4","4","4","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f"],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"drv",
+"y":"hwy",
+"fill":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[28.0,18.0,21.0],
+"..lower..":[26.0,17.0,17.0],
+"..upper..":[29.0,22.0,24.0],
+"..ymin..":[22.0,12.0,15.0],
+"..ymax..":[33.0,28.0,26.0],
+"drv":["f","4","r"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,18.0,21.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,17.0,17.0],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,22.0,24.0],
+"..ymin..":[22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,12.0,15.0],
+"..ymax..":[33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,28.0,26.0],
+"drv":["f","f","f","f","f","f","f","f","f","f","f","4","r"],
+"hwy":[17.0,21.0,34.0,36.0,36.0,35.0,37.0,35.0,44.0,44.0,41.0,NaN,NaN]
+}
+},{
+"geom":"jitter",
+"mapping":{
+"color":"drv"
+},
+"show_legend":false,
+"data_meta":{
+},
+"height":0.0,
+"seed":42.0,
+"shape":1.0,
+"alpha":0.25,
+"data":{
+}
+},{
+"geom":"bracket",
+"data":{
+"y":[47.0,51.0,55.0],
+"xmin":["f","f","4"],
+"xmax":["4","r","r"],
+"star":["***","***","*"]
+},
+"mapping":{
+"y":"y",
+"xmin":"xmin",
+"xmax":"xmax",
+"label":"star"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"p"
+},{
+"type":"str",
+"column":"xmin"
+},{
+"type":"str",
+"column":"xmax"
+},{
+"type":"str",
+"column":"label"
+},{
+"type":"str",
+"column":"star"
+}]
+}
+}],
+"metainfo_list":[],
+"spec_id":"4"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+<section id="annotating-dodged-groups">
+<h1>Annotating Dodged Groups<a class="headerlink" href="#annotating-dodged-groups" title="Link to this heading">#</a></h1>
+<p>To draw brackets between dodged groups, use <code class="docutils literal notranslate"><span class="pre">geom_bracket_dodge()</span></code>. Instead of using data coordinates, this layer uses group indices:</p>
+<ul class="simple">
+<li><p>x: The main category on the x-axis.</p></li>
+<li><p>istart, iend: The zero-based indices of the dodged groups to compare.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group indexes must be specified in the same order as they appear on the plot for other layers</span>
+<span class="n">group_indices</span> <span class="o">=</span> <span class="p">{</span><span class="mf">4.0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">p_values_grouped_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+    <span class="n">get_p_values_data</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">],</span> <span class="n">cat_col</span><span class="o">=</span><span class="s2">&quot;cyl&quot;</span><span class="p">,</span> <span class="n">val_col</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">base_dy</span><span class="o">=</span><span class="mi">47</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">star</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">stars_formatter</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">start</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;xmin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">group_indices</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">end</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;xmax&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">group_indices</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">p_values_grouped_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>p</th>
+      <th>xmin</th>
+      <th>xmax</th>
+      <th>x</th>
+      <th>star</th>
+      <th>start</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>47.0</td>
+      <td>0.000025</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>compact</td>
+      <td>***</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>51.0</td>
+      <td>0.910367</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>compact</td>
+      <td>ns</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>55.0</td>
+      <td>0.030158</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>compact</td>
+      <td>*</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47.0</td>
+      <td>0.030194</td>
+      <td>6.0</td>
+      <td>8.0</td>
+      <td>midsize</td>
+      <td>*</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>51.0</td>
+      <td>0.000009</td>
+      <td>6.0</td>
+      <td>4.0</td>
+      <td>midsize</td>
+      <td>***</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s2">&quot;cyl&quot;</span><span class="p">)))</span>
+  <span class="o">+</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+  <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">as_discrete</span><span class="p">(</span><span class="s2">&quot;cyl&quot;</span><span class="p">)),</span>
+               <span class="n">position</span><span class="o">=</span><span class="n">position_jitterdodge</span><span class="p">(</span><span class="n">jitter_width</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">jitter_height</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+               <span class="n">shape</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+  <span class="o">+</span> <span class="n">geom_bracket_dodge</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">istart</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="n">iend</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;star&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">p_values_grouped_df</span><span class="p">)</span>
+  <span class="o">+</span> <span class="n">scale_brewer</span><span class="p">([</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;fill&quot;</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+  <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="iw2nCs" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("iw2nCs");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"cyl":[4.0,4.0,4.0,4.0,6.0,6.0,6.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,6.0,6.0,6.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,4.0,4.0,6.0,6.0,6.0,4.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,8.0,8.0,8.0,8.0,8.0,6.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,6.0,6.0,6.0,6.0,8.0,8.0,6.0,6.0,8.0,8.0,8.0,8.0,8.0,6.0,6.0,6.0,6.0,8.0,8.0,8.0,8.0,8.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,6.0,6.0,6.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,6.0,6.0,8.0,8.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,8.0,6.0,6.0,6.0,6.0,8.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,8.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,4.0,4.0,4.0,4.0,4.0,8.0,8.0,4.0,4.0,4.0,6.0,6.0,6.0,6.0,4.0,4.0,4.0,4.0,6.0,4.0,4.0,4.0,4.0,4.0,5.0,5.0,6.0,6.0,4.0,4.0,4.0,4.0,5.0,5.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0],
+"class":["compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","midsize","midsize","midsize","suv","suv","suv","suv","suv","2seater","2seater","2seater","2seater","2seater","suv","suv","suv","suv","midsize","midsize","midsize","midsize","midsize","minivan","minivan","minivan","minivan","minivan","minivan","minivan","minivan","minivan","minivan","minivan","pickup","pickup","pickup","pickup","pickup","pickup","pickup","pickup","pickup","suv","suv","suv","suv","suv","suv","suv","pickup","pickup","pickup","pickup","pickup","pickup","pickup","pickup","pickup","pickup","suv","suv","suv","suv","suv","suv","suv","suv","suv","pickup","pickup","pickup","pickup","pickup","pickup","pickup","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","midsize","midsize","midsize","midsize","midsize","midsize","midsize","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","suv","compact","compact","midsize","midsize","midsize","midsize","midsize","midsize","midsize","suv","suv","suv","suv","midsize","midsize","midsize","midsize","midsize","suv","suv","suv","suv","suv","suv","subcompact","subcompact","subcompact","subcompact","compact","compact","compact","compact","suv","suv","suv","suv","suv","suv","midsize","midsize","midsize","midsize","midsize","midsize","midsize","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","suv","suv","pickup","pickup","pickup","pickup","pickup","pickup","pickup","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","compact","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact","midsize","midsize","midsize","midsize","midsize","midsize","midsize"]
+},
+"mapping":{
+"x":"class",
+"y":"hwy",
+"fill":"cyl"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"cyl"
+},{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}],
+"mapping_annotations":[{
+"parameters":{
+"label":"cyl"
+},
+"aes":"fill",
+"annotation":"as_discrete"
+}]
+},
+"ggsize":{
+"width":1000.0,
+"height":500.0
+},
+"kind":"plot",
+"scales":[{
+"aesthetic":"color",
+"format":"d",
+"palette":"Accent",
+"scale_mapper_kind":"color_brewer"
+},{
+"aesthetic":"fill",
+"format":"d",
+"palette":"Accent",
+"scale_mapper_kind":"color_brewer"
+}],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[29.0,29.0,24.0,29.0,24.5,20.0,25.0,26.0,22.5,17.5,19.0,24.0,24.0,17.0,25.0,16.0,22.0,29.0,28.5],
+"..lower..":[27.0,27.5,24.0,26.0,21.5,20.0,25.0,26.0,22.0,17.0,17.0,24.0,24.0,15.5,24.0,15.0,21.0,29.0,28.5],
+"..upper..":[30.5,31.0,24.0,33.0,25.5,21.0,26.0,26.5,23.5,18.5,19.5,25.5,24.0,18.0,26.0,17.0,22.0,29.0,28.5],
+"..ymin..":[25.0,26.0,24.0,26.0,20.0,20.0,24.0,26.0,21.0,17.0,17.0,24.0,24.0,12.0,23.0,12.0,20.0,29.0,28.5],
+"..ymax..":[35.0,32.0,24.0,41.0,27.0,22.0,27.0,27.0,24.0,20.0,22.0,26.0,24.0,20.0,26.0,19.0,23.0,29.0,28.5],
+"class":["compact","midsize","minivan","subcompact","suv","pickup","compact","midsize","minivan","pickup","suv","subcompact","midsize","suv","2seater","pickup","subcompact","compact","subcompact"],
+"cyl":[4.0,4.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,6.0,6.0,6.0,8.0,8.0,8.0,8.0,8.0,5.0,5.0]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[29.0,29.0,29.0,24.0,29.0,24.5,20.0,25.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,22.5,17.5,19.0,24.0,24.0,24.0,17.0,25.0,16.0,22.0,29.0,28.5,28.5],
+"..lower..":[27.0,27.0,27.5,24.0,26.0,21.5,20.0,25.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,22.0,17.0,17.0,24.0,24.0,24.0,15.5,24.0,15.0,21.0,29.0,28.5,28.5],
+"..upper..":[30.5,30.5,31.0,24.0,33.0,25.5,21.0,26.0,26.5,26.5,26.5,26.5,26.5,26.5,26.5,26.5,23.5,18.5,19.5,25.5,24.0,24.0,18.0,26.0,17.0,22.0,29.0,28.5,28.5],
+"..ymin..":[25.0,25.0,26.0,24.0,26.0,20.0,20.0,24.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,21.0,17.0,17.0,24.0,24.0,24.0,12.0,23.0,12.0,20.0,29.0,28.5,28.5],
+"..ymax..":[35.0,35.0,32.0,24.0,41.0,27.0,22.0,27.0,27.0,27.0,27.0,27.0,27.0,27.0,27.0,27.0,24.0,20.0,22.0,26.0,24.0,24.0,20.0,26.0,19.0,23.0,29.0,28.5,28.5],
+"class":["compact","compact","midsize","minivan","subcompact","suv","pickup","compact","midsize","midsize","midsize","midsize","midsize","midsize","midsize","midsize","minivan","pickup","suv","subcompact","midsize","midsize","suv","2seater","pickup","subcompact","compact","subcompact","subcompact"],
+"hwy":[37.0,44.0,NaN,NaN,44.0,NaN,NaN,23.0,24.0,25.0,29.0,28.0,25.0,25.0,28.0,28.0,17.0,NaN,NaN,NaN,23.0,25.0,NaN,NaN,NaN,NaN,NaN,28.0,29.0],
+"cyl":[4.0,4.0,4.0,4.0,4.0,4.0,4.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,6.0,8.0,8.0,8.0,8.0,8.0,8.0,5.0,5.0,5.0]
+}
+},{
+"geom":"point",
+"mapping":{
+"color":"cyl"
+},
+"position":{
+"name":"jitterdodge",
+"jitter_width":0.2,
+"jitter_height":0.0
+},
+"show_legend":false,
+"data_meta":{
+"mapping_annotations":[{
+"parameters":{
+"label":"cyl"
+},
+"aes":"color",
+"annotation":"as_discrete"
+}]
+},
+"shape":1.0,
+"alpha":0.25,
+"seed":42.0,
+"data":{
+}
+},{
+"geom":"bracket_dodge",
+"data":{
+"y":[47.0,51.0,55.0,47.0,51.0,55.0,47.0,51.0,55.0,47.0,47.0,51.0,55.0,47.0,51.0,55.0,59.0,63.0,67.0],
+"x":["compact","compact","compact","midsize","midsize","midsize","suv","suv","suv","minivan","pickup","pickup","pickup","subcompact","subcompact","subcompact","subcompact","subcompact","subcompact"],
+"star":["***","ns","*","*","***","*","**","***","***","ns","**","*","**","**","***","*","***","ns","ns"],
+"start":[0.0,0.0,1.0,1.0,1.0,2.0,2.0,2.0,1.0,0.0,1.0,1.0,2.0,1.0,1.0,1.0,2.0,2.0,0.0],
+"end":[1.0,3.0,3.0,2.0,0.0,0.0,1.0,0.0,0.0,1.0,2.0,0.0,0.0,2.0,0.0,3.0,0.0,3.0,3.0]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"istart":"start",
+"iend":"end",
+"label":"star"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"y"
+},{
+"type":"float",
+"column":"p"
+},{
+"type":"float",
+"column":"xmin"
+},{
+"type":"float",
+"column":"xmax"
+},{
+"type":"str",
+"column":"x"
+},{
+"type":"str",
+"column":"star"
+},{
+"type":"int",
+"column":"start"
+},{
+"type":"int",
+"column":"end"
+}]
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="customizing-bracket-geometry">
+<h1>Customizing Bracket Geometry<a class="headerlink" href="#customizing-bracket-geometry" title="Link to this heading">#</a></h1>
+<section id="bottom-axis-upside-down-annotations">
+<h2>Bottom-Axis (Upside Down) Annotations<a class="headerlink" href="#bottom-axis-upside-down-annotations" title="Link to this heading">#</a></h2>
+<p>To place brackets at the bottom of a plot, use negative values for <code class="docutils literal notranslate"><span class="pre">lenstart</span></code> and <code class="docutils literal notranslate"><span class="pre">lenend</span></code>. <br />
+You may also need to adjust <code class="docutils literal notranslate"><span class="pre">vjust</span></code> to position the labels correctly outside the bracket.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">upside_down_p_values_df</span> <span class="o">=</span> <span class="n">get_p_values_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cat_col</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">,</span> <span class="n">val_col</span><span class="o">=</span><span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="n">base_dy</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">step</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">formatter</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">upside_down_p_values_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">upside_down_p_values_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 5)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>p</th>
+      <th>xmin</th>
+      <th>xmax</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>9.041090e-28</td>
+      <td>f</td>
+      <td>4</td>
+      <td>p&lt;0.001</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5.955333e-11</td>
+      <td>f</td>
+      <td>r</td>
+      <td>p&lt;0.001</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>4.104577e-02</td>
+      <td>4</td>
+      <td>r</td>
+      <td>p=0.041</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">upside_down_p_values_df</span><span class="p">,</span>
+                  <span class="n">lenstart</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">lenend</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># Negative values to reverse the direction of the brackets</span>
+                  <span class="n">vjust</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>                <span class="c1"># Specify vjust to move the labels under the brackets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="RJYLGM" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("RJYLGM");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"drv":["f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","4","4","4","4","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f"],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"drv",
+"y":"hwy",
+"fill":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[28.0,18.0,21.0],
+"..lower..":[26.0,17.0,17.0],
+"..upper..":[29.0,22.0,24.0],
+"..ymin..":[22.0,12.0,15.0],
+"..ymax..":[33.0,28.0,26.0],
+"drv":["f","4","r"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,18.0,21.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,17.0,17.0],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,22.0,24.0],
+"..ymin..":[22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,12.0,15.0],
+"..ymax..":[33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,28.0,26.0],
+"drv":["f","f","f","f","f","f","f","f","f","f","f","4","r"],
+"hwy":[17.0,21.0,34.0,36.0,36.0,35.0,37.0,35.0,44.0,44.0,41.0,NaN,NaN]
+}
+},{
+"geom":"jitter",
+"mapping":{
+"color":"drv"
+},
+"show_legend":false,
+"data_meta":{
+},
+"height":0.0,
+"seed":42.0,
+"shape":1.0,
+"alpha":0.25,
+"data":{
+}
+},{
+"geom":"bracket",
+"data":{
+"y":[8.0,4.0,0.0],
+"xmin":["f","f","4"],
+"xmax":["4","r","r"],
+"label":["p<0.001","p<0.001","p=0.041"]
+},
+"mapping":{
+"y":"y",
+"xmin":"xmin",
+"xmax":"xmax",
+"label":"label"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"p"
+},{
+"type":"str",
+"column":"xmin"
+},{
+"type":"str",
+"column":"xmax"
+},{
+"type":"str",
+"column":"label"
+}]
+},
+"lenstart":-5.0,
+"lenend":-5.0,
+"vjust":2.0
+}],
+"metainfo_list":[],
+"spec_id":"6"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+<section id="precise-alignment-with-tiplength-unit-identity">
+<h2>Precise Alignment with <code class="docutils literal notranslate"><span class="pre">tiplength_unit='identity'</span></code><a class="headerlink" href="#precise-alignment-with-tiplength-unit-identity" title="Link to this heading">#</a></h2>
+<p>By default, bracket tips use a fixed length. Setting <code class="docutils literal notranslate"><span class="pre">tiplength_unit='identity'</span></code> allows you to specify tip lengths in <strong>data units</strong>. <br />
+This is essential when you want a bracket tip to reach a specific coordinate, such as the exact top of a boxplot or a particular data point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s recall the y-coordinates from the datasets</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Upper limits of boxes for each category:</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;drv&#39;</span><span class="p">)[</span><span class="s1">&#39;hwy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset with p-values:&quot;</span><span class="p">)</span>
+<span class="n">p_values_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Upper limits of boxes for each category:
+{&#39;4&#39;: 28, &#39;f&#39;: 44, &#39;r&#39;: 26}
+
+Dataset with p-values:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>p</th>
+      <th>xmin</th>
+      <th>xmax</th>
+      <th>label</th>
+      <th>star</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>47</td>
+      <td>9.041090e-28</td>
+      <td>f</td>
+      <td>4</td>
+      <td>p&lt;0.001</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>51</td>
+      <td>5.955333e-11</td>
+      <td>f</td>
+      <td>r</td>
+      <td>p&lt;0.001</td>
+      <td>***</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>55</td>
+      <td>4.104577e-02</td>
+      <td>4</td>
+      <td>r</td>
+      <td>p=0.041</td>
+      <td>*</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The tip lengths are chosen so that each tip reaches either the previous bracket or the box</span>
+<span class="c1"># Example (first bracket):</span>
+<span class="c1">#   lenstart = y - upper_box_limit_at_xmin - 1</span>
+<span class="c1">#     -&gt; 47 - 44 - 1 = 2</span>
+<span class="c1">#   lenend   = y - upper_box_limit_at_xmax - 1</span>
+<span class="c1">#     -&gt; 47 - 28 - 1 = 18</span>
+<span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;xmin&quot;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;xmax&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+                      <span class="n">lenstart</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                      <span class="n">lenend</span><span class="o">=</span><span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+                  <span class="n">data</span><span class="o">=</span><span class="n">p_values_df</span><span class="p">,</span>
+                  <span class="n">tiplength_unit</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">))</span>  <span class="c1"># identity units (data space)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="eLLG0C" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("eLLG0C");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"drv":["f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","4","4","4","4","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f"],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"drv",
+"y":"hwy",
+"fill":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[28.0,18.0,21.0],
+"..lower..":[26.0,17.0,17.0],
+"..upper..":[29.0,22.0,24.0],
+"..ymin..":[22.0,12.0,15.0],
+"..ymax..":[33.0,28.0,26.0],
+"drv":["f","4","r"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,28.0,18.0,21.0],
+"..lower..":[26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,26.0,17.0,17.0],
+"..upper..":[29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,29.0,22.0,24.0],
+"..ymin..":[22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,22.0,12.0,15.0],
+"..ymax..":[33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,33.0,28.0,26.0],
+"drv":["f","f","f","f","f","f","f","f","f","f","f","4","r"],
+"hwy":[17.0,21.0,34.0,36.0,36.0,35.0,37.0,35.0,44.0,44.0,41.0,NaN,NaN]
+}
+},{
+"geom":"jitter",
+"mapping":{
+"color":"drv"
+},
+"show_legend":false,
+"data_meta":{
+},
+"height":0.0,
+"seed":42.0,
+"shape":1.0,
+"alpha":0.25,
+"data":{
+}
+},{
+"geom":"bracket",
+"data":{
+"y":[47.0,51.0,55.0],
+"xmin":["f","f","4"],
+"xmax":["4","r","r"],
+"label":["p<0.001","p<0.001","p=0.041"],
+"lenstart":[2.0,1.0,1.0],
+"lenend":[18.0,24.0,1.0]
+},
+"mapping":{
+"y":"y",
+"xmin":"xmin",
+"xmax":"xmax",
+"label":"label",
+"lenstart":"lenstart",
+"lenend":"lenend"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"y"
+},{
+"type":"float",
+"column":"p"
+},{
+"type":"str",
+"column":"xmin"
+},{
+"type":"str",
+"column":"xmax"
+},{
+"type":"str",
+"column":"label"
+},{
+"type":"str",
+"column":"star"
+}]
+},
+"tiplength_unit":"identity"
+}],
+"metainfo_list":[],
+"spec_id":"7"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+</section>
+<section id="non-statistical-annotations-range-grouping">
+<h1>Non-Statistical Annotations: Range Grouping<a class="headerlink" href="#non-statistical-annotations-range-grouping" title="Link to this heading">#</a></h1>
+<p>Brackets can be used for more than just drawing p-values.
+For example, they can be used to highlight cluster boundaries in the following scatter plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_continuous_brackets_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cat_col</span><span class="p">,</span> <span class="n">primary_val_col</span><span class="p">,</span> <span class="n">secondary_val_col</span><span class="p">,</span> <span class="n">step_mult</span><span class="p">):</span>
+    <span class="n">secondary_min</span><span class="p">,</span> <span class="n">secondary_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">secondary_val_col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="n">secondary_val_col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="p">(</span><span class="n">secondary_max</span> <span class="o">-</span> <span class="n">secondary_min</span><span class="p">)</span> <span class="o">*</span> <span class="n">step_mult</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">secondary_max</span> <span class="o">+</span> <span class="n">step</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;drv&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;drv&quot;</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">],</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cat_col</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">primary_val_col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;min_</span><span class="si">{</span><span class="n">primary_val_col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cat_col</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">primary_val_col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;max_</span><span class="si">{</span><span class="n">primary_val_col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">secondary_val_col</span><span class="si">}</span><span class="s2">_level&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">base</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">step</span><span class="p">})</span>
+
+<span class="p">(</span><span class="n">ggplot</span><span class="p">()</span>
+  <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Horizontal brackets for hwy ranges</span>
+  <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s2">&quot;min_hwy&quot;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s2">&quot;max_hwy&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cty_level&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">),</span>
+                 <span class="n">data</span><span class="o">=</span><span class="n">get_continuous_brackets_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;drv&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="mf">.1</span><span class="p">))</span>
+ 
+    <span class="c1"># Vertical brackets for cty ranges</span>
+  <span class="o">+</span> <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;hwy_level&quot;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="s2">&quot;min_cty&quot;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s2">&quot;max_cty&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;drv&quot;</span><span class="p">),</span>
+                 <span class="n">data</span><span class="o">=</span><span class="n">get_continuous_brackets_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;drv&quot;</span><span class="p">,</span> <span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;hwy&quot;</span><span class="p">,</span> <span class="mf">.05</span><span class="p">))</span>
+  <span class="o">+</span> <span class="n">theme_minimal</span><span class="p">()</span> <span class="o">+</span> <span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;hwy&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cty&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="lfPSyn" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("lfPSyn");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"theme":{
+"name":"minimal"
+},
+"guides":{
+"x":{
+"title":"hwy"
+},
+"y":{
+"title":"cty"
+}
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"data":{
+"drv":["f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","r","r","r","r","r","r","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","r","r","r","4","4","4","4","f","f","f","f","f","f","f","f","f","4","4","4","4","f","f","f","f","f","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","4","4","4","4","4","4","4","4","4","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f","f"],
+"cty":[18.0,21.0,20.0,21.0,16.0,18.0,18.0,18.0,16.0,20.0,19.0,15.0,17.0,17.0,15.0,15.0,17.0,16.0,14.0,11.0,14.0,13.0,12.0,16.0,15.0,16.0,15.0,15.0,14.0,11.0,11.0,14.0,19.0,22.0,18.0,18.0,17.0,18.0,17.0,16.0,16.0,17.0,17.0,11.0,15.0,15.0,16.0,16.0,15.0,14.0,13.0,14.0,14.0,14.0,9.0,11.0,11.0,13.0,13.0,9.0,13.0,11.0,13.0,11.0,12.0,9.0,13.0,13.0,12.0,9.0,11.0,11.0,13.0,11.0,11.0,11.0,12.0,14.0,15.0,14.0,13.0,13.0,13.0,14.0,14.0,13.0,13.0,13.0,11.0,13.0,18.0,18.0,17.0,16.0,15.0,15.0,15.0,15.0,14.0,28.0,24.0,25.0,23.0,24.0,26.0,25.0,24.0,21.0,18.0,18.0,21.0,21.0,18.0,18.0,19.0,19.0,19.0,20.0,20.0,17.0,16.0,17.0,17.0,15.0,15.0,14.0,9.0,14.0,13.0,11.0,11.0,12.0,12.0,11.0,11.0,11.0,12.0,14.0,13.0,13.0,13.0,21.0,19.0,23.0,23.0,19.0,19.0,18.0,19.0,19.0,14.0,15.0,14.0,12.0,18.0,16.0,17.0,18.0,16.0,18.0,18.0,20.0,19.0,20.0,18.0,21.0,19.0,19.0,19.0,20.0,20.0,19.0,20.0,15.0,16.0,15.0,15.0,16.0,14.0,21.0,21.0,21.0,21.0,18.0,18.0,19.0,21.0,21.0,21.0,22.0,18.0,18.0,18.0,24.0,24.0,26.0,28.0,26.0,11.0,13.0,15.0,16.0,17.0,15.0,15.0,15.0,16.0,21.0,19.0,21.0,22.0,17.0,33.0,21.0,19.0,22.0,21.0,21.0,21.0,16.0,17.0,35.0,29.0,21.0,19.0,20.0,20.0,21.0,18.0,19.0,21.0,16.0,18.0,17.0],
+"hwy":[29.0,29.0,31.0,30.0,26.0,26.0,27.0,26.0,25.0,28.0,27.0,25.0,25.0,25.0,25.0,24.0,25.0,23.0,20.0,15.0,20.0,17.0,17.0,26.0,23.0,26.0,25.0,24.0,19.0,14.0,15.0,17.0,27.0,30.0,26.0,29.0,26.0,24.0,24.0,22.0,22.0,24.0,24.0,17.0,22.0,21.0,23.0,23.0,19.0,18.0,17.0,17.0,19.0,19.0,12.0,17.0,15.0,17.0,17.0,12.0,17.0,16.0,18.0,15.0,16.0,12.0,17.0,17.0,16.0,12.0,15.0,16.0,17.0,15.0,17.0,17.0,18.0,17.0,19.0,17.0,19.0,19.0,17.0,17.0,17.0,16.0,16.0,17.0,15.0,17.0,26.0,25.0,26.0,24.0,21.0,22.0,23.0,22.0,20.0,33.0,32.0,32.0,29.0,32.0,34.0,36.0,36.0,29.0,26.0,27.0,30.0,31.0,26.0,26.0,28.0,26.0,29.0,28.0,27.0,24.0,24.0,24.0,22.0,19.0,20.0,17.0,12.0,19.0,18.0,14.0,15.0,18.0,18.0,15.0,17.0,16.0,18.0,17.0,19.0,19.0,17.0,29.0,27.0,31.0,32.0,27.0,26.0,26.0,25.0,25.0,17.0,17.0,20.0,18.0,26.0,26.0,27.0,28.0,25.0,25.0,24.0,27.0,25.0,26.0,23.0,26.0,26.0,26.0,26.0,25.0,27.0,25.0,27.0,20.0,20.0,19.0,17.0,20.0,17.0,29.0,27.0,31.0,31.0,26.0,26.0,28.0,27.0,29.0,31.0,31.0,26.0,26.0,27.0,30.0,33.0,35.0,37.0,35.0,15.0,18.0,20.0,20.0,22.0,17.0,19.0,18.0,20.0,29.0,26.0,29.0,29.0,24.0,44.0,29.0,26.0,29.0,29.0,29.0,29.0,23.0,24.0,44.0,41.0,29.0,26.0,28.0,29.0,29.0,29.0,28.0,29.0,26.0,26.0,26.0]
+},
+"mapping":{
+"x":"hwy",
+"y":"cty",
+"color":"drv"
+},
+"show_legend":false,
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"Unnamed: 0"
+},{
+"type":"str",
+"column":"manufacturer"
+},{
+"type":"str",
+"column":"model"
+},{
+"type":"float",
+"column":"displ"
+},{
+"type":"int",
+"column":"year"
+},{
+"type":"int",
+"column":"cyl"
+},{
+"type":"str",
+"column":"trans"
+},{
+"type":"str",
+"column":"drv"
+},{
+"type":"int",
+"column":"cty"
+},{
+"type":"int",
+"column":"hwy"
+},{
+"type":"str",
+"column":"fl"
+},{
+"type":"str",
+"column":"class"
+}]
+},
+"alpha":0.25
+},{
+"geom":"bracket",
+"data":{
+"drv":["r","4","f"],
+"min_hwy":[15.0,12.0,17.0],
+"max_hwy":[26.0,28.0,44.0],
+"cty_level":[37.6,40.2,42.800000000000004]
+},
+"mapping":{
+"y":"cty_level",
+"xmin":"min_hwy",
+"xmax":"max_hwy",
+"label":"drv",
+"color":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"index"
+},{
+"type":"int",
+"column":"min_hwy"
+},{
+"type":"int",
+"column":"max_hwy"
+},{
+"type":"float",
+"column":"cty_level"
+},{
+"type":"str",
+"factor_levels":["r","4","f"],
+"column":"drv"
+}]
+}
+},{
+"geom":"bracket",
+"data":{
+"drv":["r","4","f"],
+"min_cty":[11.0,9.0,11.0],
+"max_cty":[18.0,21.0,35.0],
+"hwy_level":[45.6,47.2,48.800000000000004]
+},
+"mapping":{
+"x":"hwy_level",
+"ymin":"min_cty",
+"ymax":"max_cty",
+"label":"drv",
+"color":"drv"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"index"
+},{
+"type":"int",
+"column":"min_cty"
+},{
+"type":"int",
+"column":"max_cty"
+},{
+"type":"float",
+"column":"hwy_level"
+},{
+"type":"str",
+"factor_levels":["r","4","f"],
+"column":"drv"
+}]
+},
+"orientation":"y"
+}],
+"metainfo_list":[],
+"spec_id":"8"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistical Annotations: <code class="docutils literal notranslate"><span class="pre">geom_bracket()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_bracket_dodge()</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-significance-bars-p-values-to-categorical-plots">Adding Significance Bars (p-values) to Categorical Plots</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-significance-data">Compute Significance Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-p-value-annotations">Basic p-value Annotations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-labels-with-label-format">Format Labels with <code class="docutils literal notranslate"><span class="pre">label_format</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-labels-with-label-pvalue-from-mizani">Format Labels with <code class="docutils literal notranslate"><span class="pre">label_pvalue()</span></code> from <code class="docutils literal notranslate"><span class="pre">mizani</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-custom-formatting-logic-significance-stars">Apply Custom Formatting Logic (Significance Stars)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#annotating-dodged-groups">Annotating Dodged Groups</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-bracket-geometry">Customizing Bracket Geometry</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-axis-upside-down-annotations">Bottom-Axis (Upside Down) Annotations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precise-alignment-with-tiplength-unit-identity">Precise Alignment with <code class="docutils literal notranslate"><span class="pre">tiplength_unit='identity'</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#non-statistical-annotations-range-grouping">Non-Statistical Annotations: Range Grouping</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../../python/pages/licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

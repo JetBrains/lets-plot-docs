@@ -12,7 +12,7 @@
 Maps
 ====
 
-Create beautiful maps just by adding an interactive basemap layer to your plot: :py:mod:`geom_livemap() <lets_plot.geom_livemap>`.
+Create beautiful maps just by adding an interactive basemap layer to your plot: :py:func:`geom_livemap() <lets_plot.geom_livemap>`.
 
 
 Proportional Symbol Map
@@ -77,20 +77,20 @@ Combine Layers on Map ``ggplot2`` Style
 .. |layers_primitives-dark| image:: /_static/images/icons/maps/layers_primitives-dark.svg
     :class: only-dark
 
-:py:mod:`point <lets_plot.geom_point>`,
-:py:mod:`pie <lets_plot.geom_pie>`,
-:py:mod:`path <lets_plot.geom_path>`,
-:py:mod:`tiles <lets_plot.geom_tile>`,
-:py:mod:`polygon <lets_plot.geom_polygon>`,
-:py:mod:`map <lets_plot.geom_map>`,
-:py:mod:`horizontal line <lets_plot.geom_hline>`,
-:py:mod:`vertical line <lets_plot.geom_vline>`,
-:py:mod:`rectangle <lets_plot.geom_rect>`,
-:py:mod:`segment <lets_plot.geom_segment>`,
-:py:mod:`curve <lets_plot.geom_curve>`,
-:py:mod:`text <lets_plot.geom_text>`,
-:py:mod:`label <lets_plot.geom_label>`,
-:py:mod:`pointdensity <lets_plot.geom_pointdensity>`.
+:py:func:`point <lets_plot.geom_point>`,
+:py:func:`pie <lets_plot.geom_pie>`,
+:py:func:`path <lets_plot.geom_path>`,
+:py:func:`tiles <lets_plot.geom_tile>`,
+:py:func:`polygon <lets_plot.geom_polygon>`,
+:py:func:`map <lets_plot.geom_map>`,
+:py:func:`horizontal line <lets_plot.geom_hline>`,
+:py:func:`vertical line <lets_plot.geom_vline>`,
+:py:func:`rectangle <lets_plot.geom_rect>`,
+:py:func:`segment <lets_plot.geom_segment>`,
+:py:func:`curve <lets_plot.geom_curve>`,
+:py:func:`text <lets_plot.geom_text>`,
+:py:func:`label <lets_plot.geom_label>`,
+:py:func:`pointdensity <lets_plot.geom_pointdensity>`.
 
 |param_geodesic|.
 
@@ -106,8 +106,8 @@ Combine Layers on Map ``ggplot2`` Style
 .. |layers_contours-dark| image:: /_static/images/icons/maps/layers_contours-dark.svg
     :class: only-dark
 
-:py:mod:`contour <lets_plot.geom_contour>`,
-:py:mod:`filled contour <lets_plot.geom_contourf>`.
+:py:func:`contour <lets_plot.geom_contour>`,
+:py:func:`filled contour <lets_plot.geom_contourf>`.
 
 |layers_bivariate-light| |layers_bivariate-dark| Bivariate Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -118,16 +118,16 @@ Combine Layers on Map ``ggplot2`` Style
 .. |layers_bivariate-dark| image:: /_static/images/icons/maps/layers_bivariate-dark.svg
     :class: only-dark
 
-:py:mod:`2d bins <lets_plot.geom_bin2d>`,
-:py:mod:`2d hexagonal bins <lets_plot.geom_hex>`,
-:py:mod:`2d density <lets_plot.geom_density2d>`,
-:py:mod:`filled 2d density <lets_plot.geom_density2df>`.
+:py:func:`2d bins <lets_plot.geom_bin2d>`,
+:py:func:`2d hexagonal bins <lets_plot.geom_hex>`,
+:py:func:`2d density <lets_plot.geom_density2d>`,
+:py:func:`filled 2d density <lets_plot.geom_density2df>`.
 
 
 GeoPandas Shapes
 ----------------
 
-GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:mod:`polygon <lets_plot.geom_polygon>`, :py:mod:`map <lets_plot.geom_map>`, :py:mod:`point <lets_plot.geom_point>`, :py:mod:`pointdensity <lets_plot.geom_pointdensity>`, :py:mod:`pie <lets_plot.geom_pie>`, :py:mod:`text <lets_plot.geom_text>`, :py:mod:`path <lets_plot.geom_path>`, :py:mod:`rect <lets_plot.geom_rect>`.
+GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:func:`polygon <lets_plot.geom_polygon>`, :py:func:`map <lets_plot.geom_map>`, :py:func:`point <lets_plot.geom_point>`, :py:func:`pointdensity <lets_plot.geom_pointdensity>`, :py:func:`pie <lets_plot.geom_pie>`, :py:func:`text <lets_plot.geom_text>`, :py:func:`path <lets_plot.geom_path>`, :py:func:`rect <lets_plot.geom_rect>`.
 
 Learn more: :doc:`GeoPandas Support </python/pages/geopandas>`.
 
