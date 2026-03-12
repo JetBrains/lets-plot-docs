@@ -1,0 +1,1140 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Annotate a plot with labeled brackets to highlight relationships or groupings between categories or ranges." name="description" />
+<meta property="og:title" content="geom_bracket() | Lets-Plot Python API" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lets-plot.org/python/pages/api/lets_plot.geom_bracket.html" />
+<meta property="og:site_name" content="Lets-Plot" />
+<meta property="og:description" content="Annotate a plot with labeled brackets to highlight relationships or groupings between categories or ranges." />
+<meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
+<meta property="og:image:alt" content="Lets-Plot" />
+
+    <title>geom_bracket() | Lets-Plot Python API</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=6037b297" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/dataframe.css?v=1855a575" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=d607d3c8"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=5db22178"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python/pages/api/lets_plot.geom_bracket';</script>
+    <script src="../../../_static/js/custom.js?v=a8badf0c"></script>
+    <script src="../../../_static/js/language_data.js?v=2e3e2f07"></script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="geom_bracket_dodge" href="lets_plot.geom_bracket_dodge.html" />
+    <link rel="prev" title="geom_label_repel" href="lets_plot.geom_label_repel.html" />
+  <meta name="google-site-verification" content="FfoGmeQ4UDHfoTW3e2ngIW5d8JW_TPcSKV7GMH3jK40" />
+  
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+
+
+  <a class="navbar-brand logo" href="../../../index.html">
+
+
+
+
+
+  
+    
+  
+  
+  <img src="../../../_static/logo-light.svg" class="logo__image only-light" alt="Lets-Plot"/>
+  <script>document.write(`<img src="../../../_static/logo-dark.svg" class="logo__image only-dark" alt="Lets-Plot"/>`);</script>
+
+
+
+  </a>
+
+
+
+
+
+  <a class="navbar-brand logo-title" href="../../index.html">
+    <p class="title logo__title">Lets-Plot for Python</p>
+  </a>
+</div>
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand version" href="../whats_new.html">
+  <p>v4.9.0</p>
+</a>
+</div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new.html">
+    What is New
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+      
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../charts.html">
+    Charts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../maps.html">
+    Maps
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../geocoding.html">
+    Geocoding
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gallery.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../bistro.html">
+    'bistro' Plots
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new.html">
+    What is New
+  </a>
+</li>
+
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+  
+  
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/JetBrains/lets-plot" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+  
+  
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/lets-plot" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" excluded_from="['index', '404']"><img src="../../../_static/images/logo/pypi.svg" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="geom-bracket">
+<h1>geom_bracket<a class="headerlink" href="#geom-bracket" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="lets_plot.geom_bracket">
+<span class="sig-name descname"><span class="pre">geom_bracket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manual_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nudge_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nudge_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nudge_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bracket_shorten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tiplength_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">other_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lets_plot.geom_bracket" title="Link to this definition">#</a></dt>
+<dd><p>Annotate a plot with labeled brackets to highlight relationships or groupings between categories or ranges.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>mapping</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">FeatureSpec</span></code></span></dt><dd><p>Set of aesthetic mappings created by <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.aes.html">aes()</a> function.
+Aesthetic mappings describe the way that variables in the data are
+mapped to plot “aesthetics”.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier">dict or Pandas or Polars <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></span></dt><dd><p>The data to be displayed in this layer. If None, the default, the data
+is inherited from the plot data as specified in the call to ggplot.</p>
+</dd>
+<dt><strong>stat</strong><span class="classifier">str, default=’identity’</span></dt><dd><p>The statistical transformation to use on the data for this layer, as a string.
+Supported transformations: ‘identity’ (leaves the data unchanged),
+‘count’ (counts number of points with the same x-axis coordinate),
+‘bin’ (counts number of points with the x-axis coordinate in the same bin),
+‘smooth’ (performs smoothing - linear default),
+‘density’ (computes and draws kernel density estimate),
+‘sum’ (counts the number of points at each location - might help to work around overplotting).</p>
+</dd>
+<dt><strong>position</strong><span class="classifier">str or <code class="docutils literal notranslate"><span class="pre">FeatureSpec</span></code>, default=’identity’</span></dt><dd><p>Position adjustment.
+Either a position adjustment name: ‘dodge’, ‘jitter’, ‘nudge’, ‘jitterdodge’, ‘fill’,
+‘stack’ or ‘identity’, or the result of calling a position adjustment function (e.g., <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.position_dodge.html">position_dodge()</a> etc.).</p>
+</dd>
+<dt><strong>show_legend</strong><span class="classifier">bool, default=False</span></dt><dd><p>True - show legend for this layer.</p>
+</dd>
+<dt><strong>manual_key</strong><span class="classifier">str or <code class="docutils literal notranslate"><span class="pre">layer_key</span></code></span></dt><dd><p>The key to show in the manual legend.
+Specify text for the legend label or advanced settings using the <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.layer_key.html">layer_key()</a> function.</p>
+</dd>
+<dt><strong>sampling</strong><span class="classifier"><code class="docutils literal notranslate"><span class="pre">FeatureSpec</span></code></span></dt><dd><p>Result of the call to the <code class="docutils literal notranslate"><span class="pre">sampling_xxx()</span></code> function.
+To prevent any sampling for this layer pass value “none” (string “none”).</p>
+</dd>
+<dt><strong>orientation</strong><span class="classifier">str, default=’x’</span></dt><dd><p>Specify the axis that the geom should run along.
+Possible values: ‘x’, ‘y’.</p>
+</dd>
+<dt><strong>label_format</strong><span class="classifier">str</span></dt><dd><p>Format used to transform text label mapping values to a string.
+Examples:</p>
+<ul class="simple">
+<li><p>‘.2f’ -&gt; ‘12.45’</p></li>
+<li><p>‘Num {}’ -&gt; ‘Num 12.456789’</p></li>
+<li><p>‘TTL: {.2f}$’ -&gt; ‘TTL: 12.45$’</p></li>
+</ul>
+<p>For more info see <a class="reference external" href="https://lets-plot.org/python/pages/formats.html">Formatting</a>.</p>
+</dd>
+<dt><strong>na_text</strong><span class="classifier">str, default=’n/a’</span></dt><dd><p>Text to show for missing values.</p>
+</dd>
+<dt><strong>nudge_x</strong><span class="classifier">float</span></dt><dd><p>Horizontal adjustment to nudge geometry by.</p>
+</dd>
+<dt><strong>nudge_y</strong><span class="classifier">float</span></dt><dd><p>Vertical adjustment to nudge geometry by.</p>
+</dd>
+<dt><strong>size_unit</strong><span class="classifier">{‘x’, ‘y’, ‘min’, ‘max’}</span></dt><dd><p>Relate the size of the text to the length of the unit step along one of the axes.
+‘x’ uses the unit step along the x-axis, ‘y’ uses the unit step along the y-axis.
+‘min’ uses the smaller of the unit steps along the x- and y-axes.
+‘max’ uses the larger of the unit steps along the x- and y-axes.
+If None, no fitting is performed.</p>
+</dd>
+<dt><strong>bracket_shorten</strong><span class="classifier">float, default=0</span></dt><dd><p>Symmetrically shorten the bracket by shifting both ends toward the center.
+Expect values between 0 and 1, where 0 corresponds to no shortening and 1 to a fully collapsed bracket.</p>
+</dd>
+<dt><strong>tiplength_unit</strong><span class="classifier">{‘res’, ‘identity’, ‘size’, ‘px’}, default=’size’</span></dt><dd><p>Unit for <code class="docutils literal notranslate"><span class="pre">lenstart</span></code> and <code class="docutils literal notranslate"><span class="pre">lenend</span></code> aesthetics.
+Possible values:</p>
+<ul class="simple">
+<li><p>‘res’: the unit equals the smallest distance between data points along the corresponding axis;</p></li>
+<li><p>‘identity’: a unit of 1 corresponds to a difference of 1 in data space;</p></li>
+<li><p>‘size’: a unit of 1 corresponds to the diameter of a point with <code class="docutils literal notranslate"><span class="pre">size=1</span></code>;</p></li>
+<li><p>‘px’: the unit is measured in screen pixels.</p></li>
+</ul>
+</dd>
+<dt><strong>nudge_unit</strong><span class="classifier">{‘identity’, ‘size’, ‘px’}, default=’identity’</span></dt><dd><p>Units for x and y nudging.
+Possible values:</p>
+<ul class="simple">
+<li><p>‘identity’: a unit of 1 corresponds to a difference of 1 in data space;</p></li>
+<li><p>‘size’: a unit of 1 corresponds to the diameter of a point with <code class="docutils literal notranslate"><span class="pre">size=1</span></code>;</p></li>
+<li><p>‘px’: the unit is measured in screen pixels.</p></li>
+</ul>
+</dd>
+<dt><strong>color_by</strong><span class="classifier">{‘fill’, ‘color’, ‘paint_a’, ‘paint_b’, ‘paint_c’}, default=’color’</span></dt><dd><p>Define the color aesthetic for the geometry.</p>
+</dd>
+<dt><strong>other_args</strong></dt><dd><p>Other arguments passed on to the layer.
+These are often aesthetics settings used to set an aesthetic to a fixed value,
+like color=’red’, fill=’blue’, size=3 or shape=21.
+They may also be parameters to the paired geom/stat.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">LayerSpec</span></code></dt><dd><p>Geom object specification.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><code class="docutils literal notranslate"><span class="pre">geom_bracket()</span></code> understands the following aesthetics mappings:</p>
+<ul class="simple">
+<li><p>xmin or ymin : left or lower end of the bracket for horizontal or vertical brackets, respectively.</p></li>
+<li><p>xmax or ymax : right or upper end of the bracket for horizontal or vertical brackets, respectively.</p></li>
+<li><p>y or x : y-axis or x-axis coordinates for horizontal or vertical brackets, respectively.</p></li>
+<li><p>alpha : transparency level of a layer. Accept values between 0 and 1.</p></li>
+<li><p>color (colour) : color of the geometry. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#color-and-fill">Color and Fill</a>.</p></li>
+<li><p>size : font size.</p></li>
+<li><p>label : text to add.</p></li>
+<li><p>family : font family. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#text">Text</a>.</p></li>
+<li><p>fontface : font style and weight. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#text">Text</a>.</p></li>
+<li><p>hjust : horizontal text alignment relative to the x-coordinate. Possible values: 0 or ‘left’ - left-aligned (text starts at x), 0.5 or ‘middle’ (default) - text is centered on x, 1 or ‘right’ - right-aligned (text ends at x). There are two special alignments: ‘inward’ (aligns text towards the plot center) and ‘outward’ (away from the plot center).</p></li>
+<li><p>vjust : vertical text alignment relative to the y-coordinate. Accept either a numeric value or one of the following strings: ‘bottom’, ‘center’, or ‘top’. The numeric values 0, 0.5 (default), and 1 correspond to ‘bottom’ (bottom of text at y), ‘center’ (middle of text at y), and ‘top’ (top of text at y), respectively. There are two special alignments: ‘inward’ (aligns text towards the plot center) and ‘outward’ (away from the plot center).</p></li>
+<li><p>angle : text rotation angle in degrees.</p></li>
+<li><p>lineheight : line height multiplier applied to the font size in the case of multi-line text.</p></li>
+<li><p>linetype : type of the line. Accept codes or names (0 = ‘blank’, 1 = ‘solid’, 2 = ‘dashed’, 3 = ‘dotted’, 4 = ‘dotdash’, 5 = ‘longdash’, 6 = ‘twodash’), a hex string (up to 8 digits for dash-gap lengths), or a list pattern [offset, [dash, gap, …]] / [dash, gap, …]. For more info see <a class="reference external" href="https://lets-plot.org/python/pages/aesthetics.html#line-types">Line Types</a>.</p></li>
+<li><p>segment_color : color of the bracket line (the segments forming the bracket).</p></li>
+<li><p>segment_size : width of the bracket line (the segments forming the bracket).</p></li>
+<li><p>segment_alpha : transparency level of the bracket line. Accept values between 0 and 1.</p></li>
+<li><p>lenstart : length of the tip at the bracket start (at <code class="docutils literal notranslate"><span class="pre">xmin</span></code> for horizontal brackets, or <code class="docutils literal notranslate"><span class="pre">ymin</span></code> for vertical).</p></li>
+<li><p>lenend : length of the tip at the bracket end (at <code class="docutils literal notranslate"><span class="pre">xmax</span></code> for horizontal brackets, or <code class="docutils literal notranslate"><span class="pre">ymax</span></code> for vertical).</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="linenos"> 5</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">box_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 7</span>    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+<span class="linenos"> 9</span>                         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mf">.1</span><span class="p">),</span>
+<span class="linenos">10</span>                         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mf">.5</span><span class="p">)]),</span>
+<span class="linenos">11</span><span class="p">}</span>
+<span class="linenos">12</span><span class="n">bracket_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">13</span>    <span class="s1">&#39;xmin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span>
+<span class="linenos">14</span>    <span class="s1">&#39;xmax&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span>
+<span class="linenos">15</span>    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.6</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">],</span>
+<span class="linenos">16</span>    <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">,</span> <span class="s1">&#39;ns&#39;</span><span class="p">],</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span><span class="n">ggplot</span><span class="p">(</span><span class="n">box_data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="linenos">19</span>    <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span> <span class="o">+</span> \
+<span class="linenos">20</span>    <span class="n">geom_jitter</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">21</span>    <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="s1">&#39;xmin&#39;</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="s1">&#39;xmax&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">bracket_data</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="hcCjJj"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    };
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("hcCjJj").appendChild(div);
+        };
+        var e = document.getElementById("hcCjJj");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="0RJVLK" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+
+   (function() {
+   // ----------
+
+   const forceImmediateRender = false;
+   const responsive = false;
+
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("0RJVLK");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"x":["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c"],
+"y":[0.4967141530112327,-0.13826430117118466,0.6476885381006925,1.5230298564080254,-0.23415337472333597,-0.23413695694918055,1.5792128155073915,0.7674347291529088,-0.4694743859349521,0.5425600435859647,-0.46341769281246226,-0.46572975357025687,0.24196227156603412,-1.913280244657798,-1.7249178325130328,-0.5622875292409727,-1.0128311203344238,0.3142473325952739,-0.9080240755212109,-1.4123037013352915,1.465648768921554,-0.22577630048653566,0.06752820468792384,-1.4247481862134568,-0.5443827245251827,0.11092258970986608,-1.1509935774223028,0.37569801834567196,-0.600638689918805,-0.2916937497932768,-0.6017066122293969,1.8522781845089378,-0.013497224737933921,-1.0577109289559004,0.822544912103189,-1.2208436499710222,0.2088635950047554,-1.9596701238797756,-1.3281860488984305,0.19686123586912352,0.7384665799954104,0.1713682811899705,-0.11564828238824053,-0.3011036955892888,-1.4785219903674274,-0.7198442083947086,-0.4606387709597875,1.0571222262189157,0.3436182895684614,-1.763040155362734,0.424083969394795,-0.28508228041631656,-0.5769220003059587,0.7116762888408679,1.130999522495951,1.0312801191161987,-0.7392175232226386,-0.20921237585121458,0.43126343140356393,1.0755451271223593,-0.3791742378452899,-0.08565897666381711,-1.0063349740060281,-1.0962066240806707,0.912525822394198,1.456240028570823,0.02798987841966616,1.1035328978920242,0.4616360250476341,-0.5451197546051243,0.46139560550841396,1.6380365664659693,0.06417396089004847,1.6646436558140063,-2.5197451040897443,0.9219025043752238,0.18704706823817124,-0.19900735046586746,0.1917607765355023,-1.8875689146008927,-0.11967188783751193,0.45711257151174645,1.5778940447415162,-0.4182702182736474,-0.7084936028931876,-0.40175704358453657,1.0154021177020742,0.42875110965968444,-0.42976020376703883,0.6132674331133561,0.1970775493480404,1.0686449905328892,-0.6020530938773524,-0.2276621465977682,-0.29210815313215766,-1.3635149481321185,0.3961202770645761,0.3610552721798893,0.1051134566424609,-0.1345871333751469,-0.9153707420504142,0.07935467723464096,0.15728548347323051,-0.3022772692216189,0.33871428833399086,0.9040508568145385,2.3861859012105304,0.6745778128318389,0.7575503907227643,0.4255540842338328,-1.4187712152990415,0.4734861245507831,0.5602302099410265,2.963242112485286,0.3076390352188775,0.8015473423336125,0.4652882302947567,-0.668678037619532,1.6428228145150205,1.2519330326867741,1.291031947043047,-0.4093874547947389,1.9027943109360992,-0.9018510627922809,1.0868570938002704,2.6904556258099785,-0.49053632513068834,-0.06629772960277192,0.5996513650876412,-0.0034756541161992116,-1.0506634310661327,0.5685629748060274,-0.5623037137261049,0.9735924306351815,-0.41942423423380315,2.0499344050175394,-0.2832532923362371,0.17793848379432442,1.3135172173696699,-0.7308643164339552,0.7274599346041294,1.807142754282428,-1.1074832345612275,0.6846338585323042,0.7598827942484235,1.2818228717773104,-0.736950710878082,-0.8204566130842763,1.0219415656168978,0.796984673233186]
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"color":"x"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"x"
+},{
+"type":"float",
+"column":"y"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+"fill":"x"
+},
+"data_meta":{
+},
+"alpha":0.25,
+"data":{
+"..middle..":[-0.23414516583625827,0.14608026244031608,0.5168581672459047],
+"..lower..":[-0.8139341419579598,-0.39046564071491324,-0.3558323620081789],
+"..upper..":[0.32893281108186767,0.662471860977112,0.9977669981260396],
+"..ymin..":[-1.9596701238797756,-1.8875689146008927,-1.4187712152990415],
+"..ymax..":[1.8522781845089378,1.6646436558140063,2.963242112485286],
+"x":["a","b","c"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+"fill":"x"
+},
+"show_legend":false,
+"data_meta":{
+},
+"data":{
+"..middle..":[-0.23414516583625827,0.14608026244031608,0.5168581672459047],
+"..lower..":[-0.8139341419579598,-0.39046564071491324,-0.3558323620081789],
+"..upper..":[0.32893281108186767,0.662471860977112,0.9977669981260396],
+"..ymin..":[-1.9596701238797756,-1.8875689146008927,-1.4187712152990415],
+"..ymax..":[1.8522781845089378,1.6646436558140063,2.963242112485286],
+"x":["a","b","c"],
+"y":[NaN,-2.5197451040897443,NaN]
+}
+},{
+"geom":"jitter",
+"mapping":{
+},
+"data_meta":{
+},
+"height":0.0,
+"seed":42.0,
+"data":{
+}
+},{
+"geom":"bracket",
+"data":{
+"xmin":["a","a","b"],
+"xmax":["b","c","c"],
+"y":[3.6,4.2,4.8],
+"label":["*","**","ns"]
+},
+"mapping":{
+"y":"y",
+"xmin":"xmin",
+"xmax":"xmax",
+"label":"label"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"xmin"
+},{
+"type":"str",
+"column":"xmax"
+},{
+"type":"float",
+"column":"y"
+},{
+"type":"str",
+"column":"label"
+}]
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
+
+   // ----------
+   })();
+
+   </script></div></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 3</span><span class="n">LetsPlot</span><span class="o">.</span><span class="n">setup_html</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="linenos"> 5</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">violin_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 7</span>    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+<span class="linenos"> 8</span>                         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mf">.1</span><span class="p">),</span>
+<span class="linenos"> 9</span>                         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mf">.5</span><span class="p">)]),</span>
+<span class="linenos">10</span>    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span>
+<span class="linenos">11</span><span class="p">}</span>
+<span class="linenos">12</span><span class="n">bracket_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">13</span>    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.7</span><span class="p">],</span>
+<span class="linenos">14</span>    <span class="s1">&#39;ymin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span>
+<span class="linenos">15</span>    <span class="s1">&#39;ymax&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span>
+<span class="linenos">16</span>    <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">,</span> <span class="s1">&#39;ns&#39;</span><span class="p">],</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span><span class="n">ggplot</span><span class="p">(</span><span class="n">violin_data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">+</span> \
+<span class="linenos">19</span>    <span class="n">geom_violin</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span> <span class="o">+</span> \
+<span class="linenos">20</span>    <span class="n">geom_sina</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="o">+</span> \
+<span class="hll"><span class="linenos">21</span>    <span class="n">geom_bracket</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="s1">&#39;ymin&#39;</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="s1">&#39;ymax&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">bracket_data</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">22</span>                 <span class="n">lenstart</span><span class="o">=-</span><span class="mf">.1</span><span class="p">,</span> <span class="n">lenend</span><span class="o">=-</span><span class="mf">.1</span><span class="p">,</span> <span class="n">tiplength_unit</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">vjust</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">23</span>                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">segment_size</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="qanWdy"></div>
+<script type="text/javascript" data-lets-plot-script="library">
+    if(!window.letsPlotCallQueue) {
+        window.letsPlotCallQueue = [];
+    };
+    window.letsPlotCall = function(f) {
+        window.letsPlotCallQueue.push(f);
+    };
+    (function() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
+        script.onload = function() {
+            window.letsPlotCall = function(f) {f();};
+            window.letsPlotCallQueue.forEach(function(f) {f();});
+            window.letsPlotCallQueue = [];
+
+        };
+        script.onerror = function(event) {
+            window.letsPlotCall = function(f) {};    // noop
+            window.letsPlotCallQueue = [];
+            var div = document.createElement("div");
+            div.style.color = 'darkred';
+            div.textContent = 'Error loading Lets-Plot JS';
+            document.getElementById("qanWdy").appendChild(div);
+        };
+        var e = document.getElementById("qanWdy");
+        e.appendChild(script);
+    })()
+</script>
+</div><div class="output text_html">   <div id="mvoxv9" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+
+   (function() {
+   // ----------
+
+   const forceImmediateRender = false;
+   const responsive = false;
+
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+
+   const containerDiv = document.getElementById("mvoxv9");
+   let fig = null;
+
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+"x":"x",
+"y":"y",
+"color":"y"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"str",
+"column":"y"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"violin",
+"mapping":{
+"fill":"y"
+},
+"data_meta":{
+},
+"alpha":0.25,
+"orientation":"y",
+"data":{
+"..quantile..":[0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],
+"y":["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c"],
+"x":[-1.9596701238797756,-1.9522103424543573,-1.944750561028939,-1.9372907796035208,-1.9298309981781028,-1.9223712167526845,-1.9149114353272663,-1.907451653901848,-1.8999918724764298,-1.8925320910510115,-1.8850723096255932,-1.877612528200175,-1.870152746774757,-1.8626929653493387,-1.8552331839239204,-1.8477734024985022,-1.840313621073084,-1.8328538396476657,-1.8253940582222474,-1.8179342767968292,-1.8104744953714111,-1.8030147139459929,-1.7955549325205746,-1.7880951510951564,-1.7806353696697381,-1.7731755882443199,-1.7657158068189016,-1.7582560253934836,-1.7507962439680653,-1.743336462542647,-1.7358766811172288,-1.7284168996918106,-1.7209571182663923,-1.713497336840974,-1.706037555415556,-1.6985777739901378,-1.6911179925647195,-1.6836582111393013,-1.676198429713883,-1.6687386482884647,-1.6612788668630465,-1.6538190854376285,-1.64635930401221,-1.638899522586792,-1.6314397411613737,-1.6239799597359554,-1.6165201783105372,-1.609060396885119,-1.601600615459701,-1.5941408340342824,-1.5866810526088644,-1.5792212711834461,-1.5717614897580279,-1.5643017083326096,-1.5568419269071914,-1.549382145481773,-1.5419223640563549,-1.5344625826309368,-1.5270028012055186,-1.5195430197801003,-1.512083238354682,-1.5046234569292638,-1.4971636755038455,-1.4897038940784273,-1.4822441126530093,-1.474784331227591,-1.4673245498021728,-1.4598647683767545,-1.4524049869513362,-1.444945205525918,-1.4374854241004997,-1.4300256426750817,-1.4225658612496632,-1.4151060798242452,-1.407646298398827,-1.4001865169734087,-1.3927267355479904,-1.3852669541225722,-1.3778071726971541,-1.3703473912717357,-1.3628876098463176,-1.3554278284208994,-1.3479680469954811,-1.3405082655700629,-1.3330484841446446,-1.3255887027192266,-1.318128921293808,-1.31066913986839,-1.3032093584429716,-1.2957495770175536,-1.2882897955921353,-1.280830014166717,-1.2733702327412988,-1.2659104513158805,-1.2584506698904625,-1.250990888465044,-1.243531107039626,-1.2360713256142077,-1.2286115441887895,-1.2211517627633712,-1.213691981337953,-1.206232199912535,-1.1987724184871165,-1.1913126370616984,-1.1838528556362802,-1.176393074210862,-1.1689332927854437,-1.1614735113600254,-1.1540137299346074,-1.146553948509189,-1.1390941670837709,-1.1316343856583524,-1.1241746042329344,-1.116714822807516,-1.1092550413820979,-1.1017952599566798,-1.0943354785312613,-1.0868756971058433,-1.0794159156804248,-1.0719561342550068,-1.0644963528295885,-1.0570365714041703,-1.049576789978752,-1.0421170085533338,-1.0346572271279157,-1.0271974457024973,-1.0197376642770792,-1.012277882851661,-1.0048181014262427,-0.9973583200008245,-0.9898985385754063,-0.9824387571499881,-0.9749789757245698,-0.9675191942991516,-0.9600594128737334,-0.9525996314483152,-0.9451398500228969,-0.9376800685974787,-0.9302202871720604,-0.9227605057466421,-0.9153007243212241,-0.9078409428958059,-0.9003811614703876,-0.8929213800449693,-0.8854615986195511,-0.8780018171941328,-0.8705420357687146,-0.8630822543432966,-0.8556224729178783,-0.84816269149246,-0.84816269149246,-0.8407029100670418,-0.8332431286416235,-0.8257833472162053,-0.818323565790787,-0.8108637843653688,-0.8034040029399507,-0.7959442215145325,-0.7884844400891142,-0.781024658663696,-0.7735648772382777,-0.7661050958128595,-0.7586453143874412,-0.7511855329620232,-0.7437257515366049,-0.7362659701111867,-0.7288061886857684,-0.7213464072603502,-0.7138866258349319,-0.7064268444095136,-0.6989670629840954,-0.6915072815586774,-0.6840475001332591,-0.6765877187078408,-0.6691279372824226,-0.6616681558570043,-0.6542083744315861,-0.6467485930061678,-0.6392888115807498,-0.6318290301553315,-0.6243692487299133,-0.616909467304495,-0.6094496858790768,-0.6019899044536585,-0.5945301230282403,-0.587070341602822,-0.579610560177404,-0.5721507787519857,-0.5646909973265675,-0.5572312159011492,-0.549771434475731,-0.5423116530503127,-0.5348518716248944,-0.5273920901994764,-0.5199323087740582,-0.5124725273486399,-0.5050127459232217,-0.4975529644978034,-0.49009318307238514,-0.4826334016469669,-0.47517362022154863,-0.4677138387961306,-0.46025405737071234,-0.4527942759452941,-0.44533449451987583,-0.4378747130944576,-0.4304149316690393,-0.42295515024362107,-0.4154953688182028,-0.4080355873927848,-0.4005758059673665,-0.3931160245419483,-0.38565624311653,-0.37819646169111176,-0.3707366802656935,-0.36327689884027525,-0.3558171174148572,-0.34835733598943897,-0.3408975545640207,-0.33343777313860246,-0.3259779917131842,-0.31851821028776595,-0.3110584288623477,-0.30359864743692944,-0.2961388660115114,-0.28867908458609315,-0.2812193031606749,-0.27375952173525664,-0.2662997403098384,-0.25883995888442013,-0.2513801774590019,-0.24392039603358384,-0.2364606146081656,-0.22900083318274733,-0.22154105175732908,-0.21408127033191082,-0.21408127033191082,-0.20662148890649257,-0.1991617074810743,-0.19170192605565606,-0.18424214463023803,-0.17678236320481977,-0.16932258177940152,-0.16186280035398326,-0.154403018928565,-0.14694323750314675,-0.1394834560777285,-0.13202367465231046,-0.12456389322689221,-0.11710411180147395,-0.1096443303760557,-0.10218454895063744,-0.09472476752521919,-0.08726498609980093,-0.07980520467438268,-0.07234542324896465,-0.06488564182354639,-0.05742586039812814,-0.04996607897270988,-0.04250629754729163,-0.03504651612187337,-0.027586734696455117,-0.020126953271037085,-0.01266717184561883,-0.005207390420200575,0.00225239100521768,0.009712172430635935,0.01717195385605419,0.024631735281472444,0.0320915167068907,0.03955129813230873,0.04701107955772721,0.05447086098314524,0.06193064240856372,0.06939042383398175,0.07685020525939978,0.08430998668481826,0.0917697681102363,0.09922954953565477,0.1066893309610728,0.11414911238649128,0.12160889381190931,0.12906867523732735,0.13652845666274582,0.14398823808816386,0.15144801951358233,0.15890780093900037,0.16636758236441884,0.17382736378983688,0.1812871452152549,0.18874692664067338,0.19620670806609142,0.2036664894915099,0.21112627091692793,0.2185860523423464,0.22604583376776444,0.23350561519318247,0.24096539661860095,0.24842517804401898,0.25588495946943746,0.2633447408948555,0.27080452232027397,0.278264303745692,0.2857240851711105,0.2931838665965285,0.30064364802194654,0.308103429447365,0.31556321087278305,0.32302299229820153,0.33048277372361956,0.33794255514903804,0.34540233657445607,0.3528621179998741,0.3603218994252926,0.3677816808507106,0.3752414622761291,0.3827012437015471,0.3901610251269656,0.39762080655238363,0.39762080655238363,0.40508058797780166,0.41254036940322014,0.4200001508286382,0.42745993225405665,0.4349197136794747,0.44237949510489316,0.4498392765303112,0.4572990579557292,0.4647588393811477,0.47221862080656574,0.4796784022319842,0.48713818365740225,0.4945979650828207,0.5020577465082388,0.5095175279336572,0.5169773093590753,0.5244370907844933,0.5318968722099118,0.5393566536353298,0.5468164350607483,0.5542762164861663,0.5617359979115848,0.5691957793370028,0.5766555607624209,0.5841153421878393,0.5915751236132574,0.5990349050386758,0.6064946864640939,0.6139544678895124,0.6214142493149304,0.6288740307403484,0.6363338121657669,0.6437935935911849,0.6512533750166034,0.6587131564420214,0.6661729378674399,0.673632719292858,0.681092500718276,0.6885522821436945,0.6960120635691125,0.703471844994531,0.710931626419949,0.7183914078453675,0.7258511892707855,0.733310970696204,0.740770752121622,0.74823053354704,0.7556903149724585,0.7631500963978766,0.770609877823295,0.7780696592487131,0.7855294406741316,0.7929892220995496,0.8004490035249676,0.8079087849503861,0.8153685663758041,0.8228283478012226,0.8302881292266406,0.8377479106520591,0.8452076920774771,0.8526674735028952,0.8601272549283137,0.8675870363537317,0.8750468177791502,0.8825065992045682,0.8899663806299867,0.8974261620554047,0.9048859434808227,0.9123457249062412,0.9198055063316593,0.9272652877570777,0.9347250691824958,0.9421848506079142,0.9496446320333323,0.9571044134587507,0.9645641948841688,0.9720239763095868,0.9794837577350053,0.9869435391604233,0.9944033205858418,1.0018631020112598,1.0093228834366783,1.0167826648620963,1.0242424462875144,1.0317022277129329,1.0391620091383509,1.0466217905637694,1.0540815719891874,1.0615413534146059,1.069001134840024,1.076460916265442,1.0839206976908604,1.0913804791162784,1.098840260541697,1.106300041967115,1.1137598233925334,1.1212196048179515,1.12867938624337,1.136139167668788,1.143598949094206,1.1510587305196245,1.1585185119450425,1.165978293370461,1.173438074795879,1.1808978562212975,1.1883576376467155,1.1958174190721336,1.203277200497552,1.21073698192297,1.2181967633483886,1.2256565447738066,1.233116326199225,1.240576107624643,1.2480358890500611,1.2554956704754796,1.2629554519008976,1.2704152333263161,1.2778750147517342,1.2853347961771526,1.2927945776025707,1.3002543590279887,1.3077141404534072,1.3151739218788252,1.3226337033042437,1.3300934847296617,1.3375532661550802,1.3450130475804982,1.3524728290059167,1.3599326104313347,1.3673923918567528,1.3748521732821712,1.3823119547075893,1.3897717361330078,1.3972315175584258,1.4046912989838443,1.4121510804092623,1.4196108618346803,1.4270706432600988,1.4345304246855168,1.4419902061109353,1.4494499875363533,1.4569097689617718,1.4643695503871899,1.4718293318126079,1.4792891132380264,1.4867488946634444,1.4942086760888629,1.501668457514281,1.5091282389396994,1.5165880203651174,1.5240478017905355,1.531507583215954,1.538967364641372,1.5464271460667904,1.5538869274922085,1.561346708917627,1.568806490343045,1.5762662717684635,1.5837260531938815,1.5911858346192995,1.598645616044718,1.606105397470136,1.6135651788955545,1.6210249603209725,1.628484741746391,1.635944523171809,1.643404304597227,1.6508640860226456,1.6583238674480636,1.665783648873482,1.6732434302989,1.6807032117243186,1.6881629931497366,1.6956227745751546,1.7030825560005731,1.7105423374259912,1.7180021188514096,1.7254619002768277,1.7329216817022461,1.7403814631276642,1.7478412445530822,1.7553010259785007,1.7627608074039187,1.7702205888293372,1.7776803702547552,1.7851401516801737,1.7925999331055917,1.8000597145310102,1.8075194959564282,1.8149792773818463,1.8224390588072648,1.8298988402326828,1.8373586216581013,1.8448184030835193,1.8522781845089378,-2.5197451040897443,-2.511556476379561,-2.5033678486693773,-2.495179220959194,-2.4869905932490104,-2.478801965538827,-2.4706133378286435,-2.46242471011846,-2.4542360824082765,-2.446047454698093,-2.4378588269879096,-2.429670199277726,-2.4214815715675426,-2.413292943857359,-2.4051043161471757,-2.396915688436992,-2.3887270607268087,-2.3805384330166253,-2.372349805306442,-2.3641611775962583,-2.355972549886075,-2.3477839221758914,-2.339595294465708,-2.3314066667555244,-2.323218039045341,-2.3150294113351575,-2.306840783624974,-2.2986521559147906,-2.290463528204607,-2.2822749004944236,-2.27408627278424,-2.265897645074057,-2.257709017363873,-2.24952038965369,-2.2413317619435063,-2.2331431342333232,-2.2249545065231393,-2.2167658788129563,-2.208577251102773,-2.2003886233925893,-2.192199995682406,-2.1840113679722224,-2.175822740262039,-2.1676341125518555,-2.159445484841672,-2.1512568571314885,-2.143068229421305,-2.1348796017111216,-2.126690974000938,-2.1185023462907546,-2.110313718580571,-2.1021250908703877,-2.093936463160204,-2.0857478354500207,-2.0775592077398373,-2.069370580029654,-2.0611819523194703,-2.052993324609287,-2.0448046968991034,-2.03661606918892,-2.0284274414787364,-2.020238813768553,-2.0120501860583695,-2.003861558348186,-1.9956729306380026,-1.987484302927819,-1.9792956752176356,-1.9711070475074521,-1.9629184197972687,-1.9547297920870852,-1.9465411643769017,-1.9383525366667183,-1.9301639089565348,-1.9219752812463513,-1.9137866535361678,-1.9055980258259844,-1.897409398115801,-1.8892207704056174,-1.881032142695434,-1.8728435149852505,-1.864654887275067,-1.8564662595648835,-1.8482776318547,-1.8400890041445166,-1.8319003764343331,-1.8237117487241497,-1.8155231210139662,-1.8073344933037827,-1.7991458655935995,-1.790957237883416,-1.7827686101732325,-1.774579982463049,-1.7663913547528656,-1.758202727042682,-1.7500140993324986,-1.7418254716223152,-1.7336368439121317,-1.7254482162019482,-1.7172595884917647,-1.7090709607815813,-1.7008823330713978,-1.6926937053612143,-1.6845050776510309,-1.6763164499408474,-1.668127822230664,-1.6599391945204807,-1.6517505668102972,-1.6435619391001137,-1.6353733113899303,-1.6271846836797468,-1.6189960559695633,-1.6108074282593798,-1.6026188005491964,-1.594430172839013,-1.5862415451288294,-1.578052917418646,-1.5698642897084625,-1.561675661998279,-1.5534870342880955,-1.545298406577912,-1.5371097788677286,-1.5289211511575451,-1.5207325234473617,-1.5125438957371782,-1.5043552680269947,-1.4961666403168112,-1.4879780126066278,-1.4797893848964443,-1.4716007571862608,-1.4634121294760774,-1.4552235017658939,-1.4470348740557104,-1.438846246345527,-1.4306576186353435,-1.42246899092516,-1.4142803632149765,-1.406091735504793,-1.3979031077946096,-1.389714480084426,-1.3815258523742426,-1.3733372246640592,-1.3651485969538757,-1.3569599692436922,-1.3487713415335087,-1.3405827138233253,-1.332394086113142,-1.3242054584029586,-1.316016830692775,-1.3078282029825916,-1.2996395752724081,-1.2914509475622247,-1.2832623198520412,-1.2750736921418577,-1.2668850644316743,-1.2586964367214908,-1.2505078090113073,-1.2423191813011238,-1.2341305535909404,-1.225941925880757,-1.2177532981705734,-1.20956467046039,-1.2013760427502065,-1.193187415040023,-1.1849987873298395,-1.176810159619656,-1.1686215319094726,-1.1604329041992891,-1.1522442764891057,-1.1440556487789222,-1.1358670210687387,-1.1276783933585552,-1.1194897656483718,-1.1113011379381883,-1.1031125102280048,-1.0949238825178214,-1.0867352548076379,-1.0785466270974546,-1.0703579993872712,-1.0621693716770877,-1.0539807439669042,-1.0457921162567207,-1.0376034885465373,-1.0294148608363538,-1.0212262331261703,-1.0130376054159869,-1.0048489777058034,-0.9966603499956199,-0.9884717222854364,-0.980283094575253,-0.9720944668650695,-0.963905839154886,-0.9557172114447026,-0.9475285837345191,-0.9393399560243356,-0.9311513283141521,-0.9229627006039687,-0.9147740728937852,-0.9065854451836017,-0.8983968174734183,-0.8902081897632348,-0.8820195620530513,-0.8738309343428678,-0.8656423066326844,-0.8574536789225009,-0.8492650512123174,-0.841076423502134,-0.8328877957919505,-0.824699168081767,-0.8165105403715835,-0.8083219126614003,-0.8001332849512168,-0.7919446572410334,-0.7837560295308499,-0.7755674018206664,-0.7673787741104829,-0.7591901464002995,-0.751001518690116,-0.7428128909799325,-0.7346242632697491,-0.7264356355595656,-0.7182470078493821,-0.7100583801391986,-0.7018697524290152,-0.6936811247188317,-0.6854924970086482,-0.6773038692984648,-0.6691152415882813,-0.6609266138780978,-0.6527379861679143,-0.6445493584577309,-0.6363607307475474,-0.6281721030373639,-0.6199834753271805,-0.611794847616997,-0.6036062199068135,-0.59541759219663,-0.5872289644864466,-0.5790403367762631,-0.5708517090660796,-0.5626630813558962,-0.5544744536457129,-0.5462858259355294,-0.538097198225346,-0.5299085705151625,-0.521719942804979,-0.5135313150947955,-0.5053426873846121,-0.4971540596744286,-0.48896543196424513,-0.48077680425406166,-0.4725881765438782,-0.4643995488336947,-0.45621092112351125,-0.4480222934133278,-0.4480222934133278,-0.4398336657031443,-0.43164503799296083,-0.42345641028277736,-0.4152677825725939,-0.4070791548624104,-0.39889052715222695,-0.3907018994420435,-0.38251327173186,-0.37432464402167653,-0.36613601631149306,-0.3579473886013096,-0.3497587608911261,-0.34157013318094265,-0.3333815054707592,-0.3251928777605757,-0.31700425005039223,-0.30881562234020876,-0.3006269946300253,-0.2924383669198418,-0.28424973920965835,-0.2760611114994749,-0.2678724837892914,-0.25968385607910793,-0.25149522836892446,-0.243306600658741,-0.23511797294855752,-0.22692934523837405,-0.21874071752819058,-0.2105520898180071,-0.20236346210782363,-0.19417483439764016,-0.1859862066874567,-0.17779757897727322,-0.16960895126708975,-0.16142032355690628,-0.15323169584672325,-0.14504306813653978,-0.1368544404263563,-0.12866581271617283,-0.12047718500598936,-0.11228855729580589,-0.10409992958562242,-0.09591130187543895,-0.08772267416525548,-0.079534046455072,-0.07134541874488853,-0.06315679103470506,-0.05496816332452159,-0.04677953561433812,-0.03859090790415465,-0.030402280193971176,-0.022213652483787705,-0.014025024773604233,-0.005836397063420762,0.0023522306467627097,0.010540858356946181,0.018729486067129653,0.026918113777313124,0.035106741487496596,0.04329536919768007,0.05148399690786354,0.05967262461804701,0.06786125232823048,0.07604988003841395,0.08423850774859742,0.0924271354587809,0.0924271354587809,0.10061576316896437,0.10880439087914784,0.11699301858933131,0.12518164629951478,0.13337027400969825,0.14155890171988172,0.1497475294300652,0.15793615714024867,0.16612478485043214,0.1743134125606156,0.18250204027079908,0.19069066798098255,0.19887929569116602,0.2070679234013495,0.21525655111153297,0.22344517882171644,0.2316338065318999,0.23982243424208338,0.24801106195226685,0.2561996896624503,0.2643883173726338,0.27257694508281727,0.28076557279300074,0.2889542005031842,0.2971428282133677,0.30533145592355115,0.3135200836337346,0.3217087113439181,0.32989733905410157,0.33808596676428504,0.3462745944744685,0.354463222184652,0.362651849894835,0.3708404776050185,0.37902910531520195,0.3872177330253854,0.3954063607355689,0.40359498844575237,0.41178361615593584,0.4199722438661193,0.4281608715763028,0.43634949928648625,0.4445381269966697,0.4527267547068532,0.46091538241703667,0.46910401012722014,0.4772926378374036,0.4854812655475871,0.49366989325777055,0.501858520967954,0.5100471486781375,0.518235776388321,0.5264244040985044,0.5346130318086879,0.5428016595188714,0.5509902872290549,0.5591789149392383,0.5673675426494218,0.5755561703596053,0.5837447980697887,0.5919334257799722,0.6001220534901557,0.6083106812003392,0.6164993089105226,0.6246879366207061,0.6328765643308896,0.641065192041073,0.6492538197512565,0.65744244746144,0.6656310751716235,0.6738197028818069,0.6820083305919904,0.6820083305919904,0.6901969583021739,0.6983855860123573,0.7065742137225408,0.7147628414327243,0.7229514691429078,0.7311400968530912,0.7393287245632747,0.7475173522734582,0.7557059799836416,0.7638946076938251,0.7720832354040086,0.780271863114192,0.7884604908243755,0.796649118534559,0.8048377462447425,0.8130263739549259,0.8212150016651094,0.8294036293752929,0.8375922570854764,0.8457808847956598,0.8539695125058433,0.8621581402160268,0.8703467679262102,0.8785353956363937,0.8867240233465772,0.8949126510567602,0.9031012787669437,0.9112899064771272,0.9194785341873106,0.9276671618974941,0.9358557896076776,0.944044417317861,0.9522330450280445,0.960421672738228,0.9686103004484115,0.9767989281585949,0.9849875558687784,0.9931761835789619,1.0013648112891453,1.0095534389993288,1.0177420667095123,1.0259306944196958,1.0341193221298792,1.0423079498400627,1.0504965775502462,1.0586852052604296,1.0668738329706131,1.0750624606807966,1.08325108839098,1.0914397161011635,1.099628343811347,1.1078169715215305,1.116005599231714,1.1241942269418974,1.1323828546520809,1.1405714823622644,1.1487601100724478,1.1569487377826313,1.1651373654928148,1.1733259932029982,1.1815146209131817,1.1897032486233652,1.1978918763335487,1.2060805040437321,1.2142691317539156,1.222457759464099,1.2306463871742825,1.238835014884466,1.2470236425946495,1.255212270304833,1.2634008980150164,1.2715895257252,1.2797781534353834,1.2879667811455668,1.2961554088557503,1.3043440365659338,1.3125326642761173,1.3207212919863007,1.3289099196964842,1.3370985474066677,1.3452871751168511,1.3534758028270346,1.361664430537218,1.3698530582474016,1.378041685957585,1.3862303136677685,1.394418941377952,1.4026075690881354,1.4107961967983185,1.418984824508502,1.4271734522186854,1.4353620799288689,1.4435507076390524,1.4517393353492358,1.4599279630594193,1.4681165907696028,1.4763052184797862,1.4844938461899702,1.4926824739001532,1.500871101610337,1.5090597293205201,1.517248357030704,1.525436984740887,1.533625612451071,1.541814240161254,1.550002867871438,1.558191495581621,1.5663801232918049,1.574568751001988,1.5827573787121718,1.5909460064223548,1.5991346341325388,1.6073232618427218,1.6155118895529057,1.6237005172630887,1.6318891449732726,1.6400777726834557,1.6482664003936396,1.6564550281038226,1.6646436558140065,-1.4187712152990415,-1.4101958467515183,-1.4016204782039952,-1.393045109656472,-1.3844697411089488,-1.3758943725614257,-1.3673190040139027,-1.3587436354663796,-1.3501682669188564,-1.3415928983713332,-1.33301752982381,-1.3244421612762869,-1.3158667927287637,-1.3072914241812406,-1.2987160556337174,-1.2901406870861942,-1.281565318538671,-1.2729899499911481,-1.264414581443625,-1.2558392128961018,-1.2472638443485786,-1.2386884758010555,-1.2301131072535323,-1.2215377387060091,-1.212962370158486,-1.2043870016109628,-1.1958116330634398,-1.1872362645159167,-1.1786608959683935,-1.1700855274208704,-1.1615101588733472,-1.152934790325824,-1.1443594217783009,-1.1357840532307777,-1.1272086846832545,-1.1186333161357314,-1.1100579475882082,-1.101482579040685,-1.0929072104931619,-1.084331841945639,-1.0757564733981158,-1.0671811048505926,-1.0586057363030694,-1.0500303677555463,-1.041454999208023,-1.0328796306605,-1.0243042621129768,-1.0157288935654538,-1.0071535250179307,-0.9985781564704074,-0.9900027879228843,-0.9814274193753612,-0.972852050827838,-0.9642766822803148,-0.9557013137327917,-0.9471259451852685,-0.9385505766377453,-0.9299752080902222,-0.9213998395426991,-0.9128244709951759,-0.9042491024476528,-0.8956737339001296,-0.8870983653526066,-0.8785229968050834,-0.8699476282575602,-0.8613722597100371,-0.8527968911625139,-0.8442215226149908,-0.8356461540674677,-0.8270707855199445,-0.8184954169724213,-0.8099200484248982,-0.8013446798773751,-0.792769311329852,-0.7841939427823288,-0.7756185742348056,-0.7670432056872825,-0.7584678371397593,-0.7498924685922362,-0.7413171000447131,-0.7327417314971899,-0.7241663629496667,-0.7155909944021436,-0.7070156258546205,-0.6984402573070974,-0.6898648887595742,-0.681289520212051,-0.6727141516645279,-0.6641387831170047,-0.6555634145694816,-0.6469880460219585,-0.6384126774744353,-0.6298373089269121,-0.621261940379389,-0.6126865718318659,-0.6041112032843428,-0.5955358347368196,-0.5869604661892964,-0.5783850976417733,-0.5698097290942502,-0.561234360546727,-0.5526589919992039,-0.5440836234516807,-0.5355082549041575,-0.5269328863566345,-0.5183575178091113,-0.5097821492615882,-0.501206780714065,-0.4926314121665418,-0.48405604361901866,-0.4754806750714956,-0.46690530652397244,-0.4583299379764493,-0.4497545694289261,-0.44117920088140294,-0.4326038323338799,-0.4240284637863567,-0.41545309523883356,-0.4068777266913104,-0.3983023581437872,-0.38972698959626406,-0.3811516210487409,-0.37257625250121773,-0.3640008839536948,-0.3554255154061716,-0.34685014685864846,-0.3382747783111253,-0.3296994097636021,-0.32112404121607896,-0.3125486726685558,-0.30397330412103263,-0.29539793557350946,-0.29539793557350946,-0.2868225670259863,-0.27824719847846313,-0.2696718299309402,-0.261096461383417,-0.25252109283589386,-0.2439457242883707,-0.23537035574084753,-0.22679498719332436,-0.2182196186458012,-0.20964425009827803,-0.20106888155075486,-0.1924935130032317,-0.18391814445570875,-0.1753427759081856,-0.16676740736066242,-0.15819203881313926,-0.1496166702656161,-0.14104130171809293,-0.13246593317056976,-0.1238905646230466,-0.11531519607552343,-0.10673982752800026,-0.0981644589804771,-0.08958909043295415,-0.08101372188543099,-0.07243835333790782,-0.06386298479038466,-0.05528761624286149,-0.04671224769533833,-0.03813687914781516,-0.029561510600291996,-0.02098614205276883,-0.012410773505245665,-0.003835404957722499,0.004739963589800444,0.01331533213732361,0.021890700684846776,0.03046606923236994,0.03904143777989311,0.04761680632741627,0.05619217487493944,0.0647675434224626,0.07334291196998577,0.08191828051750893,0.0904936490650321,0.09906901761255504,0.10764438616007821,0.11621975470760137,0.12479512325512454,0.1333704918026477,0.14194586035017087,0.15052122889769404,0.1590965974452172,0.16767196599274037,0.17624733454026353,0.18482270308778648,0.19339807163530964,0.2019734401828328,0.21054880873035597,0.21912417727787914,0.2276995458254023,0.23627491437292547,0.24485028292044864,0.2534256514679718,0.26200102001549497,0.27057638856301813,0.2791517571105411,0.28772712565806424,0.2963024942055874,0.3048778627531106,0.31345323130063374,0.3220285998481569,0.33060396839568007,0.33917933694320324,0.3477547054907264,0.35633007403824957,0.3649054425857725,0.3734808111332957,0.38205617968081884,0.390631548228342,0.3992069167758652,0.40778228532338834,0.4163576538709115,0.42493302241843467,0.43350839096595783,0.442083759513481,0.45065912806100417,0.4592344966085271,0.4592344966085271,0.4678098651560503,0.47638523370357344,0.4849606022510966,0.49353597079861977,0.5021113393461429,0.5106867078936661,0.5192620764411893,0.5278374449887124,0.5364128135362356,0.5449881820837588,0.5535635506312817,0.5621389191788049,0.570714287726328,0.5792896562738512,0.5878650248213744,0.5964403933688975,0.6050157619164207,0.6135911304639439,0.622166499011467,0.6307418675589902,0.6393172361065134,0.6478926046540365,0.6564679732015597,0.6650433417490829,0.673618710296606,0.6821940788441292,0.6907694473916519,0.6993448159391751,0.7079201844866982,0.7164955530342214,0.7250709215817446,0.7336462901292677,0.7422216586767909,0.7507970272243141,0.7593723957718372,0.7679477643193604,0.7765231328668836,0.7850985014144067,0.7936738699619299,0.8022492385094531,0.8108246070569762,0.8193999756044994,0.8279753441520226,0.8365507126995457,0.8451260812470689,0.8537014497945921,0.8622768183421152,0.870852186889638,0.8794275554371611,0.8880029239846843,0.8965782925322074,0.9051536610797306,0.9137290296272538,0.9223043981747769,0.9308797667223001,0.9394551352698233,0.9480305038173464,0.9566058723648696,0.9651812409123928,0.9737566094599159,0.9823319780074391,0.9909073465549623,0.9994827151024854,1.0080580836500086,1.0166334521975318,1.025208820745055,1.033784189292578,1.0423595578401013,1.050934926387624,1.0595102949351471,1.0680856634826703,1.0766610320301935,1.0852364005777166,1.0938117691252398,1.102387137672763,1.1109625062202861,1.1109625062202861,1.1195378747678093,1.1281132433153325,1.1366886118628556,1.1452639804103788,1.153839348957902,1.1624147175054251,1.1709900860529483,1.1795654546004715,1.1881408231479946,1.1967161916955178,1.205291560243041,1.2138669287905641,1.2224422973380873,1.2310176658856105,1.2395930344331332,1.2481684029806563,1.2567437715281795,1.2653191400757027,1.2738945086232258,1.282469877170749,1.2910452457182722,1.2996206142657953,1.3081959828133185,1.3167713513608417,1.3253467199083648,1.333922088455888,1.3424974570034112,1.3510728255509343,1.3596481940984575,1.3682235626459807,1.3767989311935038,1.385374299741027,1.3939496682885502,1.4025250368360733,1.4111004053835965,1.4196757739311192,1.4282511424786424,1.4368265110261655,1.4454018795736887,1.4539772481212119,1.462552616668735,1.4711279852162582,1.4797033537637814,1.4882787223113045,1.4968540908588277,1.5054294594063509,1.514004827953874,1.5225801965013972,1.5311555650489204,1.5397309335964435,1.5483063021439667,1.5568816706914899,1.565457039239013,1.5740324077865362,1.5826077763340594,1.5911831448815825,1.5997585134291057,1.6083338819766284,1.6169092505241516,1.6254846190716747,1.634059987619198,1.642635356166721,1.6512107247142442,1.6597860932617674,1.6683614618092906,1.6769368303568137,1.685512198904337,1.69408756745186,1.7026629359993832,1.7112383045469064,1.7198136730944296,1.7283890416419527,1.736964410189476,1.745539778736999,1.7541151472845222,1.7626905158320454,1.7712658843795686,1.7798412529270917,1.7884166214746144,1.7969919900221376,1.8055673585696608,1.814142727117184,1.822718095664707,1.8312934642122303,1.8398688327597534,1.8484442013072766,1.8570195698547998,1.865594938402323,1.874170306949846,1.8827456754973693,1.8913210440448924,1.8998964125924156,1.9084717811399388,1.917047149687462,1.925622518234985,1.9341978867825083,1.9427732553300314,1.9513486238775546,1.9599239924250778,1.9684993609726005,1.9770747295201236,1.9856500980676468,1.99422546661517,2.0028008351626934,2.011376203710216,2.0199515722577397,2.0285269408052624,2.037102309352786,2.0456776779003087,2.0542530464478324,2.062828414995355,2.0714037835428787,2.0799791520904014,2.088554520637925,2.0971298891854477,2.1057052577329713,2.114280626280494,2.1228559948280177,2.1314313633755404,2.140006731923064,2.1485821004705867,2.1571574690181095,2.165732837565633,2.174308206113156,2.1828835746606794,2.191458943208202,2.2000343117557257,2.2086096803032484,2.217185048850772,2.2257604173982948,2.2343357859458184,2.242911154493341,2.2514865230408647,2.2600618915883874,2.268637260135911,2.2772126286834338,2.2857879972309574,2.29436336577848,2.3029387343260037,2.3115141028735264,2.32008947142105,2.3286648399685728,2.3372402085160955,2.345815577063619,2.354390945611142,2.3629663141586654,2.371541682706188,2.3801170512537118,2.3886924198012345,2.397267788348758,2.405843156896281,2.4144185254438044,2.422993893991327,2.4315692625388508,2.4401446310863735,2.448719999633897,2.45729536818142,2.4658707367289434,2.474446105276466,2.4830214738239897,2.4915968423715125,2.500172210919036,2.508747579466559,2.5173229480140815,2.525898316561605,2.534473685109128,2.5430490536566515,2.551624422204174,2.560199790751698,2.5687751592992205,2.577350527846744,2.5859258963942677,2.5945012649417905,2.603076633489314,2.611652002036837,2.6202273705843595,2.628802739131883,2.637378107679406,2.6459534762269294,2.654528844774452,2.6631042133219758,2.6716795818694985,2.680254950417022,2.688830318964545,2.6974056875120684,2.705981056059591,2.7145564246071148,2.7231317931546375,2.731707161702161,2.740282530249684,2.7488578987972074,2.75743326734473,2.7660086358922538,2.7745840044397765,2.7831593729873,2.791734741534823,2.8003101100823455,2.808885478629869,2.817460847177392,2.8260362157249155,2.834611584272438,2.843186952819962,2.8517623213674845,2.860337689915008,2.868913058462531,2.8774884270100545,2.886063795557577,2.894639164105101,2.9032145326526235,2.911789901200147,2.92036526974767,2.9289406382951935,2.937516006842716,2.94609137539024,2.9546667439377625,2.963242112485286],
+"..violinwidth..":[0.2564250570162929,0.26025011937253834,0.26406990984058465,0.2678832955644365,0.27168916453329073,0.27548642639333243,0.2792740131823672,0.2830508799871426,0.2868160055235754,0.29056839264048395,0.29430706874781115,0.29803108617068197,0.3017395224310197,0.30543148045879465,0.30910608873533696,0.31276250137146894,0.3163998981235537,0.3200174843508479,0.32361449091785444,0.3271901740456238,0.33074381511622974,0.3342747204348507,0.3377822209541181,0.34126567196556223,0.3447244527631488,0.3481579662840367,0.3515656387317867,0.3549469191873239,0.3583012792130199,0.36162821245526233,0.3649272342508822,0.3681978812427633,0.3714397110098896,0.3746523017169906,0.37783525178881144,0.38098817961388276,0.3841107232824718,0.3872025403631962,0.39026330772252577,0.39329272139114546,0.39629049648085246,0.3992563671553497,0.4021900866579661,0.40509142739896215,0.407960181104722,0.4107961590307248,0.41359919223978103,0.4163691319465997,0.41910584992931393,0.42180923900814915,0.4244792135909532,0.42711571028486855,0.4297186885729458,0.4322881315540374,0.4348240467438541,0.43732646693459665,0.4397954511101235,0.442231085413165,0.444633484160661,0.44700279090286227,0.44933917952143165,0.45164285536137905,0.4539140563912848,0.45615305438590875,0.4583601561249411,0.460535704601341,0.46268008023241464,0.46479370206652676,0.466877028978106,0.4689305608433913,0.47095483968921154,0.47295045080692727,0.4749180238235759,0.4768582337221753,0.4787718018031067,0.48065949657849527,0.4825221345915368,0.4843605811527928,0.48617575098557525,0.48796860877269016,0.48974016959698596,0.4914914992683684,0.4932237145301906,0.49493798313821946,0.49663552380569503,0.4983176060083565,0.4999855496436961,0.5016407245391177,0.5032845498041338,0.5049184930222019,0.506544069278323,0.5081628400190412,0.5097764117420495,0.5113864345131882,0.5129946003092111,0.5146026411853222,0.5162123272671211,0.5178254645672278,0.519443892627544,0.5210694819887542,0.5227041314893526,0.5243497653971745,0.526008330377079,0.5276817922991184,0.5293721328922071,0.53108134624898,0.5328114351881912,0.5345644074816547,0.5363422719533744,0.5381470344591363,0.539980693755422,0.5418452372671129,0.5437426367639899,0.5456748439565755,0.5476437860223732,0.5496513610740142,0.5516994335812857,0.5537898297593883,0.5559243329361666,0.5581046789113556,0.5603325513211894,0.5626095770219524,0.5649373215062525,0.5673172843659504,0.5697508948157759,0.5722395072917283,0.5747843971383639,0.5773867563990265,0.580047689722989,0.5827682104033334,0.5855492365592003,0.588391587475797,0.5912959801152561,0.5942630258110976,0.5972932271586533,0.6003869751133624,0.6035445463083655,0.6067661006022906,0.6100516788675331,0.6134012010287189,0.6168144643603642,0.6202911420520492,0.623830782048676,0.6274328061725934,0.6310965095335921,0.6348210602318848,0.6386054993583662,0.6424487412955238,0.6463495743214729,0.6503066615186478,0.6503066615186478,0.6543185419877489,0.6583836323665684,0.662500228652375,0.6666665083255472,0.670880532771184,0.6751402499944599,0.6794434976245082,0.6837880062006924,0.6881714027341655,0.6925912145367045,0.697044873307904,0.7015297194709473,0.7060430067463043,0.7105819069519094,0.715143515017573,0.7197248542006501,0.7243228814892667,0.7289344931787572,0.7335565306063455,0.7381857860285312,0.742819008625129,0.7474529106134599,0.7520841734557471,0.7567094541424746,0.7613253915341172,0.7659286127434596,0.7705157395405341,0.7750833947620943,0.7796282087075035,0.7841468255029266,0.788635909415798,0.7930921511016737,0.7975122737657824,0.8018930392218612,0.8062312538311829,0.8105237743050666,0.8147675133546176,0.8189594451719403,0.8230966107276171,0.8271761228698823,0.8311951712115409,0.8351510267914377,0.839041046498007,0.842862677243231,0.8466134598762074,0.8502910328263505,0.8538931354672098,0.8574176111927898,0.8608624101992435,0.8642255919657947,0.8675053274297383,0.8706999008514157,0.873807711366072,0.8768272742205557,0.879757221693868,0.8825963037016012,0.8853433880853567,0.887997460589271,0.8905576245267743,0.8930231001417355,0.8953932236691178,0.8976674461012355,0.8998453316666299,0.9019265560295016,0.9039109042184849,0.9057982682944009,0.9075886447674194,0.9092821317747958,0.9108789260310738,0.9123793195632955,0.9137836962443611,0.9150925281382585,0.9163063716713609,0.9174258636444594,0.9184517171005696,0.9193847170639066,0.9202257161656693,0.9209756301725169,0.9216354334337535,0.9222061542633413,0.9226888702728963,0.9230847036717921,0.9233948165504184,0.9236204061624793,0.9237627002220469,0.9237627002220469,0.9238229522307951,0.9238024368505472,0.9237024453358994,0.9235242810412662,0.9232692550162229,0.9229386817025151,0.922533874745545,0.9220561429325447,0.9215067862689968,0.9208870922042248,0.9201983320163094,0.9194417573658101,0.9186185970269628,0.917730053804258,0.9167773016414934,0.9157614829295627,0.9146837060184163,0.9135450429377749,0.9123465273303343,0.9110891526003291,0.9097738702794976,0.9084015886116071,0.9069731713558997,0.9054894368089534,0.9039511570436696,0.9023590573632917,0.9007138159675879,0.8990160638275895,0.8972663847645476,0.8954653157280943,0.893613347267926,0.8917109241927066,0.8897584464093119,0.887756269934984,0.8857047080744633,0.883604032753706,0.8814544760013739,0.8792562315689205,0.8770094566797655,0.8747142738977717,0.8723707731050165,0.8699790135786543,0.8675390261565452,0.8650508154812329,0.8625143623118073,0.859929625893211,0.8572965463725852,0.8546150472523636,0.8518850378699407,0.849106415893954,0.8462790698274135,0.8434028815081944,0.840477728597688,0.8375034870487565,0.8344800335444865,0.8314072478996273,0.8282850154170383,0.8251132291918872,0.8218917923568274,0.8186206202618518,0.8152996425830287,0.8119288053548342,0.8085080729213073,0.8050374298018047,0.8015168824676339,0.7979464610264085,0.794326220811465,0.7906562438742467,0.7869366403780308,0.7831675498919339,0.7793491425845799,0.7754816203173226,0.7715652176373737,0.7676002026716052,0.763586877922257,0.7595255809661275,0.7554166850592429,0.7512605996492997,0.7470577707985283,0.7428086815198816,0.7385138520297184,0.7341738399203812,0.7341738399203812,0.7297892402562383,0.7253606855969406,0.7208888459517531,0.7163744286689187,0.7118181782640768,0.7072208761917809,0.7025833405641577,0.6979064258207242,0.6931910223533018,0.6884380560898952,0.683648488041259,0.6788233138137609,0.6739635630919526,0.6690702990940947,0.6641446180036501,0.6591876483795457,0.6542005505477464,0.6491845159764339,0.6441407666368018,0.6390705543512011,0.6339751601300836,0.6288558934988885,0.6237140918157269,0.6185511195804143,0.613368367735114,0.6081672529565556,0.6029492169394984,0.5977157256708628,0.5924682686936438,0.5872083583595042,0.581937529068681,0.5766573364956312,0.5713693567986283,0.5660751858113396,0.5607764382142532,0.5554747466836738,0.5501717610159034,0.5448691472241055,0.5395685866053151,0.5342717747749861,0.5289804206664658,0.5236962454928036,0.518420981668325,0.5131563716874796,0.5079041669585587,0.5026661265900038,0.4974440161271607,0.49223960623751983,0.48705467134266744,0.481890988195395,0.4767503344006572,0.47163448687932746,0.4665452202739877,0.4614843052962808,0.4564535070156838,0.45145458308988057,0.4464892819372596,0.44155934085243115,0.43666648406600006,0.4318124207502313,0.42699884297259333,0.42222742359957277,0.41749981415351506,0.412817642625631,0.4081825112486935,0.4035959942333038,0.3990596354719862,0.3945749462157047,0.3901434027277506,0.38576644392026904,0.3814454689789973,0.37718183498209334,0.3729768545191898,0.3688317933170716,0.36474786787859215,0.36072624314165735,0.3567680301652711,0.3528742838497943,0.3490460006986899,0.3452841166291093,0.3415895048387506,0.33796297373643647,0.33440526494387035,0.33091705137598254,0.3274989354072291,0.32415144713109567,0.3208750427199327,0.31767010289209163,0.31453693149312983,0.31147575419763585,0.30848671733796246,0.3055698868658806,0.3027252474528443,0.29995270173422,0.2972520697024684,0.2946230882538661,0.29206541089294896,0.2895786075984086,0.28716216485372675,0.2848154858453425,0.28253789083066433,0.2803286176777219,0.27818682257773414,0.2761115809313375,0.27410188840867716,0.27215666218301615,0.2702747423369645,0.26845489343988244,0.2666958062944505,0.2649960998498563,0.26335432327849806,0.2617689582125673,0.26023842113634477,0.25876106592952447,0.25733518655637766,0.2559590198950796,0.2546307487010496,0.25334850469770626,0.25211037178760587,0.2509143893765283,0.2497585558026901,0.24864083186290833,0.24755914442721233,0.2465113901330973,0.24549543915034863,0.24450913900712282,0.24355031846776912,0.2426167914526976,0.2417063609904657,0.240816823192141,0.23994597123793487,0.2390915993660565,0.23825150685373905,0.23742350198041873,0.23660540596311244,0.2357950568541418,0.23499031339147944,0.2341890587921629,0.2333892044794144,0.2325886937343335,0.2317855052632882,0.23097765667241277,0.23016320784093605,0.22934026418540163,0.22850697980720452,0.227661560516256,0.22680226672399326,0.22592741619938128,0.2250353866819934,0.22412461834672195,0.22319361611514216,0.22224095180903825,0.2212652661420986,0.22026527054628944,0.21923974882992728,0.21818755866498551,0.21710763290168575,0.21599898070894194,0.21486068853974094,0.21369192092105174,0.21249192106836567,0.21126001132546338,0.2099955934304979,0.20869814860995942,0.20736723750255384,0.20600249991548228,0.20460365441603973,0.2031704977618809,0.20170290417369469,0.2002008244544178,0.19866428495948188,0.19709338642292604,0.19548830264453473,0.19384927904345148,0.1921766310839994,0.19047074257968888,0.18873206388161587,0.18696110995766524,0.18515845836910103,0.18332474715128877,0.18146067260541426,0.17956698700817483,0.17764449624649392,0.17569405738436536,0.17371657616897052,0.17171300448321225,0.16968433775180466,0.16763161230801396,0.1655559027280957,0.16345831914039044,0.16134000451594857,0.15920213194743563,0.15704590192293671,0.15487253960113317,0.15268329209415085,0.0627138741963236,0.06311244097557211,0.06349168144112238,0.06385194177479095,0.06419361876203462,0.06451715806221292,0.06482305227817714,0.06511183883412594,0.065384097671785,0.06564044877603982,0.06588154954216581,0.06610809199775566,0.06632079989333119,0.06652042567643815,0.0667077473647569,0.06688356533440654,0.06704869904017789,0.06720398368489021,0.06735026685543015,0.06748840514329027,0.06761926076758135,0.06774369821854058,0.06786258093950026,0.06797676806511448,0.06808711123336658,0.0681944514884992,0.06829961629152181,0.06840341665436048,0.068506644413026,0.0686100696543896,0.06871443831028072,0.06882046993165371,0.06892885565453051,0.06904025636830194,0.06915530109578806,0.06927458559320598,0.06939867117689581,0.06952808378230944,0.06966331325938385,0.06980481290701322,0.06995299924790495,0.0701082520436683,0.0702709145485447,0.07044129399876259,0.0706196623330868,0.0708062571387496,0.07100128281560397,0.07120491195003563,0.07141728688892482,0.07163852150275615,0.07186870312586367,0.0721078946607506,0.07235613683246864,0.07261345057817387,0.07287983955619945,0.07315529275831764,0.07343978720829053,0.07373329072935109,0.07403576476290961,0.07434716722053958,0.0746674553511813,0.07499658860549448,0.07533453147940086,0.07568125631908203,0.07603674607003659,0.07640099695324555,0.0767740210520522,0.0771558487940192,0.07754653131278222,0.07794614267577069,0.07835478196460446,0.07877257519599339,0.07919967707206221,0.07963627255018503,0.08008257822363099,0.08053884350559884,0.08100535161052994,0.08148242032793733,0.08197040258536406,0.08246968679847183,0.08298069700765907,0.08350389280199881,0.0840397690326747,0.08458885531945175,0.08515171535505454,0.08572894601362378,0.08632117627066878,0.08692906594313604,0.08755330425934757,0.0881946082696317,0.08885372110946378,0.08953141012784852,0.09022846489450212,0.09094569510012947,0.09168392836473524,0.09244400796944993,0.09322679052779154,0.09403314361262764,0.09486394335532827,0.09572007203373209,0.09660241566556343,0.0975118616238565,0.09844929629074735,0.09941560276570237,0.10041165864385611,0.10143833387963688,0.10249648875027212,0.10358697193308598,0.10471061870973748,0.10586824930970434,0.10706066740439361,0.10828865876227386,0.10955299007436796,0.11085440795833569,0.11219363814821522,0.11357138487568909,0.11498833044749907,0.11644513502236843,0.11794243658949756,0.1194808511493956,0.12106097309650152,0.1226833758017356,0.12434861239182152,0.1260572167209316,0.1278097045289427,0.12960657477935172,0.13144831116870342,0.13333538379821608,0.13526825099718567,0.13724736128668635,0.1392731554710851,0.14134606884395456,0.14346653349409771,0.1456349806966046,0.14785184337314164,0.150117558605039,0.152432570182182,0.1547973311702478,0.15721230647844764,0.1596779754096435,0.1621948341745097,0.1647633983513063,0.16738420527281675,0.17005781632208328,0.1727848191187502,0.17556582957808856,0.17840149382513967,0.18129248994685804,0.18423952956567777,0.18724335921854535,0.190304761526175,0.19342455613806472,0.19660360043968778,0.19984279000920427,0.20314305881205905,0.20650537912290468,0.20993076116543014,0.21342025246187468,0.21697493688525343,0.22059593340862402,0.2242843945470561,0.2280415044893507,0.2318684769179514,0.23576655251693499,0.23973699616940636,0.24378109384709573,0.2479001491964194,0.25209547982674,0.2563684133080221,0.2607202828865318,0.2651524229286642,0.2696661641043829,0.2742628283231395,0.2789437234364758,0.28371013772280024,0.2885633341710917,0.2935045445814486,0.2985349635015589,0.30365574201920237,0.30886798143190825,0.3141727268157944,0.31957096051645645,0.32506359558551845,0.3306514691871265,0.3363353359992315,0.3421158616349745,0.34799361610988544,0.3539690673808572,0.36004257498305303,0.36621438379096055,0.3724846179297835,0.37885327486322506,0.385320219683461,0.39188517962877134,0.3985477388538408,0.4053073334771829,0.4121632469294984,0.4191146056260181,0.4261603749850446,0.43329935581395446,0.4405301810829098,0.4478513131053985,0.4552610411435391,0.46275747945480117,0.47033856579546496,0.47800206039470833,0.48574554541175285,0.4935664248869579,0.5014619251961752,0.5094290960160365,0.5174648118061939,0.5255657738128077,0.5337285125958662,0.5419493910811536,0.5502246081359199,0.5585502026655239,0.5669220582265398,0.5753359081500281,0.5837873411669119,0.5922718075256265,0.6007846255904694,0.6093209889073734,0.6178759737221157,0.6264445469343565,0.6350215744692531,0.6436018300468562,0.6521800043279727,0.6607507144137037,0.6693085136744881,0.6778479018831188,0.6863633356249458,0.6948492389572654,0.7033000142887831,0.7117100534489718,0.7200737489162065,0.7283855051726565,0.7366397501531368,0.7448309467544204,0.7529536043709026,0.7610022904220183,0.7689716418363783,0.7768563764573218,0.7846513043343506,0.7923513388648439,0.7999515077504485,0.8074469637326923,0.8148329950725725,0.822105035739274,0.8292586752735988,0.8362896682923024,0.8431939436002298,0.849967612877962,0.8566069789136399,0.8631085433486777,0.8631085433486777,0.8694690139082639,0.8756853110888516,0.8817545742762375,0.8876741672693731,0.8934416831866889,0.8990549487334616,0.9045120278106275,0.9098112244474011,0.914951085042144,0.919930399898082,0.9247482040427294,0.9294037773222453,0.9338966437643551,0.9382265702059785,0.9423935641842877,0.9463978710925456,0.9502399706047499,0.9539205723758412,0.9574406110270087,0.9608012404283763,0.9640038272941808,0.9670499441083348,0.9699413614010677,0.9726800394000856,0.9752681190824531,0.9777079126560602,0.9800018935021889,0.9821526856132328,0.9841630525621068,0.9860358860422419,0.9877741940193399,0.989381088538171,0.9908597732297179,0.9922135305657941,0.9934457089099537,0.9945597094150017,0.9955589728187458,0.9964469661907188,0.9972271696835167,0.997903063343084,0.9984781140327176,0.998955762525778,0.9993394108220686,0.9996324097425505,0.9998380468565341,0.9999595347946677,1.0,0.9999624719680428,0.9998498730251775,0.999665008692896,0.9994105586832241,0.9990890685683358,0.9987029421647068,0.9982544346693172,0.9977456465822871,0.9971785184470308,0.9965548264354498,0.9958761788019845,0.9951440132263908,0.9943595950610647,0.9935240164944822,0.99263819663796,0.9917028825385046,0.9907186511159085,0.9896859120176946,0.9886049113807862,0.9886049113807862,0.9874757364841469,0.9862983212719293,0.9850724527220578,0.9837977780305663,0.9824738125775383,0.9810999486361044,0.9796754647816962,0.9781995359547025,0.9766712441257572,0.9750895895092236,0.9734535022670062,0.9717618546416484,0.970013473454786,0.9682071529044485,0.966341667592461,0.9644157857112771,0.9624282823180557,0.9603779526226114,0.9582636252151142,0.9560841751590361,0.9538385368748936,0.9515257167407877,0.9491448053366296,0.9466949892602514,0.9441755624453188,0.9415859369131104,0.9389256528928055,0.9361943882478516,0.9333919671493713,0.9305183679412686,0.9275737301458228,0.9245583605629494,0.9214727384211044,0.9183175195428237,0.9150935394932357,0.9118018156854227,0.9084435484222949,0.9050201208605759,0.9015330978886079,0.8979842239158659,0.8943754195783729,0.8907087773704855,0.8869865562198666,0.8832111750286864,0.8793852052103163,0.8755113622568171,0.8715924963784512,0.8676315822621518,0.8636317080013578,0.8595960632548368,0.8555279266970224,0.8514306528269496,0.8473076582070722,0.843162407207044,0.8389983973309028,0.8348191442090251,0.8306281663386565,0.8264289696587633,0.8222250320464128,0.8180197878227834,0.8138166123573076,0.8096188068582946,0.8054295834376797,0.8012520505363263,0.7970891987945253,0.7929438874500417,0.7888188313432501,0.7847165886055791,0.7806395491036767,0.776589923707473,0.7725697344455891,0.7685808056064507,0.7685808056064507,0.764624755837983,0.7607029912929231,0.7568166998606599,0.7529668465200986,0.7491541698414135,0.7453791796577296,0.7416421559208047,0.7379431487477153,0.7342819796584344,0.7306582439970557,0.7270713145223292,0.7235203461461744,0.720004281791951,0.7165218593375827,0.7130716196021346,0.7096519153282358,0.7062609211068233,0.7028966441851026,0.6995569360934292,0.6962395050220348,0.6929419288741684,0.6896616689183739,0.6863960839592328,0.6831424449430638,0.6798979499127471,0.6766597392240788,0.6734249109348557,0.670190536277263,0.6669536751240678,0.6637113913596432,0.6604607680679042,0.6571989224508974,0.6539230203939377,0.6506302905959122,0.6473180381865825,0.6439836577564098,0.6406246457286049,0.6372386120076812,0.6338232908437816,0.6303765508574002,0.626896404174787,0.6233810146302874,0.619828704998058,0.6162379632220109,0.6126074476193809,0.6089359910399879,0.6052226039699835,0.601466476575631,0.5976669796893883,0.5938236647472042,0.5899362626924897,0.5860046818685903,0.5820290049277592,0.5780094847905677,0.5739465396953404,0.5698407473825338,0.5656928384639714,0.5615036890314459,0.5572743125634004,0.5530058511921687,0.5486995663975547,0.5443568291953766,0.5399791098919431,0.5355679674772846,0.5311250387313023,0.5266520271178322,0.5221506915419432,0.5176228350456101,0.5130702935162086,0.5084949244811152,0.5038985960600397,0.49928317614461437,0.494650521872211,0.49000246945800036,0.4853408244459126,0.4806673524354399,0.47598377033718237,0.4712917382056817,0.46659285169348597,0.46188863516553696,0.4571805355079433,0.4524699166600067,0.44775805489306025,0.44304613485429095,0.43833524638828686,0.43362638214361837,0.4289204359663649,0.4242182020771742,0.4195203750232229,0.41482755039136926,0.41014022626389485,0.40545880539352674,0.40078359806998287,0.39611482564608136,0.3914526246875418,0.3867970517070143,0.3821480884395913,0.3775056476141367,0.3728695791722006,0.3682396768840886,0.3636156853098522,0.3589973070515184,0.35438421024185984,0.34977603621432957,0.3451724072985449,0.34057293468578526,0.3359772263094916,0.3313848946865631,0.32679556466647425,0.32220888103673495,0.3176245159350847,0.3130421760209247,0.3084616093609363,0.303882611986472,0.29930503408323283,0.2947287857768217,0.2901538424810694,0.2855802497794389,0.2810081278134015,0.2764376751553067,0.20371822147361957,0.20804318145252068,0.21241088536846506,0.21682025980252692,0.22127018237893634,0.22575948192440035,0.23028693870259975,0.2348512847256812,0.2394512041444382,0.24408533371874655,0.24875226336967704,0.25345053681455765,0.2581786522861073,0.26293506333659106,0.26771817972778394,0.2725263684073479,0.2773579545720436,0.2822112228180127,0.2870844183781646,0.29197574844651353,0.29688338358909344,0.30180545924089025,0.30674007728800057,0.3116853077340345,0.31663919044955074,0.3215997370031074,0.3265649325722936,0.33153273793289745,0.3365010915241416,0.3414679115877252,0.34643109837818503,0.351388536441894,0.3563380969618082,0.36127764016488373,0.36620501778888503,0.37111807560512494,0.3760146559934995,0.38089260056600627,0.3857497528347646,0.3905839609204168,0.3953930802966192,0.40017497656621287,0.4049275282645262,0.4096486296851399,0.41433619372334785,0.41898815473243756,0.42360247138783436,0.42817712955408005,0.4327101451495482,0.4371995670037465,0.4416434797020248,0.446040006412474,0.4503873116897797,0.45468360425080356,0.45892713971666743,0.46311622331613345,0.4672492125451111,0.47132451977716333,0.4753406148199441,0.4792960274125614,0.4831893496589457,0.48701923839238687,0.4907844174665076,0.49448367996805054,0.49811589034698517,0.501679986459547,0.505174981519998,0.508599965957013,0.511954109170773,0.5152366611870044,0.5184469542043723,0.5215844040318309,0.5246485114126997,0.5276388632324361,0.5305551336072818,0.5333970848511443,0.5361645683182948,0.5388575251196751,0.5414759867108141,0.5440200753495793,0.546490004422202,0.548886078636248,0.5512086940794183,0.5534583381432964,0.5556355893113841,0.5577411168109903,0.5597756801287704,0.5617401283899268,0.5636353996013233,0.565462519758969,0.5672226018205612,0.5689168445439973,0.5705465311929656,0.5721130281109594,0.5736177831652527,0.5750623240625878,0.5764482565385299,0.5777772624226403,0.5790510975818083,0.580271589744283,0.5814406362071188,0.5825602014299356,0.583632314518068,0.5846590665983356,0.5856426080908522,0.5865851458804219,0.5874889403912419,0.5883563025687683,0.5891895907727333,0.5899912075854558,0.5907635965396845,0.5915092387703558,0.5922306495947527,0.5929303750256488,0.5936109882221414,0.5942750858829448,0.5949252845870224,0.5955642170865035,0.5961945285569032,0.5968188728097334,0.5974399084726528,0.5980602951423419,0.5986826895153509,0.599309741502204,0.5999440903300527,0.6005883606392318,0.6012451585790574,0.60191706790824,0.60260664610527,0.6033164204941563,0.6040488843908718,0.6048064932758452,0.6048064932758452,0.6055916609978387,0.6064067560144981,0.6072540976748496,0.608135952548974,0.609054530810037,0.6100119826738195,0.611010394900823,0.6120517873659785,0.613138109700903,0.6142712380136026,0.615452971690412,0.6166850302849137,0.6179690504984652,0.6193065832568897,0.6206990908877746,0.622147944402743,0.623654420888924,0.6252197010137774,0.6268448666472743,0.6285308986053467,0.6302786745183732,0.6320889668283495,0.6339624409182583,0.6358996533770059,0.6379010504031645,0.6399669663505982,0.6420976224189046,0.6442931254914466,0.6465534671235926,0.648878522683597,0.6512680506484111,0.653721692056518,0.6562389701197018,0.6588192899955007,0.661461938721867,0.6641660853153938,0.6669307810342446,0.6697549598067353,0.6726374388262863,0.6755769193132688,0.6785719874440298,0.6816211154471724,0.6847226628669207,0.6878748779931739,0.6910758994576189,0.6943237579950087,0.6976163783684884,0.7009515814575789,0.704327086507183,0.7077405135357172,0.7111893859002024,0.7146711330158927,0.7181830932277391,0.7217225168307259,0.725286569235836,0.7288723342781328,0.7324768176631715,0.7360969505476729,0.7397295932501255,0.7433715390867068,0.7470195183276385,0.7506702022688289,0.7543202074133858,0.757966099757325,0.7616043991735434,0.7652315838878693,0.7688440950407683,0.7724383413280408,0.7760107037136176,0.7795575402073531,0.7830751907004866,0.786559981851269,0.7900082320130507,0.7934162561969571,0.7967803710611279,0.800096899918347,0.803362177753755,0.8065725562442484,0.8097244087710411,0.8128141354168249,0.8158381679388783,0.8187929747094544,0.8216750656147491,0.8244809969037616,0.8272073759783815,0.8298508661160736,0.8324081911166127,0.8348761398643983,0.8348761398643983,0.8372515707979965,0.8395314162786847,0.8417126868499398,0.8437924753799773,0.8457679610796615,0.8476364133883143,0.84939519572021,0.8510417690647963,0.8525736954339738,0.853988641150062,0.85528437996842,0.8564587960290182,0.8575098866316153,0.8584357648295929,0.8592346618378582,0.8599049292506654,0.8604450410655957,0.8608535955103811,0.8611293166697057,0.8612710559095365,0.8612777930970296,0.8611486376144948,0.8608828291663767,0.8604797383786792,0.859938867190731,0.8592598490396622,0.858442448838419,0.8574865627486246,0.8563922177500378,0.855159571008827,0.8537889090472985,0.8522806467181829,0.8506353259869738,0.8488536145262423,0.8469363041262415,0.8448843089264827,0.8426986634733431,0.8403805206091,0.8379311491981113,0.8353519316961693,0.8326443615693402,0.8298100405688528,0.8268506758688621,0.8237680770740986,0.8205641531046415,0.8172409089651916,0.813800442406385,0.8102449404858041,0.8065766760364316,0.8027980040503792,0.7989113579857543,0.7949192460045644,0.7908242471495561,0.7866290074678609,0.7823362360892803,0.7779487012669719,0.7734692263882197,0.7689006859628525,0.7642460015967673,0.7595081379578493,0.7546900987414449,0.749794922642343,0.744825679340057,0.7397854655039652,0.7346774008246871,0.7295046240778178,0.7242702892259185,0.7189775615644289,0.7136296139168952,0.7082296228846638,0.7027807651559436,0.697286213878843,0.6917491351027615,0.6861726842922242,0.6805600029169951,0.6749142151220431,0.6749142151220431,0.6692384244806637,0.663535710833822,0.6578091272185153,0.6520616968877145,0.6462964104242049,0.6405162229504124,0.6347240514360811,0.6289227721054408,0.6231152179453102,0.6173041763153683,0.6114923866616464,0.6056825383341073,0.5998772685090072,0.5940791602165799,0.5882907404744216,0.5825144785268181,0.576752784190123,0.5710080063041648,0.56528243128955,0.5595782818106153,0.5538977155436885,0.548242824050218,0.5426156317542402,0.537018095023589,0.5314521013541529,0.5259194686564336,0.520421944643584,0.5149612063200399,0.5095388595698037,0.5041564388433737,0.49881540694226345,0.4935171548999919,0.48826300195837363,0.4830541956378826,0.47789191190080477,0.4727772554058366,0.4677112598527247,0.4626948884154886,0.45772903426268974,0.4528145211631536,0.44795210417547804,0.44314247041958355,0.4383862399284891,0.4336839665784123,0.4290361390952095,0.42444318213508614,0.41990545743741114,0.4154232650473822,0.41099684460618413,0.406626376706192,0.4023119843086599,0.3980537342212413,0.39385163863257705,0.3897056567010854,0.3856156961949813,0.3815816151804493,0.3776032237547908,0.37368028582126367,0.36981252090223593,0.3659996059871759,0.3622411774119138,0.35853683276552134,0.35488613282107145,0.3512886034864717,0.3477437377714898,0.34425099776703544,0.34080981663270454,0.3374196005885543,0.3340797309070389,0.33078956590101705,0.3275484429037254,0.3243556802366122,0.32121057916093826,0.3181124258090669,0.3150604930914101,0.3120540425750315,0.30909232632997974,0.3061745887394882,0.3033000682702674,0.30046799919921446,0.2976776132929739,0.29492814143690704,0.2922188152101665,0.28954886840371696,0.28691753847830637,0.2843240679595599,0.28176770576755467,0.2792477084784214,0.276763341515724,0.2743138802695782,0.2718986111416865,0.26951683251469755,0.2671678556445253,0.2648510054745062,0.2625656213705132,0.2603110577763921,0.2580866847893361,0.25589188865506685,0.25372607218293897,0.2515886550813425,0.24947907421402193,0.24739678377818844,0.2453412554055354,0.24331197818752104,0.24130845862650915,0.23933022051459252,0.2373768047421494,0.23544776903839082,0.2335426876463735,0.23166115093513814,0.22980276495183194,0.22796715091683722,0.2261539446651031,0.22436279603701847,0.22259336822231235,0.22084533706058426,0.21911839030218674,0.21741222683327058,0.21572655586889694,0.21406109611817534,0.2124155749254538,0.21078972739161198,0.20918329547954284,0.20759602710790917,0.20602767523725551,0.20447799695253951,0.2029467525461017,0.20143370460505255,0.19993861710698163,0.19846125452782373,0.19700138096561892,0.19555875928380678,0.1941331502775713,0.19272431186663325,0.19133199831774156,0.18995595949997346,0.18859594017578651,0.1872516793306077,0.1859229095435605,0.18460935640175574,0.18331073796037567,0.18202676425059205,0.18075713683715094,0.17950154842726107,0.17825968253220667,0.17703121318289808,0.175815804700364,0.17461311152196726,0.17342277808392273,0.17224443876047163,0.17107771785986456,0.16992222967708617,0.16877757860305545,0.16764335928982324,0.16651915687109756,0.16540454723722306,0.16429909736355977,0.163202365691014,0.16211390255730598,0.16103325067737842,0.1599599456711968,0.15889351663702925,0.15783348676815384,0.1567793740107965,0.15573069176098062,0.15468694959784463,0.15364765405087502,0.1526123093984052,0.15158041849463488,0.15055148362235066,0.14952500736845264,0.14850049351933883,0.14747744797314383,0.14645537966579414,0.14543380150781327,0.14441223132878944,0.143390192826414,0.14236721651699993,0.1413428406844006,0.14031661232427442,0.1392880880806686,0.13825683517194046,0.13722243230308015,0.13618447056156335,0.13514255429392266,0.1340963019603101,0.13304534696439893,0.1319893384560701,0.13092794210442144,0.12986084083874813,0.12878773555524756,0.12770834578732507,0.12662241033749383,0.12552968786899535,0.12442995745539226,0.12332301908652932,0.12220869412939044,0.12108682574252914,0.1199572792428922,0.11881994242400382,0.1176747258246316,0.11652156294720137,0.11536041042538546,0.11419124814043598,0.11301407928599332,0.11182893038124506,0.11063585123246863,0.10943491484313311,0.10822621727289054,0.1070098774459254,0.10578603690928014,0.10455485954190752,0.10331653121534339,0.10207125940701821,0.10081927276736131,0.09956082064196684]
+}
+},{
+"geom":"sina",
+"mapping":{
+},
+"data_meta":{
+},
+"seed":42.0,
+"orientation":"y",
+"data":{
+"..quantile..":[0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],
+"y":["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c"],
+"x":[-1.9596701238797756,-1.913280244657798,-1.763040155362734,-1.7249178325130328,-1.4785219903674274,-1.4247481862134568,-1.4123037013352915,-1.3281860488984305,-1.2208436499710222,-1.1509935774223028,-1.0577109289559004,-1.0128311203344238,-0.9080240755212109,-0.7198442083947086,-0.6017066122293969,-0.600638689918805,-0.5622875292409727,-0.5443827245251827,-0.4694743859349521,-0.46572975357025687,-0.46341769281246226,-0.4606387709597875,-0.3011036955892888,-0.2916937497932768,-0.23415337472333597,-0.23413695694918055,-0.22577630048653566,-0.13826430117118466,-0.11564828238824053,-0.013497224737933921,0.06752820468792384,0.11092258970986608,0.1713682811899705,0.19686123586912352,0.2088635950047554,0.24196227156603412,0.3142473325952739,0.3436182895684614,0.37569801834567196,0.4967141530112327,0.5425600435859647,0.6476885381006925,0.7384665799954104,0.7674347291529088,0.822544912103189,1.0571222262189157,1.465648768921554,1.5230298564080254,1.5792128155073915,1.8522781845089378,-2.5197451040897443,-1.8875689146008927,-1.3635149481321185,-1.0962066240806707,-1.0063349740060281,-0.7392175232226386,-0.7084936028931876,-0.6020530938773524,-0.5769220003059587,-0.5451197546051243,-0.42976020376703883,-0.4182702182736474,-0.40175704358453657,-0.3791742378452899,-0.29210815313215766,-0.28508228041631656,-0.2276621465977682,-0.20921237585121458,-0.19900735046586746,-0.1345871333751469,-0.11967188783751193,-0.08565897666381711,0.02798987841966616,0.06417396089004847,0.1051134566424609,0.18704706823817124,0.1917607765355023,0.1970775493480404,0.3610552721798893,0.3961202770645761,0.424083969394795,0.42875110965968444,0.43126343140356393,0.45711257151174645,0.46139560550841396,0.4616360250476341,0.6132674331133561,0.7116762888408679,0.912525822394198,0.9219025043752238,1.0154021177020742,1.0312801191161987,1.0686449905328892,1.0755451271223593,1.1035328978920242,1.130999522495951,1.456240028570823,1.5778940447415162,1.6380365664659693,1.6646436558140063,-1.4187712152990415,-1.1074832345612275,-1.0506634310661327,-0.9153707420504142,-0.9018510627922809,-0.8204566130842763,-0.736950710878082,-0.7308643164339552,-0.668678037619532,-0.5623037137261049,-0.49053632513068834,-0.41942423423380315,-0.4093874547947389,-0.3022772692216189,-0.2832532923362371,-0.06629772960277192,-0.0034756541161992116,0.07935467723464096,0.15728548347323051,0.17793848379432442,0.3076390352188775,0.33871428833399086,0.4255540842338328,0.4652882302947567,0.4734861245507831,0.5602302099410265,0.5685629748060274,0.5996513650876412,0.6745778128318389,0.6846338585323042,0.7274599346041294,0.7575503907227643,0.7598827942484235,0.796984673233186,0.8015473423336125,0.9040508568145385,0.9735924306351815,1.0219415656168978,1.0868570938002704,1.2519330326867741,1.2818228717773104,1.291031947043047,1.3135172173696699,1.6428228145150205,1.807142754282428,1.9027943109360992,2.0499344050175394,2.3861859012105304,2.6904556258099785,2.963242112485286],
+"..violinwidth..":[0.2564250570162929,0.2800998805289335,0.35277842600511655,0.36971848613591557,0.45944566480214966,0.47434241932963084,0.47757709419828503,0.4977319387437228,0.5211369982326518,0.5370729445703115,0.5624037359403945,0.5771937584270339,0.6202057919490024,0.725251535755882,0.7976786374592001,0.7983057760978841,0.8202923991568934,0.8300793561625674,0.8667312928357135,0.8683549911889635,0.8693451070415523,0.8705351512781333,0.9166807899562164,0.9180371466801459,0.9231806186539561,0.9231813011623183,0.9234923289356389,0.9207745278655878,0.9184451914960534,0.9008968826422237,0.8798049893188301,0.8661270223712578,0.8443510037448101,0.8342104246212995,0.8292320405143804,0.8148491865987271,0.7800226957282832,0.7645466862054813,0.7467977165972636,0.6725754438412307,0.641963508865155,0.5686051334194991,0.5042840488755107,0.4840888356582566,0.44667793942169276,0.31639300235476825,0.230022087784347,0.22332065863404413,0.2155493659718664,0.1526832920941509,0.0627138741963236,0.08158085883962234,0.16528625496305016,0.2829634829807335,0.3410668653913931,0.5790466654157473,0.6109557738862326,0.7216502285718116,0.7469322172570945,0.7779663844149035,0.8770823162265364,0.8855036940268062,0.8970899652834592,0.9119070785154461,0.9575761314344451,0.9604595638305423,0.9797966048577464,0.9844694605781524,0.9867483321132715,0.9966629927269355,0.9979596157604709,0.9996842343966135,0.9957803496589287,0.992124049038313,0.9868290282806464,0.9725145676811014,0.9715333721985774,0.9703981703199154,0.9220743576084423,0.9081450807273421,0.8961721482607456,0.8941111272029192,0.8929861786435352,0.8811619912926186,0.8791580232080957,0.8790442865026483,0.8029008332082948,0.7544179779217375,0.6697019943185649,0.6659939051279369,0.6278908767609068,0.6210603800198458,0.6044101731604712,0.6012425209011618,0.5880615810617229,0.5746329065443093,0.39355235278806117,0.32493297292351325,0.29129425367454986,0.2764376751553069,0.20371822147361957,0.3774792353134578,0.409300101679797,0.47812155280656726,0.48426035028213243,0.51771275670036,0.5452777089411014,0.5470145796398325,0.5626321636083552,0.5812948554695393,0.5893854373981873,0.5952683359532576,0.5960100571371142,0.6041987241443354,0.605930923152763,0.641492680044645,0.6589301534642708,0.686932524437034,0.7174413688139734,0.7259937183038804,0.7806901842018362,0.7932314365127529,0.8246784519668487,0.8365530621077214,0.8387606597959303,0.8561973939946407,0.8572461982803516,0.8601071693938254,0.8598629231626056,0.8590272903575423,0.8533687220517822,0.8473436742829972,0.8468141711568985,0.8369353573909851,0.8355630413285124,0.7954326371312062,0.7595988462323309,0.7314754759729124,0.6906952193457352,0.5799850658797364,0.5600086557889927,0.55390652496167,0.5391422176710413,0.35845702812762964,0.29717250308687393,0.26872303617303606,0.23260871165497504,0.17377070399230332,0.13598699407611778,0.09956082064196686]
+}
+},{
+"geom":"bracket",
+"data":{
+"x":[-2.9,-3.3,-3.7],
+"ymin":["a","a","b"],
+"ymax":["b","c","c"],
+"label":["*","**","ns"]
+},
+"mapping":{
+"x":"x",
+"ymin":"ymin",
+"ymax":"ymax",
+"label":"label"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"x"
+},{
+"type":"str",
+"column":"ymin"
+},{
+"type":"str",
+"column":"ymax"
+},{
+"type":"str",
+"column":"label"
+}]
+},
+"tiplength_unit":"identity",
+"lenstart":-0.1,
+"lenend":-0.1,
+"vjust":2.2,
+"color":"maroon",
+"size":9.0,
+"segment_size":1.25,
+"orientation":"y"
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+
+   if (renderImmediately) {
+       renderPlot();
+   }
+
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+
+       observer.observe(containerDiv);
+   }
+
+   // ----------
+   })();
+
+   </script></div></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lets_plot.geom_bracket"><code class="docutils literal notranslate"><span class="pre">geom_bracket()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="copyright">
+  Copyright © 2019-2026 JetBrains s.r.o.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+<p class="sphinx-version theme-version">
+  Created using
+  <a class="reference external" href="https://www.sphinx-doc.org/" target="_blank">Sphinx</a>
+  8.1.3 and
+  <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html" target="_blank">PyData Sphinx Theme</a>
+  0.16.1.
+<p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="terms">
+  <a class="reference internal terms-of-service" href="../../../_static/docs/lets-plot_terms.pdf" target="_blank">
+    Terms
+  </a>
+  |
+  <a class="reference internal licenses" href="../licenses.html">
+    Licenses
+  </a>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
