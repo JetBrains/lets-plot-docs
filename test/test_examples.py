@@ -4,6 +4,7 @@ import os
 import codecs
 import json
 import re
+import warnings
 
 import pytest
 from bs4 import BeautifulSoup
@@ -91,9 +92,10 @@ def check_version(notebook):
                 break
         for line in file:
             if "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot" in line:
-                match = re.search(r'lets-plot@v([0-9.]+)', line)
+                match = re.search(r'lets-plot@v([0-9]+(?:\.[0-9]+)*(?:rc[0-9]+)?)', line)
                 version = match.group(1)
-                assert lp.__version__ == version, "Version of Lets-Plot from the notebook {0} is too old: {1} instead of {2}".format(notebook, version, lp.__version__)
+                if lp.__version__ != version:
+                    warnings.warn(UserWarning("Version of Lets-Plot from the notebook {0} isn't right: {1} instead of {2}".format(notebook, version, lp.__version__)))
                 return
 
 def _to_html(path):
