@@ -539,10 +539,10 @@ Cookbooks:
 |l17| |d17| Positional Scales
 -----------------------------
 
-.. |l17| image:: /_static/images/icons/charts/positional-scales-light.png
+.. |l17| image:: /_static/images/icons/charts/positional-scales-light.svg
     :class: only-light
 
-.. |d17| image:: /_static/images/icons/charts/positional-scales-dark.png
+.. |d17| image:: /_static/images/icons/charts/positional-scales-dark.svg
     :class: only-dark
 
 :py:func:`scale_x_discrete() <lets_plot.scale_x_discrete>`,
