@@ -175,7 +175,9 @@ Demos:
 :py:func:`pie <lets_plot.geom_pie>`,
 :py:func:`lollipop <lets_plot.geom_lollipop>`,
 :py:func:`boxplot <lets_plot.geom_boxplot>`,
-:py:func:`count <lets_plot.geom_count>`/:py:func:`sum <lets_plot.stat_sum>`
+:py:func:`count <lets_plot.geom_count>`/:py:func:`sum <lets_plot.stat_sum>`,
+:py:func:`bracket <lets_plot.geom_bracket>`,
+:py:func:`bracket between dodged groups <lets_plot.geom_bracket_dodge>`
 
 .. raw:: html
 
@@ -353,7 +355,11 @@ Cookbooks:
 .. |d10| image:: /_static/images/icons/charts/smoothing-dark.svg
     :class: only-dark
 
-Use :py:func:`geom_smooth() <lets_plot.geom_smooth>` to draw a fitted smooth curve and, optionally, its confidence interval. The layer's ``labels`` parameter can display statistical summaries of the fitted model on the plot. Provide a :py:func:`smooth_labels() <lets_plot.smooth_labels>` object to insert values like :math:`R^2` or the regression equation.
+Use :py:func:`geom_smooth() <lets_plot.geom_smooth>` to draw a fitted smooth curve and, optionally, its confidence interval.
+
+The layer's ``labels`` parameter allows you to display statistical summaries of the fitted model directly on the plot.
+
+For details on available labels and formatting, see :doc:`Annotations in Lets-Plot </python/pages/annotations>`.
 
 Cookbooks:
 
