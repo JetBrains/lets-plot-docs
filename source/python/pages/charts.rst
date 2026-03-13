@@ -194,6 +194,8 @@ Cookbooks:
       :type: text
 - .. extref:: annotations_page
       :type: text
+- .. extref:: geom_bracket
+      :type: text
 - .. extref:: stat_boxplot_outlier
       :type: text
 - .. extref:: geom_lollipop
@@ -351,13 +353,15 @@ Cookbooks:
 .. |d10| image:: /_static/images/icons/charts/smoothing-dark.svg
     :class: only-dark
 
-:py:func:`smoothing line <lets_plot.geom_smooth>`
+Use :py:func:`geom_smooth() <lets_plot.geom_smooth>` to draw a fitted smooth curve and, optionally, its confidence interval. The layer's ``labels`` parameter can display statistical summaries of the fitted model on the plot. Provide a :py:func:`smooth_labels() <lets_plot.smooth_labels>` object to insert values like :math:`R^2` or the regression equation.
 
 Cookbooks:
 
-- .. extref:: scatter_plot
-      :type: text
 - .. extref:: geom_smooth_matrix
+      :type: text
+- .. extref:: smooth_summary
+      :type: text
+- .. extref:: scatter_plot
       :type: text
 
 
