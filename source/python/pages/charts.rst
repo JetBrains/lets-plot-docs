@@ -194,6 +194,8 @@ Cookbooks:
       :type: text
 - .. extref:: annotations_page
       :type: text
+- .. extref:: geom_bracket
+      :type: text
 - .. extref:: stat_boxplot_outlier
       :type: text
 - .. extref:: geom_lollipop
@@ -355,6 +357,8 @@ Cookbooks:
 
 Cookbooks:
 
+- .. extref:: smooth_summary
+      :type: text
 - .. extref:: scatter_plot
       :type: text
 - .. extref:: geom_smooth_matrix
