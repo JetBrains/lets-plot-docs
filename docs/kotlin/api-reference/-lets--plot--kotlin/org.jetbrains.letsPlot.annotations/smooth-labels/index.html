@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>smoothLabels</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<script type="text/javascript" src="../../../images/custom.js" async="async"></script>
+<link href="../../../images/logo-icon.svg">
+<link href="../../../images/logo-dark.svg">
+<link href="../../../images/homepage.svg">
+<link href="../../../styles/custom.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            Lets-Plot-Kotlin
+                    </a>
+            </div>
+            <div class="library-version">
+4.13.0            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":plot-api:dokkaHtml/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+            <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="https://github.com/JetBrains/lets-plot-kotlin"></a>
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Lets-Plot-Kotlin::org.jetbrains.letsPlot.annotations/smoothLabels///PointingToDeclaration//-1086445664">
+  <div class="breadcrumbs"><a href="../../../index.html">Lets-Plot-Kotlin</a><span class="delimiter">/</span><a href="../index.html">org.jetbrains.letsPlot.annotations</a><span class="delimiter">/</span><span class="current">smoothLabels</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>smooth</span><wbr></wbr><span><span>Labels</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">smoothLabels</a></div><p class="paragraph">Configure annotations for <a href="../../org.jetbrains.letsPlot.geom/geom-smooth.html">geomSmooth()</a> layers.</p><p class="paragraph">This class extends <a href="../layer-labels/index.html">layerLabels()</a> and provides additional options for displaying statistics produced by the <code class="lang-kotlin">smooth</code> stat, such as R², adjusted R², and the fitted model equation.</p><p class="paragraph">It allows placing a multi-line annotation near the smooth curve and mixing custom text, computed variables (e.g. <code class="lang-kotlin">..r2..</code>), and a generated equation block. If created without any additional configuration the annotation displays a single line with R².</p><h2 class="">Supported variables and markers</h2><p class="paragraph">Use these in <a href="line.html">line()</a> templates via <code class="lang-kotlin">@..name..</code> syntax:</p><ul><li><p class="paragraph"><code class="lang-kotlin">..r2..</code> - R² (coefficient of determination).</p></li><li><p class="paragraph"><code class="lang-kotlin">..adjr2..</code> - adjusted R².</p></li><li><p class="paragraph"><code class="lang-kotlin">..aic..</code> - Akaike Information Criterion.</p></li><li><p class="paragraph"><code class="lang-kotlin">..bic..</code> - Bayesian Information Criterion.</p></li><li><p class="paragraph"><code class="lang-kotlin">..f..</code> - F-statistic.</p></li><li><p class="paragraph"><code class="lang-kotlin">..df1..</code> - numerator degrees of freedom for the F-test.</p></li><li><p class="paragraph"><code class="lang-kotlin">..df2..</code> - denominator degrees of freedom for the F-test.</p></li><li><p class="paragraph"><code class="lang-kotlin">..p..</code> - p-value for the overall model F-test.</p></li><li><p class="paragraph"><code class="lang-kotlin">..method..</code> - smoothing method label (<code class="lang-kotlin">lm</code> or <code class="lang-kotlin">loess</code>).</p></li><li><p class="paragraph"><code class="lang-kotlin">..n..</code> - number of observations used in model fitting.</p></li><li><p class="paragraph"><code class="lang-kotlin">..cilevel..</code> - confidence level used for the R² confidence interval.</p></li><li><p class="paragraph"><code class="lang-kotlin">..cilow..</code> - lower bound of the R² confidence interval.</p></li><li><p class="paragraph"><code class="lang-kotlin">..cihigh..</code> - upper bound of the R² confidence interval.</p></li><li><p class="paragraph"><code class="lang-kotlin">~eq</code> - fitted equation (use in a <a href="line.html">line()</a> template to insert the model equation).</p></li></ul><h2 class="">Notes</h2><p class="paragraph">By default, annotation text color is automatically selected for good readability.</p><p class="paragraph">Use <code class="lang-kotlin">theme(labelText = elementText(...))</code> to customize the appearance of annotation text. See also <a href="../../org.jetbrains.letsPlot.themes/element-text.html">elementText()</a>.</p><p class="paragraph">Alternatively, the <a href="inherit-color.html">inheritColor()</a> method can be used to make annotation text use the geometry's <code class="lang-kotlin">color</code> aesthetic, overriding both the automatically selected text color and any color specified via <code class="lang-kotlin">theme(labelText = elementText(...))</code>.</p><h2 class="">Examples</h2><ul><li><p class="paragraph"><a href="https://lets-plot.org/kotlin/examples/cookbook/smooth_summary.html">smooth_summary.html</a></p></li></ul><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val data = mapOf(&quot;x&quot; to listOf(0, 1.5, 1.7, 2), &quot;y&quot; to listOf(0, 1, 1.8, 4))<br>letsPlot(data) { x = &quot;x&quot;; y = &quot;y&quot; } +<br>    geomPoint() +<br>    geomSmooth(<br>        deg = 2,<br>        labels = smoothLabels()<br>            .line(&quot;&quot;&quot;\(R^2=\)@..r2..&quot;&quot;&quot;)<br>            .line(&quot;~eq&quot;)<br>            .size(16)<br>    )</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="664805388%2FConstructors%2F-1086445664" anchor-label="smoothLabels" id="664805388%2FConstructors%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="smooth-labels.html"><span>smooth</span><wbr></wbr><span><span>Labels</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="664805388%2FConstructors%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1153221910%2FFunctions%2F-1086445664" anchor-label="eq" id="-1153221910%2FFunctions%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="eq.html"><span><span>eq</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1153221910%2FFunctions%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="eq.html"><span class="token function">eq</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lhs<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">rhs<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">format<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">threshold<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="brief "><p class="paragraph">Configures the auto-generated equation (<code class="lang-kotlin">~eq</code> marker).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-699460089%2FFunctions%2F-1086445664" anchor-label="format" id="-699460089%2FFunctions%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="format.html"><span><span>format</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-699460089%2FFunctions%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="format.html"><span class="token function">format</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">field<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">format<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="brief "><p class="paragraph">Defines the format for displaying the value. The format will be applied to the corresponding value specified in the line template.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1180053359%2FFunctions%2F-1086445664" anchor-label="inheritColor" id="-1180053359%2FFunctions%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inherit-color.html"><span>inherit</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1180053359%2FFunctions%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="inherit-color.html"><span class="token function">inheritColor</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="brief "><p class="paragraph">Use the layer's color for the annotation text.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1496925716%2FFunctions%2F-1086445664" anchor-label="labelX" id="-1496925716%2FFunctions%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="label-x.html"><span>label</span><wbr></wbr><span><span>X</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1496925716%2FFunctions%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="label-x.html"><span class="token function">labelX</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>positions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="label-x.html"><span class="token function">labelX</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">positions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="brief "><p class="paragraph">Sets horizontal anchor positions for each group's annotation label.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-60868822%2FFunctions%2F-1086445664" anchor-label="labelY" id="-60868822%2FFunctions%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="label-y.html"><span>label</span><wbr></wbr><span><span>Y</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-60868822%2FFunctions%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="label-y.html"><span class="token function">labelY</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>positions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="label-y.html"><span class="token function">labelY</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">positions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="brief "><p class="paragraph">Sets vertical anchor positions for each group's annotation label.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-862659617%2FFunctions%2F-1086445664" anchor-label="line" id="-862659617%2FFunctions%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="line.html"><span><span>line</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-862659617%2FFunctions%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="line.html"><span class="token function">line</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">template<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="brief "><p class="paragraph">Specifies a line template to show in the annotation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="987365364%2FFunctions%2F-1086445664" anchor-label="size" id="987365364%2FFunctions%2F-1086445664" data-filterable-set=":plot-api:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":plot-api:dokkaHtml/commonMain" data-filterable-set=":plot-api:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="size.html"><span><span>size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="987365364%2FFunctions%2F-1086445664"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":plot-api:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="size.html"><span class="token function">size</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-number/index.html">Number</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">smoothLabels</a></div><div class="brief "><p class="paragraph">Specifies the text size in the annotation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>Copyright © 2019-2026 JetBrains s.r.o.</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
