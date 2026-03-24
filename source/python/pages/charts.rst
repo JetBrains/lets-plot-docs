@@ -9,19 +9,17 @@
    :keywords: data visualization, charts, visualization of distribution, marginal plots, visualization of errors, smoothing line, visualize time series, images, faceting, coordinate systems, EDA, pandas DataFrame, polars DataFrame, geopandas GeoDataFrame, collection of plots, plot themes, plot flavors, panning, zooming, interactive links, LaTeX, markdown, manual legend, multiple color scales, quantiles, cookbooks
 
 
+.. raw:: html
+
+    <div id="charts-page">
+
+
 Charts
 ======
 
 
-|l1| |d1| Data
---------------
-
-.. |l1| image:: /_static/images/icons/charts/data-light.svg
-    :class: only-light
-
-.. |d1| image:: /_static/images/icons/charts/data-dark.svg
-    :class: only-dark
-
+Data
+----
 
 Every layer may have some data associated with it.
 The "data" refers to a table of data where each row contains an observation
@@ -36,14 +34,8 @@ You can pass tidy data to *Lets-Plot* in form of a **Pandas** Dataframe, a **Pol
     :text: example
 
 
-|l2| |d2| Aesthetics
---------------------
-
-.. |l2| image:: /_static/images/icons/charts/aesthetics-light.svg
-    :class: only-light
-
-.. |d2| image:: /_static/images/icons/charts/aesthetics-dark.svg
-    :class: only-dark
+Aesthetics
+----------
 
 - :ref:`Point shapes <aesthetics_point_shapes>`
 
@@ -70,15 +62,8 @@ Cookbooks:
       :type: text
 
 
-|l3| |d3| Basic Building Blocks
--------------------------------
-
-.. |l3| image:: /_static/images/icons/charts/basic-building-blocks-light.svg
-    :class: only-light
-
-.. |d3| image:: /_static/images/icons/charts/basic-building-blocks-dark.svg
-    :class: only-dark
-
+Basic Building Blocks
+---------------------
 
 Points:
 :py:func:`points <lets_plot.geom_point>`,
@@ -162,14 +147,8 @@ Demos:
       :type: text
 
 
-|l4| |d4| Discrete
-------------------
-
-.. |l4| image:: /_static/images/icons/charts/discrete-light.svg
-    :class: only-light
-
-.. |d4| image:: /_static/images/icons/charts/discrete-dark.svg
-    :class: only-dark
+Discrete
+--------
 
 :py:func:`bar <lets_plot.geom_bar>`,
 :py:func:`pie <lets_plot.geom_pie>`,
@@ -220,14 +199,8 @@ Cookbooks:
       :type: text
 
 
-|l5| |d5| Contours
-------------------
-
-.. |l5| image:: /_static/images/icons/charts/contours-light.svg
-    :class: only-light
-
-.. |d5| image:: /_static/images/icons/charts/contours-dark.svg
-    :class: only-dark
+Contours
+--------
 
 :py:func:`contours <lets_plot.geom_contour>`,
 :py:func:`filled contours <lets_plot.geom_contourf>`
@@ -243,14 +216,8 @@ Demos:
       :type: text
 
 
-|l6| |d6| Visualization of Distribution
----------------------------------------
-
-.. |l6| image:: /_static/images/icons/charts/visualization-of-distribution-light.svg
-    :class: only-light
-
-.. |d6| image:: /_static/images/icons/charts/visualization-of-distribution-dark.svg
-    :class: only-dark
+Visualization of Distribution
+-----------------------------
 
 :py:func:`histogram <lets_plot.geom_histogram>`,
 :py:func:`density <lets_plot.geom_density>`,
@@ -284,14 +251,8 @@ Cookbooks:
       :text: Using scales
 
 
-|l7| |d7| Stats
----------------
-
-.. |l7| image:: /_static/images/icons/charts/stats-light.svg
-    :class: only-light
-
-.. |d7| image:: /_static/images/icons/charts/stats-dark.svg
-    :class: only-dark
+Stats
+-----
 
 :py:func:`stat_ecdf() <lets_plot.stat_ecdf>`,
 :py:func:`stat_summary() <lets_plot.stat_summary>`,
@@ -309,14 +270,8 @@ Cookbooks:
       :type: text
 
 
-|l8| |d8| Function
-------------------
-
-.. |l8| image:: /_static/images/icons/charts/function-light.svg
-    :class: only-light
-
-.. |d8| image:: /_static/images/icons/charts/function-dark.svg
-    :class: only-dark
+Function
+--------
 
 :py:func:`function <lets_plot.geom_function>`
 
@@ -326,14 +281,8 @@ Cookbooks:
       :type: text
 
 
-|l9| |d9| Visualization of Errors
----------------------------------
-
-.. |l9| image:: /_static/images/icons/charts/visualization-of-errors-light.svg
-    :class: only-light
-
-.. |d9| image:: /_static/images/icons/charts/visualization-of-errors-dark.svg
-    :class: only-dark
+Visualization of Errors
+-----------------------
 
 :py:func:`crossbar <lets_plot.geom_crossbar>`,
 :py:func:`errorbar <lets_plot.geom_errorbar>`,
@@ -346,14 +295,8 @@ Cookbooks:
       :type: text
 
 
-|l10| |d10| Smoothing
----------------------
-
-.. |l10| image:: /_static/images/icons/charts/smoothing-light.svg
-    :class: only-light
-
-.. |d10| image:: /_static/images/icons/charts/smoothing-dark.svg
-    :class: only-dark
+Smoothing
+---------
 
 Use :py:func:`geom_smooth() <lets_plot.geom_smooth>` to draw a fitted smooth curve and, optionally, its confidence interval.
 
@@ -371,14 +314,8 @@ Cookbooks:
       :type: text
 
 
-|l11| |d11| Bivariate Distribution
-----------------------------------
-
-.. |l11| image:: /_static/images/icons/charts/bivariate-distribution-light.svg
-    :class: only-light
-
-.. |d11| image:: /_static/images/icons/charts/bivariate-distribution-dark.svg
-    :class: only-dark
+Bivariate Distribution
+----------------------
 
 :py:func:`2d bins <lets_plot.geom_bin2d>`,
 :py:func:`2d hexagonal bins <lets_plot.geom_hex>`,
@@ -398,14 +335,8 @@ Cookbooks:
       :type: text
 
 
-|l12| |d12| Marginal Plots
---------------------------
-
-.. |l12| image:: /_static/images/icons/charts/marginal-light.svg
-    :class: only-light
-
-.. |d12| image:: /_static/images/icons/charts/marginal-dark.svg
-    :class: only-dark
+Marginal Plots
+--------------
 
 :py:func:`ggmarginal <lets_plot.ggmarginal>`
 
@@ -417,14 +348,8 @@ Cookbooks:
       :type: text
 
 
-|l13| |d13| Time Series
------------------------
-
-.. |l13| image:: /_static/images/icons/charts/time-series-light.svg
-    :class: only-light
-
-.. |d13| image:: /_static/images/icons/charts/time-series-dark.svg
-    :class: only-dark
+Time Series
+-----------
 
 :py:func:`scale_x_datetime() <lets_plot.scale_x_datetime>`,
 :py:func:`scale_y_datetime() <lets_plot.scale_y_datetime>`,
@@ -463,14 +388,8 @@ Demos:
       :type: text
 
 
-|l14| |d14| Images
-------------------
-
-.. |l14| image:: /_static/images/icons/charts/images-light.svg
-    :class: only-light
-
-.. |d14| image:: /_static/images/icons/charts/images-dark.svg
-    :class: only-dark
+Images
+------
 
 :py:func:`geom_imshow() <lets_plot.geom_imshow>`,
 :py:func:`matrix of images <lets_plot.bistro.im.image_matrix>`
@@ -500,14 +419,8 @@ Cookbooks:
       :type: text
 
 
-|l15| |d15| Facets
-------------------
-
-.. |l15| image:: /_static/images/icons/charts/facets-light.svg
-    :class: only-light
-
-.. |d15| image:: /_static/images/icons/charts/facets-dark.svg
-    :class: only-dark
+Facets
+------
 
 :py:func:`facet_grid() <lets_plot.facet_grid>`,
 :py:func:`facet_wrap() <lets_plot.facet_wrap>`
@@ -523,14 +436,8 @@ Demos:
       :type: text
 
 
-|l16| |d16| Coordinate Systems
-------------------------------
-
-.. |l16| image:: /_static/images/icons/charts/coordinate-systems-light.svg
-    :class: only-light
-
-.. |d16| image:: /_static/images/icons/charts/coordinate-systems-dark.svg
-    :class: only-dark
+Coordinate Systems
+------------------
 
 :py:func:`coord_cartesian() <lets_plot.coord_cartesian>`,
 :py:func:`coord_fixed() <lets_plot.coord_fixed>`,
@@ -546,14 +453,8 @@ Cookbooks:
       :type: text
 
 
-|l17| |d17| Positional Scales
------------------------------
-
-.. |l17| image:: /_static/images/icons/charts/positional-scales-light.svg
-    :class: only-light
-
-.. |d17| image:: /_static/images/icons/charts/positional-scales-dark.svg
-    :class: only-dark
+Positional Scales
+-----------------
 
 :py:func:`scale_x_discrete() <lets_plot.scale_x_discrete>`,
 :py:func:`scale_y_discrete() <lets_plot.scale_y_discrete>`,
@@ -587,14 +488,8 @@ Demos:
       :type: text
 
 
-|l18| |d18| Legends and Guides
-------------------------------
-
-.. |l18| image:: /_static/images/icons/charts/legend-light.svg
-    :class: only-light
-
-.. |d18| image:: /_static/images/icons/charts/legend-dark.svg
-    :class: only-dark
+Legends and Guides
+------------------
 
 :py:func:`guide_legend() <lets_plot.guide_legend>`,
 :py:func:`guide_colorbar() <lets_plot.guide_colorbar>`,
@@ -611,14 +506,8 @@ Cookbooks:
       :type: text
 
 
-|l19| |d19| 'bistro' Plots
---------------------------
-
-.. |l19| image:: /_static/images/icons/charts/bistro-light.svg
-    :class: only-light
-
-.. |d19| image:: /_static/images/icons/charts/bistro-dark.svg
-    :class: only-dark
+'bistro' Plots
+--------------
 
 :py:func:`corr_plot() <lets_plot.bistro.corr.corr_plot>`,
 :py:func:`qq_plot() <lets_plot.bistro.qq.qq_plot>`,
@@ -633,14 +522,8 @@ With these high-level functions you can create visualizations like correlation m
 Learn more: :doc:`'bistro' Plots </python/pages/bistro>`.
 
 
-|l20| |d20| GeoPandas Shapes
-----------------------------
-
-.. |l20| image:: /_static/images/icons/charts/geopandas-light.svg
-    :class: only-light
-
-.. |d20| image:: /_static/images/icons/charts/geopandas-dark.svg
-    :class: only-dark
+GeoPandas Shapes
+----------------
 
 GeoPandas ``GeoDataFrame`` is supported by the following geometry layers: :py:func:`polygon <lets_plot.geom_polygon>`, :py:func:`map <lets_plot.geom_map>`, :py:func:`point <lets_plot.geom_point>`, :py:func:`pointdensity <lets_plot.geom_pointdensity>`, :py:func:`pie <lets_plot.geom_pie>`, :py:func:`text <lets_plot.geom_text>`, :py:func:`label <lets_plot.geom_label>`, :py:func:`path <lets_plot.geom_path>`, :py:func:`rect <lets_plot.geom_rect>`.
 
@@ -665,14 +548,8 @@ Demos:
       :type: text
 
 
-|l21| |d21| Grouping Plots
---------------------------
-
-.. |l21| image:: /_static/images/icons/charts/grouping-plots-light.svg
-    :class: only-light
-
-.. |d21| image:: /_static/images/icons/charts/grouping-plots-dark.svg
-    :class: only-dark
+Grouping Plots
+--------------
 
 :py:func:`ggbunch <lets_plot.ggbunch>` and :py:func:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
 
@@ -709,14 +586,8 @@ Cookbooks:
       :type: text
 
 
-|l22| |d22| Presentation Options
---------------------------------
-
-.. |l22| image:: /_static/images/icons/charts/presentation-options-light.svg
-    :class: only-light
-
-.. |d22| image:: /_static/images/icons/charts/presentation-options-dark.svg
-    :class: only-dark
+Presentation Options
+--------------------
 
 :py:func:`theme() <lets_plot.theme>`,
 :py:func:`ggtitle() <lets_plot.ggtitle>`,
@@ -1004,3 +875,8 @@ Resources
 
 
 .. include:: /python/shared/features.rst
+
+
+.. raw:: html
+
+    </div>

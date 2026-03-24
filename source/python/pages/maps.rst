@@ -9,6 +9,11 @@
    :keywords: geospatial visualization, interactive maps, ggplot2, geopandas, GeoDataFrame, basemap tiles, Lets-Plot in SciView
 
 
+.. raw:: html
+
+    <div id="maps-page">
+
+
 Maps
 ====
 
@@ -54,28 +59,16 @@ Choropleth Map
 Combine Layers on Map ``ggplot2`` Style
 ---------------------------------------
 
-|quickstart-light| |quickstart-dark| Quick Start
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. |quickstart-light| image:: /_static/images/icons/maps/quickstart-light.svg
-    :class: only-light
-
-.. |quickstart-dark| image:: /_static/images/icons/maps/quickstart-dark.svg
-    :class: only-dark
+Quick Start
+~~~~~~~~~~~
 
 |map_quickstart|.
 
 .. |map_quickstart| extref:: map_quickstart
     :type: text
 
-|layers_primitives-light| |layers_primitives-dark| Primitives
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. |layers_primitives-light| image:: /_static/images/icons/maps/layers_primitives-light.svg
-    :class: only-light
-
-.. |layers_primitives-dark| image:: /_static/images/icons/maps/layers_primitives-dark.svg
-    :class: only-dark
+Primitives
+~~~~~~~~~~
 
 :py:func:`point <lets_plot.geom_point>`,
 :py:func:`pie <lets_plot.geom_pie>`,
@@ -97,26 +90,14 @@ Combine Layers on Map ``ggplot2`` Style
 .. |param_geodesic| extref:: param_geodesic
       :type: text
 
-|layers_contours-light| |layers_contours-dark| Contours
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. |layers_contours-light| image:: /_static/images/icons/maps/layers_contours-light.svg
-    :class: only-light
-
-.. |layers_contours-dark| image:: /_static/images/icons/maps/layers_contours-dark.svg
-    :class: only-dark
+Contours
+~~~~~~~~
 
 :py:func:`contour <lets_plot.geom_contour>`,
 :py:func:`filled contour <lets_plot.geom_contourf>`.
 
-|layers_bivariate-light| |layers_bivariate-dark| Bivariate Distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. |layers_bivariate-light| image:: /_static/images/icons/maps/layers_bivariate-light.svg
-    :class: only-light
-
-.. |layers_bivariate-dark| image:: /_static/images/icons/maps/layers_bivariate-dark.svg
-    :class: only-dark
+Bivariate Distribution
+~~~~~~~~~~~~~~~~~~~~~~
 
 :py:func:`2d bins <lets_plot.geom_bin2d>`,
 :py:func:`2d hexagonal bins <lets_plot.geom_hex>`,
@@ -233,3 +214,8 @@ Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.j
 
 
 .. include:: /python/shared/features.rst
+
+
+.. raw:: html
+
+    </div>
