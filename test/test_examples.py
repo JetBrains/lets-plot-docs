@@ -13,10 +13,10 @@ import lets_plot as lp
 
 from .parser import notebook_parser
 from .generator import generate_pages, generate_notebooks
-from .lets_plot_errors import check_lets_plot_message_errors, check_warnings, check_copy_spec
+from .lets_plot_errors import check_lets_plot_message_errors, lets_plot_errors, check_warnings, check_copy_spec
 from .test_links import check_url
 
-EXCLUDED_PYTHON_NOTEBOOKS = []
+EXCLUDED_PYTHON_NOTEBOOKS = ["backend_plot_error", "frontend_plot_error"]
 
 BUILD_DIR = "docs"
 SOURCE_DIR = "source"
@@ -64,6 +64,17 @@ def test_notebook_has_no_errors(notebook):
         check_lets_plot_message_errors(parser, parser_type, notebook)
         check_copy_spec(parser, parser_type, notebook)
         check_warnings(parser, parser_type, notebook)
+
+@pytest.mark.parametrize('test', [
+    ("source/examples/test/failures/backend_plot_error.ipynb", "Plot displaying backend error"),
+    ("source/examples/test/failures/frontend_plot_error.ipynb", "Plot displaying frontend error"),
+])
+def test_errors(test):
+    notebook, error_kind = test
+    with notebook_parser(notebook, _to_html(notebook), None) as (parser, parser_type):
+        errors_count, message = lets_plot_errors(parser, parser_type, notebook)
+        assert errors_count > 0, "Expected plot error in {0}".format(notebook)
+        assert message.startswith(error_kind), "Wrong plot error kind in {0}".format(notebook)
 
 @pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links(excluded_names=["whats_new"]))
 def test_notebook_has_file(page, a):
