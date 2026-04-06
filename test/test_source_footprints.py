@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import re
-import codecs
 import warnings
 
 import pytest
@@ -13,7 +12,7 @@ BUILD_DIR = "docs"
 
 @pytest.mark.parametrize(('page'), generate_pages(BUILD_DIR))
 def test_source_footprints(page):
-    with codecs.open(page, 'r', 'utf-8') as f:
+    with open(page, 'r', encoding='utf-8') as f:
         soup = BeautifulSoup(f, 'html.parser')
         for script in soup.select('script'):
             script.extract()

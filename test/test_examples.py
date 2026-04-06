@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import codecs
 import json
 import re
 import warnings
@@ -41,7 +40,7 @@ def paths_contains_name(paths, name):
 
 def generate_local_notebook_links(excluded_names=[]):
     for page in generate_pages(BUILD_DIR, excluded_names=excluded_names):
-        with codecs.open(page, 'r', 'utf-8') as f:
+        with open(page, 'r', encoding='utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
                 if not a.has_attr('href'):
