@@ -152,7 +152,7 @@ Colors and fills of geometries can be specified in the following ways:
 
 - **RGB**/**RGBA** - e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``.
 
-- **HEX** - e.g. ``"#0077ff"`` or shorthand ``"#07f"``. An alpha component can be appended: ``"#0077ff80"`` or the shorthand ``"#07f8"``.
+- **HEX** - e.g. ``"#0077ff"`` or shorthand ``"#07f"``. An alpha component can be appended: ``"#0077ff80"`` or the shorthand ``"#07f8"``, see |color_alpha|.
 
 - **Transparent** - an empty string (``""``) or the aliases ``"blank"`` and ``"transparent"`` for a fully transparent color.
 
@@ -203,5 +203,9 @@ Colors and fills of geometries can be specified in the following ways:
 See |system_colors|.
 
 .. |system_colors| extref:: aesthetics_system_colors
+    :type: text
+    :text: example
+
+.. |color_alpha| extref:: color_alpha
     :type: text
     :text: example

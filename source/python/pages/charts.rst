@@ -112,6 +112,8 @@ Cookbooks:
       :type: text
 - .. extref:: missing_values_line_path_area_ribbon
       :type: text
+- .. extref:: removed_records_indication
+      :type: text
 - .. extref:: graph_edges
       :type: text
 - .. extref:: formatting_axes_etc
@@ -559,6 +561,10 @@ Cookbooks:
       :type: text
 - .. extref:: plot_grid
       :type: text
+- .. extref:: ggdeck_dual_axis
+      :type: text
+- .. extref:: ggdeck_plot_overlay
+      :type: text
 - .. extref:: gggrid_scale_share
       :type: text
 - .. extref:: gggrid_scale_share_zoom
@@ -789,6 +795,8 @@ Options ``manual_key`` and ``override_aes`` addresses this limitation.
 Cookbooks:
 
 - .. extref:: manual_legend
+      :type: text
+- .. extref:: legend_key_size
       :type: text
 
 Demos:

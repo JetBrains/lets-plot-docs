@@ -51,7 +51,7 @@ You can specify a color for theme elements and geometries by its name from the t
 
 .. note::
 
-  Any named color can carry an opacity suffix: ``"steelblue / 0.35"`` is the named color ``"steelblue"`` at 35% opacity. The opacity value is between ``0.0`` and ``1.0``.
+  Any named color can carry an opacity suffix: ``"steelblue / 0.35"`` is the named color ``"steelblue"`` at 35% opacity. The opacity value is between ``0.0`` and ``1.0``. See |color_alpha|.
 
 .. tab-set::
 
@@ -62,3 +62,7 @@ You can specify a color for theme elements and geometries by its name from the t
   .. tab-item:: By name
 
       .. include:: include/aesthetics/named-colors-table_by-name.rst
+
+.. |color_alpha| extref:: color_alpha
+    :type: text
+    :text: example

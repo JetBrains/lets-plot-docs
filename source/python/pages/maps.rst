@@ -213,6 +213,42 @@ Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.j
 .. image:: /_static/images/pycharm_map_fr_low_65.gif
 
 
+Example Notebooks
+-----------------
+
+Cookbooks:
+
+- .. extref:: geom_livemap_interactive
+    :type: text
+- .. extref:: param_flat
+    :type: text
+
+Demos:
+
+- .. extref:: titanic
+    :type: text
+- .. extref:: pushkin
+    :type: text
+- .. extref:: map_airports
+    :type: text
+- .. extref:: beijing
+    :type: text
+- .. extref:: plotting_airbnb_prices_boston
+    :type: text
+- .. extref:: soil_pollutants_with_gaussian_processes
+    :type: text
+- .. extref:: covid19_india
+    :type: text
+- .. extref:: cities_density
+    :type: text
+- .. extref:: map_california_housing
+    :type: text
+- .. extref:: minard
+    :type: text
+- .. extref:: montenegrin_independence_referendum
+    :type: text
+
+
 .. include:: /python/shared/features.rst
 
 
