@@ -58,6 +58,7 @@ Plotting
     ggplot
     ggbunch
     gggrid
+    ggdeck
     ggmarginal
     ggtb
     aes
