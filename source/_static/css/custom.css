@@ -255,7 +255,7 @@ p.admonition-title {
 #charts-page section > h2,
 #maps-page section > h3 {
   position: relative;
-  padding-left: 1.25em;
+  padding-left: calc(var(--section-icon-size, 0) * 1.25em);
 }
 
 #charts-page section > h2::before,
@@ -328,6 +328,40 @@ html[data-theme=dark] .explore-your-data-container div.cell_output .text_html {
 
 html[data-theme=dark] #aesthetics div.cell_output .text_html {
   padding: initial !important;
+}
+
+/*
+  Enable icon spacing only for sections that actually have an icon.
+  Sections without an icon keep the default --section-icon-size: 0 and get no padding.
+*/
+
+#charts-page section#data,
+#charts-page section#aesthetics,
+#charts-page section#basic-building-blocks,
+#charts-page section#discrete,
+#charts-page section#contours,
+#charts-page section#visualization-of-distribution,
+#charts-page section#stats,
+#charts-page section#function,
+#charts-page section#visualization-of-errors,
+#charts-page section#smoothing,
+#charts-page section#bivariate-distribution,
+#charts-page section#marginal-plots,
+#charts-page section#time-series,
+#charts-page section#images,
+#charts-page section#facets,
+#charts-page section#coordinate-systems,
+#charts-page section#positional-scales,
+#charts-page section#legends-and-guides,
+#charts-page section#bistro-plots,
+#charts-page section#presentation-options,
+#charts-page section#geopandas-shapes,
+#charts-page section#grouping-plots,
+#maps-page section#quick-start,
+#maps-page section#primitives,
+#maps-page section#contours,
+#maps-page section#bivariate-distribution {
+    --section-icon-size: 1;
 }
 
 /*
