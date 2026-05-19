@@ -551,7 +551,7 @@ Demos:
 Grouping Plots
 --------------
 
-:py:func:`ggbunch <lets_plot.ggbunch>` and :py:func:`gggrid <lets_plot.gggrid>` shows a collection of plots on one figure.
+:py:func:`ggbunch <lets_plot.ggbunch>`, :py:func:`gggrid <lets_plot.gggrid>` and :py:func:`ggdeck <lets_plot.ggdeck>` shows a collection of plots on one figure.
 
 Cookbooks:
 
