@@ -791,6 +791,11 @@ Cookbooks:
 - .. extref:: manual_legend
       :type: text
 
+Demos:
+
+- .. extref:: math_manual_legend
+      :type: text
+
 Multiple Color Scales
 ~~~~~~~~~~~~~~~~~~~~~
 

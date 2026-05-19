@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: math_manual_legend
+
+    .. grid-item-card::
+
         .. extref:: earthquakes_in_2025
 
     .. grid-item-card::
