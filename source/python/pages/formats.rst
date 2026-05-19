@@ -1,4 +1,4 @@
-﻿.. _formats:
+.. _formats:
 
 :og:description: Formatting in Lets-Plot provides the ability to do complex variable substitutions and value formatting.
 
@@ -186,7 +186,8 @@ The list of supported directives to format date/time values:
 - ``%M`` - minute as a zero-padded decimal number (00, 01, …, 59);
 - ``%p`` - "AM" or "PM" according to the given time value;
 - ``%P`` - like %p but in lowercase: "am" or "pm";
-- ``%S`` - second as a zero-padded decimal number (00, 01, …, 59).
+- ``%S`` - second as a zero-padded decimal number (00, 01, …, 59);
+- ``%f`` - millisecond as a zero-padded decimal number (000, 001, …, 999).
 
 
 .. note::
@@ -199,7 +200,7 @@ The list of supported directives to format date/time values:
 Examples
 ~~~~~~~~
 
-Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35``:
+Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35.123``:
 
 .. code-block:: none
 
@@ -221,8 +222,9 @@ Let's apply the format string to the date ``Aug 6, 2019`` and the time ``4:46:35
     %P  -->  "am"
     %p  -->  "AM"
     %S  -->  "35"
+    %f  -->  "123"
 
-    %Y-%m-%dT%H:%M:%S      -->  "2019-08-06T04:46:35"
+    %Y-%m-%dT%H:%M:%S.%f   -->  "2019-08-06T04:46:35.123"
     %m/%d/%Y               -->  "08/06/2019"
     %m-%d-%Y %H:%M         -->  "08-06-2019 04:46"
     %d.%m.%y               -->  "06.08.19"
