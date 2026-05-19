@@ -49,6 +49,10 @@ You can specify a color for theme elements and geometries by its name from the t
 
   Named colors are case-insensitive and can be written in various formats: ``LightGreen``, ``lightgreen``, ``light green``, or ``light-green`` are all accepted and treated equivalently. You can also use either ``"gray"`` or ``"grey"`` spelling for grayscale colors.
 
+.. note::
+
+  Any named color can carry an opacity suffix: ``"steelblue / 0.35"`` is the named color ``"steelblue"`` at 35% opacity. The opacity value is between ``0.0`` and ``1.0``.
+
 .. tab-set::
 
   .. tab-item:: By shade

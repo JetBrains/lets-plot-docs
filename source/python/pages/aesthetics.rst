@@ -152,11 +152,13 @@ Colors and fills of geometries can be specified in the following ways:
 
 - **RGB**/**RGBA** - e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``.
 
-- **HEX** - e.g. ``"#0077ff"`` or shorthand ``"#07f"``.
+- **HEX** - e.g. ``"#0077ff"`` or shorthand ``"#07f"``. An alpha component can be appended: ``"#0077ff80"`` or the shorthand ``"#07f8"``.
 
 - **Transparent** - an empty string (``""``) or the aliases ``"blank"`` and ``"transparent"`` for a fully transparent color.
 
 - **Named colors** - see :doc:`the named colors reference </python/pages/named_colors>`.
+
+- **Named color with opacity** - append `` / <opacity>`` (a value in ``0.0`` to ``1.0``) to a named color to apply transparency. Example: ``"steelblue / 0.35"``.
 
 - **System colors** depending on the current theme :ref:`flavor <charts_presentation_options_flavors>`, one of:
 
