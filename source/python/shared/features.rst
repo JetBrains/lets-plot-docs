@@ -27,6 +27,16 @@ Key Features
     .. grid-item-card::
         :shadow: none
 
+        .. include:: /python/shared/features/bistro.rst
+
+    .. grid-item-card::
+        :shadow: none
+
+        .. include:: /python/shared/features/zoom_pan.rst
+
+    .. grid-item-card::
+        :shadow: none
+
         .. include:: /python/shared/features/tooltips.rst
 
     .. grid-item-card::
