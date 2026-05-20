@@ -3,85 +3,54 @@
 .. title:: What is New
 
 
-What Is New in 4.9.0
-====================
+What Is New in 4.10.0
+=====================
 
-- **Statistical Summaries Directly on geom_smooth() Plot Layer**
+- **ggdeck()**
 
-  The :py:func:`geom_smooth() <lets_plot.geom_smooth>` layer now includes a ``labels`` parameter designed to display statistical summaries of the fitted model directly on the plot.
-  This parameter accepts a :py:func:`smooth_labels() <lets_plot.smooth_labels>` object, which provides access to model-specific variables like :math:`R^2` and the regression equation.
+  The new :py:func:`ggdeck() <lets_plot.ggdeck>` function overlays multiple independent plots in a
+  shared plotting area. Typically, all plots share one axis — enabling dual-axis charts and multivariate comparisons.
 
-  .. image:: /_static/images/changelog/4.9.0/smooth_summary.png
+  - **Dual Axis:**
+
+    .. image:: /_static/images/changelog/4.10.0/ggdeck_dual_axis.png
+      :width: 550
+      :height: 295
+
+    See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26b/ggdeck_dual_axis.html>`__.
+
+  - **Multivariate Comparison:**
+
+    .. image:: /_static/images/changelog/4.10.0/ggdeck_plot_overlay.png
+      :width: 600
+      :height: 283
+
+    See `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26b/ggdeck_plot_overlay.html>`__.
+
+- **Alpha Channel in Color Strings**
+
+  - Named colors accept an opacity suffix after a slash: ``"steelblue/0.35"``.
+  - Hex colors accept an alpha channel: ``#RRGGBBAA`` or short form ``#RGBA``.
+
+  .. image:: /_static/images/changelog/4.10.0/color_alpha_componnet.png
     :width: 400
-    :height: 265
+    :height: 214
 
-  See `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/smooth_summary.html>`__.
+  See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26b/color_alpha.html>`__.
 
-- **Plot Tags**
+- **Text Angle in Facet Strip Labels**
 
-  Plot tags are short labels attached to a plot.
+  Facet strip labels can now be rotated via the ``angle`` parameter of
+  :py:func:`element_text() <lets_plot.element_text>`, applied to ``strip_text``, ``strip_text_x``, or
+  ``strip_text_y``.
 
-  .. image:: /_static/images/changelog/4.9.0/plot_tags.png
-    :width: 600
-    :height: 185
+  Thanks to a contribution by `tentrillion <https://github.com/tentrillion>`__.
 
-  See `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/plot_tags.html>`__.
-
-- **New geom_bracket() and geom_bracket_dodge() Geometries**
-
-  New geometries designed primarily for significance bars (*p-values*) annotations in categorical plots.
-
-  .. image:: /_static/images/changelog/4.9.0/geom_bracket.png
+  .. image:: /_static/images/changelog/4.10.0/facet_strip_text_angle.png
     :width: 400
-    :height: 261
+    :height: 225
 
-  See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/geom_bracket.html>`__.
-
-- **Custom Color Palettes in geom_imshow()**
-
-  The ``cmap`` parameter now allows you to specify a list of hex color codes for visualizing grayscale images.
-  Also, the new ``cguide`` parameter lets you customize the colorbar for grayscale images.
-
-  .. image:: /_static/images/changelog/4.9.0/image_custom_cmap.png
-    :width: 400
-    :height: 248
-
-  See `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/image_custom_cmap.html>`__.
-
-- **New palette() Method in Color Scales**
-
-  Generates a list of hex color codes that can be used with :py:func:`scale_color_manual() <lets_plot.scale_color_manual>` to maintain consistent colors across multiple plots.
-
-  See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/scale_color_palette.html>`__.
-
-- **New overflow parameter in scale_color_brewer(), scale_fill_brewer()**
-
-  Controls how colors are generated when more colors are needed than the palette provides.
-  Options: ``'interpolate'`` (``'i'``), ``'cycle'`` (``'c'``), ``'generate'`` (``'g'``).
-
-  See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/scale_brewer_overflow.html>`__.
-
-- **New break_width Parameter in Positional Scales**
-
-  Specifies a fixed distance between axis breaks.
-
-  See examples:
-
-  - `datetime scale <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/scale_break_width_datetime.html>`__
-  - `time (duration) scale <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/scale_break_width_duration.html>`__
-  - `log10 scale <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/scale_break_width_log10.html>`__
-
-- **Axis Minor Ticks Customization**
-
-  The ``axis_minor_ticks`` and ``axis_minor_ticks_length`` parameters in :py:func:`theme() <lets_plot.theme>`.
-
-  See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/axis_minor_ticks.html>`__.
-
-- **Pan/Zoom in gggrid() with Shared Axes**
-
-  Pan/Zoom now propagates across subplots with shared axes (``sharex``/``sharey``).
-
-  See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26a/gggrid_scale_share_zoom.html>`__.
+  See: `example notebook <https://raw.githack.com/JetBrains/lets-plot/master/docs/f-26b/strip_text_angle.html>`__.
 
 - **And More**
 
@@ -90,6 +59,16 @@ What Is New in 4.9.0
 
 Recent Updates in the :doc:`Gallery </python/pages/gallery>`
 ------------------------------------------------------------
+
+.. image:: /_static/images/changelog/4.10.0/square-math_manual_legend.png
+  :width: 128
+  :height: 128
+  :target: https://lets-plot.org/examples/demo/math_manual_legend.html
+
+.. image:: /_static/images/changelog/4.10.0/square-earthquakes_in_2025.png
+  :width: 128
+  :height: 128
+  :target: https://lets-plot.org/examples/demo/earthquakes_in_2025.html
 
 .. image:: /_static/images/changelog/4.8.0/square-cities_density.png
   :width: 128
@@ -100,6 +79,10 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
   :width: 128
   :height: 128
   :target: https://lets-plot.org/examples/demo/raincloud.html
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.7.0/square-europe_capitals.png
   :width: 128
@@ -116,14 +99,14 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
   :height: 128
   :target: https://lets-plot.org/examples/demo/magnifier_inset.html
 
-.. raw:: html
-
-    <br/>
-
 .. image:: /_static/images/changelog/4.6.0/square-ggbunch_indonesia.png
   :width: 128
   :height: 128
   :target: https://lets-plot.org/examples/demo/ggbunch_indonesia.html
+
+.. raw:: html
+
+    <br/>
 
 .. image:: /_static/images/changelog/4.7.0/square-lets_plot_in_2024.png
   :width: 128
