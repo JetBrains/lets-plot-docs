@@ -1,7 +1,7 @@
-.. image:: /_static/images/icons/features/bistro-light.png
+.. image:: /_static/images/icons/features/bistro-light.svg
     :class: only-light
 
-.. image:: /_static/images/icons/features/bistro-dark.png
+.. image:: /_static/images/icons/features/bistro-dark.svg
     :class: only-dark
 
 'bistro' Plots

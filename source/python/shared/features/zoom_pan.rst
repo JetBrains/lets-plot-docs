@@ -1,7 +1,7 @@
-.. image:: /_static/images/icons/features/zoom-pan-light.png
+.. image:: /_static/images/icons/features/zoom-pan-light.svg
     :class: only-light
 
-.. image:: /_static/images/icons/features/zoom-pan-dark.png
+.. image:: /_static/images/icons/features/zoom-pan-dark.svg
     :class: only-dark
 
 Panning and Zooming
