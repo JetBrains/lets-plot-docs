@@ -148,19 +148,51 @@ See |text-font-face|.
 Color and Fill
 --------------
 
-Colors and fills of geometries can be specified in the following ways:
+Colors can be specified using named colors, RGB/RGBA strings, HEX values,
+or ``color(...)``. Named colors are case-insensitive;
+hyphens and underscores are ignored, and ``grey`` is treated the same as ``gray``
+(``"dark_orange"``, ``"light-blue"``, and ``"DARK-GREY"`` are valid).
+In addition to the named colors listed in the :doc:`Named colors </python/pages/named_colors>` reference,
+grayscale names from ``"gray0"`` to ``"gray100"`` are supported.
+Transparency can be included directly in the color value by using an alpha-enabled format
+or by appending opacity to a named color, for example ``"steelblue / 0.35"``.
 
-- **RGB**/**RGBA** - e.g. ``"rgb(0, 0, 255)"``, ``"rgba(0, 0, 255, 0.5)"``.
+.. list-table::
+   :header-rows: 1
 
-- **HEX** - e.g. ``"#0077ff"`` or shorthand ``"#07f"``. An alpha component can be appended: ``"#0077ff80"`` or the shorthand ``"#07f8"``, see |color_alpha|.
+   * - Type
+     - Format
+     - Example
+   * - Named color
+     - ``name``
+     - ``"steelblue"``
+   * - Named color with opacity
+     - ``name/a``
+     - ``"steelblue/0.35"``
+   * - RGB
+     - ``rgb(r, g, b)``
+     - ``"rgb(70, 130, 180)"``
+   * - RGBA
+     - ``rgba(r, g, b, a)``
+     - ``"rgba(70, 130, 180, 0.35)"``
+   * - Color function
+     - ``color(r, g, b)``
+     - ``"color(70, 130, 180)"``
+   * - Color function with opacity
+     - ``color(r, g, b, a)``
+     - ``"color(70, 130, 180, 0.35)"``
+   * - HEX RGB
+     - ``#RRGGBB``, ``#RGB``
+     - ``"#4682B4"``, ``"#48B"``
+   * - HEX RGBA
+     - ``#RRGGBBAA``, ``#RGBA``
+     - ``"#4682B459"``, ``"#48B6"``
+   * - Transparent
+     - ``transparent``, ``blank``, empty string
+     - ``"transparent"``
 
-- **Transparent** - an empty string (``""``) or the aliases ``"blank"`` and ``"transparent"`` for a fully transparent color.
-
-- **Named colors** - see :doc:`the named colors reference </python/pages/named_colors>`.
-
-- **Named color with opacity** - append `` / <opacity>`` (a value in ``0.0`` to ``1.0``) to a named color to apply transparency. Example: ``"steelblue / 0.35"``.
-
-- **System colors** depending on the current theme :ref:`flavor <charts_presentation_options_flavors>`, one of:
+For opacity values, ``0`` means fully transparent and ``1`` means fully opaque;
+percentage values such as ``"steelblue/35%"`` are not supported. See also an |color_alpha|.
 
 .. grid:: 3
 
