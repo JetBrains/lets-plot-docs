@@ -148,11 +148,11 @@ See |text-font-face|.
 Color and Fill
 --------------
 
-Colors can be specified using named colors, RGB/RGBA strings, HEX values,
+Colors can be specified using :doc:`named colors </python/pages/named_colors>`, RGB/RGBA strings, HEX values,
 or ``color(...)``. Named colors are case-insensitive;
 hyphens and underscores are ignored, and ``grey`` is treated the same as ``gray``
 (``"dark_orange"``, ``"light-blue"``, and ``"DARK-GREY"`` are valid).
-In addition to the named colors listed in the :doc:`Named colors </python/pages/named_colors>` reference,
+In addition to the named colors listed in the :doc:`Named colors reference </python/pages/named_colors>`,
 grayscale names from ``"gray0"`` to ``"gray100"`` are supported.
 Transparency can be included directly in the color value by using an alpha-enabled format
 or by appending opacity to a named color, for example ``"steelblue / 0.35"``.
@@ -167,8 +167,8 @@ or by appending opacity to a named color, for example ``"steelblue / 0.35"``.
      - ``name``
      - ``"steelblue"``
    * - Named color with opacity
-     - ``name/a``
-     - ``"steelblue/0.35"``
+     - ``name / a``
+     - ``"steelblue / 0.35"``
    * - RGB
      - ``rgb(r, g, b)``
      - ``"rgb(70, 130, 180)"``
