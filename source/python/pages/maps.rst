@@ -85,9 +85,13 @@ Primitives
 :py:func:`label <lets_plot.geom_label>`,
 :py:func:`pointdensity <lets_plot.geom_pointdensity>`.
 
-|param_geodesic|.
+Cookbooks:
 
-.. |param_geodesic| extref:: param_geodesic
+- .. extref:: param_geodesic
+      :type: text
+- .. extref:: param_flat
+      :type: text
+- .. extref:: geom_livemap_interactive
       :type: text
 
 Contours
@@ -215,15 +219,6 @@ Create maps in PyCharm with the help of `Lets-Plot in SciView <https://plugins.j
 
 Example Notebooks
 -----------------
-
-Cookbooks:
-
-- .. extref:: geom_livemap_interactive
-    :type: text
-- .. extref:: param_flat
-    :type: text
-
-Demos:
 
 - .. extref:: titanic
     :type: text
