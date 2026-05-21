@@ -49,6 +49,10 @@ You can specify a color for theme elements and geometries by its name from the t
 
   Named colors are case-insensitive and can be written in various formats: ``LightGreen``, ``lightgreen``, ``light green``, or ``light-green`` are all accepted and treated equivalently. You can also use either ``"gray"`` or ``"grey"`` spelling for grayscale colors.
 
+.. note::
+
+  Any named color can be made transparent by appending opacity as ``/a``, where ``a`` is a value from ``0`` (fully transparent) to ``1`` (full opaque). For example, ``"steelblue/0.35"`` means ``steelblue`` with 35% opacity. Percentage opacity values such as ``"35%"`` are not supported. See also an |color_alpha|.
+
 .. tab-set::
 
   .. tab-item:: By shade
@@ -58,3 +62,7 @@ You can specify a color for theme elements and geometries by its name from the t
   .. tab-item:: By name
 
       .. include:: include/aesthetics/named-colors-table_by-name.rst
+
+.. |color_alpha| extref:: color_alpha
+    :type: text
+    :text: example

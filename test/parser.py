@@ -2,7 +2,6 @@
 
 import os
 import subprocess
-import codecs
 import warnings
 
 from bs4 import BeautifulSoup
@@ -30,7 +29,7 @@ class page_parser():
         except Exception as e:
             self._close_driver()
             warnings.warn(UserWarning(e))
-            with codecs.open(self.page, 'r', 'utf-8') as f:
+            with open(self.page, 'r', encoding='utf-8') as f:
                 soup = BeautifulSoup(f, 'html.parser')
                 return soup, 'soup'
 

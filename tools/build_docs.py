@@ -131,6 +131,9 @@ def main() -> int:
     # - if --log-file OR --console-log: no --quiet
     if (log_file is None) and (not args.console_log):
         cmd.append("--quiet")
+    else:
+        cmd.append("-T")
+        cmd.append("--keep-going")
 
     cmd.append("--fail-on-warning")
     cmd += ["-D", f"execute_notebooks={execute_notebooks}"]

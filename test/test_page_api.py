@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import inspect
-import codecs
 import warnings
 
 import pytest
@@ -56,7 +55,7 @@ def get_module_members(module=lp):
 
 def get_api_members():
     members = []
-    with codecs.open("docs/python/pages/api.html", 'r', 'utf-8') as page:
+    with open("docs/python/pages/api.html", 'r', encoding='utf-8') as page:
         soup = BeautifulSoup(page, 'html.parser')
         for a in soup.select("a.internal span.pre"):
             members.append(a.text.strip())

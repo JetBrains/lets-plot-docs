@@ -12,12 +12,6 @@ p {
   max-width: 70ch;
 }
 
-/* Some tags */
-
-section h2:first-of-type>img, section h3:first-of-type>img {
-  height: 1em;
-}
-
 /* Specific classes */
 
 .code-like {
@@ -258,6 +252,26 @@ p.admonition-title {
   margin-bottom: 1.5rem !important;
 }
 
+#charts-page section > h2,
+#maps-page section > h3 {
+  position: relative;
+  padding-left: calc(var(--section-icon-size, 0) * 1.25em);
+}
+
+#charts-page section > h2::before,
+#maps-page section > h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.075em; /* h2/h3 line-height is 1.15 */
+    width: 1em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+}
+
 #api-reference table.autosummary tr td:first-child {
   width:  40%;
   -moz-hyphens:auto;
@@ -314,4 +328,254 @@ html[data-theme=dark] .explore-your-data-container div.cell_output .text_html {
 
 html[data-theme=dark] #aesthetics div.cell_output .text_html {
   padding: initial !important;
+}
+
+/*
+  Enable icon spacing only for sections that actually have an icon.
+  Sections without an icon keep the default --section-icon-size: 0 and get no padding.
+*/
+
+#charts-page section#data,
+#charts-page section#aesthetics,
+#charts-page section#basic-building-blocks,
+#charts-page section#discrete,
+#charts-page section#contours,
+#charts-page section#visualization-of-distribution,
+#charts-page section#stats,
+#charts-page section#function,
+#charts-page section#visualization-of-errors,
+#charts-page section#smoothing,
+#charts-page section#bivariate-distribution,
+#charts-page section#marginal-plots,
+#charts-page section#time-series,
+#charts-page section#images,
+#charts-page section#facets,
+#charts-page section#coordinate-systems,
+#charts-page section#positional-scales,
+#charts-page section#legends-and-guides,
+#charts-page section#bistro-plots,
+#charts-page section#presentation-options,
+#charts-page section#geopandas-shapes,
+#charts-page section#grouping-plots,
+#maps-page section#quick-start,
+#maps-page section#primitives,
+#maps-page section#contours,
+#maps-page section#bivariate-distribution {
+    --section-icon-size: 1;
+}
+
+/*
+  Charts page icons
+*/
+
+html[data-theme=light] #charts-page section#data > h2::before {
+    background-image: url("../images/icons/charts/data-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#data > h2::before {
+    background-image: url("../images/icons/charts/data-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#aesthetics > h2::before {
+    background-image: url("../images/icons/charts/aesthetics-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#aesthetics > h2::before {
+    background-image: url("../images/icons/charts/aesthetics-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#basic-building-blocks > h2::before {
+    background-image: url("../images/icons/charts/basic-building-blocks-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#basic-building-blocks > h2::before {
+    background-image: url("../images/icons/charts/basic-building-blocks-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#discrete > h2::before {
+    background-image: url("../images/icons/charts/discrete-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#discrete > h2::before {
+    background-image: url("../images/icons/charts/discrete-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#contours > h2::before {
+    background-image: url("../images/icons/charts/contours-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#contours > h2::before {
+    background-image: url("../images/icons/charts/contours-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#visualization-of-distribution > h2::before {
+    background-image: url("../images/icons/charts/visualization-of-distribution-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#visualization-of-distribution > h2::before {
+    background-image: url("../images/icons/charts/visualization-of-distribution-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#stats > h2::before {
+    background-image: url("../images/icons/charts/stats-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#stats > h2::before {
+    background-image: url("../images/icons/charts/stats-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#function > h2::before {
+    background-image: url("../images/icons/charts/function-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#function > h2::before {
+    background-image: url("../images/icons/charts/function-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#visualization-of-errors > h2::before {
+    background-image: url("../images/icons/charts/visualization-of-errors-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#visualization-of-errors > h2::before {
+    background-image: url("../images/icons/charts/visualization-of-errors-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#smoothing > h2::before {
+    background-image: url("../images/icons/charts/smoothing-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#smoothing > h2::before {
+    background-image: url("../images/icons/charts/smoothing-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#bivariate-distribution > h2::before {
+    background-image: url("../images/icons/charts/bivariate-distribution-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#bivariate-distribution > h2::before {
+    background-image: url("../images/icons/charts/bivariate-distribution-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#marginal-plots > h2::before {
+    background-image: url("../images/icons/charts/marginal-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#marginal-plots > h2::before {
+    background-image: url("../images/icons/charts/marginal-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#time-series > h2::before {
+    background-image: url("../images/icons/charts/time-series-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#time-series > h2::before {
+    background-image: url("../images/icons/charts/time-series-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#images > h2::before {
+    background-image: url("../images/icons/charts/images-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#images > h2::before {
+    background-image: url("../images/icons/charts/images-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#facets > h2::before {
+    background-image: url("../images/icons/charts/facets-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#facets > h2::before {
+    background-image: url("../images/icons/charts/facets-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#coordinate-systems > h2::before {
+    background-image: url("../images/icons/charts/coordinate-systems-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#coordinate-systems > h2::before {
+    background-image: url("../images/icons/charts/coordinate-systems-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#positional-scales > h2::before {
+    background-image: url("../images/icons/charts/positional-scales-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#positional-scales > h2::before {
+    background-image: url("../images/icons/charts/positional-scales-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#legends-and-guides > h2::before {
+    background-image: url("../images/icons/charts/legend-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#legends-and-guides > h2::before {
+    background-image: url("../images/icons/charts/legend-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#bistro-plots > h2::before {
+    background-image: url("../images/icons/charts/bistro-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#bistro-plots > h2::before {
+    background-image: url("../images/icons/charts/bistro-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#geopandas-shapes > h2::before {
+    background-image: url("../images/icons/charts/geopandas-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#geopandas-shapes > h2::before {
+    background-image: url("../images/icons/charts/geopandas-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#grouping-plots > h2::before {
+    background-image: url("../images/icons/charts/grouping-plots-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#grouping-plots > h2::before {
+    background-image: url("../images/icons/charts/grouping-plots-dark.svg");
+}
+
+html[data-theme=light] #charts-page section#presentation-options > h2::before {
+    background-image: url("../images/icons/charts/presentation-options-light.svg");
+}
+
+html[data-theme=dark] #charts-page section#presentation-options > h2::before {
+    background-image: url("../images/icons/charts/presentation-options-dark.svg");
+}
+
+/*
+  Maps page icons
+*/
+
+html[data-theme=light] #maps-page section#quick-start > h3::before {
+    background-image: url("../images/icons/maps/quickstart-light.svg");
+}
+
+html[data-theme=dark] #maps-page section#quick-start > h3::before {
+    background-image: url("../images/icons/maps/quickstart-dark.svg");
+}
+
+html[data-theme=light] #maps-page section#primitives > h3::before {
+    background-image: url("../images/icons/maps/layers_primitives-light.svg");
+}
+
+html[data-theme=dark] #maps-page section#primitives > h3::before {
+    background-image: url("../images/icons/maps/layers_primitives-dark.svg");
+}
+
+html[data-theme=light] #maps-page section#contours > h3::before {
+    background-image: url("../images/icons/maps/layers_contours-light.svg");
+}
+
+html[data-theme=dark] #maps-page section#contours > h3::before {
+    background-image: url("../images/icons/maps/layers_contours-dark.svg");
+}
+
+html[data-theme=light] #maps-page section#bivariate-distribution > h3::before {
+    background-image: url("../images/icons/maps/layers_bivariate-light.svg");
+}
+
+html[data-theme=dark] #maps-page section#bivariate-distribution > h3::before {
+    background-image: url("../images/icons/maps/layers_bivariate-dark.svg");
 }

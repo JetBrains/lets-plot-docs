@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import codecs
 import warnings
 
 import pytest
@@ -32,7 +31,7 @@ checked_external_links = set()
 
 def generate_links():
     for page in generate_pages(BUILD_DIR, kotlin=True):
-        with codecs.open(page, 'r', 'utf-8') as f:
+        with open(page, 'r', encoding='utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
             for a in soup.find_all('a'):
                 yield page, a
@@ -107,7 +106,7 @@ def _get_response(href, first_query=True):
         return None
 
 def _check_section(page, href):
-    with codecs.open(page, 'r', 'utf-8') as f:
+    with open(page, 'r', encoding='utf-8') as f:
         soup = BeautifulSoup(f, 'html.parser')
         assert soup.find(id=href[1:])
 

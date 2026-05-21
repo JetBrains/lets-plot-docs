@@ -5,6 +5,14 @@ import warnings
 from selenium.webdriver.common.by import By
 
 def check_lets_plot_message_errors(parser, parser_type, source, *, warn_only=False):
+    errors_count, message = lets_plot_errors(parser, parser_type, source)
+    if warn_only:
+        if errors_count > 0:
+            warnings.warn(UserWarning(message))
+    else:
+        assert errors_count == 0, message
+
+def lets_plot_errors(parser, parser_type, source):
     message = ""
     frontend_errors_count = _get_frontend_errors_count(parser, parser_type)
     if frontend_errors_count > 0:
@@ -13,11 +21,7 @@ def check_lets_plot_message_errors(parser, parser_type, source, *, warn_only=Fal
     if backend_errors_count > 0:
         message = "Plot displaying backend error in {0}".format(source)
     errors_count = backend_errors_count + frontend_errors_count
-    if warn_only:
-        if errors_count > 0:
-            warnings.warn(UserWarning(message))
-    else:
-        assert errors_count == 0, message
+    return errors_count, message
 
 def check_copy_spec(parser, parser_type, source):
     message = "Extra 'Copy Spec' button in {0}".format(source)
