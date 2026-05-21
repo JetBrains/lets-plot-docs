@@ -68,7 +68,7 @@ Recent Updates in the :doc:`Gallery </python/pages/gallery>`
 .. image:: /_static/images/changelog/4.10.0/square-earthquakes_in_2025.png
   :width: 128
   :height: 128
-  :target: https://lets-plot.org/examples/demo/earthquakes_in_2025.html
+  :target: https://datalore.jetbrains.com/report/static/HZqq77cegYd.E7get_WnChZ/YXn54IpSaCcYhFGKzKN7cb
 
 .. image:: /_static/images/changelog/4.8.0/square-cities_density.png
   :width: 128
