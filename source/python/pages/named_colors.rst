@@ -51,7 +51,7 @@ You can specify a color for theme elements and geometries by its name from the t
 
 .. note::
 
-  Any named color can be made transparent by appending opacity as ``/a``, where ``a`` is a value from ``0`` (fully transparent) to ``1`` (full opaque). For example, ``"steelblue / 0.35"`` and ``"steelblue/0.35"`` both mean ``steelblue`` with 35% opacity. Percentage opacity values such as ``"35%"`` are not supported. See also an |color_alpha|.
+  Any named color can be made transparent by appending opacity as ``/a``, where ``a`` is a value from ``0`` (fully transparent) to ``1`` (full opaque). For example, ``"steelblue/0.35"`` means ``steelblue`` with 35% opacity. Percentage opacity values such as ``"35%"`` are not supported. See also an |color_alpha|.
 
 .. tab-set::
 
