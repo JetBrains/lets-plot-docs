@@ -44,7 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=6b0dbc96" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=12bf059d" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/colors.css?v=6037b297" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/dataframe.css?v=1855a575" />
   
@@ -54,7 +54,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=d607d3c8"></script>
+    <script src="../../_static/documentation_options.js?v=38949425"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -157,7 +157,7 @@
    
 
 <a class="navbar-brand version" href="../../python/pages/whats_new.html">
-  <p>v4.9.0</p>
+  <p>v4.10.1</p>
 </a>
 </div>
     
@@ -521,11 +521,11 @@ is packaged as a JavaScript library, a JVM library, and a native Python extensio
 </ul>
 <p>Supported Python versions:</p>
 <ul class="simple">
-<li><p>3.9</p></li>
 <li><p>3.10</p></li>
 <li><p>3.11</p></li>
 <li><p>3.12</p></li>
 <li><p>3.13</p></li>
+<li><p>3.14</p></li>
 </ul>
 <p><a name="Installation" id="install"></a></p>
 </section>
@@ -588,6 +588,7 @@ and <a class="reference external" href="https://lets-plot.org/python/pages/api/l
 <li><p>Polygons:  <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_polygon.html"><code class="docutils literal notranslate"><span class="pre">geom_polygon</span></code></a></p></li>
 <li><p>Rectangles, Tiles, Raster: <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_rect.html"><code class="docutils literal notranslate"><span class="pre">geom_rect()</span></code></a>, <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_tile.html"><code class="docutils literal notranslate"><span class="pre">geom_tile()</span></code></a>, <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_raster.html"><code class="docutils literal notranslate"><span class="pre">geom_raster()</span></code></a></p></li>
 <li><p>Ribbons: <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_ribbon.html"><code class="docutils literal notranslate"><span class="pre">geom_ribbon()</span></code></a></p></li>
+<li><p>Bands: <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_band.html"><code class="docutils literal notranslate"><span class="pre">geom_band()</span></code></a></p></li>
 <li><p>Scatter plot: <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_point.html"><code class="docutils literal notranslate"><span class="pre">geom_point()</span></code></a>, <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_pointdensity.html"><code class="docutils literal notranslate"><span class="pre">geom_pointdensity()</span></code></a></p></li>
 <li><p>Dot plot: <a class="reference external" href="http://lets-plot.org/python/pages/api/lets_plot.geom_dotplot.html"><code class="docutils literal notranslate"><span class="pre">geom_dotplot()</span></code></a>, <a class="reference external" href="http://lets-plot.org/python/pages/api/lets_plot.geom_ydotplot.html"><code class="docutils literal notranslate"><span class="pre">geom_ydotplot()</span></code></a></p></li>
 <li><p>Regression lines: <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.geom_smooth.html"><code class="docutils literal notranslate"><span class="pre">geom_smooth()</span></code></a></p></li>
@@ -606,14 +607,26 @@ geometric methods, their arguments, and default values.</p>
 </section>
 <section id="collections-of-plots">
 <h3>Collections of plots<a class="headerlink" href="#collections-of-plots" title="Link to this heading">#</a></h3>
-<p>With the <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.ggbunch.html"><code class="docutils literal notranslate"><span class="pre">ggbunch()</span></code></a> method, you can render a collection of plots:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ggbunch</span><span class="p">(</span>
+<p>Lets-Plot provides several ways to combine plots, depending on the layout you need.</p>
+<p>Use <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.gggrid.html"><code class="docutils literal notranslate"><span class="pre">gggrid()</span></code></a> to arrange plots in a regular grid:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gggrid</span><span class="p">([</span><span class="n">plot1</span><span class="p">,</span> <span class="n">plot2</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.ggdeck.html"><code class="docutils literal notranslate"><span class="pre">ggdeck()</span></code></a> to overlay several independent plots in one view with aligned drawing areas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggdeck</span><span class="p">([</span><span class="n">plot1</span><span class="p">,</span> <span class="n">plot2</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Use <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.ggbunch.html"><code class="docutils literal notranslate"><span class="pre">ggbunch()</span></code></a> when plots need arbitrary positions and sizes inside one figure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ggbunch</span><span class="p">(</span>
     <span class="n">plots</span><span class="o">=</span><span class="p">[</span><span class="n">plot1</span><span class="p">,</span> <span class="n">plot2</span><span class="p">],</span>
     <span class="n">regions</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
 <span class="p">)</span> <span class="o">+</span> <span class="n">ggsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See the <a class="reference internal" href="ggbunch.html"><span class="std std-doc">ggbunch</span></a> example for more information.</p>
+<p>Use <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.ggmarginal.html"><code class="docutils literal notranslate"><span class="pre">ggmarginal()</span></code></a> to add marginal layers, such as histograms, densities, or boxplots, to the sides of a plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">+</span> <span class="n">ggmarginal</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">geom_histogram</span><span class="p">())</span>
+</pre></div>
+</div>
 </section>
 <section id="interactivity">
 <h3>Interactivity<a class="headerlink" href="#interactivity" title="Link to this heading">#</a></h3>
@@ -694,8 +707,8 @@ Use the <code class="docutils literal notranslate"><span class="pre">guide</span
 For example, to define the number of columns in the legend:</p>
 <p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">+</span> <span class="pre">scale_color_discrete(guide=guide_legend(ncol=2))</span></code></p>
 <p>See more information in the <a class="reference external" href="https://lets-plot.org/python/pages/api.html#scale-guides">guide reference</a></p>
-<p>Adjust legend location on plot using the <code class="docutils literal notranslate"><span class="pre">theme</span></code> legend_position, legend_justification and legend_direction methods, see:
-[TBD]</p>
+<p>Adjust legend location on plot using the <code class="docutils literal notranslate"><span class="pre">theme</span></code> legend_position, legend_justification and legend_direction parameters, see:
+<a class="reference external" href="https://datalore.jetbrains.com/report/static/HZqq77cegYd.E7get_WnChZ/ZWb7Mmvd4RSzjJ29pOpFvn">themes</a>.</p>
 </section>
 <section id="sampling">
 <h4>Sampling<a class="headerlink" href="#sampling" title="Link to this heading">#</a></h4>
@@ -858,7 +871,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-        <div id="Uj8BHj"></div>
+        <div id="UNxPDp"></div>
         <script type="text/javascript" data-lets-plot-script="library">
             if(!window.letsPlotCallQueue) {
                 window.letsPlotCallQueue = [];
@@ -869,7 +882,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
             (function() {
                 var script = document.createElement("script");
                 script.type = "text/javascript";
-                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js";
+                script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.10.1/js-package/distr/lets-plot.min.js";
                 script.onload = function() {
                     window.letsPlotCall = function(f) {f();};
                     window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -882,9 +895,9 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
                     var div = document.createElement("div");
                     div.style.color = 'darkred';
                     div.textContent = 'Error loading Lets-Plot JS';
-                    document.getElementById("Uj8BHj").appendChild(div);
+                    document.getElementById("UNxPDp").appendChild(div);
                 };
-                var e = document.getElementById("Uj8BHj");
+                var e = document.getElementById("UNxPDp");
                 e.appendChild(script);
             })()
         </script>
@@ -905,7 +918,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="t1wU7P" ></div>
+<div class="output text_html">   <div id="uR5e00" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -930,7 +943,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
        };
    }
    
-   const containerDiv = document.getElementById("t1wU7P");
+   const containerDiv = document.getElementById("uR5e00");
    let fig = null;
    
    function renderPlot() {
@@ -1049,7 +1062,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="IacWgZ" ></div>
+<div class="output text_html">   <div id="JgzDUV" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -1074,7 +1087,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
        };
    }
    
-   const containerDiv = document.getElementById("IacWgZ");
+   const containerDiv = document.getElementById("JgzDUV");
    let fig = null;
    
    function renderPlot() {
@@ -1195,7 +1208,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="vTu8q1" ></div>
+<div class="output text_html">   <div id="Kpw9Gp" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -1220,7 +1233,7 @@ Visvalingam-Whyatt (<code class="docutils literal notranslate"><span class="pre"
        };
    }
    
-   const containerDiv = document.getElementById("vTu8q1");
+   const containerDiv = document.getElementById("Kpw9Gp");
    let fig = null;
    
    function renderPlot() {
@@ -1358,7 +1371,7 @@ to the group size.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="51aUoA" ></div>
+<div class="output text_html">   <div id="1hWNvG" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -1383,7 +1396,7 @@ to the group size.</p>
        };
    }
    
-   const containerDiv = document.getElementById("51aUoA");
+   const containerDiv = document.getElementById("1hWNvG");
    let fig = null;
    
    function renderPlot() {
@@ -1472,7 +1485,7 @@ to the group size.</p>
 }],
 "metainfo_list":[],
 "spec_id":"4",
-"computation_messages":["sampling_random_stratified(n=40, seed=42) was applied to [point/identity stat] layer"]
+"computation_messages":["[point] Removed 194 rows out of 234 by sampling_random_stratified(n=40, seed=42)."]
 };
            window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
        } else {
