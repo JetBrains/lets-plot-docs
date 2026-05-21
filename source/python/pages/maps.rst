@@ -91,8 +91,6 @@ Cookbooks:
       :type: text
 - .. extref:: param_flat
       :type: text
-- .. extref:: geom_livemap_interactive
-      :type: text
 
 Contours
 ~~~~~~~~
