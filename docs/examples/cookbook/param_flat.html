@@ -7,16 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Geodesic lines on livemap: flat parameter" />
+<meta property="og:title" content="Keeping line segments straight: flat parameter" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lets-plot.org/examples/cookbook/param_flat.html" />
 <meta property="og:site_name" content="Lets-Plot" />
-<meta property="og:description" content="Parameter flat enables or disables geodesic lines on livemap. Layers that support flat parameter are geom_segment() and geom_path(): False(by default) - allows projection to curve a line, True- kee..." />
+<meta property="og:description" content="The flat parameter controls how line segments are handled by a non-Cartesian coordinate system or map projection. flat=False(the default) allows the coordinate system or projection to transform the..." />
 <meta property="og:image" content="https://lets-plot.org/_static/images/open-graph.png" />
 <meta property="og:image:alt" content="Lets-Plot" />
-<meta name="description" content="Parameter flat enables or disables geodesic lines on livemap. Layers that support flat parameter are geom_segment() and geom_path(): False(by default) - allows projection to curve a line, True- kee..." />
+<meta name="description" content="The flat parameter controls how line segments are handled by a non-Cartesian coordinate system or map projection. flat=False(the default) allows the coordinate system or projection to transform the..." />
 
-    <title>Geodesic lines on livemap: flat parameter</title>
+    <title>Keeping line segments straight: flat parameter</title>
   
   
   
@@ -494,14 +494,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="geodesic-lines-on-livemap-flat-parameter">
-<h1>Geodesic lines on livemap: <code class="docutils literal notranslate"><span class="pre">flat</span></code> parameter<a class="headerlink" href="#geodesic-lines-on-livemap-flat-parameter" title="Link to this heading">#</a></h1>
-<p>Parameter <code class="docutils literal notranslate"><span class="pre">flat</span></code> enables or disables geodesic lines on livemap.</p>
-<p>Layers that support <code class="docutils literal notranslate"><span class="pre">flat</span></code> parameter are <code class="docutils literal notranslate"><span class="pre">geom_segment()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_path()</span></code>:</p>
+  <section id="keeping-line-segments-straight-flat-parameter">
+<h1>Keeping line segments straight: <code class="docutils literal notranslate"><span class="pre">flat</span></code> parameter<a class="headerlink" href="#keeping-line-segments-straight-flat-parameter" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">flat</span></code> parameter controls how line segments are handled by a non-Cartesian coordinate system or map projection.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> (by default) - allows projection to curve a line</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> - keeps a line flat</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flat=False</span></code> (the default) allows the coordinate system or projection to transform the line, so it may appear curved.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flat=True</span></code> keeps line segments straight in plot/projected coordinates.</p></li>
 </ul>
+<p>On Mercator/livemap this means a straight projected line, not a geodesic shortest path. <code class="docutils literal notranslate"><span class="pre">flat</span></code> is not livemap-only; it is also useful with non-Cartesian coordinate systems such as <a class="reference external" href="https://lets-plot.org/python/pages/api/lets_plot.coord_polar.html">coord_polar()</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">lets_plot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
@@ -517,7 +517,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-        <div id="PddNbk"></div>
+        <div id="wgqLc8"></div>
         <script type="text/javascript" data-lets-plot-script="library">
             if(!window.letsPlotCallQueue) {
                 window.letsPlotCallQueue = [];
@@ -541,9 +541,9 @@
                     var div = document.createElement("div");
                     div.style.color = 'darkred';
                     div.textContent = 'Error loading Lets-Plot JS';
-                    document.getElementById("PddNbk").appendChild(div);
+                    document.getElementById("wgqLc8").appendChild(div);
                 };
-                var e = document.getElementById("PddNbk");
+                var e = document.getElementById("wgqLc8");
                 e.appendChild(script);
             })()
         </script>
@@ -566,9 +566,9 @@
 </div>
 </div>
 </div>
-<section id="default-presentation">
-<h2>Default Presentation<a class="headerlink" href="#default-presentation" title="Link to this heading">#</a></h2>
-<p>By default a geodesic is drawn for <code class="docutils literal notranslate"><span class="pre">geom_path()</span></code> and <code class="docutils literal notranslate"><span class="pre">geom_segment()</span></code> on livemap. It is the shortest path between points on earth.</p>
+<section id="default-projection-may-bend-the-line">
+<h2>Default: projection may bend the line<a class="headerlink" href="#default-projection-may-bend-the-line" title="Link to this heading">#</a></h2>
+<p>With the default <code class="docutils literal notranslate"><span class="pre">flat=False</span></code>, the projection can transform the path and make it appear curved.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span>
@@ -578,7 +578,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="kYvSTY" ></div>
+<div class="output text_html">   <div id="A0KKFG" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -603,7 +603,7 @@
        };
    }
    
-   const containerDiv = document.getElementById("kYvSTY");
+   const containerDiv = document.getElementById("A0KKFG");
    let fig = null;
    
    function renderPlot() {
@@ -705,7 +705,7 @@
 </section>
 <section id="with-flat-true">
 <h2>With <code class="docutils literal notranslate"><span class="pre">flat=True</span></code><a class="headerlink" href="#with-flat-true" title="Link to this heading">#</a></h2>
-<p>If it is necessary to indicate distances for example, travel routes, a straight line is better. This is how <code class="docutils literal notranslate"><span class="pre">geom_path()</span></code> is rendered with parameter <code class="docutils literal notranslate"><span class="pre">flat=True</span></code> on livemap.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">flat=True</span></code> when a line segment should stay straight in projected plot coordinates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span>
@@ -716,7 +716,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">   <div id="YMIEpu" ></div>
+<div class="output text_html">   <div id="YVwQuJ" ></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -741,7 +741,7 @@
        };
    }
    
-   const containerDiv = document.getElementById("YMIEpu");
+   const containerDiv = document.getElementById("YVwQuJ");
    let fig = null;
    
    function renderPlot() {
@@ -842,6 +842,190 @@
    </script></div></div>
 </div>
 </section>
+<section id="comparing-default-geodesic-true-and-flat-true">
+<h2>Comparing default, <code class="docutils literal notranslate"><span class="pre">geodesic=True</span></code>, and <code class="docutils literal notranslate"><span class="pre">flat=True</span></code><a class="headerlink" href="#comparing-default-geodesic-true-and-flat-true" title="Link to this heading">#</a></h2>
+<p>See the <code class="docutils literal notranslate"><span class="pre">geodesic</span></code> parameter <a class="reference internal" href="param_geodesic.html"><span class="std std-doc">example</span></a> for how to draw shortest paths on livemap.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span>
+  <span class="o">+</span> <span class="n">geom_livemap</span><span class="p">()</span>
+  <span class="o">+</span> <span class="n">geom_path</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">manual_key</span><span class="o">=</span><span class="n">layer_key</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">))</span>
+  <span class="o">+</span> <span class="n">geom_path</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;aquamarine&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">manual_key</span><span class="o">=</span><span class="n">layer_key</span><span class="p">(</span><span class="s2">&quot;flat=True&quot;</span><span class="p">))</span>
+  <span class="o">+</span> <span class="n">geom_path</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">geodesic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">manual_key</span><span class="o">=</span><span class="n">layer_key</span><span class="p">(</span><span class="s2">&quot;geodesic=True&quot;</span><span class="p">))</span>
+  <span class="o">+</span> <span class="n">theme</span><span class="p">(</span><span class="n">legend_position</span><span class="o">=</span><span class="p">[</span><span class="mf">.11</span><span class="p">,</span> <span class="mf">.35</span><span class="p">],</span>
+          <span class="n">legend_text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">),</span>
+          <span class="n">legend_background</span><span class="o">=</span><span class="n">element_rect</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#141414&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">   <div id="QdaUC6" ></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("QdaUC6");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"lon":[-73.7997,-149.9002],
+"lat":[40.6408,61.218]
+},
+"mapping":{
+"x":"lon",
+"y":"lat"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"float",
+"column":"lon"
+},{
+"type":"float",
+"column":"lat"
+}]
+},
+"theme":{
+"legend_background":{
+"fill":"#141414",
+"blank":false
+},
+"legend_text":{
+"color":"white",
+"blank":false
+},
+"legend_position":[0.11,0.35]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"livemap",
+"mapping":{
+},
+"data_meta":{
+},
+"tiles":{
+"kind":"vector_lets_plot",
+"url":"wss://tiles.datalore.jetbrains.com",
+"theme":"dark",
+"attribution":"<a href=\"https://lets-plot.org\">© Lets-Plot</a>, map data: <a href=\"https://www.openstreetmap.org/copyright\">© OpenStreetMap contributors</a>."
+},
+"geocoding":{
+"url":"https://geo2.datalore.jetbrains.com/map_data/geocoding"
+},
+"interactive":true,
+"data":{
+}
+},{
+"geom":"path",
+"mapping":{
+},
+"manual_key":{
+"label":"default"
+},
+"data_meta":{
+},
+"color":"white",
+"size":1.0,
+"data":{
+}
+},{
+"geom":"path",
+"mapping":{
+},
+"manual_key":{
+"label":"flat=True"
+},
+"data_meta":{
+},
+"flat":true,
+"color":"aquamarine",
+"size":1.0,
+"data":{
+}
+},{
+"geom":"path",
+"mapping":{
+},
+"manual_key":{
+"label":"geodesic=True"
+},
+"data_meta":{
+},
+"geodesic":true,
+"color":"coral",
+"size":1.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script></div></div>
+</div>
+</section>
 </section>
 
 
@@ -867,8 +1051,9 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-presentation">Default Presentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-projection-may-bend-the-line">Default: projection may bend the line</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-flat-true">With <code class="docutils literal notranslate"><span class="pre">flat=True</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-default-geodesic-true-and-flat-true">Comparing default, <code class="docutils literal notranslate"><span class="pre">geodesic=True</span></code>, and <code class="docutils literal notranslate"><span class="pre">flat=True</span></code></a></li>
 </ul>
   </nav></div>
 
