@@ -736,6 +736,8 @@ Legend Box Layout
 Miscellaneous
 -------------
 
+.. _charts_panning_and_zooming:
+
 Panning and Zooming
 ~~~~~~~~~~~~~~~~~~~
 
