@@ -148,7 +148,8 @@ See |text-font-face|.
 Color and Fill
 --------------
 
-Colors can be specified using :doc:`named colors </python/pages/named_colors>`, RGB/RGBA strings, HEX values,
+Colors can be specified using :doc:`named colors </python/pages/named_colors>`,
+theme-dependent system colors (``"pen"``, ``"paper"``, ``"brush"``), RGB/RGBA strings, HEX values,
 or ``color(...)``. Named colors are case-insensitive;
 hyphens and underscores are ignored, and ``grey`` is treated the same as ``gray``
 (``"dark_orange"``, ``"light-blue"``, and ``"DARK-GREY"`` are valid).
@@ -169,6 +170,9 @@ or by appending opacity to a named color, for example ``"steelblue / 0.35"``.
    * - Named color with opacity
      - ``name / a``
      - ``"steelblue / 0.35"``
+   * - System color
+     - ``pen``, ``brush``, ``paper``
+     - ``"pen"``
    * - RGB
      - ``rgb(r, g, b)``
      - ``"rgb(70, 130, 180)"``
@@ -193,6 +197,8 @@ or by appending opacity to a named color, for example ``"steelblue / 0.35"``.
 
 For opacity values, ``0`` means fully transparent and ``1`` means fully opaque;
 percentage values such as ``"steelblue/35%"`` are not supported. See also an |color_alpha|.
+
+System colors ``"pen"``, ``"paper"``, and ``"brush"`` can be used when you want a color to adapt to the active theme or :ref:`flavor <charts_presentation_options_flavors>`.
 
 .. grid:: 3
 
