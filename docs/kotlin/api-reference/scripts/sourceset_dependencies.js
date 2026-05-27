@@ -1,1 +1,1 @@
-sourceset_dependencies='{":plot-api:dokkaHtml/commonMain":[],":plot-api:dokkaHtml/jsMain":[":plot-api:dokkaHtml/webMain"],":plot-api:dokkaHtml/jvmMain":[":plot-api:dokkaHtml/commonMain"],":plot-api:dokkaHtml/webMain":[":plot-api:dokkaHtml/commonMain"]}'
+sourceset_dependencies='{":plot-api:dokkaHtml/commonMain":[],":plot-api:dokkaHtml/jsMain":[":plot-api:dokkaHtml/webMain"],":plot-api:dokkaHtml/jvmMain":[":plot-api:dokkaHtml/commonMain"],":plot-api:dokkaHtml/wasmJsMain":[":plot-api:dokkaHtml/webMain"],":plot-api:dokkaHtml/webMain":[":plot-api:dokkaHtml/commonMain"]}'

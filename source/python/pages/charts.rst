@@ -504,6 +504,8 @@ Cookbooks:
       :type: text
 - .. extref:: manual_legend
       :type: text
+- .. extref:: legend_key_size
+      :type: text
 - .. extref:: legend_theme
       :type: text
 
@@ -735,6 +737,8 @@ Legend Box Layout
 
 Miscellaneous
 -------------
+
+.. _charts_panning_and_zooming:
 
 Panning and Zooming
 ~~~~~~~~~~~~~~~~~~~
