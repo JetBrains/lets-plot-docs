@@ -31,6 +31,8 @@ Examples
 
 - .. extref:: tooltip_config
       :type: text
+- .. extref:: tooltip_merge
+      :type: text
 - .. extref:: themes
       :type: text
 - .. extref:: tourist_cities

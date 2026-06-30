@@ -147,6 +147,8 @@ Demos:
       :type: text
 - .. extref:: geopandas_kotlin_isl
       :type: text
+- .. extref:: text_halo
+      :type: text
 
 
 Discrete
