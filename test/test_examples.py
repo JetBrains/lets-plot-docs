@@ -75,7 +75,7 @@ def test_errors(test):
         assert errors_count > 0, "Expected plot error in {0}".format(notebook)
         assert message.startswith(error_kind), "Wrong plot error kind in {0}".format(notebook)
 
-@pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links(excluded_names=["whats_new"]))
+@pytest.mark.parametrize(('page', 'a'), generate_local_notebook_links())
 def test_notebook_has_file(page, a):
     nb_name = a['href'].split('/')[-1]
     if nb_name.replace(".ipynb", "") in EXCLUDED_PYTHON_NOTEBOOKS:
