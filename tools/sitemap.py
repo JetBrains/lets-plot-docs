@@ -99,7 +99,6 @@ transformations = [
     Transformation(re.compile(r"^kotlin\/-lets--plot--kotlin\/.*"), _set_to_remove()),
     Transformation(re.compile(r"^(?!.*index\.html$)kotlin\/api-reference\/-lets--plot--kotlin.*$"), _set_to_remove()),
     Transformation(re.compile(r"^python\/pages\/api\/.*"), _set_changefreq('monthly')),
-    Transformation(re.compile(r"^python\/pages\/whats_new\.html$"), _set_changefreq('monthly')),
     Transformation(re.compile(r"^examples\/.*"), _set_changefreq('monthly')),
     Transformation(re.compile(r"^kotlin\/api-reference\/.*"), _set_changefreq('monthly')),
 ]

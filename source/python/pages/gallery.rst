@@ -13,6 +13,10 @@ Gallery
 
     .. grid-item-card::
 
+        .. extref:: text_halo
+
+    .. grid-item-card::
+
         .. extref:: math_manual_legend
 
     .. grid-item-card::

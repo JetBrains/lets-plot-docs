@@ -147,7 +147,7 @@ html_theme_options = {
         "alt_text": "Lets-Plot",
         "image_light": "_static/logo-light.svg",
         "image_dark": "_static/logo-dark.svg",
-        "version_link": "python/pages/whats_new",
+        "version_link": "https://pypi.org/project/lets-plot",
     },
     "header_links_before_dropdown": 1,
     "icon_links": [

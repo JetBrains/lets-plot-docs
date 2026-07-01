@@ -18,7 +18,6 @@
     Geocoding <python/pages/geocoding>
     Gallery <python/pages/gallery>
     'bistro' Plots <python/pages/bistro>
-    What is New <python/pages/whats_new>
 
 .. grid:: 2
     :class-container: landing-content wide-grid
